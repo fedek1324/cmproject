@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ShowRegInfoInput">
+    <meta>
+      <category name="Сервис\Регистрация"/>
+    </meta>
+    <string name="number" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['рег. №']]></script>
+      </calc-values>
+    </string>
+    <string name="regnumber" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parentnode.registration.number==null ? '' : #parentnode.registration.number.prefix+#parentnode.registration.number.number+#parentnode.registration.number.suffix]]></script>
+      </calc-values>
+    </string>
+    <string name="from" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['дата рег.']]></script>
+      </calc-values>
+    </string>
+    <date name="date" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.misc.AFDate).fromJavaDate(#parentnode.registration.date, false)]]></script>
+      </calc-values>
+    </date>
+  </schema>
+</schemas>

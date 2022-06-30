@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RkkTemplateResourceAdvInput" id="RkkTemplateResourceAdvInputForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <button name="${ui.form.RkkTemplateResourceAdvInputForm.button.В корзину.name:В корзину}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanTrash"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.RkkTemplateResourceAdvInputForm.button.В корзину.hintPopUp:В корзину}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#move.to.trash"/>
+        </action>
+      </button>
+      <button name="${ui.form.RkkTemplateResourceAdvInputForm.button.Восстановить.name:Восстановить}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanRestore"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.RkkTemplateResourceAdvInputForm.button.Восстановить.hintPopUp:Восстановить}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#restore.from.trash"/>
+        </action>
+      </button>
+      <button name="${ui.form.RkkTemplateResourceAdvInputForm.button.Удалить.name:Удалить}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanDelete"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.RkkTemplateResourceAdvInputForm.button.Удалить.hintPopUp:Удалить}</hint-pop-up>
+        <action>
+          <system name="delete"/>
+        </action>
+      </button>
+      <section id="Attributes" name="${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="Main" name="${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.name:Основные}">
+            <component>
+              <field autofill="true" attribute-ref="type" name="${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.type.name:Вид документа:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.type.hintPopUp:Вид документа}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="ReqType"/>
+                </directories>
+              </field>
+              <field attribute-ref="title" name="${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.title.name:Заголовок:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.title.hintPopUp:Заголовок}</hint-pop-up>
+              </field>
+              <field attribute-ref="packageNumber" name="${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.packageNumber.name:№ пакета / авианакладной:}"/>
+              <field attribute-ref="correspondent.organization.organization" name="${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.organization.organization.name:Корреспондент:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.organization.organization.hintPopUp:Корреспондент}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="FOREIGN_ORGS"/>
+                  <directory-ref ref="PrivatePeople"/>
+                </directories>
+              </field>
+              <field attribute-ref="correspondent.organization.authors" name="${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.organization.authors.name:Автор:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.organization.authors.hintPopUp:Автор}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="AlienBeards"/>
+                  <directory-ref ref="PrivatePeople"/>
+                </directories>
+              </field>
+              <field attribute-ref="correspondent.manual.authors" name="${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.manual.authors.name:Автор:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.manual.authors.hintPopUp:Автор}</hint-pop-up>
+              </field>
+              <field attribute-ref="addressee" name="${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.addressee.name:Адресаты:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkTemplateResourceAdvInputForm.section.Attributes.section.Main.field.addressee.hintPopUp:Адресаты}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_All"/>
+                  <directory-ref ref="CURRENT_All_Hierarchy"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <component>
+              <field attribute-ref="showTemplate">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="18" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="accessInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_icon_lock"/>
+                      <enable condition-union="AND">
+                        <condition-ref ref="rkkTemplateIsNotPublic"/>
+                      </enable>
+                    </alt-appearance>
+                    <alt-appearance>
+                      <appearance-ref ref="css_icon_unlock"/>
+                      <enable condition-union="AND">
+                        <condition-ref ref="rkkTemplateIsPublic"/>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="showTemplateName">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+          </field>
+          <field attribute-ref="$titleHeader"/>
+        </component>
+      </section>
+      <section id="Content" name="${ui.form.RkkTemplateResourceAdvInputForm.section.Content.name:Содержание}"/>
+      <section id="Access" name="${ui.form.RkkTemplateResourceAdvInputForm.section.Access.name:Доступ}">
+        <component>
+          <field attribute-ref="accessType">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+          </field>
+          <field attribute-ref="$accessItem"/>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

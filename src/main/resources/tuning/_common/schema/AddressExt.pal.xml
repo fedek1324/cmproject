@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="AddressExt">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <string name="building" system="true"/>
+    <string name="housing" system="true"/>
+    <string name="house" system="true"/>
+  </schema>
+</schemas>

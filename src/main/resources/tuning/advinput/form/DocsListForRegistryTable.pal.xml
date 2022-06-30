@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DocsListForRegistryTable" id="DocsListForRegistryTable" name="${ui.form.DocsListForRegistryTable.name:Документ УВК(в виде таблицы в диалоге)}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="packageNumber" name="${ui.form.DocsListForRegistryTable.field.packageNumber.name:Номер пакета/авианакладной:}"/>
+      <field attribute-ref="subject" name="${ui.form.DocsListForRegistryTable.field.subject.name:№ и дата документа. Краткое содержание:}"/>
+      <field attribute-ref="from" name="${ui.form.DocsListForRegistryTable.field.from.name:Наименование отправителя:}"/>
+      <field attribute-ref="to" name="${ui.form.DocsListForRegistryTable.field.to.name:Кому адресован/передан:}"/>
+      <field attribute-ref="docPages" name="${ui.form.DocsListForRegistryTable.field.docPages.name:Количество листов документа:}"/>
+      <field attribute-ref="appNumber" name="${ui.form.DocsListForRegistryTable.field.appNumber.name:Количество листов приложения:}"/>
+    </component>
+  </form>
+</ui>

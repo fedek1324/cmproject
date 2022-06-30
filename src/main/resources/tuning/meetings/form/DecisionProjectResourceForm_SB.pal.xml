@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DecisionProjectResource_SB" id="DecisionProjectResourceForm_SB" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <button name="${ui.form.DecisionProjectResourceForm_SB.button.Удалить.name:Удалить}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="MeetingsDocCanTrash"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.DecisionProjectResourceForm_SB.button.Удалить.hintPopUp:Удалить}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#move.to.trash"/>
+        </action>
+      </button>
+      <section id="Attributes" name="${ui.form.DecisionProjectResourceForm_SB.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="Main" name="${ui.form.DecisionProjectResourceForm_SB.section.Attributes.section.Main.name:Основные}">
+            <component>
+              <field attribute-ref="author" name="${ui.form.DecisionProjectResourceForm_SB.section.Attributes.section.Main.field.author.name:Автор}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.DecisionProjectResourceForm_SB.section.Attributes.section.Main.field.author.hintPopUp:Автор}</hint-pop-up>
+                <directories limit-livesearch="no-restrictions">
+                  <directory-select-value name="Целевая группа" attribute-ref="possibleAuthors"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                  <directory-ref ref="ALIEN_BEARDS"/>
+                </directories>
+              </field>
+              <field attribute-ref="preambleText" name="${ui.form.DecisionProjectResourceForm_SB.section.Attributes.section.Main.field.preambleText.name:Преамбула}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="edit"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="preambleText" name="${ui.form.DecisionProjectResourceForm_SB.section.Attributes.section.Main.field.preambleText.name:Преамбула}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="hasPreamble"/>
+                  </hide>
+                </properties>
+                <hint-pop-up>${ui.form.DecisionProjectResourceForm_SB.section.Attributes.section.Main.field.preambleText.hintPopUp:Преамбула}</hint-pop-up>
+              </field>
+              <field attribute-ref="text" name="${ui.form.DecisionProjectResourceForm_SB.section.Attributes.section.Main.field.text.name:Проект решения}">
+                <appearance multiline="true" importance="normal"/>
+                <hint-pop-up>${ui.form.DecisionProjectResourceForm_SB.section.Attributes.section.Main.field.text.hintPopUp:Проект решения}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="VoteResults" name="${ui.form.DecisionProjectResourceForm_SB.section.Attributes.section.VoteResults.name:Результаты голосования}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="HasVotes"/>
+              </hide>
+            </properties>
+            <component>
+              <field attribute-ref="$voteResult">
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="objectLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="18" field-unit="symbol"/>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="meetingType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left"/>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="$titleHeader"/>
+          <section id="row2" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="pointLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="8" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="pointNumber">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="3" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="$agendaInfo">
+                <appearance align="left"/>
+              </field>
+              <field attribute-ref="$access">
+                <appearance align="left">
+                  <label-style field-width="20" field-unit="symbol"/>
+                </appearance>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Appendix" name="${ui.form.DecisionProjectResourceForm_SB.section.Appendix.name:Приложения}">
+        <component>
+          <field attribute-ref="contentWidget"/>
+          <section id="row_content">
+            <appearance turn="true"/>
+            <component>
+              <field attribute-ref="$content"/>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="History" name="${ui.form.DecisionProjectResourceForm_SB.section.History.name:История}"/>
+    </component>
+  </form>
+</ui>

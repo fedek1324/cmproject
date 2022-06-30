@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ReasonWithdrawalOfGrifResource" projection="default" name="${ui.form.ReasonWithdrawalOfGrifResourceForm.name:Основание снятия грифа}" id="ReasonWithdrawalOfGrifResourceForm">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+  </form>
+
+  <form schema-ref="SelectGrifLinkedDocDialogResource" projection="default" id="SelectGrifLinkedDocDigest">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="digest"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="ids"/>
+    </component>
+  </form>
+</ui>

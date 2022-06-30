@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="PKD.getTasks.input.wf" id="pkd-tasks-input-wf" name="Задачи WF" style="default">
+    <help id="99778995"/>
+    <builder name="ru.intertrust.cmj.pkd.collection.BuilderPkd"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="taskDueDate" filter="true"/>
+        <column-ref ref="taskType" filter="true"/>
+        <column-ref ref="subject" filter="true"/>
+      </columns>
+    </table>
+  </descriptor>
+</catalog>

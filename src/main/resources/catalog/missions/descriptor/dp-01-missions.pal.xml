@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Missions" view="(vw_cmj_01)" id="dp-01-missions" name="ОРД - по номеру" style="default">
+    <help id="99778667"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="rkkExecutionStatus"/>
+        <column-ref ref="resOfRkkExecutionStatus"/>
+        <column-ref ref="regNumber" filter="true"/>
+        <column-ref ref="regDate" filter="true"/>
+        <column-ref ref="reqType" filter="true"/>
+        <column-ref ref="signer" filter="true"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="subject" filter="true"/>
+        <column-ref ref="self"/>
+        <column-ref ref="regPlace" filter="true"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Missions-CreateRKK" name="${catalog.custom-descriptor.dp-01-missions.actions.action.Missions-CreateRKK.name:Создать/ОРД}">
+        <create object-ref="RKK_MISSIONS"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

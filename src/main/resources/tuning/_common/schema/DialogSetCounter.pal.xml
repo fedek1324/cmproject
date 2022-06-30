@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="Dialog" name="DialogSetCounter">
+    <meta>
+      <category name="РМ Администратора\Нумератор"/>
+    </meta>
+    <integer name="counterValue" system="true" temporal="true"/>
+    <string name="message" temporal="true">
+      <default-values>
+        <default-value>Последний использованный номер для счетчика будет изменен на указанное значение</default-value>
+      </default-values>
+    </string>
+    <string name="counter" createlog="true" temporal="true"/>
+    <string array="true" name="selectIds" temporal="true"/>
+  </schema>
+</schemas>

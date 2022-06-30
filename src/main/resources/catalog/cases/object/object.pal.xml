@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <object name="CASE">
+    <meta>
+      <documentation>Кейс</documentation>
+    </meta>
+  </object>
+  <object name="CASE_DOCUMENT">
+    <meta>
+      <documentation>Документ кейса</documentation>
+    </meta>
+  </object>
+  <object name="CASE_TEMPLATE">
+    <meta>
+      <documentation>Шаблон кейса</documentation>
+    </meta>
+  </object>
+</catalog>

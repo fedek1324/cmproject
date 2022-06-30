@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="SignatureInfo" name="SignatureInfoAgreement">
+    <meta>
+      <category name="Система\Договоры"/>
+    </meta>
+    <actor name="signer" system="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.tuning.RecalcOnContractAddAgrSignerChangeEventHandler</recalc-processing-class>
+    </actor>
+    <schema-ref name="signers" ref="SignatureItemResource" system="true" array="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.tuning.RecalcOnContractAddAgrSignerChangeEventHandler</recalc-processing-class>
+    </schema-ref>
+    <actor name="signersExt" array="true" system="true"/>
+  </schema>
+</schemas>

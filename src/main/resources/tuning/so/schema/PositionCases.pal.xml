@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="PositionCases">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="positionGenitive">
+      <storage-field name="positionGenitive"/>
+    </string>
+    <string name="positionDative">
+      <storage-field name="positionDative"/>
+    </string>
+    <string name="genitiveLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['В родительном падеже']]></script>
+      </calc-values>
+    </string>
+    <string name="positionPrepositional">
+      <storage-field name="positionPrepositional"/>
+    </string>
+    <string name="positionInstrumental">
+      <storage-field name="positionInstrumental"/>
+    </string>
+    <string name="positionAccusative">
+      <storage-field name="positionAccusative"/>
+    </string>
+    <string name="prepositionalLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['В предложном падеже']]></script>
+      </calc-values>
+    </string>
+    <string name="instrumentalLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['В творительном падеже']]></script>
+      </calc-values>
+    </string>
+    <string name="dativeLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['В дательном падеже']]></script>
+      </calc-values>
+    </string>
+    <string name="accusativeLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['В винительном падеже']]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

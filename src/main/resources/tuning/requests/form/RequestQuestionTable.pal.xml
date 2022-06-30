@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RequestQuestion" id="RequestQuestionTable" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <component>
+      <button name="${ui.form.RequestQuestionTable.button.Добавить.name:Добавить}" alias="add" tid="addQuestion">
+        <appearance align="right">
+          <label-style width="8" unit="symbol">
+            <style id="tunIconAdd"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="add"/>
+        </action>
+      </button>
+      <section id="colClassifier" name="${ui.form.RequestQuestionTable.section.colClassifier.name:Тематика}">
+        <component>
+          <field attribute-ref="questionValue">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="colClass" name="${ui.form.RequestQuestionTable.section.colClass.name:Вид вопроса}">
+        <component>
+          <field recalc="true" attribute-ref="questionClass">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="colClassType" name="${ui.form.RequestQuestionTable.section.colClassType.name:Тип вида вопроса}">
+        <component>
+          <field attribute-ref="questionClassType">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <button alias="edit" tid="editQuestion">
+        <appearance align="right">
+          <label-style width="1" unit="symbol">
+            <style id="tunIconEdit"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="update"/>
+        </action>
+      </button>
+      <button alias="delete" tid="removeQuestion">
+        <appearance align="right">
+          <label-style width="1" unit="symbol">
+            <style id="tunIconDelete"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="delete"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

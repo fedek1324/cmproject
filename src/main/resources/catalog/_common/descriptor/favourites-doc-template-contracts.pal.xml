@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="favourites.doc.template.contracts" id="favourites-doc-template-contracts" name="Папки &quot;Избранное&quot;  шаблоны документов к договорам" style="default">
+    <builder name="ru.intertrust.cmj.dp._stdimpl.dao.BuilderFavourites"/>
+    <table>
+      <columns>
+        <column-ref ref="templateName"/>
+        <column-ref ref="subject"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+  </descriptor>
+</catalog>

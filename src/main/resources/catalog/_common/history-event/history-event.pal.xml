@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+    <event type="ru.intertrust.cmj.af.history.record.BasicText" id="contractslite.archive">
+        <scopes>
+            <scope name="short" />
+            <scope name="full" />
+        </scopes>
+        <modules>
+            <module ident="ContractsLite" complect="" />
+        </modules>
+        <description-template lang="Freemarker" locale="ru"><![CDATA[Договор перенесен в архив]]></description-template>
+    </event>
+</catalog>

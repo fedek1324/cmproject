@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="MeetingActions" name="MeetingCommonResource">
+    <meta>
+      <category name="Система\Заседания"/>
+    </meta>
+    <boolean name="showMinutes" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[canCreateMinutesWithoutAgenda ? true : agenda.affirmation.status=='AFFIRMED']]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="canCreateMinutesWithoutAgenda" system="true"/>
+    <string name="showIdent" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[isSimple?'Совещание':'Заседание']]></script>
+      </calc-values>
+    </string>
+    <string name="$titleHeader">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[type]]></script>
+      </calc-values>
+    </string>
+    <date name="eventDate" system="true"/>
+    <string name="eventPlace" system="true"/>
+    <time name="eventTime" system="true"/>
+    <boolean name="isAbsentee" system="true"/>
+    <string name="$extramural" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['заочная']]></script>
+      </calc-values>
+    </string>
+    <string name="$intramural" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['очный']]></script>
+      </calc-values>
+    </string>
+    <string name="type" system="true"/>
+    <date name="bulletinProvideDate" system="true"/>
+    <string name="$approvStatusInfo" system="true"/>
+    <string name="$reviewStatusInfo" system="true"/>
+    <string name="missionsRKK_FullNumber">
+      <storage-field name="missionsRKK_FullNumber"/>
+    </string>
+    <boolean name="hasRegisteredMissionsRKK" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#missions'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <enum-ref ref="MeetingStatusEnum" name="meetingStatus" system="true"/>
+    <actor array="true" name="secretaryGroup" system="true"/>
+    <boolean name="canExcludePoint" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#exclude.points'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string name="pagename" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Заседание' + ((hasRegisteredMissionsRKK &&  T(org.springframework.util.StringUtils).hasLength(missionsRKK_FullNumber)) ? (' № '+ missionsRKK_FullNumber) : '')]]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

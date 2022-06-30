@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="DocAccessByTypeResource_ReadOnly" extends="DocAccessByTypeResource">
+    <meta>
+      <category name="Настройки видов документов"/>
+      <documentation>Нужна для того, чтобы в режиме редактирования вида документа, нельзя было редактировать доступ - иначе конфликты при сохранении</documentation>
+    </meta>
+  </schema>
+</schemas>

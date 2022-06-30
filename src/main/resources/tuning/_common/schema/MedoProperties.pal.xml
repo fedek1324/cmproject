@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="MedoProperties">
+    <meta>
+      <category name="Сервис\МЭДО"/>
+    </meta>
+    <string name="medoId" system="true"/>
+    <string name="medoAddress" system="true"/>
+    <enum-ref ref="MedoFormat" name="MedoFormat" system="true" createlog="true"/>
+  </schema>
+</schemas>

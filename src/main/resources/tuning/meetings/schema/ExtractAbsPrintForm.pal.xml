@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ExtractAbsPrintForm">
+    <meta>
+      <category name="Система\Заседания"/>
+    </meta>
+    <string name="alias" system="true">
+      <storage-field name="ExtractAbsPrintForm"/>
+    </string>
+    <string name="title" system="true">
+      <storage-field name="ExtractAbsPrintFormTitle"/>
+    </string>
+  </schema>
+</schemas>

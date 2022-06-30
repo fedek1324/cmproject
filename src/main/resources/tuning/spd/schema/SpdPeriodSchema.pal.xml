@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+    <schema extends="TNObject" name="StoragePeriod">
+        <meta>
+            <category name="Система\Делопроизводство"/>
+        </meta>
+        <string name="pagename" temporal="true">
+            <calc-values>
+                <script event="open" lang="SPEL"><![CDATA['Карточка срока хранения']]></script>
+            </calc-values>
+        </string>
+        <string name="normDoc">
+            <storage-field name="normDoc"/>
+        </string>
+        <string name="articleNum">
+            <storage-field name="articleNum"/>
+        </string>
+        <string name="docType">
+            <storage-field name="docType"/>
+        </string>
+        <string name="period">
+            <storage-field name="period"/>
+        </string>
+        <boolean name="epk">
+            <storage-field name="epk"/>
+        </boolean>
+        <string name="comment">
+            <storage-field name="comment"/>
+        </string>
+        <boolean name="activeStatus" default-value="true" computed="true">
+            <storage-field name="activeStatus"/>
+            <calc-values>
+                <script event="save" lang="SPEL">isNew() ? true : activeStatus</script>
+            </calc-values>
+        </boolean>
+        <string name="activeStatusTitle" temporal="true">
+            <calc-values>
+                <script event="open" lang="SPEL"><![CDATA[activeStatus == true ? "Действует" : "Не действует" ]]></script>
+            </calc-values>
+        </string>
+        <actor name="author">
+            <storage-field name="IDAUTHOR"/>
+        </actor>
+
+        <custom-event-handler lang="JavaScript"><![CDATA[
+importPackage(Packages.ru.intertrust.cmj.af.so);
+importPackage(Packages.ru.intertrust.cmj.dp);
+importPackage(Packages.ru.intertrust.cmj.rest.tuning);
+importClass(Packages.ru.intertrust.cmj.tunable.object.common.TunableObjectHelper);
+
+function querySave(object, document) {
+    return true;
+}
+function postSave(object) {}
+function recalc(object, changedField) {}
+]]></custom-event-handler>
+    </schema>
+</schemas>

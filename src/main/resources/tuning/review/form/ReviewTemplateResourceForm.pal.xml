@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ReviewTemplateResource" id="ReviewTemplateResourceForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <section id="Attributes" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="Main" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.name:Основные}">
+            <component>
+             <field recalc="true" attribute-ref="isAutoUpdatedList" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.field.isAutoUpdatedList:Автоматическое формирование}"/>
+              <field attribute-ref="participants" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.field.participants.name:Список участников ознакомления:*}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isReadOnlyMembers"/>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.field.participants.hintPopUp:Список участников ознакомления}</hint-pop-up>
+                <directories livesearch="true" limit-livesearch="no-restrictions">
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                  <directory-ref ref="FV_CURR_HUMAN_HH"/>
+                </directories>
+              </field>
+              <field recalc="true" attribute-ref="soContext" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.field.soContext.name:Контекст ОШС:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideFormulasReview"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="sysOrgs"/>
+                  <directory-ref ref="isolated-deps"/>
+                </directories>
+              </field>
+              <field attribute-ref="soFormula" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.field.soFormula.name:Фильтр в рамках ОШС:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="hasSoContextReview"/>
+                  </require>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideFormulasReview"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field recalc="true" attribute-ref="spoContext" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.field.spoContext.name:Контекст СпО:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideFormulasReview"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="org-directories"/>
+                </directories>
+              </field>
+              <field attribute-ref="spoFormula" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.field.spoFormula.name:Фильтр в рамках СпО:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="hasSpoContextReview"/>
+                  </require>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideFormulasReview"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="participantsFormula" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.field.participantsFormula.name:Формула вычисления участников списка:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideFormulasReview"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <button recalc="true" attribute-ref="refreshParticipants" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.button.refreshParticipants.name:Пересчет участников}">
+                <properties>
+                  <hide condition-union="OR">
+                    <negative-condition-ref ref="showButtonFormulasReview"/>
+                  </hide>
+                </properties>
+                <appearance>
+                  <label-style>
+                    <style id="tunBtnBlue"/>
+                  </label-style>
+                </appearance>
+              </button>
+              <section id="subParam" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field attribute-ref="duration" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.field.duration:Срок ознакомления:}"/>
+                  <field attribute-ref="canAnswerByTaskOpen" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.field.canAnswerByTaskOpen:Ознакомление при открытии задачи:}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="ReviewTemplate_isAnswerByTaskOpenEnabled"/>
+                      </hide>
+                    </properties>
+                  </field>
+                  <field attribute-ref="isPersonal" name="${ui.form.ReviewTemplateResourceForm.section.Attributes.section.Main.field.isPersonal:Личное ознакомление:}"/>
+                </component>
+              </section>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="showTemplate">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="18" field-unit="symbol"/>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="accessInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_icon_lock"/>
+                      <enable condition-union="AND">
+                        <condition-ref ref="revTemplateIsNotPublic"/>
+                      </enable>
+                    </alt-appearance>
+                    <alt-appearance>
+                      <appearance-ref ref="css_icon_unlock"/>
+                      <enable condition-union="AND">
+                        <condition-ref ref="revTemplateIsPublic"/>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="showTemplateName">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance>
+              <alt-appearancies>
+                <alt-appearance>
+                  <appearance-ref ref="css_headerElementBold"/>
+                  <enable condition-union="AND">
+                    <condition>true</condition>
+                  </enable>
+                </alt-appearance>
+              </alt-appearancies>
+            </appearance>
+          </field>
+          <field attribute-ref="$titleHeader">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <hint-in-field>${ui.form.ReviewTemplateResourceForm.section.Header.field.titleHeader.hintInField:Введите заголовок документа}</hint-in-field>
+          </field>
+        </component>
+      </section>
+      <section id="AccessType" name="${ui.form.ReviewTemplateResourceForm.section.AccessType.name:Доступ}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition-ref ref="isCantEditAccessTab"/>
+          </read-only>
+        </properties>
+        <component>
+          <field recalc="true" attribute-ref="accessType">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="isCantEditAccessTab"/>
+              </read-only>
+            </properties>
+            <appearance widget="radio">
+              <label-style>
+                <style id="tunVertical"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunVertical"/>
+                </value-style>
+              </field-style>
+            </appearance>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="accessType"/>
+            </directories>
+          </field>
+          <field attribute-ref="acl" name="${ui.form.ReviewTemplateResourceForm.acl.name:Индивидуально:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="isCantEditAccessTab"/>
+              </read-only>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="reviewTemplateIsFavourites"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="FV_CURR_SYS_HUMAN_HH_DEP"/>
+            </directories>
+          </field>
+          <field clickable="true" attribute-ref="departmentAccess">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="reviewTemplateIsFavourites"/>
+              </hide>
+            </properties>
+            <appearance location="table" importance="normal" clickable="true"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

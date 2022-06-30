@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+    <schema name="AddSignersArray">
+        <meta>
+            <category name="Система\Делопроизводство\Подписание" />
+            <documentation>Схема для добавления нескольких подписантов через диалог кнопки "Добавить"</documentation>
+        </meta>
+        <string temporal="true" name="mode">
+            <calc-values>
+                <script lang="SPEL" event="open"><![CDATA['dialog']]></script>
+            </calc-values>
+        </string>
+        <actor name="signers" array="true"/>
+    </schema>
+</schemas>

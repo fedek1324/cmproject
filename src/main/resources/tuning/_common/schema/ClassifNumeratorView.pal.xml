@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ClassifNumeratorView">
+    <string name="id">
+      <storage-field name="classifId"/>
+    </string>
+    <string name="name">
+      <storage-field name="CounterKeyFormula"/>
+    </string>
+  </schema>
+</schemas>

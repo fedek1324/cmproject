@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="VCardResource" name="VCardResource.Organization_Old">
+    <meta>
+      <category name="Справочники"/>
+    </meta>
+    <schema-ref ref="MedoProperties" name="medo" system="true"/>
+    <string name="showIdent" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Несистемная организация']]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="AddressValue" name="adrPostal" system="true"/>
+    <schema-ref ref="AddressValue" name="adrLegal" system="true"/>
+    <boolean name="isMedoActive" system="true"/>
+    <string array="true" name="categoriesValues" system="true"/>
+    <string name="adr_postal" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[adrPostal==null ? '' : ( (adrPostal.countryName==null ? '' : adrPostal.countryName + ', ') + (adrPostal.region==null ? '' : adrPostal.region+ ', ') + (adrPostal.locality==null ? '' : 'г. ' + adrPostal.locality+ ', ') + (adrPostal.district==null ? '' : 'р-н ' + adrPostal.district+ ', ') + (adrPostal.streetAddress==null ? '' : (adrPostal.streetTypeAddress==null ? ('улица ' + adrPostal.streetAddress + ', ') : (adrPostal.streetTypeAddress + ' ' + adrPostal.streetAddress + ', '))) + ((adrPostal.extendedAddress.house==null || ''.equals(adrPostal.extendedAddress.house)) ? '' : 'д. ' + adrPostal.extendedAddress.house+ ', ') + ((adrLegal.extendedAddress.housing==null || ''.equals(adrLegal.extendedAddress.housing)) ? '' : 'корп. ' + adrPostal.extendedAddress.housing+ ', ') + ((adrPostal.extendedAddress.building==null || ''.equals(adrLegal.extendedAddress.building)) ? '' : 'стр. ' + adrPostal.extendedAddress.building+ ', ') + (adrPostal.postOfficeBox==null ? '' : 'офис ' + adrPostal.postOfficeBox+ ', ') + (adrPostal.postalCode==null ? '' : adrPostal.postalCode+ ', '))]]></script>
+      </calc-values>
+    </string>
+    <string name="adr_postal_real" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(adr_postal == null || ''.equals(adr_postal))  ? '' : adr_postal.toString().substring(0, adr_postal.length()-2)]]></script>
+      </calc-values>
+    </string>
+    <string name="adr_legal" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[adrLegal==null ? '' : ( (adrLegal.countryName==null ? '' : adrLegal.countryName + ', ') + (adrLegal.region==null ? '' : adrLegal.region+ ', ') + (adrLegal.locality==null ? '' : 'г. ' + adrLegal.locality+ ', ') + (adrLegal.district==null ? '' : 'р-н ' + adrLegal.district+ ', ') + (adrLegal.streetAddress==null ? '' : (adrLegal.streetTypeAddress==null ? ('улица ' + adrLegal.streetAddress + ', ') : (adrLegal.streetTypeAddress + ' ' + adrLegal.streetAddress + ', '))) + ((adrLegal.extendedAddress.house==null || ''.equals(adrLegal.extendedAddress.house)) ? '' : 'д. ' + adrLegal.extendedAddress.house+ ', ') + ((adrLegal.extendedAddress.housing==null || ''.equals(adrLegal.extendedAddress.housing)) ? '' : 'корп. ' + adrLegal.extendedAddress.housing+ ', ') + ((adrLegal.extendedAddress.building==null || ''.equals(adrLegal.extendedAddress.building)) ? '' : 'стр. ' + adrLegal.extendedAddress.building+ ', ') + (adrLegal.postOfficeBox==null ? '' : 'офис ' + adrLegal.postOfficeBox+ ', ') + (adrLegal.postalCode==null ? '' : adrLegal.postalCode+ ', '))]]></script>
+      </calc-values>
+    </string>
+    <string name="adr_legal_real" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(adr_legal == null || ''.equals(adr_legal)) ? '' : adr_legal.toString().substring(0, adr_legal.length()-2)]]></script>
+      </calc-values>
+    </string>
+    <string name="createEmployee" temporal="true"/>
+    <custom-event-handler lang="JavaScript"><![CDATA[importPackage(Packages.ru.intertrust.cmj.af.so.impl);
+
+function querySave(object, document) {
+object.checkOrgMasks(object);
+    return false;
+}
+
+function postSave(object, document) {}]]></custom-event-handler>
+  </schema>
+</schemas>

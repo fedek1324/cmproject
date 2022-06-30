@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <object name="CLASSIFIER">
+    <meta>
+      <documentation>Классификатор</documentation>
+    </meta>
+  </object>
+  <object name="EDMDOCS_NRD_TEMPLATE">
+    <meta>
+      <documentation>Шаблон НРД</documentation>
+    </meta>
+  </object>
+  <object name="FOLDER">
+    <meta>
+      <documentation>Папка</documentation>
+    </meta>
+  </object>
+  <object name="FOREIGN_REPORT">
+    <meta>
+      <documentation>Сводка КИ</documentation>
+    </meta>
+  </object>
+  <object name="FOREIGN_RESOLUTION">
+    <meta>
+      <documentation>Сводка КР</documentation>
+    </meta>
+  </object>
+  <object name="PKD_NOTICE">
+    <meta>
+      <documentation>Уведомление ПКД</documentation>
+    </meta>
+  </object>
+  <object name="TUNABLE_OBJECT">
+    <meta>
+      <documentation>Описание:Произвольный НР-объект</documentation>
+    </meta>
+  </object>
+</catalog>

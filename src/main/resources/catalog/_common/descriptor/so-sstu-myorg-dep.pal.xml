@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="q.so-dep-sstu" fulltext="true" id="so-sstu-myorg-dep" name="СО - ССТУ - МояОрганизация - Подразделения" style="default">
+    <help id="99778984"/>
+    <builder name="ru.intertrust.cmj.af.so.impl.BuilderSODep"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="soDlgMixName"/>
+        <column-ref ref="soCode"/>
+      </columns>
+    </table>
+  </descriptor>
+</catalog>

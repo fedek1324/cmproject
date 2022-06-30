@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="RequestsControlEnum">
+    <meta>
+      <category name="Система\Обращение граждан"/>
+    </meta>
+    <string value="0" name="0"/>
+    <string value="2" name="2"/>
+    <string value="1" name="1"/>
+  </enum>
+</schemas>

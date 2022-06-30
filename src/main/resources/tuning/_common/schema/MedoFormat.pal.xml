@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="MedoFormat">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <string value="EMPTY" name="EMPTY"/>
+    <string value="MEDO_2_7" name="MEDO_2_7"/>
+    <string value="MEDO_2_5" name="MEDO_2_5"/>
+  </enum>
+</schemas>

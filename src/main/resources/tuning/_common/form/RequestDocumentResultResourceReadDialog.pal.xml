@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RequestDocumentResultResource" id="RequestDocumentResultResourceReadDialog" name="${ui.form.RequestDocumentResultResourceReadDialog.name:Документ-ответ}" projection="default">
+    <rename name="${ui.form.RequestDocumentResultResourceReadDialog.rename.name:Сопроводительный документ}" condition-union="AND">
+      <condition-ref ref="RequestResultDoc_IsCovering"/>
+    </rename>
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Attributes" name="${ui.form.RequestDocumentResultResourceReadDialog.section.Attributes.name:Документ-ответ}">
+        <rename name="${ui.form.RequestDocumentResultResourceReadDialog.section.Attributes.rename.name:Сопроводительный документ}" condition-union="AND">
+          <condition-ref ref="RequestResultDoc_IsCovering"/>
+        </rename>
+        <component>
+          <field attribute-ref="org" name="${ui.form.RequestDocumentResultResourceReadDialog.section.Attributes.field.org.name:Организация}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="RequestResultDoc_ByLink"/>
+                <condition-ref ref="RequestResultDoc_IsNotEditable"/>
+                <condition>true</condition>
+              </read-only>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="RequestResultDoc_IsCovering"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <directories livesearch="true" limit-livesearch="sys-current">
+              <directory-ref ref="OrgsSSTU"/>
+              <directory-ref ref="DepsSSTU"/>
+            </directories>
+          </field>
+          <field attribute-ref="regDate" name="${ui.form.RequestDocumentResultResourceReadDialog.section.Attributes.field.regDate.name:Дата}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="RequestResultDoc_ByLink"/>
+                <condition-ref ref="RequestResultDoc_IsNotEditable"/>
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="regNumber" name="${ui.form.RequestDocumentResultResourceReadDialog.section.Attributes.field.regNumber.name:Номер документа}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="RequestResultDoc_ByLink"/>
+                <condition-ref ref="RequestResultDoc_IsNotEditable"/>
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="content">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="RequestResultDoc_ByLink"/>
+                <condition-ref ref="RequestResultDoc_IsNotEditable"/>
+                <condition>true</condition>
+              </read-only>
+              <hide condition-union="AND">
+                <condition-ref ref="RequestResultDoc_IsCovering"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DialogSelectVacancy" id="DialogSelectVacancyForm" name="${ui.form.DialogSelectVacancyForm.name:Выбор вакансий}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <appearance>
+      <dialog-mode height="50" width="50" unit="percent"/>
+    </appearance>
+    <component>
+      <field attribute-ref="vacancyInfo" name="${ui.form.DialogSelectVacancyForm.field.vacancyInfo.name:Выбор вакансий:}">
+        <appearance importance="normal" widget="grid"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="admin-so-employee-vac"/>
+          <directory-ref ref="admin-so-hierarchy-vac"/>
+        </directories>
+      </field>
+      <button name="${ui.form.DialogSelectVacancyForm.button.OK.name:OK}">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

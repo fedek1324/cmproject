@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="AddressUnit" id="AddressUnitForm_Dialog" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="type" name="${ui.form.AddressUnitForm_Dialog.field.type.name:Тип}">
+        <appearance importance="normal"/>
+        <directories manual-input="true" limit-livesearch="no-restrictions">
+          <directory-ref ref="PersonAddressTypes"/>
+        </directories>
+      </field>
+      <section id="row1" group="true">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="AddressUnit_IsPOBox"/>
+          </hide>
+        </properties>
+        <component>
+          <field attribute-ref="postIndex" name="${ui.form.AddressUnitForm_Dialog.section.row1.field.postIndex.name:Почтовый индекс}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="postOfficeBox" name="${ui.form.AddressUnitForm_Dialog.section.row1.field.postOfficeBox.name:Абонентский ящик №}">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="row2">
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="AddressUnit_IsPOBox"/>
+          </hide>
+        </properties>
+        <component>
+          <field attribute-ref="postIndex" name="${ui.form.AddressUnitForm_Dialog.section.row2.field.postIndex.name:Почтовый индекс}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="country" name="${ui.form.AddressUnitForm_Dialog.section.row2.field.country.name:Страна}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="region" name="${ui.form.AddressUnitForm_Dialog.section.row2.field.region.name:Регион}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="city" name="${ui.form.AddressUnitForm_Dialog.section.row2.field.city.name:Город}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="settlement" name="${ui.form.AddressUnitForm_Dialog.section.row2.field.settlement.name:Поселение}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="district" name="${ui.form.AddressUnitForm_Dialog.section.row2.field.district.name:Район}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="street" name="${ui.form.AddressUnitForm_Dialog.section.row2.field.street.name:Улица}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="house" name="${ui.form.AddressUnitForm_Dialog.section.row2.field.house.name:Дом}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="building" name="${ui.form.AddressUnitForm_Dialog.section.row2.field.building.name:Строение}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="apartment" name="${ui.form.AddressUnitForm_Dialog.section.row2.field.apartment.name:№ квартиры}">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

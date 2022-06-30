@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="VCardResource.NoSysHuman" id="VCardResource.NonSysHuman_Dialog" name="${ui.form.VCardResource.NonSysHuman_Dialog.name:Изменение данных сотрудника}" projection="default">
+    <rename name="${ui.form.VCardResource.NonSysHuman_Dialog.rename.name:Добавить работника}" condition-union="AND">
+      <condition-ref ref="vcardIsNew"/>
+    </rename>
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="n.lastName" name="${ui.form.VCardResource.NonSysHuman_Dialog.field.n.lastName.name:Фамилия}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="n.firstName" name="${ui.form.VCardResource.NonSysHuman_Dialog.field.n.firstName.name:Имя}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="n.middleName" name="${ui.form.VCardResource.NonSysHuman_Dialog.field.n.middleName.name:Отчество}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="title" name="${ui.form.VCardResource.NonSysHuman_Dialog.field.title.name:Должность}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="tel.work" name="${ui.form.VCardResource.NonSysHuman_Dialog.field.tel.work.name:Телефон}">
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

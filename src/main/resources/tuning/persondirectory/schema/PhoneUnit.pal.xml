@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="PhoneUnit">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="type">
+      <storage-field name="phoneType"/>
+    </string>
+    <string name="number">
+      <storage-field name="phoneNumber"/>
+    </string>
+  </schema>
+</schemas>

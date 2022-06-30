@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SoEmployeeAbsenceData" id="SoEmployeeAbsenceDataDialog" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <appearance field-layout="vertical"/>
+    <component>
+      <field attribute-ref="dateStart" name="${ui.form.SoEmployeeAbsenceDataDialog.field.dateStart.name:Дата начала отсутствия}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="dateEnd" name="${ui.form.SoEmployeeAbsenceDataDialog.field.dateEnd.name:Дата окончания отсутствия}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="reason" name="${ui.form.SoEmployeeAbsenceDataDialog.field.reason.name:Наименование причины отсутствия}">
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

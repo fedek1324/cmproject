@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="admin-organization" id="admin-groups-af5" name="${catalog.view.admin_groups_af5.name:Группы}" position="120">
+    <visible>
+      <hide-storage name="Domino" />
+    </visible>
+    <descriptor-ref ref="admin-so-groups-af5"/>
+    <source>
+      <module ident="SO"/>
+    </source>
+  </view>
+</catalog>

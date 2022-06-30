@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:com="http://www.intertrust.ru/schema/palette/common">
+
+    <xs:import namespace="http://www.intertrust.ru/schema/palette/common" schemaLocation="common-1.0.xsd">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Общие типы]]></xs:documentation>
+        </xs:annotation>
+    </xs:import>
+
+    <!-- Типы объектов -->
+    <xs:include schemaLocation="cat-object-types-1.0.xsd">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Типы объектов]]></xs:documentation>
+        </xs:annotation>
+    </xs:include>
+
+    <!-- Доп. информация -->
+    <xs:complexType name="metaActionType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Доп. информация для разработчика]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="category" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Категория]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute type="xs:string" name="name" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Название категории]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="documentation" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Комментарий]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="createType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Создание объекта]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="object-ref" type="objectNameType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на объект]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="actionType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Действие]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence maxOccurs="1" minOccurs="1">
+            <xs:element name="meta" type="metaActionType" minOccurs="0"/>
+            <xs:choice>
+                <xs:element name="create" type="createType"/>
+                <xs:element name="group-operation">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Групповая операция]]></xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="name" type="com:placeholderType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+</xs:schema>

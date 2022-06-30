@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ReportInventoryFilesList">
+    <meta>
+      <category name="Отчеты"/>
+    </meta>
+    <schema-ref ref="NUMBER" required="true" name="INVENTORY_NUMBER" createlog="true"/>
+    <date required="true" name="DATE_REG_Start">
+      <calc-values>
+        <script lang="SPEL" event="open">
+          <![CDATA[{ #date = new java.util.Date(new java.util.Date().getYear(), 0, 1), T(ru.intertrust.cmj.af.misc.AFDate).fromJavaDate(new java.util.Date(#date.getTime() - #date.getTimezoneOffset() * 60000)) }[1]]]>
+        </script>
+      </calc-values>
+    </date>
+    <date required="true" default-value="current" name="DATE_REG_End"/>
+  </schema>
+</schemas>

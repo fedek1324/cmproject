@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+    <schema extends="Dialog" name="ClassifSimpleDialog" recalc="true">
+        <string name="mode" temporal="true">
+            <calc-values>
+                <script event="open" lang="SPEL"><![CDATA['dialog']]></script>
+            </calc-values>
+        </string>
+        <string name="counter" temporal="true"/>
+        <schema-ref ref="ClassifSimple" array = "true" name="ClassifSimpleChosen" temporal="true"/>
+        <schema-ref ref="ClassifSimple" array = "true" name="ClassifSimpleAll" temporal="true"/>
+        <schema-ref null-empty="true" ref="ClassifSimple" name="ClassifSimpleOne" temporal="true"/>
+        <string name="tempField" temporal="true"/>
+        <custom-event-handler lang="JavaScript"><![CDATA[
+importPackage(Packages.ru.intertrust.cmj.rest.tuning);
+importClass(Packages.ru.intertrust.cmj.tunable.object.common.TunableObjectHelper);
+importClass(Packages.java.lang.System);
+importPackage(Packages.ru.intertrust.cmj.rest.core);
+importPackage(Packages.ru.intertrust.cmj.rest.content);
+importPackage(Packages.ru.intertrust.cmj.af.utils);
+importPackage(Packages.ru.intertrust.cmj.af.misc);
+
+function querySave(object, document) {
+    return true;
+}
+function postSave(object) {}
+function recalc(object, changedField) {
+	if (changedField == 'tempField'){
+		var listsAndvisas = Utils.newArrayList();
+		for(var i=0; i<object.tuning().getValues().get('ClassifSimpleAll').getValues().size();i++) {
+			var oneElement= Utils.newHashMap();
+			oneElement.put("id",object.tuning().getValues().get('ClassifSimpleAll').getValues().get(i).getValues().get('id').getValue() );
+			oneElement.put("name",object.tuning().getValues().get('ClassifSimpleAll').getValues().get(i).getValues().get('name').getValue());
+			listsAndvisas.add(oneElement);
+		}
+		object.tuning().getValues().put("ClassifSimpleChosen",TuningHelper.createPropertyValue(listsAndvisas, object.tuning().getSchema().getProperty("ClassifSimpleChosen")));
+	}
+}
+]]></custom-event-handler>
+    </schema>
+</schemas>

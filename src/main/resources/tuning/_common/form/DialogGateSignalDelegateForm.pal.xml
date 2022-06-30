@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DialogGateSignalDelegate" id="DialogGateSignalDelegateForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <appearance>
+      <dialog-mode height="250" width="150" unit="symbol"/>
+    </appearance>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <component>
+              <field attribute-ref="signalType" name="${ui.form.DialogGateSignalDelegateForm.section.Header.section.row1.field.signalType.name:Тип сигнала:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+                <directories limit-livesearch="no-restrictions">
+                  <directory-ref ref="SignalTypes"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="message">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <field attribute-ref="delegateUnit" name="${ui.form.DialogGateSignalDelegateForm.field.delegateUnit.name:Выбор структурной единицы для передачи дел}">
+        <appearance open-mode="grid" digest-mode="grid" importance="normal" widget="grid"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="arm-admin-dialog-hierarchi"/>
+        </directories>
+      </field>
+      <field attribute-ref="warningText">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="DialogGateSignalDelegateHasWarning"/>
+          </hide>
+        </properties>
+        <appearance importance="normal">
+          <label-style>
+            <style id="tunRed"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunRed"/>
+            </value-style>
+          </field-style>
+        </appearance>
+      </field>
+      <button name="${ui.form.DialogGateSignalDelegateForm.button.Готово.name:Готово}">
+        <action>
+          <system name="Submit"/>
+        </action>
+      </button>
+      <button attribute-ref="selectButtonByDefault" name="${ui.form.DialogGateSignalDelegateForm.button.selectButtonByDefault.name:По умолчанию}">
+        <action>
+          <system name="Submit"/>
+        </action>
+      </button>
+      <button attribute-ref="skip" name="${ui.form.DialogGateSignalDelegateForm.button.skip.name:Отмена}">
+        <action>
+          <system name="Submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.DialogGateSignalDelegateForm.button.Скрыть системную кнопку 'Отменить'.name:Скрыть системную кнопку 'Отменить'}">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <action>
+          <system name="CANCEL"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

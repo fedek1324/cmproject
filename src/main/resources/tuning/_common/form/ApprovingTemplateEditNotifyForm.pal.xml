@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ApprovingTemplateEditNotify" projection="default" name="${ui.form.ApprovingTemplateEditNotifyForm.name:Напоминания}" id="ApprovingTemplateEditNotifyForm">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="label1">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal" align="left"/>
+      </field>
+      <section group="true" id="row20">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="label2" autofill="true">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal" align="left">
+              <label-style field-unit="symbol" field-width="16"/>
+            </appearance>
+          </field>
+          <field attribute-ref="numOfWorkDays" recalc="true">
+            <appearance importance="normal" align="left">
+              <label-style field-unit="symbol" field-width="10"/>
+            </appearance>
+            <hint-pop-up>${ui.form.ApprovingTemplateEditNotifyForm.section.row20.field.numOfWorkDays.hintPopUp:(можно ввести несколько дней, например: 5,3,1)}</hint-pop-up>
+          </field>
+          <field attribute-ref="label3" autofill="true">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal" align="left">
+              <label-style field-unit="symbol" field-width="30"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <section group="true" id="row30">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="label4" autofill="true">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal" align="left">
+              <label-style field-unit="symbol" field-width="35"/>
+            </appearance>
+          </field>
+          <field attribute-ref="isGenerateNotifToTheInitiator" recalc="true">
+            <appearance importance="normal" align="left"/>
+          </field>
+        </component>
+      </section>
+      <button name="${ui.form.ApprovingTemplateEditNotifyForm.button.Ок.name:Ок}">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

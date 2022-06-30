@@ -1,0 +1,658 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="MeetingResource" id="MeetingResourceForm" name="${ui.form.MeetingResourceForm.name:MeetingResourceForm}" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <button name="${ui.form.MeetingResourceForm.button.Исключить вопрос.name:Исключить вопрос}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanExcludePoint"/>
+          </hide>
+        </properties>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#exclude.points"/>
+        </action>
+      </button>
+      <button name="${ui.form.MeetingResourceForm.button.Отправить повестку на согласование.name:Отправить повестку на согласование}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanSendToApproving_agenda"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.MeetingResourceForm.button.Отправить повестку на согласование.hintPopUp:Отправить повестку на согласование}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#agenda.approving.start"/>
+        </action>
+      </button>
+      <button name="${ui.form.MeetingResourceForm.button.Отправить протокол на согласование.name:Отправить протокол на согласование}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanSendToApproving_minutes"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.MeetingResourceForm.button.Отправить протокол на согласование.hintPopUp:Отправить протокол на согласование}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#minutes.approving.start"/>
+        </action>
+      </button>
+      <button name="${ui.form.MeetingResourceForm.button.Повестку.name:Повестку}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanSendToReview_agenda"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.MeetingResourceForm.button.Повестку.hintPopUp:Отправить повестку на ознакомление}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#agenda.review.start"/>
+        </action>
+      </button>
+      <button name="${ui.form.MeetingResourceForm.button.Протокол.name:Протокол}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanSendToReview_minutes"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.MeetingResourceForm.button.Протокол.hintPopUp:Отправить протокол на ознакомление}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#minutes.review.start"/>
+        </action>
+      </button>
+      <button name="${ui.form.MeetingResourceForm.button.Протокол в ОРД.name:Протокол в ОРД}">
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#create.missions"/>
+        </action>
+      </button>
+      <button name="${ui.form.MeetingResourceForm.button.Удалить.name:Удалить}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="MeetingsCanTrash"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.MeetingResourceForm.button.Удалить.hintPopUp:Удалить}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#move.to.trash"/>
+        </action>
+      </button>
+      <section id="Agenda" name="${ui.form.MeetingResourceForm.section.Agenda.name:Повестка}">
+        <component>
+          <field attribute-ref="agenda.chairman" name="${ui.form.MeetingResourceForm.section.Agenda.field.agenda.chairman.name:Председатель:}">
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Agenda.field.agenda.chairman.hintPopUp:Председатель}</hint-pop-up>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+              <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+            </directories>
+          </field>
+          <field attribute-ref="agenda.secretary" name="${ui.form.MeetingResourceForm.section.Agenda.field.agenda.secretary.name:Секретарь:}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="MeetingIsSimple"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Agenda.field.agenda.secretary.hintPopUp:Секретарь}</hint-pop-up>
+            <directories limit-livesearch="sys-current">
+              <directory-select-value name="Целевая группа" attribute-ref="secretaryGroup"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+              <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+            </directories>
+          </field>
+          <field attribute-ref="agenda.secretary" name="${ui.form.MeetingResourceForm.section.Agenda.field.agenda.secretary.name:Секретарь:}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="MeetingIsSimple"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Agenda.field.agenda.secretary.hintPopUp:Секретарь}</hint-pop-up>
+            <directories limit-livesearch="sys-current">
+              <show-select-value>
+                <cell-view-ref ref="Целевая группа"/>
+              </show-select-value>
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+              <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+            </directories>
+          </field>
+          <field recalc="true" attribute-ref="agenda.permanent" name="${ui.form.MeetingResourceForm.section.Agenda.field.agenda.permanent.name:Постоянные участники:}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="MeetingIsSimple"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Agenda.field.agenda.permanent.hintPopUp:Постоянные участники}</hint-pop-up>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+              <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+            </directories>
+          </field>
+          <field attribute-ref="agenda.invitedForRead" name="${ui.form.MeetingResourceForm.section.Agenda.field.agenda.invitedForRead.name:Приглашенные:}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <appearance importance="normal">
+              <field-style group="true"/>
+            </appearance>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Agenda.field.agenda.invitedForRead.hintPopUp:Приглашенные}</hint-pop-up>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="ALIEN_BEARDS"/>
+              <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+            </directories>
+          </field>
+          <field recalc="true" attribute-ref="agenda.invited" name="${ui.form.MeetingResourceForm.section.Agenda.field.agenda.invited.name:Приглашенные на заседание:}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="edit"/>
+              </hide>
+            </properties>
+            <rename name="${ui.form.MeetingResourceForm.section.Agenda.field.agenda.invited.rename.name:Приглашенные:}" condition-union="AND">
+              <condition-ref ref="MeetingIsSimple"/>
+            </rename>
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Agenda.field.agenda.invited.hintPopUp:Приглашенные на заседание}</hint-pop-up>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+              <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+            </directories>
+          </field>
+          <section id="invitedOnQuestionsSection" group="true">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="MeetingIsSimple"/>
+              </hide>
+            </properties>
+            <component>
+              <field attribute-ref="agenda.invitedOnQuestions" name="${ui.form.MeetingResourceForm.section.Agenda.section.invitedOnQuestionsSection.field.agenda.invitedOnQuestions.name:Приглашенные по вопросам:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="edit"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal">
+                  <field-style separator="newline"/>
+                </appearance>
+                <hint-pop-up>${ui.form.MeetingResourceForm.section.Agenda.section.invitedOnQuestionsSection.field.agenda.invitedOnQuestions.hintPopUp:Приглашенные по вопросам}</hint-pop-up>
+                <show-value schema-ref="VCardResource.Invited"/>
+                <directories limit-livesearch="sys-current">
+                  <directory-category-custom-coll attribute-ref="agenda.invited" ref="CURR_HUMAN_HH"/>
+                  <directory-category-custom-coll attribute-ref="agenda.invited" ref="CURR_HUMAN_HH_HIER"/>
+                  <directory-category-custom-coll attribute-ref="agenda.invited" ref="ALIEN_BEARDS"/>
+                  <directory-category-custom-coll attribute-ref="agenda.invited" ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+          <section id="Points" name="${ui.form.MeetingResourceForm.section.Agenda.section.Points.name:Вопросы повестки}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="MeetingIsSimple"/>
+              </hide>
+            </properties>
+            <component>
+              <field attribute-ref="agenda.points">
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="agenda.content">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="showIdent">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="5" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="securityStamp">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="securityStampIsNotEmpty"/>
+                  </hide>
+                </properties>
+                <appearance importance="high" align="right">
+                  <label-style field-unit="symbol" field-width="15">
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.RkkResourceMissionsForm.section.Header.section.row15.field.securityStampText.hintPopUp:Гриф ограничения доступа к документу}</hint-pop-up>
+              </field>
+              <field attribute-ref="meetingStatus">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="high">
+                  <label-style field-width="32" field-unit="symbol"/>
+                </appearance>
+                <directories limit-livesearch="no-restrictions">
+                  <directory-ref ref="MeetingStatus"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+          <section id="row1.5" group="true">
+            <component>
+              <field attribute-ref="$approvStatusInfo">
+                <appearance align="right"/>
+              </field>
+              <field attribute-ref="$reviewStatusInfo">
+                <appearance align="right"/>
+              </field>
+            </component>
+          </section>
+          <section id="row2" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="$titleHeader" tid="$titleHeader">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <condition-ref ref="MeetingIsSimple"/>
+                  </hide>
+                </properties>
+              </field>
+              <field attribute-ref="$titleHeader" tid="$titleHeader">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isAgendaAffirmed"/>
+                    <condition-ref ref="MeetingHasRegisteredMissionsRKK"/>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="MeetingIsSimple"/>
+                  </hide>
+                </properties>
+              </field>
+            </component>
+          </section>
+          <section id="row3" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="missionsRKK_FullNumber" name="${ui.form.MeetingResourceForm.section.Header.section.row3.field.missionsRKK_FullNumber.name:№}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="MeetingHasRegisteredMissionsRKK"/>
+                  </hide>
+                </properties>
+                <hint-pop-up>${ui.form.MeetingResourceForm.section.Header.section.row3.field.missionsRKK_FullNumber.hintPopUp:№}</hint-pop-up>
+              </field>
+              <field attribute-ref="meetingNumber" name="${ui.form.MeetingResourceForm.section.Header.section.row3.field.meetingNumber.name:Номер заседания:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="edit"/>
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="enableMeetingNumerationSS"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="eventDate" name="${ui.form.MeetingResourceForm.section.Header.section.row3.field.eventDate.name:Дата:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isAgendaAffirmed"/>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="20" field-unit="symbol"/>
+                </appearance>
+                <hint-pop-up>${ui.form.MeetingResourceForm.section.Header.section.row3.field.eventDate.hintPopUp:Дата:}</hint-pop-up>
+              </field>
+              <field recalc="true" attribute-ref="isAbsentee" name="${ui.form.MeetingResourceForm.section.Header.section.row3.field.isAbsentee.name:Форма проведения}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isAgendaAffirmed"/>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="5" field-unit="symbol"/>
+                </appearance>
+                <hint-pop-up>${ui.form.MeetingResourceForm.section.Header.section.row3.field.isAbsentee.hintPopUp:Форма проведения}</hint-pop-up>
+              </field>
+              <field attribute-ref="bulletinProvideDate" name="${ui.form.MeetingResourceForm.section.Header.section.row3.field.bulletinProvideDate.name:Дата передачи бюллетеней}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isAgendaAffirmed"/>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="MeetingisAbsentee"/>
+                  </hide>
+                </properties>
+                <hint-pop-up>${ui.form.MeetingResourceForm.section.Header.section.row3.field.bulletinProvideDate.hintPopUp:Дата передачи бюллетеней}</hint-pop-up>
+              </field>
+              <field attribute-ref="eventTime" name="${ui.form.MeetingResourceForm.section.Header.section.row3.field.eventTime.name:Время проведения:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isAgendaAffirmed"/>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="5" field-unit="symbol"/>
+                </appearance>
+                <hint-pop-up>${ui.form.MeetingResourceForm.section.Header.section.row3.field.eventTime.hintPopUp:Время проведения:}</hint-pop-up>
+              </field>
+              <field attribute-ref="eventPlace" name="${ui.form.MeetingResourceForm.section.Header.section.row3.field.eventPlace.name:Место проведения:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isAgendaAffirmed"/>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="30" field-unit="percent"/>
+                </appearance>
+                <hint-pop-up>${ui.form.MeetingResourceForm.section.Header.section.row3.field.eventPlace.hintPopUp:Место проведения:}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="linksAccessSection" group="true">
+            <appearance>
+              <label-style width="30" unit="symbol"/>
+            </appearance>
+            <component>
+              <field attribute-ref="disableLinkAccess" name="${ui.form.MeetingResourceForm.section.Header.section.linksAccessSection.field.disableLinkAccess.name:Ограничить доступ по связям}">
+                <appearance align="right" importance="normal">
+                  <label-style field-width="2" field-unit="symbol"/>
+                </appearance>
+                <hint-in-field>${ui.form.MeetingResourceForm.section.Header.section.linksAccessSection.field.disableLinkAccess.hintInField:Не дается доступ к текущему документу читателям связанных документов}</hint-in-field>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.MeetingResourceForm.section.RootMenu.button.AddLinkToFavoriteFolderAction.name:AddLinkToFavoriteFolderAction}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="CanHideAddToFavoriteButtonForMeetings"/>
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+            </action>
+          </button>
+          <section id="SEND" name="${ui.form.MeetingResourceForm.section.RootMenu.section.SEND.name:Отправить}">
+            <component>
+              <section id="EMAIL" name="${ui.form.MeetingResourceForm.section.RootMenu.section.SEND.section.EMAIL.name:По Email}">
+                <component>
+                  <button name="${ui.form.MeetingResourceForm.section.RootMenu.section.SEND.section.EMAIL.button.Повестку.name:Повестку}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <action>
+                      <system name="http://intertrust.ru/cmj/relations#create.agenda.email"/>
+                    </action>
+                  </button>
+                  <button name="${ui.form.MeetingResourceForm.section.RootMenu.section.SEND.section.EMAIL.button.Протокол.name:Протокол}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <action>
+                      <system name="http://intertrust.ru/cmj/relations#create.minutes.email"/>
+                    </action>
+                  </button>
+                </component>
+              </section>
+            </component>
+          </section>
+          <button name="${ui.form.MeetingResourceForm.section.RootMenu.button.RememberLinkAction.name:RememberLinkAction}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="CanHideRememberLinkButtonForMeetings"/>
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="REMEMBER_LINK"/>
+            </action>
+          </button>
+        </component>
+      </section>
+      <section id="Minutes" name="${ui.form.MeetingResourceForm.section.Minutes.name:Протокол}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="showMinutes"/>
+          </hide>
+        </properties>
+        <component>
+          <field attribute-ref="minutes.chairman" name="${ui.form.MeetingResourceForm.section.Minutes.field.minutes.chairman.name:Председатель:}">
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Minutes.field.minutes.chairman.hintPopUp:Председатель}</hint-pop-up>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+              <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+            </directories>
+          </field>
+          <field attribute-ref="minutes.secretary" name="${ui.form.MeetingResourceForm.section.Minutes.field.minutes.secretary.name:Секретарь:}">
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Minutes.field.minutes.secretary.hintPopUp:Секретарь}</hint-pop-up>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+              <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+            </directories>
+          </field>
+          <field recalc="true" attribute-ref="minutes.permanent" name="${ui.form.MeetingResourceForm.section.Minutes.field.minutes.permanent.name:Присутствовали постоянные участники:}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="MeetingIsSimple"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Minutes.field.minutes.permanent.hintPopUp:Присутствовали постоянные участники}</hint-pop-up>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+              <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+            </directories>
+          </field>
+          <field recalc="true" attribute-ref="minutes.invited" name="${ui.form.MeetingResourceForm.section.Minutes.field.minutes.invited.name:Приглашенные на заседание:}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <rename name="${ui.form.MeetingResourceForm.section.Minutes.field.minutes.invited.rename.name:Приглашенные:}" condition-union="AND">
+              <condition-ref ref="MeetingIsSimple"/>
+            </rename>
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Minutes.field.minutes.invited.hintPopUp:Приглашенные на заседание}</hint-pop-up>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+              <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+            </directories>
+          </field>
+          <field recalc="true" attribute-ref="minutes.invitedDisplay" name="${ui.form.MeetingResourceForm.section.Minutes.field.minutes.invitedDisplay.name:Приглашенные:}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Minutes.field.minutes.invitedDisplay.hintPopUp:Приглашенные}</hint-pop-up>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+              <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+            </directories>
+          </field>
+          <section id="invitedOnQuestMinutesSection" group="true">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="MeetingIsSimple"/>
+              </hide>
+            </properties>
+            <component>
+              <field recalc="true" attribute-ref="minutes.questionInvited" name="${ui.form.MeetingResourceForm.section.Minutes.section.invitedOnQuestMinutesSection.field.minutes.questionInvited.name:Приглашенные по вопросам:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="read"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.MeetingResourceForm.section.Minutes.section.invitedOnQuestMinutesSection.field.minutes.questionInvited.hintPopUp:Приглашенные по вопросам}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                  <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+                  <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+          <field recalc="true" attribute-ref="minutes.absent" name="${ui.form.MeetingResourceForm.section.Minutes.field.minutes.absent.name:Отсутствовали:}">
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Minutes.field.minutes.absent.hintPopUp:Отсутствовали}</hint-pop-up>
+          </field>
+          <section id="quorumSection" group="true">
+            <properties show-empty-field="true">
+              <hide condition-union="AND">
+                <condition-ref ref="MeetingIsSimple"/>
+              </hide>
+            </properties>
+            <component>
+              <field attribute-ref="minutes.quorum" name="${ui.form.MeetingResourceForm.section.Minutes.section.quorumSection.field.minutes.quorum.name:Кворум:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="MeetingIsSimple"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.MeetingResourceForm.section.Minutes.section.quorumSection.field.minutes.quorum.hintPopUp:Кворум}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="minutes.comment" name="${ui.form.MeetingResourceForm.section.Minutes.field.minutes.comment.name:Дополнительная информация:}">
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.MeetingResourceForm.section.Minutes.field.minutes.comment.hintPopUp:Дополнительная информация}</hint-pop-up>
+          </field>
+          <section id="AgendaData" name="${ui.form.MeetingResourceForm.section.Minutes.section.AgendaData.name:Повестка}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="email"/>
+              </hide>
+            </properties>
+            <component>
+              <field attribute-ref="minutes.$agendaData">
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <section id="Proceedings" name="${ui.form.MeetingResourceForm.section.Minutes.section.Proceedings.name:Ход заседания}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="MeetingIsSimple"/>
+              </hide>
+            </properties>
+            <component>
+              <field attribute-ref="minutes.$executionData">
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="minutes.content">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="Hierarchy" name="${ui.form.MeetingResourceForm.section.Hierarchy.name:Иерархия}">
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="MeetingIsSimple"/>
+          </hide>
+        </properties>
+      </section>
+      <section id="LifeCycle" name="${ui.form.MeetingResourceForm.section.LifeCycle.name:Жизненный цикл}">
+        <appearance widget="leftMenu"/>
+        <component>
+            <section name="${ui.form.MeetingResourceForm.section.LifeCycle.ApprovingSection.name:Согласование}" id="ApprovingSection" group="true">
+                <component>
+                    <section id="ApprovingButtons">
+                        <appearance widget="inactiveTab"/>
+                    </section>
+                    <section name="${ui.form.MeetingResourceForm.section.LifeCycle.ApprovingSection.section.Approving.name:Согласование}" id="Approving"/>
+                </component>
+            </section>
+            <section id="Registration" name="${ui.form.MeetingResourceForm.section.LifeCycle.section.Registration.name:Регистрация}"/>
+            <section id="Review" name="${ui.form.MeetingResourceForm.section.LifeCycle.section.Review.name:Ознакомление}"/>
+            <section id="Execution" name="${ui.form.MeetingResourceForm.section.LifeCycle.section.Execution.name:Исполнение}"/>
+        </component>
+      </section>
+      <section id="Links" name="${ui.form.MeetingResourceForm.section.Links.name:Связанные}">
+        <appearance widget="leftMenu"/>
+        <component>
+          <section id="Documеnts" name="${ui.form.MeetingResourceForm.section.Links.section.Documеnts.name:Документы}"/>
+          <section id="Visualization" name="${ui.form.MeetingResourceForm.section.Links.section.Visualization.name:Визуализация}"/>
+        </component>
+      </section>
+      <section id="Discussion" name="${ui.form.MeetingResourceForm.section.Discussion.name:Обсуждения}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="canDiscussMeetings"/>
+          </hide>
+        </properties>
+      </section>
+      <section id="History" name="${ui.form.MeetingResourceForm.section.History.name:История}"/>
+    </component>
+  </form>
+</ui>

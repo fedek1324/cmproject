@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ModuleRolesAccess" id="ModuleRolesAccessFormDialog" name="${ui.form.ModuleRolesAccessFormDialog.name:Настройка ролей}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="row1" group="true">
+        <component>
+          <field recalc="true" attribute-ref="moduleInfo" name="${ui.form.ModuleRolesAccessFormDialog.section.row1.field.moduleInfo.name:Модуль}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="ModuleRolesAccessIsNew"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="adminModulesWithRolesForUser"/>
+            </directories>
+          </field>
+          <field attribute-ref="moduleInfo" name="${ui.form.ModuleRolesAccessFormDialog.section.row1.field.moduleInfo.name:Модуль}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+              <hide condition-union="AND">
+                <condition-ref ref="ModuleRolesAccessIsNew"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="row2" group="true">
+        <component>
+          <field attribute-ref="roles_direct" name="${ui.form.ModuleRolesAccessFormDialog.section.row2.field.roles_direct.name:Роли (персонально)}">
+            <appearance importance="normal"/>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="adminRolesForUser"/>
+            </directories>
+          </field>
+          <field attribute-ref="roles_indirect" name="${ui.form.ModuleRolesAccessFormDialog.section.row2.field.roles_indirect.name:Роли (через группы)}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="buttons" group="true">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <button name="${ui.form.ModuleRolesAccessFormDialog.section.buttons.button.Сохранить.name:Сохранить}">
+            <appearance align="left">
+              <label-style width="11" unit="symbol">
+                <style id="tunBtnBlue"/>
+              </label-style>
+            </appearance>
+            <action>
+              <system name="save"/>
+            </action>
+          </button>
+          <button name="${ui.form.ModuleRolesAccessFormDialog.section.buttons.button.Отмена.name:Отмена}">
+            <appearance align="left">
+              <label-style width="9" unit="symbol">
+                <style id="tunBtnBlue"/>
+              </label-style>
+            </appearance>
+            <action>
+              <system name="cancel"/>
+            </action>
+          </button>
+          <button name="${ui.form.ModuleRolesAccessFormDialog.section.buttons.button.Удалить.name:Удалить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="ModuleRolesAccessCanDelete"/>
+                <negative-condition-ref ref="ModuleRolesAccessIsNotNew"/>
+              </hide>
+            </properties>
+            <appearance>
+              <label-style width="9" unit="symbol">
+                <style id="tunBtnBlue"/>
+              </label-style>
+            </appearance>
+            <action>
+              <system name="delete"/>
+            </action>
+          </button>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

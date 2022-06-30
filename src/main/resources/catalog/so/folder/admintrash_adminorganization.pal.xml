@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="admin-organization" id="admin-trash" name="${catalog.view.admin_trash.name:Корзина}" position="140">
+    <visible>
+      <hide-storage name="AF5" />
+    </visible>
+    <descriptor-ref ref="admin-so-trash"/>
+    <source>
+      <module ident="SO"/>
+    </source>
+  </view>
+</catalog>

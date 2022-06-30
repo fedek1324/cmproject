@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DialogForSystemGroupsCopy_fromOutput" id="DialogForSystemGroupsCopy_fromOutputForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="toCopyFrom_OutputDocs">
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="modulesForSystemGroupCopy_fromOutput"/>
+        </directories>
+      </field>
+      <button name="${ui.form.DialogForSystemGroupsCopy_fromOutputForm.button.OK.name:OK}">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.DialogForSystemGroupsCopy_fromOutputForm.button.Отмена.name:Отмена}">
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

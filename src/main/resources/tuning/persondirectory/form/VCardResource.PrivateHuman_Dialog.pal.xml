@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="VCardResource.PrivateHuman" id="VCardResource.PrivateHuman_Dialog" name="${ui.form.VCardResource.PrivateHuman_Dialog.name:Изменение частного лица}" projection="default">
+    <rename name="${ui.form.VCardResource.PrivateHuman_Dialog.rename.name:Добавить частное лицо}" condition-union="AND">
+      <condition-ref ref="vcardIsNew"/>
+    </rename>
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="n.lastName" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.n.lastName.name:Фамилия}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="n.firstName" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.n.firstName.name:Имя}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="n.middleName" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.n.middleName.name:Отчество}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="gender" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.gender.name:Пол}">
+        <appearance importance="normal" widget="radio"/>
+        <directories limit-livesearch="no-restrictions">
+          <directory-ref ref="gender"/>
+        </directories>
+      </field>
+      <field attribute-ref="citizenship" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.citizenship.name:Гражданство}">
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="CitizenShips"/>
+        </directories>
+      </field>
+      <field attribute-ref="activeWriter" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.activeWriter.name:Много пишущий автор}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="email" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.email.name:Эл. почта}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="tel.home" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.tel.home.name:Телефон}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="adrHome.countryName" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.adrHome.countryName.name:Страна}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="adrHome.region" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.adrHome.region.name:Регион}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="adrHome.district" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.adrHome.district.name:Район/Округ}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="adrHome.locality" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.adrHome.locality.name:Город/Населенный пункт}">
+        <appearance importance="normal"/>
+      </field>
+      <section id="Улица+Тип" group="true">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="adrHome.streetTypeAddress" name="${ui.form.VCardResource.PrivateHuman_Dialog.section.Улица+Тип.field.adrHome.streetTypeAddress.name:Улица}">
+            <appearance importance="normal">
+              <label-style field-width="18" field-unit="symbol"/>
+            </appearance>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="StreetType"/>
+            </directories>
+          </field>
+          <field attribute-ref="adrHome.streetAddress">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <field attribute-ref="adrHome.extendedAddress.house" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.adrHome.extendedAddress.house.name:Дом}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="adrHome.extendedAddress.housing" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.adrHome.extendedAddress.housing.name:Корпус}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="adrHome.extendedAddress.building" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.adrHome.extendedAddress.building.name:Строение}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="adrHome.postOfficeBox" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.adrHome.postOfficeBox.name:Номер квартиры/офиса}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="adrHome.postalCode" name="${ui.form.VCardResource.PrivateHuman_Dialog.field.adrHome.postalCode.name:Почтовый индекс}">
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

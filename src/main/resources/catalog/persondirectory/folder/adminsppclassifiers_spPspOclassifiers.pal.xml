@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="spP-spO-classifiers" id="admin-spp-classifiers" name="${catalog.view.admin_spp_classifiers.name:СпП}" position="20">
+    <visible>
+      <hide-storage name="AF5" />
+    </visible>
+    <descriptor-ref ref="admin-spp-classifiers"/>
+    <source>
+      <module ident="PersonDirectory"/>
+    </source>
+  </view>
+</catalog>

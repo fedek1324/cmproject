@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="ClientContextRequest" name="DeleteDepartmentMessageYesNo">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="messageText" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[counter.equals("oneDepDelete_answer1") ? 'Вы уверены, что хотите удалить подразделение?': 
+( counter.equals("oneDepDelete_answer3")? 'Подразделение указано в качестве принимающей дела для: '+whoDelegateUnitListStr+'. Удалить подразделение и очистить поле "При удалении дела передаются" в указанных структурных единицах?'  :'')]]></script>
+      </calc-values>
+    </string>
+    <string name="shortName" temporal="true"/>
+    <integer name="depCount" temporal="true"/>
+    <string name="mode" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['dialog']]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="selectDepIds" temporal="true"/>
+    <string name="whoDelegateUnitListStr" temporal="true"/>
+    <string array="true" name="whoDelegateUnids" temporal="true"/>
+    <string name="delegateUnid" temporal="true"/>
+  </schema>
+</schemas>

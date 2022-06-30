@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="WFSignOtherReply" id="WFSignOtherReplyTbl" name="${ui.form.WFSignOtherReplyTbl.name:Предварительное подписание}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal">
+      <table without-frame="true"/>
+    </appearance>
+    <component>
+      <field attribute-ref="Reply">
+        <appearance importance="normal"/>
+        <directories limit-livesearch="no-restrictions">
+          <directory-ref ref="YesNoSigned"/>
+        </directories>
+      </field>
+    </component>
+  </form>
+</ui>

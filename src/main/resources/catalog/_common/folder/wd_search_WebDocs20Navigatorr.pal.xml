@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="WebDocs20Navigator" id="wd_search" name="${catalog.folder.search.name:Поиск}" position="20">
+    <subfolders>
+      <view id="search-queue-saved-queries" name="${catalog.view.search_queue_saved_queries.name:Сохраненные запросы}" position="10">
+        <descriptor-ref ref="search-queue-saved-queries"/>
+      </view>
+      <view id="search-queue-last-queries" name="${catalog.view.search_queue_last_queries.name:Последние запросы}" position="20">
+        <descriptor-ref ref="search-queue-last-queries"/>
+      </view>
+    </subfolders>
+  </folder>
+</catalog>

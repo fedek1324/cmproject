@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="CompletionResourceResolution" id="CompletionResourceResolutionForm" name="${ui.form.CompletionResourceResolutionForm.name:Исполнение резолюции}" projection="default">
+    <rename name="${ui.form.CompletionResourceResolutionForm.rename.name:Исполнение поручения}" condition-union="AND">
+      <condition-ref ref="useTaskTitle"/>
+    </rename>
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="state.status" recalc="true" name="${ui.form.CompletionResourceResolutionForm.field.state.name:Состояние:}" >
+        <appearance importance="normal" align="left" multiline="true"/>
+        <properties>
+          <read-only condition-union="AND">
+            <condition-ref ref="readonlyCompletionResourceResolution"/>
+          </read-only>
+        </properties>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="ResolutionState"/>
+        </directories>
+      </field>
+      <field attribute-ref="date" name="${ui.form.CompletionResourceResolutionForm.field.date.name:Дата исполнения:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition-ref ref="readonlyCompletionResourceResolution"/>
+          </read-only>
+          <hide condition-union="AND">
+            <condition-ref ref="inWorkCompletionResourceResolution"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <rename name="${ui.form.CompletionResourceResolutionForm.field.cancelDate.name:Дата отмены:}">
+          <condition-ref ref="canceledCompletionResourceResolution"/>
+        </rename>
+      </field>
+      <field attribute-ref="author" name="${ui.form.CompletionResourceResolutionForm.field.author.name:Автор отметки:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <condition-ref ref="reasonIsNotEmptyOrResInWork"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field autofill="true" recalc="true" attribute-ref="reason.text">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <condition-ref ref="reasonIsEmptyOrResInWork"/>
+          </hide>
+        </properties>
+        <appearance importance="normal">
+          <label-style>
+            <style id="tunBold"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunBold"/>
+            </value-style>
+          </field-style>
+        </appearance>
+      </field>
+      <field attribute-ref="cause" name="${ui.form.CompletionResourceResolutionForm.field.cause.name:Основание:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition-ref ref="readonlyCompletionResourceResolution"/>
+          </read-only>
+          <hide condition-union="AND">
+            <condition-ref ref="inWorkCompletionResourceResolution"/>
+          </hide>
+        </properties>
+        <appearance multiline="true" importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

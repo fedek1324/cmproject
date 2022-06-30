@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="dpQueryFormContextual_rkkContextual">
+    <string name="searchInContent" createlog="true" temporal="true">
+      <validate-regex>^[\dА-Яа-яёЁ\\\s\(\)!\-«»?@"'№#$%^&amp;*\[\]&lt;&gt;~/,.:; ]{0,100}$</validate-regex>
+    </string>
+      <string name="resultItemCount" createlog="true" temporal="true">
+          <calc-values>
+              <script event="open" lang="SPEL"><![CDATA["100"]]></script>
+          </calc-values>
+          <validate-regex>^([1-9]|[1-9][\d]|1[0-9][0-9]|200)$</validate-regex>
+      </string>
+      <daterange name="regDate" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

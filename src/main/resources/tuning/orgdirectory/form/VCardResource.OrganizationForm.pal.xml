@@ -1,0 +1,1142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="VCardResource.Organization" id="VCardResource.OrganizationForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="objectType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="40">
+                    <style id="tunIconProgress"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunIconProgress"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="party">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="center" importance="normal">
+                  <label-style field-width="20" field-unit="symbol">
+                    <style id="tunBlack"/>
+                    <style id="tunBold"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBlack"/>
+                      <style id="tunBold"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="deletedLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_isDeleted"/>
+                  </hide>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style field-width="8" field-unit="symbol">
+                    <style id="tunBlack"/>
+                    <style id="tunBold"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBlack"/>
+                      <style id="tunBold"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row2" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="headerName">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal"/>
+              </field>
+              <field attribute-ref="requestStatusTitle">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row3" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="bossPostType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="statusLable">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style field-width="11" field-unit="symbol">
+                    <style id="tunBlack"/>
+                    <style id="tunBold"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBlack"/>
+                      <style id="tunBold"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row4" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="joinOrOldInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="CommonInfo" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.name:Общая информация}">
+        <appearance>
+          <label-style unit="symbol"/>
+        </appearance>
+        <component>
+          <field attribute-ref="themes" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.field.themes.name:Тематика:}">
+            <appearance importance="normal"/>
+            <directories manual-input="true" limit-livesearch="no-restrictions">
+              <directory-ref ref="spo-theme-any"/>
+            </directories>
+          </field>
+          <field attribute-ref="fn" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.field.fn.name:Сокращенное название:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="isReplicaidSO"/>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="org.org-name" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.field.org.org-name.name:Полное название:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+              <read-only condition-union="AND">
+                <condition-ref ref="isReplicaidSO"/>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="category" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.field.category.name:Категория:}">
+            <appearance importance="normal"/>
+            <directories manual-input="true" limit-livesearch="no-restrictions">
+              <directory-ref ref="spo-category-any"/>
+            </directories>
+          </field>
+          <field attribute-ref="annotation" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.field.annotation.name:Примечание:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="documents" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.field.documents.name:Документы:}">
+            <appearance importance="normal"/>
+          </field>
+          <section id="Employees" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.section.Employees.name:Сотрудники}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="openAtDirectory"/>
+              </hide>
+            </properties>
+            <appearance turn="true"/>
+            <component>
+              <field attribute-ref="createEmployee" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.section.Employees.field.createEmployee.name:Добавить работника}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="read"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="employees" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.section.Employees.field.employees.name:Сотрудники:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.VCardResource.OrganizationForm.section.CommonInfo.section.Employees.field.employees.hintPopUp:Сотрудники}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="Сотрудники" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.section.Сотрудники.name:Сотрудники}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="openAtDirectory"/>
+              </hide>
+            </properties>
+            <appearance turn="true"/>
+            <component>
+              <button name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.section.Сотрудники.button.Создать досье.name:Создать досье}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="isVcardResource.Organization_isStatusLicvidation"/>
+                    <condition-ref ref="isVcardResource.Organization_isStatusOld"/>
+                    <condition-ref ref="isVcardResource.Organization_isStatusUnited"/>
+                    <condition-ref ref="TNObject_isDeleted"/>
+                  </hide>
+                </properties>
+                <appearance>
+                  <label-style>
+                    <style id="tunBlue"/>
+                    <style id="tunUnderline"/>
+                    <style id="tunClickableRed"/>
+                  </label-style>
+                </appearance>
+                <action>
+                  <custom>
+                    <create-child save-context="true" schema-ref="SPPDossier"/>
+                  </custom>
+                </action>
+              </button>
+              <field attribute-ref="showEmployees" name="${ui.form.VCardResource.OrganizationForm.section.CommonInfo.section.Сотрудники.field.showEmployees.name:Сотрудники:}">
+                <appearance importance="normal" widget="grid"/>
+                <directories limit-livesearch="no-restrictions">
+                  <directory-ref ref="adminSPPEmployeesByOrganization"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="AddressesAndRequisites" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.name:Адреса и реквизиты}">
+        <component>
+          <section id="Contacts_Information" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.name:Контактная информация}">
+            <component>
+              <field attribute-ref="adrPostal.countryName" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.field.adrPostal.countryName.name:Страна:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isReplicaidSO"/>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="adrPostal.region" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.field.adrPostal.region.name:Регион:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isReplicaidSO"/>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <section id="Почтовый адрес" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Почтовый адрес.name:Почтовый адрес}">
+                <component>
+                  <field attribute-ref="adrPostal.postOfficeBox" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Почтовый адрес.field.adrPostal.postOfficeBox.name:Офис:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <field attribute-ref="adrPostal.extendedAddress.housing" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Почтовый адрес.field.adrPostal.extendedAddress.housing.name:Корпус:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <field attribute-ref="adrPostal.extendedAddress.building" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Почтовый адрес.field.adrPostal.extendedAddress.building.name:Строение:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <field attribute-ref="adrPostal.extendedAddress.house" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Почтовый адрес.field.adrPostal.extendedAddress.house.name:Дом:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <section id="streetPostal" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <component>
+                      <field attribute-ref="adrPostal.streetTypeAddress" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Почтовый адрес.section.streetPostal.field.adrPostal.streetTypeAddress.name:Улица:}">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition-ref ref="isReplicaidSO"/>
+                          </read-only>
+                        </properties>
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="10" field-unit="percent"/>
+                        </appearance>
+                        <directories manual-input="true" limit-livesearch="sys-current">
+                          <directory-ref ref="spo-type-street-any"/>
+                        </directories>
+                      </field>
+                      <field attribute-ref="adrPostal.streetAddress">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition-ref ref="isReplicaidSO"/>
+                          </read-only>
+                        </properties>
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="85" field-unit="percent"/>
+                        </appearance>
+                      </field>
+                    </component>
+                  </section>
+                  <field attribute-ref="adrPostal.locality" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Почтовый адрес.field.adrPostal.locality.name:Город/Населенный пункт:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <field attribute-ref="adrPostal.district" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Почтовый адрес.field.adrPostal.district.name:Район:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <field attribute-ref="adrPostal.postalCode" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Почтовый адрес.field.adrPostal.postalCode.name:Почтовый индекс:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                </component>
+              </section>
+              <section id="Юридический адрес" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Юридический адрес.name:Юридический адрес}">
+                <component>
+                  <button recalc="true" attribute-ref="copyAddress" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Юридический адрес.button.copyAddress.name:Скопировать почтовый}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="edit"/>
+                        <condition-ref ref="isReplicaidSO"/>
+                      </hide>
+                    </properties>
+                    <appearance>
+                      <label-style>
+                        <style id="tunBlue"/>
+                        <style id="tunUnderline"/>
+                        <style id="tunClickableRed"/>
+                      </label-style>
+                    </appearance>
+                  </button>
+                  <field attribute-ref="jOffice" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Юридический адрес.field.jOffice.name:Офис:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <field attribute-ref="jHousing" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Юридический адрес.field.jHousing.name:Корпус:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <field attribute-ref="jStructure" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Юридический адрес.field.jStructure.name:Строение:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <field attribute-ref="jHouse" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Юридический адрес.field.jHouse.name:Дом:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <section id="streetLegal" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <component>
+                      <field attribute-ref="jTypeStreet" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Юридический адрес.section.streetLegal.field.jTypeStreet.name:Улица:}">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition-ref ref="isReplicaidSO"/>
+                          </read-only>
+                        </properties>
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="10" field-unit="percent"/>
+                        </appearance>
+                        <directories manual-input="true" limit-livesearch="sys-current">
+                          <directory-ref ref="spo-type-street-any"/>
+                        </directories>
+                      </field>
+                      <field attribute-ref="jNameStreet">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition-ref ref="isReplicaidSO"/>
+                          </read-only>
+                        </properties>
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="85" field-unit="percent"/>
+                        </appearance>
+                      </field>
+                    </component>
+                  </section>
+                  <field attribute-ref="jCity" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Юридический адрес.field.jCity.name:Город/Населенный пункт:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <field attribute-ref="jDistrict" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Юридический адрес.field.jDistrict.name:Район:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <field attribute-ref="jSendIndex" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Юридический адрес.field.jSendIndex.name:Почтовый индекс:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                  <field attribute-ref="phone" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.section.Юридический адрес.field.phone.name:Телефоны:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="isReplicaidSO"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                </component>
+              </section>
+              <field attribute-ref="fax" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.field.fax.name:Факс:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isReplicaidSO"/>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="email" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.field.email.name:E-mail:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isReplicaidSO"/>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="url" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Contacts_Information.field.url.name:Сайт:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isReplicaidSO"/>
+                  </read-only>
+                </properties>
+                <appearance importance="normal">
+                  <label-style>
+                    <style id="tunBlue"/>
+                    <style id="tunUnderline"/>
+                    <style id="tunClickableRed"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBlue"/>
+                      <style id="tunUnderline"/>
+                      <style id="tunClickableRed"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="Requisites" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Requisites.name:Реквизиты}">
+            <appearance turn="true"/>
+            <component>
+              <field attribute-ref="inn" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Requisites.field.inn.name:ИНН:}">
+                <appearance importance="normal">
+                  <limit min-lenght="10" max-lenght="12"/>
+                </appearance>
+              </field>
+              <field attribute-ref="kpp" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Requisites.field.kpp.name:КПП:}">
+                <appearance importance="normal">
+                  <limit min-lenght="9" max-lenght="9"/>
+                </appearance>
+              </field>
+              <field attribute-ref="okpo" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Requisites.field.okpo.name:ОКПО:}">
+                <appearance importance="normal">
+                  <limit min-lenght="8" max-lenght="10"/>
+                </appearance>
+              </field>
+              <field attribute-ref="ogrn" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Requisites.field.ogrn.name:ОГРН:}">
+                <appearance importance="normal">
+                  <limit min-lenght="13" max-lenght="13"/>
+                </appearance>
+              </field>
+              <field attribute-ref="okved" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Requisites.field.okved.name:ОКВЭД:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="okato" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Requisites.field.okato.name:ОКАТО:}">
+                <appearance importance="normal">
+                  <limit min-lenght="2" max-lenght="16"/>
+                </appearance>
+              </field>
+              <field attribute-ref="check" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Requisites.field.check.name:Расчетный счет:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="bankname" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Requisites.field.bankname.name:Название банка:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="bikbank" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Requisites.field.bikbank.name:БИК банка:}">
+                <appearance importance="normal">
+                  <limit min-lenght="9" max-lenght="9"/>
+                </appearance>
+              </field>
+              <field attribute-ref="ccheck" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.Requisites.field.ccheck.name:Корреспондентский счет банка:}">
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <section id="row" group="true">
+            <component>
+              <field recalc="true" attribute-ref="replicaidSO" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.row.field.replicaidSO.name:ReplicaID СО:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isReplicaidSO"/>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="idccty" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.row.field.idccty.name:ID ССТУ:}">
+                <appearance importance="normal"/>
+              </field>
+              <field recalc="true" attribute-ref="addressMedo" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.row.field.addressMedo.name:Адрес в МЭДО:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="hasGuidMedo"/>
+                  </require>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field recalc="true" attribute-ref="guidMedo" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.row.field.guidMedo.name:GUID в МЭДО:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="hasAddressMedo"/>
+                  </require>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="MedoFormat" name="${ui.form.VCardResource.OrganizationForm.section.AddressesAndRequisites.section.row.field.MedoFormat.name:Формат взаимодействия}" alias="medoFormat">
+                <appearance importance="normal"/>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="MedoFormatNew"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Additional" name="${ui.form.VCardResource.OrganizationForm.section.Additional.name:Дополнительно}">
+        <component>
+          <section id="CaseSection" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.name:Склонение по падежам}">
+            <component>
+              <section id="rowcase1" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <button recalc="true" attribute-ref="fillCases" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase1.button.fillCases.name:Заполнить}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="edit"/>
+                      </hide>
+                    </properties>
+                    <appearance>
+                      <label-style width="20" unit="percent">
+                        <style id="tunClickableUnderline"/>
+                        <style id="tunBlue"/>
+                      </label-style>
+                    </appearance>
+                  </button>
+                  <field attribute-ref="emptyField">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <appearance importance="normal">
+                      <label-style field-width="20" field-unit="percent"/>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="case.notUseDeclensionForFullName" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase1.field.case.notUseDeclensionForFullName.name:Полное название не склоняется}">
+                    <appearance importance="normal">
+                      <label-style field-width="30" field-unit="percent"/>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="case.notUseDeclensionForShortName" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase1.field.case.notUseDeclensionForShortName.name:Краткое название не склоняется}">
+                    <appearance importance="normal">
+                      <label-style field-width="30" field-unit="percent"/>
+                    </appearance>
+                  </field>
+                </component>
+              </section>
+              <section id="rowcase2" group="true">
+                <appearance turn="true"/>
+                <component>
+                  <section id="rowcase11" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <component>
+                      <field attribute-ref="case.genitiveLabel">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition>true</condition>
+                          </read-only>
+                        </properties>
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="20" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                      <field attribute-ref="case.fullNameGenitive" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase2.section.rowcase11.field.case.fullNameGenitive.name:Полное название:}">
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                      <field attribute-ref="case.shortNameGenitive" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase2.section.rowcase11.field.case.shortNameGenitive.name:Краткое название:}">
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                    </component>
+                  </section>
+                  <section id="rowcase12" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <component>
+                      <field attribute-ref="case.dativeLabel">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition>true</condition>
+                          </read-only>
+                        </properties>
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="20" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                      <field attribute-ref="case.fullNameDative" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase2.section.rowcase12.field.case.fullNameDative.name:Полное название:}">
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                      <field attribute-ref="case.shortNameDative" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase2.section.rowcase12.field.case.shortNameDative.name:Краткое название:}">
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                    </component>
+                  </section>
+                  <section id="rowcase13" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <component>
+                      <field attribute-ref="case.accusativeLabel">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition>true</condition>
+                          </read-only>
+                        </properties>
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="20" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                      <field attribute-ref="case.fullNameAccusative" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase2.section.rowcase13.field.case.fullNameAccusative.name:Полное название:}">
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                      <field attribute-ref="case.shortNameAccusative" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase2.section.rowcase13.field.case.shortNameAccusative.name:Краткое название:}">
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                    </component>
+                  </section>
+                  <section id="rowcase14" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <component>
+                      <field attribute-ref="case.instrumentalLabel">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition>true</condition>
+                          </read-only>
+                        </properties>
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="20" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                      <field attribute-ref="case.fullNameInstrumental" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase2.section.rowcase14.field.case.fullNameInstrumental.name:Полное название:}">
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                      <field attribute-ref="case.shortNameInstrumental" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase2.section.rowcase14.field.case.shortNameInstrumental.name:Краткое название:}">
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                    </component>
+                  </section>
+                  <section id="rowcase15" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <component>
+                      <field attribute-ref="case.prepositionalLabel">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition>true</condition>
+                          </read-only>
+                        </properties>
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="20" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                      <field attribute-ref="case.fullNamePrepositional" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase2.section.rowcase15.field.case.fullNamePrepositional.name:Полное название:}">
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                      <field attribute-ref="case.shortNamePrepositional" name="${ui.form.VCardResource.OrganizationForm.section.Additional.section.CaseSection.section.rowcase2.section.rowcase15.field.case.shortNamePrepositional.name:Краткое название:}">
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="percent">
+                            <style id="tunBold"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBold"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                    </component>
+                  </section>
+                </component>
+              </section>
+            </component>
+          </section>
+          <field attribute-ref="alternativeName" name="${ui.form.VCardResource.OrganizationForm.section.Additional.field.alternativeName.name:Альтернативное название:}">
+            <appearance align="left" importance="normal">
+              <label-style>
+                <style id="tunBold"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunBold"/>
+                </value-style>
+              </field-style>
+            </appearance>
+          </field>
+          <field attribute-ref="nameJoin" name="${ui.form.VCardResource.OrganizationForm.section.Additional.field.nameJoin.name:Объединена с}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="History" name="${ui.form.VCardResource.OrganizationForm.section.History.name:История}">
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="openAtDirectory"/>
+            <condition-ref ref="hide_orgHistory"/>
+          </hide>
+        </properties>
+      </section>
+      <section id="RootMenu" name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.name:Test Menu}">
+        <component>
+          <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.button.Скрыть системную кнопку Сохранить.name:Скрыть системную кнопку Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="openAtDirectory"/>
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE"/>
+            </action>
+          </button>
+          <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonInAdmin"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <save-existing/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNewInAdmin"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <save/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.button.Утвердить.name:Утвердить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canEditAdjustmentSPOOrganization"/>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <action position="13.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">ApproveAdjustment</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.button.Утвердить.name:Утвердить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canApproveSPOOrganization"/>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <action position="13.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">ApproveZajavGroup</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.button.Отклонить.name:Отклонить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canEditAdjustmentSPOOrganization"/>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <action position="14.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">RejectAdjustment</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.button.Ликвидировать.name:Ликвидировать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="read"/>
+                <negative-condition-ref ref="canMakeSPOOld"/>
+                <negative-condition-ref ref="SPO_isTypeOrganization"/>
+              </hide>
+            </properties>
+            <action position="11.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">LiquidateSPOOrganization</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <section id="OTHER" name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.section.OTHER.name:Другое}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.section.OTHER.button.Удалить.name:Удалить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="SPO_DeleteOrganization"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">DeleteSPOOrganizationOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <section id="create" name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.section.create.name:Создать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SPO_isTypeOrganization"/>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.section.create.button.Организацию.name:Организацию}">
+                <action>
+                  <custom>
+                    <create-sibling schema-ref="VCardResource.Organization"/>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.section.create.button.Досье сотрудника организации.name:Досье сотрудника организации}">
+                <action>
+                  <custom>
+                    <create-child schema-ref="SPPDossier"/>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.button.Удалить.name:Удалить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_CanEdit_EditMode"/>
+              </hide>
+            </properties>
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">DeleteSPOOrganizationOperation</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.button.Объединить.name:Объединить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canJoinSPO"/>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <action position="10.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">JoinOrganizations</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <section id="deprecated" name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.section.deprecated.name:Устарела}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canMakeSPOOld"/>
+                <negative-condition-ref ref="SPO_isTypeOrganization"/>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.section.deprecated.button.Выбрать организацию.name:Выбрать организацию}">
+                <action position="10.0">
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">MarkSPOOrganizationAsDeprecated</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.VCardResource.OrganizationForm.section.RootMenu.section.deprecated.button.Создать новую организацию.name:Создать новую организацию}" alias="MarkSPOOrganizationAsDeprecatedNewOrg">
+                <action>
+                  <custom>
+                    <create-sibling schema-ref="VCardResource.Organization"/>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

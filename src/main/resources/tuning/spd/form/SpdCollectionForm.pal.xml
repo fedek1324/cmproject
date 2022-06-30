@@ -1,0 +1,51 @@
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+    <form schema-ref="SpdCollectionSchema" id="SpdCollectionForm" showtabs="true">
+        <properties>
+            <hide condition-union="AND">
+                <negative-condition-ref ref="edit"/>
+                <negative-condition-ref ref="read"/>
+            </hide>
+        </properties>
+        <component>
+            <section id="RootMenu" name="${ui.form.StoragePeriodForm.section.RootMenu.name:SpdActions}">
+                <component>
+                    <button name="${ui.form.StoragePeriodDirectorySettingForm.button.create.name:Создать}">
+                        <!--<action>
+                          <system name="create"/>
+                        </action>-->
+                        <action>
+                            <custom>
+                                <create schema-ref="StoragePeriod">
+                                    <module-current>true</module-current>
+                                </create>
+                            </custom>
+                        </action>
+                    </button>
+                    <button name="${ui.form.StoragePeriodForm.section.RootMenu.button.switchStatus.name:Не действует}">
+                        <action>
+                            <custom>
+                                <operation>
+                                    <handler>
+                                        <script lang="JavaBean">spdPeriodOperationSwitchStatus</script>
+                                    </handler>
+                                </operation>
+                            </custom>
+                        </action>
+                    </button>
+                    <button name="${ui.form.StoragePeriodForm.section.RootMenu.button.spdPeriodImportFromExcel.name:Загрузить из Excel}" alias="spdPeriodImportFromExcel_SPD">
+                        <action>
+                            <custom>
+                                <operation>
+                                    <handler>
+                                        <script lang="JavaBean">spdPeriodImportFromExcel</script>
+                                    </handler>
+                                </operation>
+                            </custom>
+                        </action>
+                    </button>
+                </component>
+            </section>
+        </component>
+
+    </form>
+</ui>

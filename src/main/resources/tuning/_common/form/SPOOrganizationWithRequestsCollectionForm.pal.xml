@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SPOOrganizationWithRequestsCollection" id="SPOOrganizationWithRequestsCollectionForm" name="${ui.form.SPOOrganizationWithRequestsCollectionForm.name:Организации с заявками}" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu" name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.name:RootOrgMenu}">
+        <component>
+          <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Добавить в избранное'.name:Скрыть системную кнопку 'Добавить в избранное'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Другое'.name:Скрыть системную кнопку 'Другое'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="OTHER"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Настройка'.name:Скрыть системную кнопку 'Настройка'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SETTINGS"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Новой вкладке'.name:Скрыть системную кнопку 'Новой вкладке'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="OPEN_IN_SEPARATE_TAB"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Новом окне'.name:Скрыть системную кнопку 'Новом окне'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="OPEN_IN_SEPARATE_WINDOW"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Открыть в'.name:Скрыть системную кнопку 'Открыть в'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="OPEN_IN"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.button.Утвердить.name:Утвердить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">ApproveZajavGroup</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.button.Ликвидировать.name:Ликвидировать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">LiquidateSPOOrganization</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <section id="create" name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.section.create.name:Создать}">
+            <component>
+              <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.section.create.button.Организацию.name:Организацию}" alias="qwerty333">
+                <action>
+                  <custom>
+                    <create-sibling schema-ref="VCardResource.Organization"/>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.button.Объединить.name:Объединить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">JoinOrganizations</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <section id="deprecated" name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.section.deprecated.name:Устарела}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.section.deprecated.button.Выбрать организацию.name:Выбрать организацию}">
+                <action position="10.0">
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">MarkSPOOrganizationAsDeprecated</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.section.deprecated.button.Создать новую организацию.name:Создать новую организацию}" alias="MarkSPOOrganizationAsDeprecatedNewOrg">
+                <action>
+                  <custom>
+                    <create-sibling schema-ref="VCardResource.Organization"/>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <button name="${ui.form.SPOOrganizationWithRequestsCollectionForm.section.RootMenu.button.Удалить.name:Удалить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">DeleteSPOOrganizationOperation</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

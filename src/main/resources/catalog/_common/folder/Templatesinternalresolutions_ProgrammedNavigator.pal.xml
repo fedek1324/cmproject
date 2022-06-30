@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="ProgrammedNavigator" id="Templates-internalresolutions" name="${catalog.folder.Templates_internalresolutions.name:Шаблоны внутренних резолюций}" position="120">
+    <subfolders>
+      <view id="favourites-resolution-template-internal" name="${catalog.folder.Templates_internalresolutions.view.favourites_resolution_template_internal.name:Избранное}" position="-1">
+        <descriptor-ref ref="favourites-resolution-template-internal"/>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

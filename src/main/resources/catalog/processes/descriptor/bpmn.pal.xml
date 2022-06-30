@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Processes" view="(vw_cmj_bpmn)" id="bpmn" name="Файлы в xml формате, соответствующие схеме&#xd;&#xa;http://www.omg.org/spec/BPMN/20100501/BPMN20.xsd" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="taskStatusIcon"/>
+        <column-ref ref="subject"/>
+        <column-ref ref="bpmnDefinitionsName"/>
+        <column-ref ref="modified"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Create BPMN" name="${catalog.custom-descriptor.bpmn.actions.action.Create BPMN.name:Создать BPMN схему}">
+        <create object-ref="BPMN"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

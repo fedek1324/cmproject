@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="InputDocs" view="(vw_cmj_02_input)" id="dp-02-input" name="ВхД - шаблоны документов" style="default">
+    <help id="99778971"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="templateName"/>
+        <column-ref ref="reqType"/>
+        <column-ref ref="correspondentAuthor"/>
+        <column-ref ref="subject"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="InputDocs-CreateRKKTemplate" name="${catalog.custom-descriptor.dp-02-input.actions.action.InputDocs-CreateRKKTemplate.name:Создать/Шаблон входящего документа}">
+        <create object-ref="RKK_TEMPLATE_INPUT"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

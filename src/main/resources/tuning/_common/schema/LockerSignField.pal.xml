@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="LockerSignField">
+    <meta>
+      <category name="Сервис\Locker"/>
+    </meta>
+    <string name="id" system="true"/>
+    <string name="label" system="true"/>
+    <string name="value" system="true"/>
+    <schema-ref ref="LockerSignFieldFile" array="true" name="files" system="true"/>
+    <string name="displayValue" system="true"/>
+  </schema>
+</schemas>

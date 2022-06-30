@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ClientContextData_SOEmployeeSave">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <schema-ref ref="DialogQuestionSetPostMain" name="resource" temporal="true"/>
+  </schema>
+</schemas>

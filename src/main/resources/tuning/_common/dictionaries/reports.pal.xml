@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <directories>
+    <report name="${ui.directories.report.BulletinPrintForm.name:Печатная форма бюллетеня}" id="BulletinPrintForm">
+      <module ident="Meetings" complect=""/>
+      <keyword>bulletin</keyword>
+    </report>
+    <report name="${ui.directories.report.ExtractPrintForm.name:Печатная форма выписки}" id="ExtractPrintForm">
+      <module ident="Meetings" complect=""/>
+      <keyword>extract</keyword>
+    </report>
+    <report name="${ui.directories.report.MinutesPrintForm.name:Печатная форма протокола}" id="MinutesPrintForm">
+      <module ident="Meetings" complect=""/>
+      <keyword>minutes</keyword>
+    </report>
+    <report name="${ui.directories.report.AgendaPrintForm.name:Печатная форма повестки}" id="AgendaPrintForm">
+      <module ident="Meetings" complect=""/>
+      <keyword>agenda</keyword>
+    </report>
+  </directories>
+</ui>

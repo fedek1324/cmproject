@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="LockerSignCustomOperationResource">
+    <meta>
+      <category name="Асинхронные операции\Общее"/>
+    </meta>
+    <schema-ref ref="LockerSignCustomOperationDocInfo" array="true" name="ids" createlog="true" temporal="true"/>
+    <string name="sign_type" createlog="true" temporal="true"/>
+    <string array="true" name="ids_success" createlog="true" temporal="true"/>
+    <string name="processTitle" createlog="true" temporal="true"/>
+    <schema-ref ref="LockerSignCustomOperationFailureInfo" array="true" name="ids_failure" createlog="true" temporal="true"/>
+    <string name="error" createlog="true" temporal="true"/>
+    <schema-ref ref="NodeStringListResource" name="groupLockerSignIds" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

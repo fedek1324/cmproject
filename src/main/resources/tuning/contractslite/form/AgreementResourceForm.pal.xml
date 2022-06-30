@@ -1,0 +1,1037 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="AgreementResource" id="AgreementResourceForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <button name="${ui.form.AgreementResourceForm.button.Документ к договору.name:Документ к договору}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="read"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.Документ к договору.hintPopUp:Документ к договору}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#create-document"/>
+        </action>
+      </button>
+      <button name="${ui.form.AgreementResourceForm.button.Новый как копия.name:Новый как копия}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="read"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.Новый как копия.hintPopUp:Новый как копия}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#copy"/>
+        </action>
+      </button>
+      <button name="${ui.form.AgreementResourceForm.button.Связанный документ.name:Связанный документ}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="read"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.Связанный документ.hintPopUp:Связанный документ}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#create.linked.document"/>
+        </action>
+      </button>
+      <button name="${ui.form.AgreementResourceForm.button.Сохранить и заполнить файл(ы).name:Сохранить и заполнить файл(ы)}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="$canFillFilesAgreement"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.Сохранить и заполнить файл(ы).hintPopUp:Сохранить и заполнить файл(ы)}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#save.and.fill.files"/>
+        </action>
+      </button>
+      <button name="${ui.form.AgreementResourceForm.button.Финансовый документ.name:Финансовый документ}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="read"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.Финансовый документ.hintPopUp:Финансовый документ}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#create-finance"/>
+        </action>
+      </button>
+      <button name="${ui.form.AgreementResourceForm.button.В корзину.name:В корзину}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanTrash"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.В корзину.hintPopUp:В корзину}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#move.to.trash"/>
+        </action>
+      </button>
+      <button name="${ui.form.AgreementResourceForm.button.Восстановить.name:Восстановить}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanRestore"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.Восстановить.hintPopUp:Восстановить}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#restore.from.trash"/>
+        </action>
+      </button>
+      <button attribute-ref="$canVerify" name="${ui.form.AgreementResourceForm.button.canVerify.name:Заверить}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanVerify"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canVerify.hintPopUp:Заверить}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#verify"/>
+        </action>
+      </button>
+      <button name="${ui.form.AgreementResourceForm.button.На исполнение.name:На исполнение}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanCreateResolution"/>
+          </hide>
+        </properties>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#create-resolution"/>
+        </action>
+      </button>
+      <button attribute-ref="$canSendToSign" name="${ui.form.AgreementResourceForm.button.canSendToSign.name:На подпись}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="canSeeTypeButtonSendForSignatureContacts"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canSendToSign.hintPopUp:На подпись}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#sign.sent"/>
+        </action>
+      </button>
+      <button attribute-ref="$canSendToRegister" name="${ui.form.AgreementResourceForm.button.canSendToRegister.name:На регистрацию}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="canSendToRegContracts"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canSendToRegister.hintPopUp:На регистрацию}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#register.sent"/>
+        </action>
+      </button>
+      <button attribute-ref="$canSendToApproving" name="${ui.form.AgreementResourceForm.button.canSendToApproving.name:На согласование}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanSendToApproving"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canSendToApproving.hintPopUp:На согласование}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#approving.start"/>
+        </action>
+      </button>
+      <button attribute-ref="$canRejectSign" name="${ui.form.AgreementResourceForm.button.canRejectSign.name:Отказать в подписи}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanRejectSign"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canRejectSign.hintPopUp:Отказать в подписи}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#sign.reject"/>
+        </action>
+      </button>
+      <button attribute-ref="$canRejectRegister" name="${ui.form.AgreementResourceForm.button.canRejectRegister.name:Отказать в регистрации}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanRejectRegister"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canRejectRegister.hintPopUp:Отказать в регистрации}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#register.reject"/>
+        </action>
+      </button>
+      <button attribute-ref="$canUnverify" name="${ui.form.AgreementResourceForm.button.canUnverify.name:Отменить заверение}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanUnverifyLocker"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canUnverify.hintPopUp:Отменить заверение}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#remove-verification.locker.cancel"/>
+        </action>
+      </button>
+      <button attribute-ref="$canUnverify" name="${ui.form.AgreementResourceForm.button.canUnverify.name:Отменить заверение}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanUnverify"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canUnverify.hintPopUp:Отменить заверение}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#remove-verification"/>
+        </action>
+      </button>
+      <button attribute-ref="$canUnsign" name="${ui.form.AgreementResourceForm.button.canUnsign.name:Отменить подпись}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanUnsignLocker"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canUnsign.hintPopUp:Отменить подпись}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#sign.locker.cancel"/>
+        </action>
+      </button>
+      <button attribute-ref="$canUnsign" name="${ui.form.AgreementResourceForm.button.canUnsign.name:Отменить подпись}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanUnsign"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canUnsign.hintPopUp:Отменить подпись}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#unsign"/>
+        </action>
+      </button>
+      <button attribute-ref="$canRecallSign" name="${ui.form.AgreementResourceForm.button.canRecallSign.name:Отозвать с подписи}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanRecallSign"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canRecallSign.hintPopUp:Отозвать с подписи}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#sign.recall"/>
+        </action>
+      </button>
+      <button attribute-ref="$canSendToReview" name="${ui.form.AgreementResourceForm.button.canSendToReview.toSendList.name:По списку рассылки}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanSendToReviewContracts"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canSendToReview.toSendList.hintPopUp:По списку рассылки}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#review.start.sendlist"/>
+        </action>
+      </button>
+      <button attribute-ref="$canSign" name="${ui.form.AgreementResourceForm.button.canSign.name:Подписать}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanSignLocker"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canSign.hintPopUp:Подписать}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#sign.locker.sign"/>
+        </action>
+      </button>
+      <button attribute-ref="$canSign" name="${ui.form.AgreementResourceForm.button.canSign.name:Подписать}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanSign"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canSign.hintPopUp:Подписать}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#sign"/>
+        </action>
+      </button>
+      <button attribute-ref="$canSendToReview" name="${ui.form.AgreementResourceForm.button.canSendToReview.name:Произвольное}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanSendToReviewContracts"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canSendToReview.hintPopUp:Произвольное}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#review.start"/>
+        </action>
+      </button>
+      <button attribute-ref="$canRegister" name="${ui.form.AgreementResourceForm.button.canRegister.name:Регистрация}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanRegister"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.canRegister.hintPopUp:Регистрация}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#register"/>
+        </action>
+      </button>
+      <button name="${ui.form.AgreementResourceForm.button.Удалить.name:Удалить}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanDelete"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.Удалить.hintPopUp:Удалить}</hint-pop-up>
+        <action>
+          <system name="delete"/>
+        </action>
+      </button>
+      <button name="${ui.form.AgreementResourceForm.button.Читатели.name:Читатели}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="read"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.Читатели.hintPopUp:Читатели}</hint-pop-up>
+        <action>
+          <custom>
+            <operation>
+              <handler-ref ref="ReadersMultiForm"/>
+            </operation>
+          </custom>
+        </action>
+      </button>
+      <button name="${ui.form.AgreementResourceForm.button.Читатели.name:Читатели}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="read"/>
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.AgreementResourceForm.button.Читатели.hintPopUp:Читатели}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#acl"/>
+        </action>
+      </button>
+      <section id="Content" name="${ui.form.AgreementResourceForm.section.Content.name:Содержание}"/>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="objectType">
+                <properties>
+                  <read-only condition-union="OR">
+                    <condition>true</condition>
+                      <condition-ref ref="isSigningStatusSent"/>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="15" field-unit="symbol"/>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <section id="row15" group="true">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="securityStampIsEmptyContractAgr"/>
+                    <condition-ref ref="read"/>
+                  </hide>
+                </properties>
+                <appearance style="tunBold" field-layout="horizontal">
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="horizontalSection"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+                <component>
+                  <field attribute-ref="securityStampText" recalc="true" autofill="true" name="${ui.form.AgreementResourceForm.section.Header.section.row15.field.securityStampText.name:Гриф доступа:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="ShowSecurityStampFieldContractAgr"/>
+                      </hide>
+                    </properties>
+                    <appearance importance="high" align="right">
+                      <label-style field-unit="symbol" field-width="15">
+                        <style id="tunBlack"/>
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="tunBlack"/>
+                        </value-style>
+                      </field-style>
+                    </appearance>
+                    <hint-pop-up>${ui.form.AgreementResourceForm.section.Header.section.row15.field.securityStampText.hintPopUp:Гриф ограничения доступа к документу}</hint-pop-up>
+                  </field>
+                  <button alias="editGrif">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="EditSecurityStampFieldYesContractAgr"/>
+                <negative-condition-ref ref="edit"/>
+                      </hide>
+                    </properties>
+                    <hint-pop-up>${ui.form.AgreementResourceForm.section.Header.section.row15.button.editGrif.hintPopUp:Задать гриф}</hint-pop-up>
+                    <appearance align="center">
+                      <label-style unit="symbol" width="1">
+                        <style id="tunIconEdit"/>
+                        <style id="tunClickableUnderline"/>
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <change-subobject schema-ref="RkkGrifEdit"/>
+                      </custom>
+                    </action>
+                  </button>
+                  <button alias="deleteGrif">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="EditSecurityStampFieldNoContractAgr"/>
+                        <negative-condition-ref ref="edit"/>
+                      </hide>
+                    </properties>
+                    <hint-pop-up>${ui.form.AgreementResourceForm.section.Header.section.row15.button.deleteGrif.hintPopUp:Снять гриф}</hint-pop-up>
+                    <appearance align="center">
+                      <label-style unit="symbol" width="1">
+                        <style id="tunIconDelete"/>
+                        <style id="tunClickableUnderline"/>
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <change-subobject schema-ref="ReasonWithdrawalOfGrifResource"/>
+                      </custom>
+                    </action>
+                  </button>
+                  <field attribute-ref="docReasonWithdrawal" autofill="true" name="${ui.form.AgreementResourceForm.section.Header.section.row15.field.docReasonWithdrawal.name:Док. основания:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="docReasonWithdrawalIsViewContractAgr"/>
+                      </hide>
+                    </properties>
+                    <appearance importance="high" align="right">
+                      <label-style field-width="25"/>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="PaperDocNumbers" name="${ui.form.AgreementResourceForm.section.Header.section.row15.field.PaperDocNumbers.name:№ экз:}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                    <appearance importance="high" align="right">
+                      <label-style field-unit="symbol" field-width="15">
+                        <style id="tunBlack"/>
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="tunBlack"/>
+                        </value-style>
+                      </field-style>
+                      <alt-appearancies>
+                        <alt-appearance>
+                          <appearance-ref ref="css_headerElementBold"/>
+                          <enable condition-union="AND">
+                            <condition>true</condition>
+                          </enable>
+                        </alt-appearance>
+                      </alt-appearancies>
+                    </appearance>
+                    <hint-pop-up>${ui.form.AgreementResourceForm.section.Header.section.row15.field.PaperDocNumbers.hintPopUp:№ бумажного документа, зерез запятую}</hint-pop-up>
+                  </field>
+                  <field attribute-ref="DOPName">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                  </field>
+                  <field attribute-ref="securityStamp" recalc="true">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                  </field>
+                </component>
+              </section>
+              <field attribute-ref="$tagsHeader">
+                <rename name="${ui.form.AgreementResourceForm.section.Header.section.row1.field.tagsHeader.rename.name:Особые отметки:}" condition-union="AND">
+                  <condition-ref ref="tagsEmpty"/>
+                  <condition-ref ref="edit"/>
+                </rename>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="16" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <section id="row11" group="true">
+                <component>
+                  <field attribute-ref="$regStatusInfo">
+                    <appearance align="right" importance="normal"/>
+                  </field>
+                  <field attribute-ref="$signStatusInfo">
+                    <appearance align="right" importance="normal">
+                      <label-style field-width="13" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="dialogueComment">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="signStateSentContracts"/>
+                      </hide>
+                    </properties>
+                    <appearance align="right" importance="normal">
+                      <label-style field-width="25" field-unit="symbol">
+                        <style id="tunBold"/>
+                        <style id="tunUnderline"/>
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="tunBold"/>
+                          <style id="tunUnderline"/>
+                        </value-style>
+                      </field-style>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="$certifiedStatusInfo">
+                    <appearance align="right">
+                      <label-style field-width="13" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                </component>
+              </section>
+            </component>
+          </section>
+          <section id="row2" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="$preparationStatusInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="normal"/>
+              </field>
+              <field attribute-ref="$approvStatusInfo">
+                <appearance align="right" importance="normal"/>
+              </field>
+              <field attribute-ref="$reviewStatusInfo">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isActiveAddagr"/>
+                  </hide>
+                </properties>
+                <appearance align="right"/>
+              </field>
+              <field attribute-ref="approveAddStateText">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="Actions_approveAddStateTextNotIsEmpty"/>
+                  </hide>
+                </properties>
+                <appearance align="right" importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="$titleHeader">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <section id="row3" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="showRegInfo">
+                <appearance location="subform" align="left"/>
+              </field>
+              <field attribute-ref="status" name="${ui.form.AgreementResourceForm.section.Header.section.row3.field.status.name:Состояние доп. соглашения:}">
+                <appearance align="left">
+                  <label-style field-width="16" field-unit="symbol"/>
+                </appearance>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="contractStatuses"/>
+                </directories>
+              </field>
+              <field attribute-ref="completed" name="${ui.form.AgreementResourceForm.section.Header.section.row3.field.completed.name:Отметка об исполнении:}">
+                <appearance align="left" importance="normal">
+                  <label-style field-width="16" field-unit="symbol"/>
+                </appearance>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.Header.section.row3.field.completed.hintPopUp:Отметка об исполнении}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="RootMenu">
+        <component>
+          <section id="SEND" name="${ui.form.AgreementResourceForm.section.RootMenu.section.SEND.name:Отправить}">
+            <component>
+              <button name="${ui.form.AgreementResourceForm.section.RootMenu.section.SEND.button.На подпись.name:На подпись}" alias="SendToSign">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="canSeeCustomButtonSendForSignatureContacts"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler-ref ref="SendToSignOperation"/>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.AgreementResourceForm.section.RootMenu.section.SEND.button.На регистрацию.name:На регистрацию}" alias="SendToReReRegistration">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="canSendToReRegistrationContracts"/>
+                  </hide>
+                </properties>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.RootMenu.section.SEND.button.На регистрацию.hintPopUp:На регистрацию}</hint-pop-up>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler-ref ref="SentToReRegistrationOperation"/>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <button name="${ui.form.AgreementResourceForm.button.btnCancellationRegistration.name:Отозвать с регистрации}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="showCancellationOfRegistrationButton"/>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <action position="152">
+              <custom>
+                <operation>
+                  <handler-ref ref="cancellationOfRegistration"/>
+                </operation>
+              </custom>
+            </action>
+          </button>
+        </component>
+      </section>
+      <section id="Attributes" name="${ui.form.AgreementResourceForm.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="linksAccessSection" group="true">
+            <appearance>
+              <label-style width="30" unit="symbol"/>
+            </appearance>
+            <component>
+              <field attribute-ref="disableLinkAccess" name="${ui.form.AgreementResourceForm.section.Attributes.section.linksAccessSection.field.disableLinkAccess.name:Ограничить доступ по связям:}">
+                <appearance align="right" importance="normal">
+                  <label-style field-width="2" field-unit="symbol"/>
+                </appearance>
+                <hint-in-field>${ui.form.AgreementResourceForm.section.Attributes.section.linksAccessSection.field.disableLinkAccess.hintInField:Не дается доступ к текущему документу читателям связанных документов}</hint-in-field>
+              </field>
+            </component>
+          </section>
+          <section id="Main" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.name:Основные}">
+            <component>
+              <field attribute-ref="category" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.category.name:Тематика:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.category.hintPopUp:Тематика}</hint-pop-up>
+              </field>
+              <field attribute-ref="regInfo.number" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.regInfo.number.name:Номер дополнительного соглашения:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>
+                  ${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.regInfo.number.hintPopUp:Номер дополнительного соглашения}
+                </hint-pop-up>
+              </field>
+              <field attribute-ref="regInfo.date" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.regInfo.date.name:Дата дополнительного соглашения:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>
+                  ${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.regInfo.date.hintPopUp:Дата дополнительного соглашения}
+                </hint-pop-up>
+              </field>
+              <section id="singleSignerSection" group="true">
+                <properties>
+                  <hide>
+                    <condition-ref ref="Agreement_hasMultipleSigners"/>
+                  </hide>
+                </properties>
+                <component>
+                  <field recalc="true" attribute-ref="signatureContracts.this.signer" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.signatureContracts.this.signer.name:Подпись (1-я сторона):}">
+                    <appearance importance="normal"/>
+                    <properties>
+                      <hide>
+                        <condition-ref ref="alwaysFalse"/>
+                      </hide>
+                    </properties>
+                    <hint-pop-up>
+                      ${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.signatureContracts.this.signer.hintPopUp:Подпись (1-я сторона)}
+                    </hint-pop-up>
+                  </field>
+                  <section id="signPers" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <properties>
+                      <hide>
+                        <negative-condition-ref ref="alwaysFalse"/>
+                      </hide>
+                    </properties>
+                    <component>
+                      <field recalc="true" attribute-ref="signatureContracts.this.signer" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.signatureContracts.this.signer.name:Подпись (1-я сторона):}">
+                        <appearance importance="normal"/>
+                        <hint-pop-up>
+                          ${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.signatureContracts.this.signer.hintPopUp:Подпись (1-я сторона)}
+                        </hint-pop-up>
+                      </field>
+                      <field attribute-ref="isPersonal" name="${ui.form.RkkResourceContractsForm.section.Attributes.section.Main.section.signPers.field.isPersonal.name:Лично}">
+                        <appearance importance="normal"/>
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition-ref ref="isNotExecutor"/>
+                            <condition-ref ref="isSignedOrOnSignAgr"/>
+                            <condition>true</condition>
+                          </read-only>
+                        </properties>
+                      </field>
+                    </component>
+                  </section>
+                  <field attribute-ref="signatureContracts.other.signer" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.signatureContracts.other.signer.name:Подпись (2-я сторона):}">
+                    <appearance importance="normal"/>
+                    <hint-pop-up>
+                      ${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.signatureContracts.other.signer.hintPopUp:Подпись (2-я сторона)}
+                    </hint-pop-up>
+                  </field>
+                </component>
+              </section>
+              <section id="multiSignersSection" group="true">
+                <properties>
+                  <hide>
+                    <negative-condition-ref ref="Rkk_hasMultipleSigners"/>
+                  </hide>
+                </properties>
+                <component>
+                  <section id="signUtilitySection" group="true">
+                    <properties>
+                      <hide>
+                        <negative-condition-ref ref="FirstPartyIsCurrentOrg_agr"/>
+                      </hide>
+                    </properties>
+                    <appearance field-layout="horizontal"/>
+                    <component>
+                      <section id="addSigners" group="true">
+                        <appearance field-layout="horizontal"/>
+                        <properties show-empty-field="true">
+                          <hide>
+                            <condition-ref ref="isSignedOrOnSignAgr"/>
+                          </hide>
+                        </properties>
+                        <component>
+                          <field attribute-ref="$emptyString">
+                            <properties>
+                              <read-only>
+                                <condition>true</condition>
+                              </read-only>
+                            </properties>
+                            <appearance>
+                              <label-style field-width="15" field-unit="symbol"/>
+                            </appearance>
+                          </field>
+                          <button name="${ui.form.Actions.signers.add:Добавить}">
+                            <appearance>
+                              <label-style>
+                                <style id="tunIconAdd"/>
+                                <style id="tunBlue"/>
+                                <style id="tunUnderline"/>
+                                <style id="tunNMB"/>
+                              </label-style>
+                            </appearance>
+                            <properties>
+                              <hide>
+                                <negative-condition-ref ref="edit"/>
+                              </hide>
+                            </properties>
+                            <action>
+                              <custom>
+                                <change-subobject schema-ref="AddSignersArray"/>
+                              </custom>
+                            </action>
+                          </button>
+                          <field attribute-ref="signers" recalc="true">
+                            <properties>
+                              <hide>
+                                <condition>true</condition>
+                              </hide>
+                            </properties>
+                          </field>
+                        </component>
+                      </section>
+                    </component>
+                  </section>
+                  <section id="signersSection" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <properties>
+                      <hide>
+                        <negative-condition-ref ref="FirstPartyIsCurrentOrg_agr"/>
+                      </hide>
+                    </properties>
+                    <component>
+                      <field attribute-ref="$signersTitle">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition>true</condition>
+                          </read-only>
+                        </properties>
+                        <appearance importance="normal" align="right">
+                          <field-style>
+                            <value-style>
+                              <style id="tunGray"/>
+                            </value-style>
+                          </field-style>
+                          <label-style field-width="15" field-unit="symbol">
+                            <style id="tunGray"/>
+                            <label-style id="tunGray"/>
+                          </label-style>
+                        </appearance>
+                      </field>
+                      <field attribute-ref="signatureContracts.this.signers" recalc="true">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition-ref ref="isSignedOrOnSignAgr"/>
+                          </read-only>
+                          <require>
+                            <condition>true</condition>
+                          </require>
+                        </properties>
+                        <appearance location="table" importance="normal"/>
+                      </field>
+                    </component>
+                  </section>
+                  <field attribute-ref="signatureContracts.this.signersExt" name="${ui.form.Contracts.signers:Подписи:}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition-ref ref="FirstPartyIsCurrentOrg_agr"/>
+                      </hide>
+                    </properties>
+                    <directories>
+                      <directory-select-org ref="foreign_human" attribute-ref="contractAttributes.party1"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="signatureContracts.other.signers" name="${ui.form.Contracts.second.party.signers:Подписи (2-я сторона):}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="SecondPartyIsCurrentOrg_agr"/>
+                      </hide>
+                    </properties>
+                    <directories limit-livesearch="sys-current">
+                      <directory-ref ref="CURR_HUMAN_HH"/>
+                      <directory-ref ref="CURR_HUMAN_HH_HIER"/>
+                      <directory-ref ref="FV_CURR_HUMAN_HH"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="signatureContracts.other.signers" name="${ui.form.Contracts.second.party.signers:Подписи (2-я сторона):}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="SecondPartyIsExtOrg_agr"/>
+                      </hide>
+                    </properties>
+                    <directories>
+                      <directory-select-org ref="foreign_human" attribute-ref="contractAttributes.party2"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="signatureContracts.other.signers" name="${ui.form.Contracts.second.party.signers:Подписи (2-я сторона):}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="SecondPartyIsPrivateHuman_agr"/>
+                      </hide>
+                    </properties>
+                    <directories>
+                      <directory-category-custom-coll ref="PrivatePeople"/>
+                    </directories>
+                  </field>
+                </component>
+              </section>
+                <field attribute-ref="started" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.started.name:Дата начала работ:}">
+                    <appearance importance="normal"/>
+                    <hint-pop-up>
+                        ${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.started.hintPopUp:Дата начала работ}
+                    </hint-pop-up>
+                </field>
+                <field attribute-ref="finished" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.finished.name:Дата завершения работ:}">
+                    <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.finished.hintPopUp:Дата завершения работ}</hint-pop-up>
+              </field>
+              <field attribute-ref="duration" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.duration.name:Срок действия:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.duration.hintPopUp:Срок действия}</hint-pop-up>
+              </field>
+              <field attribute-ref="preparedBy" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.preparedBy.name:Подготовили:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.preparedBy.hintPopUp:Подготовили}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_All"/>
+                  <directory-ref ref="CURRENT_All_Hierarchy"/>
+                  <directory-ref ref="sys_roles"/>
+                  <directory-ref ref="FV_CURR_ALL"/>
+                </directories>
+              </field>
+              <field attribute-ref="responsibles" name="${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.responsibles.name:Ответственные за исполнение:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.Attributes.section.Main.field.responsibles.hintPopUp:Ответственные за исполнение}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_All"/>
+                  <directory-ref ref="CURRENT_All_Hierarchy"/>
+                  <directory-ref ref="sys_roles"/>
+                  <directory-ref ref="FV_CURR_ALL"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+          <section id="Additional" name="${ui.form.AgreementResourceForm.section.Attributes.section.Additional.name:Дополнительные}">
+            <component>
+              <field attribute-ref="sendlist" name="${ui.form.AgreementResourceForm.section.Attributes.section.Additional.field.sendlist.name:Список рассылки:}">
+                <appearance importance="normal">
+                  <field-style group="true"/>
+                </appearance>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.Attributes.section.Additional.field.sendlist.hintPopUp:Список рассылки}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_ORG_DEP_HUMAN_HH"/>
+                  <directory-ref ref="CURRENT_ORG_DEP_HUMAN_HH_HIER"/>
+                  <directory-ref ref="AlienBeards"/>
+                  <directory-ref ref="sendlist"/>
+                  <directory-ref ref="sys_roles"/>
+                  <directory-ref ref="FV_CURR_ALL_FOREIGN_HUMAN_HH_DEP_ORG"/>
+                </directories>
+              </field>
+              <field attribute-ref="pages" name="${ui.form.AgreementResourceForm.section.Attributes.section.Additional.field.pages.name:Кол-во листов:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.Attributes.section.Additional.field.pages.hintPopUp:Кол-во листов}</hint-pop-up>
+              </field>
+              <field attribute-ref="copies" name="${ui.form.AgreementResourceForm.section.Attributes.section.Additional.field.copies.name:Кол-во экземпляров:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.Attributes.section.Additional.field.copies.hintPopUp:Кол-во экземпляров}</hint-pop-up>
+              </field>
+              <field attribute-ref="appendices" name="${ui.form.AgreementResourceForm.section.Attributes.section.Additional.field.appendices.name:Кол-во приложений:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.Attributes.section.Additional.field.appendices.hintPopUp:Кол-во приложений}</hint-pop-up>
+              </field>
+              <field attribute-ref="appendicesPages" name="${ui.form.AgreementResourceForm.section.Attributes.section.Additional.field.appendicesPages.name:Листов приложения:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.Attributes.section.Additional.field.appendicesPages.hintPopUp:Листов приложения}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="ContractInfo" name="${ui.form.AgreementResourceForm.section.Attributes.section.ContractInfo.name:Реквизиты Договора}">
+            <component>
+              <field attribute-ref="$contract">
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="CostAndPayment" name="${ui.form.AgreementResourceForm.section.CostAndPayment.name:Стоимость и оплата}">
+        <component>
+          <section id="Cost" name="${ui.form.AgreementResourceForm.section.CostAndPayment.section.Cost.name:Стоимость}">
+            <component>
+              <field attribute-ref="value.total" name="${ui.form.AgreementResourceForm.section.CostAndPayment.section.Cost.field.value.total.name:Сумма дополнительного соглашения:}">
+                <appearance importance="normal">
+                  <field-style cost-format="true"/>
+                </appearance>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.CostAndPayment.section.Cost.field.value.total.hintPopUp:Сумма дополнительного соглашения}</hint-pop-up>
+              </field>
+              <field attribute-ref="value.currency" name="${ui.form.AgreementResourceForm.section.CostAndPayment.section.Cost.field.value.currency.name:Тип валюты:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.CostAndPayment.section.Cost.field.value.currency.hintPopUp:Тип валюты}</hint-pop-up>
+              </field>
+              <field attribute-ref="value.advancepayment" name="${ui.form.AgreementResourceForm.section.CostAndPayment.section.Cost.field.value.advancepayment.name:Предоплата:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.CostAndPayment.section.Cost.field.value.advancepayment.hintPopUp:Предоплата}</hint-pop-up>
+              </field>
+              <field attribute-ref="value.scheme" name="${ui.form.AgreementResourceForm.section.CostAndPayment.section.Cost.field.value.scheme.name:Порядок оплаты:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.CostAndPayment.section.Cost.field.value.scheme.hintPopUp:Порядок оплаты}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="Payment" name="${ui.form.AgreementResourceForm.section.CostAndPayment.section.Payment.name:Оплата}">
+            <component>
+              <field attribute-ref="$paymentTable" name="${ui.form.AgreementResourceForm.section.CostAndPayment.section.Payment.field.paymentTable.name:Оплата:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.AgreementResourceForm.section.CostAndPayment.section.Payment.field.paymentTable.hintPopUp:Оплата}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Structure" name="${ui.form.AgreementResourceForm.section.Structure.name:Структура}"/>
+      <section id="LifeCycle" name="${ui.form.AgreementResourceForm.section.LifeCycle.name:Жизненный цикл}">
+        <appearance widget="leftMenu"/>
+        <component>
+            <section id="Preparation" name="${ui.form.AgreementResourceForm.section.LifeCycle.section.Preparation.name:Подготовка}">
+                <properties>
+                    <hide condition-union="AND">
+                        <condition>true</condition>
+                    </hide>
+                </properties>
+            </section>
+            <section name="${ui.form.AgreementResourceForm.section.LifeCycle.ApprovingSection.name:Согласование}" id="ApprovingSection" group="true">
+                <component>
+                    <section id="ApprovingButtons">
+                        <appearance widget="inactiveTab"/>
+                    </section>
+                    <section name="${ui.form.AgreementResourceForm.section.LifeCycle.ApprovingSection.section.Approving.name:Согласование}" id="Approving"/>
+                </component>
+            </section>
+            <section id="Signing" name="${ui.form.AgreementResourceForm.section.LifeCycle.section.Signing.name:Подписание}"/>
+            <section id="Registration" name="${ui.form.AgreementResourceForm.section.LifeCycle.section.Registration.name:Регистрация}"/>
+            <section id="Confirmation" name="${ui.form.AgreementResourceForm.section.LifeCycle.section.Confirmation.name:Заверение}"/>
+            <section id="Review" name="${ui.form.AgreementResourceForm.section.LifeCycle.section.Review.name:Ознакомление}"/>
+            <section id="Execution" name="${ui.form.AgreementResourceForm.section.LifeCycle.section.Execution.name:Исполнение}"/>
+        </component>
+      </section>
+      <section id="Links" name="${ui.form.AgreementResourceForm.section.Links.name:Связанные}">
+        <appearance widget="leftMenu"/>
+        <component>
+          <section id="Documеnts" name="${ui.form.AgreementResourceForm.section.Links.section.Documеnts.name:Документы}"/>
+          <section id="Cases" name="${ui.form.AgreementResourceForm.section.Links.section.Cases.name:Кейсы}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+          </section>
+          <section id="Files" name="${ui.form.AgreementResourceForm.section.Links.section.Files.name:Дела}"/>
+          <section id="Visualization" name="${ui.form.AgreementResourceForm.section.Links.section.Visualization.name:Визуализация}"/>
+        </component>
+      </section>
+      <section id="Discussion" name="${ui.form.AgreementResourceForm.section.Discussion.name:Обсуждения}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="canDiscuss"/>
+          </hide>
+        </properties>
+      </section>
+      <section id="History" name="${ui.form.AgreementResourceForm.section.History.name:История}"/>
+    </component>
+  </form>
+</ui>

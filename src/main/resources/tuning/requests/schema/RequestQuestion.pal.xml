@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" name="RequestQuestion">
+    <meta>
+      <category name="Система\Обращение граждан"/>
+    </meta>
+    <schema-ref ref="ClassifierQuestionValue" name="questionValue" system="true"/>
+    <string name="questionClass" system="true"/>
+    <string name="questionClassType" system="true"/>
+    <boolean name="hasQuestionClass" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[questionClass != null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="hasClass" system="true"/>
+    <boolean name="notNewOpen" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[1==1]]></script>
+      </calc-values>
+    </boolean>
+    <custom-event-handler lang="JavaScript"><![CDATA[function querySave(object, document) {
+    return true;
+}
+
+function postSave(object, document) {}
+
+function recalc(object, changedField) {
+
+    if (changedField == "questionClass") {
+        object.tuning().getValues().remove("questionClassType");
+
+        if (object.tuning().getValues().get("questionValue") != null) {
+            if (object.tuning().getValues().get("questionValue").getValues().get("theme") == null) {
+                object.tuning().getValues().remove("questionValue");
+            }
+        }
+
+        if (object.tuning().getValues().get("questionClass") == null) {
+            object.tuning().getValues().remove("hasQuestionClass");
+        }
+    }
+}]]></custom-event-handler>
+  </schema>
+</schemas>

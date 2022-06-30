@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="controlNotCompleted" id="ControlNotcompletedByExec" name="${catalog.view.ControlNotcompletedByExec.name:По исполнителю}" position="20">
+    <search-area name="_Askid"/>
+    <descriptor-ref ref="askid-notExecCardsByExecutor"/>
+    <source>
+      <module ident="Askid"/>
+    </source>
+  </view>
+</catalog>

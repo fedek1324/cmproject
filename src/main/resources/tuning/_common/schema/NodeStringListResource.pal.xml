@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="NodeStringListResource">
+    <meta>
+      <category name="Асинхронные операции\Общее"/>
+    </meta>
+    <schema-ref ref="NodeString" array="true" name="nodes" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

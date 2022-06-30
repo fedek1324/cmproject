@@ -1,0 +1,1341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           targetNamespace="http://www.intertrust.ru/schema/palette/tn-schema"
+           xmlns="http://www.intertrust.ru/schema/palette/tn-schema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+    <!-- Доп. информация -->
+    <xs:complexType name="metaType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Доп. информация для разработчика]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="category" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Категория]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute type="xs:string" name="name" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Название категории]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="documentation" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Комментарий]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Значения -->
+    <xs:simpleType name="variantDateTimeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="current">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Текущая дата/время]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="empty">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Пусто]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="variantDateType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="current">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Текущая дата]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="offset">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Смещение относительно текущей даты]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="empty">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Пусто]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="variantTimeType">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:time"/>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="current">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Текущее время]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="empty">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Пусто]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+
+    <xs:complexType name="valueDateType">
+        <xs:attribute name="value" type="variantDateType" use="optional" default="empty">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Указывается вариант вычисления]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="offset" type="xs:integer" use="optional" default="0">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Указвается смещение]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="valueDateTimeType">
+        <xs:attribute name="value" type="variantDateTimeType" use="optional" default="empty">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Указывается вариант вычисления]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="valueTimeType">
+        <xs:attribute name="value" type="variantTimeType" use="optional" default="empty">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Указывается вариант вычисления или время]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:simpleType name="accessEditType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="override">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Доступ на редактирование будет полностью определяться значением, которое вернуло указанное SpEL-выражение]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="and">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Доступ на редактирование будет предоставлен пользователю, если он имеет право редактировать объект в типовой версии И выполнено дополнительное условие, заданное SpEL-выражением]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="or">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Доступ на редактирование будет предоставлен пользователю, если он имеет право редактировать объект в типовой версии ИЛИ выполнено дополнительное условие, заданное SpEL-выражением]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Перечисление -->
+    <!-- Значения -->
+    <xs:complexType name="enumStringType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Текстовое]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="enumDateType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Дата]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="valueDateType">
+                <xs:attribute name="name" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Название]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="enumDateTimeType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Дата-время]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="valueDateTimeType">
+                <xs:attribute name="name" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Название]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="enumTimeType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Время]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="valueTimeType">
+                <xs:attribute name="name" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Название]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="enumIntegerType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Числовое]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="enumDoubleType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Числовое с плавающей запятой]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:double" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="enumBooleanType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Логическое]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="enumType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Перечисление]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:choice>
+                <xs:element name="string" type="enumStringType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="datetime" type="enumDateTimeType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="date" type="enumDateType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="time" type="enumTimeType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="integer" type="enumIntegerType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="double" type="enumDoubleType" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="boolean" type="enumBooleanType" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="name" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Схема -->
+    <!-- Свойства схемы -->
+    <!-- Системный атрибут свойства схем -->
+    <xs:attributeGroup name="systemAttributeGroup">
+        <xs:attribute name="system" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Признак "Системное". В поле «Системное» указывается, является ли данное Свойство системным. Значение «true» выставляется разработчиками при подключении к НР2 бизнес-объекта Системы и описании его структуры данных для Свойств схемы, обработка которых определяется логикой Системы. Для всех новых Свойств в поле «Системное» следует оставить значение «false».]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <!-- Базовые атрибуты свойства схем -->
+    <xs:attributeGroup name="baseAttributeGroup">
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="createlog" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Признак "Создать протокол-изменения".Значение «true» означает, что значение данного Свойства будет протоколироваться в Системе при сохранении объекта, описанного родительской Схемой данных. По созданным протоколам отрабатывают серверные агенты и интеграционные сценарии]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="wf-link" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Призна "Ссылка на wf". Подключает WorkFlow]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="temporal" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Признак "Не сохранять". Значение «true» означает, что значение данного Свойства не будет сохранено в Системе при сохранении объекта, описанного родительской Схемой данных. При этом выражение, заданное для вычисления значения свойства схемы, будет вычисляться при каждом вызове recalc ресурса. Такие Свойства могут использоваться для отображения пользователю информации, вычисленной на основании других Свойств Схемы, если сохранение этой информации в Системе не нужно. Например, с помощью таких Свойств реализовано отображение информации о Подписи.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="computed" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Признак "Вычисляемое". Значение «true» указывает на то, что:
+- выражение, заданное для вычисления значения свойства схемы, будет вычисляться при каждом вызове recalc ресурса;
+- вычисленное значение всегда будет сохраняться в Системе при сохранении объекта, описанного родительской Схемой данных (поле «Не сохранять в документе» свойства схемы принимает значение «false» и становится не редактируемым);
+- поле формы, связанное с этим свойством схемы, всегда будет не редактируемым.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="tunable" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Признак "Переведен на настраивамые реквизиты". Устанавливается  для системных композитов, переведенных на настраиваемые реквизиты, например, Контроль]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <!-- Дополнительные атрибуты свойства схем -->
+    <xs:attributeGroup name="addAttributeGroup">
+        <xs:attribute name="array" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Признак "Массив". Значение «true» указывает на то, что в качестве своего значения Свойство может содержать массив объектов. Например, Свойство для реквизита «Другие подписи» Внутреннего документа может содержать массив элементов субъектного справочника (в данном случае СО)]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="required" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Признак "Обязательное". Значение «true» означает, что Свойство является обязательным, и отсутствие его значения приводит к нарушению корректности структуры данных]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <!-- События -->
+    <!-- Общие -->
+    <xs:simpleType name="eventBaseType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="open">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Вычисление при открытии]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="save">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Вычисление при сохранении]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Дата/Дата-время -->
+    <xs:simpleType name="eventDateType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Название события]]></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="open">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Вычисление при открытии]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="save">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Вычисление при сохранении]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="apply-template">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Вычисление при применении шаблона]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Enum -->
+    <xs:simpleType name="eventEnumType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Название события]]></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="open">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Вычисление при открытии]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Параметры вычисления значения  -->
+    <xs:attributeGroup name="calcAttributeGroup">
+        <xs:attribute name="lang" type="xs:string" use="optional" default="SPEL">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Язык программирования]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="locale" type="xs:string" use="optional" default="default">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Используется в мультиязычной инсталляции системы. Указывает, какое вычисление будет применено для выбранного языка. Учитывается локализация пользователя. Если выражения для локали пользователя нет, то выражение с 	local="default" или без local]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <!-- Вычисление значения свойства -->
+    <xs:complexType name="calcValuesBaseType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="script" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Вычисление значения свойства]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="event" type="eventBaseType" use="required"/>
+                            <xs:attributeGroup ref="calcAttributeGroup"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="calcValuesDateType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="script" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Вычисление значения свойства]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="event" type="eventDateType" use="required"/>
+                            <xs:attributeGroup ref="calcAttributeGroup"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="calcValuesEnumType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="script" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Вычисление значения свойства]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="event" type="eventEnumType" use="required"/>
+                            <xs:attributeGroup ref="calcAttributeGroup"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- Класс обработчик при рекалке -->
+    <xs:simpleType name="recalcProcessingClassType">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Класс обработчик при рекалке. Используется для выполнения особых действий на сервере при пересчете секции, связанном с изменением значения поля, соответствующего данному Свойству, а так же для описания настраиваемых кнопок типа «Пересчет секций».Указывается класс-обработчик, выполняющий действия, связанные с кнопкой.]]></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="collapse"/>
+            <xs:pattern value="([\p{L}_$][\p{L}\p{N}_$]*\.)*[\p{L}_$][\p{L}\p{N}_$]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Контекстная роль -->
+    <xs:complexType name="contextRolesType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="context-role" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[Контекстная роль. Контекстные роли используются для задания контекста для вычисления реляции при задании вычисляемого участника в шаблоне согласования.]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Название роли]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- Строковое значение по умолчанию -->
+    <xs:complexType name="defaultStringType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="default-value" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- Название поля -->
+    <xs:simpleType name="nameFieldType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="132"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Название хранимого поля -->
+    <xs:complexType name="storageFieldType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Название поля на уровне хранения данных]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="nameFieldType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Имя поля]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы String -->
+    <xs:complexType name="stringType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы с тектовыми данными]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+            <xs:element name="calc-values" type="calcValuesBaseType" minOccurs="0"/>
+            <xs:element name="validate-regex" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[Маска валидаци (regex). С помощью регулярного выражения можно задать маску (шаблон) для значения Свойства схемы. Значение, введенное в соответствующее Свойству поле, будет проверено на соответствие указанному шаблону. С помощью маски для валидации можно контролировать правильный формат e-mail-адресов, номеров телефонов и т.п.]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="default-values" type="defaultStringType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+        <xs:attribute name="default-value" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы Integer -->
+    <xs:complexType name="integerType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы с числовыми данными]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+            <xs:element name="calc-values" type="calcValuesBaseType" minOccurs="0"/>
+            <xs:element name="default-values" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice maxOccurs="unbounded">
+                        <xs:element name="default-value" type="xs:integer" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+        <xs:attribute name="default-value" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы Double -->
+    <xs:complexType name="doubleType">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Предназначен для работы с числовыми данными с плавающей запятой]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+            <xs:element name="calc-values" type="calcValuesBaseType" minOccurs="0"/>
+            <xs:element name="default-values" minOccurs="0">
+                <xs:complexType>
+                    <xs:choice maxOccurs="unbounded">
+                        <xs:element name="default-value" type="xs:double" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+        <xs:attribute name="default-value" type="xs:double" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы Date -->
+    <xs:complexType name="dateType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы только c датой]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+            <xs:element name="calc-values" type="calcValuesDateType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+        <xs:attribute name="default-value" type="variantDateType" use="optional" default="empty">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="offset" type="xs:integer" use="optional" default="0">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Смещение относительно текущей даты]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы DateTime -->
+    <xs:complexType name="datetimeType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы c датой и временем]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+            <xs:element name="calc-values" type="calcValuesDateType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+        <xs:attribute name="default-value" type="variantDateTimeType" use="optional" default="empty">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы Time -->
+    <xs:complexType name="timeType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы только с временем]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+            <xs:element name="calc-values" type="calcValuesBaseType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+        <xs:attribute name="default-value" type="variantTimeType" use="optional" default="empty">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы DateRange -->
+    <xs:complexType name="dateRangeType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы с диапазоном дат]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+            <xs:element name="calc-values" type="calcValuesBaseType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attribute name="required" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Признак "Обязательное". Значение «true» означает, что Свойство является обязательным, и отсутствие его значения приводит к нарушению корректности структуры данных]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы Boolean -->
+    <xs:complexType name="booleanType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы c логическими значениями]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+            <xs:element name="calc-values" type="calcValuesBaseType" minOccurs="0"/>
+            <xs:element name="storage-string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Хранение в строковом формате]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="value" type="xs:string" use="optional" default="1">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Значение]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attribute type="xs:boolean" name="default-value" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="access-edit" type="accessEditType">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Доступно для св-ва схемы с названием canEdit.
+                Предоставляет ограничение редактирования объекта.
+                Кнопка редактировать есть, перейти в режим редактирования можно, но при сохранении документа будет выдано предупреждение о недостатке прав на редактирование.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы File -->
+    <xs:complexType name="fileType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы c контентом]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+        <xs:attribute type="xs:boolean" name="conside-when-approving" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Учитывать при согласовании и подписании.
+                Файлы будут скопированы в ЛС при отправке на согласование и переданы на МРМ при согласовании и подписании]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы RichText -->
+    <xs:complexType name="richtextType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы c контентом]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+    </xs:complexType>
+
+    <!-- Свойство схемы Email -->
+    <xs:complexType name="emailType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы c электронными адресами]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+    </xs:complexType>
+
+    <!-- Свойство схемы hyperLink -->
+    <xs:complexType name="hyperlinkType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы со ссылками]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+            <xs:element name="calc-values" type="calcValuesEnumType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+    </xs:complexType>
+
+    <!-- Свойство схемы SOBeards -->
+    <xs:complexType name="actorType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы с объектами структуры организации]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="calc-values" type="calcValuesBaseType" minOccurs="0"/>
+            <xs:element name="storage-field" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Название полей на уровне хранения данных]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="name" type="nameFieldType" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Имя поля, для хранения процентного имени]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="display" type="nameFieldType" use="optional">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Имя поля, для хранения открытого имени]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="substituties" type="nameFieldType" use="optional">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Имя поля, для хранения доступа замещающим]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="auditors" type="nameFieldType" use="optional">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Имя поля, для хранения доступа аудиторам]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="id" type="nameFieldType" use="optional">
+                        <xs:annotation>
+                            <xs:documentation>
+                                <![CDATA[Имя поля, для хранения доступа идентификатора]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="context-roles" type="contextRolesType" minOccurs="0"/>
+            <xs:element name="default-values" type="defaultStringType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+        <xs:attribute name="default-value" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы Enum -->
+    <xs:complexType name="enumRefType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы с перечислениями]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+            <xs:element name="storage-field" type="storageFieldType" minOccurs="0"/>
+            <xs:element name="default-values" type="defaultStringType" minOccurs="0"/>
+            <xs:element name="calc-values" type="calcValuesEnumType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+        <xs:attribute name="default-value" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение по умолчанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на Перечисление]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Свойство схемы Schema -->
+    <xs:complexType name="schemaRefType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Предназначен для работы с объектами]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="recalc-processing-class" type="recalcProcessingClassType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="systemAttributeGroup"/>
+        <xs:attributeGroup ref="baseAttributeGroup"/>
+        <xs:attributeGroup ref="addAttributeGroup"/>
+        <xs:attribute name="null-empty" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Считать пустое значение null-значением]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на Схему]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Значения -->
+    <xs:complexType name="paramStringType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Текстовое]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="value" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на свойство схемы типа String]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="paramDateType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Дата]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="value" type="valueDateType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на свойство схемы типа Date]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="variantDateType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Указывается вариант вычисления]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="offset" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Указывается смещение]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="paramDateTimeType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Дата-время]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="value" type="valueDateTimeType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на свойство схемы типа DateTime]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="variantDateTimeType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Указывается вариант вычисления]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="paramTimeType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Время]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="value" type="valueTimeType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на свойство схемы типа Time]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="variantTimeType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Указывается вариант вычисления или время]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="paramIntegerType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Числовое]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="value" type="xs:integer" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на свойство схемы типа Integer]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:integer" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="paramDoubleType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Числовое с плавающей запятой]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="value" type="xs:double" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на свойство схемы типа Double]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:double" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="paramBooleanType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Логическое]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="value" type="xs:boolean" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на свойство схемы типа Boolean]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:boolean" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="paramEnumType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Перечисление]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="value" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на свойство схемы типа Enum]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="paramSpecificationType">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Конкретизация Схемы позволяет настроить отображение объекта по различным Формам в зависимости от определенных Свойств схемы. Результатом конкретизации является изменение Схемы данных объекта, а по измененной Схеме будет выбрана новая Форма для его отображения.]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="string-ref" type="paramStringType"/>
+                <xs:element name="intger-ref" type="paramIntegerType"/>
+                <xs:element name="double-ref" type="paramDoubleType"/>
+                <xs:element name="time-ref" type="paramTimeType"/>
+                <xs:element name="date-ref" type="paramDateType"/>
+                <xs:element name="datetime-ref" type="paramDateTimeType"/>
+                <xs:element name="boolean-ref" type="paramBooleanType"/>
+                <xs:element name="enum-ref" type="paramEnumType"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Настраиваемый обработчик событий -->
+    <xs:complexType name="customEventHandlerType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Настраиваемый обработчик событий]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="lang" type="xs:string" use="optional" default="JavaScript">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Язык программирования]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!-- WorkFlow -->
+    <xs:complexType name="workflowType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[WorkFlow]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="source-notice">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Источник уведомления данных]]></xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="attribute-ref" type="xs:string" use="required">
+                                    <xs:annotation>
+                                        <xs:documentation>
+                                            <![CDATA[Ссылка на св-во схемы с признаком wf-link]]></xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="param">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Параметры выражений]]></xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="name" use="optional">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="root-unid">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        <![CDATA[Идентификатор сущности самого верхнего уровня иерархии]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="req-type">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Вид документа]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="subject">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        <![CDATA[Текст для отображения в очереди уведомлений]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="created">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        <![CDATA[Дата-время создания документа]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="created-user">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        <![CDATA[Персона, создавшая документ]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="is-on-control">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        <![CDATA[Признак "На контроле"]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="has-attachments">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        <![CDATA[Признак наличия содержания]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="has-linked-documents">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        <![CDATA[Признак наличия связанных документов]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="signer">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Подписант]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="correspondent">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Корреспондент]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="reg-status">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Статус регистрации]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="sign-status">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Статус подписи]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="themes">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Список тематик]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="reg-date">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Дата регистрации]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="reg-number">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Номер регистрации]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="full-number">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        <![CDATA[Номер сущности или полный регистрационный номер сущности]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="reg-place">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Место регистрации]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="control-date">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Срок контроля]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="exec-date">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        <![CDATA[Дата-время исполнения]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="deadline">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Срок исполнения]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="is-project">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Признак "Проект"]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                            <xs:enumeration value="has-high-priority">
+                                                <xs:annotation>
+                                                    <xs:documentation><![CDATA[Признак "Приоритет"]]></xs:documentation>
+                                                </xs:annotation>
+                                            </xs:enumeration>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                                <xs:attribute name="lang" type="xs:string" use="optional" default="SPEL">
+                                    <xs:annotation>
+                                        <xs:documentation><![CDATA[Язык программирования]]></xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="schemaType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Схема]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="string" type="stringType"/>
+                <xs:element name="datetime" type="datetimeType"/>
+                <xs:element name="date" type="dateType"/>
+                <xs:element name="daterange" type="dateRangeType"/>
+                <xs:element name="time" type="timeType"/>
+                <xs:element name="integer" type="integerType"/>
+                <xs:element name="double" type="doubleType"/>
+                <xs:element name="boolean" type="booleanType"/>
+                <xs:element name="file" type="fileType"/>
+                <xs:element name="richtext" type="richtextType"/>
+                <xs:element name="hyperlink" type="hyperlinkType"/>
+                <xs:element name="email" type="emailType"/>
+                <xs:element name="actor" type="actorType"/>
+                <xs:element name="enum-ref" type="enumRefType"/>
+                <xs:element name="schema-ref" type="schemaRefType"/>
+                <xs:element name="enum" type="enumType"/>
+                <xs:element name="schema" type="schemaType"/>
+                <xs:element name="param-specification" type="paramSpecificationType" minOccurs="0"/>
+                <xs:element name="custom-event-handler" type="customEventHandlerType" minOccurs="0"/>
+                <xs:element name="workflow" type="workflowType" minOccurs="0"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название схемы]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="workflow" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Используется WorkFlow]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="recalc" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Признак обновления свойств схемы]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="extends" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название родительской схемы]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:element name="schemas">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element name="enum" type="enumType" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element name="schema" type="schemaType" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

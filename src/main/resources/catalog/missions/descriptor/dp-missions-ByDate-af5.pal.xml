@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Missions" view="(vw_cmj_05)" id="dp-missions-ByDate-af5" name="ОРД - по дате" style="default">
+    <help id="99778667"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder">
+      <config>
+        <view-complex-classif level-select="last"/>
+      </config>
+    </builder>
+    <table>
+      <columns>
+        <column-ref ref="hasGriff"/>
+        <column-ref ref="regDate" category="true"/>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="rkkExecutionStatus"/>
+        <column-ref ref="resOfRkkExecutionStatus"/>
+        <column-ref ref="regNumber" filter="true"/>
+        <column-ref ref="reqType" filter="true"/>
+        <column-ref ref="signer" filter="true"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="subject" filter="true"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Missions-CreateRKK" name="${catalog.custom-descriptor.dp-missions-ByDate-af5.actions.action.Missions-CreateRKK.name:Создать/ОРД}">
+        <create object-ref="RKK_MISSIONS"/>
+      </action>
+    </actions>
+    <custom-actions schema-ref="RkkReadersCollection"/>
+  </custom-descriptor>
+</catalog>

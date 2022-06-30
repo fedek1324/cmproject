@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" extends="Dialog" name="DialogSelectUnitForDelegateForFR">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="messageText" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Если для функциональной роли не указан принимающий дела, то по умолчанию дела передаются вышестоящей функциональной роли или организации.']]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="SOUnitForDialogSelect" required="true" name="delegateUnit" temporal="true"/>
+    <boolean name="selectButton_byDefault" temporal="true"/>
+    <string array="true" name="selectIds" temporal="true"/>
+    <string array="true" name="whoDelegateUnids" temporal="true"/>
+    <string name="counter" temporal="true"/>
+    <boolean name="needDeletePerson" temporal="true"/>
+    <string name="warningText" temporal="true"/>
+    <boolean name="hasWarning" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[warningText != null]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

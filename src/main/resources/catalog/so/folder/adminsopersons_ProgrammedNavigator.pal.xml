@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="admin-so-persons" name="${catalog.view.admin_so_persons.name:СО-персоны}" position="280">
+    <descriptor-ref ref="admin-so-persons"/>
+    <source>
+      <module ident="SO"/>
+    </source>
+  </view>
+</catalog>

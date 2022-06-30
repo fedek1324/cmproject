@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ClientContextData">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <schema-ref ref="CompactCollection" name="compactCollection" temporal="true"/>
+    <string name="resourceid" temporal="true"/>
+    <string name="actionRel" temporal="true"/>
+    <string name="resourcemode" temporal="true"/>
+  </schema>
+</schemas>

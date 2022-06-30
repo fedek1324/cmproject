@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+    <form schema-ref="ResolutionDatesScheduleResource" id="ResolutionDatesScheduleResource_Table">
+        <properties>
+            <hide condition-union="AND">
+                <negative-condition-ref ref="table"/>
+            </hide>
+        </properties>
+        <appearance field-layout="horizontal"/>
+        <component>
+            <section id="CreationDate" name="${ui.form.DatesSchedule.creationDate:Дата резолюции}" group="true">
+                <rename name="${ui.form.DatesSchedule.creationDateTask:Дата поручения}">
+                    <condition-ref ref="ResolutionResource_isNameChanged"/>
+                </rename>
+                <component>
+                    <field attribute-ref="creationDate">
+                        <appearance importance="normal"/>
+                    </field>
+                </component>
+            </section>
+            <section id="DueDate" name="${ui.form.DatesSchedule.dueDate:Срок исполнения}" group="true">
+                <component>
+                    <field attribute-ref="dueDate">
+                        <appearance importance="normal"/>
+                    </field>
+                </component>
+            </section>
+            <button>
+                <properties>
+                    <hide condition-union="AND">
+                        <negative-condition-ref ref="table_edit"/>
+                    </hide>
+                </properties>
+                <appearance align="left">
+                    <label-style width="3" unit="symbol">
+                        <style id="tunIconEdit"/>
+                    </label-style>
+                </appearance>
+                <action>
+                    <system name="update"/>
+                </action>
+            </button>
+            <button>
+                <properties>
+                    <hide condition-union="AND">
+                        <negative-condition-ref ref="table_edit"/>
+                    </hide>
+                </properties>
+                <appearance align="left">
+                    <label-style width="3" unit="symbol">
+                        <style id="tunIconDelete"/>
+                    </label-style>
+                </appearance>
+                <action>
+                    <system name="delete"/>
+                </action>
+            </button>
+            <button name="${ui.form.DatesSchedule.button.add:Добавить}">
+                <properties>
+                    <hide condition-union="AND">
+                        <negative-condition-ref ref="table_edit"/>
+                    </hide>
+                </properties>
+                <appearance>
+                    <label-style>
+                        <style id="tunIconAdd"/>
+                        <style id="tunBlue"/>
+                        <style id="tunUnderline"/>
+                        <style id="tunClickableRed"/>
+                    </label-style>
+                </appearance>
+                <action>
+                    <system name="add"/>
+                </action>
+            </button>
+        </component>
+    </form>
+</ui>

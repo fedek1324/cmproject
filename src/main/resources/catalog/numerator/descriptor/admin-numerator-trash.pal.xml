@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Numerator" view="(vw_cmj_admin_trash)" id="admin-numerator-trash" name="Нумератор - корзина" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView">
+      <config>
+        <view-complex-classif level-select="all"/>
+      </config>
+    </builder>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="deletedDate"/>
+        <column-ref ref="deletedPerson"/>
+        <column-ref ref="module" sort-asc="true"/>
+        <column-ref ref="server"/>
+        <column-ref ref="depName"/>
+        <column-ref ref="TypeName"/>
+        <column-ref ref="lastNumber"/>
+        <column-ref ref="counterFormula"/>
+        <column-ref ref="addresseeOrganizaton"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="SearchConditionEnum">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <string value="EQ" name="EQ"/>
+    <string value="IN" name="IN"/>
+    <string value="NOT_IN" name="NOT_IN"/>
+    <string value="NE" name="NE"/>
+    <string value="GT" name="GT"/>
+    <string value="GE" name="GE"/>
+    <string value="LT" name="LT"/>
+    <string value="LE" name="LE"/>
+    <string value="INTERVAL" name="INTERVAL"/>
+  </enum>
+</schemas>

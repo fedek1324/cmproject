@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" name="WFExpertReply">
+    <meta>
+      <category name="Сервис\WorkFlow"/>
+    </meta>
+    <actor name="Expert">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.core.AFSession).get().currentUser().getBeard()]]></script>
+        <script event="save" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.core.AFSession).get().currentUser().getBeard()]]></script>
+      </calc-values>
+    </actor>
+    <datetime name="ExpertiseDate">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.misc.AFDateTime).convertFromDate(T(java.util.Calendar).getInstance().getTime())]]></script>
+        <script event="save" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.misc.AFDateTime).convertFromDate(T(java.util.Calendar).getInstance().getTime())]]></script>
+      </calc-values>
+    </datetime>
+    <enum-ref ref="YesNo" name="Reply"/>
+    <string name="Comment"/>
+    <schema-ref ref="ResourceLink" array="true" name="link"/>
+    <schema-ref ref="WFSignOtherParams" name="ParamLink" wf-link="true"/>
+  </schema>
+</schemas>

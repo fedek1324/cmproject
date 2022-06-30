@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ClerckUnit" id="ClerckForm_Table" name="${ui.form.ClerckForm_Table.name:Таблица Входящие}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal">
+      <table live-editing="true"/>
+    </appearance>
+    <component>
+      <section id="Fio_Group" name="${ui.form.ClerckForm_Table.section.Fio_Group.name:ФИО/Название}" group="true">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance>
+          <label-style width="40" unit="percent"/>
+        </appearance>
+        <component>
+          <field clickable="true" creative="true" attribute-ref="fioGroup">
+            <appearance open-mode="dialog" digest-mode="client" align="left" clickable="true">
+              <label-style>
+                <style id="tunClickableRed"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunClickableRed"/>
+                </value-style>
+              </field-style>
+              <limit max-size="-1"/>
+            </appearance>
+            <directories livesearch="true" limit-livesearch="no-restrictions" relation="arm-admin-livesearch-empl-group" digest="digestSOLiveSearch">
+              <show-select-value>
+                <descriptor-ref ref="arm-admin-livesearch-dep-empl-fr-group"/>
+              </show-select-value>
+              <directory-ref ref="arm-admin-dialog-empl"/>
+              <directory-ref ref="arm-admin-dialog-group"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+      <section id="NoticeSend" name="${ui.form.ClerckForm_Table.section.NoticeSend.name:Получает уведомления}" group="true">
+        <component>
+          <field attribute-ref="recNotice">
+            <appearance align="left"/>
+          </field>
+        </component>
+      </section>
+      <button>
+        <appearance align="left">
+          <label-style>
+            <style id="tunIconDelete"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="delete"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

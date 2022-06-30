@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+    <enum name="periodTypeEnum">
+        <meta>
+            <category name="Общее"/>
+        </meta>
+        <string value="WEEKLY" name="WEEKLY"/>
+        <string value="MONTHLY" name="MONTHLY"/>
+        <string value="DATES" name="DATES"/>
+    </enum>
+</schemas>

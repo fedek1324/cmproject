@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="InfoResource">
+    <date name="date" system="true"/>
+    <string name="subject" system="true"/>
+    <string name="author" system="true" temporal="true"/>
+    <actor name="addressee" system="true"/>
+    <boolean name="forPrint" system="true"/>
+    <string name="category" system="true"/>
+    <string name="status" system="true"/>
+    <string array="true" name="categoryList" system="true"/>
+    <string name="printStatus" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[isPrinted ? 'Распечатано' : (forPrint==true ? 'На печать' : 'Нет печати')]]></script>
+      </calc-values>
+    </string>
+    <file name="content" system="true"/>
+    <string name="statusValue" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[status.equals('TRANSFERRED') ? 'Передан' : (status.equals('REVIEWED') ? 'Ознакомлен' : inTrash ? 'Удален' : '')]]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="filesForPrint" system="true" temporal="true"/>
+    <string name="objectType" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Инфоматериал']]></script>
+      </calc-values>
+    </string>
+    <boolean name="isPrinted" system="true" temporal="true"/>
+  </schema>
+</schemas>

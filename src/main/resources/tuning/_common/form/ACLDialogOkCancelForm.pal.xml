@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ACLDialogOkCancel" id="ACLDialogOkCancelForm" name="${ui.form.ACLDialogOkCancelForm.name:Читатели}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <appearance field-layout="vertical">
+      <dialog-mode height="15" width="40" unit="percent"/>
+    </appearance>
+    <component>
+      <section id="row1" name="${ui.form.ACLDialogOkCancelForm.section.row1.name:Читатели групповая операция}" group="true">
+        <component>
+          <field attribute-ref="title">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal" multiline="true">
+            </appearance>
+          </field>
+          <field attribute-ref="readers.Value" name="${ui.form.ACLDialogOkCancelForm.section.row1.field.readers.Value.name:Читатели}">
+            <appearance multiline="true" importance="normal"/>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_All_Hierarchy"/>
+              <directory-ref ref="sys_roles"/>
+            </directories>
+          </field>
+         </component>
+      </section>
+
+        <section id="row2" name="${ui.form.ACLDialogOkCancelForm.section.row2.name:Уведомления новым читателям}" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+                <field attribute-ref="needNotifyLabel">
+                    <properties>
+                        <read-only condition-union="AND">
+                            <condition>true</condition>
+                        </read-only>
+                    </properties>
+                    <appearance>
+                        <label-style field-width="90" field-unit="percent"/>
+                    </appearance>
+                </field>
+                <field attribute-ref="needNotify">
+                    <appearance>
+                        <label-style field-width="10" field-unit="percent"/>
+                    </appearance>
+                </field>
+
+            </component>
+        </section>
+      <button name="${ui.form.ACLDialogOkCancelForm.button.Ок.name:Ок}">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.ACLDialogOkCancelForm.button.Отмена.name:Отмена}">
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

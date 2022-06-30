@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" position="270" name="${catalog.view.db_select_doc_InternalDocs.name:Документы: внутренние}" id="db-select-doc-InternalDocs">
+    <search-area name="InternalDocs" />
+    <descriptor-ref ref="db-select-doc-InternalDocs" />
+    <source>
+      <module ident="InternalDocs" />
+    </source>
+  </view>
+</catalog>

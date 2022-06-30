@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="RkkResource" name="RkkResourceInput">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+      <documentation>основная схема "Входящего документа"</documentation>
+    </meta>
+    <string name="pagename" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[registration.number==null ? 'ВхД проект' : 'ВхД № '+registration.number.prefix+registration.number.number+registration.number.suffix]]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="CorrespondentResource" name="correspondent" system="true"/>
+    <actor array="true" name="addressee" system="true"/>
+    <actor name="f_read_allowbyctx" array="true" computed="true" >
+      <calc-values>
+        <script event="save" lang="SPEL"><![CDATA[null]]></script>
+      </calc-values>
+    </actor>
+    <actor name="f_read_allowbyctx_pers" array="true" computed="true" >
+      <calc-values>
+        <script event="save" lang="SPEL"><![CDATA[#getDPs(registration?.place, 'Input')]]></script>
+      </calc-values>
+    </actor>
+    <schema-ref ref="DeliveryResource" name="delivery" system="true"/>
+    <string name="addressInfo" system="true"/>
+    <string name="showIdent" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Входящий']]></script>
+      </calc-values>
+    </string>
+    <string name="$lockerSignatureInfo" temporal="true"/>
+    <schema-ref ref="ShowCorrespondentInfo" name="$correspondentInfo" temporal="true"/>
+    <schema-ref ref="AdditionalCorrespondent" array="true" name="additionalCorrespondents" createlog="true"/>
+    <schema-ref ref="ShowSignInfo" name="showSignInfo" temporal="true"/>
+    <boolean name="$isOrganization" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[correspondent!=null && correspondent.type==T(ru.intertrust.cmj.dp.DPMInput$RKKOrRKKTemplate$Correspondent$Type).ORGANIZATION]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$isManual" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[correspondent!=null && correspondent.type==T(ru.intertrust.cmj.dp.DPMInput$RKKOrRKKTemplate$Correspondent$Type).NOT_SPECIFIED]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$isHumanManual" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[correspondent!=null && correspondent.type==T(ru.intertrust.cmj.dp.DPMInput$RKKOrRKKTemplate$Correspondent$Type).PRIVATE_HUMAN_MANUAL]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canVerify" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#verify'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string name="whoCancelCertifiedPIDTune" temporal="true">
+      <storage-field name="WhoCancelCertifiedPID"/>
+    </string>
+    <boolean name="needAskNotifyVerify" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(#this.whoCancelCertifiedPIDTune != null && !#this.whoCancelCertifiedPIDTune.isEmpty())]]>
+        </script>
+      </calc-values>
+    </boolean>
+
+    <string name="autoReceiptTable" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#this.tuning().getValues().get("receiptTables") == null ?
+    (#this.isMedoDocument ? {
+        #db = T(ru.intertrust.cmj.af.core.AFCMDomino).getSODb(),
+        #outDate = T(ru.intertrust.cmj.af.core.AFCMDomino).getDocByUNID(#db, #this.getId().substring(17)).getCreated().toJavaDate(),
+        #ent = new java.util.HashMap(),
+        #ent.put("type", "МЭДО"),
+        #ent.put("date", T(ru.intertrust.cmj.af.misc.AFDate).fromJavaDate(#outDate, false)),
+        T(ru.intertrust.cmj.rest.tuning.TuningHelper).processProperty(
+            #this.tuning().getValues(),
+            "receiptTables",
+            T(java.util.Arrays).asList(#ent),
+            #this.tuning().getSchema().getProperty("receiptTables")
+        )
+    }[5]
+    :
+        #this.integrationId != null ? {
+            #db = T(ru.intertrust.cmj.af.core.AFCMDomino).getSODb(),
+            #outDate = T(ru.intertrust.cmj.af.core.AFCMDomino).getDocByUNID(#db, #this.getId().substring(17)).getCreated().toJavaDate(),
+            #ent = new java.util.HashMap(), #ent.put("type", "Шлюз"),
+            #ent.put("date", T(ru.intertrust.cmj.af.misc.AFDate).fromJavaDate(#outDate, false)),
+            T(ru.intertrust.cmj.rest.tuning.TuningHelper).processProperty(
+                #this.tuning().getValues(),
+                "receiptTables",
+                T(java.util.Arrays).asList(#ent),
+                #this.tuning().getSchema().getProperty("receiptTables")
+            )
+        }[5]
+        : ""
+    )
+: ""]]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="ReceiptTableDisplay" array="true" name="receiptTablesDisplay" createlog="true"/>
+    <schema-ref ref="MedoPart" name="medoPart" system="true"/>
+    <string name="LabelWithoutDate" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['без даты']]></script>
+      </calc-values>
+    </string>
+    <string name="LabelWithoutNumber" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['без номера']]></script>
+      </calc-values>
+    </string>
+    <string name="$medoProcessingStatus" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[medoInfo.errorInfo]]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="DeliveryByBarcodeResource" array="true" name="deliveryByBarcode" system="true"/>
+    <schema-ref ref="ReceiptTable" array="true" name="receiptTables" createlog="true"/>
+    <schema-ref ref="AdditionalCorrespondentDisplay" array="true" name="additionalCorrespondentsDisplay" createlog="true"/>
+    <schema-ref ref="MovingCopiesTable" array="true" name="movingCopiesTable" createlog="true"/>
+    <string name="dialogueComment" createlog="true">
+      <storage-field name="dialogueComment"/>
+    </string>
+    <string name="dialogueCommentReg" createlog="true">
+      <storage-field name="dialogueCommentReg"/>
+    </string>
+    <string temporal="true" name="DOPName">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['F_DP_InputRkk']]></script>
+      </calc-values>
+    </string>
+    <boolean temporal="true" name="autoDetectRegPlaceInGateway">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA[T(ru.intertrust.cmj.af.core.AFCMDomino).getDbInfoByReplicaID(T(ru.intertrust.cmj.af.core.AFCMDomino).ormUNIDToCMFullUNID(#this.id)[0]).autoDetectRegPlaceInGateway]]></script>
+      </calc-values>
+    </boolean>
+    <string name="documentPlace">
+      <storage-field name="documentPlace"/>
+    </string>
+    <string name="medoMainFileName">
+      <storage-field name="medoMainFileName"/>
+    </string>
+    <string name="medoGuid">
+      <storage-field name="MEDO_Doc_GUID"/>
+    </string>
+    <string name="medoAttachmentsInfo" array="true">
+      <storage-field name="medoAppendixSync"/>
+    </string>
+    <custom-event-handler lang="JavaScript"><![CDATA[importPackage(Packages.ru.intertrust.cmj.af.so);
+importPackage(Packages.ru.intertrust.cmj.dp);
+importPackage(Packages.ru.intertrust.cmj.rest.tuning); 
+
+function querySave(object, document) {
+    if (object.tuning().getValues().containsKey("receiptTables") ) {
+        computeSchemaProperties(object,"receiptTables","receiptTablesDisplay");
+    }
+    if (object.tuning().getValues().containsKey("additionalCorrespondents") ) {
+        computeSchemaProperties(object,"additionalCorrespondents","additionalCorrespondentsDisplay");
+    }
+    if (object.correspondent().getOrganization() != null) {
+//подставляем только пока документ в состянии проект. 
+        if (!object.registration().getRegisteredInfo()) {
+            var organization = object.correspondent().getOrganization().getOrganization();
+            if (organization != null) {
+                var mandatory = organization.requiredAddressees();
+                mandatory.removeAll(object.addressees().getList());
+                object.addressees().getList().addAll(mandatory);
+            }
+        }
+    }
+    return true;
+}
+
+function postSave(object) {}
+
+function recalc(object, changedField) {
+	if (changedField == "registration.place" && object.registration().getState() == DPM.RKK.Registration.State.SENT) {
+		object.registration().state = null
+	}
+}
+
+//заполнение "схемы отображения" для таблиц "Способ получения" и "Корреспондент"
+function computeSchemaProperties(object, strSchema, strSchemaDisplay) {
+    var schemaList = object.tuning().getValues().get(strSchema).getValues();
+    var schemaDisplay;
+    //если ВхД только создан, то "схема отображения" = null, а значит нужно её заполнить
+    if ((schemaDisplay = object.tuning().getValues().get(strSchemaDisplay)) === null) {
+        processProperty(object, schemaList, strSchemaDisplay);
+    } else {
+        //иначе проверяем что данные схемы и схемы отображения отличаются, и только тогда перезаписываем
+        var schemaDisplayList = schemaDisplay.getValues();
+        if (schemaList.size() === schemaDisplayList.size()) {
+            for (var i = 0; i < schemaList.size(); i++) {
+                if (!schemaList.get(i).getValues().equals(schemaDisplayList.get(i).getValues())) {
+                    processProperty(object, schemaList, strSchemaDisplay);
+                }
+            }
+        } else {
+            processProperty(object, schemaList, strSchemaDisplay);
+        }
+    }
+}
+
+function processProperty(object, schema, strSchemaDisplay) {
+    TuningHelper.processProperty(
+        object.tuning().getValues(),
+        strSchemaDisplay,
+        schema,
+        object.tuning().getSchema().getProperty(strSchemaDisplay)
+    );
+}]]></custom-event-handler>
+  </schema>
+</schemas>

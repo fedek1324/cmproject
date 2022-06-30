@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="spP-spO-notActual" id="admin-counterparties-spo-all-with-requests-not-actual" name="${catalog.view.admin_counterparties_spo_all_with_requests_not_actual.name:Организации}" position="10">
+    <descriptor-ref ref="admin-spo-all-with-requests-not-actual"/>
+    <source>
+      <module ident="OrgDirectory"/>
+    </source>
+  </view>
+</catalog>

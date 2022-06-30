@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" extends="TNObject" name="CounterClassifier">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="classifierName" system="true" temporal="true">
+      <storage-field name="org_name"/>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Классификатор: Способ поиска счетчика по умолчанию']]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="AdminSOUnit" name="organization" system="true" temporal="true"/>
+    <enum-ref ref="ModuleType" name="module">
+      <storage-field name="module"/>
+    </enum-ref>
+    <string name="searchMethod">
+      <storage-field name="searchFormula"/>
+    </string>
+  </schema>
+</schemas>

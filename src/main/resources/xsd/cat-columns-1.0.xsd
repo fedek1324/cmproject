@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:com="http://www.intertrust.ru/schema/palette/common">
+
+    <xs:import namespace="http://www.intertrust.ru/schema/palette/common" schemaLocation="common-1.0.xsd">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Общие типы]]></xs:documentation>
+        </xs:annotation>
+    </xs:import>
+
+    <!-- Доп. информация -->
+    <xs:complexType name="metaColumnType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Доп. информация для разработчика]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="category" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Категория]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute type="xs:string" name="name" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Название категории]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="documentation" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Комментарий]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+
+    <!--Код-->
+    <xs:simpleType name="columnCodeSPELType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SPEL">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[SPEL]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="columnCodeValueType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Выражение для вычисления значения элемента коллекции. Можно задать другое содержание колонки]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="lang" type="columnCodeSPELType" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <!--Св-во колонки -->
+    <xs:attributeGroup name="attrGroupColumnType">
+        <xs:attribute name="subject" type="com:placeholderType" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название колонки]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="extends" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Родительский тип]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="open-document" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Открыть документы при нажатии на значения из колонки]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="hide-subject" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Скрыть название колонки в представлении]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="length" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Длина кол-ва символов в колонке]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <!-- Рекомендуемое отображение -->
+    <xs:simpleType name="displayType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Рекомендуемое отображение]]></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="icon">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="schemaRefType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Схема объекта]]></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <!--Св-во колонки в таблице-->
+    <xs:attributeGroup name="attrGroupColumnTableType">
+        <xs:attribute name="sort-asc" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Сортировка по возрастанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="sort-desc" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Сортировка по убыванию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="important" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Важность]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="filter" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Фильтрация]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="hide" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Скрыть]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="category" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Категория]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="show-count" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Показывать кол-во]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="invisible-default" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[По умолчанию не показывается в WEB-клиенте]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="stretch" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ширина.
+                stretch: 0 - столбец становится "dynamic-столбцом" и растягивается до тех пор, пока остальные столбцы не сожмутся до их ширин по умолчанию.
+                stretch: > 0 - значение stretch становится шириной по умолчанию для столбца]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <!--Тип элемента коллекции-->
+    <xs:complexType name="columnType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Тип элемента коллекции]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="meta" type="metaColumnType" minOccurs="0"/>
+            <xs:element name="eval-expression" type="columnCodeValueType" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attributeGroup ref="attrGroupColumnType"/>
+        <xs:attribute name="schema-ref" type="schemaRefType"/>
+        <xs:attribute name="display" type="displayType"/>
+    </xs:complexType>
+
+    <xs:complexType name="columnTableType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Тип элемента коллекции в таблице]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attributeGroup ref="attrGroupColumnTableType"/>
+    </xs:complexType>
+
+    <xs:complexType name="columnRefType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Ссылка на тип элемента коллекции]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="columnTableRefType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Ссылка на тип элемента коллекции]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attributeGroup ref="attrGroupColumnTableType"/>
+    </xs:complexType>
+
+    <xs:complexType name="complexColumnRefType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Ссылка на комплексный тип элемента коллекции]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="ref" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Комплексный тип элемента коллекции-->
+    <xs:complexType name="complColumnType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Комплексный тип элемента коллекции]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="meta" type="metaColumnType" minOccurs="0"/>
+            <xs:element name="eval-expression" type="columnCodeValueType" minOccurs="0"/>
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="column-ref" type="columnRefType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="complex-column-ref" type="complexColumnRefType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название колонки]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attributeGroup ref="attrGroupColumnType"/>
+        <xs:attribute name="column-search" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Колонка, показываемая на форме поиска]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="custom-icon" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Настраиваемая иконка]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="schema-ref" type="schemaRefType"/>
+        <xs:attribute name="display" type="displayType"/>
+    </xs:complexType>
+
+</xs:schema>

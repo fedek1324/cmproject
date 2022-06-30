@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="(vw_cmj_admin_plain_empl_dep)" id="admin-so-plain-empl-dep" name="Плоский список структуных единиц для админки(Подразделения и ШЕ)" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewComplexClassif">
+      <config>
+        <view-complex-classif level-select="all"/>
+      </config>
+    </builder>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="empty"/>
+        <column-ref ref="icon"/>
+        <column-ref ref="iconNotices"/>
+        <column-ref ref="iconPostType"/>
+        <column-ref ref="hierarchyObject"/>
+        <column-ref ref="soNameTunable"/>
+        <column-ref ref="title"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

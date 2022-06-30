@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="SQLNavigator" id="notifications" name="${catalog.folder.notifications.name:Уведомления}" position="10">
+    <counter-request name="PKD.counter.notices.notRead"/>
+    <subfolders>
+      <view id="notices-all" name="${catalog.folder.notifications.view.notices_all.name:Все}" position="10">
+        <descriptor-ref ref="pkd-notices"/>
+      </view>
+      <view id="notices-notRead" name="${catalog.folder.notifications.view.notices_notRead.name:Непрочитанные}" position="30">
+        <descriptor-ref ref="pkd-notices-notRead"/>
+      </view>
+      <view id="notices-trash" name="${catalog.folder.notifications.view.notices_trash.name:Корзина}" position="40">
+        <descriptor-ref ref="pkd-notices-deleted"/>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

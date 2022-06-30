@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="Templates-inputdocs" id="Templates-inputdocs-all" name="${catalog.view.Templates_inputdocs_all.name:Все шаблоны}" position="10">
+    <search-area name="input_InputDocs"/>
+    <descriptor-ref ref="dp-02-input"/>
+    <source>
+      <module ident="InputDocs"/>
+    </source>
+  </view>
+</catalog>

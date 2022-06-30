@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="EditOptions">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <enum-ref default-value="NOT_EDIT" ref="EditTypeEnumWithAdd" name="depEditType" createlog="true" temporal="true"/>
+    <enum-ref default-value="NOT_EDIT" ref="EditTypeEnum" name="counterEditType" createlog="true" temporal="true"/>
+    <enum-ref default-value="NOT_EDIT" ref="EditTypeEnum" name="regPlaceEditType" temporal="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="BulletinPrintForm">
+    <meta>
+      <category name="Система\Заседания"/>
+    </meta>
+    <string name="alias" system="true">
+      <storage-field name="BulletinPrintForm"/>
+    </string>
+    <string name="title" system="true">
+      <storage-field name="BulletinPrintFormTitle"/>
+    </string>
+  </schema>
+</schemas>

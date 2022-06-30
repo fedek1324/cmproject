@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <document name="${catalog.document.pkd_task6d7739fa9de64e8d86601da0d84301e7.name:Задача ПКД}" schema-ref="PersonTaskResource" object-ref="PKD_TASK" general="true">
+    <module ident="Personal" complect=""/>
+  </document>
+  <document name="${catalog.document.fe8e7bb522d046d786d7a2a983578881.name:Избранные}" object-ref="">
+    <module ident="Personal" complect=""/>
+  </document>
+</catalog>

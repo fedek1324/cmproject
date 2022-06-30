@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="AdminSOUnit" id="AdminSOUnitFormDigest" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="digest"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="displayName">
+        <appearance importance="normal">
+          <label-style>
+            <style id="tunClickableRed"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunClickableRed"/>
+            </value-style>
+          </field-style>
+        </appearance>
+      </field>
+    </component>
+  </form>
+</ui>

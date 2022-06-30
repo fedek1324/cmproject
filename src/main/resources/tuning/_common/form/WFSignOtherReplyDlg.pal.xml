@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="WFSignOtherReply" id="WFSignOtherReplyDlg" name="${ui.form.WFSignOtherReplyDlg.name:Предварительное подписание}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="Signer" name="${ui.form.WFSignOtherReplyDlg.field.Signer.name:Подписывающий}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="SignDate" name="${ui.form.WFSignOtherReplyDlg.field.SignDate.name:Дата}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field recalc="true" attribute-ref="Reply" name="${ui.form.WFSignOtherReplyDlg.field.Reply.name:Подписать?}">
+        <appearance importance="normal" widget="radio">
+          <label-style>
+            <style id="tunBold"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunBold"/>
+            </value-style>
+          </field-style>
+        </appearance>
+        <directories limit-livesearch="no-restrictions">
+          <directory-ref ref="YesNo"/>
+        </directories>
+      </field>
+      <field attribute-ref="Comment" name="${ui.form.WFSignOtherReplyDlg.field.Comment.name:Комментарий}">
+        <properties>
+          <require condition-union="AND">
+            <condition-ref ref="ReplyNo"/>
+          </require>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="ReplyNo"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="Files" name="${ui.form.WFSignOtherReplyDlg.field.Files.name:Приложения}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="ReplyNo"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

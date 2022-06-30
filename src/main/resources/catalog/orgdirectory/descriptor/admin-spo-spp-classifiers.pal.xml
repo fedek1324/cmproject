@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="OrgDirectory" view="(vw_cmj_cl_SPO_SPP)" id="admin-spo-spp-classifiers" name="АРМАдмин:СПО-СПП-Классификаторы" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="moduleName" sort-asc="true" category="true"/>
+        <column-ref ref="self"/>
+        <column-ref ref="clType" sort-asc="true" sort-desc="true" filter="true"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="CLASSIFIER" name="${catalog.custom-descriptor.admin-spo-spp-classifiers.actions.action.CLASSIFIER.name:CLASSIFIER}">
+        <create object-ref="CLASSIFIER"/>
+      </action>
+    </actions>
+    <custom-actions schema-ref="SPOClassifierCollection"/>
+  </custom-descriptor>
+</catalog>

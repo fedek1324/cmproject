@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Requests" view="(vw_cmj_classif_gos)" id="requests-classifier-questions-classif-gos" name="ОГ- тематический классификатор" style="default">
+    <help id="99778980"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewComplexClassif">
+      <config>
+        <view-complex-classif level-select="last-two"/>
+      </config>
+    </builder>
+    <table>
+      <hierarchy-column descriptor-ref="requests-classifier-questions-classif-gos" column-ref="empty"/>
+      <columns>
+        <column-ref ref="empty"/>
+        <column-ref ref="title"/>
+        <column-ref ref="classifierQuestion"/>
+        <column-ref ref="self"/>
+        <column-ref ref="allowed" hide="true"/>
+        <column-ref ref="LevelId" hide="true"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

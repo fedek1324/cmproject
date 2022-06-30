@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SOEmployeeRVZ" id="SOEmployeeRVZCopyForm" name="${ui.form.SOEmployeeRVZCopyForm.name:Штатная единица РВЗ (Копия)}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="copy"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="Position" name="${ui.form.SOEmployeeRVZCopyForm.field.Position.name:Должность:}">
+        <appearance align="left" importance="normal">
+          <label-style field-width="62" field-unit="symbol"/>
+        </appearance>
+        <hint-pop-up>${ui.form.SOEmployeeRVZCopyForm.field.Position.hintPopUp:Должность}</hint-pop-up>
+        <hint-in-field>${ui.form.SOEmployeeRVZCopyForm.field.Position.hintInField:Должность}</hint-in-field>
+      </field>
+      <field attribute-ref="rang" name="${ui.form.SOEmployeeRVZCopyForm.field.rang.name:Ранг:}">
+        <appearance importance="normal">
+          <label-style field-width="62" field-unit="symbol"/>
+        </appearance>
+        <hint-pop-up>${ui.form.SOEmployeeRVZCopyForm.field.rang.hintPopUp:Ранг}</hint-pop-up>
+      </field>
+      <field attribute-ref="parentHierarchy" name="${ui.form.SOEmployeeRVZCopyForm.field.parentHierarchy.name:Непосредственно подчиняется:}">
+        <appearance importance="normal">
+          <label-style field-width="70" field-unit="symbol"/>
+        </appearance>
+      </field>
+      <field attribute-ref="delegate_beard" name="${ui.form.SOEmployeeRVZCopyForm.field.delegate_beard.name:Принимающий дела как для участника документооборота:}">
+        <appearance importance="normal">
+          <label-style field-width="62" field-unit="symbol"/>
+        </appearance>
+        <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+          <directory-ref ref="arm-admin-dialog-empl"/>
+        </directories>
+      </field>
+      <field attribute-ref="receiving" name="${ui.form.SOEmployeeRVZCopyForm.field.receiving.name:Принимающий дела как для места регистрации:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="SOEmployee_isRVZ"/>
+          </hide>
+        </properties>
+        <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+          <directory-ref ref="arm-admin-dialog-dep"/>
+          <directory-ref ref="arm-admin-dialog-rvz"/>
+        </directories>
+      </field>
+      <field attribute-ref="IsRVZ" name="${ui.form.SOEmployeeRVZCopyForm.field.IsRVZ.name:Является РВЗ:}"/>
+      <field attribute-ref="area" name="${ui.form.SOEmployeeRVZCopyForm.field.area.name:Территория:}">
+        <properties>
+          <require condition-union="AND">
+            <condition-ref ref="edit"/>
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance align="left" multiline="true" importance="normal">
+          <label-style field-width="62" field-unit="symbol"/>
+        </appearance>
+        <hint-pop-up>${ui.form.SOEmployeeRVZCopyForm.field.area.hintPopUp:Территория}</hint-pop-up>
+        <directories limit-livesearch="no-restrictions">
+          <directory-ref ref="arm-admin-select-area"/>
+        </directories>
+      </field>
+    </component>
+  </form>
+</ui>

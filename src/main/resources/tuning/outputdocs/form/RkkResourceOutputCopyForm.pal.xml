@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RkkResourceOutput" id="RkkResourceOutputCopyForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="copy"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="title">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="type" name="${ui.form.RkkResourceOutputCopyForm.field.type.name:Вид документа:}">
+        <hint-pop-up>${ui.form.RkkResourceOutputCopyForm.field.type.hintPopUp:Вид документа}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent" name="${ui.form.RkkResourceOutputCopyForm.field.correspondent.name:Адресаты:}">
+        <appearance importance="normal">
+          <field-style separator="newline" group="true"/>
+        </appearance>
+        <hint-pop-up>${ui.form.RkkResourceOutputCopyForm.field.correspondent.hintPopUp:Адресаты}</hint-pop-up>
+      </field>
+      <field attribute-ref="executor" name="${ui.form.RkkResourceOutputCopyForm.field.executor.name:Исполнители:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceOutputCopyForm.field.executor.hintPopUp:Исполнители}</hint-pop-up>
+      </field>
+      <field attribute-ref="advSigner" name="${ui.form.RkkResourceOutputCopyForm.field.advSigner.name:Другие подписи:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceOutputCopyForm.field.advSigner.hintPopUp:Другие подписи}</hint-pop-up>
+      </field>
+      <field attribute-ref="sending.department" name="${ui.form.RkkResourceOutputCopyForm.field.sending.department.name:Подразделение-отправитель:}">
+        <hint-pop-up>${ui.form.RkkResourceOutputCopyForm.field.sending.department.hintPopUp:Подразделение-отправитель}</hint-pop-up>
+      </field>
+      <field attribute-ref="appendices" name="${ui.form.RkkResourceOutputCopyForm.field.appendices.name:Кол-во приложений:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceOutputCopyForm.field.appendices.hintPopUp:Кол-во приложений}</hint-pop-up>
+      </field>
+      <field attribute-ref="appendicesPages" name="${ui.form.RkkResourceOutputCopyForm.field.appendicesPages.name:Листов приложения:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceOutputCopyForm.field.appendicesPages.hintPopUp:Листов приложения}</hint-pop-up>
+      </field>
+      <field attribute-ref="copies" name="${ui.form.RkkResourceOutputCopyForm.field.copies.name:Кол-во экземпляров:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceOutputCopyForm.field.copies.hintPopUp:Кол-во экземпляров}</hint-pop-up>
+      </field>
+      <field attribute-ref="pages" name="${ui.form.RkkResourceOutputCopyForm.field.pages.name:Кол-во листов:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceOutputCopyForm.field.pages.hintPopUp:Кол-во листов}</hint-pop-up>
+      </field>
+      <field attribute-ref="comment" name="${ui.form.RkkResourceOutputCopyForm.field.comment.name:Комментарий:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceOutputCopyForm.field.comment.hintPopUp:Комментарий}</hint-pop-up>
+      </field>
+      <field attribute-ref="category" name="${ui.form.RkkResourceOutputCopyForm.field.category.name:Тематика:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceOutputCopyForm.field.category.hintPopUp:Тематика}</hint-pop-up>
+      </field>
+      <field attribute-ref="disableLinkAccess" name="${ui.form.RkkResourceOutputCopyForm.field.disableLinkAccess.name:Ограничить доступ по связям:}">
+        <appearance align="right" importance="normal">
+          <label-style field-width="2" field-unit="symbol"/>
+        </appearance>
+        <hint-in-field>${ui.form.RkkResourceOutputCopyForm.field.disableLinkAccess.hintInField:Не дается доступ к текущему документу читателям связанных документов}</hint-in-field>
+      </field>
+      <field attribute-ref="$hasContentWithAffirm">
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

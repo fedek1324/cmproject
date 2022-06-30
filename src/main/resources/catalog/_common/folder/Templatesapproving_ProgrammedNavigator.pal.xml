@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="ProgrammedNavigator" id="Templates-approving" name="${catalog.folder.Templates_approving.name:Шаблоны листов согласования}" position="110">
+    <subfolders>
+      <view id="favourites-rkk-template-approving" name="${catalog.folder.Templates_approving.view.favourites_rkk_template_approving.name:Избранное}" position="20">
+        <descriptor-ref ref="favourites-template-approving"/>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

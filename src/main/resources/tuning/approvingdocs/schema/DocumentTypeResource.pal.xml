@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="DocumentTypeResource">
+    <string createlog="true" system="true" name="id" />
+    <string createlog="true" system="true" name="type" />
+    <schema-ref ref="SubtypeResource" system="true" name="subtype" />
+    <string system="true" name="name" />
+  </schema>
+</schemas>

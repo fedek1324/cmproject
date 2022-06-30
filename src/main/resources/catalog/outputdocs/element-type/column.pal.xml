@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <complex-column name="visualControlResp" extends="icon">
+    <meta>
+      <documentation>Иконка Визуализация контроля ответов</documentation>
+    </meta>
+  </complex-column>
+</catalog>

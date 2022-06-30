@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="AddressValue">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <string name="postOfficeBox" system="true"/>
+    <schema-ref ref="AddressExt" name="extendedAddress" system="true"/>
+    <string name="streetAddress" system="true"/>
+    <string name="locality" system="true"/>
+    <string name="region" system="true"/>
+    <string name="postalCode" system="true"/>
+    <string name="countryName" system="true" createlog="true">
+      <default-values>
+        <default-value>Россия</default-value>
+      </default-values>
+    </string>
+    <string name="streetTypeAddress" system="true">
+      <default-values>
+        <default-value>улица</default-value>
+      </default-values>
+    </string>
+    <string name="district" system="true"/>
+  </schema>
+</schemas>

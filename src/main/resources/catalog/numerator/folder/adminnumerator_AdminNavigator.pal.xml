@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="AdminNavigator" id="admin-numerator" name="${catalog.folder.admin_numerator.name:Нумератор}" position="20">
+    <subfolders>
+      <view id="admin-numerator-by-db" name="${catalog.folder.admin_numerator.view.admin_numerator_by_db.name:По БД}" position="10">
+        <visible>
+          <hide-storage name="AF5" />
+        </visible>
+        <descriptor-ref ref="admin-numerator-by-db"/>
+        <source>
+          <module ident="Numerator"/>
+        </source>
+      </view>
+      <view id="admin-numerator-by-dep" name="${catalog.folder.admin_numerator.view.admin_numerator_by_dep.name:По подразделению}" position="20">
+        <visible>
+          <hide-storage name="AF5" />
+        </visible>
+        <descriptor-ref ref="admin-numerator-by-dep"/>
+        <source>
+          <module ident="Numerator"/>
+        </source>
+      </view>
+      <view id="admin-numerator-by-type" name="${catalog.folder.admin_numerator.view.admin_numerator_by_type.name:По типу документа}" position="30">
+        <visible>
+          <hide-storage name="AF5" />
+        </visible>
+        <descriptor-ref ref="admin-numerator-by-type"/>
+        <source>
+          <module ident="Numerator"/>
+        </source>
+      </view>
+      <view id="admin-numerator-trash" name="${catalog.folder.admin_numerator.view.admin_numerator_trash.name:Корзина}" position="50">
+        <visible>
+          <hide-storage name="AF5" />
+        </visible>
+        <descriptor-ref ref="admin-numerator-trash"/>
+        <source>
+          <module ident="Numerator"/>
+        </source>
+      </view>
+      <view id="admin-numerator-by-server" name="${catalog.folder.admin_numerator.view.admin_numerator_by_server.name:По серверу}" position="40">
+        <visible>
+          <hide-storage name="AF5" />
+        </visible>
+        <descriptor-ref ref="admin-numerator-by-server"/>
+        <source>
+          <module ident="Numerator"/>
+        </source>
+      </view>
+      <view id="admin-numerator-af5" name="${catalog.folder.admin_numerator.view.admin_numerator_af5.name:Счетчики}" position="60">
+        <visible>
+          <hide-storage name="Domino" />
+        </visible>
+        <descriptor-ref ref="admin-numerator-af5"/>
+        <source>
+          <module ident="Numerator"/>
+        </source>
+      </view>
+      <view id="admin-numerator-trash-af5" name="${catalog.folder.admin_numerator.view.admin_numerator_trash_af5.name:Корзина}" position="70">
+        <visible>
+          <hide-storage name="Domino" />
+        </visible>
+        <descriptor-ref ref="admin-numerator-trash-af5"/>
+        <source>
+          <module ident="Numerator"/>
+        </source>
+      </view>
+    </subfolders>
+    <icon code="sprite/sidebarCMJSprite.png" path="sprite/sidebarCMJSprite.png" position="50"/>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

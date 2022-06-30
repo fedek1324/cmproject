@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <document name="${catalog.document.review_visa5f1cc5b5d92f4ddead9d2ca27da1fe5e.name:Виза (Ознакомление)}" schema-ref="ReviewReplyResource" object-ref="REVIEW_VISA">
+    <module ident="Review" complect=""/>
+  </document>
+  <document name="${catalog.document.apre_slv_template58093c5011b74e9b87b6082fa64c0fda.name:Список ознакомления}" object-ref="APRE_SLV_TEMPLATE">
+    <module ident="Review" complect=""/>
+  </document>
+  <document name="${catalog.document.review_template867880bcde444c09b0001e325d296d71.name:Шаблон ознакомления}" schema-ref="ReviewTemplateResource" object-ref="REVIEW_TEMPLATE">
+    <module ident="Review" complect=""/>
+  </document>
+</catalog>

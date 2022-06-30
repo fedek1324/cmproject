@@ -1,0 +1,608 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="TNObject" name="GateSignal">
+    <meta>
+      <category name="РМ Администратора\Шлюз"/>
+    </meta>
+    <enum-ref ref="SignalTypeEnum" name="signalType">
+      <storage-field name="OperationType"/>
+    </enum-ref>
+    <boolean name="fromNotes" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[true]]></script>
+      </calc-values>
+    </boolean>
+    <string name="soReplica">
+      <storage-field name="SORepID"/>
+    </string>
+    <string name="hrCreatedLabel" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!fromNotes ? 'Создан из ИР Шлюз-Кадры' : '']]></script>
+      </calc-values>
+    </string>
+    <string name="personalId">
+      <storage-field name="DocID"/>
+    </string>
+    <boolean name="isAf5Storage" createlog="true" temporal="true"/>
+    <string name="processType" createlog="true">
+      <storage-field name="Protected"/>
+    </string>
+    <boolean name="prohibitAutoProcess">
+      <storage-field name="ProtectFromSignal"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="errorGetSOObj">
+      <storage-field name="errorGetSOObj"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="processTypeLabel" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['1'.equals(processType) ? 'Полуавтоматический' : 'Автоматический']]></script>
+      </calc-values>
+    </string>
+    <datetime name="updatedDate">
+      <storage-field name="UpdatedDate"/>
+    </datetime>
+    <datetime name="createdDate">
+      <storage-field name="DateCreate"/>
+    </datetime>
+    <datetime name="operationDate">
+      <storage-field name="OperationDate"/>
+    </datetime>
+    <string name="statusLabel" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[updatedDate != null ? 'Обработан' : processDate != null ? 'Отложен' : 'Новый']]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="changedFields">
+      <storage-field name="ChangedFields"/>
+    </string>
+    <string name="personalIdOld">
+      <storage-field name="DocID_old"/>
+    </string>
+    <string name="lastName">
+      <storage-field name="LastName"/>
+    </string>
+    <string name="lastNameOld">
+      <storage-field name="LastName_old"/>
+    </string>
+    <string name="firstName">
+      <storage-field name="FirstName"/>
+    </string>
+    <string name="firstNameOld">
+      <storage-field name="FirstName_old"/>
+    </string>
+    <string name="middleName">
+      <storage-field name="MiddleName"/>
+    </string>
+    <string name="middleNameOld">
+      <storage-field name="MiddleName_old"/>
+    </string>
+    <string array="true" name="address">
+      <storage-field name="Address"/>
+    </string>
+    <string array="true" name="addressOld">
+      <storage-field name="Address_old"/>
+    </string>
+    <string name="building">
+      <storage-field name="Position"/>
+    </string>
+    <string name="buildingOld">
+      <storage-field name="Position_old"/>
+    </string>
+    <string name="office">
+      <storage-field name="KNumber"/>
+    </string>
+    <string name="officeOld">
+      <storage-field name="KNumber_old"/>
+    </string>
+    <string name="phone">
+      <storage-field name="Phone"/>
+    </string>
+    <string name="phoneOld">
+      <storage-field name="Phone_old"/>
+    </string>
+    <string name="email">
+      <storage-field name="Email"/>
+    </string>
+    <string name="emailOld">
+      <storage-field name="Email_old"/>
+    </string>
+    <string name="login" createlog="true">
+      <storage-field name="UserName"/>
+    </string>
+    <string name="loginOld" createlog="true">
+      <storage-field name="UserName_old"/>
+    </string>
+    <string name="postName">
+      <storage-field name="DutyName"/>
+    </string>
+    <string name="postNameOld">
+      <storage-field name="DutyName_old"/>
+    </string>
+    <string name="headId">
+      <storage-field name="HeadID"/>
+    </string>
+    <string name="headIdOld">
+      <storage-field name="HeadID_old"/>
+    </string>
+    <string name="depCode">
+      <storage-field name="DepCode"/>
+    </string>
+    <string name="depCodeOld">
+      <storage-field name="DepCode_old"/>
+    </string>
+    <boolean name="isBoss" createlog="true">
+      <storage-field name="IsBoss"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="isBossOld" createlog="true">
+      <storage-field name="IsBoss_old"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="fullDepName">
+      <storage-field name="FullDepName"/>
+    </string>
+    <string name="fullDepNameOld">
+      <storage-field name="FullDepName_old"/>
+    </string>
+    <string name="noticeHost" createlog="true">
+      <storage-field name="Notice_HostName"/>
+    </string>
+    <string name="noticeHostOld" createlog="true">
+      <storage-field name="Notice_HostName_Old"/>
+    </string>
+    <string name="shortDepName">
+      <storage-field name="ShortDepName"/>
+    </string>
+    <string name="shortDepNameOld">
+      <storage-field name="ShortDepName_old"/>
+    </string>
+    <string name="structLevel">
+      <storage-field name="StructLev"/>
+    </string>
+    <string name="structLevelOld">
+      <storage-field name="StructLev_old"/>
+    </string>
+    <string name="hrCode">
+      <storage-field name="HRCode"/>
+    </string>
+    <string name="hrCodeOld">
+      <storage-field name="HRCode_old"/>
+    </string>
+    <string name="homeNet" createlog="true">
+      <storage-field name="HomeServer"/>
+    </string>
+    <string name="homeNetOld" createlog="true">
+      <storage-field name="HomeServer_old"/>
+    </string>
+    <string name="taskReceiverId">
+      <storage-field name="taskReceiverId"/>
+    </string>
+    <string name="soObjectUnid">
+      <storage-field name="soObjectUnid"/>
+    </string>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="taskReceiverUnit" createlog="true" temporal="true"/>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="taskReceiverRegPlaceUnit" createlog="true" temporal="true"/>
+    <string name="taskSourceId">
+      <storage-field name="TaskSourceID"/>
+    </string>
+    <string name="soPersonUnid">
+      <storage-field name="soPersonUnid"/>
+    </string>
+    <string name="soParentUnid">
+      <storage-field name="soParentUnid"/>
+    </string>
+    <string name="hrId">
+      <storage-field name="Auto_card"/>
+    </string>
+    <datetime name="processDate">
+      <storage-field name="ProcessDate"/>
+    </datetime>
+    <string name="tabNum">
+      <storage-field name="TabNum"/>
+    </string>
+    <string name="rank">
+      <storage-field name="Rank"/>
+    </string>
+    <boolean name="isSuperBoss">
+      <storage-field name="IsSuperBoss"/>
+    </boolean>
+    <boolean name="isMain" createlog="true">
+      <storage-field name="IsMain"/>
+      <storage-string value="1"/>
+    </boolean>
+    <enum-ref ref="DepTypeEnum" name="depType">
+      <storage-field name="IsStructure"/>
+    </enum-ref>
+    <string name="soOrgName" createlog="true" temporal="true"/>
+    <boolean name="lastNameChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("EName")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="firstNameChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("ESName")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="middleNameChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("ETName")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="addressChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("Address")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="buildingChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("EPosition")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="officeChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("EKNumber")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="emailChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("EMail")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="phoneChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("EPhone")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="loginChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("UserName")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="postNameChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("EPost")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="headIdChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && (changedFields.contains("HeadOfficeID") || changedFields.contains("OName_1Id"))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="depCodeChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("Index")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isBossChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && (changedFields.contains("Leader") || changedFields.contains("isWho"))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="fullDepNameChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("OName")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="shortDepNameChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("OName_1")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="structLevelChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("StructLevel")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="hrCodeChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("HRCode")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="homeNetChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("HomeNet")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="personalIdChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("PersonalID")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isForChange" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['ChangeDep'.equals(signalType) || 'ChangeEmployee'.equals(signalType) || 'ChangeBoss'.equals(signalType)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isForEmployee" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['NewEmployee'.equals(signalType) || 'ChangeEmployee'.equals(signalType) || 'DismissEmployee'.equals(signalType) || 'NewBoss'.equals(signalType) || 'ChangeBoss'.equals(signalType) || 'DeleteBoss'.equals(signalType)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isForDep" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['NewDep'.equals(signalType) || 'ChangeDep'.equals(signalType) || 'DeleteDep'.equals(signalType)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isForAbsences" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['ChangeAbsences'.equals(signalType)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isForDelete" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['DismissEmployee'.equals(signalType) || 'DeleteDep'.equals(signalType) || 'DeleteBoss'.equals(signalType)]]></script>
+      </calc-values>
+    </boolean>
+    <string name="prohibitAutoProcessLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[prohibitAutoProcess ? '(Документ СО отключен от обновления)' : '']]></script>
+      </calc-values>
+    </string>
+    <string name="errorGetSOObjLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[errorGetSOObj ? 'Ошибка получения объекта СО' : '']]></script>
+      </calc-values>
+    </string>
+    <boolean name="isProcessed" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[updatedDate != null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isDelayed" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[processDate != null]]></script>
+      </calc-values>
+    </boolean>
+    <schema-ref ref="AdminSOUnit" name="soUnit" temporal="true"/>
+    <string name="unitTypeOld">
+      <storage-field name="UnitType_old"/>
+    </string>
+    <string name="unitType">
+      <storage-field name="UnitType"/>
+    </string>
+    <boolean name="unitTypeChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("Form")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="noticeHostChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields!=null && changedFields.contains("Notice_HostName")]]></script>
+      </calc-values>
+    </boolean>
+    <string name="personalSectionCode">
+      <storage-field name="personalSectionCode"/>
+    </string>
+    <string name="errorMessage" createlog="true">
+      <storage-field name="errorMessage"/>
+    </string>
+    <string name="personalSectionCodeOld">
+      <storage-field name="personalSectionCodeOld"/>
+    </string>
+    <date name="depCreateDate" createlog="true">
+      <storage-field name="depCreateDate"/>
+    </date>
+    <string name="chiefTabNumber" createlog="true">
+      <storage-field name="chiefTabNumber"/>
+    </string>
+    <date name="depCloseDate" createlog="true">
+      <storage-field name="depCloseDate"/>
+    </date>
+    <string name="chiefTabNumberOld" createlog="true">
+      <storage-field name="chiefTabNumberOld"/>
+    </string>
+    <string name="country" createlog="true">
+      <storage-field name="country"/>
+    </string>
+    <string name="departmentType" createlog="true">
+      <storage-field name="departmentType"/>
+    </string>
+    <string name="city" createlog="true">
+      <storage-field name="city"/>
+    </string>
+    <string name="departmentTypeOld" createlog="true">
+      <storage-field name="departmentTypeOld"/>
+    </string>
+    <string name="region" createlog="true">
+      <storage-field name="region"/>
+    </string>
+    <string name="street" createlog="true">
+      <storage-field name="street"/>
+    </string>
+    <schema-ref ref="GateSignalAbsenceData" array="true" name="absences" createlog="true" temporal="true"/>
+    <date name="birthday" createlog="true">
+      <storage-field name="birthday"/>
+    </date>
+    <date name="depCreateDateOld" createlog="true">
+      <storage-field name="depCreateDateOld"/>
+    </date>
+    <date name="surNameChangeDate" createlog="true">
+      <storage-field name="surNameChangeDate"/>
+    </date>
+    <date name="depCloseDateOld" createlog="true">
+      <storage-field name="depCloseDateOld"/>
+    </date>
+    <string name="employeeGroup" createlog="true">
+      <storage-field name="employeeGroup"/>
+    </string>
+    <string name="countryOld" createlog="true">
+      <storage-field name="countryOld"/>
+    </string>
+    <string name="regionOld" createlog="true">
+      <storage-field name="regionOld"/>
+    </string>
+    <date name="birthdayOld" createlog="true">
+      <storage-field name="birthdayOld"/>
+    </date>
+    <string name="cityOld" createlog="true">
+      <storage-field name="cityOld"/>
+    </string>
+    <date name="surNameChangeDateOld" createlog="true">
+      <storage-field name="surNameChangeDateOld"/>
+    </date>
+    <string name="streetOld" createlog="true">
+      <storage-field name="streetOld"/>
+    </string>
+    <boolean name="depCreateDateChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("depCreateDate")]]></script>
+      </calc-values>
+    </boolean>
+    <string name="employeeGroupOld" createlog="true">
+      <storage-field name="employeeGroupOld"/>
+    </string>
+    <boolean name="depCloseDateChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("depCloseDate")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="countryChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("country")]]></script>
+      </calc-values>
+    </boolean>
+    <schema-ref ref="GateSignalAbsenceData" array="true" name="absencesOld" createlog="true" temporal="true"/>
+    <boolean name="regionChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("region")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="cityChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("city")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="streetChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("street")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isRegionalBrach" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['РФ: РЕГИОНАЛЬНЫЙ ФИЛИАЛ'.equalsIgnoreCase(departmentType)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="departmentTypeChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields != null && changedFields.contains("departmentType")]]></script>
+      </calc-values>
+    </boolean>
+    <string name="hireOrderNum" createlog="true">
+      <storage-field name="hireOrderNum"/>
+    </string>
+    <date name="hireOrderDate" createlog="true">
+      <storage-field name="hireOrderDate"/>
+    </date>
+    <date name="hireDate" createlog="true">
+      <storage-field name="hireDate"/>
+    </date>
+    <date name="appointDate" createlog="true">
+      <storage-field name="appointDate"/>
+    </date>
+    <date name="dismissalDate" createlog="true">
+      <storage-field name="dismissalDate"/>
+    </date>
+    <string name="actingTabNum" createlog="true">
+      <storage-field name="actingTabNum"/>
+    </string>
+    <string name="actingPostCode" createlog="true">
+      <storage-field name="actingPostCode"/>
+    </string>
+    <string name="actingPost" createlog="true">
+      <storage-field name="actingPost"/>
+    </string>
+    <string array="true" name="groupNames" createlog="true">
+      <storage-field name="groupNames"/>
+    </string>
+    <string name="accountState" createlog="true">
+      <storage-field name="accountState"/>
+    </string>
+    <string name="hireOrderNumOld" createlog="true">
+      <storage-field name="hireOrderNumOld"/>
+    </string>
+    <date name="hireOrderDateOld" createlog="true">
+      <storage-field name="hireOrderDateOld"/>
+    </date>
+    <date name="hireDateOld" createlog="true">
+      <storage-field name="hireDateOld"/>
+    </date>
+    <date name="appointDateOld" createlog="true">
+      <storage-field name="appointDateOld"/>
+    </date>
+    <date name="dismissalDateOld" createlog="true">
+      <storage-field name="dismissalDateOld"/>
+    </date>
+    <string name="actingTabNumOld" createlog="true">
+      <storage-field name="actingTabNumOld"/>
+    </string>
+    <string name="actingPostCodeOld" createlog="true">
+      <storage-field name="actingPostCodeOld"/>
+    </string>
+    <string name="actingPostOld" createlog="true">
+      <storage-field name="actingPostOld"/>
+    </string>
+    <boolean name="hireOrderNumChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("hireOrderNum")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="hireOrderDateChanged" createlog="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("hireOrderDate")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="hireDateChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("hireDate")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="appointDateChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("appointDate")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="dismissalDateChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("dismissalDate")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="actingPostCodeChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("actingPostCode")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="actingTabNumChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("actingTabNum")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="actingPostChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("actingPost")]]></script>
+      </calc-values>
+    </boolean>
+    <string name="soGroups" createlog="true">
+      <storage-field name="soGroups"/>
+    </string>
+    <string name="hierProfiles" createlog="true">
+      <storage-field name="hierProfiles"/>
+    </string>
+    <string name="postCode" createlog="true">
+      <storage-field name="postCode"/>
+    </string>
+        <string name="structBossACOld" createlog="true">
+      <storage-field name="struct_boss_ac_old"/>
+    </string>
+    <string name="structBossAC" createlog="true">
+      <storage-field name="struct_boss_ac"/>
+    </string>
+    <boolean name="structBossACChanged" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[changedFields !=null && changedFields.contains("structBossAC")]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DocumentTypeResource" projection="default" id="DocumentTypeResourceValueForm">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="digest" />
+      </hide>
+    </properties>
+    <component>
+      <section group="true" id="row10">
+        <component>
+          <field attribute-ref="name" />
+        </component>
+        <appearance>
+          <label-style width="0" />
+        </appearance>
+      </section>
+    </component>
+    <appearance>
+      <label-style width="0" />
+    </appearance>
+  </form>
+</ui>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <root-folder id="CMJHeaderAlert" name="${catalog.root-folder.CMJHeaderAlert.name:CMJHeaderAlert}"/>
+  <root-folder id="AdminNavigator" name="${catalog.root-folder.AdminNavigator.name:AdminNavigator}">
+    <icon code="sprite/navigatorSprite.png" path="sprite/navigatorSprite.png" position="00"/>
+  </root-folder>
+  <root-folder id="CMJLinks" name="${catalog.root-folder.CMJLinks.name:CMJLinks}"/>
+  <root-folder id="CMJNavigator" name="${catalog.root-folder.CMJNavigator.name:CMJNavigator}"/>
+  <root-folder default="true" id="SQLNavigator" name="${catalog.root-folder.SQLNavigator.name:SQLNavigator}"/>
+  <root-folder id="ProgrammedNavigator" name="${catalog.root-folder.ProgrammedNavigator.name:ProgrammedNavigator}"/>
+  <root-folder id="CMJImportantResources" name="${catalog.root-folder.CMJImportantResources.name:CMJImportantResources}"/>
+  <root-folder id="NonUse" name="${catalog.root-folder.NonUse.name:NonUse}"/>
+  <root-folder id="CatalogPlans" name="${catalog.root-folder.CatalogPlans.name:CatalogPlans}"/>
+  <root-folder id="CatalogDog" name="${catalog.root-folder.CatalogDog.name:CatalogDog}"/>
+  <root-folder id="CatalogNavigatorRVZ" name="${catalog.root-folder.CatalogNavigatorRVZ.name:CatalogNavigatorRVZ}"/>
+  <root-folder id="CatalogNavigator" name="${catalog.root-folder.CatalogNavigator.name:CatalogNavigator}"/>
+  <root-folder id="CatalogDelo" name="${catalog.root-folder.CatalogDelo.name:CatalogDelo}"/>
+  <root-folder id="WebDocs20Navigator" name="${catalog.root-folder.WebDocs20Navigator.name:WebDocs20Navigator}"/>
+  <root-folder id="SysAdminNavigator" name="${catalog.root-folder.SysAdminNavigator.name:SysAdminNavigator}"/>
+</catalog>

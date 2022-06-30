@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="DateInterval">
+    <meta>
+      <category name="Отчеты"/>
+    </meta>
+    <date name="Start"/>
+    <date name="End"/>
+  </schema>
+</schemas>

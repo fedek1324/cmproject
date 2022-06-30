@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="AdditionalCorrespondent" projection="default" id="AdditionalCorrespondentsFormEdit">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <section name="${ui.form.AdditionalCorrespondentsFormEdit.section.author.name:Автор}" id="author">
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="DontAddAuthor"/>
+          </hide>
+        </properties>
+        <component>
+          <field attribute-ref="additionalAuthor" alias="additionalAuthor">
+            <properties>
+              <read-only condition-union="AND">
+                <negative-condition-ref ref="DontAddAuthor"/>
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+            <directories limit-livesearch="sys-current">
+              <directory-select-org attribute-ref="correspondent" ref="ALIEN_BEARDS"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+      <section name="${ui.form.AdditionalCorrespondentsFormEdit.section.correspondent.name:Корреспондент}" id="correspondent">
+        <component>
+          <field attribute-ref="correspondent" recalc="true" alias="correspondent">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="PrivatePeople"/>
+              <directory-ref ref="FOREIGN_ORGS"/>
+              <directory-ref ref="FV_FOREIGN_ORG_NONSYS_ORG_PRIVATE_HUMAN"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

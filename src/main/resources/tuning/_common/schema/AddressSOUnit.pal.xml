@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="AddressSOUnit" recalc="true">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="city" createlog="true"/>
+    <string name="region" createlog="true"/>
+    <string name="building" createlog="true"/>
+    <string name="locality" createlog="true"/>
+    <string name="house" createlog="true"/>
+    <string name="street" createlog="true"/>
+    <string name="country" createlog="true"/>
+    <string name="postIndex" createlog="true"/>
+    <datetime name="createDateTime" createlog="true"/>
+    <string name="type" createlog="true" default-value="почтовый"/>
+    <string name="office" createlog="true"/>
+    <string name="corp" createlog="true"/>
+    <string name="streetType" createlog="true"/>
+    <boolean name="isFromHr" createlog="true">
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="isDefault" createlog="true">
+      <storage-string value="1"/>
+    </boolean>
+    <string name="corpShow" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[corp!=null && !corp.isEmpty() ?(corp.contains('.') || corp.contains(' ') ? corp: 'корп.'+corp) + ', ' : '']]></script>
+      </calc-values>
+    </string>
+    <string name="officeShow" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[office!=null && !office.isEmpty() ?(office.contains('.') || office.contains(' ') ? office: 'оф.'+office) + ', ' : '']]></script>
+      </calc-values>
+    </string>
+    <string name="streetShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[street!=null && !street.isEmpty() ?((streetType!=null && !streetType.isEmpty() ? (streetType + ' ') : (!street.contains('.') ? 'ул.' : '')) + street +', ') : '']]></script>
+      </calc-values>
+    </string>
+    <string name="houseShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[house!=null && !house.isEmpty() ?((house.contains('.') || house.contains(' ')) ? house  : 'д.'+house) +', ': '']]></script>
+      </calc-values>
+    </string>
+    <string name="cityShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[city!=null && !city.isEmpty() ?((city.contains('.') || city.contains(' ')) ? city: 'г.'+city) +', ': '']]></script>
+      </calc-values>
+    </string>
+    <string name="buildingShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[building!=null && !building.isEmpty() ?(building.contains('.') || building.contains(' ') ? building: 'стр.'+building) + ', ' : '']]></script>
+      </calc-values>
+    </string>
+    <string name="addressShow" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(postIndex!=null && !postIndex.isEmpty() ? postIndex+', ' : '')+(country!=null && !country.isEmpty() ? country+', ' : '')+(region!=null && !region.isEmpty() ? region+', ' : '')+cityShow+(locality!=null && !locality.isEmpty() ? locality+', ' : '')+streetShow+houseShow+buildingShow + corpShow + officeShow]]></script>
+      </calc-values>
+    </string>
+    <string name="addressString" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(addressShow != null && !addressShow.isEmpty() ? addressShow.substring(0, addressShow.length() - 2) + '.' : '')]]></script>
+      </calc-values>
+    </string>
+    <boolean name="cityIsNotEmpty" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[city != null && !city.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="countryIsNotEmpty" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[country != null && !country.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="streetIsNotEmpty" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[street != null && !street.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <string name="infoMessage" temporal="true" default-value="Для добавления адреса необходимо указать город, или страну, или название улицы"/>
+  </schema>
+</schemas>

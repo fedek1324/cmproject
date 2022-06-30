@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="AdminSOUnit" id="AdminSOUnitFormDigest2" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="digest2"/>
+        <negative-condition-ref ref="client"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="r1" group="true">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="AdminSOUnit_isEmployee"/>
+            <negative-condition-ref ref="AdminSOUnit_isRVZ"/>
+          </hide>
+        </properties>
+        <component>
+          <field attribute-ref="displayName4">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="r2" group="true">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="AdminSOUnit_isEmployee"/>
+            <negative-condition-ref ref="AdminSOUnit_isRVZ"/>
+          </hide>
+        </properties>
+        <component>
+          <field attribute-ref="post">
+            <appearance importance="normal">
+              <label-style>
+                <style id="tunGray"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunGray"/>
+                </value-style>
+              </field-style>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <section id="rNotEmployee" group="true">
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="AdminSOUnit_isEmployee"/>
+            <condition-ref ref="AdminSOUnit_isRVZ"/>
+          </hide>
+        </properties>
+        <component>
+          <field attribute-ref="displayName">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="admin-organization_sysadm" id="employees-group_sysadm" name="${catalog.folder.employees_group_sysadm.name:Сотрудники}" position="30">
+    <subfolders>
+      <view id="admin-employees-by-profiles_sysadm" name="${catalog.folder.employees_group_sysadm.view.admin_employees_by_profiles_sysadm.name:По портальным профилям}" position="20">
+        <descriptor-ref ref="admin-so-employees-by-profiles"/>
+        <source>
+          <module ident="SO"/>
+        </source>
+      </view>
+      <view id="admin-employees-by-groups_sysadm" name="${catalog.folder.employees_group_sysadm.view.admin_employees_by_groups_sysadm.name:По рабочим группам}" position="40">
+        <descriptor-ref ref="admin-so-employees-by-groups"/>
+        <source>
+          <module ident="SO"/>
+        </source>
+      </view>
+      <view id="admin-employees-by-area_sysadm" name="${catalog.folder.employees_group_sysadm.view.admin_employees_by_area_sysadm.name:По территории (сети)}" position="30">
+        <descriptor-ref ref="admin-so-employees-by-area"/>
+        <source>
+          <module ident="SO"/>
+        </source>
+      </view>
+      <view id="admin-employees-by-fio_sysadm" name="${catalog.folder.employees_group_sysadm.view.admin_employees_by_fio_sysadm.name:По ФИО}" position="10">
+        <descriptor-ref ref="admin-so-employees"/>
+        <source>
+          <module ident="SO"/>
+        </source>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

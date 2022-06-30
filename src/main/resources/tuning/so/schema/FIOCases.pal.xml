@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="FIOCases">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <boolean name="notUseDeclensionForFirstName">
+      <storage-field name="notUseDeclensionForFirstName"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="notUseDeclensionForMiddleName">
+      <storage-field name="notUseDeclensionForMiddleName"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="middleNameAccusative">
+      <storage-field name="middleNameAccusative"/>
+    </string>
+    <string name="firstNameDative">
+      <storage-field name="ESName_D"/>
+    </string>
+    <string name="middleNameGenitive">
+      <storage-field name="middleNameGenitive"/>
+    </string>
+    <string name="middleNameDative">
+      <storage-field name="ETName_D"/>
+    </string>
+    <string name="lastNameDative">
+      <storage-field name="EName_D"/>
+    </string>
+    <string name="lastNameGenitive">
+      <storage-field name="lastNameGenitive"/>
+    </string>
+    <string name="firstNameGenitive">
+      <storage-field name="firstNameGenitive"/>
+    </string>
+    <string name="firstNameInstrumental">
+      <storage-field name="firstNameInstrumental"/>
+    </string>
+    <string name="lastNameInstrumental">
+      <storage-field name="lastNameInstrumental"/>
+    </string>
+    <string name="firstNameAccusative">
+      <storage-field name="firstNameAccusative"/>
+    </string>
+    <string name="lastNameAccusative">
+      <storage-field name="lastNameAccusative"/>
+    </string>
+    <string name="middleNamePrepositional">
+      <storage-field name="middleNamePrepositional"/>
+    </string>
+    <string name="firstNamePrepositional">
+      <storage-field name="firstNamePrepositional"/>
+    </string>
+    <string name="lastNamePrepositional">
+      <storage-field name="lastNamePrepositional"/>
+    </string>
+    <string name="middleNameInstrumental">
+      <storage-field name="middleNameInstrumental"/>
+    </string>
+    <boolean name="notUseDeclensionForLastName">
+      <storage-field name="notUseDeclensionForLastName"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="genitiveLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['В родительном падеже']]></script>
+      </calc-values>
+    </string>
+    <string name="prepositionalLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['В предложном падеже']]></script>
+      </calc-values>
+    </string>
+    <string name="instrumentalLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['В творительном падеже']]></script>
+      </calc-values>
+    </string>
+    <string name="dativeLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['В дательном падеже']]></script>
+      </calc-values>
+    </string>
+    <string name="accusativeLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['В винительном падеже']]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

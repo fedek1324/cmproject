@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="SQLNavigator" id="helpers" name="${catalog.folder.helpers.name:Справочники}" position="80">
+    <subfolders>
+      <folder id="so-myorg" name="${catalog.folder.helpers.folder.so_myorg.name:Моя организация}" position="20">
+        <subfolders>
+          <view id="so-myorg-alpha" name="${catalog.folder.helpers.folder.so_myorg.view.so_myorg_alpha.name:Телефонный справочник}" position="10">
+            <descriptor-ref ref="so-myorg-alpha"/>
+          </view>
+          <view id="so-myorg-deprvz" name="${catalog.folder.helpers.folder.so_myorg.view.so_myorg_deprvz.name:Подразделения и РВЗ}" position="20">
+            <descriptor-ref ref="so-myorg-deprvz"/>
+          </view>
+          <view id="so-myorg-hier" name="${catalog.folder.helpers.folder.so_myorg.view.so_myorg_hier.name:Иерархия}" position="30">
+            <descriptor-ref ref="so-myorg-hier"/>
+          </view>
+          <folder id="so-myorg-roles" name="${catalog.folder.helpers.folder.so_myorg.folder.so_myorg_roles.name:Функциональные роли}" position="40">
+            <subfolders>
+              <view id="so-myorg-roles-alpha" name="${catalog.folder.helpers.folder.so_myorg.folder.so_myorg_roles.view.so_myorg_roles_alpha.name:Список}" position="20">
+                <descriptor-ref ref="so-myorg-roles-alpha"/>
+              </view>
+              <view id="so-myorg-roles-hier" name="${catalog.folder.helpers.folder.so_myorg.folder.so_myorg_roles.view.so_myorg_roles_hier.name:Иерархия}" position="30">
+                <descriptor-ref ref="so-myorg-roles-hier"/>
+              </view>
+            </subfolders>
+            <webdocs>
+              <group id="0" position="0"/>
+            </webdocs>
+          </folder>
+          <view id="so-myorg-dismissed" name="${catalog.folder.helpers.folder.so_myorg.view.so_myorg_dismissed.name:Уволенные}" position="50">
+            <descriptor-ref ref="so-myorg-dismissed"/>
+          </view>
+        </subfolders>
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+      <folder id="so-allnonsyspeople" name="${catalog.folder.helpers.folder.so_allnonsyspeople.name:Внешние контакты}" position="30">
+        <subfolders>
+          <view id="so-allnonsyspeople-all" name="${catalog.folder.helpers.folder.so_allnonsyspeople.view.so_allnonsyspeople_all.name:Все}" position="20">
+            <descriptor-ref ref="so-externalpeople"/>
+          </view>
+          <view id="so-allnonsyspeople-byorg" name="${catalog.folder.helpers.folder.so_allnonsyspeople.view.so_allnonsyspeople_byorg.name:По организации}" position="30">
+            <descriptor-ref ref="so-externalorg-alpha"/>
+          </view>
+          <view id="so-private" name="${catalog.folder.helpers.folder.so_allnonsyspeople.view.so_private.name:Частные лица}" position="30">
+            <descriptor-ref ref="so-private"/>
+          </view>
+        </subfolders>
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+      <folder id="so-organizations" name="${catalog.folder.helpers.folder.so_organizations.name:Организации}" position="40">
+        <subfolders>
+          <view id="so-organizations-all" name="${catalog.folder.helpers.folder.so_organizations.view.so_organizations_all.name:Все}" position="20">
+            <descriptor-ref ref="so-anyorg-alpha"/>
+          </view>
+          <view id="so-allorgs-sys-hier" name="${catalog.folder.helpers.folder.so_organizations.view.so_allorgs_sys_hier.name:Системные}" position="30">
+            <descriptor-ref ref="so-sysorg-hier"/>
+          </view>
+          <view id="so-organisations-medo" name="${catalog.folder.helpers.folder.so_organizations.view.so_organisations_medo.name:Участники МЭДО}" position="30">
+            <descriptor-ref ref="so-medoorg-alpha"/>
+          </view>
+        </subfolders>
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+      <view id="so-myorg-sl-alpha" name="${catalog.folder.helpers.view.so_myorg_sl_alpha.name:Списки рассылки}" position="50">
+        <descriptor-ref ref="so-myorg-sl-alpha"/>
+      </view>
+      <folder id="templates" name="${catalog.folder.helpers.folder.templates.name:Шаблоны}" position="60">
+        <subfolders>
+          <folder id="templates-input" name="${catalog.folder.helpers.folder.templates.folder.templates_input.name:Входящих}" position="10">
+            <subfolders>
+              <view id="input-Templates" name="${catalog.folder.helpers.folder.templates.folder.templates_input.view.input_Templates.name:документов}" position="20">
+                <search-area name="input_InputDocs"/>
+                <descriptor-ref ref="dp-02-input-af5"/>
+              </view>
+            </subfolders>
+            <webdocs>
+              <group id="0" position="0"/>
+            </webdocs>
+          </folder>
+          <folder id="templates-internal" name="${catalog.folder.helpers.folder.templates.folder.templates_internal.name:Внутренних}" position="30">
+            <subfolders>
+              <view id="internal-ResTemplates" name="${catalog.folder.helpers.folder.templates.folder.templates_internal.view.internal_ResTemplates.name:резолюций}" position="30">
+                <search-area name="internal_InternalDocs"/>
+                <descriptor-ref ref="dp-03-internal-af5"/>
+              </view>
+            </subfolders>
+            <webdocs>
+              <group id="0" position="0"/>
+            </webdocs>
+          </folder>
+          <folder id="templates-contractslite" name="${catalog.folder.helpers.folder.templates.folder.templates_contractslite.name:Договоров}" position="60">
+            <subfolders>
+              <view id="directory-templates-contact-addagrs" name="${catalog.folder.helpers.folder.templates.folder.templates_contractslite.view.directory_templates_contact_addagrs.name:Доп. соглашений}" position="40">
+                <search-area name="_ContractsLite"/>
+                <descriptor-ref ref="dp-55-contracts-af5"/>
+              </view>
+              <view id="directory-templates-contract-finances" name="${catalog.folder.helpers.folder.templates.folder.templates_contractslite.view.directory_templates_contract_finances.name:Фин. документов}" position="50">
+                <search-area name="_ContractsLite"/>
+                <descriptor-ref ref="dp-80-contracts-af5"/>
+              </view>
+            </subfolders>
+            <webdocs>
+              <group id="0" position="0"/>
+            </webdocs>
+          </folder>
+        </subfolders>
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+      <folder id="classifiers" name="${catalog.folder.helpers.folder.classifiers.name:Классификаторы}" position="70">
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

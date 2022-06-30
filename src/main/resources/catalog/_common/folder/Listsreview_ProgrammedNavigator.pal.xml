@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="ProgrammedNavigator" id="Lists-review" name="${catalog.folder.Lists_review.name:Шаблоны листов ознакомления}" position="260">
+    <subfolders>
+      <view id="favourites-rkk-template-review" name="${catalog.folder.Lists_review.view.favourites_rkk_template_review.name:Избранное}" position="-10">
+        <descriptor-ref ref="favourites-template-review"/>
+      </view>
+      <view id="Templates-review" name="${catalog.folder.Lists_review.view.Templates_review.name:Все шаблоны}" position="20">
+        <descriptor-ref ref="review-listsByName"/>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

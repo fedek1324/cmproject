@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DialogGateSignalReassignWithSubs" id="DialogGateSignalReassignWithSubsForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <component>
+              <field attribute-ref="signalType" name="${ui.form.DialogGateSignalReassignWithSubsForm.section.Header.section.row1.field.signalType.name:Тип сигнала:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+                <directories limit-livesearch="no-restrictions">
+                  <directory-ref ref="SignalTypes"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <field attribute-ref="message">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <button attribute-ref="delegate" name="${ui.form.DialogGateSignalReassignWithSubsForm.button.delegate.name:С передачей дел}">
+        <action>
+          <system name="Submit"/>
+        </action>
+      </button>
+      <button attribute-ref="withoutSubs" name="${ui.form.DialogGateSignalReassignWithSubsForm.button.withoutSubs.name:Без передачи дел - без сохранения замещения}">
+        <action>
+          <system name="Submit"/>
+        </action>
+      </button>
+      <button attribute-ref="withSubs" name="${ui.form.DialogGateSignalReassignWithSubsForm.button.withSubs.name:Без передачи дел - с сохранением замещения}">
+        <action>
+          <system name="Submit"/>
+        </action>
+      </button>
+      <button attribute-ref="skip" name="${ui.form.DialogGateSignalReassignWithSubsForm.button.skip.name:Отмена}">
+        <action>
+          <system name="Submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.DialogGateSignalReassignWithSubsForm.button.Скрыть системную кнопку 'Отменить'.name:Скрыть системную кнопку 'Отменить'}">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <action>
+          <system name="CANCEL"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="FinalProcessDlg">
+    <meta>
+      <category name="Асинхронные операции\Общее"/>
+    </meta>
+    <string name="title" createlog="true" temporal="true"/>
+    <string name="mode" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['dialog']]></script>
+      </calc-values>
+    </string>
+    <string name="docsInfo" createlog="true" temporal="true"/>
+    <string array="true" name="ids" createlog="true" temporal="true"/>
+    <string name="footer" createlog="true" temporal="true"/>
+    <boolean name="isDocsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[docsInfo == null || ''.equals(docsInfo)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isFooterEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[footer == null || ''.equals(footer)]]></script>
+      </calc-values>
+    </boolean>
+    <string name="counter" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="AddresseePossible">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+    </meta>
+    <actor name="addressee" system="true"/>
+    <schema-ref ref="AddressInfo" array="true" name="sendTo" system="true"/>
+  </schema>
+</schemas>

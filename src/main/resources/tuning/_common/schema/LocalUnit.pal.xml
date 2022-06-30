@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="LocalUnit">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="langTitle">
+      <storage-field name="L10nLangTitle"/>
+    </string>
+    <string name="langId">
+      <storage-field name="L10nLangId"/>
+    </string>
+    <enum-ref ref="LangEnum" name="langItem" createlog="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.RecalcForChangeLocalLang</recalc-processing-class>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[langTitle + "%" + langId]]></script>
+      </calc-values>
+    </enum-ref>
+  </schema>
+</schemas>

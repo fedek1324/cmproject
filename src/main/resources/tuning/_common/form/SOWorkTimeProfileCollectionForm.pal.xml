@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SOWorkTimeProfileCollection" id="SOWorkTimeProfileCollectionForm" name="${ui.form.SOWorkTimeProfileCollectionForm.name:Профили рабочего времени}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu" name="${ui.form.SOWorkTimeProfileCollectionForm.section.RootMenu.name:RootWorkTimeProfileMenu}">
+        <component>
+          <button name="${ui.form.SOWorkTimeProfileCollectionForm.section.RootMenu.button.Редактировать.name:Редактировать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <action position="4.0">
+              <custom>
+                <open-edit/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.SOWorkTimeProfileCollectionForm.section.RootMenu.button.Скрыть системную кнопку &quot;Редактировать&quot;.name:Скрыть системную кнопку &quot;Редактировать&quot;}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="EDIT"/>
+            </action>
+          </button>
+          <section id="Create" name="${ui.form.SOWorkTimeProfileCollectionForm.section.RootMenu.section.Create.name:Создать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.SOWorkTimeProfileCollectionForm.section.RootMenu.section.Create.button.Профиль рабочего времени.name:Профиль рабочего времени}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_CanEdit"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <create schema-ref="SOWorkTimeProfile">
+                      <module ident="SO" complect=""/>
+                    </create>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.SOWorkTimeProfileCollectionForm.section.RootMenu.section.Create.button.Подчиненный профиль рабочего времени.name:Подчиненный профиль рабочего времени}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_CanEdit"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <create-child schema-ref="SOWorkTimeProfile"/>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.SOWorkTimeProfileCollectionForm.section.RootMenu.section.Create.button.Новый как копия.name:Новый как копия}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_CanEdit"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <create-copy schema-ref="SOWorkTimeProfile"/>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <section id="OTHER" name="${ui.form.SOWorkTimeProfileCollectionForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <button name="${ui.form.SOWorkTimeProfileCollectionForm.section.RootMenu.section.OTHER.button.Удалить.name:Удалить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">DeleteWorkTimeProfileOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.SOWorkTimeProfileCollectionForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Добавить в избранное'.name:Скрыть системную кнопку 'Добавить в избранное'}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action>
+                  <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ReporteOrganizationListOptionalDialog" id="ReportDialogOrganizationListOptional" projection="default" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="title">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="OrgListOptional">
+        <appearance importance="normal"/>
+        <directories livesearch="true" limit-livesearch="sys-current">
+          <directory-ref ref="FOREIGN_ORGS"/>
+        </directories>
+      </field>
+      <button recalc="true" attribute-ref="$btnDialogPrevious" name="${ui.form.ReportDialogOrganizationListOptional.button.btnDialogPrevious.name:Назад}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="ReportDialogPage2"/>
+          </hide>
+        </properties>
+        <appearance>
+          <label-style>
+            <style id="tunBtnBlue"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="recalc"/>
+        </action>
+      </button>
+      <button recalc="with-validation" attribute-ref="$btnDialogNext" name="${ui.form.ReportDialogOrganizationListOptional.button.btnDialogNext.name:Далее}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="ReportDialogPage1"/>
+          </hide>
+        </properties>
+        <appearance>
+          <label-style>
+            <style id="tunBtnBlue"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="recalc"/>
+        </action>
+      </button>
+      <button name="${ui.form.ReportDialogOrganizationListOptional.button.Построить отчет.name:Построить отчет}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="ReportDialogPage2"/>
+          </hide>
+        </properties>
+        <appearance>
+          <label-style>
+            <style id="tunBtnBlue"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#start"/>
+        </action>
+      </button>
+      <button name="${ui.form.ReportDialogOrganizationListOptional.button.Построить отчет.name:Построить отчет}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="ReportDialogPage1"/>
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <appearance>
+          <label-style>
+            <style id="tunBtnBlue"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#start"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

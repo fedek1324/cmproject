@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="RkkTemplateResourceInput" name="RkkTemplateResourceAdvInput">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+    </meta>
+    <string name="packageNumber" system="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <tunable-object form-name="searchCount" name="${catalog.tunable-object.6a37b6c10add465f8b20ab3144bbf74c.name:Классификатор Способ Поиска счетчика}" schema-ref="CounterClassifier" general="true">
+    <module ident="SS" complect=""/>
+  </tunable-object>
+  <tunable-object form-name="account" name="${catalog.tunable-object.fab66b5771914f8eadf5eff24f24a594.name:Учетная запись}" schema-ref="Account" general="true">
+    <module ident="SS" complect=""/>
+  </tunable-object>
+</catalog>

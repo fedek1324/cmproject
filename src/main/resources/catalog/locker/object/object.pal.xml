@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+    <object name="LOCKER_USER_CERT">
+        <meta>
+            <documentation>Сертификат пользователя</documentation>
+        </meta>
+    </object>
+    <object name="LOCKER_CERT_AUTH">
+        <meta>
+            <documentation>Сертификат УЦ</documentation>
+        </meta>
+    </object>
+</catalog>

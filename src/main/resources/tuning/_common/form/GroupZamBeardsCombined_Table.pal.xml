@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="GroupZamBeardsCombined" id="GroupZamBeardsCombined_Table" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal"/>
+    <component>
+      <section id="Fio_Name" name="${ui.form.GroupZamBeardsCombined_Table.section.Fio_Name.name:ФИО/Название}" group="true">
+        <component>
+          <field clickable="true" attribute-ref="fioName">
+            <appearance open-mode="dialog" digest-mode="client" align="left" clickable="true">
+              <label-style field-width="40" field-unit="percent"/>
+              <limit max-size="-1"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <section id="Change" name="${ui.form.GroupZamBeardsCombined_Table.section.Change.name:Визирование}" group="true">
+        <component>
+          <field attribute-ref="change">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SO_GroupZamBeards_isSeparateAccess"/>
+              </hide>
+            </properties>
+            <appearance align="left">
+              <label-style field-width="5" field-unit="symbol"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

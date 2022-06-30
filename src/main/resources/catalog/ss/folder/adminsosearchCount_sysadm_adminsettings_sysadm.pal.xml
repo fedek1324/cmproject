@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="admin-settings_sysadm" id="admin-so-searchCount_sysadm" name="${catalog.view.admin_so_searchCount_sysadm.name:Способ поиска счетчика}" position="110">
+    <descriptor-ref ref="admin-so-searchCount"/>
+    <source>
+      <module ident="SS"/>
+    </source>
+  </view>
+</catalog>

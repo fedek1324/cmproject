@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ReportExecControlInputDoc">
+    <meta>
+      <category name="Отчеты"/>
+    </meta>
+    <schema-ref ref="DateInterval" name="DATE_EXEC" temporal="true"/>
+  </schema>
+</schemas>

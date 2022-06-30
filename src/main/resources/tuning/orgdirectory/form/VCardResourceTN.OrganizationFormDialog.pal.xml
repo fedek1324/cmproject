@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="VCardResource.Organization" id="VCardResourceTN.OrganizationFormDialog" name="${ui.form.VCardResourceTN.OrganizationFormDialog.name:Организация СпО}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="SPOTNOrganizationDialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="fn">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance align="left" importance="normal"/>
+      </field>
+      <field attribute-ref="jAddressShow" name="${ui.form.VCardResourceTN.OrganizationFormDialog.field.jAddressShow.name:Адрес}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance align="left" importance="normal"/>
+      </field>
+      <field attribute-ref="headInfo" name="${ui.form.VCardResourceTN.OrganizationFormDialog.field.headInfo.name:Руководитель:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="phone" name="${ui.form.VCardResourceTN.OrganizationFormDialog.field.phone.name:Телефоны:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance align="left" importance="normal"/>
+      </field>
+      <field attribute-ref="selfHyperLink" name="${ui.form.VCardResourceTN.OrganizationFormDialog.field.selfHyperLink.name:Открыть карточку в новой вкладке}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

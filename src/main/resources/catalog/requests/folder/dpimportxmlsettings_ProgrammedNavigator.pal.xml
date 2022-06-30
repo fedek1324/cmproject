@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="dp-import-xml-settings" name="${catalog.view.dp_import_xml_settings.name:ОГ Настройки импорта XML}" position="-1">
+    <descriptor-ref ref="dp-import-xml-settings"/>
+    <source>
+      <module ident="Requests"/>
+    </source>
+  </view>
+</catalog>

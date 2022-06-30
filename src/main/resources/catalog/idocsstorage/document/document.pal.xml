@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <document name="${catalog.document.ext_idocs_task444bddfa03684e239059a0679967eb9c.name:ExtIDocsTask}" schema-ref="ExtTaskResource" object-ref="EXT_IDOCS_TASK" general="true">
+    <module ident="iDocsStorage" complect=""/>
+  </document>
+  <document name="${catalog.document.info_doc8cd2e4cab34340a89ca5b1c1a1c0ea9e.name:Инфоматериал}" schema-ref="InfoResource" object-ref="INFO_DOC" general="true">
+    <module ident="iDocsStorage" complect=""/>
+  </document>
+</catalog>

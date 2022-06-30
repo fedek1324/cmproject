@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="PKD.getPlan.allTasks" id="pkd-plan-tasks" name="План работ: календарь" style="calendar">
+    <help id="99778860"/>
+    <builder name="ru.intertrust.cmj.pkd.collection.BuilderPkd"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="calendarDate"/>
+        <column-ref ref="calendarStatus"/>
+        <column-ref ref="taskType"/>
+        <column-ref ref="subjectStamped"/>
+        <column-ref ref="from"/>
+        <column-ref ref="taskDueDate"/>
+        <column-ref ref="toWithPersonal" filter="true"/>
+        <column-ref ref="ExternalId"/>
+        <column-ref ref="taskExecutor"/>
+        <column-ref ref="taskOwn"/>
+        <column-ref ref="regNumber"/>
+        <column-ref ref="signers"/>
+      </columns>
+    </table>
+  </descriptor>
+</catalog>

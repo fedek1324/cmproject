@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="NameListClerk">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <schema-ref ref="NameList" name="input" temporal="true"/>
+    <schema-ref ref="NameList" name="internal" temporal="true"/>
+    <schema-ref ref="NameList" name="missions" temporal="true"/>
+    <schema-ref ref="NameList" name="output" temporal="true"/>
+    <schema-ref ref="NameList" name="contracts" temporal="true"/>
+    <schema-ref ref="NameList" name="requests" temporal="true"/>
+  </schema>
+</schemas>

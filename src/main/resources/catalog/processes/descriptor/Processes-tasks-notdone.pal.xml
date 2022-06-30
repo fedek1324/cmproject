@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Processes" view="(vw_cmj_wf_task_performer)" id="Processes-tasks-notdone" name="Процессы - нерешенные задачи" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="performer" category="true"/>
+        <column-ref ref="created"/>
+        <column-ref ref="modified"/>
+        <column-ref ref="name"/>
+        <column-ref ref="status"/>
+        <column-ref ref="process"/>
+        <column-ref ref="server"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

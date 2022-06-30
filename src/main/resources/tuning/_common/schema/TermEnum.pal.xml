@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="TermEnum">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <string value="days" name="days"/>
+    <string value="hours" name="hours"/>
+  </enum>
+</schemas>

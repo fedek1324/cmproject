@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="Dialog" name="DialogErrorWithStackTrace">
+    <meta>
+      <category name="Асинхронные операции\Общее"/>
+    </meta>
+    <string name="message" temporal="true"/>
+    <string name="stacktrace" temporal="true"/>
+    <string name="emptySring" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[""]]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="arm-admin-delegate-regplace" name="${catalog.view.arm_admin_delegate_regplace.name:Выбор передаваемых дел по месту регистрации}" position="-1">
+    <descriptor-ref ref="admin-so-delegate-regplace"/>
+    <source>
+      <module ident="SO"/>
+    </source>
+  </view>
+</catalog>

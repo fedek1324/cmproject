@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="AdminSOUnit" id="AdminSOUnitFormDigest3" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="digest3"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="$hint">
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

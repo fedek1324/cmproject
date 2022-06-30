@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SOOrgTunableColumn" id="SOOrgTunableColumnForm" name="${ui.form.SOOrgTunableColumnForm.name:SOOrgTunableColumnForm}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="colNameEqualsSoNameTunable"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="soName">
+        <appearance>
+          <label-style>
+            <style id="tunBold"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunBold"/>
+            </value-style>
+          </field-style>
+        </appearance>
+      </field>
+    </component>
+  </form>
+</ui>

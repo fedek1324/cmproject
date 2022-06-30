@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="ProgrammedNavigator" id="Templates-requests" name="${catalog.folder.Templates_requests.name:Шаблоны ОГ}" position="30">
+    <subfolders>
+      <view id="favourites-rkk-template-requests" name="${catalog.folder.Templates_requests.view.favourites_rkk_template_requests.name:Избранное}" position="-1">
+        <descriptor-ref ref="favourites-rkk-template-requests"/>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

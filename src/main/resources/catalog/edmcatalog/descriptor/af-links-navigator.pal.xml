@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="EDM-Catalog" view="(vw_cmj_links)" id="af-links-navigator" name="" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewCatalogLinks"/>
+    <table>
+      <columns>
+        <column-ref ref="title"/>
+        <column-ref ref="alias"/>
+        <column-ref ref="jcd"/>
+        <column-ref ref="complect"/>
+        <column-ref ref="searchScopes"/>
+        <column-ref ref="tipsCounters"/>
+        <column-ref ref="pagename"/>
+        <column-ref ref="iconInfo"/>
+        <column-ref ref="groupIdx"/>
+        <column-ref ref="orderInGroup"/>
+        <column-ref ref="storageTypeForHide"/>
+      </columns>
+    </table>
+    <mixed-cells-view>
+      <cell-view-ref ref="view"/>
+      <cell-view-ref ref="tab"/>
+    </mixed-cells-view>
+  </custom-descriptor>
+</catalog>

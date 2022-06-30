@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="GroupZamBeardsTemp" id="GroupZamBeardsTemp_Dialog" name="${ui.form.GroupZamBeardsTemp_Dialog.name:Добавить замещающего}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <appearance field-layout="vertical"/>
+    <component>
+      <field attribute-ref="fioName" name="${ui.form.GroupZamBeardsTemp_Dialog.field.fioName.name:ФИО:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="arm-admin-dialog-empl"/>
+        </directories>
+      </field>
+      <field attribute-ref="change" name="${ui.form.GroupZamBeardsTemp_Dialog.field.change.name:Визирование:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="SO_GroupZamBeards_isSeparateAccess"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="startDate" name="${ui.form.GroupZamBeardsTemp_Dialog.field.startDate.name:Дата начала периода:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="endDate" name="${ui.form.GroupZamBeardsTemp_Dialog.field.endDate.name:Дата окончания периода:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

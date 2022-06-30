@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form default="true" schema-ref="MovingCopiesTable" id="MovingCopiesDialog" name="${ui.form.MovingCopiesDialog.name:Добавление/Редактирование экземпляра}" projection="default" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="movingCopiesName" name="${ui.form.MovingCopiesDialog.field.movingCopiesName.name:Экземпляр}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="movingCopiesReceiver" name="${ui.form.MovingCopiesDialog.field.movingCopiesReceiver.name:Получатель}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+        <directories livesearch="true" limit-livesearch="sys-current">
+          <directory-category-custom-coll ref="CURRENT_All"/>
+          <directory-category-custom-coll ref="sys_roles"/>
+          <directory-category-custom-coll ref="receivers"/>
+          <directory-category-custom-coll ref="FV_CURR_HUMAN_HH_ROLE"/>
+        </directories>
+      </field>
+      <field attribute-ref="movingCopiesTransferDate" name="${ui.form.MovingCopiesDialog.field.movingCopiesTransferDate.name:Дата передачи}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="movingCopiesFolderName" name="${ui.form.MovingCopiesDialog.field.movingCopiesFolderName.name:№ журнала/папки}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="movingCopiesIsReturned" name="${ui.form.MovingCopiesDialog.field.movingCopiesIsReturned.name:Возврат}">
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="arm-admin-livesearch-dep-empl-fr-group" name="${catalog.view.arm_admin_livesearch_dep_empl_fr_group.name:АРМАдмин.ЖивойПоиск.ПодрСотрФРГруппа}" position="-1">
+    <descriptor-ref ref="arm-admin-livesearch-dep-empl-fr-group"/>
+    <source>
+      <module ident="SO"/>
+    </source>
+  </view>
+</catalog>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="GroupZamBeardsEmployee" name="GroupZamBeardsEmployeeTemp">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <date name="startDate" system="true" createlog="true" temporal="true"/>
+    <date name="endDate" system="true" createlog="true" temporal="true"/>
+    <boolean name="isSeparateAccess" system="true" temporal="true">
+      <calc-values>
+        <script event="open"><![CDATA[(#this.isSeparateAccess != null && #this.isSeparateAccess) || (#parentnode != null && #parentnode.isSeparateAccess != null && #parentnode.isSeparateAccess)]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

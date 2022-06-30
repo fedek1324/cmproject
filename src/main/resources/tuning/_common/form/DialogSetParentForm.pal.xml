@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DialogSetParent" id="DialogSetParentForm" name="${ui.form.DialogSetParentForm.name:Переподчинение}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <appearance>
+      <dialog-mode height="50" width="50" unit="percent"/>
+    </appearance>
+    <component>
+      <field attribute-ref="parentInfo">
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="DialogSetParent_ForRole"/>
+          </hide>
+        </properties>
+        <appearance open-mode="grid" digest-mode="grid" importance="normal" widget="grid"/>
+        <directories limit-livesearch="sys-current" digest="grid">
+          <directory-ref ref="arm-admin-ierarchy-rvz"/>
+          <directory-ref ref="arm-admin-dialog-dep"/>
+          <directory-ref ref="arm-admin-dialog-rvz"/>
+        </directories>
+      </field>
+      <field attribute-ref="parentInfo">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="DialogSetParent_ForRole"/>
+          </hide>
+        </properties>
+        <appearance importance="normal" widget="grid"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="arm-admin-dialog-fr"/>
+          <directory-ref ref="admin-dialog-hierarchy-functional-role"/>
+        </directories>
+      </field>
+      <button name="${ui.form.DialogSetParentForm.button.OK.name:OK}">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.DialogSetParentForm.button.Отмена.name:Отмена}">
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

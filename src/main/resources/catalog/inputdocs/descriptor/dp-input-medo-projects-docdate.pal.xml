@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="InputDocs" view="(vw_cmj_medo_prj_docdate)" id="dp-input-medo-projects-docdate" name="ВхД - МЭДО - проекты по дате" style="default">
+    <help id="99778654"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="docDate" category="true"/>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="docNumber"/>
+        <column-ref ref="reqType"/>
+        <column-ref ref="correspondent"/>
+        <column-ref ref="addressees"/>
+        <column-ref ref="subject"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="InputDocs-CreateRKK" name="${catalog.custom-descriptor.dp-input-medo-projects-docdate.actions.action.InputDocs-CreateRKK.name:Создать/Входящий документ}">
+        <create object-ref="RKK_INPUT"/>
+      </action>
+    </actions>
+    <custom-actions schema-ref="RkkReadersCollection"/>
+  </custom-descriptor>
+</catalog>

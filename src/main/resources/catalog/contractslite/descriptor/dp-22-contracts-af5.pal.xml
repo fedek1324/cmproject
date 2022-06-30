@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="ContractsLite" view="(vw_cmj_22)" id="dp-22-contracts-af5" name="Договоры - Дог - активные - по стороне" style="default">
+    <help id="99778653"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="dogParty2Name" category="true"/>
+        <column-ref ref="self"/>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="dogSignStatus"/>
+        <column-ref ref="regNumber"/>
+        <column-ref ref="addNumber"/>
+        <column-ref ref="concludedDate"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="subject"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Contracts-CreateRKK" name="${catalog.custom-descriptor.dp-22-contracts-af5.actions.action.Contracts-CreateRKK.name:Создать/Договор}">
+        <create object-ref="RKK_CONTRACTS"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="templates" id="Review-lists" name="${catalog.folder.Review_lists.name:Ознакомления}" position="90">
+    <subfolders>
+      <view id="review-ListsByName" name="${catalog.folder.Review_lists.view.review_ListsByName.name:По названию}" position="20">
+        <search-area name="_Review"/>
+        <descriptor-ref ref="review-listsByName"/>
+        <source>
+          <module ident="Review"/>
+        </source>
+      </view>
+      <view id="review-ListsByReviewList" name="${catalog.folder.Review_lists.view.review_ListsByReviewList.name:По ознакамливающимся}" position="30">
+        <search-area name="_Review"/>
+        <descriptor-ref ref="review-listsByReviewList"/>
+        <source>
+          <module ident="Review"/>
+        </source>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

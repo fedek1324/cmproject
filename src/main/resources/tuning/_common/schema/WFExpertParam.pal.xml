@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" name="WFExpertParam">
+    <meta>
+      <category name="Сервис\WorkFlow"/>
+    </meta>
+    <actor name="Expert"/>
+    <datetime name="StartDate">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.misc.AFDateTime).convertFromDate(T(java.util.Calendar).getInstance().getTime())]]></script>
+        <script event="save" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.misc.AFDateTime).convertFromDate(T(java.util.Calendar).getInstance().getTime())]]></script>
+      </calc-values>
+    </datetime>
+    <actor name="Initiator">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.core.AFSession).get().currentUser().getBeard()]]></script>
+        <script event="save" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.core.AFSession).get().currentUser().getBeard()]]></script>
+      </calc-values>
+    </actor>
+    <schema-ref ref="RkkResource" name="RKKLink" wf-link="true"/>
+  </schema>
+</schemas>

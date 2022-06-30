@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <object name="APPROVING_TEMPLATE">
+    <meta>
+      <documentation>Шаблон согласования</documentation>
+    </meta>
+  </object>
+  <object name="APPROVING_VISA">
+    <meta>
+      <documentation>Виза (Согласование)</documentation>
+    </meta>
+  </object>
+  <object name="APRE_LIST_TEMPLATE">
+    <meta>
+      <documentation>Шаблон листа согласования</documentation>
+    </meta>
+  </object>
+</catalog>

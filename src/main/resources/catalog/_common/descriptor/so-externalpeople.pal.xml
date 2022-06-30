@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="q.so-externalpeople" fulltext="true" id="so-externalpeople" name="СО - СотрудникиЧужихОрганизаций" style="default">
+    <help id="99778976"/>
+    <builder name="ru.intertrust.cmj.af.so.impl.BuilderSO"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="soFullName" sort-desc="true"/>
+        <column-ref ref="soOrgShortName" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soMix2" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soAddress" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soPhone" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soEmail" sort-asc="true" sort-desc="true"/>
+      </columns>
+    </table>
+    <dialog-actions>
+      <action-ref ref="SO-CreatePrivatePerson"/>
+      <action-ref ref="SO-CreateNonSysPerson"/>
+    </dialog-actions>
+    <actions>
+      <action id="SO-CreatePrivatePersonDlg" name="${catalog.descriptor.so-externalpeople.actions.action.SO-CreatePrivatePersonDlg.name:Добавить частное лицо}">
+        <create object-ref="PRIVATE_HUMAN"/>
+      </action>
+      <action id="SO-CreateNonSysPersonDlg" name="${catalog.descriptor.so-externalpeople.actions.action.SO-CreateNonSysPersonDlg.name:Добавить работника}">
+        <create object-ref="NONSYS_HUMAN"/>
+      </action>
+    </actions>
+  </descriptor>
+</catalog>

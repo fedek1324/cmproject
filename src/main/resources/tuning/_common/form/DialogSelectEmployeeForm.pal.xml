@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DialogSelectEmployee" id="DialogSelectEmployeeForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="row1" group="true">
+        <appearance field-layout="horizontal">
+          <label-style width="100" unit="percent"/>
+        </appearance>
+        <component>
+          <field attribute-ref="question" name="${ui.form.DialogSelectEmployeeForm.section.row1.field.question.name:Заполнить все поля раздела в соответствии с выбранной штатной единицей?}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance align="center" importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <field attribute-ref="employeeInfo">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal" widget="grid"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="admin-employees"/>
+        </directories>
+      </field>
+      <button name="${ui.form.DialogSelectEmployeeForm.button.OK.name:OK}">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <tunable-object form-name="GroupProfile" name="${catalog.tunable-object.a828606db4784771a39802ddab32ed94.name:Групповой  профиль}" schema-ref="GroupProfile">
+    <module ident="EDM-Portal" complect=""/>
+  </tunable-object>
+  <tunable-object form-name="HProfile-Top" name="${catalog.tunable-object.225edac21c2c4ce0a0b2dd6ad950bf9f.name:Иерархический профиль}" schema-ref="HierarchicalProfile">
+    <module ident="EDM-Portal" complect=""/>
+  </tunable-object>
+</catalog>

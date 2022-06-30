@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SOGroup" id="SOGroupFormDialog" name="${ui.form.SOGroupFormDialog.name:Группа}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <button name="${ui.form.SOGroupFormDialog.button.Скрыть системную кнопку Изменить (для объектов админки работает некорректно).name:Скрыть системную кнопку Изменить (для объектов админки работает некорректно)}">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <action>
+          <system name="update"/>
+        </action>
+      </button>
+      <section id="row1" group="true">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="groupName">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance align="left" importance="normal"/>
+          </field>
+          <field autofill="true" attribute-ref="deletedLabel">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_isDeleted"/>
+              </hide>
+            </properties>
+            <appearance align="right">
+              <label-style field-width="23" field-unit="symbol"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <button name="${ui.form.SOGroupFormDialog.button.Скрыть системную кнопку системную Отменить (для объектов админки работает некорректно).name:Скрыть системную кнопку системную Отменить (для объектов админки работает некорректно)}">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+      <field attribute-ref="selfHyperLink" name="${ui.form.SOGroupFormDialog.field.selfHyperLink.name:Открыть карточку в новой вкладке}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <condition-ref ref="TNObject_isDeleted"/>
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <appearance align="left" importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

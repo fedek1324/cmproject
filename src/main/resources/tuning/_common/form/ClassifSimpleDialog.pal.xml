@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+    <form schema-ref="ClassifSimpleDialog" projection="default" name="${ui.form.ClassifSimpleDialog.name:Выберите необходимые объекты для формирования архивов с ЭП}" id="ClassifSimpleDialog">
+        <rename name="${ui.form.ClassifSimpleDialog.rename.name:Выберите ЛС для формирования архива с ЭП}" condition-union="AND">
+            <negative-condition-ref ref="isCounterVisas" />
+        </rename>
+        <properties>
+            <hide condition-union="AND">
+                <negative-condition-ref ref="dialog"/>
+            </hide>
+        </properties>
+        <component>
+            <field attribute-ref="ClassifSimpleChosen" recalc="true">
+                <properties>
+                    <hide condition-union="AND">
+                        <condition-ref ref="isCounterVisas"/>
+                    </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <directories>
+                    <directory-select-value attribute-ref="ClassifSimpleAll"/>
+                </directories>
+            </field>
+            <field attribute-ref="ClassifSimpleOne">
+                <properties>
+                    <require condition-union="AND">
+                        <condition>true</condition>
+                    </require>
+                    <hide condition-union="AND">
+                        <negative-condition-ref ref="isCounterVisas"/>
+                    </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <directories>
+                    <directory-select-value attribute-ref="ClassifSimpleAll"/>
+                </directories>
+            </field>
+            <button name="${ui.form.ClassifSimpleDialog.button.Продолжить.name:Продолжить}">
+                <action>
+                    <system name="submit"/>
+                </action>
+            </button>
+            <button name="${ui.form.ClassifSimpleDialog.button.Отмена.name:Отмена}">
+                <properties>
+                    <hide condition-union="AND">
+                        <condition>true</condition>
+                    </hide>
+                </properties>
+                <action>
+                    <system name="cancel"/>
+                </action>
+            </button>
+            <button attribute-ref="tempField" recalc="true" name="${ui.form.ClassifSimpleDialog.button.tempField.name:Выбрать всё по ЛС}">
+                <properties>
+                    <hide condition-union="AND">
+                        <condition-ref ref="isCounterVisas"/>
+                    </hide>
+                </properties>
+                <action>
+                    <system name="recalc" />
+                </action>
+            </button>
+        </component>
+    </form>
+</ui>

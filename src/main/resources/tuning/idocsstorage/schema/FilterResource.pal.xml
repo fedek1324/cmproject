@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="FilterResource">
+    <string name="name" system="true" temporal="true"/>
+    <string name="id" system="true" temporal="true"/>
+    <string name="dialogueComment" createlog="true">
+      <storage-field name="dialogueComment"/>
+    </string>
+    <string name="dialogueCommentReg" createlog="true">
+      <storage-field name="dialogueCommentReg"/>
+    </string>
+  </schema>
+</schemas>

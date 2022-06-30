@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="InternalDocs" view="(vw_cmj_03_internal)" id="dp-03-internal" name="ВнД - шаблоны резолюций" style="default">
+    <help id="99778971"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="templateName"/>
+        <column-ref ref="self"/>
+        <column-ref ref="executors"/>
+        <column-ref ref="text"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="InternalDocs-CreateResTemplate" name="${catalog.custom-descriptor.dp-03-internal.actions.action.InternalDocs-CreateResTemplate.name:Создать/Шаблон резолюции внутреннего документа}">
+        <create object-ref="RESOLUTION_TEMPLATE_INTERNAL"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

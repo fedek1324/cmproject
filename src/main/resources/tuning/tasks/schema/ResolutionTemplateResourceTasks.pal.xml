@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="ResolutionTemplateResource" name="ResolutionTemplateResourceTasks">
+    <meta>
+      <category name="Система\Поручения"/>
+    </meta>
+    <string name="showTemplateTasks" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Шаблон поручения']]></script>
+      </calc-values>
+    </string>
+    <boolean name="disableLinkAccess" system="true"/>
+  </schema>
+</schemas>

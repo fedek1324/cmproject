@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="(vw_cmj_admin_employees)" id="admin-so-employees-af5" name="Сотрудники для админки AF5" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="soDocType" sort-asc="true"/>
+        <column-ref ref="isMainPost" sort-asc="true"/>
+        <column-ref ref="NotificationType" sort-asc="true"/>
+        <column-ref ref="origShortName" sort-asc="true" sort-desc="true" filter="true"/>
+        <column-ref ref="tabel" sort-asc="true" sort-desc="true" filter="true" hide="true"/>
+        <column-ref ref="origPostName" sort-asc="true" sort-desc="true" filter="true"/>
+        <column-ref ref="depName" sort-asc="true" sort-desc="true" filter="true"/>
+        <column-ref ref="area" sort-asc="true" sort-desc="true" filter="true" hide="true"/>
+        <column-ref ref="portalProfile" sort-asc="true" sort-desc="true" filter="true" hide="true"/>
+        <column-ref ref="depNameParent" sort-asc="true" filter="true" hide="true"/>
+        <column-ref ref="employeeInfo" sort-asc="true"/>
+        <column-ref ref="employeeInfoCon" sort-asc="true"/>
+        <column-ref ref="employeeInfoInc" sort-asc="true"/>
+        <column-ref ref="employeeInfoInt" sort-asc="true"/>
+        <column-ref ref="employeeInfoOrd" sort-asc="true"/>
+        <column-ref ref="employeeInfoOut" sort-asc="true"/>
+        <column-ref ref="employeeInfoReq" sort-asc="true"/>
+        <column-ref ref="workGroup" sort-asc="true" sort-desc="true" filter="true"/>
+      </columns>
+    </table>
+    <hierarchy>
+      <view-transit ref="admin-hierarchy-goto" result-search-ref="admin-hierarchy-goto"/>
+    </hierarchy>
+    <custom-actions schema-ref="SOEployeesCollection"/>
+  </custom-descriptor>
+</catalog>

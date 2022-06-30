@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Missions" view="(vw_cmj_02_missions)" id="dp-02-missions" name="ОРД - шаблоны документов" style="default">
+    <help id="99778971"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="templateName"/>
+        <column-ref ref="reqType"/>
+        <column-ref ref="signer"/>
+        <column-ref ref="subject"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Missions-CreateRKKTemplate" name="${catalog.custom-descriptor.dp-02-missions.actions.action.Missions-CreateRKKTemplate.name:Создать/Шаблон ОРД}">
+        <create object-ref="RKK_TEMPLATE_MISSIONS"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

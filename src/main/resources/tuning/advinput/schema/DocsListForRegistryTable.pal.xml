@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="DocsListForRegistryTable">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <integer name="numberInList" system="true"/>
+    <string name="packageNumber" system="true"/>
+    <string name="subject" system="true"/>
+    <string name="from" system="true"/>
+    <string name="to" system="true"/>
+    <string name="docPages" system="true"/>
+    <string name="appNumber" system="true"/>
+  </schema>
+</schemas>

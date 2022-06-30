@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RequestQuestion" id="RequestQuestionDialog" name="${ui.form.RequestQuestionDialog.name:Вопрос}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="questionValue" name="${ui.form.RequestQuestionDialog.field.questionValue.name:Тематика:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal">
+          <limit height="5" max-height-scroll="5"/>
+        </appearance>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="RequestsThematicClassifier"/>
+        </directories>
+      </field>
+      <field recalc="true" attribute-ref="questionClass" name="${ui.form.RequestQuestionDialog.field.questionClass.name:Вид вопроса:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal">
+          <label-style>
+            <style id="tunTriangle"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunTriangle"/>
+            </value-style>
+          </field-style>
+        </appearance>
+        <directories limit-livesearch="sys-current">
+          <directory-hierarchy-by-key ref="KindHier"/>
+        </directories>
+      </field>
+      <field attribute-ref="questionClassType" name="${ui.form.RequestQuestionDialog.field.questionClassType.name:Тип вида вопроса:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="hasClass"/>
+          </hide>
+        </properties>
+        <appearance importance="normal">
+          <label-style>
+            <style id="tunTriangle"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunTriangle"/>
+            </value-style>
+          </field-style>
+        </appearance>
+        <directories limit-livesearch="no-restrictions">
+          <show-select-value>
+            <cell-view-ref ref="Вид вопроса"/>
+          </show-select-value>
+          <directory-hierarchy-by-key attribute-ref="questionClass" ref="KindHier" level="2"/>
+        </directories>
+      </field>
+      <field attribute-ref="questionClassType" name="${ui.form.RequestQuestionDialog.field.questionClassType.name:Тип вида вопроса:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="hasKind"/>
+          </hide>
+        </properties>
+        <appearance importance="normal">
+          <label-style>
+            <style id="tunTriangle"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunTriangle"/>
+            </value-style>
+          </field-style>
+        </appearance>
+        <directories limit-livesearch="no-restrictions">
+          <show-select-value>
+            <cell-view-ref ref="Вид вопроса"/>
+          </show-select-value>
+          <directory-hierarchy-by-key attribute-ref="questionClass" ref="KindHier" level="2"/>
+        </directories>
+      </field>
+    </component>
+  </form>
+</ui>

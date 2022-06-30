@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="Dialog" name="DialogSetArea">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="messageText" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Установить территорию']]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="selectIds" temporal="true"/>
+    <string name="area" temporal="true">
+      <recalc-processing-class>HomeNet</recalc-processing-class>
+    </string>
+    <string name="counter" temporal="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="Search.getLastQueries.all.for.WD" id="search-queue-last-queries" name="Поиск - Очередь - Последние запросы" style="default">
+    <help id="99778990"/>
+    <builder name="ru.intertrust.cmj.af.search.collections.BuilderLastQueries"/>
+    <table>
+      <columns>
+        <column-ref ref="title"/>
+        <column-ref ref="self"/>
+        <column-ref ref="body"/>
+        <column-ref ref="parameters"/>
+        <column-ref ref="lastExecutionTime"/>
+        <column-ref ref="lastFetchedResultCount"/>
+        <column-ref ref="entityType"/>
+      </columns>
+    </table>
+    <cg-queue ref="LastQueriesWD"/>
+  </descriptor>
+</catalog>

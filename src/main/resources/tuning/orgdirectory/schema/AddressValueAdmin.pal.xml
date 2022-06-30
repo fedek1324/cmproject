@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="AddressValueAdmin">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <string name="postOfficeBox">
+      <storage-field name="CAddr1_Office"/>
+    </string>
+    <schema-ref ref="AddressExtAdmin" name="extendedAddress"/>
+    <string name="streetAddress">
+      <storage-field name="CAddr1_Street"/>
+    </string>
+    <string name="locality">
+      <storage-field name="CAddr1_City"/>
+    </string>
+    <string name="region">
+      <storage-field name="CRegion"/>
+    </string>
+    <string name="postalCode">
+      <storage-field name="CAddr1_ZipCode"/>
+      <validate-regex>^[0-9]*$</validate-regex>
+    </string>
+    <string name="countryName">
+      <storage-field name="CCountry"/>
+    </string>
+    <string name="streetTypeAddress">
+      <storage-field name="CAddr1_StreetType"/>
+    </string>
+    <string name="district">
+      <storage-field name="CAddr1_Locality"/>
+    </string>
+  </schema>
+</schemas>

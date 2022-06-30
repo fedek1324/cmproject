@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="GroupZamBeardsTemp" id="GroupZamBeardsTemp_Table" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal"/>
+    <component>
+      <section id="Fio_Name" name="${ui.form.GroupZamBeardsTemp_Table.section.Fio_Name.name:ФИО}" group="true">
+        <component>
+          <field clickable="true" attribute-ref="fioName">
+            <appearance open-mode="dialog" digest-mode="client" align="left" clickable="true">
+              <label-style field-width="40" field-unit="percent"/>
+              <limit max-size="-1"/>
+            </appearance>
+            <directories limit-livesearch="no-restrictions">
+              <show-select-value>
+                <descriptor-ref ref="arm-admin-dialog-empl"/>
+              </show-select-value>
+              <directory-ref ref="arm-admin-dialog-empl"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+      <section id="Change" name="${ui.form.GroupZamBeardsTemp_Table.section.Change.name:Визирование}" group="true">
+        <component>
+          <field attribute-ref="change">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SO_GroupZamBeards_isSeparateAccess"/>
+              </hide>
+            </properties>
+            <appearance align="left">
+              <label-style field-width="5" field-unit="symbol"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <section id="Start" name="${ui.form.GroupZamBeardsTemp_Table.section.Start.name:Дата начала периода}" group="true">
+        <component>
+          <field attribute-ref="startDate">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="End" name="${ui.form.GroupZamBeardsTemp_Table.section.End.name:Дата окончания периода}" group="true">
+        <component>
+          <field attribute-ref="endDate">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <button>
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="table_edit"/>
+          </hide>
+        </properties>
+        <appearance align="left">
+          <label-style width="3" unit="symbol">
+            <style id="tunIconEdit"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="update"/>
+        </action>
+      </button>
+      <button>
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="table_edit"/>
+          </hide>
+        </properties>
+        <appearance align="left">
+          <label-style width="3" unit="symbol">
+            <style id="tunIconDelete"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="delete"/>
+        </action>
+      </button>
+      <button name="${ui.form.GroupZamBeardsTemp_Table.button.Добавить временного замещающего.name:Добавить временного замещающего}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="table_edit"/>
+          </hide>
+        </properties>
+        <appearance>
+          <label-style>
+            <style id="tunIconAdd"/>
+            <style id="tunBlue"/>
+            <style id="tunUnderline"/>
+            <style id="tunClickableRed"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="add"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

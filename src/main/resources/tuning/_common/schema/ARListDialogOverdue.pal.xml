@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ARListDialogOverdue">
+    <meta>
+      <category name="Асинхронные операции\Согласование"/>
+    </meta>
+    <string name="action" createlog="true" temporal="true"/>
+    <schema-ref ref="ARListDialogTime" name="frequency" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

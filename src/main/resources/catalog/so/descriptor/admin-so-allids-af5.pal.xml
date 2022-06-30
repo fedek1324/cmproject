@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="(vw_cmj_admin_allids)" id="admin-so-allids-af5" name="Передача дел для админки (AF5)" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="handOverCases" filter="true"/>
+        <column-ref ref="takeUpCases" filter="true"/>
+        <column-ref ref="handOverCasesReg" sort-asc="true" sort-desc="true" filter="true"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

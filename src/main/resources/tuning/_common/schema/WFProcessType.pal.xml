@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="WFProcessType">
+    <meta>
+      <category name="Сервис\WorkFlow"/>
+    </meta>
+    <string value="parallel" name="parallel"/>
+    <string value="sequential" name="sequential"/>
+  </enum>
+</schemas>

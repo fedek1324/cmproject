@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="admin-organization_sysadm" id="admin-groups_sysadm" name="${catalog.view.admin_groups_sysadm.name:Группы}" position="120">
+    <descriptor-ref ref="admin-so-groups"/>
+    <source>
+      <module ident="SO"/>
+    </source>
+  </view>
+</catalog>

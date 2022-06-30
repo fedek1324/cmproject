@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DocTypeSettingTrashCollection" id="DocTypeSettingTrashCollectionForm" name="${ui.form.DocTypeSettingTrashCollectionForm.name:DocTypeSettingTrashCollectionForm}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.DocTypeSettingTrashCollectionForm.section.RootMenu.button.Восстановить из корзины.name:Восстановить из корзины}" alias="restore-setting-doctype">
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">RestoreDocTypeSettingOperation</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

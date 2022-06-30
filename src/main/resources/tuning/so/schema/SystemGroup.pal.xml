@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="SystemGroup">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="clerks" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Делопроизводители:']]></script>
+      </calc-values>
+    </string>
+    <boolean name="anotherUnit" system="true">
+      <storage-field name="inputsw"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="outClerck" system="true" temporal="true">
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="outAnotherUnit" system="true">
+      <storage-field name="inputsw"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="сlerck" system="true" temporal="true">
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="conAnotherUnit" system="true">
+      <storage-field name="inputsw"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="intClerck" system="true" temporal="true">
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="intAnotherUnit" system="true">
+      <storage-field name="inputsw"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="ordAnotherUnit" system="true">
+      <storage-field name="inputsw"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="conClerck" system="true" temporal="true">
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="appClerck" system="true" temporal="true">
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="appAnotherUnit" system="true">
+      <storage-field name="inputsw"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="ordClerck" system="true" temporal="true">
+      <storage-string value="1"/>
+    </boolean>
+    <string name="anotherUnitTitle" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Другое подразделение:']]></script>
+      </calc-values>
+    </string>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="anotherUnitValue" createlog="true" temporal="true"/>
+    <schema-ref ref="ClerckUnit" array="true" name="outClerckUnit" temporal="true"/>
+    <schema-ref ref="ClerckUnit" array="true" name="clerckUnit" temporal="true"/>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="ordAnotherUnitValue" createlog="true" temporal="true"/>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="intAnotherUnitValue" createlog="true" temporal="true"/>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="appAnotherUnitValue" createlog="true" temporal="true"/>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="conAnotherUnitValue" createlog="true" temporal="true"/>
+    <schema-ref ref="ClerckUnit" array="true" name="intClerckUnit" temporal="true"/>
+    <schema-ref ref="ClerckUnit" array="true" name="ordClerckUnit" temporal="true"/>
+    <schema-ref ref="ClerckUnit" array="true" name="conClerckUnit" temporal="true"/>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="outAnotherUnitValue" createlog="true" temporal="true"/>
+    <schema-ref ref="ClerckUnit" array="true" name="appClerckUnit" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="intAuditors" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="ordAuditors" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="conAuditors" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="appAuditors" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="auditors" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="outAuditors" temporal="true"/>
+    <boolean name="useSystemGroups_Contracts" system="true" temporal="true"/>
+    <boolean name="useSystemGroups_Requests" system="true" temporal="true"/>
+  </schema>
+</schemas>

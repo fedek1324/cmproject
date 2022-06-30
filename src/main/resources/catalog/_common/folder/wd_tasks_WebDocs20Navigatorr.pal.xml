@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="WebDocs20Navigator" id="wd_tasks" name="${catalog.folder.tasks.name:Задачи}" position="10">
+    <subfolders>
+      <view id="pkd-tasks-queueByEvent-addressed" name="${catalog.view.pkd_tasks_queueByEvent_addressed.name:На рассмотрение}" position="10">
+        <counter-request name="PKD.counter.queueByEvent.input.addressed"/>
+        <descriptor-ref ref="pkd-tasks-queueByEvent-addressed"/>
+      </view>
+      <view id="pkd-tasks-queueByEvent-sign" name="${catalog.view.pkd_tasks_queueByEvent_sign.name:На подпись}" position="20">
+        <counter-request name="PKD.counter.queueByEvent.input.sign"/>
+        <descriptor-ref ref="pkd-tasks-queueByEvent-sign"/>
+      </view>
+      <view id="pkd-tasks-queueByEvent-visa" name="${catalog.view.pkd_tasks_queueByEvent_visa.name:На согласование}" position="30">
+        <counter-request name="PKD.counter.queueByEvent.input.visa"/>
+        <descriptor-ref ref="pkd-tasks-queueByEvent-visa"/>
+      </view>
+      <view id="pkd-tasks-queueByEvent-familiarization" name="${catalog.view.pkd_tasks_queueByEvent_familiarization.name:На ознакомление}" position="35">
+        <counter-request name="PKD.counter.queueByEvent.input.familiarization"/>
+        <descriptor-ref ref="pkd-tasks-queueByEvent-familiarization"/>
+      </view>
+      <view id="pkd-tasks-queueByEvent-execution" name="${catalog.view.pkd_tasks_queueByEvent_execution.name:На исполнение}" position="40">
+        <counter-request name="PKD.counter.queueByEvent.input.execution"/>
+        <descriptor-ref ref="pkd-tasks-queueByEvent-execution"/>
+      </view>
+      <view id="pkd-tasks-queue-reports" name="${catalog.view.pkd_tasks_queue_reports.name:Отчеты}" position="45">
+        <counter-request name="PKD.counter.queue.reports"/>
+        <descriptor-ref ref="pkd-tasks-queue-reports"/>
+      </view>
+      <view id="pkd-tasks-queueByEvent-deferred" name="${catalog.view.pkd_tasks_queueByEvent_deferred.name:Отложенные}" position="50">
+        <counter-request name="PKD.counter.queue.deferred"/>
+        <descriptor-ref ref="pkd-tasks-queueByEvent-deferred"/>
+      </view>
+      <view id="pkd-tasks-queue-wait-approv" name="${catalog.view.pkd_tasks_queue_wait_approv.name:Жду согласования}" position="60">
+        <counter-request name="PKD.counter.queue.wait.approving"/>
+        <descriptor-ref ref="pkd-tasks-queue-wait-approv"/>
+      </view>
+      <view id="pkd-tasks-queue-wait-exec" name="${catalog.view.pkd_tasks_queue_wait_exec.name:Жду исполнения}" position="70">
+        <counter-request name="PKD.counter.queue.wait.exec"/>
+        <descriptor-ref ref="pkd-tasks-queue-wait-exec"/>
+      </view>
+      <view id="pkd-tasks-queue-archive" name="${catalog.view.pkd_tasks_queue_archive.name:Архив}" position="80">
+        <counter-request name="PKD.counter.queue.archive"/>
+        <descriptor-ref ref="pkd-tasks-queue-archive"/>
+      </view>
+      <view id="pkd-docs-queue-projects" name="${catalog.view.pkd_docs_queue_projects.name:Мои проекты}" position="90">
+        <counter-request name="PKD.counter.queue.projects"/>
+        <descriptor-ref ref="pkd-docs-queue-projects"/>
+      </view>
+      <view id="pkd-docs-queue-registered" name="${catalog.view.pkd_docs_queue_registered.name:Мои зарегистрированные}" position="100">
+        <counter-request name="PKD.counter.queue.registered"/>
+        <descriptor-ref ref="pkd-docs-queue-registered"/>
+      </view>
+    </subfolders>
+  </folder>
+</catalog>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor view="InternalDocs_(vw_cmj_sel_doc)" ident="InternalDocs" style="default" name="Список внутренних документов" id="db-select-doc-InternalDocs">
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder" />
+    <table>
+      <columns>
+        <column-ref ref="description" />
+        <column-ref ref="doc_obj" />
+        <column-ref ref="self" />
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

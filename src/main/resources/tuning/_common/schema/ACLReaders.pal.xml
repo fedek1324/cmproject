@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ACLReaders">
+    <meta>
+      <category name="Диалоги"/>
+    </meta>
+    <actor array="true" name="Value" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

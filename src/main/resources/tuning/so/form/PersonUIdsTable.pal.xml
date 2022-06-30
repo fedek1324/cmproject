@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="PersonUids" id="PersonUIdsTable" name="${ui.form.PersonUIdsTable.name:Индентификаторы}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="uid" name="${ui.form.PersonUIdsTable.field.uid.name:Идентификатор}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="uidType" name="${ui.form.PersonUIdsTable.field.uidType.name:Тип}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="uidType_ext"/>
+        </directories>
+      </field>
+      <button name="${ui.form.PersonUIdsTable.button.Добавить.name:Добавить}">
+        <appearance align="right">
+          <label-style>
+            <style id="tunIconAdd"/>
+            <style id="tunBlue"/>
+            <style id="tunUnderline"/>
+            <style id="tunClickableRed"/>
+          </label-style>
+          <alt-appearancies>
+            <alt-appearance>
+              <appearance-ref ref="addButton"/>
+              <enable condition-union="AND">
+                <condition>true</condition>
+              </enable>
+            </alt-appearance>
+          </alt-appearancies>
+        </appearance>
+      </button>
+      <button>
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="personUidIsSystem"/>
+          </hide>
+        </properties>
+        <appearance align="right">
+          <label-style>
+            <style id="tunIconDelete"/>
+          </label-style>
+          <alt-appearancies>
+            <alt-appearance>
+              <appearance-ref ref="deleteButton"/>
+              <enable condition-union="AND">
+                <condition>true</condition>
+              </enable>
+            </alt-appearance>
+            <alt-appearance>
+              <appearance-ref ref="deleteButton"/>
+              <enable condition-union="AND">
+                <condition-ref ref="PersonUidsIsNotSystem"/>
+              </enable>
+            </alt-appearance>
+          </alt-appearancies>
+        </appearance>
+      </button>
+      <button>
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="personUidIsSystem"/>
+          </hide>
+        </properties>
+        <appearance align="right">
+          <label-style>
+            <style id="tunIconEdit"/>
+          </label-style>
+          <alt-appearancies>
+            <alt-appearance>
+              <appearance-ref ref="editButton"/>
+              <enable condition-union="AND">
+                <condition>true</condition>
+              </enable>
+            </alt-appearance>
+            <alt-appearance>
+              <appearance-ref ref="editButton"/>
+              <enable condition-union="AND">
+                <condition-ref ref="PersonUidsIsNotSystem"/>
+              </enable>
+            </alt-appearance>
+          </alt-appearancies>
+        </appearance>
+      </button>
+    </component>
+  </form>
+</ui>

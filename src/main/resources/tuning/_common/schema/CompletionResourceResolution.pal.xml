@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" name="CompletionResourceResolution">
+    <meta>
+      <category name="Сервис\Исполнения"/>
+    </meta>
+    <date name="date" system="true"/>
+    <boolean name="isDone" system="true" temporal="true"/>
+    <schema-ref ref="ReasonResource" name="reason" system="true"/>
+    <schema-ref ref="State" name="state" system="true"/>
+    <actor name="author" system="true"/>
+    <string name="cause" system="true" temporal="true"/>
+    <boolean name="useTaskTitle" system="true" temporal="true"/>
+    <boolean name="isReasonNotEmpty" system="true" temporal="true"/>
+    <boolean name="onlyRead" system="true" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

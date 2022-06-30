@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <complex-column name="approvingTemplate" extends="object">
+    <column-ref ref="id"/>
+    <column-ref ref="templateName"/>
+    <column-ref ref="hyperLink"/>
+  </complex-column>
+  <column name="approvingTemplateKey" extends="string"/>
+  <column name="approvingTemplateKeyForEDM" subject="${catalog.column.approvingTemplateKeyForEDM.subject:Ключ поиска шаблонов согласования для БРД}" extends="string"/>
+  <column name="dbIdent" extends="string"/>
+  <column name="dbName" subject="${catalog.column.dbName.subject:БД}" extends="string">
+    <meta>
+      <documentation>БД</documentation>
+    </meta>
+  </column>
+  <column name="isDefault" extends="string"/>
+  <complex-column name="visaList" subject="${catalog.complex-column.visaList.subject:Список согласующих}" extends="vcard">
+    <meta>
+      <documentation>Список согласующих</documentation>
+    </meta>
+  </complex-column>
+  <complex-column name="signer2" subject="${catalog.complex-column.signer2.subject:Подпись}" extends="vcard">
+    <meta>
+      <documentation>Колонка "Подписант" с другим названием</documentation>
+    </meta>
+    <column-ref ref="shortName"/>
+    <column-ref ref="id"/>
+    <column-ref ref="hint"/>
+  </complex-column>
+  <column name="reqType2" subject="${catalog.column.reqType2.subject:Вид}" extends="string">
+    <meta>
+      <documentation>Колонка "Вид документа" с другим названием</documentation>
+    </meta>
+  </column>
+</catalog>

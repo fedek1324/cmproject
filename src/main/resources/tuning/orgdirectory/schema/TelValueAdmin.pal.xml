@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="TelValueAdmin">
+    <meta>
+      <category name="Справочники"/>
+    </meta>
+    <string array="true" name="home" system="true"/>
+    <string array="true" name="work" temporal="true">
+      <storage-field name="CPhone"/>
+    </string>
+    <string array="true" name="mobile" system="true"/>
+    <string array="true" name="fax" system="true"/>
+    <string name="telex" system="true"/>
+  </schema>
+</schemas>

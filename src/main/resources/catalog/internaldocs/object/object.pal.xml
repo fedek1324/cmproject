@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <object name="REPORT_INTERNAL">
+    <meta>
+      <documentation>Отчет исполнения ВнД</documentation>
+    </meta>
+  </object>
+  <object name="RESOLUTION_INTERNAL">
+    <meta>
+      <documentation>Резолюция  внутреннего документа</documentation>
+    </meta>
+  </object>
+  <object name="RESOLUTION_TEMPLATE_INTERNAL">
+    <meta>
+      <documentation>Шаблон резолюции внутреннего документа</documentation>
+    </meta>
+  </object>
+  <object name="RKK_INTERNAL">
+    <meta>
+      <documentation>Внутренний документ</documentation>
+    </meta>
+  </object>
+  <object name="RKK_TEMPLATE_INTERNAL">
+    <meta>
+      <documentation>Шаблон внутреннего документа</documentation>
+    </meta>
+  </object>
+</catalog>

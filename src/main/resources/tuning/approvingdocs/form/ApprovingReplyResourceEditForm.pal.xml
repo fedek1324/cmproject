@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ApprovingReplyResource" id="ApprovingReplyResourceEditForm" projection="default" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+      </hide>
+    </properties>
+    <appearance field-layout="vertical"/>
+    <component>
+      <section id="Buttons" group="true">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <button name="${ui.form.ApprovingReplyResourceEditForm.section.Buttons.button.Отправить.name:Отправить}" alias="sendButton">
+            <action>
+              <system name="save"/>
+            </action>
+          </button>
+          <field attribute-ref="$sendDraft">
+            <appearance importance="normal">
+              <label-style field-unit="symbol" field-width="5"/>
+            </appearance>
+            <hint-pop-up>${ui.form.ApprovingReplyResourceEditForm.section.Buttons.field.sendDraft.hintPopUp:Сохранить черновик}</hint-pop-up>
+            <hint-in-field>${ui.form.ApprovingReplyResourceEditForm.section.Buttons.field.sendDraft.hintInField:Сохранить черновик}</hint-in-field>
+          </field>
+          <field attribute-ref="$sendVisaToHead">
+            <appearance importance="normal" />
+            <hint-pop-up>${ui.form.ApprovingReplyResourceEditForm.section.Buttons.field.sendVisaToHead.hintPopUp:Передать руководителю}</hint-pop-up>
+            <hint-in-field>${ui.form.ApprovingReplyResourceEditForm.section.Buttons.field.sendVisaToHead.hintInField:Передать руководителю}</hint-in-field>
+          </field>
+          <button name="${ui.form.ApprovingReplyResourceEditForm.section.Buttons.button.Отменить.name:Отменить}">
+            <appearance>
+              <label-style>
+                <style id="tunBtnGray"/>
+                <style id="tunBgGrayBlue"/>
+              </label-style>
+            </appearance>
+            <action>
+              <system name="cancel"/>
+            </action>
+          </button>
+        </component>
+      </section>
+      <section id="visaAndComment" group="true">
+        <appearance>
+          <label-style width="1" unit="symbol"/>
+        </appearance>
+        <component>
+          <section id="VisaVariants" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="answer">
+                <properties>
+                  <require condition-union="AND">
+                    <condition>true</condition>
+                  </require>
+                </properties>
+                <appearance open-mode="radio" digest-mode="radio" importance="normal" widget="radio">
+                  <field-style>
+                    <value-style value="no">
+                      <style id="tunRed"/>
+                    </value-style>
+                    <value-style value="special">
+                      <style id="tunYellow"/>
+                    </value-style>
+                    <value-style value="yes">
+                      <style id="tunGreen"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="visaVariants"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+          <section id="commentSection" group="true">            
+            <component>
+              <field attribute-ref="comment" name="${ui.form.ApprovingReplyResourceEditForm.field.comment.name:Комментарий:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="isSpecialReply"/>
+                    <condition-ref ref="isNegativeReply"/>
+                  </require>
+                </properties>
+                <appearance multiline="true" importance="normal" align="left"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <field attribute-ref="$copyContent">
+        <appearance importance="normal">
+          <label-style>
+            <style id="tunBlue"/>
+            <style id="tunUnderlineDotted"/>
+            <style id="tunClickableRed"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunBlue"/>
+              <style id="tunUnderlineDotted"/>
+              <style id="tunClickableRed"/>
+            </value-style>
+          </field-style>
+        </appearance>
+        <hint-pop-up>${ui.form.ApprovingReplyResourceEditForm.field.copyContent.hintPopUp:Копировать содержание}</hint-pop-up>
+        <hint-in-field>${ui.form.ApprovingReplyResourceEditForm.field.copyContent.hintInField:Копировать содержание}</hint-in-field>
+      </field>
+      <section id="CopyActions" group="true">
+        <appearance field-layout="vertical"/>
+        <component>
+          <field attribute-ref="$copyFromNestedReplies" name="${ui.form.ApprovingReplyResourceEditForm.section.CopyActions.field.CopyFromNestedReplies.name:Копировать решения из всех виз}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="ApprovingReplyResource_canCopyFromNestedReplies"/>
+              </hide>
+            </properties>
+            <appearance align="left" importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="ContentRow" group="true">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <section id="ContentSection" name="${ui.form.ApprovingReplyResourceEditForm.section.ContentRow.section.ContentSection.name:Содержание}">
+            <appearance style="tunBorderBlueSection" turn="true"/>
+            <component>
+              <field attribute-ref="$content">
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

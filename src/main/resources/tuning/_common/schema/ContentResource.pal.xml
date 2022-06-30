@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ContentResource">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <richtext name="richtext" system="true"/>
+    <file name="content" system="true"/>
+    <boolean name="accessible"/>
+    <actor array="true" name="accessList"/>
+    <boolean name="allowAddToAccessList"/>
+    <boolean name="allowRemoveFromAccessList"/>
+  </schema>
+</schemas>

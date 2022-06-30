@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" extends="ReporterDialog" name="ReportDlgSumExecRegDoc">
+    <meta>
+      <category name="Отчеты"/>
+    </meta>
+    <schema-ref ref="ReporterSubDialogEmployeeListOwn" name="EMPL_LIST_CONTR" temporal="true"/>
+    <schema-ref ref="ReporterSubDialogEmployeeListOwn" name="Empl_List_Contr" temporal="true"/>
+    <schema-ref ref="DateInterval" name="DATE_REG" temporal="true"/>
+    <schema-ref ref="DateInterval" name="DATE_EXEC" temporal="true"/>
+    <schema-ref ref="ReporterSubDialogEmployeeListOwn" name="EMPL_LIST_SIGN" temporal="true"/>
+    <schema-ref ref="ReporterDlgListString" name="TEMATIC" temporal="true"/>
+  </schema>
+</schemas>

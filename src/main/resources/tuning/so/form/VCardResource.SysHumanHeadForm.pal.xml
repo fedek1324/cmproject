@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="VCardResource.SysHumanHead" id="VCardResource.SysHumanHeadForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header" group="true">
+        <appearance field-layout="vertical"/>
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <section id="row11" group="true">
+                <appearance field-layout="vertical"/>
+                <component>
+                  <field attribute-ref="showIdent">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance align="left" importance="normal">
+                      <label-style>
+                        <style id="headerElementWithIcon"/>
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="headerElementWithIcon"/>
+                        </value-style>
+                      </field-style>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="fn">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                </component>
+              </section>
+              <field attribute-ref="photo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <section id="row12" group="true">
+            <appearance>
+              <alt-appearancies>
+                <alt-appearance>
+                  <appearance-ref ref="horizontalSection"/>
+                  <enable condition-union="AND">
+                    <condition>true</condition>
+                  </enable>
+                </alt-appearance>
+              </alt-appearancies>
+            </appearance>
+            <component>
+              <field attribute-ref="nickname" name="${ui.form.VCardResource.SysHumanHeadForm.section.Header.section.row12.field.nickname.name:Табельный номер:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal"/>
+              </field>
+              <field attribute-ref="title" name="${ui.form.VCardResource.SysHumanHeadForm.section.Header.section.row12.field.title.name:Должность:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal"/>
+              </field>
+              <field attribute-ref="org.org-unit" name="${ui.form.VCardResource.SysHumanHeadForm.section.Header.section.row12.field.org.org-unit.name:Подразделение:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Attributes" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="mainGroup" group="true">
+            <appearance field-layout="horizontal" />
+            <component>
+              <section id="column1" group="true">
+                <component>
+                  <field attribute-ref="employeeGroup" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.employeeGroup.name:Группа работников:}">
+                    <properties>
+                      <hide>
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                  </field>
+                  <field attribute-ref="adrHome.extendedAddress.building" name="${ui.form.VCardResource.SysHumanForm.section.Attributes.section.Contact.field.adrHome.extendedAddress.building.name:Здание:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide>
+                        <condition-ref ref="SysHumanHead_BuildingIsEmpty"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                  <field attribute-ref="adrHome.postOfficeBox" name="${ui.form.VCardResource.SysHumanForm.section.Attributes.section.Contact.field.adrHome.postOfficeBox.name:Комната:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide>
+                        <condition-ref ref="SysHumanHead_PostOfficeBoxIsEmpty"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                  <field attribute-ref="workplaceInfo.localityWork" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.localityWork.name:Населенный пункт:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide>
+                        <condition-ref ref="SysHumanHead_LocalityWorkIsEmpty"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                  <field attribute-ref="workplaceInfo.office" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.office.name:Офис:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide>
+                        <condition-ref ref="SysHumanHead_OfficeIsEmpty"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                  <field attribute-ref="workplaceInfo.roomNumber" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.roomNumber.name:Номер кабинета:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide>
+                        <condition-ref ref="SysHumanHead_RoomNumberIsEmpty"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                  <field attribute-ref="workplaceInfo.floor" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.floor.name:Этаж:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide>
+                        <condition-ref ref="SysHumanHead_FloorIsEmpty"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                  <field attribute-ref="workplaceInfo.rmCode" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.rmCode.name:Код РМ:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide>
+                        <condition-ref ref="SysHumanHead_rmCodeIsEmpty"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                  <field attribute-ref="comment" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.comment.name:Комментарий:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                </component>
+              </section>
+              <section id="column2" group="true">
+                <component>
+                  <field attribute-ref="birthday" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.birthday.name:Дата рождения:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                  <field attribute-ref="tel.phoneInternal" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.phoneInternal.name:Внутренний телефон:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                  <field attribute-ref="tel.mobile" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.tel.mobile.name:Мобильный телефон:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                  <field attribute-ref="tel.work" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.tel.work.name:Рабочий телефон:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                  <field attribute-ref="email" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Contact.field.email.name:Рабочий email:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance align="left" importance="normal"/>
+                  </field>
+                </component>
+              </section>
+            </component>
+          </section>
+          <field attribute-ref="parentUnits" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.SHHHierarchy.name:Вышестоящая иерархия}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="Names" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Names.name:Замещения}">
+        <component>
+          <field attribute-ref="$substitutor" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Names.field.substitutor.name:Замещающие:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="auditors" name="${ui.form.VCardResource.SysHumanForm.section.Attributes.section.Names.field.auditors.name:Наблюдатели:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="$receivers" name="${ui.form.VCardResource.SysHumanHeadForm.section.Attributes.section.Names.field.receivers.name:Уведомления получают:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="receiversAbsent" name="${ui.form.VCardResource.SysHumanForm.section.Attributes.section.Names.field.receiversAbsent.name:Уведомления получают (если не работает в системе):}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="VCardResourceSysHumanHeadShowAbsentReceivers"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

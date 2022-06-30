@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="(arm_admin_person)" id="arm-admin-person" name="АРМ Админ:Персоны" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewDlg"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="name"/>
+        <column-ref ref="personLogin"/>
+        <column-ref ref="type"/>
+        <column-ref ref="objectContractorInfo"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="workdaysOrCalendarDays">
+    <meta>
+      <category name="Система\Кейсы 2.0"/>
+    </meta>
+    <string value="календарные дни" name="календарные дни"/>
+    <string value="рабочие дни" name="рабочие дни"/>
+  </enum>
+</schemas>

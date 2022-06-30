@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="DocTypeSettingResource" name="InternalDocTypeSettingResource">
+    <meta>
+      <category name="Настройки видов документов"/>
+    </meta>
+    <enum-ref default-value="InternalDocs" ref="ModuleType" name="dbType" createlog="true">
+      <storage-field name="DeloModuleTypeName"/>
+    </enum-ref>
+  </schema>
+</schemas>

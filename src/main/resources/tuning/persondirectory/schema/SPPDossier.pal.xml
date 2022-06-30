@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="SPPDossierPrivate" name="SPPDossier">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="jAddress" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(T(org.springframework.util.StringUtils).hasLength(sendIndex ) ? sendIndex +", ":"")+
+ (T(org.springframework.util.StringUtils).hasLength(country ) ? country+", ":"")+
+ (T(org.springframework.util.StringUtils).hasLength(region) ? region+", ":"")+
+ (T(org.springframework.util.StringUtils).hasLength(district ) ? district +", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(city ) ? city +", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(street ) ? street +", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(house ) ? house +", ": "")+
+(T(org.springframework.util.StringUtils).hasLength(structure ) ? structure +", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(housing ) ? housing +", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(room) ? room+", ":"")]]></script>
+      </calc-values>
+    </string>
+    <hyperlink name="selfHyperLink" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.misc.HyperLink).createHyperLink('Открыть карточку в новой вкладке' +'~#'+T(ru.intertrust.cmj.ws.base.servlet.ServletUrlHolder).getServerUrlStr() +link.?[rel=='self'].get(0).href+'~#newTab~#local')]]></script>
+      </calc-values>
+    </hyperlink>
+    <boolean name="prohibitChangeOrg" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[cashId!=null && !cashId.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <string name="jAddressShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(org.springframework.util.StringUtils).hasLength(jAddress) ? jAddress.substring(0, jAddress.length()-2):""]]></script>
+      </calc-values>
+    </string>
+    <param-specification>
+      <boolean-ref value="true" ref="isOrg"/>
+    </param-specification>
+    <boolean name="isDeletedByOrg" temporal="true"/>
+    <string name="deletedAddStatus" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[isDeletedByOrg ? "в связи с удалением организации" : "" ]]>
+        </script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="TNObject" name="AdminClassifier">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <schema-ref ref="AdminClassifierModule" name="module"/>
+    <enum-ref ref="AdminClassifierType" name="type">
+      <storage-field name="ClassType"/>
+    </enum-ref>
+    <string array="true" name="value">
+      <storage-field name="zn"/>
+    </string>
+    <string name="description">
+      <storage-field name="description"/>
+    </string>
+    <string name="objectType" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Классификатор']]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

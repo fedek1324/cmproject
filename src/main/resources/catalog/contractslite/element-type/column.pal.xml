@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <column name="addNumber" subject="${catalog.column.addNumber.subject:Доп. номер}">
+    <meta>
+      <documentation>Доп. номер</documentation>
+    </meta>
+  </column>
+  <column name="concludedDate" subject="${catalog.column.concludedDate.subject:Дата заключения документа}" extends="date">
+    <meta>
+      <documentation>Дата заключения документа</documentation>
+    </meta>
+  </column>
+  <column name="concludedDatePar" subject="${catalog.column.concludedDatePar.subject:Дата заключения родительского документа}" extends="concludedDate">
+    <meta>
+      <documentation>Дата заключения родительского документа</documentation>
+    </meta>
+  </column>
+  <column name="concludedDateStr" subject="${catalog.column.concludedDateStr.subject:Дата заключения документа}" extends="string">
+    <meta>
+      <documentation>Дата заключения документа</documentation>
+    </meta>
+  </column>
+  <column name="dogApprovingStatus" subject="${catalog.column.dogApprovingStatus.subject:Статус согласования договора}" extends="string">
+    <meta>
+      <documentation>Статус согласования договора</documentation>
+    </meta>
+  </column>
+  <complex-column name="dogParty2" subject="${catalog.complex-column.dogParty2.subject:2-я сторона}" extends="vcard">
+    <meta>
+      <documentation>2-я сторона</documentation>
+    </meta>
+  </complex-column>
+  <column name="dogParty2Name" subject="${catalog.column.dogParty2Name.subject:Сторона}" extends="string">
+    <meta>
+      <documentation>сторона договора (только имя)</documentation>
+    </meta>
+  </column>
+  <column name="dogPreparedByName" subject="${catalog.column.dogPreparedByName.subject:Подготовили}" extends="string">
+    <meta>
+      <documentation>Подготовили (только имя)</documentation>
+    </meta>
+  </column>
+  <column name="dogResponsiblesName" subject="${catalog.column.dogResponsiblesName.subject:Ответственные}" extends="string">
+    <meta>
+      <documentation>Ответственные (только имя)</documentation>
+    </meta>
+  </column>
+  <column display="icon" name="dogSignStatus" extends="string">
+    <meta>
+      <documentation>Статус подписи договора</documentation>
+    </meta>
+  </column>
+  <column name="dogSignStatus2" subject="${catalog.column.dogSignStatus2.subject:Статус подписи договора}" extends="string">
+    <meta>
+      <documentation>Статус подписи договора - расширенный</documentation>
+    </meta>
+  </column>
+  <column display="icon" name="dogStatus" subject="${catalog.column.dogStatus.subject:Статус}" extends="string">
+    <meta>
+      <documentation>Статус договора</documentation>
+    </meta>
+  </column>
+  <column name="dogStatusNotAnIcon" subject="${catalog.column.dogStatusNotAnIcon.subject:Статус}" extends="string">
+    <meta>
+      <documentation>Текстовый статус договора</documentation>
+    </meta>
+  </column>
+  <complex-column name="regNumberPar" subject="${catalog.complex-column.regNumberPar.subject:Номер родительского документа}" extends="regNumber">
+    <meta>
+      <documentation>Номер родительского документа</documentation>
+    </meta>
+  </complex-column>
+</catalog>

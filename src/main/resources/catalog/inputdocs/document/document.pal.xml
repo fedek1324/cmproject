@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <document name="${catalog.document.rkk_inputdb20d64bad0347cead26f1461a8a13b0.name:Входящий документ}" schema-ref="RkkResourceInput" object-ref="RKK_INPUT" general="true">
+    <module ident="InputDocs" complect=""/>
+  </document>
+  <document name="${catalog.document.report_input604d5fb395a44ea38fd1365bd8a8961a.name:Отчет ВхД}" schema-ref="ReportResource" object-ref="REPORT_INPUT">
+    <module ident="InputDocs" complect=""/>
+  </document>
+  <document name="${catalog.document.resolution_inputc00e14836f04471091ede879e62b5c41.name:Резолюция ВхД}" schema-ref="ResolutionResourceWithApprove" object-ref="RESOLUTION_INPUT">
+    <module ident="InputDocs" complect=""/>
+  </document>
+  <document name="${catalog.document.rkk_template_input3148efd66af6465fb70173efea5128c5.name:Шаблон входящего документа}" schema-ref="RkkTemplateResourceInput" object-ref="RKK_TEMPLATE_INPUT">
+    <module ident="InputDocs" complect=""/>
+  </document>
+  <document name="${catalog.document.resolution_template_inputcdcd272c672f478faa7b3258ba0ebab7.name:Шаблон резолюции входящего документа}" schema-ref="ResolutionTemplateResource" object-ref="RESOLUTION_TEMPLATE_INPUT">
+    <module ident="InputDocs" complect=""/>
+  </document>
+</catalog>

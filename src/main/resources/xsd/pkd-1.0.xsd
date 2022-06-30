@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified" targetNamespace="http://www.intertrust.ru/schema/palette/pkd"
+           xmlns="http://www.intertrust.ru/schema/palette/pkd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!--Код-->
+    <xs:simpleType name="codeJSType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="JavaScript">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[JavaScript]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="codeSPELType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SPEL">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[SPEL]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="codeSQLType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SQL">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[SQL]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="codeAllType">
+        <xs:union memberTypes="codeJSType codeSPELType codeSQLType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="codeFilterValueOnlyType">
+        <xs:union memberTypes="codeSPELType codeSQLType"/>
+    </xs:simpleType>
+
+    <!--Значение фильтра-->
+    <xs:complexType name="dateType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Даты]]></xs:documentation>
+        </xs:annotation>
+
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="offset" type="xs:long" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[смещение относительно текущей даты. Тип Long]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+
+                <xs:attribute name="work-day" type="xs:boolean" use="optional" default="false">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[использовать рабочие дни]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+
+                <xs:attribute name="icon-path" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Путь к иконке для визуализации значения]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+
+                <xs:attribute name="name" type="xs:string" use="optional">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[отображаемое в web-имя]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="constantType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Константы]]></xs:documentation>
+        </xs:annotation>
+
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="value" type="xs:string" use="required"/>
+                <xs:attribute name="name" type="xs:string" use="optional"/>
+                <xs:attribute name="icon-path" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Путь к иконке для визуализации значения]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="numberType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Номер]]></xs:documentation>
+        </xs:annotation>
+
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="value" type="xs:long" use="required"/>
+                <xs:attribute name="name" type="xs:string" use="optional"/>
+                <xs:attribute name="icon-path" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Путь к иконке для визуализации значения]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="actorType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Сотрудник\Роль организации]]></xs:documentation>
+        </xs:annotation>
+
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="value" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Ссылка на сотрудника\роль]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+
+                <xs:attribute name="icon-path" type="xs:string">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Путь к иконке для визуализации значения]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+
+                <xs:attribute name="name" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="pkdValueType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Наборы значений]]></xs:documentation>
+        </xs:annotation>
+
+        <xs:choice>
+            <xs:element name="date" type="dateType" maxOccurs="unbounded"/>
+            <xs:element name="constant" type="constantType" maxOccurs="unbounded"/>
+            <xs:element name="number" type="numberType" maxOccurs="unbounded"/>
+            <xs:element name="actor" type="actorType" maxOccurs="unbounded"/>
+            <xs:element name="script" type="codeFilterValueType" maxOccurs="1"/>
+        </xs:choice>
+
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор набора]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Фильтр-->
+    <xs:complexType name="iconType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Путь к иконке фильтра]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="path" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="codeType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Выражение]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="lang" type="codeAllType" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="codeFilterValueType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Выражение]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="lang" type="codeFilterValueOnlyType" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="codeSortType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Выражение]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="lang" type="codeJSType" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="pkdValueRefType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="ref" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Ссылка на значение набора]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="pkdValuesType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Идентификатор набора значений]]></xs:documentation>
+        </xs:annotation>
+
+        <xs:sequence>
+            <xs:element name="filter-value-ref" type="pkdValueRefType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="filterCodeCollectionType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Используется на севрере при запросах коллекции]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="script">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="lang" type="codeSQLType" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="filterCodeWebType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Используется на клиенте для фильтрации]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="script">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="lang" type="codeJSType" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="pkdFilterType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Фильтр]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="icon" type="iconType" minOccurs="0"/>
+            <xs:element name="web-filter" type="filterCodeWebType" minOccurs="0"/>
+            <xs:element name="collection-filter" type="filterCodeCollectionType" minOccurs="0"/>
+            <xs:element name="task-filter" type="filterTaskType" minOccurs="0"/>
+            <xs:element name="filter-values" type="pkdValuesType" minOccurs="0"/>
+        </xs:all>
+
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название фильтра]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор фильтра]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+
+        <xs:attribute name="type" default="default">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Тип фильтра]]>
+                </xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="default">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По умолчанию]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="date">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Дата]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="constants">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Константы]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="string">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Строка]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="number">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Номер]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="actor">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[ШЕ]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="label">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Метка]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+
+        <xs:attribute name="global" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Является глобальным фильтром]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="priority" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Приоритет]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="save-session" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Сохранить между сессиями]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="edit" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Доступность редактирования значений фильтра]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="highlight" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Выделять текущего пользователя]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Сортировка -->
+    <xs:complexType name="sqlFieldType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Название sql поля, по которому происходит сортировка]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="pkdSortType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Сортировка]]></xs:documentation>
+        </xs:annotation>
+
+        <xs:all>
+            <xs:element name="sql-field" type="sqlFieldType" minOccurs="1"/>
+            <xs:element name="script" type="codeSortType" minOccurs="1"/>
+        </xs:all>
+
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название сортировки]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор сортировки]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Фильтр задач-->
+    <xs:complexType name="filterTaskType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Для индивидуальной проверки задачи на вхождение в коллекцию]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="script">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="lang" type="codeSPELType" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="pkdFilterRefType">
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[ссылка на фильтр]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="applicable" type="xs:string">
+            <xs:annotation>
+                <xs:documentation><![CDATA[применять всегда]]> </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="pkdFiltersType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Массив идентификаторов доступных фильтров]]></xs:documentation>
+        </xs:annotation>
+
+        <xs:sequence>
+            <xs:element name="filter-ref" type="pkdFilterRefType" maxOccurs="unbounded" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="pkdSortRefType">
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на сортировку]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="applicable" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Применять всегда]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="pkdSortsType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Массив идентификаторов доступных сортировок]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="sort-ref" type="pkdSortRefType" maxOccurs="unbounded" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="queueType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Очередь]]></xs:documentation>
+        </xs:annotation>
+
+        <xs:all>
+            <xs:element name="task-filter" type="filterTaskType" minOccurs="0"/>
+            <xs:element name="filters" type="pkdFiltersType" minOccurs="0"/>
+            <xs:element name="sorts" type="pkdSortsType" minOccurs="0"/>
+        </xs:all>
+
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название очереди]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор очереди]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+
+        <xs:attribute name="stacks" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Группировать задачи по стопкам]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:element name="pkd">
+        <xs:complexType>
+            <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element name="filter" type="pkdFilterType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="filter-value" type="pkdValueType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="sort" type="pkdSortType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="queue" type="queueType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

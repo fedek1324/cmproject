@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="q.so-sysorg-sl-alphaC" id="so-sysorg-sl-alphaC" name="СО - СистемнаяОрганизация - СпискиРассылки - ПоАлфавиту (childs)" style="default">
+    <builder name="ru.intertrust.cmj.af.so.impl.BuilderSOSL"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="soslIsPublicAccess" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soslName" sort-desc="true"/>
+      </columns>
+    </table>
+  </descriptor>
+</catalog>

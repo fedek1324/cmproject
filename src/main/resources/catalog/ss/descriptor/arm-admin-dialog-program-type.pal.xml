@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SS" view="(vm_cmj_dialog_program_type)" id="arm-admin-dialog-program-type" name="АРМАдмин:Диалог.Типы программ" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewDlg"/>
+    <table>
+      <columns>
+        <column-ref ref="name"/>
+        <column-ref ref="ident"/>
+        <column-ref ref="objectSSProgramTypeInfo"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

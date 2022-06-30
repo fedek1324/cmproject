@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="arm-admin-dialog-dep-rvz" name="${catalog.view.arm_admin_dialog_dep_rvz.name:АРМАдмин.Диалог.Подразделения и руководители}" position="-1">
+    <descriptor-ref ref="arm-admin-dialog-dep-rvz"/>
+    <source>
+      <module ident="SO"/>
+    </source>
+  </view>
+</catalog>

@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="SOTNObject" name="SODepartment">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="fillCases" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.department.RecalcForChangeDepartmentFillCases</recalc-processing-class>
+    </string>
+    <string name="emptyField" temporal="true">
+      <storage-field name="incontrol"/>
+    </string>
+    <string array="true" name="afScanFiels" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[{"Met", "GDBaseName", "GroupZam_My_Beards", "EShortName", "AllIDs", "GroupZam", "ZamAudit", "OName", "EKNumber", "EPhone", "DocID",
+"RPA_Input_GDs", "RPA_Output_GDs", "RPA_Internal_GDs", "RPA_ORD_GDs", "RPA_Contracts_GDs", "RPA_Requests_GDs", "GroupInput","GroupOutput", "GroupInternal", "GroupORD", "GroupContracts", "GroupRequests", "InputSW", "OutputSW", "InternSW", "ORDSW", "ContractsSW", "RequestsSW", "EPost", "ParentShortName", "EFullName", "OName_L10n", "OName_1_L10n"}]]></script>
+      </calc-values>
+    </string>
+    <string name="nameInfo" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(fullname!=null  ? fullname : '') + ( (shortname!=null && shortname!=fullname)  ? (' ('+shortname+') ') : '')]]></script>
+      </calc-values>
+    </string>
+    <hyperlink name="selfHyperLink" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.misc.HyperLink).createHyperLink('Открыть карточку в новой вкладке' +'~#'+T(ru.intertrust.cmj.ws.base.servlet.ServletUrlHolder).getServerUrlStr() +link.?[rel=='self'].get(0).href+'~#newTab~#local')]]></script>
+      </calc-values>
+    </hyperlink>
+    <string name="headInfo" temporal="true"/>
+    <string name="country">
+      <storage-field name="OCountry"/>
+    </string>
+    <string name="empty_systname" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['']]></script>
+      </calc-values>
+    </string>
+    <string name="empty" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['']]></script>
+      </calc-values>
+    </string>
+    <boolean name="isAf5Storage" temporal="true"/>
+    <string name="refreshNoticeReceivers" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.department.RecalcForChangeZamDepartment</recalc-processing-class>
+    </string>
+    <string name="basedocid" temporal="true"/>
+    <string name="newParent" temporal="true"/>
+    <string name="rang" system="true">
+      <storage-field name="rang"/>
+    </string>
+    <string name="depType" createlog="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.department.RecalcForChangeDepartmentRang</recalc-processing-class>
+      <storage-field name="DepType"/>
+    </string>
+    <string name="fullname">
+      <storage-field name="OName"/>
+    </string>
+    <schema-ref ref="AddressSOUnit" array="true" name="addressList" createlog="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.RecalcAddressList</recalc-processing-class>
+    </schema-ref>
+    <schema-ref ref="AdminSOUnit" array="true" name="noticeReceived" temporal="true"/>
+    <schema-ref ref="NameList" name="hist_audit" temporal="true"/>
+    <schema-ref ref="NameList" name="hist_zam" temporal="true"/>
+    <schema-ref ref="NameList" name="hist_zam_temp" temporal="true"/>
+    <schema-ref ref="ClientContext_SaveWithDialogSOStruct" name="$clientContext" system="true" createlog="true" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="parentUnitsList" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="systemEditors" createlog="true" temporal="true"/>
+    <string name="region">
+      <storage-field name="ORegion"/>
+    </string>
+    <string name="office">
+      <storage-field name="Addr_Office"/>
+    </string>
+    <string name="housing">
+      <storage-field name="Addr_Build"/>
+    </string>
+    <string name="house">
+      <storage-field name="Addr_House"/>
+    </string>
+    <string name="sendIndex">
+      <storage-field name="Addr_ZipCode"/>
+    </string>
+    <string name="city">
+      <storage-field name="Addr_City"/>
+    </string>
+    <string name="street">
+      <storage-field name="Addr_Street"/>
+    </string>
+    <string name="shortname">
+      <storage-field name="OName_1"/>
+    </string>
+    <string name="codedep">
+      <storage-field name="Index"/>
+    </string>
+    <boolean name="iscodeni">
+      <storage-field name="AsClass"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="parentHierarchy" temporal="true"/>
+    <schema-ref ref="NameListClerk" name="hist_clerk" temporal="true"/>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="delegate_beard" temporal="true"/>
+    <boolean name="selfunit" system="true" temporal="true">
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="separateunit" system="true" temporal="true">
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="legalentity" system="true" temporal="true">
+      <storage-string value="1"/>
+    </boolean>
+    <string name="description" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Подразделение ']]></script>
+      </calc-values>
+    </string>
+    <string name="area">
+      <storage-field name="HomeNet"/>
+    </string>
+    <boolean name="notauto">
+      <storage-field name="ProtectFromSignal"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="worksfor" system="true" createlog="true" temporal="true"/>
+    <string name="WorksForRegistration" system="true" createlog="true" temporal="true"/>
+    <schema-ref null-empty="true" ref="WorkTimeProfile" name="WorkingProfile"/>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="receiving" temporal="true"/>
+    <schema-ref ref="SystemGroup" name="systemGroup" temporal="true"/>
+    <schema-ref ref="SystemNameForDepartment" name="systemName" temporal="true"/>
+    <schema-ref ref="Notification" name="notification" temporal="true"/>
+    <schema-ref ref="DescriptionCases" name="case"/>
+    <schema-ref ref="LocalDepartment" array="true" name="local"/>
+    <string name="tmpDelegateUnid" temporal="true"/>
+    <string name="guidccty">
+      <storage-field name="SSTUGUID"/>
+    </string>
+    <string name="phone">
+      <storage-field name="EPhone"/>
+    </string>
+    <string name="fax">
+      <storage-field name="Fax"/>
+    </string>
+    <string name="email">
+      <storage-field name="EMail"/>
+    </string>
+    <string name="site">
+      <storage-field name="Telex"/>
+    </string>
+    <string name="okved">
+      <storage-field name="COKONH"/>
+    </string>
+    <string name="okato">
+      <storage-field name="OKATO"/>
+    </string>
+    <string name="check">
+      <storage-field name="CCountR"/>
+    </string>
+    <string name="delegatingTitle" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['При удалении дела передаются:']]></script>
+      </calc-values>
+    </string>
+    <string name="bankname">
+      <storage-field name="CBank"/>
+    </string>
+    <string name="bikbank">
+      <storage-field name="CBIK"/>
+    </string>
+    <string name="ccheck">
+      <storage-field name="CCountCor"/>
+    </string>
+    <string name="GDBaseName">
+      <storage-field name="GDBaseName"/>
+    </string>
+    <schema-ref ref="AddressUnit" array="true" name="address" temporal="true"/>
+    <string name="$parentunid" temporal="true"/>
+    <string name="structLevel">
+      <storage-field name="StructLevel"/>
+    </string>
+    <string name="parentShortName" system="true">
+      <storage-field name="ParentShortName"/>
+    </string>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="parentUnit" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.RecalcForChangeParentUnit</recalc-processing-class>
+    </schema-ref>
+    <string name="personalID">
+      <storage-field name="personalID"/>
+    </string>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="organizationUnit" system="true" temporal="true"/>
+    <string name="depName" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[nameInfo+(codedep!=null  ? (' ('+codedep+')') : '')]]></script>
+      </calc-values>
+    </string>
+    <boolean name="isEqualDepNames" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[shortname !=null && fullname !=null && shortname.equals(fullname) ? true : false]]></script>
+      </calc-values>
+    </boolean>
+    <string name="labelBankRequizits" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Банковские реквизиты']]></script>
+      </calc-values>
+    </string>
+    <string name="labelAddress" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Адрес']]></script>
+      </calc-values>
+    </string>
+    <string name="labelContacts" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Контактные данные']]></script>
+      </calc-values>
+    </string>
+    <string name="chiefTabNumber" createlog="true">
+      <storage-field name="chiefTabNumber"/>
+    </string>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="isolatedDep" createlog="true" temporal="true"/>
+    <string name="headInfoWithPost" createlog="true" temporal="true"/>
+    <string name="nomenclatureIndex" createlog="true">
+      <storage-field name="nomenclatureIndex"/>
+    </string>
+    <string name="comment" createlog="true">
+      <storage-field name="comment"/>
+    </string>
+    <string name="structBossAC" createlog="true">
+      <storage-field name="struct_boss_ac"/>
+    </string>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="delegatedTo" temporal="true"/>
+    <custom-event-handler lang="JavaScript"><![CDATA[importPackage(Packages.ru.intertrust.cmj.rest.tuning);
+importClass(Packages.ru.intertrust.cmj.rest.tuning.TuningHelper);
+importClass(Packages.ru.intertrust.cmj.tunable.object.common.TunableObjectHelper);
+importClass(Packages.ru.intertrust.cmj.af.tuning.AFInstanceObject);
+importClass(Packages.ru.intertrust.cmj.admin.declension.CaseDeclensionService.Case);
+
+function querySave(object, document) {
+
+    var values = object.tuning().getValues();
+    var cases = values.get("case").getValues();
+    var fullname = values.get("fullname").getValue();
+    var shortname = values.get("shortname").getValue();
+
+    if (!fullname.equals(document.getItemValue("EFullName").get(0))) {
+        var notUseDeclensionForFullName = cases.get("notUseDeclensionForLastName").getValue();
+        if (notUseDeclensionForFullName) {
+            values.put("notUseDeclensionForFullName",TuningHelper.createPropertyValue(false, values.get("case").getSchema().getProperty("notUseDeclensionForFullName")));
+        }
+    }
+
+    if (!shortname.equals(document.getItemValue("EShortName").get(0))) {
+        var notUseDeclensionForShortName = cases.get("notUseDeclensionForFirstName").getValue();
+        if (notUseDeclensionForShortName) {
+            values.put("notUseDeclensionForShortName",TuningHelper.createPropertyValue(false, values.get("case").getSchema().getProperty("notUseDeclensionForShortName")));
+        }
+    }
+
+    return true;
+}
+]]></custom-event-handler>
+  </schema>
+</schemas>

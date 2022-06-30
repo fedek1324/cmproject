@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <column name="ChangedFields" subject="${catalog.column.ChangedFields.subject:Список измененных полей}" extends="string">
+    <meta>
+      <documentation>Список измененных полей</documentation>
+    </meta>
+  </column>
+  <column name="DocID" subject="${catalog.column.DocID.subject:Идентификатор документа}" extends="string">
+    <meta>
+      <documentation>Прием сигналов - Сигналы из УП</documentation>
+    </meta>
+  </column>
+  <column name="gateDepName" subject="${catalog.column.gateDepName.subject:Подразделение}" extends="string">
+    <meta>
+      <documentation>Подразделение</documentation>
+    </meta>
+  </column>
+  <column name="gateHost" subject="${catalog.column.gateHost.subject:Почтовый хост}" extends="string">
+    <meta>
+      <documentation>Почтовый хост</documentation>
+    </meta>
+  </column>
+  <column name="gateNet" subject="${catalog.column.gateNet.subject:Территория}" extends="string">
+    <meta>
+      <documentation>Территория</documentation>
+    </meta>
+  </column>
+  <column name="gateOrgCode" extends="string"/>
+  <column name="gateParentCode" subject="${catalog.column.gateParentCode.subject:Структ. код}" extends="string">
+    <meta>
+      <documentation>Структ. код</documentation>
+    </meta>
+  </column>
+  <column name="HeadID" subject="${catalog.column.HeadID.subject:Вышестоящее подразделение / ШЕ}" extends="string">
+    <meta>
+      <documentation>Идентификатор вышестоящей штатной единицы (HeadID):</documentation>
+    </meta>
+  </column>
+  <column name="logNumber" subject="${catalog.column.logNumber.subject:№ п./п.}" extends="string"/>
+  <column name="logState" extends="string"/>
+  <column name="objectHR" subject="${catalog.column.objectHR.subject:Объект}" extends="string">
+    <meta>
+      <documentation>Прием сигналов - Сигналы из УП</documentation>
+    </meta>
+  </column>
+  <column name="OperationType" subject="${catalog.column.OperationType.subject:Тип сигнала}" extends="string">
+    <meta>
+      <documentation>Прием сигналов - Сигналы из УП</documentation>
+    </meta>
+  </column>
+  <column name="processed" subject="${catalog.column.processed.subject:Обработан}" extends="string"/>
+  <column name="size" subject="${catalog.column.size.subject:Размер}" extends="string"/>
+  <column name="refCodeTabNum" subject="${catalog.column.refCodeTabNum.subject:Референс код/Таб. номер}" extends="string"/>
+  <column name="sysCodePersonId" subject="${catalog.column.sysCodePersonId.subject:Системный код/ID персоны}" extends="string"/>
+  <column name="gateProcessType" subject="${catalog.column.gateProcessType.subject:Способ обработки}" extends="string"/>
+  <column name="updatedTime" subject="${catalog.column.updatedTime.subject:Обработан}" extends="datetime"/>
+  <column name="processTime" subject="${catalog.column.processTime.subject:Дата операции}" extends="datetime"/>
+  <column name="isprotected" subject="${catalog.column.isprotected:Полуавтоматический}" extends="string"/>
+  <column name="isprohibitRefreshSOObj" subject="${catalog.column.isprohibitRefreshSOObj:Запрет обновления}" extends="string"/>
+  <column name="errorText" subject="${catalog.column.errorText:Ошибка}" extends="string"/>
+  <column name="modificationDate" subject="${modificationDate:Дата модификации}" extends="datetime"/>
+</catalog>

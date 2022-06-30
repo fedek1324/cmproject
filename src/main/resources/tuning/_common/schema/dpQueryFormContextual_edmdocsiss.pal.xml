@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="dpQueryFormContextual_edmdocsiss">
+    <string name="searchInContent" createlog="true" temporal="true">
+      <validate-regex>^[\dА-Яа-яёЁ\\\s\(\)!\-«»?@"'№#$%^&amp;*\[\]&lt;&gt;~/,.:; ]{0,100}$</validate-regex>
+    </string>
+    <enum-ref ref="ISSContextualSearchStatusTypesEnum" name="statusString" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['ACTIVE']]></script>
+      </calc-values>
+    </enum-ref>
+    <string array="true" name="docTypeEDMISS" createlog="true" temporal="true"/>
+    <schema-ref ref="EDMFolderInfo" array="true" name="foldersISS" createlog="true" temporal="true"/>
+    <daterange name="regDateISS" createlog="true" temporal="true"/>
+    <daterange name="beginDateISS" createlog="true" temporal="true"/>
+    <daterange name="endDateISS" createlog="true" temporal="true"/>
+    <string name="resultItemCount" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA["100"]]></script>
+      </calc-values>
+      <validate-regex>^([1-9]|[1-9][\d]|1[0-9][0-9]|200)$</validate-regex>
+    </string>
+    <boolean name="isAf5Storage" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cm_sochi.srv.dispatcher.HelperSD).getStorageType( T(ru.intertrust.cmj.af.core.AFCMDomino).AFDB_SYSTEM_ID_DOCUMENTS_ISS, '') == T( ru.intertrust.cmj.af.core.StorageType).AF5]]></script>
+      </calc-values>
+    </boolean>
+    <string array="true" name="docTypesAll" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.utils.BeansUtils).getBean("documentISSService").getAllSettingsDocsTypes()]]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

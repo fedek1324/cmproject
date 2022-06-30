@@ -1,0 +1,877 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ExtTaskResource" id="ExtTaskResourceForm" name="${ui.form.ExtTaskResourceForm.name:ExtTaskResourceForm}" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="showType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="2" field-unit="symbol"/>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="sourceReqType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <condition-ref ref="isMeetingOrTaskResolution"/>
+                  </hide>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="2" field-unit="symbol"/>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row1_2" group="true">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="showQueue">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance>
+                  <label-style field-width="20" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunRed"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunRed"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="showPhase">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="high">
+                  <label-style>
+                    <style id="tunGray"/>
+                    <style id="tunBold"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunGray"/>
+                      <style id="tunBold"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="processedDate" name="${ui.form.ExtTaskResourceForm.section.Header.section.row1_2.field.processedDate.name:Обработано:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isTaskProcessed"/>
+                  </hide>
+                </properties>
+                <appearance importance="high">
+                  <label-style>
+                    <style id="tunBlack"/>
+                    <style id="tunBold"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBlack"/>
+                      <style id="tunBold"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="processedBy">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isTaskProcessed"/>
+                  </hide>
+                </properties>
+                <appearance importance="high">
+                  <label-style>
+                    <style id="tunBlack"/>
+                    <style id="tunBold"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBlack"/>
+                      <style id="tunBold"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row2" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="sourceReqFullNumber" name="${ui.form.ExtTaskResourceForm.section.Header.section.row2.field.sourceReqFullNumber.name:Номер документа}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row2.field.sourceReqFullNumber.hintPopUp:Номер документа}</hint-pop-up>
+              </field>
+              <field attribute-ref="sourceDocDate" name="${ui.form.ExtTaskResourceForm.section.Header.section.row2.field.sourceDocDate.name:Дата договора}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isContractsSpecificExists"/>
+                  </hide>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style>
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style date-format="dd.MM.yyyy">
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row2.field.sourceDocDate.hintPopUp:Дата договора}</hint-pop-up>
+              </field>
+              <field attribute-ref="sourceDocDate" name="${ui.form.ExtTaskResourceForm.section.Header.section.row2.field.sourceDocDate.name:Дата документа}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isNotContractsSpecificExists"/>
+                  </hide>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style>
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style date-format="dd.MM.yyyy">
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row2.field.sourceDocDate.hintPopUp:Дата документа}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="row3" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="sendedBy" name="${ui.form.ExtTaskResourceForm.section.Header.section.row3.field.sendedBy.name:От кого}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row3.field.sendedBy.hintPopUp:От кого}</hint-pop-up>
+              </field>
+              <field attribute-ref="to" name="${ui.form.ExtTaskResourceForm.section.Header.section.row3.field.to.name:Кому}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style>
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row3.field.to.hintPopUp:Кому}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="row4" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="transmittedBy" name="${ui.form.ExtTaskResourceForm.section.Header.section.row4.field.transmittedBy.name:Кто передал}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row4.field.transmittedBy.hintPopUp:Кто передал}</hint-pop-up>
+              </field>
+              <field attribute-ref="transmittedDate" name="${ui.form.ExtTaskResourceForm.section.Header.section.row4.field.transmittedDate.name:Когда}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="25" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style date-format="dd.MM.yyyy">
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row4.field.transmittedDate.hintPopUp:Когда}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="row5" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="sourceSubject" name="${ui.form.ExtTaskResourceForm.section.Header.section.row5.field.sourceSubject.name:Заголовок}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" multiline="true" importance="high">
+                  <label-style field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row5.field.sourceSubject.hintPopUp:Заголовок}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="row6" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="sendedToTitle" name="${ui.form.ExtTaskResourceForm.section.Header.section.row6.field.sendedToTitle.name:Кому передано}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row6.field.sendedToTitle.hintPopUp:Кому передано}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="row7" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="priorityTitle" name="${ui.form.ExtTaskResourceForm.section.Header.section.row7.field.priorityTitle.name:Статус}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row7.field.priorityTitle.hintPopUp:Статус}</hint-pop-up>
+              </field>
+              <field attribute-ref="filterTitle" name="${ui.form.ExtTaskResourceForm.section.Header.section.row7.field.filterTitle.name:Папка}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="20" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row7.field.filterTitle.hintPopUp:Папка}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="row8" group="true">
+            <appearance field-layout="vertical"/>
+            <component>
+              <field attribute-ref="comment" name="${ui.form.ExtTaskResourceForm.section.Header.section.row8.field.comment.name:Комментарий помощника}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="IsTaskNotEditable"/>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" multiline="true" importance="high">
+                  <label-style>
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row8.field.comment.hintPopUp:Комментарий помощника}</hint-pop-up>
+              </field>
+              <field attribute-ref="rejectedComment" name="${ui.form.ExtTaskResourceForm.section.Header.section.row8.field.rejectedComment.name:Комментарий возврата}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isDocumentRejected"/>
+                  </hide>
+                </properties>
+                <appearance align="left" multiline="true" importance="high">
+                  <label-style>
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row9" group="true">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="isContractsSpecificExists"/>
+              </hide>
+            </properties>
+            <appearance field-layout="vertical"/>
+            <component>
+              <field attribute-ref="source.contractsSpecificContainer.party1" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.party1.name:1-я сторона}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.party1.hintPopUp:1-я сторона}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.contractsSpecificContainer.party2" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.party2.name:2-я сторона}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.party2.hintPopUp:2-я сторона}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.contractsSpecificContainer.docType" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.docType.name:Тип договора}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.docType.hintPopUp:Тип договора}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.contractsSpecificContainer.number" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.number.name:№ доп. соглашения}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isAddagrNumberExists"/>
+                  </hide>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.number.hintPopUp:№ доп. соглашения}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.contractsSpecificContainer.price" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.price.name:Сумма договора}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.price.hintPopUp:Сумма договора}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.contractsSpecificContainer.currencyType" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.currencyType.name:Валюта договора}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.currencyType.hintPopUp:Валюта договора}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.contractsSpecificContainer.preparedByUnit" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.preparedByUnit.name:Подразделение, ответственное за подготовку}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" multiline="true" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9.field.source.contractsSpecificContainer.preparedByUnit.hintPopUp:Подразделение, ответственное за подготовку}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="row9_1" group="true">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="isMeetingsSpecificExists"/>
+              </hide>
+            </properties>
+            <appearance field-layout="vertical"/>
+            <component>
+              <field attribute-ref="source.meetingsSpecificContainer.meetingPlace" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.meetingPlace.name:Место проведения}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.meetingPlace.hintPopUp:Место проведения}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.meetingsSpecificContainer.meetingTime" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.meetingTime.name:Время заседания}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.meetingTime.hintPopUp:Время заседания}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.meetingsSpecificContainer.chairman" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.chairman.name:Председатель}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.chairman.hintPopUp:Председатель}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.meetingsSpecificContainer.secretary" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.secretary.name:Секретарь}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.secretary.hintPopUp:Секретарь}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.meetingsSpecificContainer.affirmedBy" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.affirmedBy.name:Повестка утверждена}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.affirmedBy.hintPopUp:Повестка утверждена}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.meetingsSpecificContainer.invited" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.invited.name:Приглашенные}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" multiline="true" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.invited.hintPopUp:Приглашенные}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.meetingsSpecificContainer.permanent" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.permanent.name:Присутствовали}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" multiline="true" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.permanent.hintPopUp:Присутствовали}</hint-pop-up>
+              </field>
+              <field attribute-ref="source.meetingsSpecificContainer.absent" name="${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.absent.name:Отсутствовали}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" multiline="true" importance="high">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row9_1.field.source.meetingsSpecificContainer.absent.hintPopUp:Отсутствовали}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="row10" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <button attribute-ref="$hasResolutionProject" name="${ui.form.ExtTaskResourceForm.section.Header.section.row10.button.hasResolutionProject.name:Проект резолюции}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="hasResolutionProject"/>
+                  </hide>
+                </properties>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row10.button.hasResolutionProject.hintPopUp:Проект резолюции}</hint-pop-up>
+                <appearance align="left">
+                  <label-style width="17" unit="symbol">
+                    <style id="tunClickableUnderline"/>
+                    <style id="tunBlue"/>
+                  </label-style>
+                </appearance>
+                <action>
+                  <system name="http://intertrust.ru/cmj/relations#additional.object"/>
+                </action>
+              </button>
+              <button attribute-ref="$hasVisaProject" name="${ui.form.ExtTaskResourceForm.section.Header.section.row10.button.hasVisaProject.name:Черновик визы}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="hasVisaProject"/>
+                  </hide>
+                </properties>
+                <hint-pop-up>${ui.form.ExtTaskResourceForm.section.Header.section.row10.button.hasVisaProject.hintPopUp:Черновик визы}</hint-pop-up>
+                <appearance align="left">
+                  <label-style width="14" unit="symbol">
+                    <style id="tunBlue"/>
+                    <style id="tunClickableUnderline"/>
+                  </label-style>
+                </appearance>
+                <action>
+                  <system name="http://intertrust.ru/cmj/relations#additional.object"/>
+                </action>
+              </button>
+              <field attribute-ref="isEditedDocString">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isEditedDoc"/>
+                  </hide>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style>
+                    <style id="tunIconOperatorEdited"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunIconOperatorEdited"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="ExtContentSection" name="${ui.form.ExtTaskResourceForm.section.ExtContentSection.name:Содержание}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition-ref ref="IsTaskNotEditable"/>
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <component>
+          <field attribute-ref="extContent" name="${ui.form.ExtTaskResourceForm.section.ExtContentSection.field.extContent.name:Файлы:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="IsTaskNotEditable"/>
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="LifeCycle" name="${ui.form.ExtTaskResourceForm.section.LifeCycle.name:Жизненный цикл}">
+        <appearance widget="leftMenu"/>
+        <component>
+            <section id="Execution" name="${ui.form.ExtTaskResourceForm.section.LifeCycle.section.Execution.name:Исполнение}"/>
+            <section name="${ui.form.ExtTaskResourceForm.section.LifeCycle.ApprovingSection.name:Согласование}" id="ApprovingSection" group="true">
+                <component>
+                    <section id="ApprovingButtons">
+                        <appearance widget="inactiveTab"/>
+                    </section>
+                    <section name="${ui.form.ExtTaskResourceForm.section.LifeCycle.ApprovingSection.section.Approving.name:Согласование}" id="Approving"/>
+                </component>
+            </section>
+            <section id="Review" name="${ui.form.ExtTaskResourceForm.section.LifeCycle.section.Review.name:Ознакомление}"/>
+        </component>
+      </section>
+      <section id="Links" name="${ui.form.ExtTaskResourceForm.section.Links.name:Связанные}">
+        <appearance widget="leftMenu"/>
+        <component>
+          <section id="Documеnts" name="${ui.form.ExtTaskResourceForm.section.Links.section.Documеnts.name:Документы}"/>
+          <section id="Visualization" name="${ui.form.ExtTaskResourceForm.section.Links.section.Visualization.name:Визуализация}"/>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

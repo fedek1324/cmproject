@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="LegalResource">
+    <meta>
+      <category name="Система\Обращение граждан"/>
+    </meta>
+    <actor name="legalOrganization" system="true"/>
+    <actor name="legalAuthor" system="true"/>
+    <schema-ref ref="AddressInfoResource" name="address" system="true"/>
+    <string array="true" name="citizenship" system="true"/>
+    <boolean name="activeWriter" system="true"/>
+  </schema>
+</schemas>

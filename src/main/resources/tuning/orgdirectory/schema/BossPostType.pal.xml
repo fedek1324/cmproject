@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="BossPostType">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="bossPost" temporal="true">
+      <storage-field name="CFullName"/>
+    </string>
+    <schema-ref ref="AdminSOUnit" name="bossFIO" temporal="true"/>
+  </schema>
+</schemas>

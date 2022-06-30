@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="SSProgramTypeInfo">
+    <meta>
+      <category name="РМ Администратора"/>
+      <documentation>схема объекта Типа программы СС для выбора</documentation>
+    </meta>
+    <string name="id" temporal="true"/>
+    <string name="name" temporal="true"/>
+    <string name="ident" temporal="true"/>
+  </schema>
+</schemas>

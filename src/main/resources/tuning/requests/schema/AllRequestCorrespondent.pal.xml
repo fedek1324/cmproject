@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="AllRequestCorrespondent">
+    <meta>
+      <category name="Система\Обращение граждан"/>
+    </meta>
+    <string name="regNumber" system="true"/>
+    <date name="regDate" system="true"/>
+    <string name="subject" system="true"/>
+    <string array="true" name="questionsRkk" system="true"/>
+    <file name="content" system="true"/>
+    <hyperlink name="linkRKK" temporal="true"/>
+  </schema>
+</schemas>

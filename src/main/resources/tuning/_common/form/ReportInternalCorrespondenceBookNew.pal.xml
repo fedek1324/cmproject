@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ReportInternalCorrespondenceBookOptional" id="ReportInternalCorrespondenceBookNew" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <button name="${ui.form.ReportInternalCorrespondenceBookNew.button.Построить отчет.name:Построить отчет}">
+        <appearance>
+          <label-style>
+            <style id="tunBtnBlue"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#start"/>
+        </action>
+      </button>
+      <field attribute-ref="Reg_Place_List.Value" name="${ui.form.ReportInternalCorrespondenceBookNew.field.Reg_Place_List.Value.name:Место регистрации}">
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="CURRENT_SYS_DEP"/>
+        </directories>
+      </field>
+      <section id="date" name="${ui.form.ReportInternalCorrespondenceBookNew.section.date.name:Укажите отчётный период}">
+        <appearance field-layout="horizontal" turn="true"/>
+        <component>
+          <field attribute-ref="Date.Start" name="${ui.form.ReportInternalCorrespondenceBookNew.section.date.field.Date.Start.name:С}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="Date.End" name="${ui.form.ReportInternalCorrespondenceBookNew.section.date.field.Date.End.name:по}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

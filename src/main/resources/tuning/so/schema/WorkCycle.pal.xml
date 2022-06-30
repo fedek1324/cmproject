@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" name="WorkCycle">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <boolean name="inheritInfoWorkCycle" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parentnode==null?false:#parentnode.inheritInfoWorkCycle]]></script>
+      </calc-values>
+    </boolean>
+    <string name="type" temporal="true">
+      <storage-field name="workCycleType"/>
+    </string>
+    <string name="id" system="true" temporal="true">
+      <storage-field name="workCycleID"/>
+    </string>
+    <boolean name="isTypeWork" temporal="true">
+      <storage-field name="workCycleType"/>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA["Рабочий".equals(typeDialog)?true:false]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isEdited" createlog="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.RecalcForWorkCycleFields</recalc-processing-class>
+      <storage-field name="workCycleType"/>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[true]]></script>
+      </calc-values>
+    </boolean>
+    <enum-ref default-value="STANDART_WORK" ref="WorkCycleType_Enum" name="typeDialog" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.RecalcForChangeWorkCycleIsType</recalc-processing-class>
+      <storage-field name="workCycleType"/>
+    </enum-ref>
+    <time name="workTimeFrom" system="true" temporal="true"/>
+    <boolean name="islunchBreakUntilRequired" createlog="true" temporal="true">
+      <storage-field name="workCycleType"/>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[lunchBreakFrom!=null]]></script>
+      </calc-values>
+    </boolean>
+    <time name="workTimeUntil" system="true" temporal="true"/>
+    <time name="lunchBreakFrom" system="true" createlog="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.RecalcForWorkCycleFields</recalc-processing-class>
+    </time>
+    <time name="lunchBreakUntil" system="true" temporal="true"/>
+    <time name="checkTime" system="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.RecalcForChangeWorkCycleIsType</recalc-processing-class>
+    </time>
+  </schema>
+</schemas>

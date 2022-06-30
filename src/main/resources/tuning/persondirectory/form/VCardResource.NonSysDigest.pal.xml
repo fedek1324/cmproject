@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="VCardResource.OrgNonSysHuman" id="VCardResource.NonSysDigest" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+        <negative-condition-ref ref="digest"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="shortName">
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="CURRENT_SYS_HUMAN"/>
+          <directory-ref ref="CURRENT_All_Hierarchy"/>
+          <directory-ref ref="AlienBeards"/>
+        </directories>
+      </field>
+    </component>
+  </form>
+</ui>

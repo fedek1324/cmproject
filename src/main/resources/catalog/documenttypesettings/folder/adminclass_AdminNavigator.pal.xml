@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="AdminNavigator" id="admin-class" name="${catalog.folder.admin_class.name:Классификаторы}" position="40">
+    <subfolders>
+      <view id="dp-kvid-all-docs-af5" name="${catalog.folder.admin_class.view.dp_kvid_all_docs_af5.name:Виды документов}" position="10">
+        <descriptor-ref ref="kvid-all-docs-af5"/>
+        <source>
+          <module ident="DocumentTypeSettings"/>
+        </source>
+      </view>
+      <view id="kvid-trash-af5" name="${catalog.folder.admin_class.view.kvid_trash_af5.name:Корзина}" position="200">
+        <descriptor-ref ref="kvid-trash-af5"/>
+        <source>
+          <module ident="DocumentTypeSettings"/>
+        </source>
+      </view>
+    </subfolders>
+    <icon code="sprite/sidebarCMJSprite.png" path="sprite/sidebarCMJSprite.png" position="61"/>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

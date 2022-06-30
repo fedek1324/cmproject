@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="EditTypeEnumWithAdd">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string value="Заменить" name="REPLACE"/>
+    <string value="Не менять" name="NOT_EDIT"/>
+    <string value="Дополнить" name="ADD"/>
+  </enum>
+</schemas>

@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SOClassifierCollection" id="SOClassifierCollectionForm" name="${ui.form.SOClassifierCollectionForm.name:Классификаторы}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu" name="${ui.form.SOClassifierCollectionForm.section.RootMenu.name:RootOrgMenu}">
+        <component>
+          <button name="${ui.form.SOClassifierCollectionForm.section.RootMenu.button.Скрыть системную кнопку &quot;Новый как копия&quot;.name:Скрыть системную кнопку &quot;Новый как копия&quot;}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action position="20.0">
+              <system name="CREATE_AS_COPY"/>
+            </action>
+          </button>
+          <button name="${ui.form.SOClassifierCollectionForm.section.RootMenu.button.Скрыть системную кнопку &quot;Редактировать&quot;.name:Скрыть системную кнопку &quot;Редактировать&quot;}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action position="20.0">
+              <system name="EDIT"/>
+            </action>
+          </button>
+          <button name="${ui.form.SOClassifierCollectionForm.section.RootMenu.button.Скрыть системную кнопку &quot;Удалить&quot;.name:Скрыть системную кнопку &quot;Удалить&quot;}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action position="20.0">
+              <system name="DELETE"/>
+            </action>
+          </button>
+          <section id="OTHER" name="${ui.form.SOClassifierCollectionForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <button name="${ui.form.SOClassifierCollectionForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Добавить в избранное'.name:Скрыть системную кнопку 'Добавить в избранное'}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action>
+                  <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

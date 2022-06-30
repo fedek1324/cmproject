@@ -1,0 +1,787 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="TNObject" name="SPPDossierPrivate">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <boolean name="isRequestForEdit" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[state.equals('REQUEST_FOR_EDITING')]]></script>
+      </calc-values>
+    </boolean>
+    <string name="lastNameOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.lastName: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="middleNameOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.middleName: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="firstNameOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.firstName: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="commentOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.comment: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="roomOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.room: ""]]></script>
+      </calc-values>
+    </string>
+    <boolean name="activeWriterOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.activeWriter: false]]></script>
+      </calc-values>
+    </boolean>
+    <date name="dateOfBirthOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.dateOfBirth: null]]></script>
+      </calc-values>
+    </date>
+    <string array="true" name="citizenshipOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.citizenship: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="housingOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.housing: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="structureOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.structure: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="houseOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.house: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="regionOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.region: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="typeStreetOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.typeStreet: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="nameStreetOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.nameStreet: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="jAddress" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(T(org.springframework.util.StringUtils).hasLength(sendIndex ) ? sendIndex +", ":"")+
+ (T(org.springframework.util.StringUtils).hasLength(country ) ? country+", ":"")+
+ (T(org.springframework.util.StringUtils).hasLength(region) ? region+", ":"")+
+ (T(org.springframework.util.StringUtils).hasLength(district ) ? district +", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(city ) ? city +", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(street ) ? street +", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(house ) ? house +", ": "")+
+(T(org.springframework.util.StringUtils).hasLength(structure ) ? structure +", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(housing ) ? housing +", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(room) ? room+", ":"")]]></script>
+      </calc-values>
+    </string>
+    <hyperlink name="selfHyperLink" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.misc.HyperLink).createHyperLink('Открыть карточку в новой вкладке' +'~#'+T(ru.intertrust.cmj.ws.base.servlet.ServletUrlHolder).getServerUrlStr() +link.?[rel=='self'].get(0).href+'~#newTab~#local')]]></script>
+      </calc-values>
+    </hyperlink>
+    <string name="cityOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.city: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="districtOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.district: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="countryOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.country: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="sendIndexOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.sendIndex: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="phoneHouseOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.phoneHouse: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="phoneMobilOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.phoneMobil: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="phoneWorkOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.phoneWork: ""]]></script>
+      </calc-values>
+    </string>
+    <email name="personEmailOld" createlog="true" temporal="true"/>
+    <string name="emplFaxOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.emplFax: ""]]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="accountOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.account: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="orgPostOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.orgPost: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="orgOfficeOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.orgOffice: ""]]></script>
+      </calc-values>
+    </string>
+    <string name="city">
+      <storage-field name="CAddr_City"/>
+    </string>
+    <string name="typeStreet">
+      <storage-field name="CAddr_StreetType"/>
+    </string>
+    <string name="nameStreet">
+      <storage-field name="CAddr_Street"/>
+    </string>
+    <string name="country">
+      <storage-field name="CAddr_Country"/>
+    </string>
+    <string name="house">
+      <storage-field name="CAddr_House"/>
+      <validate-regex>^[0-9]*$</validate-regex>
+    </string>
+    <string name="sendIndex">
+      <storage-field name="CAddr_ZipCode"/>
+    </string>
+    <string name="structure">
+      <storage-field name="CAddr_Build"/>
+    </string>
+    <string name="housing">
+      <storage-field name="CAddr_Corp"/>
+    </string>
+    <string name="district">
+      <storage-field name="CAddr_Locality"/>
+    </string>
+    <string name="street" system="true" createlog="true" temporal="true">
+      <storage-field name="CAddr_Street"/>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[( typeStreet==null && nameStreet==null ) ? "" : typeStreet==null ? nameStreet : nameStreet==null ? typeStreet : typeStreet + ' ' + nameStreet]]></script>
+      </calc-values>
+    </string>
+    <string name="room">
+      <storage-field name="CAddr_Office"/>
+    </string>
+    <string name="region">
+      <storage-field name="CAddr_Region"/>
+    </string>
+    <enum-ref ref="DossierGender" name="genderOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.gender: null]]></script>
+      </calc-values>
+    </enum-ref>
+    <enum-ref ref="DossierState" name="state" system="true" temporal="true"/>
+    <enum-ref ref="DossierOrgPostType" name="orgPostTypeOld" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parent!=null  ?  #parent.orgPostType: null]]></script>
+      </calc-values>
+    </enum-ref>
+    <schema-ref ref="AdminSOUnit" name="organizationOld" system="true" createlog="true" temporal="true"/>
+    <boolean name="lastNameOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[lastNameOld==null || lastNameOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="lastNameIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[lastName==null || lastName.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="firstNameOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[firstNameOld==null || firstNameOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="firstNameIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[firstName==null || firstName.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="middleNameOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[middleNameOld==null || middleNameOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="middleNameIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[middleName==null || middleName.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="commentOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[commentOld==null || commentOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="commentIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[comment==null || comment.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="roomOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[roomOld==null || roomOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="roomIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[room==null || room.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="genderOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[genderOld==null || genderOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="genderIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[gender==null || gender.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="dateOfBirthOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[dateOfBirthOld==null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="dateOfBirthIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[dateOfBirth==null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="citizenshipOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[citizenshipOld==null || citizenshipOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="citizenshipIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[citizenship==null || citizenship.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="housingOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[housingOld==null || housingOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="housingIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[housing==null || housing.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="structureOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[structureOld==null || structureOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="structureIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[structure==null || structure.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="regionOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[regionOld==null || regionOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="regionIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[region==null || region.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="houseOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[houseOld==null || houseOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="houseIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[house==null || house.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="typeStreetOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[typeStreetOld==null || typeStreetOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="typeStreetIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[typeStreet==null || typeStreet.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="nameStreetOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[nameStreetOld==null || nameStreetOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="nameStreetIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[nameStreet==null ||nameStreet.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="cityIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[city==null || city.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="districtIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[district==null || district.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="cityOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[cityOld==null || cityOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="countryIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[country==null || country.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="districtOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[districtOld==null || districtOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="sendIndexIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[sendIndex==null ||sendIndex.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="countryOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[countryOld==null || countryOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="phoneHouseOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[phoneHouseOld==null || phoneHouseOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="phoneHouseIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[phoneHouse==null || phoneHouse.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="sendIndexOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[sendIndexOld==null || sendIndexOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="phoneMobilOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[phoneMobilOld==null || phoneMobilOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="phoneMobilIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[phoneMobil==null || phoneMobil.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="phoneWorkOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[phoneWorkOld==null || phoneWorkOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="phoneWorkIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[phoneWork==null || phoneWork.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="personEmailOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[personEmailOld==null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="personEmailIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[personEmail==null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="emplFaxOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[emplFaxOld==null || emplFaxOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="emplFaxIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[emplFax==null || emplFax.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="accountOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[accountOld==null || accountOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="accountIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[account==null || account.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="organizationOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[organizationOld==null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="organizationIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[organization==null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="orgPostOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[orgPostOld==null || orgPostOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="orgPostIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[orgPost==null || orgPost.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="orgPostTypeOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[orgPostTypeOld==null || orgPostTypeOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="orgPostTypeIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[orgPostType==null || orgPostType.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="orgOfficeOldIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[orgOfficeOld==null ||orgOfficeOld.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="orgOfficeIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[orgOffice==null || orgOffice.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <string name="phoneMobil">
+      <storage-field name="PhoneMobil"/>
+      <validate-regex>^[0-9]*$</validate-regex>
+    </string>
+    <string name="phoneHouse">
+      <storage-field name="PhoneHouse"/>
+      <validate-regex>^[0-9]*$</validate-regex>
+    </string>
+    <string name="phoneWork">
+      <storage-field name="PhoneWork"/>
+      <validate-regex>^[0-9]*$</validate-regex>
+    </string>
+    <enum-ref ref="DossierType" name="type" system="true" temporal="true"/>
+    <string name="objectType" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['PRIVATE_PERSON'.equals(type) ? (
+'DOSSIER'.equals(state) ? 'Досье частного лица' : ('REQUEST_FOR_CREATION'.equals(state) ? 'Заявка на создание досье частного лица' :  'Заявка на корректировку досье частного лица' )
+)  : (
+'DOSSIER'.equals(state) ? 'Досье сотрудника организации' : ('REQUEST_FOR_CREATION'.equals(state) ? 'Заявка на создание досье сотрудника организации' :  'Заявка на корректировку досье сотрудника организации' )
+)]]></script>
+      </calc-values>
+    </string>
+    <boolean name="lastNameIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(lastName==null ?lastNameOld==null : lastName.equals(lastNameOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="firstNameIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(firstName==null ?firstNameOld==null : firstName.equals(firstNameOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="middleNameIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(middleName==null ?middleNameOld==null :middleName.equals(middleNameOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="commentIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(comment==null ?commentOld==null : comment.equals(commentOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="roomIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(room==null ?roomOld==null : room.equals(roomOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="activeWritertIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(activeWriter==null ?activeWriterOld==null : activeWriter.equals(activeWriterOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="genderIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(gender==null ? genderOld==null : gender.equals(genderOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="dateOfBirthIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(dateOfBirth==null ?dateOfBirthOld==null : dateOfBirth.equals(dateOfBirthOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="citizenshipIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(citizenship==null ?citizenshipOld==null : citizenship.equals(citizenshipOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="housingIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(housing==null ?housingOld==null : housing.equals(housingOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="structureIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(structure==null ?structureOld==null : structure.equals(structureOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="regionIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(region==null ?regionOld==null : region.equals(regionOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="houseIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(house==null ?houseOld==null : house.equals(houseOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="typeStreetIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(typeStreet==null ?typeStreetOld==null : typeStreet.equals(typeStreetOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="nameStreetIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(nameStreet==null ?nameStreetOld==null : nameStreet.equals(nameStreetOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="cityIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(city==null ?cityOld==null : city.equals(cityOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="districtIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(district==null ?districtOld==null : district.equals(districtOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="countryIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(country==null ?countryOld==null : country.equals(countryOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="sendIndexIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(sendIndex==null ?sendIndexOld==null : sendIndex.equals(sendIndexOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="phoneHouseIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(phoneHouse==null ?phoneHouseOld==null : phoneHouse.equals(phoneHouseOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="phoneMobilIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(phoneMobil==null ?phoneMobilOld==null : phoneMobil.equals(phoneMobilOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="phoneWorkIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(phoneWork==null ?phoneWorkOld==null : phoneWork.equals(phoneWorkOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="personEmailsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(personEmail==null ?personEmailOld==null : personEmail.equals(personEmailOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="emplFaxIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(emplFax==null ?emplFaxOld==null : emplFax.equals(emplFaxOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="accountIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(account==null ?accountOld==null : account.equals(accountOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="organizationIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(organization==null ?organizationOld==null : organization.equals(organizationOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="orgPostIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(orgPost==null ?orgPostOld==null : orgPost.equals(orgPostOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="orgPostTypeIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(orgPostType==null ?orgPostTypeOld==null : orgPostType.equals(orgPostTypeOld))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="orgOfficeIsDidderent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(orgOffice==null ?orgOfficeOld==null : orgOffice.equals(orgOfficeOld))]]></script>
+      </calc-values>
+    </boolean>
+    <string name="fioShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(firstName==null && middleName==null) ? lastName : firstName==null ? lastName + ' ' + middleName : middleName==null ? firstName+ ' ' + lastName : lastName + ' ' + firstName + ' ' + middleName]]></script>
+      </calc-values>
+    </string>
+    <boolean name="isDead">
+      <storage-field name="Dead"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="projectType">
+      <storage-field name="ProjectType"/>
+    </string>
+    <string name="isEmployee">
+      <storage-field name="isOrg"/>
+    </string>
+    <boolean name="isOrg" temporal="true">
+      <storage-field name="isOrg"/>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA["1".equals(isEmployee)?true:false]]></script>
+      </calc-values>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="status">
+      <storage-field name="Status"/>
+    </string>
+    <boolean name="arc">
+      <storage-field name="Arc"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="lastName">
+      <storage-field name="LastName"/>
+    </string>
+    <string name="firstName">
+      <storage-field name="FirstName"/>
+    </string>
+    <string name="comment">
+      <storage-field name="Body"/>
+    </string>
+    <string name="middleName">
+      <storage-field name="MiddleName"/>
+    </string>
+    <boolean name="activeWriter">
+      <storage-field name="ActiveWriter"/>
+      <storage-string value="1"/>
+    </boolean>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="organization" temporal="true"/>
+    <string name="orgPost">
+      <storage-field name="OrgPost"/>
+    </string>
+    <enum-ref ref="DossierOrgPostType" name="orgPostType">
+      <storage-field name="OrgPostType"/>
+    </enum-ref>
+    <string name="orgName" system="true" temporal="true">
+      <storage-field name="OrgShortName"/>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[organization == null ? "" : organization.name]]></script>
+      </calc-values>
+    </string>
+    <string name="JoinOrOldInfo" system="true" temporal="true">
+      <storage-field name="LinkDoc"/>
+    </string>
+    <string name="orgOffice">
+      <storage-field name="OrgOffice"/>
+    </string>
+    <enum-ref ref="DossierGender" name="gender">
+      <storage-field name="Sex"/>
+    </enum-ref>
+    <date name="dateOfBirth"/>
+    <string array="true" name="citizenship">
+      <storage-field name="Citizenship"/>
+    </string>
+    <file name="photo">
+      <storage-field name="Photo"/>
+    </file>
+    <file name="facsimile">
+      <storage-field name="Body_1"/>
+    </file>
+    <schema-ref ref="PhoneUnit" array="true" name="phone"/>
+    <string array="true" name="account">
+      <storage-field name="IM"/>
+    </string>
+    <email array="true" name="personEmail">
+      <storage-field name="EmplEmail"/>
+    </email>
+    <string name="emplFax">
+      <storage-field name="EmplFax"/>
+    </string>
+    <string name="INN">
+      <storage-field name="INN"/>
+      <validate-regex>^[0-9]*$</validate-regex>
+    </string>
+    <string name="SNILS">
+      <storage-field name="Pension"/>
+      <validate-regex>^[0-9-\s]*$</validate-regex>
+    </string>
+    <boolean name="allowOperations" system="true" temporal="true"/>
+    <string name="statusLabel" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[('3'.equals(status) ||  'Old'.equals(status)) ? 'Устаревшее' : (isDead==true ? 'Неактуально' : (JoinOrOldInfo!=null && 'Объединено'.equals(JoinOrOldInfo.substring(0,10)) ? 'Объединена' : '') )]]></script>
+      </calc-values>
+    </string>
+    <boolean name="canMakeNotActual" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[allowOperations && (statusLabel==null || ''.equals(statusLabel)) && (deleted==null || !deleted) && ('Досье сотрудника организации'.equals(objectType) || 'Досье частного лица'.equals(objectType))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="canJoin" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[allowOperations && (statusLabel==null || ''.equals(statusLabel)) && (deleted==null || !deleted) && (state == null ? true : state != "REQUEST_FOR_EDITING")]]></script>
+      </calc-values>
+    </boolean>
+    <string name="cashId" system="true" createlog="true"/>
+    <string name="parentId">
+      <storage-field name="ParentId"/>
+    </string>
+    <string name="jAddressShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(org.springframework.util.StringUtils).hasLength(jAddress) ? jAddress.substring(0, jAddress.length()-2):""]]></script>
+      </calc-values>
+    </string>
+    <string name="requestStatusTitle" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[('Approved'.equals(status) || '1'.equals(status)) ? 'Утверждена' : ('Rejected'.equals(status) || '2'.equals(status)) ? 'Отклонена' :'']]></script>
+      </calc-values>
+    </string>
+    <boolean name="isRequestNotProcced" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[("".equals(status) || '0'.equals(status) || status == null) && (deleted == null ? true : !deleted)]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

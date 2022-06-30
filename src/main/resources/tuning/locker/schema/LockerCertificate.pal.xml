@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+    <schema name="LockerCertificate">
+        <meta>
+            <category name="Locker\Сертификаты"/>
+        </meta>
+        <string name="subject_printable" system="true"/>
+        <string name="issuer_printable" system="true"/>
+        <string name="serial_hex" system="true"/>
+        <string name="ski_hex" system="true"/>
+        <datetime name="valid" system="true"/>
+        <string name="comment" system="true"/>
+        <boolean name="isQualified" system="true"/>
+        <string name="$qualifiedLabel" system="true" temporal="true">
+            <calc-values>
+                <script event="open"><![CDATA['квалифицированный']]></script>
+            </calc-values>
+        </string>
+    </schema>
+</schemas>

@@ -1,0 +1,216 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="SQLNavigator" id="meetings" name="${catalog.folder.meetings.name:Заседания}" position="60">
+    <subfolders>
+      <view id="Meetings-CalendarAF5" name="${catalog.folder.meetings.view.Meetings_CalendarAF5.name:Календарь}" position="0">
+        <search-area name="_Meetings"/>
+        <descriptor-ref ref="meetings-Calendar-AF5"/>
+        <source>
+          <module ident="Meetings"/>
+        </source>
+      </view>
+      <view id="Meetings-Trash-AF5" name="${catalog.folder.meetings.view.Meetings_Trash_AF5.name:Корзина}" position="9990">
+        <search-area name="_Meetings"/>
+        <descriptor-ref ref="meetings-Trash-AF5"/>
+        <source>
+          <module ident="Meetings"/>
+        </source>
+      </view>
+      <folder id="Meetings0_AF5" name="${catalog.folder.meetings.folder.Meetings0_AF5.name:Заседания}" position="20">
+        <subfolders>
+          <view id="Настройки" name="${catalog.folder.meetings.folder.Meetings0_AF5.view.Настройки.name:Настройки}" position="80">
+            <pagename name="Заседания - Настройки"/>
+            <search-area name="meetings_Meetings"/>
+            <descriptor-ref ref="meetings-91-af5"/>
+            <source>
+              <module ident="Meetings"/>
+            </source>
+          </view>
+          <folder id="Meetings3" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings3.name:Проекты решений}" position="60">
+            <subfolders>
+              <view id="Meetings33" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings3.view.Meetings33.name:По автору}" position="30">
+                <pagename name="Проекты решений - По автору"/>
+                <search-area name="_Meetings"/>
+                <descriptor-ref ref="meetings-33-af5"/>
+                <source>
+                  <module ident="Meetings"/>
+                </source>
+              </view>
+              <view id="Meetings32" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings3.view.Meetings32.name:К планируемому вопросу}" position="20">
+                <pagename name="Проекты решений - К планируемому вопросу"/>
+                <search-area name="_Meetings"/>
+                <descriptor-ref ref="meetings-32-af5"/>
+                <source>
+                  <module ident="Meetings"/>
+                </source>
+              </view>
+              <view id="Meetings31" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings3.view.Meetings31.name:К вопросу повестки}" position="10">
+                <pagename name="Проекты решений - К вопросу повестки"/>
+                <search-area name="_Meetings"/>
+                <descriptor-ref ref="meetings-31-af5"/>
+                <source>
+                  <module ident="Meetings"/>
+                </source>
+              </view>
+            </subfolders>
+            <webdocs>
+              <group id="0" position="0"/>
+            </webdocs>
+          </folder>
+          <view id="Meetings01" name="${catalog.folder.meetings.folder.Meetings0_AF5.view.Meetings01.name:По виду заседания}" position="10">
+            <pagename name="Плановые заседания - По виду"/>
+            <search-area name="_Meetings"/>
+            <descriptor-ref ref="meetings-01-af5"/>
+            <source>
+              <module ident="Meetings"/>
+            </source>
+          </view>
+          <folder id="Meetings2" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings2.name:Вопросы повесток}" position="50">
+            <subfolders>
+              <view id="Meetings21" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings2.view.Meetings21.name:Включены в повестку}" position="10">
+                <pagename name="Вопросы повесток - Включены в повестку"/>
+                <search-area name="_Meetings"/>
+                <descriptor-ref ref="meetings-21-af5"/>
+                <source>
+                  <module ident="Meetings"/>
+                </source>
+              </view>
+              <view id="Meetings23" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings2.view.Meetings23.name:По докладчику}" position="40">
+                <pagename name="Вопросы повесток - По докладчику"/>
+                <search-area name="_Meetings"/>
+                <descriptor-ref ref="meetings-23-af5"/>
+                <source>
+                  <module ident="Meetings"/>
+                </source>
+              </view>
+              <view id="meetings-planned-ready-point" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings2.view.meetings_planned_ready_point.name:Готовы к включению}" position="20">
+                <pagename name="Вопросы повесток - Готовы к включению"/>
+                <search-area name="meetings_Meetings"/>
+                <descriptor-ref ref="meetings-22-ready-af5"/>
+                <source>
+                  <module ident="Meetings"/>
+                </source>
+              </view>
+              <view id="Meetings22" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings2.view.Meetings22.name:Планируемые}" position="30">
+                <pagename name="Вопросы повесток - Планируемые"/>
+                <search-area name="_Meetings"/>
+                <descriptor-ref ref="meetings-22-af5"/>
+                <source>
+                  <module ident="Meetings"/>
+                </source>
+              </view>
+            </subfolders>
+            <webdocs>
+              <group id="0" position="0"/>
+            </webdocs>
+          </folder>
+          <view id="Meetings04" name="${catalog.folder.meetings.folder.Meetings0_AF5.view.Meetings04.name:На согласовании}" position="40">
+            <pagename name="Плановые заседания - На согласовании"/>
+            <search-area name="_Meetings"/>
+            <descriptor-ref ref="meetings-04-af5"/>
+            <source>
+              <module ident="Meetings"/>
+            </source>
+          </view>
+          <view id="Meetings02" name="${catalog.folder.meetings.folder.Meetings0_AF5.view.Meetings02.name:По статусу}" position="20">
+            <pagename name="Плановые заседания - По статусу"/>
+            <search-area name="_Meetings"/>
+            <descriptor-ref ref="meetings-02-af5"/>
+            <source>
+              <module ident="Meetings"/>
+            </source>
+          </view>
+          <view id="Meetings03" name="${catalog.folder.meetings.folder.Meetings0_AF5.view.Meetings03.name:По № протокола}" position="30">
+            <pagename name="Плановые заседания - По № протокола"/>
+            <search-area name="_Meetings"/>
+            <descriptor-ref ref="meetings-03-af5"/>
+            <source>
+              <module ident="Meetings"/>
+            </source>
+          </view>
+          <folder id="Meetings4" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings4.name:Выписки}" position="50">
+            <subfolders>
+              <view id="Meetings42" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings4.view.Meetings42.name:По № протокола}" position="20">
+                <pagename name="Проекты решений - По номеру протокола"/>
+                <search-area name="_Meetings"/>
+                <descriptor-ref ref="meetings-42-af5"/>
+                <source>
+                  <module ident="Meetings"/>
+                </source>
+              </view>
+              <view id="Meetings41" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.Meetings4.view.Meetings41.name:По дате протокола}" position="10">
+                <pagename name="Выписки - По дате протокола"/>
+                <search-area name="_Meetings"/>
+                <descriptor-ref ref="meetings-41-af5"/>
+                <source>
+                  <module ident="Meetings"/>
+                </source>
+              </view>
+            </subfolders>
+            <webdocs>
+              <group id="0" position="0"/>
+            </webdocs>
+          </folder>
+          <view id="MeetingsPointTemplate" name="${catalog.folder.meetings.folder.Meetings0_AF5.view.MeetingsPointTemplate.name:Шаблоны вопросов}" position="70">
+            <pagename name="Заседания - Шаблоны вопросов"/>
+            <search-area name="meetings_Meetings"/>
+            <descriptor-ref ref="meetings-PointTemplate-af5"/>
+            <source>
+              <module ident="Meetings"/>
+            </source>
+          </view>
+          <folder id="MeetingsOnVoting" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.MeetingsOnVoting.name:На голосовании}" position="45">
+            <subfolders>
+              <view id="MeetingsOnVotingAll" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.MeetingsOnVoting.view.MeetingsOnVotingAll.name:Все}" position="10">
+                <pagename name="На голосовании - Все"/>
+                <search-area name="_Meetings"/>
+                <descriptor-ref ref="meetings-VotesAll-AF5"/>
+                <source>
+                  <module ident="Meetings"/>
+                </source>
+              </view>
+              <view id="MeetingsOnVotingByFIO" name="${catalog.folder.meetings.folder.Meetings0_AF5.folder.MeetingsOnVoting.view.MeetingsOnVotingByFIO.name:По ФИО}" position="20">
+                <pagename name="На голосовании - По ФИО"/>
+                <search-area name="meetings_Meetings"/>
+                <descriptor-ref ref="meetings-VotesByFIO-AF5"/>
+                <source>
+                  <module ident="Meetings"/>
+                </source>
+              </view>
+            </subfolders>
+            <webdocs>
+              <group id="0" position="0"/>
+            </webdocs>
+          </folder>
+        </subfolders>
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+      <folder id="SimpleMeetings" name="${catalog.folder.meetings.folder.SimpleMeetings.name:Совещания}" position="10">
+        <subfolders>
+          <view id="MeetingsSimpleByDateAF5" name="${catalog.folder.meetings.folder.SimpleMeetings.view.MeetingsSimpleByDateAF5.name:По дате}" position="10">
+            <search-area name="_Meetings"/>
+            <descriptor-ref ref="meetings-Simple-ByDate-AF5"/>
+            <source>
+              <module ident="Meetings" complect="Совещания"/>
+            </source>
+          </view>
+          <view id="MeetingsSimpleByNumAF5" name="${catalog.folder.meetings.folder.SimpleMeetings.view.MeetingsSimpleByNumAF5.name:По № протокола}" position="20">
+            <search-area name="_Meetings"/>
+            <descriptor-ref ref="meetings-Simple-ByProtocol-AF5"/>
+            <source>
+              <module ident="Meetings" complect="Совещания"/>
+            </source>
+          </view>
+        </subfolders>
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

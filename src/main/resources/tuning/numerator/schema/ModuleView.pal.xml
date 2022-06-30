@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ModuleView">
+    <string name="program">
+      <storage-field name="Program"/>
+    </string>
+    <string name="programId">
+      <storage-field name="ProgramID"/>
+    </string>
+    <string name="programName">
+      <storage-field name="ProgramName"/>
+    </string>
+    <string array="true" name="programServers">
+      <storage-field name="ProgramServers"/>
+    </string>
+    <string name="id">
+      <storage-field name="ProgramUnid"/>
+    </string>
+    <string name="moduleAndComplect">
+      <storage-field name="moduleAndComplect"/>
+    </string>
+    <string name="programCalcCondition" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[program!=null && !program.isEmpty() && program.indexOf('Meetings')!=(-1) ? 'Meetings': '']]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

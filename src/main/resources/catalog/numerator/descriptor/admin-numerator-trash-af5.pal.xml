@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Numerator" view="(vw_cmj_admin_trash_af5)" id="admin-numerator-trash-af5" name="Нумератор - Корзина (AF5)" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView">
+      <config>
+        <view-complex-classif level-select="all"/>
+      </config>
+    </builder>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="deletedDate" sort-asc="true" sort-desc="true" filter="true"/>
+        <column-ref ref="deletedPerson" sort-asc="true" sort-desc="true" filter="true"/>
+        <column-ref ref="addresseeOrganizaton" sort-asc="true" sort-desc="true" filter="true"/>
+        <column-ref ref="moduleName" sort-asc="true" sort-desc="true" filter="true"/>
+        <column-ref ref="depName" sort-asc="true" sort-desc="true" filter="true"/>
+        <column-ref ref="TypeName" sort-asc="true" sort-desc="true" filter="true"/>
+        <column-ref ref="lastNumber" sort-asc="true" sort-desc="true" filter="true"/>
+        <column-ref ref="counterFormula" sort-asc="true" sort-desc="true" filter="true"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="AddressUnit">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="type" createlog="true">
+      <storage-field name="CAddr_Type"/>
+    </string>
+    <string name="postOfficeBox" createlog="true">
+      <storage-field name="CAddr_POBox"/>
+    </string>
+    <string name="country" createlog="true">
+      <storage-field name="CAddr_Country"/>
+    </string>
+    <string name="region" createlog="true">
+      <storage-field name="CAddr_Region"/>
+    </string>
+    <string name="postIndex" createlog="true">
+      <storage-field name="CAddr_ZipCode"/>
+    </string>
+    <string name="district">
+      <storage-field name="CAddr_Locality"/>
+    </string>
+    <string name="building" createlog="true">
+      <storage-field name="CAddr_Corp"/>
+    </string>
+    <string name="city" createlog="true">
+      <storage-field name="CAddr_City"/>
+    </string>
+    <string name="settlement">
+      <storage-field name="CAddr_settlement"/>
+    </string>
+    <string name="apartment" createlog="true">
+      <storage-field name="CAddr_Office"/>
+    </string>
+    <string name="street" createlog="true">
+      <storage-field name="CAddr_Street"/>
+    </string>
+    <string name="house" createlog="true">
+      <storage-field name="CAddr_House"/>
+    </string>
+    <string name="houseShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[house!=null && !house.isEmpty() ?(house.contains('.') ? house  : 'д.'+house) +', ': '']]></script>
+      </calc-values>
+    </string>
+    <string name="cityShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[city!=null && !city.isEmpty() ?(city.contains('.') ? city: 'г.'+city) +', ': '']]></script>
+      </calc-values>
+    </string>
+    <string name="streetShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[street!=null && !street.isEmpty() ?(street.contains('.') ? street  : 'ул.'+street)+', ' : '']]></script>
+      </calc-values>
+    </string>
+    <string name="buildingShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[building!=null && !building.isEmpty() ?(building.contains('.') || building.contains(' ') ? building: 'стр.'+building) + ', ' : '']]></script>
+      </calc-values>
+    </string>
+    <string name="addressShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(postIndex!=null && !postIndex.isEmpty() ? postIndex+',  ' : '')+(country!=null && !country.isEmpty() ? country+',  ' : '')+(region!=null && !region.isEmpty() ? region+',  ' : '')+cityShow+(settlement!=null && !settlement.isEmpty() ? settlement+',  ' : '')+(district!=null && !district.isEmpty() ? district+',  ' : '')+streetShow+houseShow+buildingShow+apartShow+(postOfficeBox!=null && !postOfficeBox.isEmpty() ? "а/я №"+ postOfficeBox : '')]]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

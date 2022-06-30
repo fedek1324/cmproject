@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="MeetingsDocActions" name="HasVotes">
+    <meta>
+      <category name="Система\Заседания"/>
+    </meta>
+    <boolean name="hasVotes" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[voteInfos!=null && voteInfos.size()>0 ? true : false]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

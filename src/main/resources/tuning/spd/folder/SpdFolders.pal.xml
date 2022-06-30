@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+
+    <custom-descriptor ident="StoragePeriodDirectory" view="(vw_cmj_period)" id="spd-des-vw-cmj-period" name="Справочник сроков хранения"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="self"/>
+                <column-ref ref="normDoc" sort-asc="true" sort-desc="true" filter="true"/>       <!-- Нормативный документ -->
+                <column-ref ref="articleNum" sort-asc="true" sort-desc="true"/>    <!--№ статьи/пункта -->
+                <column-ref ref="docType" sort-asc="true" sort-desc="true" filter="true"/>       <!--Вид документа -->
+                <column-ref ref="period" sort-asc="true" sort-desc="true"/>        <!--Срок хранения -->
+                <column-ref ref="epk" sort-asc="true" sort-desc="true"/>           <!--ЭПК -->
+                <column-ref ref="comment"/>       <!--Примечания -->
+                <column-ref ref="activeStatus"/> <!--Статус -->
+            </columns>
+        </table>
+        <custom-actions schema-ref="SpdCollectionSchema"/>
+    </custom-descriptor>
+
+    <column name="normDoc" subject="${catalog.column.spd.normDoc.subject:Нормативный документ}" extends="string"/>
+    <column name="articleNum" subject="${catalog.column.spd.articleNum.subject:№ статьи/пункта}" extends="string"/>
+    <column name="docType" subject="${catalog.column.spd.docType.subject:Вид документа}" extends="string"/>
+    <column name="period" subject="${catalog.column.spd.period.subject:Срок хранения}" extends="string"/>
+    <column name="epk" subject="${catalog.column.spd.epk.subject:ЭК}" extends="boolean"/>
+    <column name="activeStatus" subject="${catalog.column.spd.activeStatus.subject:Действующий}" extends="boolean"/>
+
+    <view parent-ref="admin-class" id="storageperioddirectory" name="${catalog.view.storageperioddirectory.name:Справочник сроков хранения}"
+          position="70">
+        <search-area name="StoragePeriodDirectory"/>
+        <descriptor-ref ref="spd-des-vw-cmj-period"/>
+        <source>
+            <module ident="StoragePeriodDirectory"/>
+        </source>
+    </view>
+</catalog>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="requests-classif-questions-simple" name="${catalog.view.requests_classif_questions_simple.name:Классификатор тематик простой (ОГ)}" position="320">
+    <search-area name="requests_Requests"/>
+    <descriptor-ref ref="requests-classifier-questions-classif-simple"/>
+    <source>
+      <module ident="Requests"/>
+    </source>
+  </view>
+</catalog>

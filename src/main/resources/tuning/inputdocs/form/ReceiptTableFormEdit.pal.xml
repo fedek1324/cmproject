@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ReceiptTable" id="ReceiptTableFormEdit" name="${ui.form.ReceiptTableFormEdit.name:Редактирование пары Тип поступления - Дата поступления}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal">
+      <dialog-mode height="70" width="100" unit="symbol"/>
+    </appearance>
+    <component>
+      <section id="type" name="${ui.form.ReceiptTableFormEdit.section.type.name:Способ получения}">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="type" name="${ui.form.ReceiptTableFormEdit.section.type.field.type.name:Способ получения}">
+            <appearance importance="normal"/>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="receiptMethod"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+      <section id="date" name="${ui.form.ReceiptTableFormEdit.section.date.name:Дата поступления}">
+        <component>
+          <field attribute-ref="date" name="${ui.form.ReceiptTableFormEdit.section.date.field.date.name:Дата поступления}">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

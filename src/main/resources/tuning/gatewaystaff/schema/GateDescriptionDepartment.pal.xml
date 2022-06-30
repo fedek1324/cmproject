@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="GateDescription" name="GateDescriptionDepartment">
+    <meta>
+      <category name="РМ Администратора\Шлюз"/>
+      <documentation>Описание соответствия подразделений не являющихся организациями в кадровой системе</documentation>
+    </meta>
+    <string name="formLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Настройка соответствия подразделения ИКС']]></script>
+      </calc-values>
+    </string>
+    <string name="unitTypeLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Подразделение']]></script>
+      </calc-values>
+    </string>
+    <string name="parentTypeLabel" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[parentUnit == null ? '' : 'DEPARTMENT'.equals(parentUnit.type) ? 'Вышестоящее подразделение' : 'Вышестоящая организация']]></script>
+      </calc-values>
+    </string>
+    <string name="parentDescriptionTnUnid" createlog="true" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" name="parentUnit" temporal="true"/>
+  </schema>
+</schemas>

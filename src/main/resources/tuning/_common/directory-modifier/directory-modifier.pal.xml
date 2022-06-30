@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <directory-modifier name="my_surroding">
+    <filter>
+      <script lang="SQL"><![CDATA[e.isolatedDep = :isolatedDep OR e.orgID = :isolatedDep]]></script>
+    </filter>
+    <sort>
+      <script lang="SQL"><![CDATA[case when e.isolatedDep = :isolatedDep OR e.orgID = :isolatedDep then 0 else 1 end]]></script>
+    </sort>
+    <live-search-sort>
+      <script lang="SQL"><![CDATA[(case when b.isolatedDep = :isolatedDep OR (b.organization.systemOrganization = :isolatedDep and b.isolatedDep is null) then 0 else 1 end)]]></script>
+    </live-search-sort>
+  </directory-modifier>
+  <directory-modifier name="IsMedoParticipant">
+    <filter>
+      <script lang="SQL"><![CDATA[(e.soType IN ('SYS_ORGANIZATION','NONSYS_ORGANIZATION') and e.hasMedoId is true AND e.hasMedoAddress is true) OR (e.soType NOT IN ('SYS_ORGANIZATION','NONSYS_ORGANIZATION'))]]></script>
+    </filter>
+  </directory-modifier>
+</ui>

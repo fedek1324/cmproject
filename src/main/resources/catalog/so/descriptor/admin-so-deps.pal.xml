@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="(vw_cmj_admin_deps)" id="admin-so-deps" name="Подразделения для админки" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="isIndependentDep"/>
+        <column-ref ref="NotificationType"/>
+        <column-ref ref="depIndex" sort-asc="true"/>
+        <column-ref ref="depOName" sort-asc="true"/>
+        <column-ref ref="depOName_1" sort-asc="true"/>
+        <column-ref ref="depParent"/>
+        <column-ref ref="area"/>
+      </columns>
+    </table>
+    <hierarchy>
+      <view-transit ref="admin-hierarchy-goto" result-search-ref="admin-hierarchy-goto"/>
+    </hierarchy>
+    <custom-actions schema-ref="SODepartmentsCollection"/>
+  </custom-descriptor>
+</catalog>

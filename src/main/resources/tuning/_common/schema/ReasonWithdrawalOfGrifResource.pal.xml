@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="LinkedDocSelectionParamsCommon" recalc="true" name="ReasonWithdrawalOfGrifResource">
+    <meta>
+      <documentation>Выбор документа-основания при снятии грифа с возможностью ввода реквизитов вручную</documentation>
+    </meta>
+    <string name="title" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Выберите документ-основание']]></script>
+      </calc-values>
+    </string>
+    <boolean name="allowedManual" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[true]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isManySelect" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[false]]></script>
+      </calc-values>
+    </boolean>
+    <string name="modules" array="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(java.util.Arrays).asList("Missions", "MissionsPrev", "Protocols","InternalDocs","InternalDocsPrev","InputDocs","InputDocsPrev")]]></script>
+      </calc-values>
+    </string>
+  </schema>
+
+  <schema name="SelectGrifLinkedDocDialogResource" extends="SelectLinkedDocDialogResource"/>
+</schemas>

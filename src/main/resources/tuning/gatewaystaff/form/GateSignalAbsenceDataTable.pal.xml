@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="GateSignalAbsenceData" id="GateSignalAbsenceDataTable" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="startDate" name="${ui.form.GateSignalAbsenceDataTable.field.startDate.name:Дата начала отсутствия}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="endDate" name="${ui.form.GateSignalAbsenceDataTable.field.endDate.name:Дата окончания отсутствия}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="reason" name="${ui.form.GateSignalAbsenceDataTable.field.reason.name:Причина}">
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

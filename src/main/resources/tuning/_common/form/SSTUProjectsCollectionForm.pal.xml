@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SSTUProjectsCollection" id="SSTUProjectsCollectionForm" name="${ui.form.SSTUProjectsCollectionForm.name:Проекты ССТУ}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu" name="${ui.form.SSTUProjectsCollectionForm.section.RootMenu.name:SSTUProjectsMenu}">
+        <component>
+          <button name="${ui.form.SSTUProjectsCollectionForm.section.RootMenu.button.Загрузить ОГ из файла.name:Загрузить ОГ из файла}" alias="ImportFromXML_RKK_REQUESTS">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="allowImportFromXML"/>
+              </hide>
+            </properties>
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">ImportFromXML</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <section id="OTHER" name="${ui.form.SSTUProjectsCollectionForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <button name="${ui.form.SSTUProjectsCollectionForm.section.RootMenu.section.OTHER.button.Читатели.name:Читатели}">
+                <action>
+                  <custom>
+                    <operation>
+                      <handler-ref ref="ReadersMultiForm"/>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

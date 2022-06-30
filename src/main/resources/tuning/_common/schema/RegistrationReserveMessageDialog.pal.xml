@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="Dialog" name="RegistrationReserveMessageDialog">
+    <meta>
+      <category name="Сервис\Регистрация"/>
+    </meta>
+    <string array="true" name="ids" createlog="true" temporal="true"/>
+    <string name="counter" createlog="true" temporal="true"/>
+    <string name="message" createlog="true" temporal="true"/>
+    <string name="regNumberPrefix" createlog="true" temporal="true"/>
+    <string name="regNumberCounter" createlog="true" temporal="true"/>
+    <string name="regNumberSuffix" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Requests" view="(vw_cmj_classif_simple)" id="requests-classifier-questions-classif-simple" name="ОГ- простой классификатор" style="default">
+    <help id="99778980"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewComplexClassif">
+      <config>
+        <view-complex-classif level-select="last"/>
+      </config>
+    </builder>
+    <table>
+      <columns>
+        <column-ref ref="title" category="true"/>
+        <column-ref ref="question"/>
+        <column-ref ref="classifierQuestion"/>
+        <column-ref ref="self"/>
+        <column-ref ref="allowed" hide="true"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

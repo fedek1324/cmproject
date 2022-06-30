@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="WorkCycleExeption" id="WorkCycleExeptionForm_Table" name="${ui.form.WorkCycleExeptionForm_Table.name:Таблица Рабочий цикл}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal"/>
+    <component>
+      <field attribute-ref="dateStr" name="${ui.form.WorkCycleExeptionForm_Table.field.dateStr.name:Дата}">
+        <appearance align="left" importance="normal"/>
+      </field>
+      <field attribute-ref="type" name="${ui.form.WorkCycleExeptionForm_Table.field.type.name:Тип}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance align="left"/>
+      </field>
+      <field attribute-ref="comment" name="${ui.form.WorkCycleExeptionForm_Table.field.comment.name:Комментарий}">
+        <appearance align="left" importance="normal"/>
+      </field>
+      <button>
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="SOWorkTimeProfile_InheritInfoExceptionTable"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.WorkCycleExeptionForm_Table.button..hintPopUp:Редактировать}</hint-pop-up>
+        <appearance align="left">
+          <label-style width="2" unit="symbol">
+            <style id="tunIconEdit"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="update"/>
+        </action>
+      </button>
+      <button>
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="SOWorkTimeProfile_InheritInfoExceptionTable"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.WorkCycleExeptionForm_Table.button..hintPopUp:Удалить}</hint-pop-up>
+        <appearance align="left">
+          <label-style width="2" unit="symbol">
+            <style id="tunIconDelete"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="delete"/>
+        </action>
+      </button>
+      <button name="${ui.form.WorkCycleExeptionForm_Table.button.Добавить.name:Добавить}">
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="SOWorkTimeProfile_InheritInfoExceptionTable"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.WorkCycleExeptionForm_Table.button.Добавить.hintPopUp:Добавить}</hint-pop-up>
+        <appearance align="right">
+          <label-style>
+            <style id="tunIconAdd"/>
+            <style id="tunBlue"/>
+            <style id="tunUnderline"/>
+            <style id="tunClickableRed"/>
+          </label-style>
+          <alt-appearancies>
+            <alt-appearance>
+              <appearance-ref ref="addButton"/>
+              <enable condition-union="AND">
+                <condition>true</condition>
+              </enable>
+            </alt-appearance>
+          </alt-appearancies>
+        </appearance>
+      </button>
+    </component>
+  </form>
+</ui>

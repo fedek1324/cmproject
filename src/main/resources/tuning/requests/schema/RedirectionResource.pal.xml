@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="RedirectionResource">
+    <meta>
+      <category name="Система\Обращение граждан"/>
+    </meta>
+    <schema-ref ref="OneOrganizationResource" name="to" system="true"/>
+    <date name="date" system="true"/>
+  </schema>
+</schemas>

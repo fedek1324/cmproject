@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ManualNumberReserveDialog" id="ManualNumberReserveDialogForm" name="${ui.form.ManualNumberReserveDialogForm.name:Резервирование номера вручную}" projection="default">
+    <rename name="${ui.form.ManualNumberReserveDialogForm.rename.name:Зарезервированный номер}" condition-union="AND">
+      <condition-ref ref="ManualNumberReserveDialog_isReseved"/>
+    </rename>
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <appearance>
+      <dialog-mode height="2" width="70" unit="symbol"/>
+    </appearance>
+    <component>
+      <section id="numberFields" group="true">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="prefix" name="${ui.form.ManualNumberReserveDialogForm.section.numberFields.field.prefix.name:Приставка}">
+            <appearance importance="normal">
+              <label-style field-width="15" field-unit="symbol"/>
+            </appearance>
+          </field>
+          <field attribute-ref="number" name="${ui.form.ManualNumberReserveDialogForm.section.numberFields.field.number.name:№}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal">
+              <label-style field-width="15" field-unit="symbol"/>
+            </appearance>
+          </field>
+          <field attribute-ref="suffix" name="${ui.form.ManualNumberReserveDialogForm.section.numberFields.field.suffix.name:Окончание}">
+            <appearance importance="normal">
+              <label-style field-width="15" field-unit="symbol"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <button name="${ui.form.ManualNumberReserveDialogForm.button.Ок.name:Ок}">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.ManualNumberReserveDialogForm.button.Отмена.name:Отмена}">
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

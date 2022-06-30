@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SPOOrganizationNotActualCollection" id="SPOOrganizationNotActualCollectionForm" name="${ui.form.SPOOrganizationNotActualCollectionForm.name:Неактуальные}" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu" name="${ui.form.SPOOrganizationNotActualCollectionForm.section.RootMenu.name:RootOrgMenu}">
+        <component>
+          <button name="${ui.form.SPOOrganizationNotActualCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Добавить в избранное'.name:Скрыть системную кнопку 'Добавить в избранное'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationNotActualCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Другое'.name:Скрыть системную кнопку 'Другое'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="OTHER"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationNotActualCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Настройка'.name:Скрыть системную кнопку 'Настройка'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SETTINGS"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationNotActualCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Новой вкладке'.name:Скрыть системную кнопку 'Новой вкладке'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="OPEN_IN_SEPARATE_TAB"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationNotActualCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Новом окне'.name:Скрыть системную кнопку 'Новом окне'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="OPEN_IN_SEPARATE_WINDOW"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationNotActualCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Открыть в'.name:Скрыть системную кнопку 'Открыть в'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="OPEN_IN"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPOOrganizationNotActualCollectionForm.section.RootMenu.button.Удалить.name:Удалить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">DeleteSPOOrganizationOperation</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

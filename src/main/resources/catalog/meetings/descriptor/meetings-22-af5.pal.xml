@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Meetings" view="(vw_cmj_22)" id="meetings-22-af5" name="Заседания - Вопросы - Планируемые" style="default">
+    <help id="99778671"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="meetingType" filter="true" category="true"/>
+        <column-ref ref="date" filter="true"/>
+        <column-ref ref="reporters" filter="true"/>
+        <column-ref ref="pointText" filter="true"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Meetings-CreatePlannedPoint" name="${catalog.custom-descriptor.meetings-22-af5.actions.action.Meetings-CreatePlannedPoint.name:Создать/Планируемый вопрос}">
+        <create object-ref="PLANNED_POINT"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

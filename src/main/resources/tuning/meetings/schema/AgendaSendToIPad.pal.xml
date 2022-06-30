@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="AgendaSendToIPad">
+    <meta>
+      <category name="Система\Заседания"/>
+    </meta>
+    <string value="auto" name="Отправка производится автоматически при утверждении"/>
+    <string value="manual" name="Отправка производится вручную по кнопке"/>
+    <string value="none" name="Отправка на Мобильное РМ не производится"/>
+  </enum>
+</schemas>

@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SOTrashCollection" id="SOTrashCollectionForm" name="${ui.form.SOTrashCollectionForm.name:Корзина структурной организации}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu" name="${ui.form.SOTrashCollectionForm.section.RootMenu.name:SOTrashMenu}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="read"/>
+            <negative-condition-ref ref="edit"/>
+          </hide>
+        </properties>
+        <component>
+          <button name="${ui.form.SOTrashCollectionForm.section.RootMenu.button.Восстановить.name:Восстановить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <action position="10.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">RestorePersonsGroupOperation</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.SOTrashCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Добавить в избранное'.name:Скрыть системную кнопку 'Добавить в избранное'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+            </action>
+          </button>
+          <button name="${ui.form.SOTrashCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Редактировать'.name:Скрыть системную кнопку 'Редактировать'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="EDIT"/>
+            </action>
+          </button>
+          <section id="OTHER" name="${ui.form.SOTrashCollectionForm.section.RootMenu.section.OTHER.name:Другое}">
+            <appearance>
+              <action>
+                <system name="OTHER"/>
+              </action>
+            </appearance>
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+          </section>
+          <button name="${ui.form.SOTrashCollectionForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Построить отчет'.name:Скрыть системную кнопку 'Построить отчет'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="BUILD_REPORT"/>
+            </action>
+          </button>
+          <button name="${ui.form.SOTrashCollectionForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Печать представления'.name:Скрыть системную кнопку 'Печать представления'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="PRINT_COLLECTION"/>
+            </action>
+          </button>
+          <button name="${ui.form.SOTrashCollectionForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Настройка'.name:Скрыть системную кнопку 'Настройка'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SETTINGS"/>
+            </action>
+          </button>
+          <section id="OPEN_IN" name="${ui.form.SOTrashCollectionForm.section.RootMenu.section.OTHER.section.OPEN_IN.name:Открыть в}">
+            <appearance>
+              <action>
+                <system name="OPEN_IN"/>
+              </action>
+            </appearance>
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+          </section>
+          <button name="${ui.form.SOTrashCollectionForm.section.RootMenu.section.OTHER.section.OPEN_IN.button.Скрыть системную кнопку 'Новой вкладке'.name:Скрыть системную кнопку 'Новой вкладке'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="OPEN_IN_SEPARATE_TAB"/>
+            </action>
+          </button>
+          <button name="${ui.form.SOTrashCollectionForm.section.RootMenu.section.OTHER.section.OPEN_IN.button.Скрыть системную кнопку 'Новом окне'.name:Скрыть системную кнопку 'Новом окне'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="OPEN_IN_SEPARATE_WINDOW"/>
+            </action>
+          </button>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

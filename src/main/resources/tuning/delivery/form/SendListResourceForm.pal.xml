@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SendListResource" id="SendListResourceForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="listHeader">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal">
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="accessInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="title">
+            <properties>
+              <require>
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal">
+              <label-style>
+                <style id="tunFontSize14"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunFontSize14"/>
+                </value-style>
+              </field-style>
+            </appearance>
+          </field>
+          <field attribute-ref="author" name="${ui.form.SendListResourceForm.section.Header.field.author.name:Автор:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="Attributes" name="${ui.form.SendListResourceForm.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="Main" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.name:Основные}">
+            <component>
+              <field attribute-ref="organization" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.field.organization.name:Организация:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="members" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.field.members.name:Список рассылки:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isReadOnlyMembers"/>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="isAutoUpdatedList" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.field.isAutoUpdatedList.name:Автоматически обновляемый список:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isNotSendlistSupervisor"/>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field recalc="true" attribute-ref="soContext" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.field.soContext.name:Контекст в рамках СО:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideSendlistFormulas"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="sysOrgs"/>
+                  <directory-ref ref="isolated-deps"/>
+                </directories>
+              </field>
+              <field attribute-ref="soFormula" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.field.soFormula.name:Фильтр в рамках СО:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="hasSoContext"/>
+                  </require>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideSendlistFormulas"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field recalc="true" attribute-ref="spoContext" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.field.spoContext.name:Контекст СпО:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideSendlistFormulas"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="org-directories"/>
+                </directories>
+              </field>
+              <field attribute-ref="spoFormula" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.field.spoFormula.name:Фильтр в рамках СпО:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="hasSpoContext"/>
+                  </require>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideSendlistFormulas"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field recalc="true" attribute-ref="sppContext" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.field.sppContext.name:Контекст СпП:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideSendlistFormulas"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="person-directories"/>
+                </directories>
+              </field>
+              <field attribute-ref="sppFormula" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.field.sppFormula.name:Фильтр в рамках СпП:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="hasSppContext"/>
+                  </require>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideSendlistFormulas"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="membersFormula" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.field.membersFormula.name:Формула вычисления участников списка:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="hideSendlistFormulas"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <button recalc="true" attribute-ref="$calculate" name="${ui.form.SendListResourceForm.section.Attributes.section.Main.button.calculate.name:Вычислить состав}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="showCalculateButton"/>
+                  </hide>
+                </properties>
+                <appearance>
+                  <label-style>
+                    <style id="tunBtnBlue"/>
+                  </label-style>
+                </appearance>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Access" name="${ui.form.SendListResourceForm.section.Access.name:Доступ}">
+        <component>
+          <field attribute-ref="$accessItem">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="accessType">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

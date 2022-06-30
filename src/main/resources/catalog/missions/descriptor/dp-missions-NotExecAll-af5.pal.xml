@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Missions" view="(vw_cmj_09)" id="dp-missions-NotExecAll-af5" name="ОРД - неисполненные все" style="default">
+    <help id="99778667"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="hasGriff"/>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="rkkExecutionStatus"/>
+        <column-ref ref="resOfRkkExecutionStatus"/>
+        <column-ref ref="regNumber" sort-desc="true" filter="true"/>
+        <column-ref ref="regDate" filter="true"/>
+        <column-ref ref="reqType" filter="true"/>
+        <column-ref ref="signer" filter="true"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="subject" filter="true"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Missions-CreateRKK" name="${catalog.custom-descriptor.dp-missions-NotExecAll-af5.actions.action.Missions-CreateRKK.name:Создать/ОРД}">
+        <create object-ref="RKK_MISSIONS"/>
+      </action>
+    </actions>
+    <custom-actions schema-ref="RkkReadersCollection"/>
+  </custom-descriptor>
+</catalog>

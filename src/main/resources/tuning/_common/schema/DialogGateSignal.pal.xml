@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="Dialog" name="DialogGateSignal">
+    <meta>
+      <category name="РМ Администратора\Шлюз\Диалоги"/>
+    </meta>
+    <string name="message" createlog="true" temporal="true"/>
+    <string array="true" name="selectIds" createlog="true" temporal="true"/>
+    <string name="counter" createlog="true" temporal="true"/>
+    <integer name="currentIndex" createlog="true" temporal="true"/>
+    <enum-ref ref="SignalTypeEnum" name="signalType" createlog="true" temporal="true"/>
+    <boolean name="skip" createlog="true" temporal="true"/>
+  </schema>
+</schemas>
