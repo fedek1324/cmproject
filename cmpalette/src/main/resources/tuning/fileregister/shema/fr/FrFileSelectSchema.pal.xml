@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="FrFileSelectSchema">
+    <meta>
+      <category name="Отношение к делу" />
+    </meta>
+    <string name="id" system="true"/>
+    <string  name="indexFile" system="true"/>
+    <string  name="subject" system="true"/>
+    <hyperlink name="hyperLinkFile"/>
+    <string name="description"  computed="true" temporal="true">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA[subject]]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

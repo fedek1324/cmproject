@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="DeadlineDeferResource">
+    <meta>
+      <category name="Сервис\Исполнения"/>
+    </meta>
+    <actor name="executor" system="true"/>
+    <date name="deadline" system="true"/>
+    <datetime name="changedAt" system="true"/>
+    <actor name="changedBy" system="true"/>
+    <schema-ref ref="ReasonResource" name="reason" system="true"/>
+    <boolean name="changedInReadMode" system="true"/>
+  </schema>
+</schemas>

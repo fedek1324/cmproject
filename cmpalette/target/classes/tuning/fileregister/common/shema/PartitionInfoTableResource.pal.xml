@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" name="PartitionInfoTableResource">
+    <hyperlink name="hyperLink" temporal="true" />
+    <string name="index" system="true"/>
+    <actor name="soUnit" system="true"/>
+    <string name="branchDivision" system="true"/>
+    <string name="id" system="true"/>
+    <enum-ref ref="NdpStatusGeneralEnum" name="state" system="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="ApprovingDocs" view="(vw_cmj_tmltByName)" id="approving-templatesByName" name="Согласование: шаблоны по имени" style="default">
+    <help id="99778971"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="templateName"/>
+        <column-ref ref="visaList"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="APRE_LIST_TEMPLATE" name="${catalog.custom-descriptor.approving-templatesByName.actions.action.APRE_LIST_TEMPLATE.name:APRE_LIST_TEMPLATE}">
+        <create object-ref="APRE_LIST_TEMPLATE"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ContentResourceAddInformations">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <file name="content" createlog="true">
+        <meta>
+            <documentation>Доп. информация</documentation>
+        </meta>
+      <storage-field name="contentAddInformations"/>
+    </file>
+    <richtext name="richtext" createlog="true">
+        <meta>
+            <documentation>Доп. информация</documentation>
+        </meta>
+      <storage-field name="richTextAddInformations"/>
+    </richtext>
+  </schema>
+</schemas>

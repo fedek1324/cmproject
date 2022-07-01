@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="Templates-outputresolutions" id="Templates-outputresolutions-all" name="${catalog.view.Templates_outputresolutions_all.name:Все шаблоны}" position="-1">
+    <search-area name="output_OutputDocs"/>
+    <descriptor-ref ref="dp-03-output"/>
+    <source>
+      <module ident="OutputDocs"/>
+    </source>
+  </view>
+</catalog>

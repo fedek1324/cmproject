@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+    <form schema-ref="AddressSOUnitOrg" id="AddressSOUnitOrgForm_Table" projection="default">
+        <properties>
+            <hide condition-union="AND">
+                <negative-condition-ref ref="table"/>
+            </hide>
+        </properties>
+        <appearance field-layout="horizontal"/>
+        <component>
+            <field attribute-ref="isDefault" name="${ui.form.AddressSOUnitForm_Table.field.isDefault.name:По умолчанию}">
+                <appearance importance="normal"/>
+            </field>
+            <field attribute-ref="type" name="${ui.form.AddressSOUnitForm_Table.field.type.name:Тип адреса}">
+                <appearance importance="normal"/>
+            </field>
+            <field attribute-ref="addressString" name="${ui.form.AddressSOUnitForm_Table.field.addressShow.name:Адрес}">
+                <appearance importance="normal"/>
+            </field>
+            <button>
+                <properties>
+                    <hide condition-union="AND">
+                        <negative-condition-ref ref="table_edit"/>
+                    </hide>
+                </properties>
+                <hint-pop-up>${ui.form.AddressSOUnitForm_Table.button..hintPopUp:Редактировать}</hint-pop-up>
+                <appearance align="right">
+                    <label-style width="2" unit="symbol">
+                        <style id="tunIconEdit"/>
+                    </label-style>
+                </appearance>
+                <action>
+                    <system name="update"/>
+                </action>
+            </button>
+            <button>
+                <properties>
+                    <hide condition-union="AND">
+                        <negative-condition-ref ref="table_edit"/>
+                    </hide>
+                </properties>
+                <hint-pop-up>${ui.form.AddressSOUnitForm_Table.button..hintPopUp:Удалить}</hint-pop-up>
+                <appearance align="right">
+                    <label-style width="2" unit="symbol">
+                        <style id="tunIconDelete"/>
+                    </label-style>
+                </appearance>
+                <action>
+                    <system name="delete"/>
+                </action>
+            </button>
+            <button name="${ui.form.AddressSOUnitForm_Table.button.Добавить.name:Добавить}">
+                <properties>
+                    <hide condition-union="AND">
+                        <negative-condition-ref ref="table_edit"/>
+                    </hide>
+                </properties>
+                <hint-pop-up>${ui.form.AddressSOUnitForm_Table.button.Добавить.hintPopUp:Добавить}</hint-pop-up>
+                <appearance align="right">
+                    <label-style>
+                        <style id="tunIconAdd"/>
+                        <style id="tunBlue"/>
+                        <style id="tunUnderline"/>
+                        <style id="tunClickableRed"/>
+                    </label-style>
+                    <alt-appearancies>
+                        <alt-appearance>
+                            <appearance-ref ref="addButton"/>
+                            <enable condition-union="AND">
+                                <condition>true</condition>
+                            </enable>
+                        </alt-appearance>
+                    </alt-appearancies>
+                </appearance>
+            </button>
+        </component>
+    </form>
+</ui>

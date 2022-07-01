@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ForeignResolutionResource">
+    <meta>
+      <category name="Сервис\Исполнения"/>
+    </meta>
+    <string name="text" system="true">
+      <storage-field name="text"/>
+    </string>
+    <date name="deadline" system="true">
+      <storage-field name="deadline"/>
+    </date>
+    <schema-ref ref="ContentResource" name="$content" system="true"/>
+    <string name="$close" system="true"/>
+  </schema>
+</schemas>

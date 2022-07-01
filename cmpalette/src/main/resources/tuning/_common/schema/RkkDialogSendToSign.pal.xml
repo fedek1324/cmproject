@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="ClientContextRequest" name="RkkDialogSendToSign">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="mode" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['dialog']]></script>
+      </calc-values>
+    </string>
+    <string name="reason" createlog="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Причина повторной отправки на подписание:']]></script>
+      </calc-values>
+    </string>
+    <integer name="idsCount" temporal="true"/>
+    <string name="commentText" createlog="true">
+      <storage-field name="commentText"/>
+    </string>
+    <string array="true" name="selectIds" temporal="true"/>
+    <string name="warning" createlog="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="PRVZ" view="(vw_cmj_cards)" id="af-prvz-cards" name="Список карточек доукментов в БД Папки РВЗ" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="prvzCardStatus" category="true" show-count="true"/>
+        <column-ref ref="resolutionPriority"/>
+        <column-ref ref="prvzFilter"/>
+        <column-ref ref="sendtime"/>
+        <column-ref ref="sender"/>
+        <column-ref ref="author"/>
+        <column-ref ref="regFullNumber"/>
+        <column-ref ref="subject"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

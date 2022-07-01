@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pkd xmlns="http://www.intertrust.ru/schema/palette/pkd">
+  <filter name="Доп. фильтр (типы документов)" type="default" priority="0" edit="true" id="byDBType">
+    <collection-filter>
+      <script lang="SQL"><![CDATA[exists (
+		select
+			1
+		from
+			pkd_documents docs
+		where
+			docs.unid = event.document
+			and (
+				docs.type_db in (
+					'OutputDocs',
+					'OutputDocsPrev',
+					'Requests',
+					'RequestsPrev',
+					'InputDocs',
+					'InputDocsPrev',
+					'Missions',
+					'MissionsPrev',
+					'InternalDocs',
+					'InternalDocsPrev',
+                    'Tasks',
+                    'TasksArch',
+                    'ContractsLite',
+                    'ContractsLiteArch'
+				)
+				or docs.root_type_db in (
+					'OutputDocs',
+					'OutputDocsPrev',
+					'Requests',
+					'RequestsPrev',
+					'InputDocs',
+					'InputDocsPrev',
+					'Missions',
+					'MissionsPrev',
+					'InternalDocs',
+					'InternalDocsPrev',
+                    'Tasks',
+                    'TasksArch',
+                    'ContractsLite',
+                    'ContractsLiteArch'
+				)
+			)
+	) ]]></script>
+    </collection-filter>
+    <task-filter>
+      <script lang="SPEL"><![CDATA[(#this instanceof T(ru.intertrust.cmj.pkd.domain.events.PersonEvent) || #this instanceof T(ru.intertrust.cmj.pkd.domain.events.EventDocument)) && T(com.google.common.collect.Sets).newHashSet("OutputDocs",
+					"OutputDocsPrev",
+					"Requests",
+					"RequestsPrev",
+					"InputDocs",
+					"InputDocsPrev",
+					"Missions",
+					"MissionsPrev",
+					"InternalDocs",
+                    "Tasks",
+                    "TasksArch",
+					"InternalDocsPrev",
+                    "ContractsLite",
+                    "ContractsLiteArch").contains(T(java.util.Optional).ofNullable(#this.getDocument().getRootTypeDatabase()).orElse(#this.getDocument().getTypeDatabase()))]]></script>
+    </task-filter>
+    <filter-values>
+      <filter-value-ref ref="byDocType"/>
+    </filter-values>
+  </filter>
+  <filter name="Доп. фильтр (типы документов)" type="default" priority="0" edit="true" id="byDocDBType">
+    <collection-filter>
+      <script lang="SQL"><![CDATA[
+				d.type_db in (
+					'OutputDocs',
+					'OutputDocsPrev',
+					'Requests',
+					'RequestsPrev',
+					'InputDocs',
+					'InputDocsPrev',
+					'Missions',
+					'MissionsPrev',
+					'InternalDocs',
+					'InternalDocsPrev',
+                    'Tasks',
+                    'TasksArch',
+                    'ContractsLite',
+                    'ContractsLiteArch'
+				)
+	]]></script>
+    </collection-filter>
+    <task-filter>
+      <script lang="SPEL"><![CDATA[#this instanceof T(ru.intertrust.cmj.pkd.domain.events.EventDocument) && T(com.google.common.collect.Sets).newHashSet("OutputDocs",
+					"OutputDocsPrev",
+					"Requests",
+					"RequestsPrev",
+					"InputDocs",
+					"InputDocsPrev",
+					"Missions",
+					"MissionsPrev",
+					"InternalDocs",
+                    "Tasks",
+                    "TasksArch",
+					"InternalDocsPrev",
+                    "ContractsLite",
+                    "ContractsLiteArch").contains(#this.getDocument().getTypeDatabase())]]></script>
+    </task-filter>
+    <filter-values>
+      <filter-value-ref ref="byDocType"/>
+    </filter-values>
+  </filter>
+  <filter name="Кому" type="actor" global="true" priority="3" save-session="true" highlight="true" id="byAddressee">
+    <web-filter>
+      <script lang="JavaScript"><![CDATA[return (object.to != null && object.to.id === value || (object.taskExecutor != null && object.taskExecutor.id === value)) || (object.preparedFor != null && (Array.isArray(object.preparedFor) && object.preparedFor.filter(function(preparedFor) { return preparedFor.id === value; }).length > 0 || !Array.isArray(object.preparedFor) && object.preparedFor.id === value))]]></script>
+    </web-filter>
+    <collection-filter>
+      <script lang="SQL"><![CDATA[event.event_to = :byAddressee OR event.plan_executor = :byAddressee]]></script>
+    </collection-filter>
+    <task-filter>
+      <script lang="SPEL"><![CDATA[values.contains(object.getEventInfo().getEventToApp().getUNID()) || (object.getEventInfo().getPlanExecutor() != null && values.contains(object.getEventInfo().getPlanExecutor().getUNID()))]]></script>
+    </task-filter>
+    <filter-values>
+      <filter-value-ref ref="byAddressee"/>
+    </filter-values>
+  </filter>
+  <filter name="На контроле" type="default" global="true" priority="2" edit="true" id="onControl">
+    <icon path="icons/flag-alt-regular.svg"/>
+    <web-filter>
+      <script lang="JavaScript"><![CDATA[return object.isOnControl != null && object.isOnControl]]></script>
+    </web-filter>
+    <collection-filter>
+      <script lang="SQL"><![CDATA[EXISTS (select 1 from PKD_DOCUMENTS doc where doc.unid = event.document and doc.on_control = true)]]></script>
+    </collection-filter>
+  </filter>
+  <filter name="По меткам" type="label" global="true" priority="6" edit="true" id="byLabel">
+    <web-filter>
+      <script lang="JavaScript"><![CDATA[return object.labels && object.labels.includes(value);]]></script>
+    </web-filter>
+    <collection-filter>
+      <script lang="SQL"><![CDATA[EXISTS ( select 1 from PKD_PERSON_EVENT_LABELS labels where pe.id = labels.event_id and pe.person = labels.event_person  and :byLabel = labels.label)]]></script>
+    </collection-filter>
+  </filter>
+  <filter name="От кого" type="actor" global="true" priority="4" edit="true" id="byPerson">
+    <web-filter>
+      <script lang="JavaScript"><![CDATA[return (object.from != null && object.from.id === value) || (object.preparedBy != null && (Array.isArray(object.preparedBy) && object.preparedBy.filter(function(preparedBy) { return preparedBy.id === value; }).length > 0 || !Array.isArray(object.preparedBy) && object.preparedBy.id === value));]]></script>
+    </web-filter>
+    <collection-filter>
+      <script lang="SQL"><![CDATA[event.event_from = :byPerson]]></script>
+    </collection-filter>
+    <task-filter>
+      <script lang="SPEL"><![CDATA[values.contains(object.getEventInfo().getEventFromApp().getUNID())]]></script>
+    </task-filter>
+  </filter>
+  <filter name="По сроку" type="date" global="true" priority="5" edit="true" id="byDate">
+    <web-filter>
+      <script lang="JavaScript"><![CDATA[return (to == null && from == null && object.entityType.includes('PersonDocument') && object.controlDate == null) || (to != null && object.controlDate != null && (from == null || object.controlDate >= from) && object.controlDate <= to) || (to == null && from == null && object.entityType.includes('PersonTask') && object.taskDeadline == null) || (to != null && object.taskDeadline != null && (from == null || object.taskDeadline >= from) && object.taskDeadline <= to)]]></script>
+    </web-filter>
+    <collection-filter>
+      <script lang="SQL"><![CDATA[case where :byDate_from is not null and :byDate_to is not null 
+then event.task_date BETWEEN  :byDate_from and :byDate_to 
+else  event.task_date is null]]></script>
+    </collection-filter>
+    <filter-values>
+      <filter-value-ref ref="byDate"/>
+    </filter-values>
+  </filter>
+  <filter name="По типу документа" type="constants" priority="2" edit="true" id="byDocType">
+    <web-filter>
+      <script lang="JavaScript"><![CDATA[return object.docType === value;]]></script>
+    </web-filter>
+    <collection-filter>
+      <script lang="SQL"><![CDATA[EXISTS (SELECT 1 FROM PKD_DOCUMENTS doc where doc.unid = event.document and doc.type_db = :byDocType)]]></script>
+    </collection-filter>
+    <filter-values>
+      <filter-value-ref ref="byDocType"/>
+    </filter-values>
+  </filter>
+  <filter name="По статусу" type="constants" priority="1" edit="true" id="byDocumentStatus">
+    <web-filter>
+      <script lang="JavaScript"><![CDATA[return object.documentStatus === value;]]></script>
+    </web-filter>
+    <collection-filter>
+      <script lang="SQL"><![CDATA[event.doc_status = :byDocumentStatus]]></script>
+    </collection-filter>
+    <filter-values>
+      <filter-value-ref ref="byDocumentStatus"/>
+    </filter-values>
+  </filter>
+  <filter name="По типу задачи" type="constants" priority="1" edit="true" id="byTask">
+    <web-filter>
+      <script lang="JavaScript"><![CDATA[return object.taskId === value;]]></script>
+    </web-filter>
+    <collection-filter>
+      <script lang="SQL"><![CDATA[event.event_id = :byTask]]></script>
+    </collection-filter>
+    <filter-values>
+      <filter-value-ref ref="byTask"/>
+    </filter-values>
+  </filter>
+  <filter name="Продолжительность хранения в архиве" type="date" priority="0" edit="true" id="durInArchive">
+    <collection-filter>
+      <script lang="SQL"><![CDATA[event.process_dt >= :durInArchive_from]]></script>
+    </collection-filter>
+    <task-filter>
+      <script lang="SPEL"><![CDATA[#this instanceof T(ru.intertrust.cmj.pkd.domain.events.PersonEvent)  && #this.getEventInfo().getProcessStatusDT(false) != null && !(T(ru.intertrust.cmj.pkd.tools.PkdTools).addDays(#this.getEventInfo().getProcessStatusDT(false), T(ru.intertrust.cmj.af.collections.impl.queue.QueueSettingCache).get().getGlobalSetting().getDurationInArchive()).before(T(ru.intertrust.cmj.pkd.tools.PkdTools).today()))]]></script>
+    </task-filter>
+  </filter>
+  <filter name="Только новые" type="default" priority="3" edit="true" id="onlyNew">
+    <web-filter>
+      <script lang="JavaScript"><![CDATA[return object.privateStatus=== 'NOT_READ';]]></script>
+    </web-filter>
+    <collection-filter>
+      <script lang="SQL"><![CDATA[pe.privateStatus = 'NOT_READ']]></script>
+    </collection-filter>
+  </filter>
+  <filter name="Фильтровать задачи" type="string" global="true" priority="1" edit="true" id="arbitFilter">
+    <web-filter>
+      <script lang="JavaScript"><![CDATA[return value != null && ((object.eventAuthor != null && (object.eventAuthor.shortName.toLowerCase().includes(value.toLowerCase()) || (object.eventAuthor.fullName != null && object.eventAuthor.fullName.toLowerCase().includes(value.toLowerCase())))) || (object.subject.toLowerCase().includes(value.toLowerCase())) || (object.documentSubject != null && object.documentSubject.toLowerCase().includes(value.toLowerCase()))
+|| (object.regDate!= null && new Date(object.regDate).toLocaleDateString("ru-RU") == value) ||  (object.taskDeadline != null && new Date(object.taskDeadline).toLocaleDateString("ru-RU") == value))
+|| (object.preparedBy != null && (Array.isArray(object.preparedBy) && object.preparedBy.filter(function(preparedBy) { return preparedBy.shortName.toLowerCase().includes(value.toLowerCase()) || preparedBy.fullName.toLowerCase().includes(value.toLowerCase()); }).length > 0 || !Array.isArray(object.preparedBy) && (object.preparedBy.shortName.toLowerCase().includes(value.toLowerCase()) || object.preparedBy.fullName.toLowerCase().includes(value.toLowerCase()))))
+|| (object.regInfo != null && object.regInfo.toLowerCase().includes(value.toLowerCase()))]]></script>
+    </web-filter>
+    <collection-filter>
+      <script lang="SQL"><![CDATA[( :arbitFilter is not null and (( lower (:arbitFilter) like to_char(event.event_dt, 'DD.MM.YYYY')) 
+OR EXISTS (select 1 from so_beards beard where event.event_to= beard.unid  and ( '%' || lower (:arbitFilter) || '%' like lower(beard.original_shortname))) 
+OR EXISTS( select 1 from pkd_documents doc  where event.document = doc.unid and ( '%' || lower (:arbitFilter) || '%' like lower(doc.subject) 
+OR ( lower (:arbitFilter) like to_char(doc.reg_date, 'DD.MM.YYYY'))))))]]></script>
+    </collection-filter>
+  </filter>
+</pkd>

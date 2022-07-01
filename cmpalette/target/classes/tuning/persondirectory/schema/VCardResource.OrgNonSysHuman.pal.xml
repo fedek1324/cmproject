@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="VCardResource.NoSysHuman" name="VCardResource.OrgNonSysHuman">
+    <meta>
+      <category name="Справочники"/>
+    </meta>
+    <string name="shortName" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[type != null && type.equals("NONSYS_HUMAN") && org != null ? fn + org.org-name : fn]]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

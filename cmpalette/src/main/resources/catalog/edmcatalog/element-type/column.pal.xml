@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <complex-column name="editors" subject="${catalog.complex-column.editors.subject:Редакторы}" extends="vcard">
+    <meta>
+      <documentation>Редакторы</documentation>
+    </meta>
+  </complex-column>
+  <complex-column name="folderAuthor" subject="${catalog.complex-column.folderAuthor.subject:Автор}" extends="vcard">
+    <meta>
+      <documentation>кто создал Папку</documentation>
+    </meta>
+  </complex-column>
+  <column name="folderCreateDate" subject="${catalog.column.folderCreateDate.subject:Дата создания}" extends="string">
+    <meta>
+      <documentation>Дата создания папки</documentation>
+    </meta>
+  </column>
+  <complex-column name="folderInfoObj" extends="object">
+    <column-ref ref="title"/>
+    <column-ref ref="parentFolderPath"/>
+    <column-ref ref="fullFolderPath"/>
+    <column-ref ref="folderAuthorId"/>
+    <column-ref ref="folderAccess"/>
+  </complex-column>
+  <column name="folderName" subject="${catalog.column.folderName.subject:Название}" extends="string">
+    <meta>
+      <documentation>Название</documentation>
+    </meta>
+  </column>
+  <column name="groupIdx" subject="${catalog.column.groupIdx.subject:Идентификатор группы коллекций}" extends="number">
+    <meta>
+      <documentation>Идентификатор группы коллекций</documentation>
+    </meta>
+  </column>
+  <complex-column name="iconInfo" subject="${catalog.complex-column.iconInfo.subject:Информация об иконке для web}">
+    <meta>
+      <documentation>Информация об иконке для web</documentation>
+    </meta>
+    <column-ref ref="resId"/>
+    <column-ref ref="spritePos"/>
+  </complex-column>
+  <column name="jcd" extends="string"/>
+  <column name="orderInGroup" subject="${catalog.column.orderInGroup.subject:Порядковый номер в группе}" extends="number">
+    <meta>
+      <documentation>Порядковый номер в группе</documentation>
+    </meta>
+  </column>
+  <column name="pagename" extends="string">
+    <meta>
+      <documentation>Используется для формирования заголовка вкладки браузера в открытой коллекции.</documentation>
+    </meta>
+  </column>
+  <complex-column name="readers" subject="${catalog.complex-column.readers.subject:Читатели}" extends="vcard">
+    <meta>
+      <documentation>Читатели</documentation>
+    </meta>
+  </complex-column>
+  <column name="RootFolderName" extends="string">
+    <meta>
+      <documentation>Название корневой папки</documentation>
+    </meta>
+  </column>
+  <column name="searchScopes" extends="string"/>
+  <column name="storageTypeForHide" extends="string"/>
+  <column name="tipsCounters" extends="string"/>
+</catalog>

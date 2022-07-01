@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="ClientContextRequest" name="MakeSPPDossierNotActualMessageYesNo">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="mode" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['dialog']]></script>
+      </calc-values>
+    </string>
+    <string name="messageText" system="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['']]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="selectDossierIds" temporal="true"/>
+  </schema>
+</schemas>

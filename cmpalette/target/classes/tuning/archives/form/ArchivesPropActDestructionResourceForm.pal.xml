@@ -1,0 +1,378 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ArchivesPropActDestructionResource" showtabs="true" projection="default" name="${ui.form.ArchivesPropActDestructionResourceForm.name:ArchivesPropActDestructionResourceForm}" id="ArchivesPropActDestructionResourceForm">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit" />
+        <negative-condition-ref ref="read" />
+      </hide>
+    </properties>
+    <component>
+<!--header section-->
+      <section name="${ui.form.ArchivesPropActDestructionResourceForm.section.Header.name:PropActDestructionHeader}" id="Header">
+        <component>
+          <section group="true" id="HeaderRow10">
+             <component>
+                <field attribute-ref="showident">
+                  <properties>
+                    <read-only condition-union="AND">
+                      <condition>true</condition>
+                    </read-only>
+                  </properties>
+                  <appearance importance="normal" multiline="false" align="left">
+                    <label-style field-unit="symbol" field-width="12" />
+                    <alt-appearancies>
+                      <alt-appearance>
+                        <appearance-ref ref="css_headerElementWithIcon" />
+                        <enable condition-union="AND">
+                          <condition>true</condition>
+                        </enable>
+                      </alt-appearance>
+                    </alt-appearancies>
+                  </appearance>
+                </field>
+
+                <field attribute-ref="ProposalNum" name="${ui.form.ArchivesPropActDestructionResourceForm.section.Header.section.HeaderRow10.field.ProposalNum.name:№}">
+                  <properties>
+                    <require condition-union="AND">
+                      <condition-ref ref="edit"/>
+                      <condition>true</condition>
+                    </require>
+                  </properties>
+                  <appearance importance="normal" multiline="false" align="left">
+                    <label-style field-unit="symbol" field-width="10" />
+                  </appearance>
+                </field>
+
+                <field attribute-ref="Organization">
+                  <properties>
+                    <require condition-union="AND">
+                      <condition-ref ref="edit"/>
+                      <condition>true</condition>
+                    </require>
+                  </properties>
+                  <appearance importance="normal" multiline="false" align="left">
+                    <label-style field-unit="symbol" field-width="30" />
+                    <alt-appearancies>
+                      <alt-appearance>
+                        <appearance-ref ref="css_headerElementWithIcon" />
+                        <enable condition-union="AND">
+                          <condition>true</condition>
+                        </enable>
+                      </alt-appearance>
+                    </alt-appearancies>
+                  </appearance>
+                  <directories>
+                    <directory-ref ref="sysOrgs" />
+                  </directories>
+                </field>
+
+                <field attribute-ref="LinkToAct">
+                  <properties>
+                    <read-only condition-union="AND">
+                      <condition>true</condition>
+                    </read-only>
+                  </properties>
+                  <appearance importance="normal" multiline="false" align="center" />
+                </field>
+
+                <section group="true" id="HeaderRow10Index">
+                  <component>
+                    <field attribute-ref="Index1" name="${ui.form.ArchivesPropActDestructionResourceForm.section.Header.section.HeaderRow10.section.HeaderRow10Index.field.Index1.name:Номенклатурный индекс:}">
+                      <appearance importance="normal" multiline="false" align="left">
+                        <label-style field-unit="symbol" field-width="5" />
+                      </appearance>
+                    </field>
+                    <field attribute-ref="ShowDash">
+                      <properties>
+                        <read-only condition-union="AND">
+                          <condition>true</condition>
+                        </read-only>
+                      </properties>
+                      <appearance importance="normal" multiline="false" align="center">
+                        <label-style field-unit="symbol" field-width="1" />
+                      </appearance>
+                    </field>
+                    <field attribute-ref="Index2">
+                      <appearance importance="normal" multiline="false" align="left">
+                        <label-style field-unit="symbol" field-width="5" />
+                      </appearance>
+                    </field>
+                    <field attribute-ref="ShowDash">
+                      <properties>
+                        <read-only condition-union="AND">
+                          <condition>true</condition>
+                        </read-only>
+                      </properties>
+                      <appearance importance="normal" multiline="false" align="center">
+                        <label-style field-unit="symbol" field-width="1" />
+                      </appearance>
+                    </field>
+                    <field attribute-ref="Index3">
+                      <appearance importance="normal" multiline="false" align="left">
+                        <label-style field-unit="symbol" field-width="5" />
+                      </appearance>
+                    </field>
+                  </component>
+                  <appearance field-layout="horizontal" />
+                </section>
+
+               <field attribute-ref="MainState">
+                 <properties>
+                   <read-only condition-union="AND">
+                     <condition>true</condition>
+                   </read-only>
+                 </properties>
+                 <directories>
+                   <directory-ref ref="archivesPropActDestructionState" />
+                 </directories>
+                 <appearance importance="high" multiline="false" align="right" />
+               </field>
+
+                <!--HeaderRow10 section content-->
+             </component>
+             <appearance field-layout="horizontal" />
+          </section>
+
+          <section group="true" id="HeaderRow20">
+             <component>
+                <section group="true" id="HeaderRow20Row10">
+                  <component>
+                    <field attribute-ref="IsDepartment">
+                      <properties>
+                        <require condition-union="AND">
+                          <condition-ref ref="edit"/>
+                          <condition>true</condition>
+                        </require>
+                      </properties>
+                      <appearance importance="normal" multiline="false" align="left" widget="radio">
+                        <label-style field-unit="symbol" field-width="50" />
+                      </appearance>
+                      <directories>
+                        <directory-ref ref="archivesTypeDep" />
+                      </directories>
+                    </field>
+                  </component>
+                  <appearance field-layout="horizontal" align="left">
+                    <label-style unit="symbol" width="50" />
+                  </appearance>
+                </section>
+
+                <field attribute-ref="ReadyIncludeToActdestr" name="${ui.form.ArchivesPropActDestructionResourceForm.section.Header.section.HeaderRow20.field.ReadyIncludeToActdestr.name:Готовы:}">
+                  <appearance importance="normal" align="left" widget="checkbox" />
+                  <hint-pop-up>${ui.form.ArchivesPropActDestructionResourceForm.section.Header.section.HeaderRow20.field.ReadyIncludeToActdestr.hintPopUp:Готовность к включению в акт о выделении документов на уничтожение}</hint-pop-up>
+                </field>
+
+                <field attribute-ref="AdditionalState">
+                  <properties>
+                    <read-only condition-union="AND">
+                      <condition>true</condition>
+                    </read-only>
+                  </properties>
+                  <appearance importance="high" multiline="false" align="right" />
+                </field>
+
+                <!--HeaderRow20 section content-->
+             </component>
+             <appearance field-layout="horizontal" />
+          </section>
+
+          <section group="true" id="HeaderRow30">
+            <component>
+              <section group="true" id="HeaderRow30Row10">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="ArchivesIsDepartment" />
+                  </hide>
+                </properties>
+                <component>
+                  <field attribute-ref="departmentTitle">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal" multiline="false" align="left">
+                      <label-style field-unit="symbol" field-width="12" />
+                    </appearance>
+                  </field>
+                  <field attribute-ref="Department">
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="edit"/>
+                        <condition>true</condition>
+                      </require>
+                    </properties>
+                    <appearance importance="normal" multiline="false" align="left">
+                      <label-style field-unit="symbol" field-width="33" />
+                      <limit height="1" />
+                    </appearance>
+                    <directories>
+                      <directory-ref ref="CURRENT_ORG_WITH_DEP" />
+                    </directories>
+                  </field>
+                </component>
+                <appearance field-layout="horizontal" />
+              </section>
+              <section group="true" id="HeaderRow30Row20">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="ArchivesIsDepartment" />
+                  </hide>
+                </properties>
+                <component>
+                  <field attribute-ref="DirectionWorkTitle">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal" multiline="false" align="left">
+                      <label-style field-unit="symbol" field-width="12" />
+                    </appearance>
+                  </field>
+                  <field attribute-ref="DirectionWork">
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="edit"/>
+                        <condition>true</condition>
+                      </require>
+                    </properties>
+                    <appearance importance="normal" multiline="false" align="left">
+                      <label-style field-unit="symbol" field-width="33" />
+                      <limit height="1" />
+                    </appearance>
+                  </field>
+                </component>
+                <appearance field-layout="horizontal" />
+              </section>
+            </component>
+            <appearance field-layout="horizontal" />
+          </section>
+
+          <!--Header section content-->
+        </component>
+      </section>
+
+<!--root menu section-->
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.ArchivesPropActDestructionResourceForm.section.RootMenu.button.Сохранить скрыта системная.name:Сохранить скрыта системная}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE" />
+            </action>
+          </button>
+          <button name="${ui.form.ArchivesPropActDestructionResourceForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew" />
+              </hide>
+            </properties>
+            <appearance>
+              <label-style>
+                <style id="tunBtnHeader" />
+                <style id="tunIconSave" />
+              </label-style>
+            </appearance>
+            <action>
+              <custom>
+                <save />
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.ArchivesPropActDestructionResourceForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton" />
+              </hide>
+            </properties>
+            <appearance>
+              <label-style>
+                <style id="tunBtnHeader" />
+                <style id="tunIconSave" />
+              </label-style>
+            </appearance>
+            <action>
+              <custom>
+                <save-existing />
+              </custom>
+            </action>
+          </button>
+        </component>
+      </section>
+
+<!--main sections-->
+      <section group="true" name="${ui.form.ArchivesPropActDestructionResourceForm.section.Attributes.name:Номенклатурные дела}" id="Attributes">
+        <component>
+          <section group="true" id="AttributesRow10">
+             <component>
+               <field attribute-ref="DocumentBaseName">
+                 <properties>
+                   <read-only condition-union="AND">
+                     <condition>true</condition>
+                   </read-only>
+                 </properties>
+                 <appearance importance="normal" multiline="false" align="left">
+                   <label-style field-unit="symbol" field-width="15" />
+                 </appearance>
+               </field>
+               <field attribute-ref="NameDocReason">
+                  <properties>
+                    <require condition-union="AND">
+                      <condition-ref ref="edit"/>
+                      <condition>true</condition>
+                    </require>
+                  </properties>
+                  <appearance importance="normal" multiline="false" />
+                </field>
+
+
+                <!--AttributesRow10 section content-->
+             </component>
+             <appearance field-layout="horizontal" />
+          </section>
+          <field attribute-ref="TotalDocInfo">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal" multiline="false" align="left" />
+          </field>
+
+          <!--Attributes section content-->
+        </component>
+        <appearance field-layout="vertical" />
+      </section>
+
+      <section name="${ui.form.ArchivesPropActDestructionResourceForm.section.LifeCycle.name:Жизненный цикл}" id="LifeCycle">
+        <component>
+          <section group="true" name="${ui.form.ArchivesPropActDestructionResourceForm.section.LifeCycle.section.ApprovingSection.name:Согласование}" id="ApprovingSection">
+            <component>
+              <section id="ApprovingButtons">
+                <appearance widget="inactiveTab" />
+              </section>
+              <section name="${ui.form.ArchivesPropActDestructionResourceForm.section.LifeCycle.section.ApprovingSection.section.Approving.name:Согласование}" id="Approving" />
+            </component>
+          </section>
+        </component>
+        <appearance widget="leftMenu" />
+      </section>
+
+      <section name="${ui.form.ArchivesPropActDestructionResourceForm.section.Links.name:Связанные}" id="Links">
+        <component>
+          <section name="${ui.form.ArchivesPropActDestructionResourceForm.section.Links.section.Documеnts.name:Документы}" id="Documеnts" />
+        </component>
+        <appearance widget="leftMenu" />
+      </section>
+
+<!--history section-->
+      <section name="${ui.form.ArchivesPropActDestructionResourceForm.section.History.name:История}" id="History" />
+    </component>
+  </form>
+</ui>

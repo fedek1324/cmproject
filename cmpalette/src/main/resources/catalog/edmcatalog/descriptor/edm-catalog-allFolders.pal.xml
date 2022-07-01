@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="EDM-Catalog" view="(vw_cmj_all)" id="edm-catalog-allFolders" name="Каталог-ВсеПапки" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="RootFolderName" category="true"/>
+        <column-ref ref="folderName"/>
+        <column-ref ref="folderCreateDate"/>
+        <column-ref ref="folderAuthor"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

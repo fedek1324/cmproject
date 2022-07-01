@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="documents" id="Internals" name="${catalog.folder.Internals.name:Внутренние}" position="40">
+    <subfolders>
+      <view id="internals-By Number" name="${catalog.folder.Internals.view.internals_By_Number.name:По номеру}" position="10">
+        <pagename name="ВнД - По номеру"/>
+        <search-area name="internal_InternalDocs"/>
+        <descriptor-ref ref="dp-01-internal-af5"/>
+        <source>
+          <module ident="InternalDocs"/>
+        </source>
+      </view>
+      <view id="internals-On Agreement" name="${catalog.folder.Internals.view.internals_On_Agreement.name:На согласовании}" position="50">
+        <pagename name="internal_InternalDocs"/>
+        <search-area name="InternalDocs"/>
+        <descriptor-ref ref="dp-internal-ProjectsOnApproval-af5"/>
+        <source>
+          <module ident="InternalDocs"/>
+        </source>
+      </view>
+      <folder id="internals-Not Execs" name="${catalog.folder.Internals.folder.internals_Not_Execs.name:Неисполненные}" position="70">
+        <subfolders>
+          <view id="internalsNotExecs-All" name="${catalog.folder.Internals.folder.internals_Not_Execs.view.internalsNotExecs_All.name:Все}" position="20">
+            <pagename name="ВнД - Неисполненные все"/>
+            <search-area name="internal_InternalDocs"/>
+            <descriptor-ref ref="dp-internal-NotExecAll-af5"/>
+            <source>
+              <module ident="InternalDocs"/>
+            </source>
+          </view>
+          <view id="internalsNotExecs-On Control" name="${catalog.folder.Internals.folder.internals_Not_Execs.view.internalsNotExecs_On_Control.name:Контрольные}" position="30">
+            <pagename name="ВнД - Неисполненные контрольные"/>
+            <search-area name="internal_InternalDocs"/>
+            <descriptor-ref ref="dp-internal-NotExecOnControl-af5"/>
+            <source>
+              <module ident="InternalDocs"/>
+            </source>
+          </view>
+          <view id="internalsNotExecs-Without Resolutions" name="${catalog.folder.Internals.folder.internals_Not_Execs.view.internalsNotExecs_Without_Resolutions.name:Без резолюций}" position="40">
+            <pagename name="ВнД - Неисполненные без резолюции"/>
+            <search-area name="internal_InternalDocs"/>
+            <descriptor-ref ref="dp-internal-NotExecWithoutRes-af5"/>
+            <source>
+              <module ident="InternalDocs"/>
+            </source>
+          </view>
+        </subfolders>
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+      <view id="internal-Trash" name="${catalog.folder.Internals.view.internal_Trash.name:Корзина}" position="80">
+        <pagename name="ВнД - Корзина"/>
+        <search-area name="internal_InternalDocs"/>
+        <descriptor-ref ref="dp-internal-Trash-af5"/>
+        <source>
+          <module ident="InternalDocs"/>
+        </source>
+      </view>
+      <view id="internals-projects-af5" name="${catalog.folder.Internals.view.internals_projects_af5.name:Проекты}" position="60">
+        <pagename name="ВнД - Проекты"/>
+        <search-area name="InternalDocs"/>
+        <descriptor-ref ref="dp-internal-Projects-af5"/>
+        <source>
+          <module ident="InternalDocs"/>
+        </source>
+      </view>
+      <view id="internals-By Date" name="${catalog.folder.Internals.view.internals_By_Date.name:По дате}" position="20">
+        <pagename name="ВнД - По дате"/>
+        <search-area name="internal_InternalDocs"/>
+        <descriptor-ref ref="dp-internal-ByDate-af5"/>
+        <source>
+          <module ident="InternalDocs"/>
+        </source>
+      </view>
+      <view id="internals-By Signer" name="${catalog.folder.Internals.view.internals_By_Signer.name:По подписи}" position="40">
+        <pagename name="ВнД - По подписи"/>
+        <search-area name="internal_InternalDocs"/>
+        <descriptor-ref ref="dp-internal-BySigner-af5"/>
+        <source>
+          <module ident="InternalDocs"/>
+        </source>
+      </view>
+      <view id="internals-By Addressee" name="${catalog.folder.Internals.view.internals_By_Addressee.name:По адресату}" position="30">
+        <pagename name="ВнД - По адресату"/>
+        <search-area name="internal_InternalDocs"/>
+        <descriptor-ref ref="dp-internal-ByAddressee-af5"/>
+        <source>
+          <module ident="InternalDocs"/>
+        </source>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

@@ -1,0 +1,1007 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="NdpRegister" id="NdpRegisterForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.NdpRegisterForm.section.RootMenu.button.system.hide.name:Скрыть системную кнопку Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE"/>
+            </action>
+          </button>
+          <button name="${ui.form.NdpRegisterForm.section.RootMenu.button.Save.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton"/>
+              </hide>
+<!--&lt;!&ndash;              <hide condition-union="AND">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <negative-condition-ref ref="isTypeEditor"/>&ndash;&gt;-->
+<!--&lt;!&ndash;              </hide>&ndash;&gt;-->
+            </properties>
+            <icon code="92"/>
+            <action>
+              <custom>
+                <save-existing/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.NdpRegisterForm.section.RootMenu.button.SaveAsNew.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew"/>
+              </hide>
+            </properties>
+            <icon code="92"/>
+            <action>
+              <custom>
+                <save/>
+              </custom>
+            </action>
+          </button>
+          <section name="${ui.form.NdpRegisterForm.section.RootMenu.section.CREATE.name:Создать}" id="CREATE">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.NdpRegisterForm.section.RootMenu.section.CREATE.button.CreateNewNDP.name:Новую НД подразделения}" alias="create-new-ndp">
+                <action>
+                  <system name="http://intertrust.ru/cmj/relations#create-new-object"/>
+                </action>
+              </button>
+              <button name="${ui.form.NdpRegisterForm.section.RootMenu.button.CreateNDPChange.name:Изменения к НД подразделения}" alias="create-ndpchange">
+                <!--
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isTypeEditor"/>
+                  </hide>
+                </properties>
+                -->
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">CreateNewNdpChangeForNdp</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+            <appearance>
+              <action position="8.0">
+                <system name="CREATE"/>
+              </action>
+            </appearance>
+          </section>
+          <button name="${ui.form.NdpRegisterForm.section.RootMenu.button.ExcludeFileRegisters.name:Исключить дела}"
+                  tid="ExcludeFileRegisters">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canSeeButtonExcludeFileRegisters"/>
+              </hide>
+            </properties>
+            <appearance align="left">
+              <label-style width="20">
+                <style id="tunUnderline"/>
+                <style id="tunClickableRed"/>
+              </label-style>
+            </appearance>
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">ExcludeFilesFromNdp</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.NdpRegisterForm.section.RootMenu.button.ReturnForRevision.name:Вернуть на доработку}" tid="ReturnForRevision">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canSeeButtonReturnForRevision"/>
+              </hide>
+            </properties>
+            <action position="20.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">ReturnForRevision</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.NdpRegisterForm.section.RootMenu.button.SendFilesToAnotherDepartment.name:Передать дела в другое подразделение}"
+                  tid="SendFilesToAnotherDepartment">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canSeeButtonSendFilesToAnotherDepartment"/>
+              </hide>
+            </properties>
+            <appearance align="left">
+              <label-style width="20">
+                <style id="tunUnderline" />
+                <style id="tunClickableRed" />
+              </label-style>
+            </appearance>
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">SendFilesFromNdpToAnotherDepartment</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.NdpRegisterForm.section.RootMenu.button.ComposeFinalNote.name:Составить итоговую запись}"
+                  tid="ComposeFinalNote">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canSeeButtonComposeFinalNoteNdp"/>
+              </hide>
+            </properties>
+            <appearance align="left">
+              <label-style width="20">
+                <style id="tunUnderline" />
+                <style id="tunClickableRed" />
+              </label-style>
+            </appearance>
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">ComposeFinalNoteForNdp</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <section id="SEND" name="${ui.form.NdpRegisterForm.section.RootMenu.section.SEND.name:Отправить}">
+            <component>
+              <button attribute-ref="$canSendToApproving" name="${ui.form.NdpRegisterForm.button.canSendToApproving.name:На согласование}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="CanSendToApproving"/>
+                  </hide>
+                </properties>
+                <hint-pop-up>${ui.form.NdpRegisterForm.button.canSendToApproving.hintPopUp:На согласование}</hint-pop-up>
+                <action>
+                  <system name="http://intertrust.ru/cmj/relations#approving.start"/>
+                </action>
+              </button>
+            </component>
+          </section>
+          <section name="${ui.form.NdpRegisterForm.section.RootMenu.section.OTHER.name:Другое}" id="OTHER">
+            <component>
+              <button name="${ui.form.NdpRegisterForm.section.RootMenu.section.OTHER.button.Readers.name:Читатели}" alias="ndp-readers" tid="ndp-readers">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="read"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">IndicateReadersOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.NdpRegisterForm.section.RootMenu.section.OTHER.button.printForm.name:Скрыть системную кнопку Печатная форма}" alias="hiddenPrintForm" tid="def-printform">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action>
+                  <system name="PRINTED_FORM"/>
+                </action>
+              </button>
+              <section name="${ui.form.NdpRegisterForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.name:Печатная форма}" id="PRINT_REPORT">
+                <component>
+                  <button alias="unit-register" tid="unitRegister"
+                          name="${ui.form.NdpRegisterForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.button.unitRegister.name:Номенклатура дел подразделения}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">PrintformNdp</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button alias="unit-register-final-note" tid="unitRegisterFinalNote"
+                          name="${ui.form.NdpRegisterForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.button.unitRegisterFinalNote.name:Итоговая запись к Номенклатуре дел подразделения}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">PrintformNdp</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                </component>
+              </section>
+            </component>
+            <appearance>
+              <action position="25">
+                <system name="OTHER"/>
+              </action>
+            </appearance>
+          </section>
+        </component>
+      </section>
+      <section id="Header">
+        <properties>
+          <read-only>
+            <condition-ref ref="exStatusIsApproved"/>
+          </read-only>
+        </properties>
+        <component>
+          <section id="header_row1" group="true">
+            <appearance field-layout="horizontal">
+              <label-style width="24" unit="symbol"/>
+            </appearance>
+            <component>
+              <section id="identAndOrganization" group="true">
+                <component>
+                  <field attribute-ref="showIdent">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance align="left" importance="normal">
+                      <label-style field-width="30" field-unit="symbol">
+                        <style id="tunIconProgress"/>
+                      </label-style>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="organization">
+                    <properties>
+                      <read-only>
+                        <condition-ref ref="TObjectIsNotNew"/>
+                      </read-only>
+                      <require>
+                        <condition-ref ref="TObjectIsNew"/>
+                      </require>
+                    </properties>
+                    <appearance align="left" importance="normal">
+                      <label-style field-width="28" field-unit="symbol">
+                        <style id="tunIconProgress"/>
+                      </label-style>
+                    </appearance>
+                    <directories livesearch="true" limit-livesearch="no-restrictions" relation="NdOrgAndDepsHasNdo" digest="digestSOLiveSearch">
+                      <directory-ref ref="CURRENT_ORG_ONLY"/>
+                      <directory-ref ref="NdDepsHasNdo"/>
+                    </directories>
+                  </field>
+                </component>
+                <appearance align="left" field-layout="horizontal">
+                  <dialog-mode unit="percent" width="60" />
+                </appearance>
+              </section>
+              <section id="indexSection" group="true">
+                <component>
+                  <field attribute-ref="index" name="${ui.form.NdpRegister.Header.index.name:Номенклатурный индекс:}">
+                    <properties>
+                      <require>
+                        <condition-ref ref="edit"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="NdpBranchDivisionIsDepartment"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal" multiline="false">
+                      <label-style field-width="15" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                </component>
+                <appearance align="right"/>
+              </section>
+              <field attribute-ref="statusGeneral">
+                <properties>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <directories>
+                  <directory-ref ref="ndpStatusGeneral" />
+                </directories>
+                <appearance align="right">
+                  <label-style field-width="16" field-unit="symbol">
+                    <style id="tunBold"/>
+                  </label-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="header_row2" group="true">
+            <appearance field-layout="vertical">
+              <label-style width="10"/>
+            </appearance>
+            <component>
+              <section id="header_row2_2" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field attribute-ref="divisionType" recalc="true">
+                    <appearance importance="normal" widget="radio" align="left">
+                      <label-style field-width="26" field-unit="symbol">
+                        <style id="tunVertical"/>
+                      </label-style>
+                    </appearance>
+                    <properties>
+                      <hide>
+                        <condition-ref ref="VisibilityForDivisionType"/>
+                      </hide>
+                    </properties>
+                    <directories>
+                      <directory-ref ref="NDPDivisionType"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="branchDivision" name="${ui.form.NdpRegister.label.branchDivision:Направление деятельности:}">
+                    <properties>
+                      <hide>
+                        <condition-ref ref="NdpIsDivisionDep"/>
+                      </hide>
+                      <read-only>
+                        <condition-ref ref="VisibilityForDivisionType"/>
+                      </read-only>
+                      <require>
+                        <condition-ref ref="NdpIsActivity"/>
+                      </require>
+                    </properties>
+                    <directories manual-input="true">
+                      <directory-ref ref="branchDivisionCl" />
+                    </directories>
+                  </field>
+                  <field attribute-ref="sounit" name="${ui.form.NdpRegister.Unit.name:Структурное подразделение:}" recalc="true">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <negative-condition-ref ref="ReadOnlySounit" />
+                      </read-only>
+                      <require>
+                        <condition-ref ref="edit"/>
+                      </require>
+                    </properties>
+                    <rename name="${ui.form.NdpRegister.FormerUnit.name:Подразделение составителя:}" condition-union="AND">
+                      <condition-ref ref="NdpIsActivity"/>
+                    </rename>
+                    <!--<appearance open-mode="grid" digest-mode="grid" importance="normal" widget="grid"/>-->
+                    <directories limit-livesearch="sys-current" digest="grid">
+                      <directory-ref ref="so-former-ndp-in-so-dep-rvz"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="statusExtended">
+                    <properties>
+                      <read-only>
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <directories>
+                      <directory-ref ref="ndpStatusExtended" />
+                    </directories>
+                    <appearance align="right">
+                      <label-style field-width="16" field-unit="symbol">
+                        <style id="tunBold"/>
+                      </label-style>
+                    </appearance>
+                  </field>
+                </component>
+              </section>
+              <section id="header_row2_3" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field attribute-ref="dateYear" name="${ui.form.NdpRegister.label.dateYear.name:Год:}">
+                    <appearance>
+                      <label-style field-width="15" field-unit="symbol"/>
+                    </appearance>
+                    <properties>
+                      <read-only>
+                        <condition-ref ref="ndpIsNotProjectOrHasStatusExt"/>
+                      </read-only>
+                      <require>
+                        <condition-ref ref="edit"/>
+                      </require>
+                    </properties>
+                    <directories limit-livesearch="no-restrictions">
+                      <directory-ref ref="NDOYears"/>
+                    </directories>
+                  </field>
+                  <section id="Section_changeStates" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <properties>
+                      <hide>
+                        <negative-condition-ref ref="hideSection_changeStates"/>
+                      </hide>
+                    </properties>
+                    <component>
+                      <button name="${ui.form.NdpRegister.label.readyToAdd.name:Готова к включению в сводную НД}" tid="readyToAdd">
+                        <properties>
+                          <hide>
+                            <negative-condition-ref ref="NdpIsReadyToAdd"/>
+                          </hide>
+                          <disabled>
+                            <negative-condition-ref ref="canSetUnReadyToAdd"/>
+                          </disabled>
+                        </properties>
+                        <appearance>
+                          <label-style>
+                            <style id="tunBtnHeader" />
+                            <style id="tunGreen" />
+                          </label-style>
+                        </appearance>
+                        <action>
+                          <custom>
+                            <operation save-context="false">
+                              <handler>
+                                <script lang="JavaBean">ToggleReadyToAdd</script>
+                              </handler>
+                            </operation>
+                          </custom>
+                        </action>
+                      </button>
+                      <button name="${ui.form.NdpRegister.label.unreadyToAdd.name:Не готова к включению в сводную НД}" tid="unreadyToAdd">
+                        <properties>
+                          <hide>
+                            <condition-ref ref="NdpIsReadyToAdd"/>
+                          </hide>
+                          <disabled>
+                            <negative-condition-ref ref="canSetReadyToAdd"/>
+                          </disabled>
+                        </properties>
+                        <appearance>
+                          <label-style>
+                            <style id="tunBtnHeader" />
+                            <style id="tunRed" />
+                          </label-style>
+                        </appearance>
+                        <action>
+                          <custom>
+                            <operation save-context="false">
+                              <handler>
+                                <script lang="JavaBean">ToggleReadyToAdd</script>
+                              </handler>
+                            </operation>
+                          </custom>
+                        </action>
+                      </button>
+                    </component>
+                  </section>
+                  <field attribute-ref="linkNDO">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <hide>
+                        <negative-condition-ref ref="CanSeeLinkNDO"/>
+                      </hide>
+                    </properties>
+                  </field>
+                  <section id="Section_FinalNote" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <properties>
+                      <hide>
+                        <negative-condition-ref ref="TObjectIsNotNew"/>
+                      </hide>
+                    </properties>
+                    <component>
+                      <button name="${ui.form.NdpRegister.label.readyFinalNote.name:Составлена итоговая запись}">
+                        <properties>
+                          <hide>
+                            <negative-condition-ref ref="NdpIsReadyFinalNote" />
+                          </hide>
+                          <disabled>
+                            <negative-condition-ref ref="ndpAccessFinalNoteOff"/>
+                          </disabled>
+                        </properties>
+                        <appearance>
+                          <label-style>
+                            <style id="tunBtnHeader" />
+                            <style id="tunGreen" />
+                          </label-style>
+                        </appearance>
+                        <action>
+                          <custom>
+                            <operation>
+                              <handler>
+                                <script lang="JavaBean">ToggleReadyFinalNote</script>
+                              </handler>
+                            </operation>
+                          </custom>
+                        </action>
+                      </button>
+                      <button name="${ui.form.NdpRegister.label.unreadyFinalNote.name:Итоговая запись не готова}">
+                        <properties>
+                          <hide>
+                            <condition-ref ref="NdpIsReadyFinalNote" />
+                          </hide>
+                          <disabled>
+                            <negative-condition-ref ref="ndpAccessFinalNoteOn"/>
+                          </disabled>
+                        </properties>
+                        <appearance>
+                          <label-style>
+                            <style id="tunBtnHeader" />
+                            <style id="tunRed" />
+                          </label-style>
+                        </appearance>
+                        <action>
+                          <custom>
+                            <operation>
+                              <handler>
+                                <script lang="JavaBean">ToggleReadyFinalNote</script>
+                              </handler>
+                            </operation>
+                          </custom>
+                        </action>
+                      </button>
+                    </component>
+                  </section>
+                </component>
+              </section>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="ContentSection" name="${ui.form.NdpRegisterForm.section.ContentSection.name:Содержание}">
+        <appearance widget="leftMenu"/>
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="ndpContentEmpty"/>
+          </hide>
+        </properties>
+        <component>
+          <field attribute-ref="contentDocuments" name="${ui.form.NdpRegisterForm.content.section.contentDocuments.name:Документ}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="contentAddInformations" name="${ui.form.NdpRegisterForm.content.section.contentAddInformations.name:Доп. Информация}">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="Attributes" name="${ui.form.NdpRegister.Header.section.Attributes.name:Дела}">
+        <properties>
+          <read-only>
+            <condition-ref ref="exStatusIsApproved"/>
+          </read-only>
+        </properties>
+        <component>
+          <field attribute-ref="SectionEditProxibitedLabel">
+            <properties>
+              <hide>
+                <negative-condition-ref ref="TObjectIsNew" />
+              </hide>
+              <read-only>
+                <condition>true</condition>
+              </read-only>
+            </properties>
+          </field>
+          <section id="ChildFileRegisters" group="true">
+            <properties>
+              <hide>
+                <negative-condition-ref ref="TObjectIsNotNew" />
+              </hide>
+            </properties>
+            <component>
+              <section id="FileRegisterActions" group="true">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="read"/>
+                  </hide>
+                </properties>
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <button name="${ui.form.NdpRegister.Header.section.Attributes.section.FileRegisterActions.button.CreateFileRegister:Создать новое дело}"
+                          tid="CreateFileRegister">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="canAddFileRegistersToNDP"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style width="15">
+                        <style id="tunIconAdd"/>
+                        <style id="tunUnderline"/>
+                        <style id="tunClickableRed"/>
+                    </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">CreateNewFileForNdp</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button name="${ui.form.NdpRegisterForm.section.FileRegisterActions.button.CopyFileRegistersFromAnotherYear:Скопировать дела из НД другого года}"
+                          tid="CopyFileRegistersFromAnotherYear">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="canAddFileRegistersToNDP"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style width="29">
+                        <style id="tunUnderline"/>
+                        <style id="tunClickableRed"/>
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">CopyFileRegistersFromAnotherYearForNdp</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button name="${ui.form.NdpRegisterForm.section.FileRegisterActions.button.AddMovableFileRegisters:Добавить переходящие дела}"
+                          tid="AddMovableFileRegisters">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="canAddFileRegistersToNDP"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style width="22">
+                        <style id="tunUnderline"/>
+                        <style id="tunClickableRed"/>
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">AddMovableFileRegistersForNdp</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button name="${ui.form.NdpRegisterForm.section.FileRegisterActions.button.ReceiveAnotherDepFileRegisters:Принять дела другого подразделения}"
+                          tid="ReceiveAnotherDepFileRegisters">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="canReceiveAnotherDepFileRegistersToNDP"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style width="22">
+                        <style id="tunUnderline"/>
+                        <style id="tunClickableRed"/>
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">ReceiveAnotherDepFileRegistersForNdp</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button name="${ui.form.NdpRegisterForm.section.FileRegisterActions.button.LoadFromXlsx.name:Загрузить данные из .xlsx}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="canAddFileRegistersToNDP"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style width="20">
+                        <style id="tunUnderline" />
+                        <style id="tunClickableRed" />
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">loadFrFileToNdpFromXlsxOperation</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button name="${ui.form.NdpRegisterForm.section.FileRegisterActions.button.UnloadToXlsx.name:Выгрузить данные в .xlsx}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style width="20">
+                        <style id="tunUnderline" />
+                        <style id="tunClickableRed" />
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">unloadFrFileFromNdpToXlsxOperation</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                </component>
+              </section>
+              <!--field attribute-ref="showFileRegisters">
+                <appearance open-mode="grid" digest-mode="grid" importance="normal" widget="grid"/>
+                <directories limit-livesearch="no-restrictions" digest="grid">
+                  <directory-ref ref="ChildFileRegisters"/>
+                </directories>
+              </field -->
+            </component>
+          </section>
+          <field attribute-ref="fileInfo" clickable="true">
+            <appearance importance="normal" clickable="true">
+              <alt-appearancies>
+                <alt-appearance>
+                  <appearance-ref ref="table" />
+                  <enable condition-union="AND">
+                    <condition>true</condition>
+                  </enable>
+                </alt-appearance>
+              </alt-appearancies>
+            </appearance>
+          </field>
+          <section id="SummaryInfo" name="${ui.form.NdpRegister.Header.section.Total.name:Итоговая запись}">
+            <appearance turn="true"/>
+            <!-- TODO правильное условие применения -->
+            <properties>
+              <hide>
+                <negative-condition-ref ref="showSummaryInfoNdp"/>
+              </hide>
+            </properties>
+            <component>
+              <section id="row2" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field attribute-ref="sumTotalSpd" name="${ui.form.NdpRegister.label.sumTotalSpd.name:Всего дел постоянного срока хранения}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="movable" name="${ui.form.NdpRegister.label.movable.name:в том числе переходящих}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="epkMark" name="${ui.form.NdpRegister.label.epkMark.name:с отметкой «ЭПК»}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                </component>
+              </section>
+              <section id="row3" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field attribute-ref="gt10SumTemporalOver" name="${ui.form.NdpRegister.label.gt10SumTemporalOver.name:Всего дел временного (свыше 10 лет) срока хранения:}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="gt10Movable" name="${ui.form.NdpRegister.label.gt10Movable.name:в том числе переходящих}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="gt10EpkMark" name="${ui.form.NdpRegister.label.gt10EpkMark.name:с отметкой «ЭПК»}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                </component>
+              </section>
+              <section id="row4" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field attribute-ref="lt10SumTemporalLess" name="${ui.form.NdpRegister.label.lt10SumTemporalLess.name:Всего дел временного (до 10 лет) срока хранения}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="lt10Movable" name="${ui.form.NdpRegister.label.lt10Movable.name:в том числе переходящих}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="lt10EpkMark" name="${ui.form.NdpRegister.label.lt10EpkMark.name:с отметкой «ЭПК»}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                </component>
+              </section>
+              <section id="row5" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field attribute-ref="sum" name="${ui.form.NdpRegister.label.sum.name:Всего дел}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="sumMovable" name="${ui.form.NdpRegister.label.sumMovable.name:в том числе переходящих}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="sumEpkMark" name="${ui.form.NdpRegister.label.sumEpkMark.name:с отметкой «ЭПК»}">
+                    <appearance align="left" importance="normal"/>
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="canEditSummaryInfo"/>
+                      </require>
+                      <read-only>
+                        <condition-ref ref="cannotEditSummaryInfo"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                </component>
+              </section>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="ndpChangeSection" name="${ui.form.NdpRegister.Header.section.ndpChangeSection.name:Изменения к НД подразделения}">
+        <properties>
+          <hide>
+            <negative-condition-ref ref="canSeeIncludeNdpChange"/>
+          </hide>
+          <read-only>
+            <condition-ref ref="exStatusIsApproved"/>
+          </read-only>
+        </properties>
+        <component>
+          <field attribute-ref="includeNdpChange">
+            <appearance open-mode="grid" digest-mode="grid" importance="normal" widget="grid"/>
+            <directories limit-livesearch="no-restrictions" digest="grid">
+              <directory-ref ref="includeNdpChange"/>
+            </directories>
+            <properties>
+              <hide>
+                <negative-condition-ref ref="canSeeIncludeNdpChange"/>
+              </hide>
+            </properties>
+          </field>
+        </component>
+      </section>
+      <section id="LifeCycle" name="${ui.form.NdpRegister.section.LifeCycle.name:Жизненный цикл}">
+        <properties>
+          <hide>
+            <condition-ref ref="throughIternalUnit"/>
+          </hide>
+        </properties>
+        <appearance widget="leftMenu"/>
+        <component>
+          <section name="${ui.form.NdpRegister.section.LifeCycle.ApprovingSection.name:Согласование}"
+                   id="ApprovingSection" group="true">
+            <component>
+              <section id="ApprovingButtons">
+                <appearance widget="inactiveTab"/>
+              </section>
+              <section id="Approving"
+                      name="${ui.form.NdpRegister.section.LifeCycle.ApprovingSection.section.Approving.name:Согласование}"/>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Links" name="${ui.form.NdpRegister.section.Links.name:Связанные}">
+        <appearance widget="leftMenu"/>
+        <component>
+          <section id="Documеnts" name="${ui.form.NdpRegister.section.Links.section.Documеnts.name:Документы}"/>
+          <section id="Visualization" name="${ui.form.NdpRegister.section.Links.section.Visualization.name:Визуализация}"/>
+        </component>
+      </section>
+      <section id="Discussion" name="${ui.form.NdpRegister.section.Discussion.name:Обсуждения}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="NdpCanDiscuss"/>
+          </hide>
+        </properties>
+      </section>
+      <section id="History" name="${ui.form.NdpRegister.section.History.name:История}"/>
+    </component>
+  </form>
+</ui>

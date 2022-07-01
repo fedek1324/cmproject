@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+    <form id="SignatureItemDialog" schema-ref="SignatureItemResource">
+        <properties>
+            <hide condition-union="AND">
+                <negative-condition-ref ref="dialog"/>
+            </hide>
+        </properties>
+        <component>
+            <field attribute-ref="signer" clickable="true" creative="true" name="${ui.form.SignatureItemTable.section.FIO:ФИО подписанта}">
+                <properties>
+                    <require>
+                        <condition>true</condition>
+                    </require>
+                </properties>
+                <directories livesearch="true" limit-livesearch="sys-current" digest="digestSOLiveSearch">
+                    <directory-ref ref="MY_SURRODING"/>
+                    <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                    <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                    <directory-ref ref="FV_CURR_HUMAN_HH"/>
+                </directories>
+            </field>
+        </component>
+    </form>
+</ui>

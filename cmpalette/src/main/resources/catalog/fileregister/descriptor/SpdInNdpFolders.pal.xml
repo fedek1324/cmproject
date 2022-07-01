@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+    <custom-descriptor ident="StoragePeriodDirectory" view="(vw_cmj_ndpspd)" id="spd-des-vw-cmj-ndpspd" name="Справочник сроков хранения_"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewDlg"/>
+        <table>
+            <columns>
+                <column-ref ref="self"/>
+                <column-ref ref="normDoc" sort-asc="true" sort-desc="true" filter="true"/>       <!-- Нормативный документ -->
+                <column-ref ref="articleNum" sort-asc="true" sort-desc="true"/>    <!--№ статьи/пункта -->
+                <column-ref ref="docType" sort-asc="true" sort-desc="true" filter="true"/>       <!--Вид документа -->
+                <column-ref ref="period" sort-asc="true" sort-desc="true"/>        <!--Срок хранения -->
+                <column-ref ref="activeStatus"/> <!--Статус -->
+            </columns>
+        </table>
+        <custom-actions schema-ref="NdpSpdSchema"/>
+    </custom-descriptor>
+</catalog>

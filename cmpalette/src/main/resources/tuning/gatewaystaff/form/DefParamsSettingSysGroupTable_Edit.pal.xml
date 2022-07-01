@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DefParamsSettingSysGroup" id="DefParamsSettingSysGroupTable_Edit" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="moduleType" name="${defParamsSettingSysGroups.module.edit:Модуль:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+        <directories limit-livesearch="no-restrictions">
+          <directory-ref ref="defParamsSettingModuleType"/>
+        </directories>
+      </field>
+      <field attribute-ref="defMp" name="${defParamsSettingSysGroups.defMp.edit:Место регистрации по умолчанию:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+        <directories limit-livesearch="no-restrictions">
+          <directory-ref ref="defParamsSettingDefMp"/>
+        </directories>
+      </field>
+      <field attribute-ref="canChange" name="${defParamsSettingSysGroups.canChange.edit:Можно менять место регистрации:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+        <directories limit-livesearch="no-restrictions">
+          <directory-ref ref="defParamsSettingCanChange"/>
+        </directories>
+      </field>
+      <field attribute-ref="counterJS" name="${defParamsSettingSysGroups.counterJS.edit:Ключ поиска счетчика:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+        <directories limit-livesearch="no-restrictions">
+          <directory-ref ref="defParamsSettingCounterJS"/>
+        </directories>
+      </field>
+    </component>
+  </form>
+</ui>

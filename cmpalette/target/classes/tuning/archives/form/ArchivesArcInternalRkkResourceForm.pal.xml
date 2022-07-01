@@ -1,0 +1,488 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ArchivesArcInternalRkkResource" showtabs="true" projection="default" name="${ui.form.ArchivesArcInternalRkkResourceForm.name:ArchivesArcInternalRkkResourceForm}" id="ArchivesArcInternalRkkResourceForm">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit" />
+        <negative-condition-ref ref="read" />
+      </hide>
+    </properties>
+    <component>
+      <section name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Header.name:ArcInternalRkkHeader}" id="Header">
+        <component>
+          <section group="true" id="HeaderRow10">
+            <component>
+              <field attribute-ref="showident">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal" multiline="false" align="left">
+                  <label-style field-unit="symbol" field-width="12" />
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon" />
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="Organization">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="edit"/>
+                    <condition>true</condition>
+                  </require>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal" multiline="false" align="left">
+                  <label-style field-unit="symbol" field-width="30" />
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon" />
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="FundNumber" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Header.section.HeaderRow10.field.FundNumber.name:Фонд №:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal" multiline="false" align="left">
+                  <label-style field-unit="symbol" field-width="20" />
+                </appearance>
+              </field>
+              <field attribute-ref="MainState">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <directories>
+                  <directory-ref ref="archivesArcDocState" />
+                </directories>
+                <appearance importance="high" multiline="false" align="right" />
+              </field>
+            </component>
+            <appearance field-layout="horizontal" />
+          </section>
+          <section group="true" id="HeaderRow20">
+            <component>
+              <field attribute-ref="RegInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal" multiline="false" align="left" />
+              </field>
+              <field attribute-ref="ReadyToConsider" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Header.section.HeaderRow20.field.ReadyToConsider.name:Готов}">
+                <appearance importance="normal" align="left" widget="checkbox">
+                  <label-style field-unit="symbol" field-width="2" />
+                </appearance>
+                <hint-pop-up>${ui.form.ArchivesArcInternalRkkResourceForm.section.Header.section.HeaderRow20.field.ReadyToConsider.hintPopUp:Готовность акта к вынесению на рассмотрение ЭК}</hint-pop-up>
+              </field>
+              <field attribute-ref="AdditionalState">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="high" multiline="false" align="right" />
+              </field>
+            </component>
+            <appearance field-layout="horizontal" />
+          </section>
+          <section group="true" id="HeaderRow30">
+            <component>
+              <field attribute-ref="actAKTitle">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal" align="left">
+                  <label-style field-unit="symbol" field-width="11" />
+                </appearance>
+              </field>
+              <field attribute-ref="IsApproveAK">
+                <appearance importance="normal" align="left" widget="checkbox">
+                  <label-style field-unit="symbol" field-width="2" />
+                </appearance>
+                <hint-pop-up>${ui.form.ArchivesArcInternalRkkResourceForm.section.Header.section.HeaderRow30.field.IsApproveAK.hintPopUp:Отметка о согласовании ЭК}</hint-pop-up>
+              </field>
+              <field attribute-ref="ProtocolAKDate" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Header.section.HeaderRow30.field.ProtocolAKDate.name:Протокол ЦЭК (ЭК) от}">
+                <appearance importance="normal" multiline="false" align="left">
+                  <label-style field-unit="symbol" field-width="12" />
+                  <field-style date-format="dd.MM.yyyy" />
+                </appearance>
+              </field>
+              <field attribute-ref="ShowNumberSymbol">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal" multiline="false" align="left">
+                  <label-style field-unit="symbol" field-width="1" />
+                </appearance>
+              </field>
+              <field attribute-ref="ProtocolAKNumber">
+                <appearance importance="normal" multiline="false" align="left">
+                  <label-style field-unit="symbol" field-width="12" />
+                  <limit height="1" />
+                </appearance>
+              </field>
+            </component>
+            <appearance field-layout="horizontal">
+              <label-style unit="symbol" width="18" />
+            </appearance>
+          </section>
+          <section group="true" id="HeaderRow40">
+            <component>
+              <field attribute-ref="actAPKTitle">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal" align="left">
+                  <label-style field-unit="symbol" field-width="11" />
+                </appearance>
+              </field>
+              <field attribute-ref="IsApproveAPKArcOrg">
+                <appearance importance="normal" align="left" widget="checkbox">
+                  <label-style field-unit="symbol" field-width="2" />
+                </appearance>
+                <hint-pop-up>${ui.form.ArchivesArcInternalRkkResourceForm.section.Header.section.HeaderRow40.field.IsApproveAPKArcOrg.hintPopUp:Отметка о согласовании ЭК}</hint-pop-up>
+              </field>
+              <field attribute-ref="ProtocolApkDate" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Header.section.HeaderRow40.field.ProtocolApkDate.name:Протокол ЭПК от}">
+                <appearance importance="normal" multiline="false" align="left">
+                  <label-style field-unit="symbol" field-width="12" />
+                  <field-style date-format="dd.MM.yyyy" />
+                </appearance>
+              </field>
+              <field attribute-ref="ShowNumberSymbol">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal" multiline="false" align="left">
+                  <label-style field-unit="symbol" field-width="1" />
+                </appearance>
+              </field>
+              <field attribute-ref="ProtocolApkNumber">
+                <appearance importance="normal" multiline="false" align="left">
+                  <label-style field-unit="symbol" field-width="12" />
+                  <limit height="1" />
+                </appearance>
+              </field>
+              <field attribute-ref="IsUpdatedFormsTitle">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal" multiline="false" align="right">
+                  <label-style field-unit="symbol" field-width="43" />
+                </appearance>
+              </field>
+              <field attribute-ref="IsUpdatedForms" >
+                <appearance importance="normal" align="right" widget="checkbox">
+                  <label-style field-unit="symbol" field-width="2" />
+                </appearance>
+              </field>
+            </component>
+            <appearance field-layout="horizontal">
+              <label-style unit="symbol" width="18" />
+            </appearance>
+          </section>
+        </component>
+      </section>
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.ArchivesArcInternalRkkResourceForm.section.RootMenu.button.Сохранить скрыта системная.name:Сохранить скрыта системная}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE" />
+            </action>
+          </button>
+          <button name="${ui.form.ArchivesArcInternalRkkResourceForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew" />
+              </hide>
+            </properties>
+            <appearance>
+              <label-style>
+                <style id="tunBtnHeader" />
+                <style id="tunIconSave" />
+              </label-style>
+            </appearance>
+            <action>
+              <custom>
+                <save />
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.ArchivesArcInternalRkkResourceForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton" />
+              </hide>
+            </properties>
+            <appearance>
+              <label-style>
+                <style id="tunBtnHeader" />
+                <style id="tunIconSave" />
+              </label-style>
+            </appearance>
+            <action>
+              <custom>
+                <save-existing />
+              </custom>
+            </action>
+          </button>
+          <section id="TOREGISTER" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.RootMenu.section.TOREGISTER.name:Регистрация}">
+            <component>
+              <button name="${ui.form.ArchivesArcInternalRkkResourceForm.section.RootMenu.section.TOREGISTER.button.По счетчику.name:По счетчику}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="Archives_InternalRkkCanRegister"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler-ref ref="ArchivesDocRegisterByCounter"/>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section group="true" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.name:Реквизиты}" id="Attributes">
+        <component>
+          <section id="Main" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Main.name:Основные}">
+            <component>
+              <field attribute-ref="TypeAct" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Main.field.TypeAct.name:Тип акта:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="edit"/>
+                    <condition>true</condition>
+                  </require>
+                </properties>
+                <appearance importance="normal" multiline="false" align="left" />
+                <directories>
+                  <directory-ref ref="ArchivesActType" />
+                </directories>
+              </field>
+              <field attribute-ref="Signer" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Main.field.Signer.name:Подпись:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Main.field.Signer.hintPopUp:Подпись}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                  <directory-ref ref="FV_CURR_HUMAN_HH"/>
+                </directories>
+              </field>
+              <field attribute-ref="OtherSigner" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Main.field.OtherSigner.name:Другие подписи:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Main.field.OtherSigner.hintPopUp:Другие подписи}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                  <directory-ref ref="FV_CURR_HUMAN_HH"/>
+                </directories>
+              </field>
+              <field attribute-ref="Executor" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Main.field.Executor.name:Исполнители:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Main.field.Executor.hintPopUp:Исполнители}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                  <directory-ref ref="FV_CURR_HUMAN_HH"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+          <section id="Additional" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Additional.name:Дополнительные}">
+            <component>
+              <field attribute-ref="RegPlace" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Additional.field.RegPlace.name:Место регистрации:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Additional.field.RegPlace.hintPopUp:Место регистрации}</hint-pop-up>
+                <directories livesearch="true" limit-livesearch="sys-current">
+                  <directory-category-custom-coll ref="CURRENT_SYS_DEP"/>
+                  <directory-category-custom-coll ref="CURRENT_SYS_DEP_HIER"/>
+                  <directory-category-custom-coll ref="FV_CURR_HH_DEP_ORG"/>
+                </directories>
+              </field>
+              <field attribute-ref="QuantitySheets" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Additional.field.QuantitySheets.name:Кол-во листов:}">
+                <appearance importance="normal" multiline="false" align="left" />
+              </field>
+              <field attribute-ref="QuantityCopies" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Additional.field.QuantityCopies.name:Кол-во экземпляров:}">
+                <appearance importance="normal" multiline="false" align="left" />
+              </field>
+              <field attribute-ref="QuantityContents" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Additional.field.QuantityContents.name:Кол-во приложений:}">
+                <appearance importance="normal" multiline="false" align="left" />
+              </field>
+              <field attribute-ref="QuantitySheetsContents" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Additional.field.QuantitySheetsContents.name:Листов приложений:}">
+                <appearance importance="normal" multiline="false" align="left" />
+              </field>
+              <field attribute-ref="Commentary" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.Additional.field.Commentary.name:Комментарии:}">
+                <appearance importance="normal" multiline="false" align="left" />
+              </field>
+            </component>
+          </section>
+
+          <field attribute-ref="arcDealTableLabel">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal">
+              <label-style>
+                <style id="tunBgGrayBlue" />
+                <style id="tunCaption" />
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunBgGrayBlue" />
+                  <style id="tunCaption" />
+                </value-style>
+              </field-style>
+            </appearance>
+          </field>
+          <section group="true" id="ArcDealInfoTableRow">
+            <component>
+              <button name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Attributes.section.ArcDealInfoTableRow.button.Добавить.name:Добавить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="read" />
+                  </hide>
+                </properties>
+                <appearance align="left">
+                  <label-style>
+                    <style id="tunIconAdd" />
+                    <style id="tunUnderline" />
+                    <style id="tunClickableRed" />
+                  </label-style>
+                </appearance>
+                <action>
+                  <custom>
+                    <change-subobject schema-ref="SetRelatedArcDealInfoArcIntRkkDialog" />
+                  </custom>
+                </action>
+              </button>
+              <field attribute-ref="ArcDealInfoTable" recalc="true">
+                <appearance>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="table" />
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="tmpArcDealInfoList" recalc="true">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+              </field>
+            </component>
+          </section>
+
+          <section group="true" id="arcDocsRow">
+            <component>
+              <field attribute-ref="arcDocTableLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal">
+                  <label-style>
+                    <style id="tunBgGrayBlue" />
+                    <style id="tunCaption" />
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBgGrayBlue" />
+                      <style id="tunCaption" />
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section group="true" id="arcInvsRow">
+            <component>
+              <field attribute-ref="arcInvTableLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal">
+                  <label-style>
+                    <style id="tunBgGrayBlue" />
+                    <style id="tunCaption" />
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBgGrayBlue" />
+                      <style id="tunCaption" />
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+
+      <section name="${ui.form.ArchivesArcInternalRkkResourceForm.section.LifeCycle.name:Жизненный цикл}" id="LifeCycle">
+        <component>
+          <section group="true" name="${ui.form.ArchivesArcInternalRkkResourceForm.section.LifeCycle.section.ApprovingSection.name:Согласование}" id="ApprovingSection">
+            <component>
+              <section id="ApprovingButtons">
+                <appearance widget="inactiveTab" />
+              </section>
+              <section name="${ui.form.ArchivesArcInternalRkkResourceForm.section.LifeCycle.section.ApprovingSection.section.Approving.name:Согласование}" id="Approving" />
+            </component>
+          </section>
+        </component>
+        <appearance widget="leftMenu" />
+      </section>
+      <section name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Links.name:Связанные}" id="Links">
+        <component>
+          <section name="${ui.form.ArchivesArcInternalRkkResourceForm.section.Links.section.Documеnts.name:Документы}" id="Documеnts" />
+        </component>
+        <appearance widget="leftMenu" />
+      </section>
+      <section name="${ui.form.ArchivesArcInternalRkkResourceForm.section.History.name:История}" id="History" />
+    </component>
+  </form>
+</ui>

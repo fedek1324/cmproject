@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <column name="addressInfo" subject="${catalog.column.addressInfo.subject:Район/Город}" extends="string">
+    <meta>
+      <documentation>Район/Город</documentation>
+    </meta>
+  </column>
+  <column name="classifElementTitle" extends="title"/>
+  <complex-column name="classifierQuestion" extends="object">
+    <column-ref ref="part"/>
+    <column-ref ref="partCode"/>
+    <column-ref ref="theme"/>
+    <column-ref ref="themeCode"/>
+    <column-ref ref="thematic"/>
+    <column-ref ref="thematicCode"/>
+    <column-ref ref="question"/>
+    <column-ref ref="questionCode"/>
+    <column-ref ref="subquestion"/>
+    <column-ref ref="subquestionCode"/>
+    <column-ref ref="isSimple"/>
+    <column-ref ref="allowed"/>
+  </complex-column>
+  <complex-column name="classifObject" extends="object">
+    <column-ref ref="part"/>
+    <column-ref ref="partCode"/>
+    <column-ref ref="theme"/>
+    <column-ref ref="themeCode"/>
+    <column-ref ref="thematic"/>
+    <column-ref ref="thematicCode"/>
+    <column-ref ref="subquestion"/>
+    <column-ref ref="question"/>
+    <column-ref ref="questionCode"/>
+    <column-ref ref="subquestionCode"/>
+  </complex-column>
+  <complex-column name="classifObjectSimple" extends="object">
+    <column-ref ref="thematic"/>
+    <column-ref ref="question"/>
+  </complex-column>
+  <column name="importExtRegNum" subject="${catalog.column.importExtRegNum.subject:Регистрационный номер ССТУ}" extends="string">
+    <meta>
+      <documentation>Регистрационный номер ССТУ</documentation>
+    </meta>
+  </column>
+  <complex-column name="importXMLSettingsInfo" subject="${catalog.complex-column.importXMLSettingsInfo.subject:Настройка импорта}" extends="object">
+    <column-ref ref="id"/>
+  </complex-column>
+  <complex-column name="LevelId">
+    <column-ref ref="id"/>
+  </complex-column>
+  <column name="parentname" subject="${catalog.column.parentname.subject:род. классификатор}" extends="string"/>
+  <column name="part" subject="${catalog.column.part.subject:Раздел}" extends="string">
+    <meta>
+      <documentation>Раздел</documentation>
+    </meta>
+  </column>
+  <column name="question" subject="${catalog.column.question.subject:Вопрос}" extends="string">
+    <meta>
+      <documentation>Вопрос</documentation>
+    </meta>
+  </column>
+  <complex-column name="questionType" extends="object">
+    <column-ref ref="Value"/>
+  </complex-column>
+  <column name="reqway" subject="${catalog.column.reqway.subject:Способ обращения}" extends="string">
+    <meta>
+      <documentation>Способ обращения</documentation>
+    </meta>
+  </column>
+  <column name="sendertype" subject="${catalog.column.sendertype.subject:Тип обращения}" extends="string">
+    <meta>
+      <documentation>Тип обращения ОГ</documentation>
+    </meta>
+  </column>
+  <column name="subquestion" subject="${catalog.column.subquestion.subject:Подвопрос}" extends="string">
+    <meta>
+      <documentation>Подвопрос</documentation>
+    </meta>
+  </column>
+  <column name="titleType" extends="string"/>
+  <column name="typeControl" subject="${catalog.column.typeControl.subject:Вид контроля}" extends="string">
+    <meta>
+      <documentation>Вид контроля</documentation>
+    </meta>
+  </column>
+  <column name="typeQuestion" subject="${catalog.column.typeQuestion.subject:Тип вопроса}" extends="string">
+    <meta>
+      <documentation>Тип вопроса</documentation>
+    </meta>
+  </column>
+  <column name="viewQuestion" subject="${catalog.column.viewQuestion.subject:Вид вопроса}" extends="string">
+    <meta>
+      <documentation>Вид вопроса</documentation>
+    </meta>
+  </column>
+</catalog>

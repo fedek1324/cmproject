@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RefRegister" id="FileRegisterFormTable" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal"/>
+    <component>
+      <!--button name="${uFileRegisterFormTable.add.name:Добавить новое дело}" alias="add">
+        <appearance align="right">
+          <label-style>
+            <style id="tunIconAdd"/>
+            <style id="tunBlue"/>
+            <style id="tunUnderline"/>
+            <style id="tunClickableRed"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="add"/>
+        </action>
+        <properties>
+          <hide>
+            <negative-condition-ref ref="table_edit"/>
+          </hide>
+        </properties>
+      </button -->
+      <section id="indexFileCol" name="${uFileRegisterFormTable.section.indexFile.name:Индекс дела}">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="indexFile">
+            <appearance importance="normal">
+              <label-style field-unit="symbol" field-width="20"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <section id="titleFileCol" name="${uFileRegisterFormTable.section.titleFile.name:Заголовок дела}">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="titleFile">
+          </field>
+        </component>
+      </section>
+      <section id="countTomeSectionsCol" name="${uFileRegisterFormTable.section.countTomeSections.name:Кол-во томов}">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="countTomeSections">
+            <appearance importance="normal">
+              <label-style field-unit="symbol" field-width="5"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <section id="storagePeriodCol" name="${uFileRegisterFormTable.section.storagePeriodCol.name:Срок хранения}">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="storagePeriod">
+            <appearance importance="normal">
+              <label-style field-unit="symbol" field-width="10"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <section id="spDescriptionCol" name="${uFileRegisterFormTable.section.spDescriptionCol.name:№ статьи}">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="spDescription">
+            <appearance importance="normal">
+              <label-style field-unit="symbol" field-width="15"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <!-- section id="buttonsCol">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <button >
+          <appearance align="right">
+            <label-style unit="symbol" width="3">
+              <style id="tunIconEdit"/>
+            </label-style>
+          </appearance>
+          <action>
+            <custom>
+              <open-edit/>
+            </custom>
+          </action>
+          </button>
+        </component>
+      </section -->
+      <button alias="edit">
+        <appearance align="right">
+          <label-style unit="symbol" width="3">
+            <style id="tunIconEdit"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="update"/>
+        </action>
+      </button>
+      <button alias="delete">
+        <appearance align="right">
+          <label-style unit="symbol" width="3">
+            <style id="tunIconDelete"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="delete"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="PersonUids" id="PersonUidsDialog" name="${ui.form.PersonUidsDialog.name:Идентификаторы}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="uid" name="${ui.form.PersonUidsDialog.field.uid.name:Идентификатор:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="uidType" name="${ui.form.PersonUidsDialog.field.uidType.name:Тип:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="uidType"/>
+        </directories>
+      </field>
+      <button name="${ui.form.PersonUidsDialog.button.OK.name:OK}">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.PersonUidsDialog.button.Отмена.name:Отмена}">
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

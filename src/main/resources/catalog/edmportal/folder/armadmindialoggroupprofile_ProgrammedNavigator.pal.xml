@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="arm-admin-dialog-groupprofile" name="${catalog.view.arm_admin_dialog_groupprofile.name:АРМАдмин.Диалог.Групповые профили}" position="-1">
-    <descriptor-ref ref="arm-admin-dialog-groupprofile"/>
-    <source>
-      <module ident="EDM-Portal"/>
-    </source>
-  </view>
-</catalog>

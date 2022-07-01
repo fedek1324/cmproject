@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="q.so-myorg-dismissed" fulltext="true" id="so-myorg-dismissed" name="СО - МояОрганизация - Уволенные" style="default">
+    <builder name="ru.intertrust.cmj.af.so.impl.BuilderSODismissed"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="origShortName" sort-desc="true"/>
+        <column-ref ref="origPostName"/>
+      </columns>
+    </table>
+  </descriptor>
+</catalog>

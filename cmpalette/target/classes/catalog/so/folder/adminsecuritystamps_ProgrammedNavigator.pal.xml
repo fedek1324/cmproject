@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="admin-security-stamps" name="${catalog.view.admin_security_stamps.name:АРМАдмин.Диалог: Грифы доступа}" position="-1">
+    <descriptor-ref ref="admin-security-stamps"/>
+    <source>
+      <module ident="SO"/>
+    </source>
+  </view>
+</catalog>

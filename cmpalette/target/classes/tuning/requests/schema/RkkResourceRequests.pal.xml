@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="RkkResource" name="RkkResourceRequests">
+    <meta>
+      <category name="Система\Обращение граждан"/>
+    </meta>
+    <schema-ref ref="CorrespondentResource_Requests" name="correspondent" system="true"/>
+    <string array="true" name="benefitGroups" system="true"/>
+    <schema-ref ref="ClassifierQuestionValue" array="true" name="questions" system="true"/>
+    <actor array="true" name="addressee" system="true"/>
+    <schema-ref ref="ExecutionResource" name="execution" system="true"/>
+    <schema-ref ref="RedirectionResource" name="redirection" system="true"/>
+    <string name="deliveryInfo" system="true"/>
+    <string name="addressForAnswer" system="true"/>
+    <string name="appealWay" system="true"/>
+    <string name="country" system="true"/>
+    <boolean name="isSelectedOrg" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[redirection !=null && redirection.to != null && redirection.to.organization != null]]></script>
+      </calc-values>
+    </boolean>
+    <string name="corrEmail" system="true"/>
+    <schema-ref ref="ControlCardResourceRkkRequests" name="control" system="true"/>
+    <string name="executionComment" system="true"/>
+    <date name="receiveDate" system="true"/>
+    <string name="receivePlace" system="true"/>
+    <string name="$correspondentInfoLegal" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Корреспондент:']]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="CorrespondentResource_Requests" name="representative" system="true"/>
+    <string name="showIdent" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Обращение граждан']]></script>
+      </calc-values>
+    </string>
+    <string name="$correspondentInfo" system="true"/>
+    <schema-ref ref="ShowSignInfo" name="showSignInfo" temporal="true"/>
+    <boolean name="$canVerify" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#verify'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isPersonal" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[correspondent!=null && correspondent.type!=null && correspondent.type.toString() == 'PERSONAL']]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$hasPrevious" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#previous.rkk'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string name="$previous" system="true"/>
+    <boolean name="isPersonalReception" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[appealWay!=null && appealWay.toString().equalsIgnoreCase('Устные/Личный прием')]]></script>
+      </calc-values>
+    </boolean>
+    <string name="correspondentFnInfo" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[correspondent != null && correspondent.authorPersonal != null ? correspondent.authorPersonal.fn : (correspondent != null && correspondent.authorGroup != null ? correspondent.authorGroup :  'не задан')]]></script>
+      </calc-values>
+    </string>
+    <boolean name="isOral" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[appealWay!=null && (appealWay.toString().equalsIgnoreCase('Устные/Личный прием') || appealWay.toString().equalsIgnoreCase('Устные'))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isGroup" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[correspondent!=null && correspondent.type!=null && correspondent.type.toString() == 'GROUP']]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="secondary" system="true"/>
+    <boolean name="frequent" system="true"/>
+    <string name="postalCodeStr" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(correspondent != null && correspondent.authorPersonal != null) ? T(ru.intertrust.cmj.rest.vcards.VCardResource).vcardTobeard.apply( correspondent.authorPersonal).originalData().getParty()==null?'':correspondent.type!=null && correspondent.type.toString()=='ASSOCIATION'?T(ru.intertrust.cmj.rest.vcards.VCardResource).vcardTobeard.apply( correspondent.authorPersonal).originalData().getParty() instanceof T(ru.intertrust.cmj.af.so.SOUnitOrganization)?T(ru.intertrust.cmj.rest.vcards.VCardResource).vcardTobeard.apply( correspondent.authorPersonal).originalData().getParty().getOrganizationDescription().addressInfo().post().getZipCode():T(ru.intertrust.cmj.rest.vcards.VCardResource).vcardTobeard.apply( correspondent.authorPersonal).originalData().getParty().addressInfo().post().getZipCode():T(ru.intertrust.cmj.rest.vcards.VCardResource).vcardTobeard.apply(correspondent.authorPersonal).originalData().getParty().addressInfo().getZipCode() : '']]></script>
+      </calc-values>
+    </string>
+    <string name="addressString" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(correspondent != null && correspondent.authorPersonal != null && correspondent.authorPersonal.addressString != null) ? correspondent.authorPersonal.addressString : ""]]></script>
+        <script event="save" lang="SPEL"><![CDATA[(correspondent != null && correspondent.authorPersonal != null && correspondent.authorPersonal.addressString != null) ? correspondent.authorPersonal.addressString : ""]]></script>
+      </calc-values>
+    </string>
+    <string name="addressStringRepr" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(representative != null && representative.authorPersonal != null && representative.authorPersonal.addressString != null) ? representative.authorPersonal.addressString : ""]]></script>
+        <script event="save" lang="SPEL"><![CDATA[(representative != null && representative.authorPersonal != null && representative.authorPersonal.addressString != null) ? representative.authorPersonal.addressString : ""]]></script>
+      </calc-values>
+    </string>
+    <enum-ref ref="RequestType" name="requestType" system="true"/>
+    <schema-ref ref="LegalResource" name="legal" system="true"/>
+    <boolean name="isSelectedLegalOrg" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[legal != null && legal.legalOrganization != null]]></script>
+      </calc-values>
+    </boolean>
+    <string name="legalLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Юридическое лицо']]></script>
+      </calc-values>
+    </string>
+    <boolean name="isSelectedLegalAuthor" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[legal != null && legal.legalAuthor != null]]></script>
+      </calc-values>
+    </boolean>
+    <string name="referenceObject" system="true"/>
+    <string array="true" name="incomingSign">
+      <storage-field name="incomingSign"/>
+    </string>
+    <string name="addressLegal" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(legal != null && legal.legalOrganization != null &&  legal.legalOrganization.addressString != null) ?  legal.legalOrganization.addressString : ""]]></script>
+      </calc-values>
+    </string>
+    <string name="legalFnInfo" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[legal != null && legal.legalOrganization != null ? legal.legalOrganization.fnInfo : 'не задан']]></script>
+      </calc-values>
+    </string>
+    <boolean name="isEnableTypeRequestLegal" system="true"/>
+    <boolean name="sstu">
+      <storage-field name="sstu"/>
+    </boolean>
+    <boolean name="controlHI">
+      <storage-field name="controlHI"/>
+    </boolean>
+    <boolean name="isCorrAssociationSelected" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[correspondent != null && correspondent.authorPersonal != null]]></script>
+      </calc-values>
+    </boolean>
+    <schema-ref ref="RequestQuestionExecution" array="true" name="qexecution" system="true"/>
+    <schema-ref ref="RequestQuestion" array="true" name="questionsTable" system="true"/>
+    <schema-ref ref="AllRequestCorrespondent" array="true" name="allRequestsByCorrespondent" system="true" temporal="true"/>
+    <string name="questionsString" temporal="true"/>
+    <actor name="signer">
+      <storage-field name="Tn$_signer"/>
+    </actor>
+    <schema-ref ref="RequestQuestionDisplay" array="true" name="questionsTableDisplay" system="true"/>
+    <schema-ref ref="RequestQuestionExecutionDisplay" array="true" name="qexecutionDisplay" system="true"/>
+    <boolean name="isSubControl" system="true"/>
+    <date name="subControlDeadline" system="true"/>
+    <integer name="subConNotice" system="true"/>
+    <date name="subControlExecFact" system="true"/>
+    <actor name="unitName" createlog="true"/>
+    <string array="true" name="receiveWay" createlog="true"/>
+    <string name="receptionMode" createlog="true"/>
+    <string name="addresseeWay" createlog="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['От заявителя']]></script>
+      </calc-values>
+    </string>
+    <actor name="madeAppointment" createlog="true"/>
+    <string name="specialPosition" createlog="true"/>
+    <date array="true" name="receiveDateKrsk" createlog="true"/>
+    <string name="verbalResponce" createlog="true"/>
+    <string name="verbalAndWrittenResponce" createlog="true"/>
+    <string name="transferClarification" createlog="true"/>
+    <string name="occupation" createlog="true"/>
+    <string name="notes" createlog="true"/>
+    <string name="keyWords" createlog="true"/>
+    <actor array="true" name="redirectedToMultipleOrg" createlog="true"/>
+    <boolean name="isPersonalOrAssociation" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[correspondent!=null && correspondent.type!=null && (correspondent.type.toString() == 'PERSONAL' || correspondent.type.toString() == 'ASSOCIATION')]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$ifAppealWay" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(appealWay=="Устные/Личный прием"||appealWay=="УСТНЫЕ/ЛИЧНЫЙ ПРИЕМ")?true:false]]></script>
+      </calc-values>
+    </boolean>
+    <string name="destination" createlog="true">
+      <storage-field name="destination"/>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['От заявителя']]></script>
+      </calc-values>
+    </string>
+    <boolean name="$ifIsRequestPersonalOrAssociationAndAppeal" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!(appealWay=="Устные/Личный прием"||appealWay=="УСТНЫЕ/ЛИЧНЫЙ ПРИЕМ")&&((correspondent=="ASOCIATION"&&type=="ASSOCIATION")||isPersonal==true)?true:false]]></script>
+      </calc-values>
+    </boolean>
+    <string temporal="true" name="DOPName">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['F_DP_RequestRkk']]></script>
+      </calc-values>
+    </string>
+    <boolean temporal="true" name="autoDetectRegPlaceInGateway">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA[T(ru.intertrust.cmj.af.core.AFCMDomino).getDbInfoByReplicaID(T(ru.intertrust.cmj.af.core.AFCMDomino).ormUNIDToCMFullUNID(#this.id)[0]).autoDetectRegPlaceInGateway]]></script>
+      </calc-values>
+    </boolean>
+    <string name="medoMainFileName">
+      <storage-field name="medoMainFileName"/>
+    </string>
+    <string name="medoGuid">
+      <storage-field name="MEDO_Doc_GUID"/>
+    </string>
+    <string name="medoAttachmentsInfo" array="true">
+      <storage-field name="medoAppendixSync"/>
+    </string>
+    <boolean name="tDeleted" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(java.lang.Boolean).TRUE.equals(status.deleted)]]></script>
+      </calc-values>
+    </boolean>
+    <string array="true" name="received">
+      <storage-field name="received"/>
+    </string>
+    <custom-event-handler lang="JavaScript"><![CDATA[importPackage(Packages.ru.intertrust.cmj.dp);
+importPackage(Packages.ru.intertrust.cmj.af.so);
+importPackage(Packages.ru.intertrust.cmj.af.tuning.impl);
+importPackage(Packages.ru.intertrust.cmj.af.tuning);
+importPackage(Packages.ru.intertrust.cmj.rest.tuning);
+importPackage(Packages.java.util);
+
+function querySave(object, document) {
+    if (object.isDeleted()) {
+        return true;
+    }
+    if(("".equals(object.integrationId) || object.integrationId == null) && (object.questions().isEmpty() || object.questions() == null)) {
+        throw "Заполните поле тематика";
+    }
+    var questions = object.questions();
+    if (questions.size() > 1) {
+        var items = new HashSet();
+        var optional = questions.stream().map(function(question) {
+            if (question instanceof DPMRequests.RKKOrRKKTemplate.QuestionExt) {
+                return "" + question.getPartCode() + "." + question.getThematicCode() + "." + 
+                    question.getThemeCode() + "." + question.getQuestionCode() + "." + question.getSubquestionCode();
+            } else {
+                return "" + question.getQuestion() + "." + question.getThematic();
+            }
+        }).filter(function(code) { return !items.add(code); }).findFirst();
+        if (optional.isPresent()) {
+            throw "Найдены дублированные тематики, для дальнейшей работы необходимо удалить дубликаты тематики.";
+        }
+    }
+    return true;
+ }
+
+function recalc(rkk, changedField) {
+    if(changedField=="requestType") {
+        if(rkk.getRequestType()!=null && rkk.getRequestType().toString()=="CITIZEN"){
+            //если сменили обращение с организации на гражданина
+            //то поставим ему тип "индивидуальное", если там ничего не стоит
+            var cor = rkk.correspondent();
+            if(cor!=null && cor.getType()==null){
+                cor.setType(DPMRequests.RKKOrRKKTemplate.Correspondent.Type.PERSONAL);
+            }
+        }
+    }
+}
+
+function postSave(object, document) {}]]></custom-event-handler>
+  </schema>
+</schemas>

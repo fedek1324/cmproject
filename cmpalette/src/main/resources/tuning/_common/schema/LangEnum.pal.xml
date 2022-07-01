@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="LangEnum">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string value="русский язык%ru" name="русский язык"/>
+    <string value="English%en" name="English"/>
+    <string value="беларуская мова%be" name="беларуская мова"/>
+    <string value="?аза? тілі%kk" name="?аза? тілі"/>
+    <string value="langue fran?aise%fr" name="langue fran?aise"/>
+    <string value="Deutsch%de" name="Deutsch"/>
+    <string value="espa?ol%es" name="espa?ol"/>
+    <string value="italiano%it" name="italiano"/>
+    <string value="українська мова%uk" name="українська мова"/>
+  </enum>
+</schemas>

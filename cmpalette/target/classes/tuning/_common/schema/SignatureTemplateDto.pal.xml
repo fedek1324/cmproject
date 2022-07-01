@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="SignatureTemplateDto">
+    <meta>
+      <category name="Сервис\Подписания"/>
+    </meta>
+    <actor name="signer" system="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.tuning.RecalcOnSignerChangeForTemplateEventHandler</recalc-processing-class>
+    </actor>
+    <actor name="signers" system="true" array="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.tuning.RecalcOnSignerChangeForTemplateEventHandler</recalc-processing-class>
+    </actor>
+  </schema>
+</schemas>

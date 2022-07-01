@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="LocalEnum">
+    <string value="русский язык%ru" name="русский язык"/>
+    <string value="English%en" name="English"/>
+    <string value="а?сш?а%ab" name="а?сш?а"/>
+    <string value="az?rbaycan dili%az" name="az?rbaycan dili"/>
+  </enum>
+</schemas>

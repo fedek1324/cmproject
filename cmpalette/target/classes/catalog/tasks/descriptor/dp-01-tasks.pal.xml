@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Tasks" view="(vw_cmj_01)" id="dp-01-tasks" name="Поручения - по номеру" style="default">
+    <help id="99778669"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="rkkExecutionStatus"/>
+        <column-ref ref="resOfRkkExecutionStatus"/>
+        <column-ref ref="regNumber"/>
+        <column-ref ref="resDate"/>
+        <column-ref ref="author"/>
+        <column-ref ref="executors"/>
+        <column-ref ref="exDate"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="text"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Tasks-CreateResolution" name="${catalog.custom-descriptor.dp-01-tasks.actions.action.Tasks-CreateResolution.name:Создать/Поручение}">
+        <create object-ref="RESOLUTION_TASKS"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

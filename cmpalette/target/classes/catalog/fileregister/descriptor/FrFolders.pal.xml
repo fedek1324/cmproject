@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+    <custom-descriptor ident="FileRegister" view="(vw_cmj_ndfr)" id="fr-des-vw-cmj-nd" name="Справочник дел"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="depOrgName" category="true" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="year" category="true" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="self"/>
+                <column-ref ref="hasAttachments"/>
+                <column-ref ref="indexFile" sort-asc="true" filter="true"/>
+                <column-ref ref="titleFile" filter="true"/>
+                <column-ref ref="statusGeneral" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="medium" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="fResp" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="yearMovable" sort-asc="true" sort-desc="true"/>
+                <column-ref ref="strOutOfSystem" sort-asc="true" sort-desc="true"/>
+                <column-ref ref="strElectronic" sort-asc="true" sort-desc="true"/>
+            </columns>
+        </table>
+        <custom-actions schema-ref="NdReadersCollection"/>
+    </custom-descriptor>
+
+    <custom-descriptor ident="FileRegister" view="(vw_cmj_ndfr_selected_for_archive)" id="fileregister-selected-for-archive"
+                       name="Дела, отобранные для передачи в архив" style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="depOrgName" category="true" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="year" category="true" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="self"/>
+                <column-ref ref="indexFile" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="titleFile" filter="true"/>
+                <column-ref ref="medium" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="statusGeneral" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="statusExtended" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="archiveDocFiles" sort-asc="true" sort-desc="true" filter="true"/>
+            </columns>
+        </table>
+        <custom-actions schema-ref="NdReadersCollection"/>
+    </custom-descriptor>
+
+    <custom-descriptor ident="FileRegister" view="(vw_cmj_nd_by_units)" id="fr-des-vw-cmj-nd-by-units" name="По подразделениям"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="depOrgName" category="true"/>
+                <column-ref ref="hasAttachments"/>
+                <column-ref ref="self"/>
+                <column-ref ref="indexFile"/>
+                <column-ref ref="titleFile"/>
+                <column-ref ref="dateOfBeginning"/>
+                <column-ref ref="dateOfEnd"/>
+                <column-ref ref="StoragePeriod"/>
+                <column-ref ref="spDescription"/>
+                <column-ref ref="statusGeneral"/>
+            </columns>
+        </table>
+    </custom-descriptor>
+    <column name="depOrgName" subject="${catalog.column.departmentId.subject:Подразделение}" extends="string"/>
+    <column display="icon" name="hasAttachments" extends="boolean">
+        <meta>
+            <documentation>Признак вложения</documentation>
+        </meta>
+    </column>
+
+    <custom-descriptor ident="FileRegister" view="(vw_cmj_nd_by_unitId)" id="fr-des-vw-cmj-nd-by-unitid" name="По индексам подразделений"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="unitId" category="true"/>
+                <column-ref ref="year" category="true"/>
+                <column-ref ref="hasAttachments"/>
+                <column-ref ref="self"/>
+                <column-ref ref="indexFile"/>
+                <column-ref ref="titleFile"/>
+                <column-ref ref="dateOfEnd"/>
+                <column-ref ref="StoragePeriod"/>
+                <column-ref ref="spDescription"/>
+                <column-ref ref="statusGeneral"/>
+            </columns>
+        </table>
+    </custom-descriptor>
+
+    <custom-descriptor ident="FileRegister" view="(vw_cmj_ndfr_by_shelf_time)" id="fr-des-vw-cmj-nd-by-shelf-time" name="По срокам хранения"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="self"/>
+                <column-ref ref="hasAttachments"/>
+                <column-ref ref="indexFile"/>       <!-- Нормативный документ -->
+                <column-ref ref="titleFile"/>       <!-- Нормативный документ -->
+                <column-ref ref="departmentName"/>
+                <column-ref ref="dateOfBeginning"/>
+                <column-ref ref="dateOfEnd"/>
+                <column-ref ref="storagePeriod"/>
+                <column-ref ref="spDescription"/>
+                <column-ref ref="countTomeSections"/>
+                <column-ref ref="numRegister"/>
+                <column-ref ref="numArchive"/>
+            </columns>
+        </table>
+        <custom-actions schema-ref="FrOptionSchema"/>
+    </custom-descriptor>
+
+    <custom-descriptor ident="FileRegister" view="(vw_cmj_nd_trash)" id="fr-des-vw-cmj-nd-trash" name="Корзина"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="self"/>
+                <column-ref ref="hasAttachments" />
+                <column-ref ref="dateDeleteToTrash" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="deletedPersonNd" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="indexFile" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="titleFile" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="frDepartment" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="year" sort-asc="true" sort-desc="true" filter="true"/>
+
+            </columns>
+        </table>
+        <custom-actions schema-ref="FrTrashCollection"/>
+    </custom-descriptor>
+    <column name="deletedPersonNd" subject="${catalog.column.deletedPersonNd.subject:Кем удален}" extends="string"/>
+
+
+    <custom-descriptor ident="FileRegister" view="(vw_cmj_ndfr_formed)" id="fr-vw-cmj-nd" name="Номенклатура дел в статусе Формируемые"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="self"/>
+                <column-ref ref="indexFile" sort-asc="true"/>
+                <column-ref ref="titleFile" sort-asc="true" sort-desc="true"/>
+                <column-ref ref="typeFile" sort-asc="true" sort-desc="true"/>
+                <column-ref ref="storagePeriod" sort-asc="true" sort-desc="true"/>
+                <column-ref ref="parentUnit" category="true" sort-asc="true"/>
+                <column-ref ref="selDialogObject" />
+            </columns>
+        </table>
+    </custom-descriptor>
+
+    <custom-descriptor ident="FileRegister" view="(vw_cmj_ndfr_reserve)" id="fr-vw-cmj-reserve" name="Номенклатура дел в статусе Резервное"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="self"/>
+                <column-ref ref="indexFile" sort-asc="true"/>
+                <column-ref ref="titleFile" sort-asc="true" sort-desc="true"/>
+                <column-ref ref="parentUnit" category="true" sort-asc="true"/>
+                <column-ref ref="selDialogObject" />
+            </columns>
+        </table>
+    </custom-descriptor>
+
+    <custom-descriptor ident="FileRegister" view="(vw_cmj_file_original_index)" id="file-original-index" name="Дело - Индекс дела, содержащего подлинники" style="default">
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiClassifBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="ndpORndo" category="true" hide="true"/>
+                <column-ref ref="fileIndex"/>
+                <column-ref ref="indexFile"/>
+                <column-ref ref="name"/>
+                <column-ref ref="self"/>
+            </columns>
+        </table>
+    </custom-descriptor>
+
+    <custom-descriptor ident="FileRegister" view="(vw_cmj_ndfr_transfer)" id="fr-vw-cmj-transfer" name="Номенклатура дел в статусе 'Передается в другое подразделение'"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="self"/>
+                <column-ref ref="parentUnit" category="true" sort-asc="true"/>
+                <column-ref ref="file_soUnit_or_branchDivision" category="true" sort-asc="true"/>
+                <column-ref ref="indexFile" sort-asc="true"/>
+                <column-ref ref="subject" sort-asc="true" sort-desc="true"/>
+                <column-ref ref="typeFile" sort-asc="true" sort-desc="true"/>
+                <column-ref ref="storagePeriod" sort-asc="true" sort-desc="true"/>
+                <column-ref ref="selDialogObject" />
+            </columns>
+        </table>
+    </custom-descriptor>
+
+    <custom-descriptor ident="FileRegister" view="(vw_cmj_ndfr_delist)" id="fr-vw-cmj-remove-file-from-ndp-change" name="Номенклатура дел включённая в ИкНДП"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+        <table>
+            <columns>
+                <column-ref ref="self"/>
+                <column-ref ref="unit_change" category="true" sort-asc="true"/>
+                <column-ref ref="indexFile" sort-asc="true"/>
+                <column-ref ref="subject" sort-asc="true" sort-desc="true"/>
+                <column-ref ref="storagePeriod" sort-asc="true" sort-desc="true"/>
+                <column-ref ref="selDialogObject" />
+            </columns>
+        </table>
+    </custom-descriptor>
+
+    <custom-descriptor ident="FileRegister" view="(doc_from_fr)" id="nd-doc-for-ommit-from-fr"
+                       name="Дело - Документы для изъятия" style="default">
+        <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+        <table>
+            <columns>
+                <column-ref ref="self"/>
+                <column-ref ref="docTypeAndKind"/>
+                <column-ref ref="regFullNumber"/>
+                <column-ref ref="regDate"/>
+                <column-ref ref="signOrAuth"/>
+                <column-ref ref="subject"/>
+                <column-ref ref="selDialogObject"/>
+                <column-ref ref="fileRegUnid" category="true" hide="true"/>
+            </columns>
+        </table>
+    </custom-descriptor>
+</catalog>

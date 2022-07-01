@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="arm-admin-dialog-program-type" name="${catalog.view.arm_admin_dialog_program_type.name:АРМАдмин.Диалог.Типы программ}" position="-1">
+    <descriptor-ref ref="arm-admin-dialog-program-type"/>
+    <source>
+      <module ident="SS"/>
+    </source>
+  </view>
+</catalog>

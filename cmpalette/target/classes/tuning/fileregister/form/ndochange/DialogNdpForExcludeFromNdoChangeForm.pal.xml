@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DialogNdpForExcludeFromNdoChange" id="DialogNdpForExcludeFromNdoChangeForm" name="${ui.form.DialogNdpForExcludeFromNdoChange.name:Выберите раздел}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <appearance>
+      <dialog-mode height="50" width="50" unit="percent"/>
+    </appearance>
+    <component>
+      <field attribute-ref="sdObjectInfo" tid="sdObjectInfo"
+             name="${ui.form.DialogRkkSelectInFileForm.field.sdObjectInfo.name:Выберите раздел:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance open-mode="grid" digest-mode="grid" importance="normal" widget="grid"/>
+        <directories limit-livesearch="sys-current" digest="grid">
+          <directory-ref ref="nd-ndp-for-exclude-from-ndochange"/>
+        </directories>
+      </field>
+      <button name="${ui.form.DialogNdpForExcludeFromNdoChangeForm.button.OK.name:OK}" tid="submit">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

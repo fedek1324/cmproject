@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+    <form schema-ref="AddSignersArray" id="AddSignersArrayDialogForm" name="${ui.form.AddSignersArray.name:Добавить подписантов}" projection="default">
+        <meta>
+            <category name="Система\Делопроизводство\Подписание" />
+            <documentation>Диалог добавления подписантов</documentation>
+        </meta>
+        <appearance>
+            <dialog-mode width="100" height="60" unit="symbol"/>
+        </appearance>
+        <properties>
+            <hide condition-union="AND">
+                <negative-condition-ref ref="dialog"/>
+            </hide>
+        </properties>
+        <component>
+            <field attribute-ref="signers" name="${ui.form.AddSignersArray.field.signers.name:Подписанты:}">
+                <appearance widget="grid"/>
+                <directories livesearch="true" limit-livesearch="sys-current" digest="digestSOLiveSearch">
+                    <directory-ref ref="MY_SURRODING"/>
+                    <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                    <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                    <directory-ref ref="FV_CURR_HUMAN_HH"/>
+                </directories>
+            </field>
+            <button name="${ui.form.AddSignersArray.submit:Подтвердить}">
+                <action>
+                    <system name="submit"/>
+                </action>
+            </button>
+        </component>
+    </form>
+</ui>

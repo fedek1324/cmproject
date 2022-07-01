@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="ndo-changes" name="${catalog.view.ndo-changes.name:Все изменения}" position="-1">
+    <descriptor-ref ref="ndo-changes"/>
+    <source>
+      <module ident="FileRegister"/>
+    </source>
+  </view>
+</catalog>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="RkkTemplateResource" name="RkkTemplateResourceInput">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+    </meta>
+    <schema-ref ref="CorrespondentTemplateResource" name="correspondent" system="true"/>
+    <actor array="true" name="addressee" system="true"/>
+    <string name="showIdent" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Входящий']]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="DeliveryResource" name="delivery" system="true"/>
+    <boolean name="$isOrganization" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[correspondent!=null && correspondent.type==T(ru.intertrust.cmj.dp.DPMInput$RKKOrRKKTemplate$Correspondent$Type).ORGANIZATION]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

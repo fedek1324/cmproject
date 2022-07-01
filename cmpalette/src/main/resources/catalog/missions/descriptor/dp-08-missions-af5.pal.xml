@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Missions" view="(vw_cmj_08)" id="dp-08-missions-af5" name="ОРД - для установки связей" style="default">
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="regNumber"/>
+        <column-ref ref="regDate"/>
+        <column-ref ref="reqType"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="subject"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

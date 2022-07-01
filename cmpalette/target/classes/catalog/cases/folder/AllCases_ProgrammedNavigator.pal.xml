@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="AllCases:" name="${catalog.view.AllCases_.name:Все кейсы}" position="170">
+    <descriptor-ref ref="cases-All-ByNumber"/>
+    <source>
+      <module ident="Cases"/>
+    </source>
+  </view>
+</catalog>

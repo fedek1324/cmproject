@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="VersionInfo">
+    <meta>
+      <category name="Система\Документы"/>
+    </meta>
+    <integer name="version" system="true"/>
+    <integer name="baseVersion" system="true"/>
+    <string name="openActualVersion"/>
+  </schema>
+</schemas>

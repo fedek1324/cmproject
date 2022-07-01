@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="RkkTemplateResource" name="RkkTemplateResourceOutput">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+    </meta>
+    <actor array="true" name="advSigner" system="true"/>
+    <schema-ref ref="Organization" array="true" name="correspondent" system="true"/>
+    <actor array="true" name="executor" system="true"/>
+    <schema-ref ref="SignatureTemplateDto" name="signature" system="true"/>
+    <string name="showIdent" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Исходящий']]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

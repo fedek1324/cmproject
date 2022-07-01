@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="ClientContextRequest" name="DeleteFRMessageYesNo">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="mode" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['dialog']]></script>
+      </calc-values>
+    </string>
+    <string name="shortName" temporal="true"/>
+    <string name="messageText" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[counter.equals("oneFRDelete_answer1") ? 'Вы уверены, что хотите удалить функциональную роль?': 
+( counter.equals("oneFRDelete_answer3")? 'Функциональная роль указана в качестве принимающей дела для: '+whoDelegateUnitListStr+'. Удалить функциональную роль и очистить поле "При удалении дела передаются" в указанных структурных единицах?'  :' ')]]></script>
+      </calc-values>
+    </string>
+    <integer name="frCount" temporal="true"/>
+    <enum-ref ref="SOUnitType" name="UnitType" temporal="true"/>
+    <string array="true" name="selectFRIds" temporal="true"/>
+    <string name="whoDelegateUnitListStr" temporal="true"/>
+    <string array="true" name="whoDelegateUnids" temporal="true"/>
+    <string name="delegateUnid" temporal="true"/>
+  </schema>
+</schemas>

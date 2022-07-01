@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="OutputDocs" view="(vw_cmj_02_output)" id="dp-02-output-af5" name="ИсхД - шаблоны документов" style="default">
+    <help id="99778971"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="templateName"/>
+        <column-ref ref="reqType"/>
+        <column-ref ref="signer"/>
+        <column-ref ref="subject"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="OutputDocs-CreateRKKTemplate" name="${catalog.custom-descriptor.dp-02-output-af5.actions.action.OutputDocs-CreateRKKTemplate.name:Создать/Шаблон исходящего документа}">
+        <create object-ref="RKK_TEMPLATE_OUTPUT"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

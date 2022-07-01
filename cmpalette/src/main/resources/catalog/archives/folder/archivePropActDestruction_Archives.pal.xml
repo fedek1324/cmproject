@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="Archives" position="20" name="${catalog.folder.archivePropActDestruction.name:Предложения к акту}" id="archivePropActDestruction">
+    <subfolders>
+      <view position="10" name="${catalog.folder.archivePropActDestruction.view.PropActDestructionById.name:Предложения к акту}" id="PropActDestructionById">
+        <source>
+          <module ident="Archives" />
+        </source>
+        <pagename name="Предложения к акту" />
+        <search-area name="_Archives" />
+        <descriptor-ref ref="Archives-PropActDestruction" />
+      </view>
+      <folder position="20" name="${catalog.folder.archivePropActDestruction.folder.PropActDestructionByDeleted.name:Корзина}" id="PropActDestructionByDeleted">
+        <source>
+          <module ident="Archives" />
+        </source>
+        <webdocs>
+          <group position="0" id="0" />
+        </webdocs>
+      </folder>
+    </subfolders>
+    <webdocs>
+      <group position="0" id="0" />
+    </webdocs>
+  </folder>
+</catalog>

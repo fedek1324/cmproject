@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <column name="fullNameAdmin" subject="${catalog.column.fullNameAdmin.subject:Полное название / ФИО}" extends="string"/>
+  <column name="medoAddress" subject="${catalog.column.medoAddress.subject:Адрес МЭДО}" extends="string"/>
+  <column name="medoOrgGuid" subject="${catalog.column.medoOrgGuid.subject:Идентификатор МЭДО}" extends="string"/>
+  <column name="postAddressOrSoPost" subject="${catalog.column.postAddressOrSoPost.subject:Почтовый адрес / Должность}" extends="string"/>
+  <column name="soOrgShortNameOrOrgAdmin" subject="${catalog.column.soOrgShortNameOrOrgAdmin.subject:Краткое название / Организация}" extends="string"/>
+  <column name="spoOrgFullNameAdmin" subject="${catalog.column.spoOrgFullNameAdmin.subject:Полное название}" extends="string"/>
+  <column name="spoOrgShortNameAdmin" subject="${catalog.column.spoOrgShortNameAdmin.subject:Краткое название}" extends="string"/>
+  <column name="SSTUid" subject="${catalog.column.SSTUid.subject:Идентификатор ССТУ}" extends="string"/>
+</catalog>

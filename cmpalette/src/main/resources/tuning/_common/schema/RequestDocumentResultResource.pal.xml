@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" name="RequestDocumentResultResource">
+    <meta>
+      <category name="Система\Обращение граждан"/>
+    </meta>
+    <string name="docInfo" system="true"/>
+    <string name="$link_sstu_reply_covering" temporal="true"/>
+    <string name="$link_sstu_reply" temporal="true"/>
+    <string name="$clearButton" temporal="true"/>
+    <boolean name="$showNoSSTUOrg" temporal="true"/>
+    <string name="$NoSSTUOrgWarning" temporal="true"/>
+    <enum-ref ref="RequestDocumentResultTypeEnum" name="type" system="true"/>
+    <actor array="true" name="org" system="true"/>
+    <file name="content" system="true"/>
+    <string name="regNumber" system="true"/>
+    <date name="regDate" system="true"/>
+    <string name="subject" system="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[regNumber==null?'':('№ '+regNumber)+' от '+regDate]]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="ResourceLink" array="true" name="link" system="true"/>
+    <string name="docType" system="true"/>
+    <string name="unidRD" system="true"/>
+    <boolean name="hasRelated" system="true" temporal="true"/>
+    <string name="parentType" system="true"/>
+    <string array="true" name="relatedDocFiles" temporal="true"/>
+    <string name="selectedRelatedFile" temporal="true"/>
+    <boolean name="needSelectFiles" temporal="true"/>
+    <custom-event-handler lang="JavaScript"><![CDATA[importPackage(Packages.ru.intertrust.cmj.rest.requests);
+importPackage(Packages.ru.intertrust.cmj.rest.tuning);
+importPackage(Packages.ru.intertrust.cmj.rest.core);
+importPackage(Packages.ru.intertrust.cmj.rest.content);
+importPackage(Packages.ru.intertrust.cmj.af.utils);
+importPackage(Packages.ru.intertrust.cmj.af.misc);
+importPackage(Packages.ru.intertrust.cmj.af.core);
+
+function querySave(object, document) {
+    return true;
+}
+
+function postSave(object, document) {}
+
+function recalc(object, changedField) {
+  object.tuning().getValues().remove("$NoSSTUOrgWarning");
+  object.tuning().getValues().remove("$showNoSSTUOrg");
+  if(changedField=="$clearButton"){
+    if(object.tuning().getValues().get("content")!=null){
+      if(object.tuning().getValues().get("content").getValue()!=null){
+        object.tuning().getValues().get("content").getValue().clear();
+      }
+    }
+    object.tuning().getValues().remove("org");
+    object.tuning().getValues().remove("regDate");
+    object.tuning().getValues().remove("regNumber");
+    object.tuning().getValues().remove("subject");
+    object.tuning().getValues().remove("docType");
+    object.tuning().getValues().remove("link");
+    object.tuning().getValues().remove("hasRelated");
+
+    object.tuning().getValues().remove("relatedDocFiles");
+    object.tuning().getValues().remove("needSelectFiles");
+    object.tuning().getValues().remove("selectedRelatedFile");
+    object.tuning().getValues().remove("$link_sstu_reply");
+    object.tuning().getValues().remove("$link_sstu_reply_covering");
+
+  }else if(changedField=="selectedRelatedFile"){
+     var selectedFile = object.tuning().getValues().get("selectedRelatedFile")==null?null:object.tuning().getValues().get("selectedRelatedFile").getValue();
+     if(selectedFile!=null && selectedFile!=""){
+     var relatedHref = object.tuning().getValues().get("$link_sstu_reply")==null?null:object.tuning().getValues().get("$link_sstu_reply").getValue();
+     var rkk = AFEntityStorage.getEntityByUNID(ReferenceFactory.get().getReference(relatedHref).getId());
+     var contentRKK = ContentResource.valueOf(rkk);
+	 var contentRKK2 = ContentResource.valueOf(rkk.verification().image().getFileItems());
+     var content = Utils.newArrayList();
+
+      for(var i=0; i<contentRKK.size();i++) {
+            if(contentRKK.get(i).title.equals(selectedFile)){
+                content.add(contentRKK.get(i));
+                break;
+            }
+      }
+
+	  for(var i=0; i<contentRKK2.size();i++) {
+            if(contentRKK2.get(i).title.equals(selectedFile)){
+                content.add(contentRKK2.get(i));
+                break;
+            }
+      }
+
+      object.tuning().getValues().put("content",TuningHelper.createPropertyValue(content , object.tuning().getSchema().getProperty("content")));
+
+        //ссылка на связанный документ теряется при рекалке
+       var related= Utils.newHashMap();
+       related.put("href",relatedHref );
+       related.put("rel","http://intertrust.ru/cmj/relations#related");
+       var linksArr = Utils.newArrayList();
+       linksArr.add(related);
+       object.tuning().getValues().put("link",TuningHelper.createPropertyValue(linksArr, object.tuning().getSchema().getProperty("link")));
+      }
+  }else if(changedField=="$link_sstu_reply" || changedField=="$link_sstu_reply_covering"){
+/*****test*******
+object.tuning().getValues().put(changedField, TuningHelper.createPropertyValue("http://localhost:8081/ssrv-war/api/ids/44257C6000304EC8:AD0B2D1B03A81879432582B10047A819", object.tuning().getSchema().getProperty(changedField)));
+//************/
+     var relatedHref = object.tuning().getValues().get(changedField)==null?null:object.tuning().getValues().get(changedField).getValue();
+     object.tuning().getValues().remove("needSelectFiles");
+     if(relatedHref !=null){
+         var related= Utils.newHashMap();
+         related.put("href",relatedHref );
+         related.put("rel","http://intertrust.ru/cmj/relations#related");
+         var linksArr = Utils.newArrayList();
+         linksArr.add(related);
+         object.tuning().getValues().put("link",TuningHelper.createPropertyValue(linksArr, object.tuning().getSchema().getProperty("link")));
+
+          var rkk = TuningHelper.getAFObjectByLink(relatedHref);
+
+          if(object.tuning().getValues().get("type")!= null  && object.tuning().getValues().get("type").getValue().toString()=="COVERING_DOC" ){
+              var addr = Utils.newArrayList();
+              var orgs = Utils.newArrayList();
+              if("OutputRKKF"==rkk.getClass().getSimpleName()){
+                 for(var i=0; i<rkk.addressees().getList().size();i++){
+                      var oneOrg = rkk.addressees().getList().get(i);
+                      if(oneOrg.orgAddressees().getList().isEmpty()){
+                          addr.add(oneOrg.getOrganization());
+                      }else{
+                          addr.addAll(oneOrg.orgAddressees().getList());
+                      }
+                 }
+              }else{
+                  addr = rkk.addressees().getList();
+              }
+
+              for(var i=0; i<addr.size();i++) {
+                   //check sstu guid
+                   var sstuGUID = null;
+                   var curAddr = addr.get(i);
+                   var sstuOrg = null;
+                   var curOrg = curAddr.getOrganization();
+                   if(curOrg==null) continue;
+                   if(orgs.contains(curOrg.getBeard())) continue;
+                   while(curAddr!=null){
+                       var party = curAddr.originalData()==null?null:curAddr.originalData().getParty();
+                       if(party==null)break;
+
+                       var partyType = curAddr.originalData().getType().toString();
+                       if(partyType=="SYS_ROLE"){
+                           curOrg = null;
+                           break;
+                       }else if(partyType=="SYS_DEPARTMENT"){
+                           sstuGUID = party.getSSTUGUID();
+                       }else if (partyType=="SYS_ORGANIZATION" || partyType=="NONSYS_ORGANIZATION"){
+                           sstuGUID = curOrg.getSSTUGUID();
+                       }else if(partyType=="SYS_HUMAN_HEAD"){
+                           sstuGUID = party.getPost().getSSTUGUID();
+                       }
+                       if(sstuGUID!=null && sstuGUID!=""){
+                           sstuOrg = curAddr;
+                           break;
+                       }
+                       curAddr = curAddr.getParent();
+                   }
+                   if(curOrg!=null && (sstuGUID==null || sstuGUID=="")){
+                       sstuGUID = curOrg.getSSTUGUID();
+                       sstuOrg = curOrg.getBeard();
+                   }
+                   if(sstuGUID!=null && sstuGUID!=""){
+                       if(!orgs.contains(sstuOrg)) orgs.add(sstuOrg);
+                   }
+              }
+
+              if(orgs.isEmpty()){
+                   object.tuning().getValues().put("$NoSSTUOrgWarning",
+                                      TuningHelper.createPropertyValue("В сопроводительном документе не найдено ни одного адресата из справочника органов власти и организаций, размещенного на информационном ресурсе ССТУ.РФ",
+                                      object.tuning().getSchema().getProperty("$NoSSTUOrgWarning")));
+                   object.tuning().getValues().put("$showNoSSTUOrg",TuningHelper.createPropertyValue(true, object.tuning().getSchema().getProperty("$showNoSSTUOrg")));
+                    if(object.tuning().getValues().get("content")!=null){
+                         if(object.tuning().getValues().get("content").getValue()!=null){
+                           object.tuning().getValues().get("content").getValue().clear();
+                         }
+                     }
+                   object.tuning().getValues().remove("org");
+                   object.tuning().getValues().remove("regDate");
+                   object.tuning().getValues().remove("regNumber");
+                   object.tuning().getValues().remove("subject");
+                   object.tuning().getValues().remove("docType");
+                   object.tuning().getValues().remove("link");
+                   object.tuning().getValues().remove("hasRelated");
+                   return;
+              }
+
+              object.tuning().getValues().put("org",TuningHelper.createPropertyValue(orgs, object.tuning().getSchema().getProperty("org")));
+          }else{
+              var content = ContentResource.valueOf(rkk);
+              var content2 = ContentResource.valueOf(rkk.verification().image().getFileItems());
+              if((content!=null && content.size()>1) || (content2!=null && content2.size()>1)){
+                  var files= Utils.newArrayList();
+				  if(content!=null && content.size()>1) {
+					for(var i=0; i<content.size();i++) {
+                       files.add(content.get(i).title);
+					}
+				  };
+                   if(content2!=null && content2.size()>1) {
+					for(var i=0; i<content2.size();i++) {
+                       files.add(content2.get(i).title);
+					}
+				  };
+                  object.tuning().getValues().put("relatedDocFiles",TuningHelper.createPropertyValue(files, object.tuning().getSchema().getProperty("relatedDocFiles")));
+                  object.tuning().getValues().put("needSelectFiles",TuningHelper.createPropertyValue(true, object.tuning().getSchema().getProperty("needSelectFiles")));
+
+                  object.tuning().getValues().put("selectedRelatedFile",TuningHelper.createPropertyValue(content.get(0).title, object.tuning().getSchema().getProperty("selectedRelatedFile")));
+                  var contentRKK = Utils.newArrayList();
+                  contentRKK .add(content.get(0));
+                  object.tuning().getValues().put("content",TuningHelper.createPropertyValue(contentRKK , object.tuning().getSchema().getProperty("content")));
+              }else{
+                  object.tuning().getValues().remove("relatedDocFiles");
+                  object.tuning().getValues().remove("needSelectFiles");
+                  object.tuning().getValues().remove("selectedRelatedFile");
+                  object.tuning().getValues().put("content",TuningHelper.createPropertyValue(content , object.tuning().getSchema().getProperty("content")));
+              }
+
+          }
+
+         object.tuning().getValues().put("docType",TuningHelper.createPropertyValue(rkk.getType(), object.tuning().getSchema().getProperty("docType")));
+          if(rkk.registration().getRegisteredInfo() != null){
+              object.tuning().getValues().put("regNumber",TuningHelper.createPropertyValue(rkk.registration().getRegisteredInfo().getNumber().toString(), object.tuning().getSchema().getProperty("regNumber")));
+          }else{
+              object.tuning().getValues().remove("regNumber");
+          }
+          object.tuning().getValues().put("regDate",TuningHelper.createPropertyValue(AFDate.fromJavaDate(rkk.registration().getDate()), object.tuning().getSchema().getProperty("regDate")));
+          object.tuning().getValues().put("subject",TuningHelper.createPropertyValue(rkk.getSubject(), object.tuning().getSchema().getProperty("subject")));
+          object.tuning().getValues().put("hasRelated",TuningHelper.createPropertyValue(true , object.tuning().getSchema().getProperty("hasRelated")));
+          //docInfo
+          object.tuning().getValues().put("docInfo",TuningHelper.createPropertyValue(rkk.getType() +" № "+rkk.registration().getRegisteredInfo().getNumber().toString()+" от "+AFDate.fromJavaDate(rkk.registration().getDate()), object.tuning().getSchema().getProperty("docInfo")));
+     }
+
+  } else if(changedField=="org"||changedField=="regDate"||changedField=="regNumber"){
+        object.tuning().getValues().put("docInfo",
+                   TuningHelper.createPropertyValue((object.tuning().getValues().get("docType")==null?"":object.tuning().getValues().get("docType").getValue()) +
+                  ( object.tuning().getValues().get("regNumber")==null?"":(" № "+object.tuning().getValues().get("regNumber").getValue()))+
+                  (object.tuning().getValues().get("regDate")==null?"":(" от "+object.tuning().getValues().get("regDate").getValue())), object.tuning().getSchema().getProperty("docInfo")));
+   }
+
+}]]></custom-event-handler>
+  </schema>
+</schemas>

@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="Templates-Approving-EDM" name="${catalog.view.Templates_Approving_EDM.name:Шаблоны согласования для БРД}" position="220">
-    <descriptor-ref ref="approving-templatesForEDM"/>
-    <source>
-      <module ident="ApprovingDocs"/>
-    </source>
-  </view>
-</catalog>

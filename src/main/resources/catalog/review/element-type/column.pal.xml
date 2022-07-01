@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <column name="listName" subject="${catalog.column.listName.subject:Название шаблона}" extends="string"/>
-  <complex-column name="reviewList" subject="${catalog.complex-column.reviewList.subject:Список участников}" extends="vcard"/>
-  <column name="reviewListNames" subject="${catalog.column.reviewListNames.subject:Список участников}" extends="string"/>
-</catalog>

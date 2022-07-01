@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Cases" view="(vw_cmj_01_01_LastOpen)" id="cases-Last-Open" name="Кейсы-последние-открытые" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="stateInfo"/>
+        <column-ref ref="stateIcons"/>
+        <column-ref ref="when"/>
+        <column-ref ref="regNumber"/>
+        <column-ref ref="caseType"/>
+        <column-ref ref="initiator"/>
+        <column-ref ref="manager"/>
+        <column-ref ref="status"/>
+        <column-ref ref="subject"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Cases-NewCase" name="${catalog.custom-descriptor.cases-Last-Open.actions.action.Cases-NewCase.name:Создать/Кейс}">
+        <create object-ref="CASE"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

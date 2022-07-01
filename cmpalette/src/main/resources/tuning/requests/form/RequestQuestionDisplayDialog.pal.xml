@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RequestQuestionDisplay" id="RequestQuestionDisplayDialog" name="${ui.form.RequestQuestionDisplayDialog.name:Вопрос}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="questionValue" name="${ui.form.RequestQuestionDisplayDialog.field.questionValue.name:Тематика:}">
+        <appearance importance="normal">
+          <limit height="5" max-height-scroll="5"/>
+        </appearance>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="RequestsThematicClassifier"/>
+        </directories>
+      </field>
+      <field attribute-ref="questionClass" name="${ui.form.RequestQuestionDisplayDialog.field.questionClass.name:Вид вопроса:}">
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="RequestsQuestionClass"/>
+        </directories>
+      </field>
+      <field attribute-ref="questionClassType" name="${ui.form.RequestQuestionDisplayDialog.field.questionClassType.name:Тип вида вопроса:}">
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="RequestsQuestionClassType"/>
+        </directories>
+      </field>
+    </component>
+  </form>
+</ui>

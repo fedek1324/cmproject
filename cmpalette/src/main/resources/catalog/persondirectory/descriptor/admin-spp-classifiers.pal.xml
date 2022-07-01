@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="PersonDirectory" view="(vw_cmj_cl)" id="admin-spp-classifiers" name="АРМАдмин:СПП-Классификаторы" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="clType" filter="true"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="CLASSIFIER" name="${catalog.custom-descriptor.admin-spp-classifiers.actions.action.CLASSIFIER.name:CLASSIFIER}">
+        <create object-ref="CLASSIFIER"/>
+      </action>
+    </actions>
+    <custom-actions schema-ref="SPPClassifierCollection"/>
+  </custom-descriptor>
+</catalog>

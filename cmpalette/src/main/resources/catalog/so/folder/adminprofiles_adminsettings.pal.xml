@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="admin-settings" id="admin-profiles" name="${catalog.view.admin_profiles.name:Профили рабочего времени}" position="40">
+    <descriptor-ref ref="admin-so-profiles"/>
+    <source>
+      <module ident="SO"/>
+    </source>
+  </view>
+</catalog>

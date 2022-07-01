@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="dummy" fulltext="true" id="sodlg-organizations-full-h" name="Внешние контакты" style="default">
+    <builder name="ru.intertrust.cmj.af.so.impl.BuilderSODlg"/>
+    <table>
+      <hierarchy-column descriptor-ref="sodlg-org-subjects-h" column-ref="empty"/>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="empty"/>
+        <column-ref ref="soOrgFullName"/>
+        <column-ref ref="medoGuide"/>
+        <column-ref ref="soCode"/>
+        <column-ref ref="soAddress"/>
+      </columns>
+    </table>
+    <dialog-actions>
+      <action-ref ref="SO-CreateOrganizationDlg"/>
+    </dialog-actions>
+    <actions>
+      <action id="SO-CreateOrganizationDlg" name="${catalog.descriptor.sodlg-organizations-h.actions.action.SO-CreateOrganizationDlg.name:Добавить организацию}">
+        <create object-ref="NONSYS_ORGANIZATION"/>
+      </action>
+    </actions>
+  </descriptor>
+</catalog>

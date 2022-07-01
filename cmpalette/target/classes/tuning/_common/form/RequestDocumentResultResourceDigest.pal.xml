@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RequestDocumentResultResource" id="RequestDocumentResultResourceDigest" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="digest"/>
+      </hide>
+    </properties>
+    <appearance>
+      <label-style width="2" unit="symbol"/>
+    </appearance>
+    <component>
+      <field attribute-ref="docInfo">
+        <appearance importance="high">
+          <label-style>
+            <style id="tunClickableUnderline"/>
+            <style id="tunBlue"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunClickableUnderline"/>
+              <style id="tunBlue"/>
+            </value-style>
+          </field-style>
+        </appearance>
+      </field>
+    </component>
+  </form>
+</ui>

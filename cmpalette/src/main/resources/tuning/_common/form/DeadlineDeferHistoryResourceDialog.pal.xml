@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DeadlineDeferHistoryResource" id="DeadlineDeferHistoryResourceDialog" name="${ui.form.DeadlineDeferHistoryResourceDialog.name:Перенос срока исполнения}" projection="default" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="deadline" name="${ui.form.DeadlineDeferHistoryResourceDialog.field.deadline.name:Указать новый срок}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+          <read-only condition-union="AND">
+            <condition-ref ref="DeadlineDeferHistoryResource_readOnly"/>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="reason.text" name="${ui.form.DeadlineDeferHistoryResourceDialog.field.reason.text.name:Причина переноса}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+          <read-only condition-union="AND">
+            <condition-ref ref="DeadlineDeferHistoryResource_readOnly"/>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+        <directories manual-input="true" limit-livesearch="sys-current">
+          <directory-ref ref="DeadlineDeferReason"/>
+        </directories>
+      </field>
+      <section id="baseDocSection" group="true">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="reason.link" name="${ui.form.DeadlineDeferHistoryResourceDialog.field.reason.link.name:Документ-основание}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <button attribute-ref="addLinkedDoc" name="${ui.form.DeadlineDeferHistoryResourceDialog.button.addLinkedDoc.name:Выбрать}">
+            <appearance>
+              <label-style width="7" unit="symbol"/>
+            </appearance>
+            <action>
+              <custom>
+                <update-linked-doc schema-ref="LinkedDocSelectionBaseForDeadlineDefer"/>
+              </custom>
+            </action>
+          </button>
+          <field attribute-ref="addLinkedDoc" recalc="true">
+            <properties>
+              <hide>
+                <condition>true</condition>
+              </hide>
+            </properties>
+          </field>
+        </component>
+      </section>
+      <field clickable="true" attribute-ref="entry">
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="DeadlineDeferHistoryResource_isEmpty"/>
+          </hide>
+        </properties>
+        <appearance location="table" importance="normal" clickable="true"/>
+      </field>
+    </component>
+  </form>
+</ui>

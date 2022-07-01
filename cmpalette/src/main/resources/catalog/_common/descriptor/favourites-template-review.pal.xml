@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="favourites.template.review" id="favourites-template-review" name="Папки &quot;Избранное&quot; шаблоны листов ознакомления" style="default">
+    <builder name="ru.intertrust.cmj.dp._stdimpl.dao.BuilderFavourites"/>
+    <table>
+      <columns>
+        <column-ref ref="templateName"/>
+        <column-ref ref="self"/>
+        <column-ref ref="reviewList"/>
+      </columns>
+    </table>
+  </descriptor>
+</catalog>

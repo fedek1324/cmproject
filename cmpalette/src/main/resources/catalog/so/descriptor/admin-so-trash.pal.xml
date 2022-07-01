@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="(vw_cmj_admin_trash)" id="admin-so-trash" name="Корзина для админки" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="deletedDate" filter="true"/>
+        <column-ref ref="deletedPerson" filter="true"/>
+        <column-ref ref="Form" filter="true"/>
+        <column-ref ref="objectDescription" sort-asc="true" filter="true"/>
+      </columns>
+    </table>
+    <custom-actions schema-ref="SOTrashCollection"/>
+  </custom-descriptor>
+</catalog>

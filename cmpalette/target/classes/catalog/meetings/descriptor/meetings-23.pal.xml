@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Meetings" view="(vw_cmj_23)" id="meetings-23" name="Заседания - Вопросы - По докладчику" style="default">
+    <help id="99778671"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="reportersNames" category="true"/>
+        <column-ref ref="meetingType"/>
+        <column-ref ref="meetingDate"/>
+        <column-ref ref="meetingTime"/>
+        <column-ref ref="date"/>
+        <column-ref ref="pointNumber"/>
+        <column-ref ref="pointText"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Meetings-CreatePlannedPoint" name="${catalog.custom-descriptor.meetings-23.actions.action.Meetings-CreatePlannedPoint.name:Создать/Планируемый вопрос}">
+        <create object-ref="PLANNED_POINT"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

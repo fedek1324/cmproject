@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="InternalDocs" view="(vw_cmj_04_internal)" id="dp-internal-projects-by-pnum-af5" name="ВнД - проекты по подписи" style="default" show-folder="true">
+    <help id="99778660"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="signerName" category="true"/>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="icon"/>
+        <column-ref ref="regDate" filter="true"/>
+        <column-ref ref="reqType" filter="true"/>
+        <column-ref ref="addressees" filter="true"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="subject" filter="true"/>
+        <column-ref ref="theme"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="InternalDocs-CreateRKK" name="${catalog.custom-descriptor.dp-internal-projects-by-pnum-af5.actions.action.InternalDocs-CreateRKK.name:Создать/Внутренний документ}">
+        <create object-ref="RKK_INTERNAL"/>
+      </action>
+    </actions>
+    <custom-actions schema-ref="RkkReadersCollection"/>
+  </custom-descriptor>
+</catalog>

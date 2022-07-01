@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" extends="LocalUnit" name="LocalPerson">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="middleName">
+      <storage-field name="ETName_L10n"/>
+    </string>
+    <string name="firstName">
+      <storage-field name="ESName_L10n"/>
+    </string>
+    <string name="lastName">
+      <storage-field name="EName_L10n"/>
+    </string>
+  </schema>
+</schemas>

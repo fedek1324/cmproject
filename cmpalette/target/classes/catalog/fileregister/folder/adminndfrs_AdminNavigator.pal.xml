@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+    <folder parent-ref="AdminNavigator" id="admin-nd" name="${catalog.folder.admin_nd.name:Номенклатура дел}" position="60">
+        <subfolders>
+            <view id="admin-additional-archive-settings"
+                  name="${catalog.folder.admin_additional.view.admin_additional_archive_settings.name:Настройки}" position="10">
+                <descriptor-ref ref="admin-additional-archive-settings"/>
+                <source>
+                    <module ident="FileRegister"/>
+                </source>
+            </view>
+
+            <view id="storageperioddirectory" name="${catalog.view.storageperioddirectory.name:Сроки хранения дел}"
+                  position="20">
+                <search-area name="StoragePeriodDirectory"/>
+                <descriptor-ref ref="spd-des-vw-cmj-period"/>
+                <source>
+                    <module ident="StoragePeriodDirectory"/>
+                </source>
+            </view>
+            <view id="storageperiodtrash" name="${catalog.view.trash.ndo.name:Корзина}"
+                  position="30">
+                <search-area name="StoragePeriodDirectory"/>
+                <descriptor-ref ref="spd-des-vw-cmj-period-trash"/>
+                <source>
+                    <module ident="StoragePeriodDirectory"/>
+                </source>
+            </view>
+        </subfolders>
+        <icon code="sprite/sidebarCMJSprite.png" path="sprite/sidebarCMJSprite.png" position="80"/>
+        <webdocs>
+            <group id="0" position="0"/>
+        </webdocs>
+    </folder>
+
+    <view parent-ref="fileregister-settings" id="admin-additional-archive-settings"
+          name="${catalog.folder.admin_additional.view.admin_additional_archive_settings.name:Настройки}" position="10">
+        <descriptor-ref ref="admin-additional-archive-settings"/>
+        <source>
+            <module ident="FileRegister"/>
+        </source>
+    </view>
+
+    <view parent-ref="fileregister-settings" id="storageperioddirectory" name="${catalog.view.storageperioddirectory.name:Сроки хранения дел}"
+          position="20">
+        <search-area name="StoragePeriodDirectory"/>
+        <descriptor-ref ref="spd-des-vw-cmj-period"/>
+        <source>
+            <module ident="StoragePeriodDirectory"/>
+        </source>
+    </view>
+    <view parent-ref="fileregister-settings" id="storageperiodtrash" name="${catalog.view.trash.ndo.name:Корзина}"
+          position="30">
+        <search-area name="StoragePeriodDirectory"/>
+        <descriptor-ref ref="spd-des-vw-cmj-period-trash"/>
+        <source>
+            <module ident="StoragePeriodDirectory"/>
+        </source>
+    </view>
+</catalog>

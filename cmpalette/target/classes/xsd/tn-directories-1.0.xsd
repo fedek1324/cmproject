@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:com="http://www.intertrust.ru/schema/palette/common">
+
+    <xs:import namespace="http://www.intertrust.ru/schema/palette/common" schemaLocation="common-1.0.xsd">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Модули]]></xs:documentation>
+        </xs:annotation>
+    </xs:import>
+
+    <!-- Модификатор справочника СО -->
+    <xs:simpleType name="scriptSQLType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SQL">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[SQL]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="scriptType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Выражение]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="script">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="lang" type="scriptSQLType" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="directoryModifierNameType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Модификатор справочника. Дополнительная фильтрация и сортировка справочников. Применяет к типам справочников: Справочник организаций и Списки рассылки]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="filter" type="scriptType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Фильтрация]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="sort" type="scriptType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сортировка]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="live-search-sort" type="scriptType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сортировка результатов живого поиска]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="live-search-filter" type="scriptType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Фильтрация результатов живого поиска]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название модификатора]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Справочник -->
+    <xs:complexType name="directoryType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Справочник]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="com:placeholderType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название справочника]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор справочника]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--По ключу -->
+    <xs:complexType name="byKeyType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Классификатор по ключу. Поиск по коллекции "(class)"]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="directoryType">
+                <xs:attribute name="key" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <![CDATA[Ключ поиска. Если ключ не задан, то учитываются все документы вида]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="need-lookup-value" type="xs:boolean" use="optional" default="false">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[производить начитку справочника при открытии сущности]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Произвольный классификатор по ключу -->
+    <xs:complexType name="customByKeyType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Произвольный классификатор по ключу]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="byKeyType">
+                <xs:sequence>
+                    <xs:choice>
+                        <xs:element name="module" type="com:moduleType"/>
+                        <xs:element name="module-id" type="com:moduleIdType"/>
+                        <xs:element name="module-current">
+                            <xs:annotation>
+                                <xs:documentation><![CDATA[Текущий тип программы]]></xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                </xs:sequence>
+                <xs:attribute name="collection-ref" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Имя коллекции]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="field-name" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Имя поля выводимого значения]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="search-empty-module" type="xs:boolean" default="false" use="optional">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Искать в пустом комплекте, если БД не найдена в указанном]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Иерархический классификатор по ключу. -->
+    <xs:complexType name="hierarchyByKeyType">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Иерархический классификатор по ключу. Поиск по коллекции (cl_hier)]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="byKeyType">
+                <xs:sequence>
+                    <xs:element name="module" type="com:moduleType" minOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Справочник организаций/подразделений/сотрудников -->
+    <xs:simpleType name="sysOrgEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SYS_ORGANIZATION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Системная организация]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="sysHumanHeadEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SYS_HUMAN_HEAD">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[РВЗ системной организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="sysHumanEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SYS_HUMAN">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сотрудники системной организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="sysDepartmentEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SYS_DEPARTMENT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Подразделения системной организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="sysRoleEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SYS_ROLE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Роль системной организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="nonsysHumanEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NONSYS_HUMAN">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сотрудник несистемной организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="privateHumanEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PRIVATE_HUMAN">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Частные лица]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="nonsysOrgEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NONSYS_ORGANIZATION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Несистемная организация]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="curSysHumanEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CURRENT_SYS_HUMAN">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сотрудники системной организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="curSysHumanHeadEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CURRENT_SYS_HUMAN_HEAD">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[РВЗ системной организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="curSysRoleEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CURRENT_SYS_ROLE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Роль системной организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="curSysDepartmentEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CURRENT_SYS_DEPARTMENT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Подразделения системной организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="curSysOrgEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CURRENT_SYS_ORGANIZATION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Cистемная организация]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="curSysDepartmentLegalEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CURRENT_SYS_DEPARTMENT_LEGAL">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Cистемная организация(Юридическое лицо)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="curForeignSysHumanEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FOREIGN_SYS_HUMAN">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сотрудники внешней организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="curForeignSysHumanHeadEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FOREIGN_SYS_HUMAN_HEAD">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[РВЗ внешней организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="curForeignSysDepartmentEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FOREIGN_SYS_DEPARTMENT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Подразделения внешней организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="curForeignSysOrgEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FOREIGN_SYS_ORGANIZATION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Внешние организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="curForeignSysRoleEntityType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FOREIGN_SYS_ROLE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Роль внешней организации|]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- Текущая системная организация -->
+    <xs:simpleType name="sysNameType">
+        <xs:union
+                memberTypes="sysOrgEntityType sysHumanHeadEntityType sysHumanEntityType sysDepartmentEntityType sysRoleEntityType"/>
+    </xs:simpleType>
+
+    <xs:complexType name="sysEntityType">
+        <xs:attribute name="name" type="sysNameType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Тип субъекта]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="sysCurrent">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Текущая системная организация]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="entity" type="sysEntityType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Внешние системные организации -->
+    <xs:complexType name="sysForeignType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Внешние системные организации]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="entity" type="sysEntityType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Любые системные организации -->
+    <xs:complexType name="sysType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Любые системные организации]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="entity" type="sysEntityType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Несистемные организации -->
+    <xs:simpleType name="nonSysNameType">
+        <xs:union memberTypes="nonsysHumanEntityType privateHumanEntityType"/>
+    </xs:simpleType>
+
+    <xs:complexType name="nonSysEntityType">
+        <xs:attribute name="name" type="nonSysNameType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Тип субъекта]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="nonSysType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Несистемные организации]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="entity" type="nonSysEntityType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Любые чужие организации -->
+    <xs:simpleType name="anyNameType">
+        <xs:union
+                memberTypes="sysOrgEntityType sysHumanHeadEntityType sysDepartmentEntityType sysHumanEntityType sysRoleEntityType nonsysOrgEntityType nonsysHumanEntityType privateHumanEntityType"/>
+    </xs:simpleType>
+
+    <xs:complexType name="anyEntityType">
+        <xs:attribute name="name" type="anyNameType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Тип субъекта]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="anyForeignType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Любые чужие организации]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="entity" type="anyEntityType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="onlyPeopleEntityType">
+        <xs:attribute name="name" type="privateHumanEntityType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Тип субъекта]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="onlyPeopleType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Только люди]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="entity" type="onlyPeopleEntityType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="actorsType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Справочник организаций/подразделений/сотрудников]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="directoryType">
+                <xs:choice>
+                    <xs:element name="sys-current" type="sysCurrent"/>
+                    <xs:element name="sys-foreign" type="sysForeignType"/>
+                    <xs:element name="sys" type="sysType"/>
+                    <xs:element name="nonsys" type="nonSysType"/>
+                    <xs:element name="any-foreign" type="anyForeignType"/>
+                    <xs:element name="only-people" type="onlyPeopleType"/>
+                </xs:choice>
+                <xs:attribute name="show-type" use="optional">
+                    <xs:annotation>
+                        <xs:documentation> <![CDATA[Тип отображения]]></xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="hierarchy">
+                                <xs:annotation>
+                                    <xs:documentation><![CDATA[Иерархическим списком]]></xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                            <xs:enumeration value="flat">
+                                <xs:annotation>
+                                    <xs:documentation><![CDATA[Плоским списком]]></xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="empty-dialog" type="xs:boolean" use="optional" default="false">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <![CDATA[Не загружать первоначальный список субъектов в диалог]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="descriptor-ref" type="xs:string" use="optional">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <![CDATA[Дескриптор для отображения результатов отбора]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="message" type="com:placeholderType" use="optional">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <![CDATA[Сообщение в диалоге вместо первоначального списка субъектов]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="modifier-ref" type="xs:string" use="optional">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Модификатор справочника]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Списки рассылки -->
+    <xs:complexType name="actorsSendListType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Списки рассылки]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="directoryType">
+                <xs:choice>
+                    <xs:element name="sys-current" type="sysCurrent"/>
+                    <xs:element name="sys-foreign" type="sysForeignType"/>
+                    <xs:element name="sys" type="sysType"/>
+                    <xs:element name="nonsys" type="nonSysType"/>
+                    <xs:element name="any-foreign" type="anyForeignType"/>
+                </xs:choice>
+                <xs:attribute name="message" type="com:placeholderType" use="optional">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <![CDATA[Сообщение в диалоге вместо первоначального списка субъектов]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="modifier-ref" type="xs:string" use="optional">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Модификатор справочника]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Избранное -->
+    <xs:simpleType name="favoriteNameType">
+        <xs:union
+                memberTypes="curForeignSysRoleEntityType curForeignSysHumanEntityType curForeignSysDepartmentEntityType curForeignSysHumanHeadEntityType curForeignSysOrgEntityType curSysOrgEntityType curSysHumanEntityType curSysHumanHeadEntityType curSysRoleEntityType nonsysOrgEntityType privateHumanEntityType nonsysHumanEntityType curSysDepartmentEntityType curSysDepartmentLegalEntityType"/>
+    </xs:simpleType>
+
+    <xs:complexType name="favoriteEntityType">
+        <xs:attribute name="name" type="favoriteNameType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Тип субъекта]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="actorsFavoriteType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Избранное]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="directoryType">
+                <xs:sequence>
+                    <xs:element name="entity" type="favoriteEntityType" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Список значений -->
+    <xs:complexType name="valueListType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Список значений]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="directoryType">
+                <xs:sequence>
+                    <xs:element name="value" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:attribute name="name" type="xs:string" use="required">
+                                <xs:annotation>
+                                    <xs:documentation><![CDATA[Значение]]></xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Список значений c алиасами -->
+    <xs:complexType name="listType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Список значений c алиасами]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="directoryType">
+                <xs:sequence>
+                    <xs:element name="value" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:attribute name="name" type="xs:string" use="required">
+                                <xs:annotation>
+                                    <xs:documentation><![CDATA[Значение]]></xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                            <xs:attribute name="alias" type="xs:string" use="required">
+                                <xs:annotation>
+                                    <xs:documentation><![CDATA[Алиас]]></xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Отчеты -->
+    <xs:complexType name="reportType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Отчеты]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="directoryType">
+                <xs:sequence>
+                    <xs:element name="module" type="com:moduleType">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Модуль. Поиск отчетов для данного модуля]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="keyword" type="xs:string" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>
+                                <![CDATA[Ключевые слова. По отчетов по ключевым словам]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Произвольная коллекция -->
+    <xs:complexType name="customCollectionType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Произвольная коллекция]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="directoryType">
+                <xs:sequence>
+                    <xs:choice minOccurs="1">
+                        <xs:element name="view-ref" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation><![CDATA[Представление/Виртуальная папка.
+                                Указывается название представления из Каталога]]></xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:attribute name="ref" type="xs:string" use="required">
+                                    <xs:annotation>
+                                        <xs:documentation><![CDATA[Название]]></xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="relation" type="xs:string" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation><![CDATA[Relation ссылки.
+                                Указывается ссылка на коллекцию для клиента.
+                                Указанная ссылка должна присутствовать в ресурсе.
+                                Значение для поля предоставляется разработчиками после выполнения доработки сервера]]></xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:choice>
+                    <xs:element name="relation-create" type="xs:string" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Relation для создания объекта, введенного вручную.
+                             Указывается ссылка на сервис создания/получения объекта по строковому значению, введенному вручную.
+                             Указанная ссылка должна присутствовать в ресурсе.
+                             Значение для поля предоставляется разработчиками после выполнения доработки сервера.]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Коллекция строк -->
+    <xs:complexType name="stringListType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Коллекция строк]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="directoryType">
+                <xs:sequence>
+                    <xs:element name="relation" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Relation ссылки.
+                         Указывается ссылка на коллекцию для клиента.
+                         Указанная ссылка должна присутствовать в ресурсе.
+                         Значение для поля предоставляется разработчиками после выполнения доработки сервера.]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Коллекция строк c ключами -->
+    <xs:complexType name="stringKeyListType">
+        <xs:annotation>
+            <xs:documentation> <![CDATA[Коллекция строк с ключами]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="directoryType">
+                <xs:sequence>
+                    <xs:element name="relation" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Relation ссылки.
+                         Указывается ссылка на коллекцию для клиента.
+                         Указанная ссылка должна присутствовать в ресурсе.
+                         Значение для поля предоставляется разработчиками после выполнения доработки сервера.]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+                <xs:attribute name="need-lookup-value" type="xs:boolean" use="optional" default="false">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[производить начитку справочника при открытии сущности]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!-- Комплексный справочник -->
+    <xs:complexType name="complexDirType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Комплексный справочник]]></xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="directoryType">
+                <xs:attribute name="only-actual" type="xs:boolean" use="optional" default="false">
+                    <xs:annotation>
+                        <xs:documentation>
+                            <![CDATA[Только актуальные значения]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="alias" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Алиас]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="schema-ref" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Схема]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="modifier-ref" type="xs:string" use="optional">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Модификатор справочника]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <!--Справочники -->
+    <xs:complexType name="directoriesType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="by-key" type="byKeyType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="custom-by-key" type="customByKeyType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="hierarchy-by-key" type="hierarchyByKeyType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="actors" type="actorsType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="actors-favorite" type="actorsFavoriteType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="actors-send-list" type="actorsSendListType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="value-list" type="valueListType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="list" type="listType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="report" type="reportType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="custom-collection" type="customCollectionType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="string-list" type="stringListType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="string-key-list" type="stringKeyListType" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="complex" type="complexDirType" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:choice>
+    </xs:complexType>
+
+</xs:schema>

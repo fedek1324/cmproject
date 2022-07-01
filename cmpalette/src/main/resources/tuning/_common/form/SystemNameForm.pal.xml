@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SystemName" id="SystemNameForm" projection="default" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="read"/>
+        <negative-condition-ref ref="edit"/>
+      </hide>
+    </properties>
+    <appearance field-layout="vertical"/>
+    <component>
+      <field attribute-ref="zamsTitle">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal">
+          <label-style>
+            <style id="tunGray"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunGray"/>
+            </value-style>
+          </field-style>
+        </appearance>
+      </field>
+      <field clickable="true" recalc="true" attribute-ref="groupZam" name="${ui.form.SystemNameForm.field.groupZam.name:Имеют право редактирования или создания (замещающие)}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance location="table" clickable="true">
+          <alt-appearancies>
+            <alt-appearance>
+              <appearance-ref ref="table"/>
+              <enable condition-union="AND">
+                <condition>true</condition>
+              </enable>
+            </alt-appearance>
+          </alt-appearancies>
+        </appearance>
+      </field>
+      <field clickable="true" attribute-ref="auditZam" name="${ui.form.SystemNameForm.field.auditZam.name:Имеют право на чтение (аудиторы):}">
+        <appearance open-mode="dialog" digest-mode="digest4" clickable="true"/>
+        <directories livesearch="true" limit-livesearch="no-restrictions" relation="arm-admin-livesearch-dep-empl-fr-group" digest="digestSOLiveSearch">
+          <show-select-value>
+            <descriptor-ref ref="arm-admin-livesearch-dep-empl-fr-group"/>
+          </show-select-value>
+          <directory-ref ref="arm-admin-dialog-empl"/>
+        </directories>
+      </field>
+    </component>
+  </form>
+</ui>

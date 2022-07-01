@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="OutputDocs" view="(vw_cmj_trash)" id="dp-output-Trash-af5" name="ИсхД - корзина" style="default">
+    <help id="99778661"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="hasGriff"/>
+        <column-ref ref="deleted_date" filter="true"/>
+        <column-ref ref="met_who" filter="true"/>
+        <column-ref ref="objectType" filter="true"/>
+        <column-ref ref="reqType" filter="true"/>
+        <column-ref ref="subject" filter="true"/>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="self"/>
+        <column-ref ref="created_date" filter="true"/>
+        <column-ref ref="correspondentAuthor" filter="true"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="TNObject" name="NumeratorCounterResource">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <schema-ref null-empty="true" ref="ModuleView" name="module">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.numerator.NumeratorRecalcEventHandler_calcModule</recalc-processing-class>
+    </schema-ref>
+    <string name="objectType" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Счетчик']]></script>
+      </calc-values>
+    </string>
+    <string name="deletedState" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Удален']]></script>
+      </calc-values>
+    </string>
+    <string name="organizationName" system="true"/>
+    <string name="organization" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[organizationName!=null ? ('Организация: ' + organizationName) : '']]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="servers">
+      <storage-field name="servername"/>
+    </string>
+    <boolean name="isCluster">
+      <storage-field name="isCluster"/>
+      <storage-string value="1"/>
+    </boolean>
+    <schema-ref ref="AdminSOUnit" array="true" name="departments" temporal="true"/>
+    <string name="docType">
+      <storage-field name="DocType"/>
+    </string>
+    <integer name="lastNumber" system="true" temporal="true">
+      <storage-field name="RI"/>
+    </integer>
+    <string name="prist">
+      <storage-field name="prist"/>
+    </string>
+    <string name="counterFormula">
+      <storage-field name="CounterKeyFormula"/>
+    </string>
+    <string array="true" name="counterFormulaValue">
+      <storage-field name="CounterKey"/>
+    </string>
+    <schema-ref ref="NumeratorNumberConstructor" array="true" name="constructorOfNumber">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.numerator.NumeratorNumberConstructorRecalcHandler</recalc-processing-class>
+    </schema-ref>
+    <boolean name="numberReplacedToRNumber">
+      <storage-field name="NumberChoice"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="zeroizeCounter">
+      <storage-field name="zeroizeCounter"/>
+      <storage-string value="1"/>
+    </boolean>
+    <integer name="periodicityOfZeroing">
+      <storage-field name="periodicityOfZeroing"/>
+    </integer>
+    <string name="unit">
+      <storage-field name="unit"/>
+    </string>
+    <date name="lastZeroingDate">
+      <storage-field name="lastZeroingDate"/>
+    </date>
+    <string name="zeroizeCounterHint" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Например, "1 день" - ежедневно в 23:59, "3 месяца" - ежеквартально в 23:59 последнего дня последнего дня квартала, "1 год" - ежегодно в 23:59 последнего дня года". Последним днем недели считается воскресенье.']]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="usedRNumsByCounter" system="true" temporal="true">
+      <storage-field name="UsedRNums"/>
+    </string>
+    <string name="usedRNumsByHand">
+      <storage-field name="usedRNumsByHand"/>
+    </string>
+    <boolean name="isNumeratorInDominoStorage" system="true"/>
+    <string name="constructorOfNumberTitle" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Конструктор номера документа:']]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="serversForChoice" system="true"/>
+    <string array="true" name="docTypesForChoice" system="true"/>
+    <string name="description">
+      <storage-field name="Description"/>
+    </string>
+    <string name="replicaIdSO" system="true"/>
+    <string name="formulaClassifierType" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[isNumeratorInDominoStorage ? 'Формула поиска счетчика Domino' : 'Формула поиска счетчика AF5']]></script>
+      </calc-values>
+    </string>
+    <string name="$btnCalcFormulaValue" system="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.numerator.NumeratorRecalcEventHandler_calcFormulaValue</recalc-processing-class>
+    </string>
+    <boolean name="isModuleInDominoStorage" system="true"/>
+    <boolean name="moduleIsEmpty" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[module==null || module.moduleAndComplect==null || module.moduleAndComplect.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <string name="leadingServer">
+      <storage-field name="LeadingServer"/>
+    </string>
+  </schema>
+</schemas>

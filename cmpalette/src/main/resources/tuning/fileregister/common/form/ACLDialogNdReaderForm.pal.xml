@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ACLDialogNdReader" id="ACLDialogNdReaderForm" name="${ui.form.ACLDialogNdReaderForm.name:Читатели}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <appearance field-layout="vertical">
+      <dialog-mode height="15" width="20" unit="percent"/>
+    </appearance>
+    <component>
+      <section id="row1" name="${ui.form.ACLDialogNdReaderForm.section.row1.name:Читатели групповая операция}" group="true">
+        <component>
+          <field attribute-ref="title">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance align="left" importance="normal" multiline="true">
+            </appearance>
+          </field>
+          <field attribute-ref="readers">
+            <appearance align="center" multiline="true" importance="normal"/>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+              <directory-ref ref="CURRENT_All_Hierarchy"/>
+              <directory-ref ref="sys_roles"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+        <section id="row2" name="${ui.form.ACLDialogNdReaderForm.section.row2.name:Уведомления новым читателям}" group="true">
+        <appearance field-layout="horizontal"/>
+        <component>
+            <field attribute-ref="needNotifyLabel">
+                <properties>
+                    <hide condition-union="AND">
+                        <condition>true</condition>
+                    </hide>
+                    <read-only condition-union="AND">
+                        <condition>true</condition>
+                    </read-only>
+                </properties>
+                <appearance>
+                    <label-style field-width="90" field-unit="percent"/>
+                </appearance>
+            </field>
+            <field attribute-ref="needNotifyLabel">
+                <properties>
+                    <hide condition-union="AND">
+                        <condition>true</condition>
+                    </hide>
+                </properties>
+                <appearance>
+                    <label-style field-width="90" field-unit="percent"/>
+                </appearance>
+            </field>
+        </component>
+    </section>
+      <button name="${ui.form.ACLDialogNdReaderForm.button.Ок.name:Ок}" tid="submit">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.ACLDialogNdReaderForm.button.Отмена.name:Отменить}" tid="cancel">
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

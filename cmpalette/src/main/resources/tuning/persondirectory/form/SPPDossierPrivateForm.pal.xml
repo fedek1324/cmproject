@@ -1,0 +1,552 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SPPDossierPrivate" id="SPPDossierPrivateForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="SPPDossierReadEdit"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="objectType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style>
+                    <style id="tunIconProgress"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunIconProgress"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="deletedLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_isDeleted"/>
+                  </hide>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style field-width="8" field-unit="symbol">
+                    <style id="tunBlack"/>
+                    <style id="tunBold"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBlack"/>
+                      <style id="tunBold"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row2" group="true">
+            <component>
+              <field attribute-ref="requestStatusTitle">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style field-width="15" field-unit="symbol">
+                    <style id="tunBold"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row3" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="fioShow">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="statusLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style field-width="11" field-unit="symbol">
+                    <style id="tunBlack"/>
+                    <style id="tunBold"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBlack"/>
+                      <style id="tunBold"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row4" group="true">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SPPDossier_isOrgEmployeeRequestToCreate"/>
+                <negative-condition-ref ref="SPPDossier_isOrgEmployeeDossier"/>
+              </hide>
+            </properties>
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="orgPost" name="${ui.form.SPPDossierPrivateForm.section.Header.section.row4.field.orgPost.name:Должность:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <section id="row5" group="true">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SPPDossier_isOrgEmployeeDossier"/>
+                <negative-condition-ref ref="SPPDossier_isOrgEmployeeRequestToCreate"/>
+              </hide>
+            </properties>
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="orgName" name="${ui.form.SPPDossierPrivateForm.section.Header.section.row5.field.orgName.name:Организация:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <section id="row6" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="JoinOrOldInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="CommonInfo" name="${ui.form.SPPDossierPrivateForm.section.CommonInfo.name:Общая информация}">
+        <component>
+          <field attribute-ref="lastName" name="${ui.form.SPPDossierPrivateForm.section.CommonInfo.field.lastName.name:Фамилия:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="firstName" name="${ui.form.SPPDossierPrivateForm.section.CommonInfo.field.firstName.name:Имя:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="middleName" name="${ui.form.SPPDossierPrivateForm.section.CommonInfo.field.middleName.name:Отчество:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="comment" name="${ui.form.SPPDossierPrivateForm.section.CommonInfo.field.comment.name:Комментарий:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="activeWriter" name="${ui.form.SPPDossierPrivateForm.section.CommonInfo.field.activeWriter.name:Много пишущий автор:}">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="ContactAndPrivateData" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.name:Контактные и личные данные}">
+        <component>
+          <field attribute-ref="gender" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.field.gender.name:Пол:}">
+            <appearance importance="normal"/>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="gender"/>
+            </directories>
+          </field>
+          <field attribute-ref="dateOfBirth" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.field.dateOfBirth.name:Дата рождения:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="citizenship" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.field.citizenship.name:Гражданство:}">
+            <appearance importance="normal"/>
+            <directories manual-input="true" limit-livesearch="no-restrictions">
+              <directory-ref ref="spp-citizenship-any"/>
+            </directories>
+          </field>
+          <section id="AddressDataAtThePlaceOfRegistration" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.name:Адресные данные по месту регистрации}">
+            <component>
+              <field attribute-ref="room" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.room.name:Квартира:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="housing" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.housing.name:Корпус:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="structure" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.structure.name:Строение:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="region" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.region.name:Регион:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="house" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.house.name:Дом:}">
+                <appearance importance="normal"/>
+              </field>
+              <section id="улица" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field attribute-ref="typeStreet" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.section.улица.field.typeStreet.name:Улица:}">
+                    <appearance importance="normal"/>
+                    <directories manual-input="true" limit-livesearch="sys-current">
+                      <directory-ref ref="spp-type-street-any"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="nameStreet">
+                    <appearance importance="normal"/>
+                  </field>
+                </component>
+              </section>
+              <field attribute-ref="city" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.city.name:Город/Населенный пункт:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="district" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.district.name:Район:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="country" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.country.name:Страна:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="sendIndex" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.sendIndex.name:Почтовый индекс:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="phoneHouse" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.phoneHouse.name:Домашний телефон:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="phoneMobil" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.phoneMobil.name:Мобильный телефон:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="phoneWork" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.section.AddressDataAtThePlaceOfRegistration.field.phoneWork.name:Рабочий телефон:}">
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="photo" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.field.photo.name:Фотография:}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SPPDossier_isOrgEmployeeDossier"/>
+                <negative-condition-ref ref="SPPDossier_isOrgEmployeeRequestToCreate"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="facsimile" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.field.facsimile.name:Факсимиле подписи:}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SPPDossier_isOrgEmployeeDossier"/>
+                <negative-condition-ref ref="SPPDossier_isOrgEmployeeRequestToCreate"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="personEmail" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.field.personEmail.name:Личный e-mail:}">
+            <appearance importance="normal">
+              <label-style>
+                <style id="tunUnderline"/>
+                <style id="tunGray"/>
+                <style id="tunBold"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunUnderline"/>
+                  <style id="tunGray"/>
+                  <style id="tunBold"/>
+                </value-style>
+              </field-style>
+            </appearance>
+          </field>
+          <field attribute-ref="emplFax" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.field.emplFax.name:Факс:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="account" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.field.account.name:Аккаунт в службах мгновенного обмена сообщениями:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="INN" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.field.INN.name:ИНН:}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SPPDossier_isPrivatePersonDossier"/>
+                <negative-condition-ref ref="SPPDossier_isPrivatePersonRequestToCreate"/>
+              </hide>
+            </properties>
+            <appearance importance="normal">
+              <limit min-lenght="12" max-lenght="12"/>
+            </appearance>
+          </field>
+          <field attribute-ref="SNILS" name="${ui.form.SPPDossierPrivateForm.section.ContactAndPrivateData.field.SNILS.name:СНИЛС:}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SPPDossier_isPrivatePersonDossier"/>
+                <negative-condition-ref ref="SPPDossier_isPrivatePersonRequestToCreate"/>
+              </hide>
+            </properties>
+            <appearance importance="normal">
+              <limit min-lenght="14" max-lenght="14"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <section id="History" name="${ui.form.SPPDossierPrivateForm.section.History.name:История}">
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="SPPDossier_hideHistory"/>
+          </hide>
+        </properties>
+      </section>
+      <section id="RootMenu" name="${ui.form.SPPDossierPrivateForm.section.RootMenu.name:Test Menu}">
+        <component>
+          <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.button.Скрыть системную кнопку Сохранить.name:Скрыть системную кнопку Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE"/>
+            </action>
+          </button>
+          <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.button.Утвердить.name:Утвердить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SPPDossier_canEditAdjustment"/>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <action position="12.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">ApproveAdjustment</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.button.Утвердить.name:Утвердить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SPPDossier_canApprove"/>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <action position="12.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">ApproveZajavGroup</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.button.Отклонить.name:Отклонить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SPPDossier_canEditAdjustment"/>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <action position="12.5">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">RejectAdjustment</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <section id="create" name="${ui.form.SPPDossierPrivateForm.section.RootMenu.section.create.name:Создать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_CanCreate"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.section.create.button.Досье ч/л.name:Досье ч/л}">
+                <action>
+                  <custom>
+                    <create-sibling schema-ref="SPPDossierPrivate"/>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.section.create.button.Новый как копия.name:Новый как копия}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="SPPDossier_canApprove"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <create-copy schema-ref="SPPDossierPrivate"/>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.button.Неактуально.name:Неактуально}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canMakeSPPNotActual"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">MakeSPPDossierNotActual</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.button.Удалить.name:Удалить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_CanEdit_EditMode"/>
+              </hide>
+            </properties>
+            <action position="13.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">DeleteSPPDossierOperation</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <save-existing/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.button.Объединить.name:Объединить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canJoinSPP"/>
+              </hide>
+            </properties>
+            <action position="11.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">JoinDossiers</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <save/>
+              </custom>
+            </action>
+          </button>
+          <section id="deprecated" name="${ui.form.SPPDossierPrivateForm.section.RootMenu.section.deprecated.name:Устарело}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canMakeSPPNotActual"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.section.deprecated.button.Выбрать досье.name:Выбрать досье}">
+                <action position="10.0">
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">MarkSPPDossierAsDeprecated</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.section.deprecated.button.Создать новое досье.name:Создать новое досье}" alias="MarkSPPDossierAsDeprecatedNewDossier">
+                <action>
+                  <custom>
+                    <create-sibling schema-ref="SPPDossierPrivate"/>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <section id="OTHER" name="${ui.form.SPPDossierPrivateForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Добавить в избранное'.name:Скрыть системную кнопку 'Добавить в избранное'}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action>
+                  <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+                </action>
+              </button>
+              <button name="${ui.form.SPPDossierPrivateForm.section.RootMenu.section.OTHER.button.Удалить.name:Удалить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_CanEdit_ReadMode"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">DeleteSPPDossierOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <action id="AdvInput-CreateRKK" name="${catalog.action.AdvInput-CreateRKK.name:Создать/УВК}">
+    <create object-ref="RKK_ADVINPUT"/>
+  </action>
+  <action id="AdvInput-CreateRKKTemplate" name="${catalog.action.AdvInput-CreateRKKTemplate.name:Создать/Шаблон УВК}">
+    <create object-ref="RKK_TEMPLATE_ADVINPUT"/>
+  </action>
+  <action id="Cases-NewCase" name="${catalog.action.Cases-NewCase.name:Создать/Кейс}">
+    <create object-ref="CASE"/>
+  </action>
+  <action id="Cases-NewCaseTemplate" name="${catalog.action.Cases-NewCaseTemplate.name:Создать/Шаблон кейса}">
+    <create object-ref="CASE_TEMPLATE"/>
+  </action>
+  <action id="Contracts-CreateDocTemplate" name="${catalog.action.Contracts-CreateDocTemplate.name:Создать/Шаблон документа к договору}">
+    <create object-ref="DOCUMENT_TEMPLATE"/>
+  </action>
+  <action id="Contracts-CreateResTemplate" name="${catalog.action.Contracts-CreateResTemplate.name:Создать/Шаблон поручения по договору}">
+    <create object-ref="RESOLUTION_TEMPLATE_CONTRACTS"/>
+  </action>
+  <action id="Contracts-CreateRKK" name="${catalog.action.Contracts-CreateRKK.name:Создать/Договор}">
+    <create object-ref="RKK_CONTRACTS"/>
+  </action>
+  <action id="Contracts-CreateRKKTemplate" name="${catalog.action.Contracts-CreateRKKTemplate.name:Создать/Шаблон договора}">
+    <create object-ref="RKK_TEMPLATE_CONTRACTS"/>
+  </action>
+  <action id="Contracts-NewAddAgreementTemplate" name="${catalog.action.Contracts-NewAddAgreementTemplate.name:Создать/Шаблон доп. соглашения}">
+    <create object-ref="ADDAGREEMENT_TEMPLATE"/>
+  </action>
+  <action id="Contracts-NewFinDocTemplate" name="${catalog.action.Contracts-NewFinDocTemplate.name:Создать/Шаблон фин. документа к договору}">
+    <create object-ref="FINANCE_TEMPLATE"/>
+  </action>
+  <action id="Create BPMN" name="${catalog.action.Create BPMN.name:Создать BPMN схему}">
+    <create object-ref="BPMN"/>
+  </action>
+  <action id="Documents-CreateTemplate" name="${catalog.action.Documents-CreateTemplate.name:Создать/Шаблон документа}">
+    <create object-ref="EDMDOCS_TEMPLATE"/>
+  </action>
+  <action id="Documents-NewDocument" name="${catalog.action.Documents-NewDocument.name:Создать/Документ}">
+    <create object-ref="DOCUMENT"/>
+  </action>
+  <action id="InputDocs-CreateResTemplate" name="${catalog.action.InputDocs-CreateResTemplate.name:Создать/Шаблон резолюции входящего документа}">
+    <create object-ref="RESOLUTION_TEMPLATE_INPUT"/>
+  </action>
+  <action id="InputDocs-CreateRKK" name="${catalog.action.InputDocs-CreateRKK.name:Создать/Входящий документ}">
+    <create object-ref="RKK_INPUT"/>
+  </action>
+  <action id="InputDocs-CreateRKKTemplate" name="${catalog.action.InputDocs-CreateRKKTemplate.name:Создать/Шаблон входящего документа}">
+    <create object-ref="RKK_TEMPLATE_INPUT"/>
+  </action>
+  <action id="InternalDocs-CreateResTemplate" name="${catalog.action.InternalDocs-CreateResTemplate.name:Создать/Шаблон резолюции внутреннего документа}">
+    <create object-ref="RESOLUTION_TEMPLATE_INTERNAL"/>
+  </action>
+  <action id="InternalDocs-CreateRKK" name="${catalog.action.InternalDocs-CreateRKK.name:Создать/Внутренний документ}">
+    <create object-ref="RKK_INTERNAL"/>
+  </action>
+  <action id="InternalDocs-CreateRKKTemplate" name="${catalog.action.InternalDocs-CreateRKKTemplate.name:Создать/Шаблон внутреннего документа}">
+    <create object-ref="RKK_TEMPLATE_INTERNAL"/>
+  </action>
+  <action id="mark.deferred" name="${catalog.action.mark.deferred.name:Отложенная задача}">
+    <group-operation/>
+  </action>
+  <action id="mark.deferred" name="${catalog.action.mark.deferred.name:Отложенная задача}">
+    <group-operation/>
+  </action>
+  <action id="mark-label" name="${catalog.action.mark-label.name:Метка задачи}">
+    <group-operation/>
+  </action>
+  <action id="mark-label" name="${catalog.action.mark-label.name:Метка задачи}">
+    <group-operation/>
+  </action>
+  <action id="mark-read" name="${catalog.action.mark-read.name:Отметить задачу прочитанной}">
+    <group-operation/>
+  </action>
+  <action id="mark-unread" name="${catalog.action.mark-unread.name:Отметить задачу непрочитанной}">
+    <group-operation/>
+  </action>
+  <action id="send-to-trash" name="${catalog.action.send-to-trash.name:Удалить в корзину}">
+    <group-operation/>
+  </action>
+  <action id="mark.high.priority" name="${catalog.action.mark.high.priority.name:Отметить как приоритетное}">
+    <group-operation/>
+  </action>
+  <action id="mark.normal.priority" name="${catalog.action.mark.normal.priority.name:Отметить как неприоритетное}">
+    <group-operation/>
+  </action>
+  <action id="Meetings-CreateMeeting" name="${catalog.action.Meetings-CreateMeeting.name:Создать/Заседание}">
+    <create object-ref="MEETING"/>
+  </action>
+  <action id="Meetings-CreateMeetingSettings" name="${catalog.action.Meetings-CreateMeetingSettings.name:Создать/Настройка заседания}">
+    <create object-ref="SETTINGS_MEETINGS"/>
+  </action>
+  <action id="Meetings-CreatePlannedPoint" name="${catalog.action.Meetings-CreatePlannedPoint.name:Создать/Планируемый вопрос}">
+    <create object-ref="PLANNED_POINT"/>
+  </action>
+  <action id="Meetings-CreatePointTemplate" name="${catalog.action.Meetings-CreatePointTemplate.name:Создать/Шаблон вопроса}">
+    <create object-ref="POINT_TEMPLATE"/>
+  </action>
+  <action id="Missions-CreateResTemplate" name="${catalog.action.Missions-CreateResTemplate.name:Создать/Шаблон поручения ОРД}">
+    <create object-ref="RESOLUTION_TEMPLATE_MISSIONS"/>
+  </action>
+  <action id="Missions-CreateRKK" name="${catalog.action.Missions-CreateRKK.name:Создать/ОРД}">
+    <create object-ref="RKK_MISSIONS"/>
+  </action>
+  <action id="Missions-CreateRKKTemplate" name="${catalog.action.Missions-CreateRKKTemplate.name:Создать/Шаблон ОРД}">
+    <create object-ref="RKK_TEMPLATE_MISSIONS"/>
+  </action>
+  <action id="NRD-NewTemplate" name="${catalog.action.NRD-NewTemplate.name:Создать/Шаблон НРД}">
+    <create object-ref="EDMDOCS_NRD_TEMPLATE"/>
+  </action>
+  <action id="OutputDocs-CreateRKK" name="${catalog.action.OutputDocs-CreateRKK.name:Создать/Исходящийй документ}">
+    <create object-ref="RKK_OUTPUT"/>
+  </action>
+  <action id="OutputDocs-CreateRKKTemplate" name="${catalog.action.OutputDocs-CreateRKKTemplate.name:Создать/Шаблон исходящего документа}">
+    <create object-ref="RKK_TEMPLATE_OUTPUT"/>
+  </action>
+  <action id="Requests-CreateResTemplate" name="${catalog.action.Requests-CreateResTemplate.name:Создать/Шаблон поручения ОГ}">
+    <create object-ref="RESOLUTION_TEMPLATE_REQUESTS"/>
+  </action>
+  <action id="Requests-CreateRKK" name="${catalog.action.Requests-CreateRKK.name:Создать/Обращение граждан}">
+    <create object-ref="RKK_REQUESTS"/>
+  </action>
+  <action id="Requests-CreateRKKTemplate" name="${catalog.action.Requests-CreateRKKTemplate.name:Создать/Шаблон обращения граждан}">
+    <create object-ref="RKK_TEMPLATE_REQUESTS"/>
+  </action>
+  <action id="SO-CreateNonSysPerson" name="${catalog.action.SO-CreateNonSysPerson.name:Создать/Сотрудник организации}">
+    <create object-ref="NONSYS_HUMAN"/>
+  </action>
+  <action id="SO-CreateNonSysPersonDlg" name="${catalog.action.SO-CreateNonSysPersonDlg.name:Добавить работника}">
+    <create object-ref="NONSYS_HUMAN"/>
+  </action>
+  <action id="SO-CreateOrganization" name="${catalog.action.SO-CreateOrganization.name:Создать/Организация}">
+    <create object-ref="NONSYS_ORGANIZATION"/>
+  </action>
+  <action id="SO-CreateOrganizationDlg" name="${catalog.action.SO-CreateOrganizationDlg.name:Добавить организацию}">
+    <create object-ref="NONSYS_ORGANIZATION"/>
+  </action>
+  <action id="SO-CreatePrivatePerson" name="${catalog.action.SO-CreatePrivatePerson.name:Создать/Частное лицо}">
+    <create object-ref="PRIVATE_HUMAN"/>
+  </action>
+  <action id="SO-CreatePrivatePersonDlg" name="${catalog.action.SO-CreatePrivatePersonDlg.name:Добавить частное лицо}">
+    <create object-ref="PRIVATE_HUMAN"/>
+  </action>
+  <action id="SO-CreateSendList" name="${catalog.action.SO-CreateSendList.name:Создать/Список рассылки}">
+    <create object-ref="SENDLIST"/>
+  </action>
+  <action id="Tasks-CreateResolution" name="${catalog.action.Tasks-CreateResolution.name:Создать/Поручение}">
+    <create object-ref="RESOLUTION_TASKS"/>
+  </action>
+  <action id="Tasks-CreateResTemplate" name="${catalog.action.Tasks-CreateResTemplate.name:Создать/Шаблон поручения}">
+    <create object-ref="RESOLUTION_TEMPLATE_TASKS"/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Поручение}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Обращение граждан}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон резолюции входящего документа}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Документ}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Планируемый вопрос}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Частное лицо}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Настройка заседания}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон внутреннего документа}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон документа}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон НРД}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Сотрудник организации}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Список рассылки}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Добавить организацию}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/УВК}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон фин. документа к договору}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон входящего документа}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон кейса}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон вопроса}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/ОРД}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон доп. соглашения}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон ОРД}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон поручения ОГ}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон поручения}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон документа к договору}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон УВК}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Заседание}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Добавить частное лицо}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Организация}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон исходящего документа}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Входящий документ}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Кейс}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Договор}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон договора}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Добавить работника}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Исходящийй документ}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон резолюции внутреннего документа}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать BPMN схему}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Внутренний документ}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон обращения граждан}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон поручения по договору}">
+    <group-operation/>
+  </action>
+  <action id="temp" name="${catalog.action.temp.name:Создать/Шаблон поручения ОРД}">
+    <group-operation/>
+  </action>
+  <action id="unmark.deferred" name="${catalog.action.unmark.deferred.name:Убрать задачу из отложенных}">
+    <group-operation/>
+  </action>
+  <action id="unmark.deferred" name="${catalog.action.unmark.deferred.name:Убрать задачу из отложенных}">
+    <group-operation/>
+  </action>
+  <action id="LockerCOK-CreateUserCertificate" name="${catalog.action.LockerCOK-CreateUserCertificate.name:Создать/Сертификат пользователя}">
+    <create object-ref="LOCKER_USER_CERT"/>
+  </action>
+  <action id="LockerCOK-CreateCACertificate" name="${catalog.action.LockerCOK-CreateCACertificate.name:Создать/Сертификат УЦ}">
+    <create object-ref="LOCKER_CERT_AUTH"/>
+  </action>
+  <action id="CreateNdp" name="${catalog.action.fileregister.createndp.name:Создать НДП}">
+    <create object-ref="FILEREGISTER_NDP"/>
+  </action>
+  <action id="CreateNdo" name="${catalog.action.fileregister.createndp.name:Создать НДО}">
+    <create object-ref="FILEREGISTER_NDO"/>
+  </action>
+  <action id="CreateNdpChange" name="${catalog.action.fileregister.createndpchange.name:Создать изменения к НДП}">
+    <create object-ref="FILEREGISTER_NDP_CHANGE"/>
+  </action>
+  <action id="CreateNdoChange" name="${catalog.action.fileregister.createndochange.name:Создать изменения к НДО}">
+    <create object-ref="FILEREGISTER_NDO_CHANGE"/>
+  </action>
+</catalog>

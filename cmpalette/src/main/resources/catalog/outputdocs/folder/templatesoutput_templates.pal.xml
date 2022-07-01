@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="templates" id="templates-output" name="${catalog.folder.templates_output.name:Исходящих}" position="20">
+    <subfolders>
+      <view id="output-TemplatesFlat" name="${catalog.folder.templates_output.view.output_TemplatesFlat.name:документов}" position="30">
+        <search-area name="output_OutputDocs"/>
+        <descriptor-ref ref="dp-02-output-af5"/>
+        <source>
+          <module ident="OutputDocs"/>
+        </source>
+      </view>
+      <view id="output-ResTemplates" name="${catalog.folder.templates_output.view.output_ResTemplates.name:поручения}" position="40">
+        <search-area name="output_InternalDocs"/>
+        <descriptor-ref ref="dp-03-output-af5"/>
+        <source>
+          <module ident="OutputDocs"/>
+        </source>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="empl-fr-livesearch" name="${catalog.view.empl-fr-livesearch.name:Живой поиск}" position="290">
+    <descriptor-ref ref="empl-fr-livesearch"/>
+  </view>
+</catalog>

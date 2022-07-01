@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="arm-admin-dialog-group" name="${catalog.view.arm_admin_dialog_group.name:Группы}" position="-1">
-    <descriptor-ref ref="arm-admin-dialog-group"/>
-    <source>
-      <module ident="SO"/>
-    </source>
-  </view>
-</catalog>

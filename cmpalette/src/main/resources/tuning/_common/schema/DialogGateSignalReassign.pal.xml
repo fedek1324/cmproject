@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="DialogGateSignal" name="DialogGateSignalReassign">
+    <meta>
+      <category name="РМ Администратора\Шлюз\Диалоги"/>
+    </meta>
+    <boolean name="delegate" createlog="true" temporal="true"/>
+    <boolean name="withoutSubs" createlog="true" temporal="true"/>
+    <string name="defaultDelegateUnid" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

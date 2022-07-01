@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="NRDDocumentTemplateResource">
+    <meta>
+      <category name="Система\Документы"/>
+    </meta>
+    <string name="$accessItem" system="true"/>
+    <enum-ref ref="accessTypeEnum" name="accessType" system="true"/>
+    <schema-ref ref="SettingDocumentTypeResource" name="documentType" system="true"/>
+    <schema-ref ref="Pair" array="true" name="documentTopics" system="true"/>
+    <string name="title" system="true"/>
+    <string name="showTemplate" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Шаблон документа']]></script>
+      </calc-values>
+    </string>
+    <string name="showTemplateName" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Название шаблона:']]></script>
+      </calc-values>
+    </string>
+    <string name="templateName" system="true"/>
+    <actor array="true" name="performers"/>
+    <string name="accessInfo" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[forPublic == null ? 'Общедоступный' : forPublic  ? 'Общедоступный' : 'Доступ ограничен']]></script>
+      </calc-values>
+    </string>
+    <boolean name="forPublic" system="true"/>
+    <boolean name="disableLinkAccess">
+      <storage-field name="disableLinkAccess"/>
+    </boolean>
+  </schema>
+</schemas>

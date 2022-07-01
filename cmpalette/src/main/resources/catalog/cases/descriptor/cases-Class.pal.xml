@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Cases" view="(vw_cmj_08_Class)" id="cases-Class" name="Кейсы-классификаторы" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="type" category="true"/>
+        <column-ref ref="name"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Cases-NewCase" name="${catalog.custom-descriptor.cases-Class.actions.action.Cases-NewCase.name:Создать/Кейс}">
+        <create object-ref="CASE"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

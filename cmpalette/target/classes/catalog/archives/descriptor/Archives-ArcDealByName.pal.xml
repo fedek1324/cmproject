@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor view="(vw_cmj_ArcDealByName)" ident="Archives"  style="default" name="Архив - Архивные дела - По наименованию" id="Archives-ArcDealByName">
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder" />
+    <table>
+      <columns>
+        <column-ref ref="self" />
+        <column-ref ref="arcDealIndex" />
+        <column-ref ref="arcDealSubject" />
+        <column-ref ref="arcStorageTerm" />
+        <column-ref ref="arcKindDeal" />
+        <column-ref ref="arcMainState" />
+      </columns>
+    </table>
+    <custom-actions schema-ref="ArchivesArcDealCollection" />
+  </custom-descriptor>
+</catalog>

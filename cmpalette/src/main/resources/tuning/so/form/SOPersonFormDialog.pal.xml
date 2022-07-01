@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SOPerson" id="SOPersonFormDialog" name="${ui.form.SOPersonFormDialog.name:Персона}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <button name="${ui.form.SOPersonFormDialog.button.Скрыть системную кнопку Изменить (для объектов админки работает некорректно).name:Скрыть системную кнопку Изменить (для объектов админки работает некорректно)}">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <action>
+          <system name="update"/>
+        </action>
+      </button>
+      <field attribute-ref="fioShow">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <button name="${ui.form.SOPersonFormDialog.button.Скрыть системную кнопку системную Отменить (для объектов админки работает некорректно).name:Скрыть системную кнопку системную Отменить (для объектов админки работает некорректно)}">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+      <field attribute-ref="workEMail" name="${ui.form.SOPersonFormDialog.field.personalEmail.name:Эл. почта:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="internalPhone" name="${ui.form.SOPersonForm.section.PersonalData.field.internalPhone.name:Внутренний телефон:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="cellPhone" name="${ui.form.SOPersonFormDialog.field.cellPhone.name:Мобильный телефон:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="phone" name="${ui.form.SOPersonFormDialog.field.phone.name:Рабочий телефон :}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="addressFromWorkplace" name="${ui.form.Address:Адрес:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="selfHyperLink">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <condition-ref ref="TNObject_isDeleted"/>
+          </hide>
+        </properties>
+        <appearance importance="normal" open-form="newTab"/>
+      </field>
+    </component>
+  </form>
+</ui>

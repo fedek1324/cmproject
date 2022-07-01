@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="CaseRKKTemplateResource" id="CaseRKKTemplateResource" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <section id="Attributes" name="${ui.form.CaseRKKTemplateResource.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="Main" name="${ui.form.CaseRKKTemplateResource.section.Attributes.section.Main.name:Основные}">
+            <component>
+              <field attribute-ref="mainGoal" name="${ui.form.CaseRKKTemplateResource.section.Attributes.section.Main.field.mainGoal.name:Цель:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKTemplateResource.section.Attributes.section.Main.field.mainGoal.hintPopUp:Цель}</hint-pop-up>
+              </field>
+              <field recalc="true" attribute-ref="type" name="${ui.form.CaseRKKTemplateResource.section.Attributes.section.Main.field.type.name:Вид:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="edit"/>
+                    <condition>true</condition>
+                  </require>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKTemplateResource.section.Attributes.section.Main.field.type.hintPopUp:Вид}</hint-pop-up>
+              </field>
+              <field attribute-ref="activity.startDate" name="${ui.form.CaseRKKTemplateResource.section.Attributes.section.Main.field.activity.startDate.name:Дата:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="digest"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKTemplateResource.section.Attributes.section.Main.field.activity.startDate.hintPopUp:Дата}</hint-pop-up>
+              </field>
+              <field attribute-ref="activity.duration" name="${ui.form.CaseRKKTemplateResource.section.Attributes.section.Main.field.activity.duration.name:Срок:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKTemplateResource.section.Attributes.section.Main.field.activity.duration.hintPopUp:Срок}</hint-pop-up>
+              </field>
+              <field attribute-ref="comment" name="${ui.form.CaseRKKTemplateResource.section.Attributes.section.Main.field.comment.name:Комментарий:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKTemplateResource.section.Attributes.section.Main.field.comment.hintPopUp:Комментарий}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Header">
+        <component>
+          <field attribute-ref="showType" name="${ui.form.CaseRKKTemplateResource.section.Header.field.showType.name:Шаблон кейса}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+          </field>
+          <field attribute-ref="showTemplateName">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+          </field>
+          <field attribute-ref="$titleHeader"/>
+          <section id="row3" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="showManager" name="${ui.form.CaseRKKTemplateResource.section.Header.section.row3.field.showManager.name:Менеджер кейса:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="IsCaseManagerNotEmpty"/>
+                  </hide>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="30" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="EmptyManagerLabel" name="${ui.form.CaseRKKTemplateResource.section.Header.section.row3.field.EmptyManagerLabel.name:Менеджер кейса:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="IsCaseManagerEmpty"/>
+                  </hide>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="10" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="showDuration" name="${ui.form.CaseRKKTemplateResource.section.Header.section.row3.field.showDuration.name:Срок:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Participants" name="${ui.form.CaseRKKTemplateResource.section.Participants.name:Участники}"/>
+      <section id="Documents" name="${ui.form.CaseRKKTemplateResource.section.Documents.name:Документы}">
+        <component>
+          <button name="${ui.form.CaseRKKTemplateResource.section.Documents.button.Добавить документ кейса.name:Добавить документ кейса}">
+            <action>
+              <system name="http://intertrust.ru/cmj/relations#cases2.createdoc"/>
+            </action>
+          </button>
+          <button name="${ui.form.CaseRKKTemplateResource.section.Documents.button.Переместить документ кейса.name:Переместить документ кейса}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canMoveCaseItems"/>
+              </hide>
+            </properties>
+            <action>
+              <system name="http://intertrust.ru/cmj/relations#move"/>
+            </action>
+          </button>
+          <button name="${ui.form.CaseRKKTemplateResource.section.Documents.button.Создать папку кейса.name:Создать папку кейса}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canCreateCaseDocumentsFolder"/>
+              </hide>
+            </properties>
+            <action>
+              <system name="http://intertrust.ru/cmj/relations#cases2.createfolder"/>
+            </action>
+          </button>
+        </component>
+      </section>
+      <section id="Tasks" name="${ui.form.CaseRKKTemplateResource.section.Tasks.name:Задачи}"/>
+    </component>
+  </form>
+</ui>

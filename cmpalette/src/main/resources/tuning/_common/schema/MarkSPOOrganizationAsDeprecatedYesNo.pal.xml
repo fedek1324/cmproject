@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="ClientContextRequest" name="MarkSPOOrganizationAsDeprecatedYesNo">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <boolean name="contextIsCollection" temporal="true"/>
+    <string name="mode" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['dialog']]></script>
+      </calc-values>
+    </string>
+    <string name="messageText" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Внимание!<br></br>При устаревании организации будут объединены списки сотрудников.<br></br>Возможно дублирование записей.<br></br>Продолжить? ']]></script>
+      </calc-values>
+    </string>
+    <string name="orgIdNew" temporal="true"/>
+    <string name="selectOrgId" temporal="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="Templates-Documents" id="Templates-Documents-all" name="${catalog.view.Templates_Documents_all.name:Все шаблоны}" position="-1">
+    <search-area name="_ContractsLite"/>
+    <descriptor-ref ref="dp-66-contracts"/>
+    <source>
+      <module ident="ContractsLite"/>
+    </source>
+  </view>
+</catalog>

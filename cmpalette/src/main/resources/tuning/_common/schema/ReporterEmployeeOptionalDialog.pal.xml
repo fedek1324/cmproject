@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ReporterEmployeeOptionalDialog">
+    <meta>
+      <category name="Отчеты"/>
+    </meta>
+    <string name="$btnDialogNext" system="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.ws.reporter.dialogs.DialogRecalcEventHandler_calcNextDialog</recalc-processing-class>
+    </string>
+    <string name="$btnDialogPrevious" system="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.ws.reporter.dialogs.DialogRecalcEventHandler_calcPrevDialog</recalc-processing-class>
+    </string>
+    <string name="title" system="true">
+      <default-values>
+        <default-value>Необязательный выбор одного сотрудника из СО</default-value>
+      </default-values>
+    </string>
+    <actor name="EmpOptional" system="true"/>
+  </schema>
+</schemas>

@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="inventory-numbers" name="${catalog.view.inventory_numbers.name:Номера дел (ФД)}" position="1000">
-    <descriptor-ref ref="inventory-numbers"/>
-    <source>
-      <module ident="Inventory"/>
-    </source>
-  </view>
-</catalog>

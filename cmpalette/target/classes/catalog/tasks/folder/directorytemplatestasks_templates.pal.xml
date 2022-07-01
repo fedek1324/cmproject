@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="templates" id="directory-templates-tasks" name="${catalog.view.directory_templates_tasks.name:Поручений}" position="70">
+    <search-area name="_Tasks"/>
+    <descriptor-ref ref="dp-03-tasks-af5"/>
+    <source>
+      <module ident="Tasks"/>
+    </source>
+  </view>
+</catalog>

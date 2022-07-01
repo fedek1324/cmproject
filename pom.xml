@@ -2,12 +2,117 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cmpalette</artifactId>
+    <groupId>ru.intertrust.cmj</groupId>
+    <artifactId>cm-custom</artifactId>
+    <version>CM-7.0.2.plt.31</version>
+    <packaging>pom</packaging>
+    <name>Parent POM for CM-7.0.0</name>
+    <description>Корневой POM для сборки проекта CM-7.0.0</description>
 
-    <parent>
-        <groupId>ru.intertrust.cmj</groupId>
-        <artifactId>cm-custom</artifactId>
-        <version>CM-7.0.0.plt.198-SNAPSHOT</version>
-    </parent>
+    <modules>
+        <module>cmpalette</module>
+        <module>reports</module>
+    </modules>
+
+    <organization>
+        <name>InterTrust</name>
+        <url>http://www.intertrust.ru</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Proprietary software license</name>
+            <distribution>repo</distribution>
+            <comments>Copyright (c) 2013 InterTrust. All rights reserved.</comments>
+        </license>
+    </licenses>
+    <mailingLists>
+        <mailingList>
+            <name>Техническая поддержка</name>
+            <post>techsupport@intertrust.ru</post>
+        </mailingList>
+    </mailingLists>
+    <issueManagement>
+        <system>jira</system>
+        <url>http://jira.inttrust.ru/browse/cmsix</url>
+    </issueManagement>
+    <scm>
+        <connection>scm:git:ssh://git@stash.inttrust.ru:7999/cmj/cm-palette-config.git</connection>
+        <developerConnection>scm:git:ssh://git@stash.inttrust.ru:7999/cmj/cm-palette-config.git</developerConnection>
+      <tag>HEAD</tag>
+  </scm>
+    <ciManagement>
+        <system>jenkins</system>
+        <url>https://jenkins.inttrust.ru/job/Builds/job/cm-palette-config/job/master/</url>
+    </ciManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Implementation-Title>${project.name}</Implementation-Title>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Implementation-Vendor-Id>${project.groupId}</Implementation-Vendor-Id>
+                            <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4.1</version>
+                <configuration>
+                    <releaseProfiles>release</releaseProfiles>
+                    <preparationGoals>clean install</preparationGoals>
+                    <goals>deploy</goals>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <pushChanges>false</pushChanges>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <localCheckout>true</localCheckout>
+                    <tagNameFormat>CM-7.0.0.plt.@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>intertrust.releases</id>
+            <snapshots><enabled>true</enabled></snapshots>
+            <url>http://sup.inttrust.ru:8081/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>intertrust.releases</id>
+            <url>http://sup.inttrust.ru:8081/nexus/content/groups/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <distributionManagement>
+        <repository>
+            <id>intertrust.releases</id>
+            <url>http://sup.inttrust.ru:8081/nexus/content/repositories/releases</url>
+            <uniqueVersion>false</uniqueVersion>
+        </repository>
+        <snapshotRepository>
+            <id>intertrust.snapshots</id>
+            <url>http://sup.inttrust.ru:8081/nexus/content/repositories/snapshots</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>

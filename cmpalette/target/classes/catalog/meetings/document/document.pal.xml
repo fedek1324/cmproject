@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <document name="${catalog.document.point6dda0edfa198429094f027e05515bb02.name:Вопрос}" schema-ref="PointResource" object-ref="POINT">
+    <module ident="Meetings" complect=""/>
+  </document>
+  <document name="${catalog.document.extracte611c3355e5b41ea841f1f7bc4de836b.name:Выписка}" schema-ref="ExtractResource" object-ref="EXTRACT">
+    <module ident="Meetings" complect=""/>
+  </document>
+  <document name="${catalog.document.vote250b63a7955e4a30be07a6c9c1aef89d.name:Голос}" schema-ref="VoteResource" object-ref="VOTE">
+    <module ident="Meetings" complect=""/>
+  </document>
+  <document name="${catalog.document.directive66f8813ecbae45698b229cd5608b53e6.name:Директива}" schema-ref="DirectiveResource" object-ref="DIRECTIVE">
+    <module ident="Meetings" complect=""/>
+  </document>
+  <document name="${catalog.document.meetinged45729f2132456bbd364868e596a252.name:Заседание}" schema-ref="MeetingResource" object-ref="MEETING" general="true">
+    <module ident="Meetings" complect=""/>
+  </document>
+  <document name="${catalog.document.settings_meetings7cb1c010822347028de8b32601c76acf.name:Настройка заседания}" schema-ref="MeetingTypeSettingResource" object-ref="SETTINGS_MEETINGS">
+    <module ident="Meetings" complect=""/>
+  </document>
+  <document name="${catalog.document.planned_pointc3cb4a30473c449384ed1026d703f994.name:Планируемый вопрос}" schema-ref="PointResource" object-ref="PLANNED_POINT">
+    <module ident="Meetings" complect=""/>
+  </document>
+  <document name="${catalog.document.meeting_contentddb097ff299c4e539b6794b777375a3f.name:Приложения}" schema-ref="MeetingContentResource" object-ref="MEETING_CONTENT">
+    <module ident="Meetings" complect=""/>
+  </document>
+  <document name="${catalog.document.decision_projectd91ce494333b40f89d780a350360b3ea.name:Проект решения}" schema-ref="DecisionProjectResource" object-ref="DECISION_PROJECT">
+    <module ident="Meetings" complect=""/>
+  </document>
+  <document name="${catalog.document.decisionb549d1e5526a4abaa02f105c88767115.name:Решение}" schema-ref="DecisionResource" object-ref="DECISION">
+    <module ident="Meetings" complect=""/>
+  </document>
+  <document name="${catalog.document.Совещания_meeting2cc9d896849b40279201a4d3415c48b4.name:Совещание}" schema-ref="MeetingResource" object-ref="MEETING" general="true">
+    <module ident="Meetings" complect="Совещания"/>
+  </document>
+  <document name="${catalog.document.point_templatea9196a9e48c0480797833575719b82be.name:Шаблон вопроса}" schema-ref="PointTemplateResource" object-ref="POINT_TEMPLATE">
+    <module ident="Meetings" complect=""/>
+  </document>
+</catalog>

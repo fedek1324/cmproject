@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="SOTNObject" name="SOPerson">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string array="true" name="afScanFiels" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[{"NotesName"}]]></script>
+      </calc-values>
+    </string>
+    <boolean name="isBlocked" createlog="true">
+      <storage-field name="IsNotConnectedToSystem"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="building">
+      <storage-field name="EPosition"/>
+    </string>
+    <string name="lastName">
+      <storage-field name="EName"/>
+    </string>
+    <string name="organizationName" system="true"/>
+    <boolean name="isSelfNotify">
+      <storage-field name="SelfNotify"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="exchAccount">
+      <storage-field name="ExchAccount"/>
+    </string>
+    <string name="notesName" system="true">
+      <storage-field name="NotesName"/>
+    </string>
+    <string name="tabNum">
+      <storage-field name="Tab"/>
+    </string>
+    <string name="workEMail">
+      <storage-field name="EMail"/>
+    </string>
+    <boolean name="isCheckDocChangedBetweenApprovAndSign">
+      <storage-field name="SignSettings"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="isRepeatNotificationWhenTaskExpired" createlog="true">
+      <storage-field name="RepeatReminder"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="comment">
+      <storage-field name="comment"/>
+    </string>
+    <boolean name="isShowNumDlgAfterDocRegistered">
+      <storage-field name="NumberInformation"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="mobileComplect">
+      <storage-field name="mobileComplect"/>
+    </string>
+    <boolean name="hasMobileWS">
+      <storage-field name="hasMobileWS"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="isHideSigningDataDialog">
+      <storage-field name="Crypto_HideInfoBeforeSign"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="isAutoVerifySignatureOnDocOpen" createlog="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.person.RecalcForIsAutoVerifySignatureOnDocOpen</recalc-processing-class>
+      <storage-field name="Crypto_AutoVerify"/>
+      <storage-string value="Auto"/>
+    </boolean>
+    <boolean name="isShowVerifyDlgWhenSignValid">
+      <storage-field name="Crypto_GoodSignShowDialog"/>
+      <storage-string value="Show"/>
+    </boolean>
+    <string name="inn">
+      <storage-field name="inn"/>
+      <validate>
+        <regex>^[0-9]{12}$</regex>
+      </validate>
+    </string>
+    <file name="photo">
+      <storage-field name="Photo"/>
+    </file>
+    <date name="birthDay">
+      <storage-field name="BirthDay"/>
+    </date>
+    <string name="objectType" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Персона']]></script>
+      </calc-values>
+    </string>
+    <string name="personalEmail">
+      <storage-field name="personalEmail"/>
+    </string>
+    <string name="snils">
+      <storage-field name="snils"/>
+      <validate>
+        <regex>^\d{3}-\d{3}-\d{3} \d{2}$</regex>
+      </validate>
+    </string>
+    <string name="fioShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(lastName==null ? '' : lastName +' ')+(firstName==null ? '' :firstName +' ')+(middleName==null ? '' : middleName)]]></script>
+      </calc-values>
+    </string>
+    <string name="showApps" temporal="true"/>
+    <hyperlink name="selfHyperLink" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.misc.HyperLink).createHyperLink('Открыть карточку в новой вкладке' +'~#'+T(ru.intertrust.cmj.ws.base.servlet.ServletUrlHolder).getServerUrlStr() +link.?[rel=='self'].get(0).href+'~#newTab~#local')]]></script>
+      </calc-values>
+    </hyperlink>
+    <string name="mode" temporal="true"/>
+    <string name="counter" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['context']]></script>
+      </calc-values>
+    </string>
+    <string name="empty" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['']]></script>
+      </calc-values>
+    </string>
+    <string name="organizationLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Организация']]></script>
+      </calc-values>
+    </string>
+    <string name="appointCollection" temporal="true"/>
+    <string name="fullName">
+      <storage-field name="efullname"/>
+    </string>
+    <string name="shortName">
+      <storage-field name="EShortName"/>
+    </string>
+    <string name="autoCard">
+      <storage-field name="auto_card"/>
+    </string>
+    <string array="true" name="cellPhone" createlog="true">
+      <storage-field name="CellPhone"/>
+    </string>
+    <boolean name="isChangedOther" temporal="true"/>
+    <boolean name="isChangedFIOL10n" temporal="true"/>
+    <boolean name="isChangedFIO" temporal="true"/>
+    <boolean name="isChangedNN" temporal="true"/>
+    <boolean name="isChanged" temporal="true"/>
+    <enum-ref ref="GENDER" name="gender">
+      <storage-field name="gender"/>
+    </enum-ref>
+    <schema-ref ref="FIOCases" name="cases"/>
+    <schema-ref ref="LocalPerson" array="true" name="local"/>
+    <schema-ref ref="ClientContext_OperaionWithDialogAndResource" name="$clientContext" temporal="true"/>
+    <string name="room">
+      <storage-field name="EKNumber"/>
+    </string>
+    <string name="skype">
+      <storage-field name="Skype"/>
+    </string>
+    <string name="firstName">
+      <storage-field name="ESName"/>
+    </string>
+    <string name="fillCases" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.person.RecalcForChangePersonFillCases</recalc-processing-class>
+    </string>
+    <string array="true" name="phone" createlog="true">
+      <storage-field name="EPhone"/>
+      <validate>
+        <regex>^[0-9]*$</regex>
+        <message locale="ru">Допустимый формат - арабские цифры без разделителей</message>
+      </validate>
+    </string>
+    <string name="internalPhone" createlog="true">
+      <storage-field name="EInternalPhone"/>
+    </string>
+    <string name="middleName">
+      <storage-field name="ETName"/>
+    </string>
+    <string name="genderNotSpecified" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[gender==null || gender.isEmpty() ? 'Не указан' : (gender.equals("female") ? 'Жен.' : 'Муж.')]]></script>
+      </calc-values>
+    </string>
+    <email name="testEMail">
+      <storage-field name="testEMail"/>
+    </email>
+    <schema-ref ref="TestObject1" name="object1" temporal="true"/>
+    <schema-ref ref="PersonUids" array="true" name="uids" createlog="true" temporal="true"/>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="organizationUnit" system="true" temporal="true"/>
+    <string name="contactLabel1" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Личная информация']]></script>
+      </calc-values>
+    </string>
+    <string name="contactLabel2" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Адрес']]></script>
+      </calc-values>
+    </string>
+    <string name="contactSettingsLabel_1" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Работа с РКК']]></script>
+      </calc-values>
+    </string>
+    <string name="contactLabel3" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Контакты']]></script>
+      </calc-values>
+    </string>
+    <string name="contactSettingsLabel_2" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Криптография']]></script>
+      </calc-values>
+    </string>
+    <string name="contactLabel4" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Учетные данные']]></script>
+      </calc-values>
+    </string>
+    <string name="contactSettingsLabel_3" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['МРМ']]></script>
+      </calc-values>
+    </string>
+    <string name="password" createlog="true">
+      <storage-field name="password"/>
+    </string>
+    <boolean name="notesNameNotEmpty" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[notesName != null && notesName != '']]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="showPassword" createlog="true">
+      <storage-field name="showPassword"/>
+    </boolean>
+    <string name="uidsLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Идентификаторы']]></script>
+      </calc-values>
+    </string>
+    <schema-ref null-empty="true" ref="SecurityStamps" name="securityStamp" array="true"/>
+    <string name="addressFromWorkplace" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(T(org.springframework.util.StringUtils).hasLength(building) && T(org.springframework.util.StringUtils).hasLength(room)) ? building + ", " + room : (T(org.springframework.util.StringUtils).hasLength(building) ? building : room)]]></script>
+      </calc-values>
+    </string>
+    <custom-event-handler lang="JavaScript"><![CDATA[importPackage(Packages.ru.intertrust.cmj.rest.tuning);
+importClass(Packages.ru.intertrust.cmj.rest.tuning.TuningHelper);
+importClass(Packages.ru.intertrust.cmj.tunable.object.common.TunableObjectHelper);
+importClass(Packages.ru.intertrust.cmj.af.tuning.AFInstanceObject);
+importClass(Packages.ru.intertrust.cmj.admin.declension.CaseDeclensionService.Case);
+
+function querySave(object, document) {
+
+    var values = object.tuning().getValues();
+    var cases = values.get("cases").getValues();
+    var tmpLastNameValue = values.get("lastName");
+    var tmpLirstNameValue = values.get("firstName");
+    var tmpLiddleNameValue = values.get("middleName");
+    var lastNameValue = "";
+    var firstNameValue = "";
+    var middleNameValue = "";
+
+    if(tmpLastNameValue != null )
+        lastNameValue = tmpLastNameValue.getValue();
+    if(tmpLirstNameValue != null )
+        firstNameValue = tmpLirstNameValue.getValue();
+    if(tmpLiddleNameValue != null )
+        middleNameValue = tmpLiddleNameValue.getValue();
+
+    if (!"".equals(lastNameValue) && document.getItemValue("EName").size() > 0 && !lastNameValue.equals(document.getItemValue("EName").get(0))) {
+        var notUseDeclensionForLastName = cases.get("notUseDeclensionForLastName").getValue();
+        if (notUseDeclensionForLastName) {
+            values.put("notUseDeclensionForLastName",TuningHelper.createPropertyValue(false, values.get("cases").getSchema().getProperty("notUseDeclensionForLastName")));
+        }
+    }
+
+    if (!"".equals(firstNameValue) && document.getItemValue("ESName").size() > 0 && !firstNameValue.equals(document.getItemValue("ESName").get(0))) {
+        var notUseDeclensionForFirstName = cases.get("notUseDeclensionForFirstName").getValue();
+        if (notUseDeclensionForFirstName) {
+            values.put("notUseDeclensionForFirstName",TuningHelper.createPropertyValue(false, values.get("cases").getSchema().getProperty("notUseDeclensionForFirstName")));
+        }
+    }
+
+    if (!"".equals(middleNameValue) && document.getItemValue("ETName").size() > 0 && !middleNameValue.equals(document.getItemValue("ETName").get(0))) {
+        var notUseDeclensionForMiddleName = cases.get("notUseDeclensionForMiddleName").getValue();
+        if (notUseDeclensionForMiddleName) {
+            values.put("notUseDeclensionForMiddleName",TuningHelper.createPropertyValue(false, values.get("cases").getSchema().getProperty("notUseDeclensionForMiddleName")));
+        }
+    }
+
+    return true;
+}
+]]></custom-event-handler>
+  </schema>
+</schemas>

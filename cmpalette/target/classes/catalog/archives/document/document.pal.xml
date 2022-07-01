@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <tunable-object form-name="ARCHIVES_ARC_DEAL" general="true" schema-ref="ArchivesArcDealResource" name="${catalog.tunable-object.2d96136102df4b7da3877e16e3a2e6cf.name:Архивное дело}">
+    <module ident="Archives" />
+    <strategy>
+      <rest-get key="ArchivesArcDealResource" />
+      <rest-update key="ArchivesArcDealResource" />
+    </strategy>
+  </tunable-object>
+  <tunable-object form-name="ARCHIVES_FUND_DEAL" general="true" schema-ref="ArchivesFundDealResource" name="${catalog.tunable-object.f959b83da0d34133a4b8d923f20e9255.name:Дело фонда}">
+    <module ident="Archives" />
+    <strategy>
+      <rest-get key="ArchivesFundDealResource" />
+      <rest-update key="ArchivesFundDealResource" />
+    </strategy>
+  </tunable-object>
+  <tunable-object form-name="ARCHIVES_DEPARTMENT_DEAL" general="true" schema-ref="ArchivesDepDealResource" name="${catalog.tunable-object.14fa60709fef43f08c719de37d0159e5.name:Опись дел подразделения}">
+    <module ident="Archives" />
+    <strategy>
+      <rest-get key="ArchivesDepDealResource" />
+      <rest-update key="ArchivesDepDealResource" />
+    </strategy>
+  </tunable-object>
+  <tunable-object form-name="ARCHIVES_ANNUAL_INVENTORY" general="true" schema-ref="ArchivesAnnualInventoryResource" name="${catalog.tunable-object.671fc2e1d7304a3aa50b41ded8c71157.name:Годовой раздел описи дел}">
+    <module ident="Archives" />
+    <strategy>
+      <rest-get key="ArchivesAnnualInventoryResource" />
+      <rest-update key="ArchivesAnnualInventoryResource" />
+    </strategy>
+  </tunable-object>
+  <tunable-object form-name="ARCHIVES_PROP_ACT_DESTR" general="true" schema-ref="ArchivesPropActDestructionResource" name="${catalog.tunable-object.86877f2fbddd492386b1413cbc5e0957.name:Предложения к акту (о выделении на уничтожение)}">
+    <module ident="Archives" />
+    <strategy>
+      <rest-get key="ArchivesPropActDestructionResource" />
+      <rest-update key="ArchivesPropActDestructionResource" />
+    </strategy>
+  </tunable-object>
+  <tunable-object form-name="ARCHIVES_ACT_DESTRUCTION" general="true" schema-ref="ArchivesActDestructionResource" name="${catalog.tunable-object.13b25ceb34f74abdb4cd803f51153474.name:Акт о выделении на уничтожение}">
+    <module ident="Archives" />
+    <strategy>
+      <rest-get key="ArchivesActDestructionResource" />
+      <rest-update key="ArchivesActDestructionResource" />
+    </strategy>
+  </tunable-object>
+  <tunable-object form-name="ARCHIVES_ARC_INTERNAL_RKK" general="true" schema-ref="ArchivesArcInternalRkkResource" name="${catalog.tunable-object.61984b65a34e418f9f9a6884a792ce47.name:Внутренний документ архива}">
+    <module ident="Archives" />
+    <strategy>
+      <rest-get key="ArchivesArcInternalRkkResource" />
+      <rest-update key="ArchivesArcInternalRkkResource" />
+    </strategy>
+  </tunable-object>
+  <tunable-object form-name="ARCHIVES_ARC_INVENTORY" general="true" schema-ref="ArchivesArcInventoryResource" name="${catalog.tunable-object.849b315d65824c9caba4bb37c37c42e4.name:Архивная опись}">
+    <module ident="Archives" />
+    <strategy>
+      <rest-get key="ArchivesArcInventoryResource" />
+      <rest-update key="ArchivesArcInventoryResource" />
+    </strategy>
+  </tunable-object>
+</catalog>

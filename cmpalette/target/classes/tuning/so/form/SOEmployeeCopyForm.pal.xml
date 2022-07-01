@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SOEmployee" id="SOEmployeeCopyForm" name="${ui.form.SOEmployeeCopyForm.name:Штатная единица (Копия)}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="copy"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="Position" name="${ui.form.SOEmployeeCopyForm.field.Position.name:Должность:}">
+        <appearance align="left" importance="normal">
+          <label-style field-width="62" field-unit="symbol"/>
+        </appearance>
+        <hint-pop-up>${ui.form.SOEmployeeCopyForm.field.Position.hintPopUp:Должность}</hint-pop-up>
+        <hint-in-field>${ui.form.SOEmployeeCopyForm.field.Position.hintInField:Должность}</hint-in-field>
+      </field>
+      <field attribute-ref="asForTheUser.empty">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal">
+          <label-style field-width="2" field-unit="symbol"/>
+        </appearance>
+      </field>
+      <field attribute-ref="rang" name="${ui.form.SOEmployeeCopyForm.field.rang.name:Ранг:}">
+        <appearance importance="normal">
+          <label-style field-width="62" field-unit="symbol"/>
+        </appearance>
+        <hint-pop-up>${ui.form.SOEmployeeCopyForm.field.rang.hintPopUp:Ранг}</hint-pop-up>
+      </field>
+      <field attribute-ref="parentHierarchy" name="${ui.form.SOEmployeeCopyForm.field.parentHierarchy.name:Непосредственно подчиняется:}">
+        <appearance importance="normal">
+          <label-style field-width="70" field-unit="symbol"/>
+        </appearance>
+      </field>
+      <field attribute-ref="delegate_beard" name="${ui.form.SOEmployeeCopyForm.field.delegate_beard.name:Принимающий дела как для участника документооборота:}">
+        <appearance importance="normal">
+          <label-style field-width="62" field-unit="symbol"/>
+        </appearance>
+        <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+          <directory-ref ref="arm-admin-dialog-empl"/>
+        </directories>
+      </field>
+      <field attribute-ref="receiving" name="${ui.form.SOEmployeeCopyForm.field.receiving.name:Принимающий дела как для места регистрации:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="SOEmployee_isRVZ"/>
+          </hide>
+        </properties>
+        <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+          <directory-ref ref="arm-admin-dialog-dep"/>
+          <directory-ref ref="arm-admin-dialog-rvz"/>
+        </directories>
+      </field>
+      <field attribute-ref="IsRVZ" name="${ui.form.SOEmployeeCopyForm.field.IsRVZ.name:Является РВЗ:}"/>
+      <field attribute-ref="area" name="${ui.form.SOEmployeeCopyForm.field.area.name:Территория:}">
+        <properties>
+          <require condition-union="AND">
+            <condition-ref ref="edit"/>
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance align="left" multiline="true" importance="normal">
+          <label-style field-width="62" field-unit="symbol"/>
+        </appearance>
+        <hint-pop-up>${ui.form.SOEmployeeCopyForm.field.area.hintPopUp:Территория}</hint-pop-up>
+        <directories limit-livesearch="no-restrictions">
+          <directory-ref ref="arm-admin-select-area"/>
+        </directories>
+      </field>
+      <section id="SystemNames" name="${ui.form.SOEmployeeCopyForm.section.SystemNames.name:Системные имена}">
+        <component>
+          <field attribute-ref="Independent" name="${ui.form.SOEmployeeCopyForm.section.SystemNames.field.Independent.name:Может самостоятельно изменять настройки:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="CanChangeAuditors" name="${ui.form.SOEmployeeCopyForm.section.SystemNames.field.CanChangeAuditors.name:Может менять замещающих и аудиторов:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="systemName">
+            <appearance location="subform"/>
+          </field>
+        </component>
+      </section>
+      <section id="SystemGroups" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.name:Системные группы}">
+        <component>
+          <section id="AsForTheUser" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.name:Как для пользователя}">
+            <component>
+              <section id="row_11" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_11.name:Входящие документы}" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field clickable="true" attribute-ref="incDepRvz">
+                    <appearance clickable="true"/>
+                    <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+                      <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="asForTheUser.incDefMp"/>
+                  <section id="col12" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field clickable="true" attribute-ref="asForTheUser.incDefMpUnit">
+                        <appearance clickable="true"/>
+                        <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+                          <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                        </directories>
+                      </field>
+                      <field attribute-ref="asForTheUser.incCanChange" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_11.section.col12.field.asForTheUser.incCanChange.name:Можно менять МР}"/>
+                    </component>
+                  </section>
+                  <section id="col13" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field attribute-ref="asForTheUser.incCounterJS"/>
+                      <field attribute-ref="asForTheUser.incCounter">
+                        <directories manual-input="true" limit-livesearch="no-restrictions">
+                          <directory-ref ref="so-counter-search-any"/>
+                        </directories>
+                      </field>
+                    </component>
+                  </section>
+                </component>
+              </section>
+              <section id="row_12" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_12.name:Исходящие документы}" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field clickable="true" attribute-ref="outDepRvz">
+                    <appearance align="center" clickable="true"/>
+                    <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+                      <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="asForTheUser.outDefMp">
+                    <appearance align="center">
+                      <label-style field-width="10" field-unit="symbol"/>
+                    </appearance>
+                    <directories limit-livesearch="no-restrictions">
+                      <directory-ref ref="orgsAll"/>
+                      <directory-ref ref="dep-struct"/>
+                    </directories>
+                  </field>
+                  <section id="col22" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field clickable="true" attribute-ref="asForTheUser.outDefMpUnit">
+                        <appearance clickable="true"/>
+                        <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+                          <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                        </directories>
+                      </field>
+                      <field attribute-ref="asForTheUser.outCanChange" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_12.section.col22.field.asForTheUser.outCanChange.name:Можно менять МР}"/>
+                    </component>
+                  </section>
+                  <section id="col23" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field attribute-ref="asForTheUser.outCounterJS">
+                        <appearance align="center"/>
+                      </field>
+                      <field attribute-ref="asForTheUser.outCounter">
+                        <appearance align="center"/>
+                        <directories manual-input="true" limit-livesearch="no-restrictions">
+                          <directory-ref ref="so-counter-search-any"/>
+                        </directories>
+                      </field>
+                    </component>
+                  </section>
+                </component>
+              </section>
+              <section id="row_13" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_13.name:Внутренние документы}" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field clickable="true" attribute-ref="intDepRvz">
+                    <appearance align="center" clickable="true"/>
+                    <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+                      <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="asForTheUser.intDefMp">
+                    <appearance align="center">
+                      <label-style field-width="10" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <section id="col32" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field clickable="true" attribute-ref="asForTheUser.intDefMpUnit">
+                        <appearance clickable="true"/>
+                        <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+                          <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                        </directories>
+                      </field>
+                      <field attribute-ref="asForTheUser.intCanChange" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_13.section.col32.field.asForTheUser.intCanChange.name:Можно менять МР}"/>
+                    </component>
+                  </section>
+                  <section id="col33" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field attribute-ref="asForTheUser.intCounterJS">
+                        <appearance align="center"/>
+                      </field>
+                      <field attribute-ref="asForTheUser.intCounter">
+                        <appearance align="center"/>
+                        <directories manual-input="true" limit-livesearch="no-restrictions">
+                          <directory-ref ref="so-counter-search-any"/>
+                        </directories>
+                      </field>
+                    </component>
+                  </section>
+                </component>
+              </section>
+              <section id="row_14" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_14.name:ОРД}" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field clickable="true" attribute-ref="ordDepRvz">
+                    <appearance align="center" clickable="true"/>
+                    <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+                      <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="asForTheUser.ordDefMp">
+                    <appearance align="center">
+                      <label-style field-width="10" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <section id="col42" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field clickable="true" attribute-ref="asForTheUser.ordDefMpUnit">
+                        <appearance clickable="true"/>
+                        <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+                          <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                        </directories>
+                      </field>
+                      <field attribute-ref="asForTheUser.ordCanChange" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_14.section.col42.field.asForTheUser.ordCanChange.name:Можно менять МР}"/>
+                    </component>
+                  </section>
+                  <section id="col43" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field attribute-ref="asForTheUser.ordCounter">
+                        <appearance align="center"/>
+                        <directories manual-input="true" limit-livesearch="no-restrictions">
+                          <directory-ref ref="so-counter-search-any"/>
+                        </directories>
+                      </field>
+                      <field attribute-ref="asForTheUser.ordCounterJS">
+                        <appearance align="center"/>
+                      </field>
+                    </component>
+                  </section>
+                </component>
+              </section>
+              <section id="row_15" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_15.name:Договоры}" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field clickable="true" attribute-ref="conDepRvz">
+                    <appearance align="center" clickable="true"/>
+                    <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+                      <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="asForTheUser.conDefMp">
+                    <appearance align="center">
+                      <label-style field-width="10" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <section id="col52" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field clickable="true" attribute-ref="asForTheUser.conDefMpUnit">
+                        <appearance clickable="true"/>
+                        <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+                          <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                        </directories>
+                      </field>
+                      <field attribute-ref="asForTheUser.conCanChange" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_15.section.col52.field.asForTheUser.conCanChange.name:Можно менять МР}"/>
+                    </component>
+                  </section>
+                  <section id="col53" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field attribute-ref="asForTheUser.conCounter">
+                        <appearance align="center"/>
+                        <directories manual-input="true" limit-livesearch="no-restrictions">
+                          <directory-ref ref="so-counter-search-any"/>
+                        </directories>
+                      </field>
+                      <field attribute-ref="asForTheUser.conCounterJS">
+                        <appearance align="center"/>
+                      </field>
+                    </component>
+                  </section>
+                </component>
+              </section>
+              <section id="row_16" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_16.name:Обращения граждан}" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field clickable="true" attribute-ref="appDepRvz">
+                    <appearance align="center" clickable="true"/>
+                    <directories limit-livesearch="no-restrictions">
+                      <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="asForTheUser.appDefMp">
+                    <appearance align="center">
+                      <label-style field-width="10" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <section id="col62" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field clickable="true" attribute-ref="asForTheUser.appDefMpUnit">
+                        <appearance clickable="true"/>
+                        <directories limit-livesearch="no-restrictions">
+                          <directory-ref ref="arm-admin-dialog-hierarchi"/>
+                        </directories>
+                      </field>
+                      <field attribute-ref="asForTheUser.appCanChange" name="${ui.form.SOEmployeeCopyForm.section.SystemGroups.section.AsForTheUser.section.row_16.section.col62.field.asForTheUser.appCanChange.name:Можно менять МР}"/>
+                    </component>
+                  </section>
+                  <section id="col63" group="true">
+                    <appearance field-layout="vertical"/>
+                    <component>
+                      <field attribute-ref="asForTheUser.appCounterJS">
+                        <appearance align="center"/>
+                      </field>
+                      <field attribute-ref="asForTheUser.appCounter">
+                        <appearance align="center"/>
+                        <directories manual-input="true" limit-livesearch="no-restrictions">
+                          <directory-ref ref="so-counter-search-any"/>
+                        </directories>
+                      </field>
+                    </component>
+                  </section>
+                </component>
+              </section>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Notice" name="${ui.form.SOEmployeeCopyForm.section.Notice.name:Уведомления}">
+        <component>
+          <section id="Standard" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Standard.name:Cтандартные}">
+            <component>
+              <field clickable="true" attribute-ref="noticeReceived" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Standard.field.noticeReceived.name:Уведомления получают:}">
+                <appearance importance="normal" clickable="true"/>
+                <hint-pop-up>${ui.form.SOEmployeeCopyForm.section.Notice.section.Standard.field.noticeReceived.hintPopUp:При направлении сотруднику уведомления получают (без их замещающих):}</hint-pop-up>
+              </field>
+              <field attribute-ref="NoticeSendCurrentIfWork" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Standard.field.NoticeSendCurrentIfWork.name:Отправлять уведомления текущему назначению:}">
+                <appearance importance="normal"/>
+              </field>
+              <field clickable="true" attribute-ref="notWorkReciver" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Standard.field.notWorkReciver.name:Если сотрудник не работает в системе, уведомление получают (без их замещающих):}">
+                <appearance importance="normal" clickable="true"/>
+              </field>
+              <field attribute-ref="NoticeSendCurrentIfNotWork" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Standard.field.NoticeSendCurrentIfNotWork.name:Отправлять уведомления текущему назначению:}">
+                <appearance importance="normal"/>
+              </field>
+              <section id="Filter" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Standard.section.Filter.name:Фильтр модулей, из которых посылаются уведомления}" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field attribute-ref="filterModules" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Standard.section.Filter.field.filterModules.name:Из всех модулей:}">
+                    <appearance importance="normal"/>
+                  </field>
+                  <field recalc="true" attribute-ref="filter_Modules">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition-ref ref="Notification_IsFilterAllDb"/>
+                      </hide>
+                    </properties>
+                    <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+                      <directory-ref ref="arm-admin-dialog-modules-filter"/>
+                    </directories>
+                  </field>
+                </component>
+              </section>
+              <field attribute-ref="expCalc" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Standard.field.expCalc.name:Выражение для вычисления штатных единиц получателей уведомлений:}">
+                <appearance multiline="true" importance="normal">
+                  <limit height="5"/>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="Postal" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Postal.name:Почтовые}">
+            <component>
+              <field attribute-ref="CreateNotice" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Postal.field.CreateNotice.name:Создавать почтовое оповещение:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="ExpCalcPerson" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Postal.field.ExpCalcPerson.name:Выражение для вычисления персон получателей уведомлений:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="ExpCalcUnemployed" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Postal.field.ExpCalcUnemployed.name:Выражение для вычисления персон получателей уведомлений, если сотрудник временно не работает:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="IncludingContent" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Postal.field.IncludingContent.name:Включая содержание:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="ApplyRules" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Postal.field.ApplyRules.name:Применить правила фильтрации уведомлений к задачам:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="HiddenNotice" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Postal.field.HiddenNotice.name:Не показывать уведомления по задачам:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="noticeFilterByContent.noticeType" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Postal.field.noticeFilterByContent.noticeType.name:При отсутствии содержания не формировать уведомления:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="noticeFilterByContent.dbType" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Postal.field.noticeFilterByContent.dbType.name:для модулей:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="noticeFilterByContent.ignoreForControl" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Postal.field.noticeFilterByContent.ignoreForControl.name:Игнорировать настройку при обработке уведомлений по контрольным документам и резолюциям:}">
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="AddBodyFormula" name="${ui.form.SOEmployeeCopyForm.section.Notice.section.Postal.field.AddBodyFormula.name:Формула для поиска содержания документа:}">
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

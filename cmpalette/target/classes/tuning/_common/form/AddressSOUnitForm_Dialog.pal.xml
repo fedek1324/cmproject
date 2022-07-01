@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="AddressSOUnit" id="AddressSOUnitForm_Dialog" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="isDefault" name="${ui.form.AddressSOUnitForm_Dialog.field.isDefault.name:По умолчанию:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="type" name="${ui.form.AddressSOUnitForm_Dialog.field.type.name:Тип адреса:}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+        <directories manual-input="true" limit-livesearch="sys-current">
+          <directory-ref ref="AddressSOUnitTypes"/>
+        </directories>
+      </field>
+      <field recalc="true" attribute-ref="country" name="${ui.form.AddressSOUnitForm_Dialog.field.country.name:Страна:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="region" name="${ui.form.AddressSOUnitForm_Dialog.field.region.name:Регион:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="office" name="${ui.form.AddressSOUnitForm_Dialog.field.office.name:Офис:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="corp" name="${ui.form.AddressSOUnitForm_Dialog.field.corp.name:Корпус:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="house" name="${ui.form.AddressSOUnitForm_Dialog.field.house.name:Дом:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="streetType" name="${ui.form.AddressSOUnitForm_Dialog.field.streetType.name:Тип улицы:}">
+        <appearance importance="normal"/>
+        <directories manual-input="true" limit-livesearch="sys-current">
+          <directory-ref ref="StreetType"/>
+        </directories>
+      </field>
+      <field recalc="true" attribute-ref="street" name="${ui.form.AddressSOUnitForm_Dialog.field.street.name:Улица:}">
+        <appearance importance="normal"/>
+      </field>
+      <field recalc="true" attribute-ref="city" name="${ui.form.AddressSOUnitForm_Dialog.field.city.name:Город/Населенный пункт:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="postIndex" name="${ui.form.AddressSOUnitForm_Dialog.field.postIndex.name:Почтовый индекс:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="infoMessage" name="${ui.form.AddressSOUnitForm_Dialog.infomessage: }" >
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <button name="${ui.form.ModuleRolesAccessFormDialog.section.buttons.button.Сохранить.name:Сохранить}">
+       	<properties>
+		  <disabled condition-union="AND">
+		    <negative-condition-ref ref="cityIsNotEmpty"/>
+		    <negative-condition-ref ref="countryIsNotEmpty"/>
+		    <negative-condition-ref ref="streetIsNotEmpty"/>
+		  </disabled>
+        </properties>
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Meetings" view="(vw_cmj_votesFIO)" id="meetings-VotesByFIO-AF5" name="Заседание - Голосование - По ФИО" style="default">
+    <help id="99778671"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiMeetingsBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="voterName" category="true"/>
+        <column-ref ref="votingStatus" category="true"/>
+        <column-ref ref="meetingType" filter="true"/>
+        <column-ref ref="meetingDate" filter="true"/>
+        <column-ref ref="meetingTime"/>
+        <column-ref ref="pointNumber" filter="true"/>
+        <column-ref ref="pointText" filter="true"/>
+        <column-ref ref="pointReporters" filter="true"/>
+        <column-ref ref="voteDateTime"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

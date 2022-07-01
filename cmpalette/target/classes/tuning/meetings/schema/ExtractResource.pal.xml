@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ExtractResource">
+    <meta>
+      <category name="Система\Заседания"/>
+    </meta>
+    <actor name="$chairman" system="true"/>
+    <boolean name="$canTrash" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#move.to.trash'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <actor name="$secretary" system="true"/>
+    <actor array="true" name="$permanent" system="true"/>
+    <actor array="true" name="$invited" system="true"/>
+    <actor array="true" name="$absent" system="true"/>
+    <string name="$decisions"/>
+    <string name="$parent"/>
+    <string name="showIdent" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Выписка']]></script>
+      </calc-values>
+    </string>
+    <string name="showType" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[meeting==null?null:meeting.type]]></script>
+      </calc-values>
+    </string>
+    <string name="showProtocolLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Протокол:']]></script>
+      </calc-values>
+    </string>
+    <string name="showProtocol" temporal="true"/>
+    <string name="SequenceNumberLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['№ выписки:']]></script>
+      </calc-values>
+    </string>
+    <integer name="number" system="true"/>
+    <string name="contentWidget" system="true" temporal="true">
+      <default-values>
+        <default-value>contentWidget</default-value>
+      </default-values>
+    </string>
+    <string name="ProtokolNumberLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Номер протокола:']]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="ContentResource" name="$content" system="true"/>
+    <string name="showProtocolNumber" system="true" createlog="true"/>
+    <string name="$minutesInfo" temporal="true"/>
+    <boolean name="$hasProtocolNumberLink" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#isObjectContains(#this, 'protocolNumberLink')]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canDiscuss" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#discussion'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <schema-ref ref="ClickableLinkResource" name="protocolNumberLink" system="true" temporal="true"/>
+    <string name="pagename" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Выписка']]></script>
+      </calc-values>
+    </string>
+    <boolean name="disableLinkAccess">
+      <storage-field name="disableLinkAccess"/>
+    </boolean>
+  </schema>
+</schemas>

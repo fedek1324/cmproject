@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+
+  <handler name="Переключить отметку о включении в сводную НД" id="ToggleReadyToAdd">
+    <meta>
+      <documentation>Переключить отметку о включении в сводную НД</documentation>
+    </meta>
+    <script lang="JavaScript"><![CDATA[
+importPackage(Packages.java.util);
+importPackage(Packages.java.lang);
+importClass(Packages.ru.intertrust.cmj.af.core.AFCMDomino);
+importClass(Packages.ru.intertrust.cmj.af.core.AFNotice);
+importClass(Packages.ru.intertrust.cmj.af.core.AFSession);
+importClass(Packages.ru.intertrust.cmj.af.exceptions.AFDaoBadParameterException);
+importClass(Packages.ru.intertrust.cmj.af.fileregister.FileRegisterApplicationImpl);
+importClass(Packages.ru.intertrust.cmj.af.fileregister.unitregistr.unitregister.FrUnitRegister);
+importClass(Packages.ru.intertrust.cmj.af.fileregister.unitregistr.StatusExtended);
+importClass(Packages.ru.intertrust.cmj.af.jmerinka.storage.AFConnectorsRegistry);
+importClass(Packages.ru.intertrust.cmj.af.history.FieldBase);
+importClass(Packages.ru.intertrust.cmj.af.history.HasHistory);
+importClass(Packages.ru.intertrust.cmj.af.pkd.EventCode);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.dao.DPNotificationUtils);
+importClass(Packages.ru.intertrust.cmj.pkd.session.PkdSession);
+importClass(Packages.ru.intertrust.cmj.rest.fileregister.unitregister.FrUnitRegisterResource);
+importClass(Packages.ru.intertrust.cmj.tunable.object.TunableObjectApplication);
+importClass(Packages.ru.intertrust.cmj.tunable.object.common.TunableObjectHelper);
+
+function process(paramsResource, returnResource) {
+	if (paramsResource == null) {
+		throw new IllegalArgumentException("paramsResource must no be null.");
+	}
+
+	var paramPackageId = TunableObjectHelper.getAFInstanceValue(paramsResource.tuning().getValues().get("counter"));
+	if (paramPackageId.equals("context")) {
+		var appTNObject = AFSession.get().getApplication(TunableObjectApplication.class);
+		var ids = appTNObject.getClientContextIds(paramsResource.tuning());
+		if (ids.isEmpty()) {
+			throw new AFDaoBadParameterException("Не выбраны документы!");
+		}
+		var id = ids.get(0);
+		var appFr = AFSession.get().getApplication(FileRegisterApplicationImpl.class);
+		var object = appFr.getEntityByUNID(id);
+		var doc = AFCMDomino.getDocByFullUNID(object.getUNID());
+		var wasReady = object.isIsReadyToAdd();
+		object.setIsReadyToAdd(!wasReady);
+		object.setStatusExtended(!wasReady ? StatusExtended.RADY_INCLUDE_TO_NDO : null);
+
+        // события в истории
+        var hist = object.history();
+        var dx = hist.getRecord(wasReady ? FieldBase.ND_NDP_NOT_READY_INCLUDE_TO_NDO : FieldBase.ND_NDP_READY_INCLUDE_TO_NDO);
+        dx.setUpdated(true);
+
+        // уведомление архивариусу
+        var orgId = object.getOrganization().getUNID();
+        if (AFCMDomino.isORMUnid(orgId)) {
+            var receivers = appFr.getArchivistSOOrgByReplicaIdSO(orgId.split(":")[0]);
+            if (!receivers.isEmpty()) {
+                if (!wasReady) {
+                    var sender = AFSession.get().currentUser().getBeard();
+                    var subject = "Проект номенклатуры дел на " + object.getDateYear().getYear() + " год. ";
+                    subject += object.getDivisionType() == FrUnitRegister.DivisionType.DEPARTMENT
+                                   ? object.getSoUnit().getOrigShortName() : object.getBranchDivision();
+
+                    DPNotificationUtils.sendNotice(doc, "NOTICE", "НД подразделения готова к включению в сводную НД", "FRUR1_18",
+                                                   "NDP_READY_INCLUDE_TO_NDO", doc.getParentDatabase().getTitle(), "FRUR1_18",
+                                                   subject, true, sender, "", true, false, new HashSet(receivers));
+                } else {
+                    var session = new PkdSession();
+                    var eventCode = EventCode.getByString("FRUR1_18");
+                    session.cancelTask(receivers, eventCode, object);
+                    if (eventCode.isAllowCancel()) {
+                        session.deleteNotice(receivers, eventCode, object, false);
+                    }
+                }
+            }
+        }
+
+		appFr.applicationConnector().writeEntity(null, object);
+
+		returnResource.resource = new FrUnitRegisterResource(object);
+	}
+}
+    ]]>
+    </script>
+  </handler>
+    <handler name="Переключить отметку о готовности к вынесению на рассмотрение ЭК" id="ToggleReadyForEkConsideration">
+        <meta>
+            <documentation>Переключить отметку о готовности к вынесению на рассмотрение ЭК</documentation>
+        </meta>
+        <script lang="JavaScript"><![CDATA[
+importClass(Packages.ru.intertrust.cmj.af.core.AFCMDomino);
+importClass(Packages.ru.intertrust.cmj.af.core.AFSession);
+importClass(Packages.ru.intertrust.cmj.af.exceptions.AFDaoBadParameterException);
+importClass(Packages.ru.intertrust.cmj.af.fileregister.FileRegisterApplicationImpl);
+importClass(Packages.ru.intertrust.cmj.af.fileregister.orgregisterchange.FrOrgRegisterChange);
+importClass(Packages.ru.intertrust.cmj.af.jmerinka.storage.AFConnectorsRegistry);
+importClass(Packages.ru.intertrust.cmj.af.history.FieldBase);
+importClass(Packages.ru.intertrust.cmj.af.history.HasHistory);
+importClass(Packages.ru.intertrust.cmj.af.pkd.EventCode);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.dao.DPNotificationUtils);
+importClass(Packages.ru.intertrust.cmj.pkd.session.PkdSession);
+importClass(Packages.ru.intertrust.cmj.rest.fileregister.orgregisterchange.FrOrgRegisterChangeResource);
+importClass(Packages.ru.intertrust.cmj.tunable.object.common.TunableObjectHelper);
+importClass(Packages.ru.intertrust.cmj.tunable.object.history.TunableHistoryHelper);
+importClass(Packages.ru.intertrust.cmj.tunable.object.TunableObjectApplication);
+importClass(Packages.ru.intertrust.cmj.af.fileregister.orgregister.FrOrgRegister);
+importPackage(Packages.java.lang);
+importPackage(Packages.java.util);
+
+  function process(paramsResource, returnResource) {
+    if (paramsResource == null) {
+        throw new IllegalArgumentException("paramsResource must no be null.");
+    }
+
+    var paramPackageId = TunableObjectHelper.getAFInstanceValue(paramsResource.tuning().getValues().get("counter"));
+    if (paramPackageId.equals("context")) {
+      var appTNObject = AFSession.get().getApplication(TunableObjectApplication.class);
+	  var appFr = AFSession.get().getApplication(FileRegisterApplicationImpl.class);
+      var ids = appTNObject.getClientContextIds(paramsResource.tuning());
+      if (ids.isEmpty()) {
+        throw new AFDaoBadParameterException("Не выбраны документы!");
+      }
+      var id = ids.get(0);
+      var connector = AFConnectorsRegistry.getApplicationConnector(FileRegisterApplicationImpl.class);
+			var object= connector.readEntity(null, id);
+			object.setReadyForEkConsideration(!object.isReadyForEkConsideration());
+			if (object.getStatusExtended() == null ||
+			    !object.getStatusExtended().equals(FrOrgRegisterChange.StatusExtended.READY_TO_EK)) {
+			    object.setStatusExtended(FrOrgRegisterChange.StatusExtended.READY_TO_EK);
+			}
+			else {
+				object.setStatusExtended(null);
+			}
+	    var orgRegisterParent = connector.readEntity(null, object.getOrgRegisterUnid());
+        if (orgRegisterParent.getStatusGeneral() == FrOrgRegister.StatusGeneral.ACTIVE || orgRegisterParent.getStatusGeneral() == FrOrgRegister.StatusGeneral.NOT_ACTIVE) {
+            orgRegisterParent.setStatusExtended(FrOrgRegister.StatusExtended.HAS_CHANGES);
+            orgRegisterParent.save();
+        }
+		// уведомление заведующему архивом и записи в историю
+        var orgId = object.getOrganization().getUNID();
+		var doc = AFCMDomino.getDocByFullUNID(object.getUNID());
+		var receivers = appFr.getArchiveManagerSOOrgByReplicaIdSO(orgId.split(":")[0]);
+		if (object.getStatusExtended() == null) {
+			// запись в историю о смене статуса Готово на Не готово
+			// TODO когда будет поле "Доп. информация" нужно будет его выводить в доп инфе к истории
+			var hist = object.history();
+            var dx = hist.getRecord(FieldBase.ND_NDO_CHANGE_NOT_READY_TO_EK);
+            dx.setUpdated(true);
+			// отмена задачи
+			var session = new PkdSession();
+            var eventCode = EventCode.getByString("FRUR1_19");
+            session.cancelTask(receivers, eventCode, object);
+            session.deleteNotice(receivers, eventCode, object, false);
+		} else {
+			// создание уведомления и задачи
+            var sender = AFSession.get().currentUser().getBeard();
+            var subject = "Изменения № " + object.getSimpleCnt() + " к сводной НД готовы к вынесению на рассмотрение ЭК.";
+
+            DPNotificationUtils.sendNotice(doc, "NOTICE", subject, "FRUR1_19", "READY_TO_EK",
+                                           doc.getParentDatabase().getTitle(), "FRUR1_19", subject, true,
+                                           sender, "READY_TO_EK", true, false, new HashSet(receivers));
+            // запись в историю о готовности
+			var hist = object.history();
+            var dx = hist.getRecord(FieldBase.ND_NDO_CHANGE_READY_TO_EK);
+            dx.setUpdated(true);
+		}
+		connector.writeEntity(null, object);
+		var objectSaved = connector.readEntity(null, id);
+    	returnResource.resource = new FrOrgRegisterChangeResource(objectSaved);
+	}
+  }
+    ]]>
+        </script>
+    </handler>
+    <handler name="Переключить отметку о согласовании ЭК" id="ToggleIsEkApproved">
+        <meta>
+            <documentation>Переключить отметку о согласовании ЭК</documentation>
+        </meta>
+        <script lang="JavaScript"><![CDATA[
+importPackage(Packages.java.util);
+importPackage(Packages.java.lang);
+importClass(Packages.ru.intertrust.cmj.af.core.AFSession);
+importClass(Packages.ru.intertrust.cmj.af.exceptions.AFDaoBadParameterException);
+importClass(Packages.ru.intertrust.cmj.tunable.object.TunableObjectApplication);
+importClass(Packages.ru.intertrust.cmj.tunable.object.common.TunableObjectHelper);
+importClass(Packages.ru.intertrust.cmj.af.fileregister.FileRegisterApplicationImpl);
+importClass(Packages.ru.intertrust.cmj.af.jmerinka.storage.AFConnectorsRegistry);
+importClass(Packages.ru.intertrust.cmj.rest.fileregister.orgregisterchange.FrOrgRegisterChangeResource);
+
+  function process(paramsResource, returnResource) {
+    if (paramsResource == null) {
+        throw new IllegalArgumentException("paramsResource must no be null.");
+    }
+
+    var paramPackageId = TunableObjectHelper.getAFInstanceValue(paramsResource.tuning().getValues().get("counter"));
+    if (paramPackageId.equals("context")) {
+      var appTNObject = AFSession.get().getApplication(TunableObjectApplication.class);
+      var ids = appTNObject.getClientContextIds(paramsResource.tuning());
+      if (ids.isEmpty()) {
+        throw new AFDaoBadParameterException("Не выбраны документы!");
+      }
+      var id = ids.get(0);
+      var connector = AFConnectorsRegistry.getApplicationConnector(FileRegisterApplicationImpl.class);
+			var object= connector.readEntity(null, id);
+			object.setEkApproved(!object.isEkApproved());
+    	connector.writeEntity(null, object);
+
+    	var objectSaved = connector.readEntity(null, id);
+    	returnResource.resource = new FrOrgRegisterChangeResource(objectSaved);
+		}
+  }
+    ]]>
+        </script>
+    </handler>
+  <handler name="Создать дело" id="CreateFileRegister">
+    <meta>
+      <documentation>Создать карточку дела по делу подразделения</documentation>
+    </meta>
+    <script lang="JavaScript"><![CDATA[
+    importPackage(Packages.java.util);
+importPackage(Packages.java.lang);
+importClass(Packages.ru.intertrust.cmj.af.core.AFSession);
+importClass(Packages.ru.intertrust.cmj.af.exceptions.AFDaoBadParameterException);
+importClass(Packages.ru.intertrust.cmj.tunable.object.TunableObjectApplication);
+importClass(Packages.ru.intertrust.cmj.tunable.object.common.TunableObjectHelper);
+importClass(Packages.ru.intertrust.cmj.af.fileregister.FileRegisterApplicationImpl);
+importClass(Packages.ru.intertrust.cmj.af.jmerinka.storage.AFConnectorsRegistry);
+importClass(Packages.ru.intertrust.cmj.rest.fileregister.file.FrFileResource);
+importClass(Packages.ru.intertrust.cmj.af.fileregister.file.FrFile);
+
+  function process(paramsResource, returnResource) {
+    if (paramsResource == null) {
+        throw new IllegalArgumentException("paramsResource must no be null.");
+    }
+
+    if (paramsResource.getClass().getName().equals("ru.intertrust.cmj.rest.fileregister.file.FrFileResource")){
+        var connector = AFConnectorsRegistry.getApplicationConnector(FileRegisterApplicationImpl.class);
+        var id = paramsResource.parentUnitRegister;
+			  var parent = connector.readEntity(null, id);
+
+        var frFile = createFileReg(parent);
+        paramsResource.apply(frFile);
+        connector.writeEntity(null, frFile);
+        obj = connector.readEntity(null, frFile.getUNID());
+        var res = new FrFileResource(obj);
+        returnResource.setResource(res);
+        return;
+    }
+
+    var paramPackageId = TunableObjectHelper.getAFInstanceValue(paramsResource.tuning().getValues().get("counter"));
+    if (paramPackageId.equals("context")) {
+      var appTNObject = AFSession.get().getApplication(TunableObjectApplication.class);
+      var ids = appTNObject.getClientContextIds(paramsResource.tuning());
+      if (ids.isEmpty()) {
+        throw new AFDaoBadParameterException("Не выбраны документы!");
+      }
+      var id = ids.get(0);
+      var connector = AFConnectorsRegistry.getApplicationConnector(FileRegisterApplicationImpl.class);
+			var parent = connector.readEntity(null, id);
+
+      var frFile = createFileReg(parent);
+    	returnResource.resource = new FrFileResource(frFile);
+		}
+  }
+
+function createFileReg(parent) {
+    var obj = new FrFile(parent);
+    TunableObjectHelper.putAFInstanceValue(obj.tuning(), "mode", "edit");
+    return obj;
+}
+    ]]>
+    </script>
+  </handler>
+</ui>

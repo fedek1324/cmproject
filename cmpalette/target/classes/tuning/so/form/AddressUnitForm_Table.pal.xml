@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="AddressUnit" id="AddressUnitForm_Table" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal"/>
+    <component>
+      <field attribute-ref="type" name="${ui.form.AddressUnitForm_Table.field.type.name:Тип адреса}">
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="PersonAddressTypes"/>
+        </directories>
+      </field>
+      <field attribute-ref="addressShow" name="${ui.form.AddressUnitForm_Table.field.addressShow.name:Адрес}">
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

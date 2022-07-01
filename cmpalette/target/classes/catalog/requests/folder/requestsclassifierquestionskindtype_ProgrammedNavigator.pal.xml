@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="requests-classifier-questions-kind-type" name="${catalog.view.requests_classifier_questions_kind_type.name:ОГ-тип вида вопроса}" position="1010">
+    <search-area name="requests_Requests"/>
+    <descriptor-ref ref="requests-classifier-questions-kind-type"/>
+    <source>
+      <module ident="Requests"/>
+    </source>
+  </view>
+</catalog>

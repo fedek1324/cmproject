@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="AdminClassifierModule">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="ident">
+      <storage-field name="moduleIdent"/>
+    </string>
+    <string name="name">
+      <storage-field name="moduleName"/>
+    </string>
+    <string name="complect">
+      <storage-field name="moduleComplect"/>
+    </string>
+    <string name="id">
+      <storage-field name="moduleUnid"/>
+    </string>
+  </schema>
+</schemas>

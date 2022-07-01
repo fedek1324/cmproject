@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+    <schema recalc="true" extends="Actions" name="ContractAttributes">
+        <meta>
+            <category name="Система\Договоры"/>
+        </meta>
+        <actor name="party1" system="true"/>
+        <actor name="party2" system="true"/>
+        <string name="subject" system="true"/>
+    </schema>
+</schemas>

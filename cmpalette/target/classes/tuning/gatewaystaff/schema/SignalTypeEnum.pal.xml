@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="SignalTypeEnum">
+    <meta>
+      <category name="РМ Администратора\Шлюз"/>
+    </meta>
+    <string value="NewDep" name="NewDep"/>
+    <string value="ChangeDep" name="ChangeDep"/>
+    <string value="DeleteDep" name="DeleteDep"/>
+    <string value="ChangeEmployee" name="ChangeEmployee"/>
+    <string value="NewEmployee" name="NewEmployee"/>
+    <string value="DismissEmployee" name="DismissEmployee"/>
+    <string value="NewBoss" name="NewBoss"/>
+    <string value="ChangeBoss" name="ChangeBoss"/>
+    <string value="DeleteBoss" name="DeleteBoss"/>
+    <string value="ChangeAbsences" name="ChangeAbsences"/>
+  </enum>
+</schemas>

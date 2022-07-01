@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="DepartmentAccessItem">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+    </meta>
+    <actor name="department" system="true" createlog="true"/>
+    <boolean name="includeChilds" system="true" createlog="true"/>
+  </schema>
+</schemas>

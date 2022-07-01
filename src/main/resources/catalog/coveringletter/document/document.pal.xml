@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <document object-ref="COVERING_LETTER_INPUT" schema-ref="CoveringLetterResource" name="${catalog.document.сovering_letter_input.name:Сопроводительное письмо ВхД}">
-    <module ident="InputDocs" />
-  </document>
-  <document object-ref="COVERING_LETTER_REQUESTS" schema-ref="CoveringLetterResource" name="${catalog.document.сovering_letter_requests.name:Сопроводительное письмо ОРД}">
-    <module ident="Requests" />
-  </document>
-</catalog>

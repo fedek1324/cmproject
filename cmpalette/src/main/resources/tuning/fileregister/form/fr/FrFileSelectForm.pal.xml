@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="FrFileSelectSchema" projection="default" id="FrFileSelectDigest">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="digest"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="hyperLinkFile" >
+        <appearance importance="normal" />
+      </field>
+    </component>
+  </form>
+</ui>

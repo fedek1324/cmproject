@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="OrdClerckUnit">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <boolean name="recNotice" system="true" temporal="true">
+      <storage-field name="recnotice"/>
+      <storage-string value="1"/>
+    </boolean>
+    <schema-ref ref="AdminSOUnit" name="fioGroup" temporal="true"/>
+  </schema>
+</schemas>

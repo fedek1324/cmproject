@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ArchivesFundDealResource" extends="ArchivesCommonResource">
+    <actor default-value="Выбор из справочника" required="true" name="Organization">
+      <storage-field name="Organization" />
+    </actor>
+    <string computed="true" temporal="true" name="showident">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Дело фонда']]></script>
+      </calc-values>
+    </string>
+    <enum-ref ref="archivesFundDealStateEnum" name="MainState">
+      <storage-field name="MainState" />
+    </enum-ref>
+    <string required="true" createlog="true" name="Fund">
+      <storage-field name="Fund" />
+    </string>
+    <string name="ArchiveOrg">
+      <storage-field name="ArchiveOrg" />
+    </string>
+    <schema-ref ref="ContentResource" temporal="true" name="$content" />
+
+    <schema-ref null-empty="true" ref="AnnualInvInfoTableResource" array="true" name="AnnualInvInfoTable" />
+    <schema-ref null-empty="true" ref="ActDestructInfoTableResource" array="true" name="ActDestructInfoTable" />
+    <schema-ref null-empty="true" ref="ArcInternalRkkInfoTableResource" array="true" name="ArcInternalRkkInfoTable" />
+    <schema-ref null-empty="true" ref="ArcInvInfoTableResource" array="true" name="ArcInvInfoTable" />
+  </schema>
+</schemas>

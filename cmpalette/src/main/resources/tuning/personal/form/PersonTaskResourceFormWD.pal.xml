@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="PersonTaskResource" id="PersonTaskResourceFormWD" name="${ui.form.PersonTaskResourceFormWD.name:Форма задачи ПКД}" projection="WebDocs2.0" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="isRelatedDocumentExists" alias="fictionField1">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="isRootDocumentExists" alias="fictionField2">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

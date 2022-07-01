@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ReporterDialogPeriod" id="ReportDialogPeriod" projection="default" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <button name="${ui.form.ReportDialogPeriod.button.Построить отчет.name:Построить отчет}">
+        <appearance>
+          <label-style>
+            <style id="tunBtnBlue"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#start"/>
+        </action>
+      </button>
+      <section id="params">
+        <component>
+          <field attribute-ref="title">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance>
+              <label-style>
+                <style id="tunIconReportIcon"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunIconReportIcon"/>
+                </value-style>
+              </field-style>
+            </appearance>
+          </field>
+          <field attribute-ref="Period">
+            <appearance location="subform"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

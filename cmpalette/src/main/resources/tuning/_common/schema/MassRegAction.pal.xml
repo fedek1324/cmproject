@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="MassRegAction">
+    <meta>
+      <category name="Диалоги"/>
+    </meta>
+    <integer name="success" system="true"/>
+    <schema-ref ref="ClerkExceptionReg" name="notClerk" system="true"/>
+    <schema-ref ref="ErrorMasReg" name="error" system="true" createlog="true"/>
+    <string name="successMessage" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Зарегистрировано документов: ' + success]]></script>
+      </calc-values>
+    </string>
+    <integer name="notClerkCount" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[notClerk?.info?.size()?:0]]></script>
+      </calc-values>
+    </integer>
+    <string name="notClerkMsg" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Количество документов, по которым вы не являетесь делопроизводителем: ' + notClerkCount + '. Информация о документах: ' + T(java.lang.String).join(', ', notClerk.info)]]></script>
+      </calc-values>
+    </string>
+    <integer name="errorCount" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[error?.error?.size()?:0]]></script>
+      </calc-values>
+    </integer>
+    <string name="errorMsg" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Не удалось зарегистрировать документов: ' + errorCount]]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="errorMessagesList" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[errorCount > 0 ? error.error.!['Номер: ' + #this.doc+ ' Ошибка регистрации: ' + #this.cause] : '']]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

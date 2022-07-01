@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SS" view="(vw_cmj_modules_by_soreplicaAndIdent)" id="ss-modulesByIdent" name="Модули по типу" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView">
+      <config>
+        <view-complex-classif level-select="all"/>
+      </config>
+    </builder>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="programId" category="true"/>
+        <column-ref ref="moduleName"/>
+        <column-ref ref="complectWithTitle"/>
+        <column-ref ref="isNamed"/>
+        <column-ref ref="moduleObject"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

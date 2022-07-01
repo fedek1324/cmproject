@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="arm-admin-ss-modules-for-cl" name="${catalog.view.arm_admin_ss_modules_for_cl.name:Модули}" position="-1">
+    <descriptor-ref ref="admin-ss-modules-for-cl"/>
+    <source>
+      <module ident="SS"/>
+    </source>
+  </view>
+</catalog>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="NdoChangeStatusExtendedEnum">
+    <string value="ON_APPROVE" name="ON_APPROVE" />
+    <string value="READY_TO_EK" name="READY_TO_EK" />
+    <string value="ROLLBACK_TO_REWORK" name="ROLLBACK_TO_REWORK" />
+    <string value="IS_EK_APPROVED" name="IS_EK_APPROVED" />
+  </enum>
+</schemas>

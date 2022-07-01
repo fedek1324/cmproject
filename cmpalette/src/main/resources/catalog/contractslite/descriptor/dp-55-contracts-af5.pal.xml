@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="ContractsLite" view="(vw_cmj_55)" id="dp-55-contracts-af5" name="Договоры - шаблоны доп. согл." style="default">
+    <help id="99778971"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="templateName"/>
+        <column-ref ref="subject"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Contracts-NewAddAgreementTemplate" name="${catalog.custom-descriptor.dp-55-contracts-af5.actions.action.Contracts-NewAddAgreementTemplate.name:Создать/Шаблон доп. соглашения}">
+        <create object-ref="ADDAGREEMENT_TEMPLATE"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

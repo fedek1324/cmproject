@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="admin-contractors" id="spP-spO-trash" name="${catalog.folder.spP_spO_trash.name:Корзина}" position="50">
+    <visible>
+      <hide-storage name="AF5" />
+    </visible>
+    <source>
+      <module ident="OrgDirectory"/>
+    </source>
+    <subfolders>
+      <view id="admin-spo-trash" name="${catalog.folder.spP_spO_trash.view.admin_spo_trash.name:Организации}" position="10">
+        <descriptor-ref ref="admin-spo-trash"/>
+        <source>
+          <module ident="OrgDirectory"/>
+        </source>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

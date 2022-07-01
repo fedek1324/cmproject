@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="arm-admin-numerator-cl-by-type" name="${catalog.view.arm_admin_numerator_cl_by_type.name:Классификаторы в нумераторе по типу}" position="230">
+    <descriptor-ref ref="admin-numerator-cl-by-type"/>
+    <source>
+      <module ident="Numerator"/>
+    </source>
+  </view>
+</catalog>

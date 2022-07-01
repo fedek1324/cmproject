@@ -1,0 +1,508 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RkkResourceRequests" id="RkkResourceRequestsCopyForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="copy"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="title">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="correspondent.address.streetType" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.streetType.name:Улица:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance align="right" importance="normal">
+          <label-style field-width="10" field-unit="symbol"/>
+        </appearance>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="StreetType"/>
+        </directories>
+      </field>
+      <field attribute-ref="representative.address.streetType" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.address.streetType.name:Улица:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance align="right" importance="normal">
+          <label-style field-width="10" field-unit="symbol"/>
+        </appearance>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="StreetType"/>
+        </directories>
+      </field>
+      <field attribute-ref="deliveryInfo" name="${ui.form.RkkResourceRequestsCopyForm.field.deliveryInfo.name:Вид доставки:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.deliveryInfo.hintPopUp:Вид доставки}</hint-pop-up>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="Вид доставки"/>
+        </directories>
+      </field>
+      <field autofill="true" attribute-ref="type" name="${ui.form.RkkResourceRequestsCopyForm.field.type.name:Вид обращения:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.type.hintPopUp:Вид обращения}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.address.street">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="representative.address.street">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="receiveDate" name="${ui.form.RkkResourceRequestsCopyForm.field.receiveDate.name:Дата приема:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestPersonalReception"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.receiveDate.hintPopUp:Дата приема}</hint-pop-up>
+      </field>
+      <field autofill="true" attribute-ref="receivePlace" name="${ui.form.RkkResourceRequestsCopyForm.field.receivePlace.name:Место приема:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestPersonalReception"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.receivePlace.hintPopUp:Место приема}</hint-pop-up>
+      </field>
+      <field attribute-ref="benefitGroups" name="${ui.form.RkkResourceRequestsCopyForm.field.benefitGroups.name:Льготный состав:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.benefitGroups.hintPopUp:Льготный состав}</hint-pop-up>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="Льготный состав"/>
+        </directories>
+      </field>
+      <field attribute-ref="questions" name="${ui.form.RkkResourceRequestsCopyForm.field.questions.name:Тематика:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.questions.hintPopUp:Тематика}</hint-pop-up>
+      </field>
+      <field attribute-ref="questionsTable" name="${ui.form.RkkResourceRequestsCopyForm.field.questionsTable.name:Тематика:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="correspondent.activeWriter" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.activeWriter.name:Много пишущий автор:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestPersonal"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.activeWriter.hintPopUp:Много пишущий автор}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.citizenship" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.citizenship.name:Гражданство:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestPersonal"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="addressString" name="${ui.form.RkkResourceRequestsCopyForm.field.addressString.name:Адрес:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestPersonal"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="correspondent.address.street" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.street.name:Улица:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.street.hintPopUp:Улица}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.address.house" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.house.name:Дом:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.house.hintPopUp:Дом}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.address.housing" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.housing.name:Корпус:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.housing.hintPopUp:Корпус}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.address.build" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.build.name:Строение:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.build.hintPopUp:Строение}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.address.office" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.office.name:Номер квартиры/офиса:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.office.hintPopUp:Номер квартиры/офиса}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.address.city" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.city.name:Город/Населенный пункт:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.city.hintPopUp:Город/Населенный пункт}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.address.locality" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.locality.name:Район/Округ:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.locality.hintPopUp:Район/Округ}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.address.region" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.region.name:Регион:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.region.hintPopUp:Регион}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.address.zipCode" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.address.zipCode.name:Индекс:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="addressee" name="${ui.form.RkkResourceRequestsCopyForm.field.addressee.name:Адресаты:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestNotPersonalReception"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.addressee.hintPopUp:Адресаты}</hint-pop-up>
+      </field>
+      <field attribute-ref="country" name="${ui.form.RkkResourceRequestsCopyForm.field.country.name:Страна:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.country.hintPopUp:Страна}</hint-pop-up>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="countryCorrespondent"/>
+        </directories>
+      </field>
+      <field attribute-ref="addressForAnswer" name="${ui.form.RkkResourceRequestsCopyForm.field.addressForAnswer.name:Адрес для ответа:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.addressForAnswer.hintPopUp:Адрес для ответа}</hint-pop-up>
+      </field>
+      <field attribute-ref="disableLinkAccess" name="${ui.form.RkkResourceRequestsCopyForm.field.disableLinkAccess.name:Ограничить доступ по связям:}">
+        <appearance align="right" importance="normal">
+          <label-style field-width="2" field-unit="symbol"/>
+        </appearance>
+        <hint-in-field>${ui.form.RkkResourceRequestsCopyForm.field.disableLinkAccess.hintInField:Не дается доступ к текущему документу читателям связанных документов}</hint-in-field>
+      </field>
+      <field attribute-ref="pages" name="${ui.form.RkkResourceRequestsCopyForm.field.pages.name:Кол-во листов:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestNotOral"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.pages.hintPopUp:Кол-во листов}</hint-pop-up>
+      </field>
+      <field attribute-ref="copies" name="${ui.form.RkkResourceRequestsCopyForm.field.copies.name:Кол-во экземпляров:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestNotOral"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.copies.hintPopUp:Кол-во экземпляров}</hint-pop-up>
+      </field>
+      <field attribute-ref="appendices" name="${ui.form.RkkResourceRequestsCopyForm.field.appendices.name:Кол-во приложений:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestNotOral"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.appendices.hintPopUp:Кол-во приложений}</hint-pop-up>
+      </field>
+      <field attribute-ref="appendicesPages" name="${ui.form.RkkResourceRequestsCopyForm.field.appendicesPages.name:Листов приложения:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestNotOral"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.appendicesPages.hintPopUp:Листов приложения}</hint-pop-up>
+      </field>
+      <field attribute-ref="comment" name="${ui.form.RkkResourceRequestsCopyForm.field.comment.name:Комментарий:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.comment.hintPopUp:Комментарий}</hint-pop-up>
+      </field>
+      <field attribute-ref="representative.address.street" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.address.street.name:Улица:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.address.street.hintPopUp:Улица}</hint-pop-up>
+      </field>
+      <field attribute-ref="representative.address.house" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.address.house.name:Дом:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.address.house.hintPopUp:Дом}</hint-pop-up>
+      </field>
+      <field attribute-ref="representative.address.housing" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.address.housing.name:Корпус:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.address.housing.hintPopUp:Корпус}</hint-pop-up>
+      </field>
+      <field attribute-ref="representative.address.build" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.address.build.name:Строение:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.address.build.hintPopUp:Строение}</hint-pop-up>
+      </field>
+      <field attribute-ref="representative.address.office" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.address.office.name:Номер квартиры/офиса:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.address.office.hintPopUp:Номер квартиры/офиса}</hint-pop-up>
+      </field>
+      <field attribute-ref="representative.address.city" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.address.city.name:Город/Населенный пункт:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.address.city.hintPopUp:Город/Населенный пункт}</hint-pop-up>
+      </field>
+      <field attribute-ref="representative.address.locality" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.address.locality.name:Район/Округ:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.address.locality.hintPopUp:Район/Округ}</hint-pop-up>
+      </field>
+      <field attribute-ref="representative.address.region" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.address.region.name:Регион:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.address.region.hintPopUp:Регион}</hint-pop-up>
+      </field>
+      <field attribute-ref="incomingSign" name="${ui.form.RkkResourceRequestsCopyForm.field.incomingSign.name:Признак поступления:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="received" name="${ui.form.RkkResourceRequestsCopyForm.field.received.name:Поступило:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="representative.address.country" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.address.country.name:Страна:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+            <negative-condition-ref ref="isRequestAnonymous"/>
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.address.country.hintPopUp:Страна}</hint-pop-up>
+      </field>
+      <field autofill="true" recalc="true" attribute-ref="appealWay" name="${ui.form.RkkResourceRequestsCopyForm.field.appealWay.name:Способ обращения:}">
+        <appearance importance="normal">
+          <limit max-size="1"/>
+        </appearance>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.appealWay.hintPopUp:Способ обращения}</hint-pop-up>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="typeAppeal"/>
+        </directories>
+      </field>
+      <field recalc="true" attribute-ref="correspondent.type" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.type.name:Тип обращения:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.type.hintPopUp:Тип обращения}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.authorGroup" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.authorGroup.name:Корреспондент:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.authorGroup.hintPopUp:Корреспондент}</hint-pop-up>
+      </field>
+      <field attribute-ref="referenceObject" name="${ui.form.RkkResourceRequestsCopyForm.field.referenceObject.name:Предмет ведения:}">
+        <appearance importance="normal">
+          <limit max-size="1"/>
+        </appearance>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="Предмет ведения"/>
+        </directories>
+      </field>
+      <field recalc="true" attribute-ref="correspondent.authorPersonal" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.authorPersonal.name:Корреспондент:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestPersonal"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.authorPersonal.hintPopUp:Корреспондент}</hint-pop-up>
+      </field>
+      <field recalc="true" attribute-ref="correspondent.authorPersonal" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.authorPersonal.name:Заявитель:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestPersonal"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.authorPersonal.hintPopUp:Заявитель}</hint-pop-up>
+      </field>
+      <field attribute-ref="correspondent.authorGroup" name="${ui.form.RkkResourceRequestsCopyForm.field.correspondent.authorGroup.name:Заявитель:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.correspondent.authorGroup.hintPopUp:Заявитель}</hint-pop-up>
+      </field>
+      <field recalc="true" attribute-ref="representative.authorPersonal" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.authorPersonal.name:Представитель:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestPersonal"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.authorPersonal.hintPopUp:Представитель}</hint-pop-up>
+      </field>
+      <field recalc="true" attribute-ref="representative.type" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.type.name:Тип представителя:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.type.hintPopUp:Представитель}</hint-pop-up>
+      </field>
+      <field attribute-ref="representative.authorGroup" name="${ui.form.RkkResourceRequestsCopyForm.field.representative.authorGroup.name:Представитель:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestGroup"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.representative.authorGroup.hintPopUp:Представитель}</hint-pop-up>
+      </field>
+      <field attribute-ref="addressStringRepr" name="${ui.form.RkkResourceRequestsCopyForm.field.addressStringRepr.name:Адрес представителя:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestPersonal"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.addressStringRepr.hintPopUp:Адрес представителя}</hint-pop-up>
+      </field>
+      <field attribute-ref="corrEmail" name="${ui.form.RkkResourceRequestsCopyForm.field.corrEmail.name:E-mail:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.RkkResourceRequestsCopyForm.field.corrEmail.hintPopUp:E-mail}</hint-pop-up>
+      </field>
+      <field attribute-ref="addressee" name="${ui.form.RkkResourceRequestsCopyForm.field.addressee.name:Руководитель, ведущий прием:}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="isRequestPersonalReception"/>
+          </hide>
+        </properties>
+      </field>
+      <field attribute-ref="$hasStandartContent">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="sstu">
+        <appearance importance="normal"/>
+      </field>
+
+        <field attribute-ref="receiveDateKrsk">
+            <appearance importance="normal"/>
+        </field>
+        <field attribute-ref="receiveWay">
+            <appearance importance="normal"/>
+        </field>
+        <field attribute-ref="receptionMode">
+            <appearance importance="normal"/>
+        </field>
+        <field attribute-ref="unitName">
+            <appearance importance="normal"/>
+        </field>
+    </component>
+  </form>
+</ui>

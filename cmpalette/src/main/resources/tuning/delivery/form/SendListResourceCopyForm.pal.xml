@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SendListResource" id="SendListResourceCopyForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="copy"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="title">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="members">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="isAutoUpdatedList">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="soContext">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="soFormula">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="spoContext">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="spoFormula">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="sppContext">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="sppFormula">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="membersFormula">
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

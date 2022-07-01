@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <document name="${catalog.document.rkk_output7dd1db7126654fefbe0999658f6a91b6.name:Исходящий документ}" schema-ref="RkkResourceOutput" object-ref="RKK_OUTPUT" general="true">
+    <module ident="OutputDocs" complect=""/>
+  </document>
+  <document name="${catalog.document.report_output.name:Отчет ИсхД}" schema-ref="ReportResource" object-ref="REPORT_OUTPUT">
+    <module ident="OutputDocs" complect=""/>
+  </document>
+  <document name="${catalog.document.resolution_outpute5a346b214174fc8a8dcc3dca1718ba7.name:Поручение ИсхД}" schema-ref="ResolutionResourceWithApprove" object-ref="RESOLUTION_OUTPUT">
+    <module ident="OutputDocs" complect=""/>
+  </document>
+  <document name="${catalog.document.foreign_report0c4b18b0e16c46fbb1d03ef3b036438d.name:Сводка КИ в ИсхД}" schema-ref="ForeignReportResource" object-ref="FOREIGN_REPORT">
+    <module ident="OutputDocs" complect=""/>
+  </document>
+  <document name="${catalog.document.foreign_resolutionceace6a15f9e4468acf1301945c25f44.name:Сводка КР а ИсхД}" schema-ref="ForeignResolutionResource" object-ref="FOREIGN_RESOLUTION">
+    <module ident="OutputDocs" complect=""/>
+  </document>
+  <document name="${catalog.document.rkk_template_output1856ef8db5d64c0587ba371c1bbed3f6.name:Шаблон исходящего документа}" schema-ref="RkkTemplateResourceOutput" object-ref="RKK_TEMPLATE_OUTPUT">
+    <module ident="OutputDocs" complect=""/>
+  </document>
+  <document name="${catalog.document.resolution_template_output9c3d9a7a10924ada9a5d485ff9b9664e.name:Шаблон поручения исходящего документа}" schema-ref="ResolutionTemplateResource" object-ref="RESOLUTION_TEMPLATE_OUTPUT">
+    <module ident="OutputDocs" complect=""/>
+  </document>
+</catalog>

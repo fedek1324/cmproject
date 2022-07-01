@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <column name="reportDescription" subject="${catalog.column.reportDescription.subject:Описание}" extends="string"/>
+  <column name="reportName" subject="${catalog.column.reportName.subject:Название}" extends="string"/>
+  <column name="reportCategory" subject="${catalog.column.reportCategory.subject:Категория}" extends="string"/>
+</catalog>

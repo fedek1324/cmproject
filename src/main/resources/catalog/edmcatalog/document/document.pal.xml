@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <document name="${catalog.document.edmdocs_templatefc5ab90f4fed4444b86142e1b504ded5.name:Шаблон документа}" schema-ref="NRDDocumentTemplateResource" object-ref="EDMDOCS_TEMPLATE">
-    <module ident="EDM-Catalog" complect=""/>
-  </document>
-</catalog>

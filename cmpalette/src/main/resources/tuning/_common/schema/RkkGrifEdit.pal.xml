@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="Dialog" recalc="true" name="RkkGrifEdit">
+    <string name="securityStamp" />
+    <string array="true" computed="true" temporal="true" name="personGrifs">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA[T(ru.intertrust.cmj.af.core.AFSession).get().currentUser().getPerson().getPersonStampGrifs()]]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

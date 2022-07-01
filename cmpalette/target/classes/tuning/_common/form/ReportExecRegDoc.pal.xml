@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ReportExecRegDoc" id="ReportExecRegDoc" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <button name="${ui.form.ReportExecRegDoc.button.Построить отчет.name:Построить отчет}">
+        <appearance>
+          <label-style>
+            <style id="tunBtnBlue"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#start"/>
+        </action>
+      </button>
+      <field attribute-ref="EMPL_LIST_CONTR.Value" name="${ui.form.ReportExecRegDoc.field.EMPL_LIST_CONTR.Value.name:Список контролеров}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="CURRENT_SYS_HUMAN"/>
+          <directory-ref ref="CURRENT_All_Hierarchy"/>
+          <directory-ref ref="sys_roles"/>
+        </directories>
+      </field>
+      <section id="date_reg" name="${ui.form.ReportExecRegDoc.section.date_reg.name:Период регистрации документов}">
+        <appearance field-layout="horizontal" turn="true"/>
+        <component>
+          <field attribute-ref="DATE_REG.Start" name="${ui.form.ReportExecRegDoc.section.date_reg.field.DATE_REG.Start.name:С}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="DATE_REG.End" name="${ui.form.ReportExecRegDoc.section.date_reg.field.DATE_REG.End.name:по}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="date_exec" name="${ui.form.ReportExecRegDoc.section.date_exec.name:Период исполнения документов}">
+        <appearance field-layout="horizontal" turn="true"/>
+        <component>
+          <field attribute-ref="DATE_EXEC.Start" name="${ui.form.ReportExecRegDoc.section.date_exec.field.DATE_EXEC.Start.name:С}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="DATE_EXEC.End" name="${ui.form.ReportExecRegDoc.section.date_exec.field.DATE_EXEC.End.name:по}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <field attribute-ref="EMPL_LIST_SIGN.Value" name="${ui.form.ReportExecRegDoc.field.EMPL_LIST_SIGN.Value.name:Список подписантов}">
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="CURRENT_SYS_HUMAN"/>
+          <directory-ref ref="CURRENT_All_Hierarchy"/>
+          <directory-ref ref="sys_roles"/>
+        </directories>
+      </field>
+      <field attribute-ref="RES_EXEC_STATE.Name" name="${ui.form.ReportExecRegDoc.field.RES_EXEC_STATE.Name.name:Статус исполнения резолюций}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="TEMATIC.Name" name="${ui.form.ReportExecRegDoc.field.TEMATIC.Name.name:Тематика}">
+        <appearance importance="normal"/>
+        <directories limit-livesearch="sys-current">
+          <directory-ref ref="Тематика отчёт по ОРД"/>
+        </directories>
+      </field>
+    </component>
+  </form>
+</ui>

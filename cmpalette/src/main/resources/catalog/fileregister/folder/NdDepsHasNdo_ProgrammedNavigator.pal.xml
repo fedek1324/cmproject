@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="NdDepsHasNdo" name="${catalog.view.SOIsolatedDeps.name:Подразделения имеющие НДО}" position="-1">
+    <search-area name="SO"/>
+    <descriptor-ref ref="nd-deps-has-ndo"/>
+    <source>
+      <module ident="SO"/>
+    </source>
+  </view>
+  <view parent-ref="ProgrammedNavigator" id="NdOrgAndDepsHasNdo" name="${catalog.view.SOOrgAndIsolatedDeps.name:Системная организация и Подразделения имеющие НДО}" position="-1">
+    <search-area name="SO"/>
+    <descriptor-ref ref="nd-org-and-deps-has-ndo"/>
+    <source>
+      <module ident="SO"/>
+    </source>
+  </view>
+</catalog>

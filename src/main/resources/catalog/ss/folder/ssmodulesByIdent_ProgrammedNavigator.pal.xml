@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="ss-modulesByIdent" name="${catalog.view.ss_modulesByIdent.name:Модули СС по типу}" position="230">
-    <descriptor-ref ref="ss-modulesByIdent"/>
-    <source>
-      <module ident="SS"/>
-    </source>
-  </view>
-</catalog>

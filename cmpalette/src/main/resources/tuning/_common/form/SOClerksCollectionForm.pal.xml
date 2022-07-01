@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SOClerksCollection" id="SOClerksCollectionForm" name="${ui.form.SOClerksCollectionForm.name:Делопроизводители}" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.SOClerksCollectionForm.section.RootMenu.button.Редактировать.name:Редактировать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <icon code="95"/>
+            <action position="2.0">
+              <custom>
+                <open-edit/>
+              </custom>
+            </action>
+          </button>
+          <section id="Operations" name="${ui.form.SOClerksCollectionForm.section.RootMenu.section.Operations.name:Операции}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.SOClerksCollectionForm.section.RootMenu.section.Operations.button.Настроить делопроизводство.name:Настроить делопроизводство}">
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">SetSystemGroupOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <section id="OTHER" name="${ui.form.SOClerksCollectionForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <button name="${ui.form.SOClerksCollectionForm.section.RootMenu.section.OTHER.button.Удалить.name:Удалить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="AdminSOCollectionSchema_canPerfomOperationInSO"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">DeleteSOUnitMultiOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.SOClerksCollectionForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Добавить в избранное'.name:Скрыть системную кнопку 'Добавить в избранное'}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action position="2.0">
+                  <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+                </action>
+              </button>
+              <button name="${ui.form.SOClerksCollectionForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Настройка'.name:Скрыть системную кнопку 'Настройка'}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action position="3.0">
+                  <system name="SETTINGS"/>
+                </action>
+              </button>
+            </component>
+          </section>
+          <button name="${ui.form.SOClerksCollectionForm.section.RootMenu.button.Скрыть системную кнопку &quot;Редактировать&quot;.name:Скрыть системную кнопку &quot;Редактировать&quot;}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action position="1.0">
+              <system name="EDIT"/>
+            </action>
+          </button>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="ReporterDialog" name="ReporterDialogEmployeeSingle">
+    <meta>
+      <category name="Отчеты"/>
+    </meta>
+    <schema-ref ref="ReporterSubDialogEmployeeOwn" name="Employee"/>
+  </schema>
+</schemas>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ReportResource" group="true" projection="default" id="ReportResourceEditForm">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="$executionReport"/>
+    </component>
+    <appearance field-layout="vertical"/>
+  </form>
+</ui>

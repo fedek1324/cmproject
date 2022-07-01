@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="PartitionInfoTableResource" group="true" projection="default" name="${ui.form.PartitionInfoTable.name:Таблица Разделы номенклатуры}" id="PartitionInfoTable">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table" />
+      </hide>
+    </properties>
+    <component>
+      <section name="${ui.form.PartitionInfoTable.section.Index.name:Номенклатурный индекс}" id="Index">
+        <appearance align="left">
+          <label-style width="15"/>
+        </appearance>
+        <component>
+          <field attribute-ref="index" >
+            <appearance importance="normal" multiline="false" >
+              <label-style field-unit="symbol" field-width="20" />
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <section name="${ui.form.PartitionInfoTable.section.SubjectLink.name:Структурное подразделение}" id="SubjectLink">
+        <appearance align="left"/>
+        <component>
+          <field attribute-ref="hyperLink" />
+        </component>
+      </section>
+      <section name="${ui.form.PartitionInfoTable.section.State.name:Статус}" id="State">
+        <appearance align="left">
+          <label-style width="15"/>
+        </appearance>
+        <component>
+          <field attribute-ref="state" >
+            <appearance importance="normal" multiline="false" >
+              <label-style field-unit="symbol" field-width="25" />
+            </appearance>
+            <directories>
+              <directory-ref ref="ndpStatusGeneral" />
+            </directories>
+          </field>
+        </component>
+      </section>
+    </component>
+    <appearance field-layout="horizontal" />
+  </form>
+</ui>

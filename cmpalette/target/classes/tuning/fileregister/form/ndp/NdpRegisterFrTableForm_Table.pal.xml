@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="NdpTableSchema" id="NdpTableForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal"/>
+    <component>
+      <section id="indexFile" name="${ui.form.GroupZamBeardsForEmployeeTemp_Table.section.Fio_Name.name:Индекс дела}" group="true" >
+        <component>
+<!--          <field attribute-ref="refFr" creative="true" clickable="true">-->
+<!--            <appearance clickable="true" align="left">-->
+<!--              <label-style>-->
+<!--                <style id="tunClickableRed" />-->
+<!--              </label-style>-->
+<!--              <field-style>-->
+<!--                <value-style>-->
+<!--                  <style id="tunClickableRed" />-->
+<!--                </value-style>-->
+<!--              </field-style>-->
+<!--            </appearance>-->
+<!--          </field>-->
+          <field attribute-ref="indexFile">
+            <appearance align="left" importance="normal" location="table"/>
+          </field>
+        </component>
+      </section>
+      <section id="titleFile" name="${ui.form.GroupZamBeardsForEmployeeTemp_Table.section.Change.name:Заголовок дела}" group="true">
+        <component>
+          <field attribute-ref="titleFile">
+            <appearance align="left" importance="normal"  location="table"/>
+          </field>
+        </component>
+      </section>
+      <section id="countTomeSections" name="${ui.form.GroupZamBeardsForEmployeeTemp_Table.section.SigningZam.name:Кол-во томов}" group="true">
+        <component>
+          <field attribute-ref="countTomeSections">
+            <appearance align="left" importance="normal"  location="table"/>
+          </field>
+        </component>
+      </section>
+      <section id="storagePeriod" name="${ui.form.GroupZamBeardsForEmployeeTemp_Table.section.Start.name:Срок хранения}" group="true">
+        <component>
+          <field attribute-ref="storagePeriod">
+            <appearance align="left" importance="normal"  location="table"/>
+          </field>
+        </component>
+      </section>
+      <button name="${ui.form.GroupZamBeardsForEmployeeTemp_Table.button.Добавить временного замещающего.name:Создать новое дело}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="table_edit"/>
+          </hide>
+        </properties>
+        <appearance>
+          <label-style>
+            <style id="tunIconAdd"/>
+            <style id="tunBlue"/>
+            <style id="tunUnderline"/>
+            <style id="tunClickableRed"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="add"/>
+        </action>
+      </button>
+      <button>
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="table_edit"/>
+          </hide>
+        </properties>
+        <appearance align="left">
+          <label-style width="3" unit="symbol">
+            <style id="tunIconEdit"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="update"/>
+        </action>
+      </button>
+      <button>
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="table_edit"/>
+          </hide>
+        </properties>
+        <appearance align="left">
+          <label-style width="3" unit="symbol">
+            <style id="tunIconDelete"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="delete"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

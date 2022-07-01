@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="CaseDocumentResource">
+    <meta>
+      <category name="Система\Кейсы 2.0"/>
+    </meta>
+    <string name="docType" system="true"/>
+    <string name="docKind" system="true"/>
+    <schema-ref ref="CaseActivityResource" name="activity" system="true"/>
+    <boolean name="restrictedAccess" system="true"/>
+    <schema-ref ref="CaseDiscussionResource" name="discussion" system="true"/>
+    <boolean name="managerHasBeenAddedToParticipants" system="true"/>
+    <string array="true" name="modulesToLink" system="true"/>
+    <string array="true" name="docKinds" system="true"/>
+    <schema-ref ref="CmjLinkResource" array="true" name="linkedDoc" system="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.cases2.resource.recalc.RecalcOnCaseDocumentLinkedDocChangeEventHandler</recalc-processing-class>
+    </schema-ref>
+    <boolean name="docTypeEmpty" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[docType == null || docType.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="finished" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['FINISHED' == activity.state]]></script>
+      </calc-values>
+    </boolean>
+    <string name="$discussionButton" temporal="true"/>
+    <string name="$editButton" temporal="true"/>
+    <string name="$reminderButton" temporal="true"/>
+    <string name="$activityStateRead" temporal="true"/>
+    <string name="$activityEndDatePlannedRead" temporal="true"/>
+    <string name="discussionCount" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[discussion == null || discussion.count == null ? null : discussion.count == 0 ? null : discussion.count.toString()]]></script>
+      </calc-values>
+    </string>
+    <string name="durationLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['дн.']]></script>
+      </calc-values>
+    </string>
+    <boolean name="linkedDocEmpty" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[linkedDoc.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="discussionCountEmpty" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[discussion == null || discussion.count == null || discussion.count == 0]]></script>
+      </calc-values>
+    </boolean>
+    <schema-ref ref="CmjLinkResource" array="true" name="relations" system="true"/>
+  </schema>
+</schemas>

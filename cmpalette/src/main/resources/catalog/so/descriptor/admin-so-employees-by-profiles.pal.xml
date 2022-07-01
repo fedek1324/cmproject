@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="(vw_cmj_admin_employees_by_profiles)" id="admin-so-employees-by-profiles" name="Сотрудники для админки по профилям" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="portalProfile" category="true"/>
+        <column-ref ref="soDocType"/>
+        <column-ref ref="isMainPost"/>
+        <column-ref ref="NotificationType"/>
+        <column-ref ref="origShortName" filter="true"/>
+        <column-ref ref="tabel" filter="true"/>
+        <column-ref ref="origPostName" filter="true"/>
+        <column-ref ref="depName" filter="true"/>
+        <column-ref ref="area" filter="true"/>
+        <column-ref ref="employeeInfo"/>
+        <column-ref ref="employeeInfoCon"/>
+        <column-ref ref="employeeInfoInc"/>
+        <column-ref ref="employeeInfoInt"/>
+        <column-ref ref="employeeInfoOrd"/>
+        <column-ref ref="employeeInfoOut"/>
+        <column-ref ref="employeeInfoReq"/>
+        <column-ref ref="workGroup" filter="true"/>
+      </columns>
+    </table>
+    <hierarchy>
+      <view-transit ref="admin-hierarchy-goto" result-search-ref="admin-hierarchy-goto"/>
+    </hierarchy>
+    <custom-actions schema-ref="SOEmployeesCollectionByProfiles"/>
+  </custom-descriptor>
+</catalog>

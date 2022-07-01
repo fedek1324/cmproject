@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ShowCorrespondentInfo">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+    </meta>
+    <boolean name="$isHuman" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parentnode.correspondent!=null && #parentnode.correspondent.human!=null && #parentnode.correspondent.human.authors!=null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$isOrg" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parentnode.correspondent!=null && #parentnode.correspondent.organization!=null && #parentnode.correspondent.organization.organization!=null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$isHumanManual" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[! (#parentnode.correspondent!=null && #parentnode.correspondent.organization!=null && #parentnode.correspondent.organization.organization!=null) && !(#parentnode.correspondent!=null && #parentnode.correspondent.human!=null && #parentnode.correspondent.human.authors!=null)]]></script>
+      </calc-values>
+    </boolean>
+    <string name="corLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Корреспондент:']]></script>
+      </calc-values>
+    </string>
+    <string name="privateLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parentnode.correspondent==null || (#parentnode.correspondent.humanManual==null && #parentnode.correspondent.human==null && #parentnode.correspondent.organization==null)?'Не указан': ((#parentnode.correspondent.humanManual!=null && #parentnode.correspondent.humanManual.authors!=null) || (#parentnode.correspondent.human!=null && #parentnode.correspondent.human.authors!=null) ?'Частное лицо:' :null)]]></script>
+      </calc-values>
+    </string>
+    <actor name="organization" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parentnode.correspondent!=null && #parentnode.correspondent.organization!=null && #parentnode.correspondent.organization.organization!=null ?#parentnode.correspondent.organization.organization :null]]></script>
+      </calc-values>
+    </actor>
+    <string name="organizationAddress" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parentnode.correspondent!=null && #parentnode.correspondent.organization!=null && #parentnode.correspondent.organization.organization!=null && #parentnode.correspondent.organization.organization.addressString!=null ?#parentnode.correspondent.organization.organization.addressString :null]]></script>
+      </calc-values>
+    </string>
+    <actor array="true" name="PrivateHuman" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parentnode.correspondent!=null && #parentnode.correspondent.human!=null && #parentnode.correspondent.human.authors!=null ?#parentnode.correspondent.human.authors: null]]></script>
+      </calc-values>
+    </actor>
+    <string array="true" name="PrivateHumanManual" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#parentnode.correspondent!=null && #parentnode.correspondent.humanManual!=null && #parentnode.correspondent.humanManual.authors!=null ?#parentnode.correspondent.humanManual.authors: null]]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

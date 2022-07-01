@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="person-appointments" name="${catalog.view.person_appointments.name:СО-назначения: по персоне}" position="280">
-    <descriptor-ref ref="arm-admin-personappointments"/>
-    <source>
-      <module ident="SO"/>
-    </source>
-  </view>
-</catalog>

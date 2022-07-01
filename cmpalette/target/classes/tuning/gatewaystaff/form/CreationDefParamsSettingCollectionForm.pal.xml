@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="CreationDefParamsSettingCollection" id="CreationDefParamsSettingCollectionForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu" name="${section.RootMenu:RootMenu}">
+        <component>
+          <section id="CREATE" name="${button.create:Создать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollectionSchema_isAnyAdmin"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${defaultParams:Параметры по умолчанию}">
+                <action>
+                  <custom>
+                    <create schema-ref="CreationDefParamsSetting">
+                      <module-current>true</module-current>
+                    </create>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

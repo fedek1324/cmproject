@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="Dialog" name="DialogSetHierarchyProfile">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="counter" temporal="true"/>
+    <string array="true" name="ids" temporal="true"/>
+    <schema-ref ref="PortalProfileInfo" name="profileHierarchyMain" system="true" temporal="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="NumeratorCounterCollection" id="NumeratorCounterCollectionForm" name="${ui.form.NumeratorCounterCollectionForm.name:Счетчики}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu" name="${ui.form.NumeratorCounterCollectionForm.section.RootMenu.name:NumeratorMenu}">
+        <component>
+          <button name="${ui.form.NumeratorCounterCollectionForm.section.RootMenu.button.Скрыть системную кнопку 'Добавить в избранное'.name:Скрыть системную кнопку 'Добавить в избранное'}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+            </action>
+          </button>
+          <section id="Create" name="${ui.form.NumeratorCounterCollectionForm.section.RootMenu.section.Create.name:Создать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.NumeratorCounterCollectionForm.section.RootMenu.section.Create.button.Счетчик.name:Счетчик}">
+                <action>
+                  <custom>
+                    <create schema-ref="NumeratorCounterResource">
+                      <module ident="Numerator" complect=""/>
+                    </create>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.NumeratorCounterCollectionForm.section.RootMenu.section.Create.button.Новый как копия.name:Новый как копия}">
+                <action>
+                  <custom>
+                    <create-copy schema-ref="NumeratorCounterResource"/>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

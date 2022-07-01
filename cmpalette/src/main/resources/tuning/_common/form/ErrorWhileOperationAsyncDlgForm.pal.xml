@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ErrorWhileOperationAsyncDlg" id="ErrorWhileOperationAsyncDlgForm" name="${ui.form.ErrorWhileOperationAsyncDlgForm.name:Обнаружены ошибки}" projection="default" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <appearance>
+      <dialog-mode height="20" width="60" unit="symbol"/>
+    </appearance>
+    <component>
+      <field attribute-ref="docsInfo">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance align="left" multiline="true">
+          <field-style separator="newline"/>
+          <limit max-height-scroll="20"/>
+        </appearance>
+      </field>
+      <field attribute-ref="footer">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance align="center"/>
+      </field>
+      <button attribute-ref="continue" name="${ui.form.ErrorWhileOperationAsyncDlgForm.button.continue.name:Продолжить операцию}">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button attribute-ref="break" name="${ui.form.ErrorWhileOperationAsyncDlgForm.button.break.name:Отменить операцию}">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.ErrorWhileOperationAsyncDlgForm.button.Скрыть кнопку Отменить.name:Скрыть кнопку Отменить}">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

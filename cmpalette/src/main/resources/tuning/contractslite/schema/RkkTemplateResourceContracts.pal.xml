@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="RkkTemplateResource" name="RkkTemplateResourceContracts">
+    <meta>
+      <category name="Система\Договоры"/>
+    </meta>
+    <actor array="true" name="advSigner" system="true"/>
+    <schema-ref ref="Parties" name="parties" system="true"/>
+    <schema-ref ref="SignatureInfoTemplateContracts" name="signatureContracts" system="true"/>
+    <string name="relationsType" system="true"/>
+    <actor array="true" name="preparedBy" system="true"/>
+    <actor name="departmentPrep" system="true"/>
+    <actor name="department" system="true"/>
+    <actor array="true" name="responsibles" system="true"/>
+    <actor array="true" name="sendlist" system="true"/>
+    <schema-ref ref="ContractValue" name="value" system="true"/>
+    <boolean name="isNotEmptyValueTotal" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[value.total != null ? true : false]]></script>
+      </calc-values>
+    </boolean>
+    <string name="showIdent" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Договор']]></script>
+      </calc-values>
+    </string>
+    <string name="$selectPartiesOtherIsOrg" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[parties != null && (parties.other == null || parties.other.id.equals(T(ru.intertrust.cmj.af.core.AFSession).get().getCurrentOrganization().getBeard().getUNID())) ? "1" : (parties != null && parties.other!= null && parties.other.id != null && (T(ru.intertrust.cmj.af.so.SOBeard.Type).PRIVATE_HUMAN).equals( parties.other.type)) ? "3" : "2"]]></script>
+      </calc-values>
+    </string>
+    <boolean name="$selectPartiesThisIsOrg" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[parties != null && parties.ours != null && parties.ours.id != null && (parties.ours.id.equals(T(ru.intertrust.cmj.af.core.AFSession).get().getCurrentOrganization().getBeard().getUNID()) || (T(ru.intertrust.cmj.af.so.SOBeard.Type).SYS_DEPARTMENT).equals( parties.ours.type))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="hasMultipleSigners" system="true" temporal="true">
+      <calc-values>
+        <script event="open">
+          <![CDATA[signatureContracts != null && !(signatureContracts.signingMode == T(ru.intertrust.cmj.af.core.SigningMode).STD)]]>
+        </script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

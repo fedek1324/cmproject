@@ -1,0 +1,1254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+
+    <!--Виджеты-->
+    <xs:include schemaLocation="tn-widgets-1.0.xsd">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Виджеты]]></xs:documentation>
+        </xs:annotation>
+    </xs:include>
+
+    <!--Стили-->
+    <xs:include schemaLocation="tn-styles-1.0.xsd">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Стили]]></xs:documentation>
+        </xs:annotation>
+    </xs:include>
+
+    <!--Тип действий-->
+    <xs:include schemaLocation="tn-action-types-1.0.xsd">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Тип действий]]></xs:documentation>
+        </xs:annotation>
+    </xs:include>
+
+    <!-- Доп. информация -->
+    <xs:complexType name="metaAppearanceType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Доп. информация для разработчика]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="category" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Категория]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute type="xs:string" name="name" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Название категории]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="documentation" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Комментарий]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+
+    <!--Стиль надписи -->
+    <xs:simpleType name="labelListStyleNameType">
+        <xs:union memberTypes="styleFontType styleBgType xs:string"/>
+    </xs:simpleType>
+
+    <xs:complexType name="labelStyleNameType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Стиль]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="labelListStyleNameType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор стиля]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Стиль формы -->
+    <xs:simpleType name="formListStyleNameType">
+        <xs:union memberTypes="styleFormType xs:string"/>
+    </xs:simpleType>
+
+    <xs:complexType name="formStyleNameType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Стиль]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="formListStyleNameType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор стиля]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Стиль секции -->
+    <xs:simpleType name="sectionListStyleNameType">
+        <xs:union memberTypes="styleSectionType styleBgType xs:string"/>
+    </xs:simpleType>
+
+    <xs:complexType name="sectionStyleNameType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Стиль]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="sectionListStyleNameType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор стиля]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Стиль кнопки -->
+    <xs:simpleType name="buttonListStyleNameType">
+        <xs:union memberTypes="styleFontType styleBgType styleBtnType styleIconType xs:string"/>
+    </xs:simpleType>
+
+    <xs:complexType name="buttonStyleNameType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Стиль]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="buttonListStyleNameType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор стиля]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Стиль поля -->
+    <xs:simpleType name="fieldListStyleNameType">
+        <xs:union memberTypes="styleFontType styleBgType styleFieldType xs:string"/>
+    </xs:simpleType>
+
+    <xs:complexType name="fieldStyleNameType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Стиль]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="id" type="fieldListStyleNameType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор стиля]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Стили поля -->
+    <xs:complexType name="fieldStylesType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Стили]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="style" type="fieldStyleNameType" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Идентификатор стиля]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="value" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Значение в поле, к которому применяется стиль]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Параметры визуализации: Секция/Форма-->
+    <!-- Параметры диалога -->
+    <xs:complexType name="dialogModeType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Размеры диалога]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="height" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Высота]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="width" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ширина]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="unit" use="optional" default="symbol">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Единица измерения]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="percent">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Проценты]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="symbol">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Символы]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="px">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Пиксели]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Размеры секции -->
+    <xs:complexType name="sizeSectionType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Размеры секции]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="height" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Высота]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="width" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ширина]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="unit" use="optional" default="symbol">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Единица измерения]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="percent">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Проценты]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="symbol">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Символы]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="px">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Пиксели]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Параметры визуализации для формы  -->
+    <xs:attributeGroup name="attributeGroupFormAppearance">
+        <xs:attribute name="field-layout" use="optional" default="vertical">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Расположение полей]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="vertical">
+                        <xs:annotation>
+                            <xs:documentation>
+                                <![CDATA[Вертикальное расположение. Поля располагаются вертикально в один столбец]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="horizontal">
+                        <xs:annotation>
+                            <xs:documentation>
+                                <![CDATA[Горизонтальное расположение. Поля располагаются горизонтально в одной строке]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="turn" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Свернутость. Определяет отображение Секции при открытии или смене режима использования документа. Доступные варианты: true – cекция будет свернута, false – Секция будет раскрыта. По умолчанию "false"]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="align" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Выравнивание по горизонтали]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="left">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По левому краю]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="center">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По центру]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="right">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По правому краю]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="width">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По ширине]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="style" type="formListStyleNameType" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Стиль. Указываются известные web-клиенту стили отображения элементов. При использовании неизвестного web-клиенту стиля, значение игнорируется]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="widget" type="widgetNameFormType" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Виджет. Указываются известные web-клиенту виджеты для отображения элементов. При использовании неизвестного web-клиенту виджета, значение игнорируется.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="color" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Цвет виджета. Используется только в клиенте WebDocs.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <!-- Параметры визуализации для секции -->
+    <xs:attributeGroup name="attributeGroupSectionAppearance">
+        <xs:attribute name="field-layout" use="optional" default="vertical">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Расположение полей]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="vertical">
+                        <xs:annotation>
+                            <xs:documentation>
+                                <![CDATA[Вертикальное расположение. Поля располагаются вертикально в один столбец]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="horizontal">
+                        <xs:annotation>
+                            <xs:documentation>
+                                <![CDATA[Горизонтальное расположение. Поля располагаются горизонтально в одной строке]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="turn" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Свернутость. Определяет отображение Секции при открытии или смене режима использования документа. Доступные варианты: true – cекция будет свернута, false – Секция будет раскрыта. По умолчанию "false"]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="align" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Выравнивание по горизонтали]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="left">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По левому краю]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="center">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По центру]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="right">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По правому краю]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="width">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По ширине]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="style" type="sectionListStyleNameType" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Стиль. Указываются известные web-клиенту стили отображения элементов. При использовании неизвестного web-клиенту стиля, значение игнорируется]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="widget" type="widgetNameSectionType" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Виджет. Указываются известные web-клиенту виджеты для отображения элементов. При использовании неизвестного web-клиенту виджета, значение игнорируется.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="color" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Цвет виджета. Используется только в клиенте WebDocs.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="flex-direction" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Расположение дочерних виджетов в рамках контейнера. Используется только в клиенте WebDocs.]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="row">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Горизонтально]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="column">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Вертикально]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="justify-content" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Выравнивание элементов контейнера вдоль оси X. Используется только в клиенте WebDocs.]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="flex-start">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[В начале]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="flex-end">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[В конце]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="center">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По центру]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="space-between">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Равномерное распределение]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="space-around">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Равномерное распределение]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="align-items" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Выравнивание элементов контейнера вдоль оси Y. Используется только в клиенте WebDocs.]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="flex-start">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[В начале]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="flex-end">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[В конце]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="center">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По центру]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="baseline">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По базовой линии]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="flex-grow" type="xs:integer">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Степень того, сколько свободного пространства в контейнере должно быть занято элементом. Только положительные числа. В случае, если задаётся flex-grow только для одного элмента, он занимает все оставшееся пространство в контейнере. Используется только в клиенте WebDocs.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <!-- Параметры таблицы -->
+    <xs:complexType name="tableType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Свойства таблицы]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="without-frame" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Таблица без рамки (для типа виджета hardTable)]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="live-editing" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Таблица поддерживает быстрое добавление и редактирование строк]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="column-edit" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Редактирование колонок непосредственно в таблице, без вызова диалога]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Параметры таблицы -->
+    <xs:complexType name="tableSectionType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Свойства таблицы]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="without-frame" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Таблица без рамки (для типа виджета hardTable)]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Составное действие -->
+    <xs:complexType name="actionSectionType">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Составное действие. Указывается, когда секция используется в качестве меню]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="system" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Системное составное действие]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="name" type="actionCompoundType" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Укажите тип действия]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="position" type="xs:double" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Позиция в линейке меню]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="sectionAppearanceType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Параметры визуализации для секции/формы]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaAppearanceType" minOccurs="0"/>
+            <xs:element name="label-style" type="sectionSType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Стиль секции]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="dialog-mode" type="sizeSectionType" minOccurs="0"/>
+            <xs:element name="table" type="tableSectionType" minOccurs="0"/>
+            <xs:element name="action" type="actionSectionType" minOccurs="0"/>
+            <xs:element name="padding" type="intendationType" minOccurs="0"/>
+            <xs:element name="margin" type="intendationType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="attributeGroupSectionAppearance"/>
+    </xs:complexType>
+
+    <!-- Параметры визуализации для секции/формы c названием -->
+    <xs:complexType name="sectionAppearanceObjectType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Параметры визуализации для секции/формы]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaAppearanceType" minOccurs="0"/>
+            <xs:element name="label-style" type="sectionSType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Заголовок секции]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="dialog-mode" type="sizeSectionType" minOccurs="0"/>
+            <xs:element name="action" type="actionSectionType" minOccurs="0"/>
+            <xs:element name="table" type="tableSectionType" minOccurs="0"/>
+            <xs:element name="padding" type="intendationType" minOccurs="0"/>
+            <xs:element name="margin" type="intendationType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="attributeGroupSectionAppearance"/>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название параметра визуализации]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Параметры визуализации для кнопки -->
+    <!--Св-во кнопки -->
+    <xs:complexType name="buttonSType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Надпись кнопки]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="style" type="buttonStyleNameType" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Идентификатор стиля]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="labelAttributeGroup"/>
+    </xs:complexType>
+
+    <xs:attributeGroup name="attributeGroupButtonAppearance">
+        <xs:attribute name="widget" type="widgetNameFieldType" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Виджет. Указываются известные web-клиенту виджеты для отображения элементов. При использовании неизвестного web-клиенту виджета, значение игнорируется.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="color" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Цвет виджета. Используется только в клиенте WebDocs.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="align" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Выравнивание.Определяет выравнивание Поля по горизонтали.]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="left">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По левому краю]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="center">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По центру]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="right">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По правому краю]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="width">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По ширине]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="flex-grow" type="xs:integer">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Степень того, сколько свободного пространства в контейнере должно быть занято элементом. Только положительные числа. В случае, если задаётся flex-grow только для одного элмента, он занимает все оставшееся пространство в контейнере.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <xs:complexType name="buttonAppearanceType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Параметры визуализации для кнопки]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaAppearanceType" minOccurs="0"/>
+            <xs:element name="label-style" type="buttonSType" minOccurs="0"/>
+            <xs:element name="padding" type="intendationType" minOccurs="0"/>
+            <xs:element name="margin" type="intendationType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="attributeGroupButtonAppearance"/>
+    </xs:complexType>
+
+    <!-- Параметры визуализации для кнопки c названием -->
+    <xs:complexType name="actionButtonType">
+        <xs:annotation>
+            <xs:documentation>
+                <![CDATA[Действие. Определяет, какое системное действие будет выполнено, при нажатии на кнопку]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="system">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Cиcтемное]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute name="name" type="actionSystemType" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Укажите тип действия]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="position" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Позиция в линейке меню]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="buttonAppearanceObjectType">
+        <xs:all>
+            <xs:element name="meta" type="metaAppearanceType" minOccurs="0"/>
+            <xs:element name="label-style" type="buttonSType" minOccurs="0"/>
+            <xs:element name="action" type="actionButtonType" minOccurs="0"/>
+            <xs:element name="padding" type="intendationType" minOccurs="0"/>
+            <xs:element name="margin" type="intendationType" minOccurs="0"/>
+        </xs:all>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название условия]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attributeGroup ref="attributeGroupButtonAppearance"/>
+    </xs:complexType>
+
+    <!-- Группа атрибутов надписи -->
+    <xs:attributeGroup name="labelAttributeGroup">
+        <xs:attribute name="width" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ширина]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="unit" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Единица измерения]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="percent">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Проценты]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="symbol">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Символы]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="px">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Пиксели. Поддерживается только в клиенте WebDocs.]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <!-- Группа атрибутов надписи поля -->
+    <xs:attributeGroup name="fieldLabelAttributeGroup">
+        <xs:attribute name="field-width" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ширина поля]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="field-unit" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Единица измерения ширины поля]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="percent">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Проценты]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="symbol">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Символы]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="px">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Пиксели. Поддерживается только в клиенте WebDocs.]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="label-width" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ширина надписи]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="label-unit" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Единица измерения ширины надписи]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="percent">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Проценты]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="symbol">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Символы]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="px">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Пиксели. Поддерживается только в клиенте WebDocs.]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <!--Св-во надписи -->
+    <xs:complexType name="labelSType">
+        <xs:sequence>
+            <xs:element name="style" type="labelStyleNameType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Идентификатор стиля]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="label-style" type="labelStyleNameType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Идентификатор стиля для названия поля/секции]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="labelAttributeGroup"/>
+    </xs:complexType>
+
+    <!--Св-во формы -->
+    <xs:complexType name="formSType">
+        <xs:sequence>
+            <xs:element name="style" type="formStyleNameType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Идентификатор стиля]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="labelAttributeGroup"/>
+    </xs:complexType>
+
+    <!--Св-во секция -->
+    <xs:complexType name="sectionSType">
+        <xs:sequence>
+            <xs:element name="style" type="sectionStyleNameType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Идентификатор стиля]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="labelAttributeGroup"/>
+    </xs:complexType>
+
+    <!--Св-во надписи поля -->
+    <xs:complexType name="fieldLabelSType">
+        <xs:sequence>
+            <xs:element name="style" type="labelStyleNameType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Идентификатор стиля]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="label-style" type="labelStyleNameType" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Идентификатор стиля для названия поля/секции]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attributeGroup ref="fieldLabelAttributeGroup"/>
+    </xs:complexType>
+
+    <!--Параметры визуализации для поля -->
+    <!-- Поле. Ограничения  -->
+    <xs:complexType name="limitType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Ограничения]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="min-size" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Ограничение для Поля с выбором из справочника и допускающего ввод массива значений. Определяет минимально допустимое количество значений Поля. Если параметр не задан, ограничений на количество значений Поля не накладывается]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="max-size" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Ограничение для Поля с выбором из справочника и допускающего ввод массива значений. Определяет максимально допустимое количество значений Поля. Если параметр не задан, ограничений на количество значений Поля не накладывается]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="min-lenght" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Минимальная длина строки]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="max-lenght" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Максимальная длина строки]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="height" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Высота поля в строках. Определяет количество строк, которые будет занимать поле на форме при переводе документа в режим редактирования]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="max-height-scroll" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Максимальная высота поля для скроллинга. Определяет высоту многострочного поля, до которой оно может растянуться при переходе на следующую строку (при переводе строки). Если высота достигнет указанного максимального значения, в поле появится полоса прокрутки (скролл). Задается в строках.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Отступы  -->
+    <xs:complexType name="intendationType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Отступы. Применяется для WebDocs 2.0]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="top" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Отступ сверху. Единицы размерности указываются тут же (30px, например)]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="bottom" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Отступ снизу. Единицы размерности указываются тут же (30px, например)]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="left" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Отступ слева. Единицы размерности указываются тут же (30px, например)]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="right" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Отступ справа. Единицы размерности указываются тут же (30px, например)]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Св-во поля -->
+    <xs:complexType name="fieldSType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Стиль значений в поле]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="value-style" type="fieldStylesType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+
+        <xs:attribute name="separator" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Разделитель значений. Для многострочных полей, допускающих ввод массива значений, определяет разделитель значений]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="newline">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Перевод строки]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="comma">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Запятая]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="group" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Группировка значений. Определяет необходимость группировки значений внутри многозначного поля, содержащего список сотрудников, по организации, к которой они относятся]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="showAddress" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Отображение адреса для VCard]]>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="date-format" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Формат даты]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:whiteSpace value="collapse"/>
+                    <xs:pattern value="[DdMmYy./-]*"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="cost-format" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Денежный формат]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="space-for-empty-name" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Добавить отступ для пустого заголовка]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Аттрибуты визуализации для поля -->
+    <xs:attributeGroup name="attributeGroupFieldAppearance">
+        <xs:attribute name="location" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Расположение поля. Может использоваться, если Поле формы соответствует Свойству, для которого указана Схема типа «Объект», и определяет расположение Полей, соответствующих Свойствам, входящим в эту вложенную Схему]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="table">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Таблица]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="subform">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Подформа]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="open-form" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Форма-открытия. Используется для объектных полей. Режим открытия объекта по клику на поле]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="full">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Полная форма]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="insert">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Форма-вставка]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="dialog">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Диалоговое окно]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="curTab">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Текущая вкладка]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="newTab">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Новая вкладка]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="newWindow">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Новое окно]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="open-mode" type="xs:string" use="optional" default="read">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Произвольный режим открытия объекта по клику (задается только для объектных полей). Если не задан, то используется read режим]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="digest-mode" type="xs:string" use="optional" default="digest">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Произвольный digest режим (задается только для объектных полей). Если не задан, то используется digest режим]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="align" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Выравнивание.Определяет выравнивание Поля по горизонтали.]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="left">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По левому краю]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="center">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По центру]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="right">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По правому краю]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="width">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[По ширине]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="multiline" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Многострочность поля. По умолчанию "Не задано"]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="default">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Не задано]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="false">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Нет]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="true">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Да]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="resizing">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Изменяемость размеров поля]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="all">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Свободное изменение размеров]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="horizontal">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Изменение размеров только по горизонтали]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="vertical">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Изменение размеров только по вертикали]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="none">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Размеры виджета изменять вручную нельзя]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="importance" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Важность. Используется для выделения данного Поля среди других Полей формы.]]></xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="high">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Высокая. Жирный черный шрифт]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="normal">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Нормальная. Обычный черный шрифт]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="low">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Низкая. Серый шрифт (как у подсказок)]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="clickable" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Кликабельность поля. По умолчанию "false"]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="widget" type="widgetNameFieldType" use="optional">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Виджет. Указываются известные web-клиенту виджеты для отображения элементов. При использовании неизвестного web-клиенту виджета, значение игнорируется.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="color" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Цвет виджета. Используется только в клиенте WebDocs.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="flex-grow" type="xs:integer">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Степень того, сколько свободного пространства в контейнере должно быть занято элементом. Только положительные числа. В случае, если задаётся flex-grow только для одного элмента, он занимает все оставшееся пространство в контейнере.]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <!--Параметры визуализации для поля -->
+    <xs:complexType name="fieldAppearanceType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Параметры визуализации для поля]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaAppearanceType" minOccurs="0"/>
+            <xs:element name="label-style" type="fieldLabelSType" minOccurs="0"/>
+            <xs:element name="field-style" type="fieldSType" minOccurs="0"/>
+            <xs:element name="limit" type="limitType" minOccurs="0"/>
+            <xs:element name="padding" type="intendationType" minOccurs="0"/>
+            <xs:element name="margin" type="intendationType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="attributeGroupFieldAppearance"/>
+    </xs:complexType>
+
+    <!--Параметры визуализации для поля с названием -->
+    <xs:complexType name="fieldAppearanceObjectType">
+        <xs:all>
+            <xs:element name="meta" type="metaAppearanceType" minOccurs="0"/>
+            <xs:element name="label-style" type="fieldLabelSType" minOccurs="0"/>
+            <xs:element name="field-style" type="fieldSType" minOccurs="0"/>
+            <xs:element name="limit" type="limitType" minOccurs="0"/>
+            <xs:element name="padding" type="intendationType" minOccurs="0"/>
+            <xs:element name="margin" type="intendationType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="attributeGroupFieldAppearance"/>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название параметра визуализации]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Ссылка на параметр визуализации -->
+    <xs:complexType name="refAppearanceType">
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название параметра визуализации]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+</xs:schema>

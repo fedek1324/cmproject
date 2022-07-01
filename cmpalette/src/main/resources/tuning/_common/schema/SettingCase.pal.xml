@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="SettingCase">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <boolean name="appeals">
+      <storage-field name="appeals"/>
+    </boolean>
+    <boolean name="contracts">
+      <storage-field name="contracts"/>
+    </boolean>
+    <boolean name="officework">
+      <storage-field name="officework"/>
+    </boolean>
+  </schema>
+</schemas>

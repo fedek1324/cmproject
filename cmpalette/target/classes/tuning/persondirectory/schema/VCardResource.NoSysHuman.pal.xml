@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="VCardResource" name="VCardResource.NoSysHuman">
+    <meta>
+      <category name="Справочники"/>
+    </meta>
+    <schema-ref ref="CommonName" name="n" system="true"/>
+    <string name="showIdent" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Сотрудник организации']]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="citizenship" system="true"/>
+    <boolean name="activeWriter" system="true"/>
+    <enum-ref ref="postTypesEnum" name="role" system="true"/>
+    <schema-ref ref="AddressValue" name="adrHome" system="true"/>
+    <string name="photo" system="true"/>
+    <string name="adr_home" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[adrHome==null ? '' : ( (adrHome.countryName==null ? '' : adrHome.countryName + ', ') + (adrHome.region==null ? '' : adrHome.region+ ', ') + (adrHome.locality==null ? '' : 'г. ' + adrHome.locality+ ', ') + (adrHome.district==null ? '' : 'р-н ' + adrHome.district+ ', ') + (adrHome.streetAddress==null ? '' : (adrHome.streetTypeAddress==null ? ('улица ' + adrHome.streetAddress + ', ') : (adrHome.streetTypeAddress + ' ' + adrHome.streetAddress + ', '))) + (adrHome.extendedAddress.house==null ? '' : 'д. ' + adrHome.extendedAddress.house+ ', ') + (adrHome.extendedAddress.housing==null ? '' : 'корп. ' + adrHome.extendedAddress.housing+ ', ') + (adrHome.extendedAddress.building==null ? '' : 'стр. ' + adrHome.extendedAddress.building+ ', ') + (adrHome.postOfficeBox==null ? '' : 'офис ' + adrHome.postOfficeBox+ ', ') + (adrHome.postalCode==null ? '' : adrHome.postalCode+ ', '))]]></script>
+      </calc-values>
+    </string>
+    <string name="adr_home_real" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(adr_home == null || ''.equals(adr_home)) ? '' : adr_home.toString().substring(0, adr_home.length()-2)]]></script>
+      </calc-values>
+    </string>
+    <actor name="orgBeard" system="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="SystemName" name="SystemNameForEmployee">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <schema-ref ref="GroupZamBeardsEmployee" array="true" name="constGroupZam" createlog="true" temporal="true"/>
+    <string name="zamsTitle" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Имеют право редактирования или создания (замещающие), актуальный сводный список:']]></script>
+      </calc-values>
+    </string>
+    <string name="auditTitle" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Имеют право чтение (аудиторы):']]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="GroupZamBeardsEmployeeCombined" array="true" name="groupZam" createlog="true" temporal="true"/>
+    <schema-ref ref="GroupZamBeardsEmployeeTemp" array="true" name="tempGroupZam" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="admin-dialog-hierarchy-functional-role" name="${catalog.view.admin_dialog_hierarchy_functional_role.name:АРМАдмин.Диалог. СО- ФР иерархия}" position="280">
-    <descriptor-ref ref="admin-dialog-hierarchy-functional-role"/>
-    <source>
-      <module ident="SO"/>
-    </source>
-  </view>
-</catalog>

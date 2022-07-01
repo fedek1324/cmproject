@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="VoteResource">
+    <meta>
+      <category name="Система\Заседания"/>
+    </meta>
+    <string name="showType" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Бюллетень голосования']]></script>
+      </calc-values>
+    </string>
+    <string name="pointNumber" system="true">
+      <storage-field name="pointNumber"/>
+    </string>
+    <string name="text" system="true"/>
+    <actor name="author" system="true">
+      <storage-field name="authorBeard" display="authorFIO"/>
+    </actor>
+    <string name="pointLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['№ вопроса']]></script>
+      </calc-values>
+    </string>
+    <string name="comment" system="true">
+      <storage-field name="comment"/>
+    </string>
+    <string array="true" name="voteOption" system="true">
+      <storage-field name="voteOption"/>
+    </string>
+    <string name="pointText" system="true">
+      <storage-field name="pointText"/>
+    </string>
+    <string name="$lockerSignatureInfo" system="true"/>
+    <string name="answer" system="true">
+      <storage-field name="answer"/>
+    </string>
+    <boolean name="isSecretary" system="true" temporal="true"/>
+    <actor array="true" name="targetGroup" system="true"/>
+
+    <string name="securityStamp" system="true"/>
+    <boolean name="supportSecurityStamp" system="true"/>
+    <boolean name="securityStampIsNotEmpty" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[securityStamp != null && securityStamp != '']]></script>
+      </calc-values>
+    </boolean>
+
+    <custom-event-handler lang="JavaScript"><![CDATA[function querySave(object, document) {
+
+	if (object.findDecisionOrProject() == null || object.findDecisionOrProject().findMeeting() == null || object.findDecisionOrProject().findMeeting().agenda() == null || object.findDecisionOrProject().findMeeting().agenda().permanentParticipants() == null || object.findDecisionOrProject().findMeeting().agenda().permanentParticipants().isEmpty()) {
+	    throw("Бюллетень голосования сохранить невозможно, в заседании должен быть указан хотя бы один постоянный участник.");
+	}
+
+    return true;
+}
+
+function postSave(object, document) {}]]></custom-event-handler>
+  </schema>
+</schemas>

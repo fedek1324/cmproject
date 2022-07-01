@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="TNObject" name="SOFunctionalRole">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="fillCases" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.functional_role.RecalcForChangeRoleFillCases</recalc-processing-class>
+    </string>
+    <string array="true" name="afScanFiels" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[{"Met", "GDBaseName", "GroupZam_My_Beards", "EShortName", "AllIDs", "GroupZam", "ZamAudit", "OName", "EKNumber", "EPhone", "DocID",
+"EPost", "ParentRoleNames"}]]></script>
+      </calc-values>
+    </string>
+    <hyperlink name="selfHyperLink" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.misc.HyperLink).createHyperLink('Открыть карточку в новой вкладке' +'~#'+T(ru.intertrust.cmj.ws.base.servlet.ServletUrlHolder).getServerUrlStr() +link.?[rel=='self'].get(0).href+'~#newTab~#local')]]></script>
+      </calc-values>
+    </hyperlink>
+    <string name="nameInfo" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(fullname!=null  ? fullname : '') + (shortname!=null && !shortname.equals(fullname )  ? (' ('+shortname+') ') : '')]]></script>
+      </calc-values>
+    </string>
+    <string name="empty_systname" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['']]></script>
+      </calc-values>
+    </string>
+    <string name="empty" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['']]></script>
+      </calc-values>
+    </string>
+    <string name="refreshNoticeReceivers" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.department.RecalcForChangeZamDepartment</recalc-processing-class>
+    </string>
+    <string name="basedocid" temporal="true"/>
+    <string name="oldParentForUpdate" temporal="true"/>
+    <string name="fullname">
+      <storage-field name="FullRoleName"/>
+    </string>
+    <string name="newParent" temporal="true"/>
+    <string name="newParentName" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="noticeReceived" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="parentUnitsList" temporal="true"/>
+    <schema-ref ref="NameList" name="hist_audit" temporal="true"/>
+    <schema-ref ref="NameList" name="hist_zam" temporal="true"/>
+    <schema-ref ref="NameList" name="hist_zam_temp" temporal="true"/>
+    <string name="shortname">
+      <storage-field name="RoleName"/>
+    </string>
+    <string name="typeFR">
+      <storage-field name="Type"/>
+    </string>
+    <string name="code">
+      <storage-field name="Index"/>
+    </string>
+    <string name="rang" system="true">
+      <storage-field name="rang"/>
+    </string>
+    <string name="parentHierarchy" system="true" temporal="true"/>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="delegate_beard" createlog="true" temporal="true"/>
+    <string name="description" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Функциональная роль']]></script>
+      </calc-values>
+    </string>
+    <string name="area">
+      <storage-field name="HomeNet"/>
+    </string>
+    <boolean name="transfer" createlog="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.staff.operations.RecalcOnRoleHasTransferFlag</recalc-processing-class>
+      <storage-field name="IsInherited"/>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(parentUnit != null && transfer !=null) && transfer]]></script>
+        <script event="save" lang="SPEL"><![CDATA[(parentUnit != null && transfer !=null) && transfer]]></script>
+      </calc-values>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="worksfor" system="true" createlog="true" temporal="true"/>
+    <boolean name="hasNoTransfer" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[transfer == null || transfer == false]]></script>
+      </calc-values>
+    </boolean>
+    <string name="worksforregistration" system="true" temporal="true"/>
+    <schema-ref null-empty="true" ref="WorkTimeProfile" name="WorkingProfile"/>
+    <boolean name="hasParentRole" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[parentUnit != null]]></script>
+      </calc-values>
+    </boolean>
+    <schema-ref ref="SystemNameForRole" name="systemName" temporal="true"/>
+    <schema-ref ref="Notification" name="notification" temporal="true"/>
+    <schema-ref ref="DescriptionCases" name="case"/>
+    <string name="GDBaseName">
+      <storage-field name="GDBaseName"/>
+    </string>
+    <string name="$parentunid" temporal="true"/>
+    <string name="tmpDelegateUnid" temporal="true"/>
+    <string name="delegatingTitle" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['При удалении дела передаются:']]></script>
+      </calc-values>
+    </string>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="parentUnit" system="true" temporal="true"/>
+    <string name="$parentunid_old" system="true" temporal="true"/>
+    <boolean name="accessWasChanged" system="true" temporal="true"/>
+    <boolean name="isInherited_old" system="true" temporal="true"/>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="organizationUnit" system="true" temporal="true"/>
+    <string name="roleName" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[nameInfo+(code!=null && !'-'.equals(code) ? (' (код '+code+')') : '')]]></script>
+      </calc-values>
+    </string>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="delegatedTo" temporal="true"/>
+  </schema>
+</schemas>

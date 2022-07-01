@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="CaseActivityStateEnum">
+    <meta>
+      <category name="Система\Кейсы 2.0"/>
+    </meta>
+    <string value="PROJECT" name="PROJECT"/>
+    <string value="IN_WORK" name="IN_WORK"/>
+    <string value="FINISHED" name="FINISHED"/>
+    <string value="CANCELLED" name="CANCELLED"/>
+  </enum>
+</schemas>

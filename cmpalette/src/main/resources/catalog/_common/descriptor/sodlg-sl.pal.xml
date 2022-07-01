@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="dummy" fulltext="true" id="sodlg-sl" name="" style="default">
+    <builder name="ru.intertrust.cmj.af.so.impl.BuilderSOSLDlg"/>
+    <table>
+      <hierarchy-column descriptor-ref="sodlg-org-subjects-sl" column-ref="empty"/>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="soslName" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soslIsPublicAccess"/>
+      </columns>
+    </table>
+    <dialog-actions>
+      <action-ref ref="SO-CreateSendList"/>
+    </dialog-actions>
+    <actions>
+      <action id="SO-CreateSendList" name="${catalog.descriptor.sodlg-sl.actions.action.SO-CreateSendList.name:Создать/Список рассылки}">
+        <create object-ref="SENDLIST"/>
+      </action>
+    </actions>
+  </descriptor>
+</catalog>

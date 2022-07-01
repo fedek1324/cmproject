@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="Pair">
+    <meta>
+      <category name="Система\Документы"/>
+    </meta>
+    <string name="id" system="true"/>
+    <string name="value" system="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="UnableGroupOperationDlg" name="UnableToSendAllDocsDlg">
+    <meta>
+      <category name="Асинхронные операции\Согласование"/>
+    </meta>
+    <boolean name="isDocsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[docs == null || docs.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isFooterEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[footer == null || ''.equals(footer)]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified" targetNamespace="http://www.intertrust.ru/schema/palette/links"
+           xmlns="http://www.intertrust.ru/schema/palette/links" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:com="http://www.intertrust.ru/schema/palette/common">
+
+    <xs:import namespace="http://www.intertrust.ru/schema/palette/common" schemaLocation="common-1.0.xsd">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Общие типы]]></xs:documentation>
+        </xs:annotation>
+    </xs:import>
+
+    <xs:complexType name="metaType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Доп. информация]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="category" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Название категории]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="documentation" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Комментарий]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="sourceType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Исходные базы]]></xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="module" type="com:moduleType"/>
+            <xs:element name="module-id" type="com:moduleIdType"/>
+        </xs:choice>
+        <xs:attribute name="doc-type" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название документа]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="targetType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Конечные базы]]></xs:documentation>
+        </xs:annotation>
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element name="module" type="com:moduleType"/>
+            <xs:element name="module-id" type="com:moduleIdType"/>
+        </xs:choice>
+        <xs:attribute name="doc-type" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название документа]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="manual" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Описание используется для связи с документами, указанными вручную]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Направление связи-->
+    <xs:simpleType name="directionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="without">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Без направления]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="from">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[От документа]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="to">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[На документ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="linkOnType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Установка связи]]></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="now">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сразу]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="registration">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[При регистрации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:attributeGroup name="typeLinkAttributes">
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор типа связи]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="name" type="com:placeholderType" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название типа связи]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="direction" type="directionType">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Направление]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="back-name" type="xs:string">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название типа обратной связи]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="back-id" type="xs:string">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор типа обратной связи]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="select" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Выбор связи пользователем]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <xs:complexType name="typeLinkRefType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Тип связи]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на тип связи]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="direction" type="directionType">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Направление]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="back-ref" type="xs:string">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Ссылка на тип обратной связи]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="select" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Выбор связи пользователем]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="default" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Тип связи по умолчанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="link-on" type="linkOnType"/>
+    </xs:complexType>
+
+    <xs:complexType name="typesLinkType">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="link-type-ref" type="typeLinkRefType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="defaultLinkRefType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Тип связи по умолчанию]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="ref">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Ссылка на тип связи]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="calcSubjectType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Название поля - заголовка документа]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="lang" fixed="JavaScript"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="calcVersionFix">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Необходимо ли фиксировать текущую верисию документа в связи]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="lang" fixed="JavaScript"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="viewRefType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Имя представления в целевой БД для выбора документов]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="ref" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="getDocType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Получения документа]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="way" type="wayType"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="wayType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Способ получения документа]]></xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="byid">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[по UniversalID]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="byDocID">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[по DocID]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="calcDocInfoType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Формула для вычисления информации о целевом документе]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="lang" type="xs:string" fixed="JavaScript"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="linkType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Классификатор связей. Описание связи]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+            <xs:element name="calc-doc-info" type="calcDocInfoType" minOccurs="0"/>
+            <xs:element name="source" type="sourceType" minOccurs="1"/>
+            <xs:element name="target" type="targetType" minOccurs="1"/>
+            <xs:element name="link-types" type="typesLinkType" minOccurs="1"/>
+            <xs:element name="calc-name" type="calcSubjectType" minOccurs="0"/>
+            <xs:element name="calc-version-fix" type="calcVersionFix" minOccurs="0"/>
+            <xs:element name="get-doc" type="getDocType" default="byDocID" minOccurs="0"/>
+        </xs:all>
+        <xs:attribute name="for-general-document" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Связь для главного документа]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Тип связи-->
+    <xs:complexType name="typeLinkType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Тип связей]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="typeLinkAttributes"/>
+        <xs:attribute name="priority" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Приоритет]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="category" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Категория]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!--Связи-->
+    <xs:element name="links">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element name="link" type="linkType" maxOccurs="unbounded"/>
+                <xs:element name="link-type" type="typeLinkType" maxOccurs="unbounded"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="input-rkk-to-nd" name="${catalog.view.input-rkk-to-nd.name:Входящие документы}" position="-1">
+    <descriptor-ref ref="input-rkk-to-nd"/>
+    <source>
+      <module ident="InputDocs"/>
+    </source>
+  </view>
+</catalog>

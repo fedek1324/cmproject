@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="dummy" fulltext="true" id="sodlg-generic" name="" style="default">
+    <builder name="ru.intertrust.cmj.af.so.impl.BuilderSODlg"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="soFullName"/>
+        <column-ref ref="soCode"/>
+      </columns>
+    </table>
+  </descriptor>
+</catalog>

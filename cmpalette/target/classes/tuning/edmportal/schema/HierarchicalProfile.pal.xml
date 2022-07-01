@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="HierarchicalProfile">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="id" temporal="true">
+      <storage-field name="Inheritance_GroupProfiles_UNID"/>
+    </string>
+    <string name="name">
+      <storage-field name="name"/>
+    </string>
+  </schema>
+</schemas>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="ClientContextRequest" name="PersonDeleteMessageYesNo">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <integer name="personCount" temporal="true"/>
+    <string name="messageText" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[counter.equals("manyPersonDelete_answer1") ? 'Вы уверены, что хотите удалить выделенные документы - '+ personCount +' ?':
+counter.equals("manyPersonDelete_answer2") ? 'При удалении сотрудников все занимаемые ими должности будут освобождены. Удалить выделенные документы?':
+counter.equals("manyPersonDelete_answer3") ? 'Не все выделенные карточки доступны вам для редактирования или выполнения операции. Продолжить выполнение операции для доступных карточек? Да / Нет' :
+counter.equals("onePersonDelete_answer1") ? 'Вы уверены, что хотите удалить сотрудника '+shortName +'?': 'Сотрудник '+shortName +' назначен на должности: '+posts+'. Удалить сотрудника и освободить занимаемые должности?']]></script>
+      </calc-values>
+    </string>
+    <string array="true" name="empIds" temporal="true"/>
+    <string name="shortName" temporal="true"/>
+    <string name="mode" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['dialog']]></script>
+      </calc-values>
+    </string>
+    <string name="posts" temporal="true"/>
+    <string array="true" name="selectPersonIds" temporal="true"/>
+    <boolean name="selectedButton_skipAppointments" temporal="true"/>
+    <boolean name="showButtons_skipAppointments" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[counter.equals('manyPersonDelete_answer2') ? true: false]]></script>
+      </calc-values>
+    </boolean>
+    <string array="true" name="allowedPersons" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

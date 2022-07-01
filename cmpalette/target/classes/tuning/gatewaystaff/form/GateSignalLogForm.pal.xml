@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="GateSignalLog" id="GateSignalLogForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header" name="${ui.form.GateSignalLogForm.section.Header.name:SignalLogHeader}">
+        <component>
+          <section id="row1" group="true">
+            <component>
+              <field attribute-ref="title">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style>
+                    <style id="tunBold"/>
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementBold"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="deletedLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_isDeleted"/>
+                  </hide>
+                </properties>
+                <appearance align="right" importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <section id="row2" group="true">
+            <appearance field-layout="horizontal">
+              <label-style width="22" unit="symbol"/>
+            </appearance>
+            <component>
+              <field attribute-ref="versionUuid" name="${ui.form.GateSignalLogForm.section.Header.section.row2.field.versionUuid.name:Идентификатор сессии:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style field-width="18" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="chunkNumberText" name="${ui.form.GateSignalLogForm.section.Header.section.row2.field.chunkNumberText.name:Номер порции:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style field-width="12" field-unit="symbol"/>
+                </appearance>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Protocol" name="${ui.form.GateSignalLogForm.section.Protocol.name:Протокол}">
+        <component>
+          <field attribute-ref="protocolRichText">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="RootMenu" name="${ui.form.GateSignalLogForm.section.RootMenu.name:SignalLogMenu}">
+        <component>
+          <section id="OTHER" name="${ui.form.GateSignalLogForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <button name="${ui.form.GateSignalLogForm.section.RootMenu.section.OTHER.button.Удалить.name:Удалить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="TNObject_isDeleted"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">DeleteSignalLogOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

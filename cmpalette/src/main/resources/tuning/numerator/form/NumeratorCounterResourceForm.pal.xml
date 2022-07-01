@@ -1,0 +1,464 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="NumeratorCounterResource" id="NumeratorCounterResourceForm" name="${ui.form.NumeratorCounterResourceForm.name:NumeratorCounterResourceForm}" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="read"/>
+        <negative-condition-ref ref="edit"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="objectType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-unit="symbol">
+                    <style id="tunIconProgress"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunIconProgress"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="deletedState">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="counterIsDeleted"/>
+                  </hide>
+                </properties>
+                <appearance align="right" importance="high">
+                  <label-style field-width="7" field-unit="symbol">
+                    <style id="tunRed"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunRed"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row2" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="organization">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-unit="symbol"/>
+                </appearance>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="description" name="${ui.form.NumeratorCounterResourceForm.section.description.name:Описание}">
+        <component>
+          <field recalc="true" attribute-ref="module" name="${ui.form.NumeratorCounterResourceForm.section.description.field.module.name:Для модуля:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+            <directories livesearch="true" limit-livesearch="sys-current">
+              <show-select-value>
+                <descriptor-ref ref="ss-modules-dlg"/>
+              </show-select-value>
+              <directory-ref ref="modulesAdmin"/>
+            </directories>
+          </field>
+          <field recalc="true" attribute-ref="servers" name="${ui.form.NumeratorCounterResourceForm.section.description.field.servers.name:Серверы:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="isNumeratorInDominoStorage"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="isCluster" name="${ui.form.NumeratorCounterResourceForm.section.description.field.isCluster.name:Используется кластер:}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="isNumeratorInDominoStorage"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="leadingServer" name="${ui.form.NumeratorCounterResourceForm.section.description.field.leadingServer.name:Ведущий сервер кластера:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="IsCluster"/>
+                <condition-ref ref="edit"/>
+              </require>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="IsCluster"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field clickable="true" attribute-ref="departments" name="${ui.form.NumeratorCounterResourceForm.section.description.field.departments.name:Подразделения:}">
+            <appearance multiline="true" importance="normal" clickable="true"/>
+            <directories livesearch="true" limit-livesearch="sys-current" relation="arm-admin-livesearch-dep-rvz">
+              <show-select-value>
+                <descriptor-ref ref="admin-deps-orgs-rvz"/>
+              </show-select-value>
+              <directory-ref ref="arm-admin-dialog-hierarchi"/>
+              <directory-ref ref="arm-admin-dialog-dep"/>
+              <directory-ref ref="arm-admin-dialog-rvz"/>
+            </directories>
+          </field>
+          <field attribute-ref="docType" name="${ui.form.NumeratorCounterResourceForm.section.description.field.docType.name:Вид документа:}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="numeratorModuleIsEmpty"/>
+              </hide>
+            </properties>
+            <rename name="${ui.form.NumeratorCounterResourceForm.section.description.field.docType.rename.name:Вид заседания:}" condition-union="AND">
+              <condition-ref ref="NumeratorCounter_moduleMeetings"/>
+            </rename>
+            <appearance importance="normal"/>
+            <directories manual-input="true" limit-livesearch="sys-current">
+              <show-select-value>
+                <cell-view-ref ref="пусто"/>
+              </show-select-value>
+              <directory-ref ref="adminDocTypesNumerator"/>
+            </directories>
+          </field>
+          <field attribute-ref="description" name="${ui.form.NumeratorCounterResourceForm.section.description.field.description.name:Описание:}">
+            <appearance importance="normal"/>
+            <hint-in-field>${ui.form.NumeratorCounterResourceForm.section.description.field.description.hintInField:Для быстрого поиска счетчика в модуле Нумератор}</hint-in-field>
+          </field>
+          <field attribute-ref="prist" name="${ui.form.NumeratorCounterResourceForm.section.description.field.prist.name:Номенклатурный индекс:}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="lastNumber" name="${ui.form.NumeratorCounterResourceForm.section.description.field.lastNumber.name:Последний использованный номер:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="counterFormula" name="${ui.form.NumeratorCounterResourceForm.section.description.field.counterFormula.name:Формула поиска счетчика:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="counterFormulaValue" name="${ui.form.NumeratorCounterResourceForm.section.description.field.counterFormulaValue.name:Значения формулы:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance multiline="true" importance="normal">
+              <label-style field-width="100" field-unit="symbol"/>
+            </appearance>
+          </field>
+          <button recalc="true" attribute-ref="$btnCalcFormulaValue" name="${ui.form.NumeratorCounterResourceForm.section.description.button.btnCalcFormulaValue.name:Вычислить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="edit"/>
+              </hide>
+            </properties>
+            <appearance>
+              <label-style>
+                <style id="tunBlue"/>
+                <style id="tunUnderline"/>
+                <style id="tunClickableRed"/>
+              </label-style>
+            </appearance>
+            <action>
+              <system name="recalc"/>
+            </action>
+          </button>
+          <field attribute-ref="constructorOfNumberTitle">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal">
+              <label-style>
+                <style id="tunGray"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunGray"/>
+                </value-style>
+              </field-style>
+            </appearance>
+          </field>
+          <field clickable="true" recalc="true" attribute-ref="constructorOfNumber" name="${ui.form.NumeratorCounterResourceForm.section.description.field.constructorOfNumber.name:Конструктор номера документа:}">
+            <appearance location="table" open-mode="grid" digest-mode="grid" multiline="true" importance="normal" clickable="true" widget="grid">
+              <label-style field-width="100" field-unit="symbol"/>
+            </appearance>
+            <directories limit-livesearch="sys-current" digest="grid">
+              <directory-ref ref="appsByPerson"/>
+            </directories>
+          </field>
+          <field attribute-ref="numberReplacedToRNumber" name="${ui.form.NumeratorCounterResourceForm.section.description.field.numberReplacedToRNumber.name:Номер заменяется на RNumber документа:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="zeroizeCounter" name="${ui.form.NumeratorCounterResourceForm.section.description.field.zeroizeCounter.name:Обнулять счетчик:}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="isNumeratorInDominoStorage"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="zeroizeCounterHint">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="isZeroizeCounter"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="periodicityOfZeroing" name="${ui.form.NumeratorCounterResourceForm.section.description.field.periodicityOfZeroing.name:Периодичность обнуления счетчика:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="isZeroizeCounter"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="unit" name="${ui.form.NumeratorCounterResourceForm.section.description.field.unit.name:Единица измерения:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="isZeroizeCounter"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="TimeUnit2"/>
+            </directories>
+          </field>
+          <field attribute-ref="lastZeroingDate" name="${ui.form.NumeratorCounterResourceForm.section.description.field.lastZeroingDate.name:Дата последнего обнуления счетчика:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="isZeroizeCounter"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="UsedNumbers" name="${ui.form.NumeratorCounterResourceForm.section.UsedNumbers.name:Использованные номера}">
+        <component>
+          <field attribute-ref="usedRNumsByCounter" name="${ui.form.NumeratorCounterResourceForm.section.UsedNumbers.field.usedRNumsByCounter.name:При регистрации по счетчику:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="usedRNumsByHand" name="${ui.form.NumeratorCounterResourceForm.section.UsedNumbers.field.usedRNumsByHand.name:При ручной регистрации:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="History" name="${ui.form.NumeratorCounterResourceForm.section.History.name:История}"/>
+      <section id="RootMenu" name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.name:NumeratorMenu}">
+        <component>
+          <button name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.button.Скрыть системную кнопку Сохранить.name:Скрыть системную кнопку Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE"/>
+            </action>
+          </button>
+          <button name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton"/>
+              </hide>
+            </properties>
+            <icon code="92"/>
+            <action position="9.0">
+              <custom>
+                <save-existing/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew"/>
+              </hide>
+            </properties>
+            <icon code="92"/>
+            <action position="9.0">
+              <custom>
+                <save/>
+              </custom>
+            </action>
+          </button>
+          <section id="Create" name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.section.Create.name:Создать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_CanEdit_ReadMode"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.section.Create.button.Счетчик.name:Счетчик}">
+                <action>
+                  <custom>
+                    <create schema-ref="NumeratorCounterResource">
+                      <module ident="Numerator" complect=""/>
+                    </create>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.section.Create.button.Новый как копия.name:Новый как копия}">
+                <action>
+                  <custom>
+                    <create-copy schema-ref="NumeratorCounterResource"/>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <button name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.button.Откатить счетчик.name:Откатить счетчик}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="canNotRollbackCounter"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">RollbackCounterOperation</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.button.Установить счетчик.name:Установить счетчик}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_CanEdit_ReadMode"/>
+              </hide>
+            </properties>
+            <action position="10.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">SetCounterOperation</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.button.Удалить.name:Удалить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_CanEdit_EditMode"/>
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <icon code="91"/>
+            <action position="10.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">DeleteNumeratorOperation</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <section id="OTHER" name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <button name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Добавить в избранное'.name:Скрыть системную кнопку 'Добавить в избранное'}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action>
+                  <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+                </action>
+              </button>
+              <button name="${ui.form.NumeratorCounterResourceForm.section.RootMenu.section.OTHER.button.Удалить.name:Удалить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_CanEdit_ReadMode"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">DeleteNumeratorOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

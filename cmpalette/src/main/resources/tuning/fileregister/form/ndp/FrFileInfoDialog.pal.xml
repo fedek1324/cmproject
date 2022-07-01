@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="FrFileInfoTableResource" id="FrFileInfoDialog" name="${ui.form.FrFileInfoDialog.name:Новые реквизиты Дела}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+        <negative-condition-ref ref="read"/>
+        <negative-condition-ref ref="edit"/>
+      </hide>
+    </properties>
+    <component>
+      <button name="${ui.form.FrFileInfoDialog.button.ОК.name:Ок}" tid="submit">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.FrFileInfoDialog.button.Отмена.name:Отмена}" tid="cancel">
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+      <section id="Attributes" group="true">
+        <appearance>
+          <label-style>
+            <style id="tunPadding16"/>
+          </label-style>
+        </appearance>
+        <component>
+          <field attribute-ref="indexFull" name="${ui.form.FrFileInfoDialog.field.indexFull.name:Новый индекс дела:}">
+            <properties>
+              <hide>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+          </field>
+          <section id="fileIndex" group="true">
+            <appearance field-layout="horizontal"/>
+            <properties>
+              <hide>
+                <condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <component>
+              <field attribute-ref="indexPrefix" name="${ui.form.FrFileInfoDialog.field.indexFull.name:Новый индекс дела:}">
+                <appearance>
+                  <label-style field-width="10" field-unit="symbol"/>
+                </appearance>
+                <properties>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+              </field>
+              <field attribute-ref="separatorPref">
+                <appearance>
+                  <label-style field-width="2" field-unit="symbol"/>
+                </appearance>
+                <properties>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+              </field>
+              <field attribute-ref="indexNum">
+                <appearance>
+                  <label-style field-width="6" field-unit="symbol"/>
+                </appearance>
+                <properties>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+              </field>
+              <field attribute-ref="separatorSuff">
+                <appearance>
+                  <label-style field-width="2" field-unit="symbol"/>
+                </appearance>
+                <properties>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+              </field>
+              <field attribute-ref="indexSuffix">
+                <appearance>
+                  <label-style field-width="10" field-unit="symbol"/>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="title" name="${ui.form.FrFileInfoDialog.field.title.name:Новый заголовок:}"/>
+          <section id="storagePeriodWithSpDescription" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="storagePeriod" name="${ui.form.FrFileInfoDialog.field.storagePeriod.name:Новый срок хранения:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="frFileInfoTable_useSpd"/>
+                    <condition-ref ref="frFileInfoTable_periodInfoException"/>
+                  </hide>
+                </properties>
+                <appearance>
+                  <label-style field-width="15" field-unit="symbol"/>
+                </appearance>
+                </field>
+              <field attribute-ref="periodInfo" recalc="true" name="${ui.form.FrFileInfoDialog.field.periodInfo.name:Новый срок хранения:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="frFileInfoTable_notUseSpd"/>
+                    <condition-ref ref="frFileInfoTable_periodInfoException"/>
+                  </hide>
+                </properties>
+                <appearance>
+                  <label-style field-width="15" field-unit="symbol"/>
+                </appearance>
+                <directories>
+                  <directory-category-custom-coll ref="fr-vw-cmj-period-info"/>
+                </directories>
+              </field>
+              <field attribute-ref="spDescription">
+                <hint-pop-up>${ui.form.FrFileInfoDialog.label.spd.name:Обоснование срока хранения}</hint-pop-up>
+                <hint-in-field>${ui.form.FrFileInfoDialog.label.spd.name:Обоснование срока хранения}</hint-in-field>
+                <appearance align="left" importance="normal">
+                  <label-style field-unit="symbol"/>
+                </appearance>
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="frFileInfoTable_useSpd"/>
+                    <condition-ref ref="frFileInfoTable_periodInfoException"/>
+                  </hide>
+                </properties>
+              </field>
+              <field attribute-ref="spDescription">
+                <hint-pop-up>${ui.form.FrFileInfoDialog.label.spd.name:Обоснование срока хранения}</hint-pop-up>
+                <hint-in-field>${ui.form.FrFileInfoDialog.label.spd.name:Обоснование срока хранения}</hint-in-field>
+                <appearance align="left" importance="normal">
+                  <label-style field-unit="symbol"/>
+                </appearance>
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="frFileInfoTable_notUseSpd"/>
+                    <condition-ref ref="frFileInfoTable_periodInfoException"/>
+                  </hide>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+              </field>
+              <field attribute-ref="spDescription">
+                <appearance importance="normal">
+                  <!--label-style>
+                    <style id="tunRed"/>
+                  </label-style-->
+                  <field-style>
+                    <value-style>
+                      <style id="tunRed"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <properties>
+                  <hide>
+                    <negative-condition-ref ref="frFileInfoTable_periodInfoException"/>
+                  </hide>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

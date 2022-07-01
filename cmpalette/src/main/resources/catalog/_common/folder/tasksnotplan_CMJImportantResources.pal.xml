@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="CMJImportantResources" id="tasks-not-plan" name="${catalog.view.tasks_not_plan.name:Незапланированные задачи}" position="30">
+    <descriptor-ref ref="pkd-plan-notplanned"/>
+  </view>
+</catalog>

@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="PkdPrintNoticesCollection" id="PkdPrintNoticesCollectionForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu">
+        <component>
+          <section id="OTHER" name="${ui.form.PkdPrintNoticesCollectionForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <section id="PRINT_REPORT" name="${ui.form.PkdPrintNoticesCollectionForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.name:Построить отчет}">
+                <component>
+                  <button alias="PkdPrintNoticesWordButton"
+                          name="${ui.form.PkdPrintNoticesCollectionForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.button.PkdPrintNoticesWordButton.name:Для всех документов}">
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler-ref ref="PkdPrintNoticesWord"/>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button alias="PkdPrintNoticesWordBySelectButton"
+                          name="${ui.form.PkdPrintNoticesCollectionForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.button.PkdPrintNoticesWordBySelectButton.name:Для выделенных}">
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler-ref ref="PkdPrintNoticesWordBySelect"/>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button alias="PkdPrintNoticesExcelButton"
+                          name="${ui.form.PkdPrintNoticesCollectionForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.button.PkdPrintNoticesExcelButton.name:Для всех документов (Excel)}">
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler-ref ref="PkdPrintNoticesExcel"/>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button alias="PkdPrintNoticesExcelBySelectButton"
+                          name="${ui.form.PkdPrintNoticesCollectionForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.button.PkdPrintNoticesExcelBySelectButton.name:Для всех документов (Excel)}">
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler-ref ref="PkdPrintNoticesExcelBySelect"/>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                </component>
+              </section>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

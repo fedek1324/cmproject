@@ -1,0 +1,1296 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RefRegister" id="FileRegisterForm" projection="default" showtabs="true" >
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.FileRegister.section.RootMenu.button.system.hide.name:Скрыть системную кнопку Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE"/>
+            </action>
+          </button>
+          <button name="${ui.form.FileRegister.section.RootMenu.button.Save.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton"/>
+              </hide>
+              <!--&lt;!&ndash;              <hide condition-union="AND">&ndash;&gt;-->
+              <!--&lt;!&ndash;                  <negative-condition-ref ref="isTypeEditor"/>&ndash;&gt;-->
+              <!--&lt;!&ndash;              </hide>&ndash;&gt;-->
+            </properties>
+            <icon code="92"/>
+            <action>
+              <custom>
+                <save-existing/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.FileRegister.section.RootMenu.button.SaveAsNew.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew"/>
+              </hide>
+            </properties>
+            <icon code="92"/>
+            <action>
+              <custom>
+                <save/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.FileRegisterForm.section.RootMenu.button.CompleteFormation.name:Завершить формирование}"
+                  tid="CompleteFormation">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canSeeButtonCompleteFormation"/>
+              </hide>
+            </properties>
+            <appearance align="left">
+              <label-style width="20">
+                <style id="tunUnderline" />
+                <style id="tunClickableRed" />
+              </label-style>
+            </appearance>
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">CompleteFrFileFormation</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <section id="OTHER" name="${ui.form.RkkResourceOutputForm.section.RootMenu.section.OTHER.name:Другое}">
+            <appearance turn="true">
+              <action>
+                <system name="OTHER"/>
+              </action>
+            </appearance>
+            <component>
+              <button name="${ui.form.FileRegisterForm.section.RootMenu.section.OTHER.button.Readers.name:Читатели}" alias="file-register-readers" tid="file-register-readers">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="read"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">IndicateReadersOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.FileRegisterForm.section.RootMenu.section.OTHER.button.printForm.name:Скрыть системную кнопку Печатная форма}" alias="hiddenPrintForm" tid="def-printform">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action>
+                  <system name="PRINTED_FORM"/>
+                </action>
+              </button>
+              <section name="${ui.form.FileRegisterForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.name:Печатная форма}" id="PRINT_REPORT">
+                <component>
+                  <button alias="file-title-page" tid="fileTitlePage"
+                          name="${ui.form.FileRegisterForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.button.fileTitlePage.name:Титульный лист Дела}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">PrintformFrFile</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button alias="file-documents-internal-inventory" tid="fileDocumentsInternalInventory"
+                          name="${ui.form.FileRegisterForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.button.fileDocumentsInternalInventory.name:Внутренняя опись документов дела}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">PrintformFrFile</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button alias="file-verification-sheet" tid="fileVerificationSheet"
+                          name="${ui.form.FileRegisterForm.section.RootMenu.section.OTHER.section.PRINT_REPORT.button.fileVerificationSheet.name:Лист-заверитель дела}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">PrintformFrFile</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                </component>
+              </section>
+            </component>
+          </section>
+          <section name="${ui.form.FileRegisterForm.section.RootMenu.section.OTHER.name:Другое}" id="OTHER_EDIT">
+            <appearance turn="true">
+              <action position="30" />
+            </appearance>
+            <properties>
+              <hide>
+                <negative-condition-ref ref="edit"/>
+              </hide>
+            </properties>
+            <component>
+              <section id="removeGrifMenu" name="${ui.form.FileRegisterForm.section.RootMenu.section.OTHER.removeGrifMenu:Снять гриф доступа}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="FrShowDeleteButton"/>
+                    <negative-condition-ref ref="FrDocReasonWithdrawalIsView"/>
+                    <negative-condition-ref ref="FrDocReasonWithdrawalManualIsView"/>
+                    <negative-condition-ref ref="FrDocReasonWithdrawalReasonIsView"/>
+                    <negative-condition-ref ref="edit"/>
+                  </hide>
+                </properties>
+                <rename name="${ui.form.FileRegisterForm.section.RootMenu.section.OTHER.changeRemoveGrifMenu:Изменить причину снятия грифа}">
+                  <condition-ref ref="FrDocReasonWithdrawalIsView"/>
+                  <condition-ref ref="FrDocReasonWithdrawalManualIsView"/>
+                  <condition-ref ref="FrDocReasonWithdrawalReasonIsView"/>
+                </rename>
+                <component>
+                  <button name="${ui.form.FileRegisterForm.section.RootMenu.section.OTHER.removeGrifMenu.selectReasonText:Указать причину}">
+                    <action>
+                      <custom>
+                        <change-subobject schema-ref="ReasonDocTextEditDialog"/>
+                      </custom>
+                    </action>
+                  </button>
+                  <button name="${ui.form.FileRegisterForm.section.RootMenu.section.OTHER.removeGrifMenu.selectReasonDoc:Выбрать документ-основание}" attribute-ref="addLinkedDocGrif">
+                    <action>
+                      <custom>
+                        <update-linked-doc schema-ref="ReasonWithdrawalOfGrifResource"/>
+                      </custom>
+                    </action>
+                  </button>
+                </component>
+              </section>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Header">
+        <component>
+          <section id="header_row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="showIdent" >
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                <label-style field-width="10" field-unit="symbol">
+                  <style id="tunIconProgress"/>
+                </label-style>
+              </appearance>
+              </field>
+              <field attribute-ref="organization">
+                <properties>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal" multiline="true">
+                  <label-style field-width="30" field-unit="symbol">
+                    <style id="tunIconProgress"/>
+                  </label-style>
+                </appearance>
+              </field>
+              <section id="header_fileIndex" group="true">
+                <appearance field-layout="horizontal">
+                  <label-style width="10" unit="symbol"/>
+                </appearance>
+                <properties>
+                  <hide>
+                    <negative-condition-ref ref="edit"/>
+                  </hide>
+                </properties>
+                <component>
+                  <field attribute-ref="indexPrefix" name="${ui.form.FileRegister.label.indexFile:Индекс дела:}">
+                    <appearance align="right">
+                      <label-style field-width="8" field-unit="symbol"/>
+                    </appearance>
+                    <properties>
+                      <read-only>
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="separatorPref">
+                    <appearance align="left">
+                      <label-style field-width="2" field-unit="symbol"/>
+                    </appearance>
+                    <properties>
+                      <read-only>
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="indexNum">
+                    <appearance align="left">
+                      <label-style field-width="6" field-unit="symbol"/>
+                    </appearance>
+                    <properties>
+                      <read-only>
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="separatorSuff">
+                    <appearance align="left">
+                      <label-style field-width="2" field-unit="symbol"/>
+                    </appearance>
+                    <properties>
+                      <read-only>
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="indexSuffix">
+                    <appearance align="left">
+                      <label-style field-width="10" field-unit="symbol"/>
+                    </appearance>
+                    <!-- TODO project only
+                    <properties>
+                      <read-only>
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    -->
+                    <properties>
+                      <read-only>
+                        <negative-condition-ref ref="refRegisterStatusGeneralIsProjectOrReserved"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                </component>
+              </section>
+              <field attribute-ref="indexFile" name="${ui.form.FileRegister.label.indexFile:Индекс дела:}">
+                <appearance align="left">
+                  <label-style field-width="20" field-unit="symbol"/>
+                </appearance>
+                <properties>
+                  <hide>
+                    <condition-ref ref="edit"/>
+                  </hide>
+                </properties>
+              </field>
+              <section id="section_ek" group="true">
+                <appearance>
+                  <label-style  width="10" unit="symbol"/>
+                </appearance>
+                <component>
+                  <field attribute-ref="ek" name="${ui.form.FileRegister.label.ek.name:ЭК}">
+                    <properties>
+                      <hide>
+                        <condition-ref ref="spdUsedFileCondition"/>
+                      </hide>
+                    </properties>
+                    <appearance align="right">
+                      <label-style field-width="3" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                </component>
+              </section>
+              <field attribute-ref="statusGeneral">
+                <properties>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <directories>
+                  <directory-ref ref="fileStatusGeneral" />
+                </directories>
+                <appearance align="right">
+                  <label-style field-width="16" field-unit="symbol">
+                    <style id="tunBold"/>
+                  </label-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="header_row2" group="true">
+            <component>
+              <section id="branchDivision_And_Unit" group="true">
+                <component>
+                  <field attribute-ref="branchDivision" name="${ui.form.FileRegisterForm.section.Header.section.header_row2.section.branchDivision_And_Unit.field.branchDivision.name:Направление деятельности:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <condition-ref ref="FrIsDivisionDep" />
+                      </hide>
+                    </properties>
+                  </field>
+                  <field attribute-ref="soUnit" clickable="true" name="${ui.form.FileRegisterForm.section.Header.section.header_row2.section.branchDivision_And_Unit.field.soUnit.name:Структурное подразделение:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="FrIsDivisionDep" />
+                      </hide>
+                    </properties>
+                    <appearance clickable="true" importance="normal" digest-mode="digest" />
+                  </field>
+                </component>
+                <appearance field-layout="horizontal" align="left">
+                  <dialog-mode unit="percent" width="25" />
+                </appearance>
+              </section>
+              <section group="true" id="accessColumn">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="FrSecurityStampNdIsEmpty" />
+                    <condition-ref ref="readRefRegister" />
+                  </hide>
+                </properties>
+                <component>
+                  <section group="true" id="securityStampValue">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="FrShowSecurityStampField" />
+                      </hide>
+                    </properties>
+                    <component>
+                      <field attribute-ref="securityStamp" recalc="true" name="${ui.form.FileRegisterForm.section.Header.section.header_row2.section.accessColumn.section.securityStampValue.field.securityStamp.name:Гриф:}">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <negative-condition-ref ref="refRegisterStatusGeneralIsProjectOrReserved" />
+                          </read-only>
+                          <hide condition-union="AND">
+                            <condition-ref ref="FrDocReasonWithdrawalIsView" />
+                            <condition-ref ref="FrDocReasonWithdrawalManualIsView" />
+                            <condition-ref ref="FrDocReasonWithdrawalReasonIsView" />
+                          </hide>
+                        </properties>
+                        <appearance importance="high" align="left">
+                          <label-style field-unit="symbol" field-width="27">
+                            <style id="tunBlack" />
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBlack" />
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                        <hint-pop-up>${ui.form.FileRegisterForm.section.Header.section.header_row2.section.accessColumn.section.securityStampValue.field.securityStamp.hintPopUp:Гриф ограничения доступа к документу}</hint-pop-up>
+                        <directories>
+                          <directory-select-value attribute-ref="personGrifs" />
+                        </directories>
+                      </field>
+                    </component>
+                  </section>
+                  <field attribute-ref="docReasonWithdrawlObj.Link" name="${ui.form.FileRegisterForm.section.Header.section.header_row2.section.accessColumn.field.docReasonWithdrawlObj.Link.name:Гриф:}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="FrDocReasonWithdrawalIsView" />
+                      </hide>
+                    </properties>
+                    <appearance importance="high">
+                      <label-style field-unit="symbol" field-width="6">
+                        <style id="tunBold" />
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="tunBold" />
+                        </value-style>
+                      </field-style>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="docReasonWithdrawlObj.GrifLabel">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="FrDocReasonWithdrawalManualIsView" />
+                        <negative-condition-ref ref="FrDocReasonWithdrawalReasonIsView" />
+                      </hide>
+                    </properties>
+                    <appearance importance="normal">
+                      <label-style field-unit="symbol" field-width="11">
+                        <style id="tunGray" />
+                        <style id="tunResetBtnStyles" />
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="tunGray" />
+                          <style id="tunResetBtnStyles" />
+                        </value-style>
+                      </field-style>
+                    </appearance>
+                  </field>
+                  <button attribute-ref="docReasonWithdrawlObj" name="${ui.form.FileRegisterForm.section.Header.section.header_row2.section.accessColumn.button.docReasonWithdrawlObj.name:снят}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="FrDocReasonWithdrawalManualIsView" />
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style unit="symbol" width="6">
+                        <style id="tunBlue" />
+                        <style id="tunUnderline" />
+                        <style id="tunBold" />
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <change-subobject schema-ref="ReasonDocDialog" />
+                      </custom>
+                    </action>
+                  </button>
+                  <button attribute-ref="docReasonWithdrawlObj" name="${ui.form.FileRegisterForm.section.Header.section.header_row2.section.accessColumn.button.docReasonWithdrawlObj.name:снят}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read" />
+                        <negative-condition-ref ref="FrDocReasonWithdrawalReasonIsView" />
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style unit="symbol" width="6">
+                        <style id="tunBlue" />
+                        <style id="tunUnderline" />
+                        <style id="tunBold" />
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <change-subobject schema-ref="ReasonDocTextDialog" />
+                      </custom>
+                    </action>
+                  </button>
+                  <button attribute-ref="docReasonWithdrawlObj" name="${ui.form.FileRegisterForm.section.Header.section.header_row2.section.accessColumn.button.docReasonWithdrawlObj.name:снят}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="edit" />
+                        <negative-condition-ref ref="FrDocReasonWithdrawalReasonIsView" />
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style unit="symbol" width="6">
+                        <style id="tunBlue" />
+                        <style id="tunUnderline" />
+                        <style id="tunBold" />
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <change-subobject schema-ref="ReasonDocTextEditDialog" />
+                      </custom>
+                    </action>
+                  </button>
+                  <field attribute-ref="addLinkedDocGrif" recalc="true">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                  </field>
+                  <field attribute-ref="docReasonWithdrawlObj.withdrawStampReasonText" recalc="true">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                  </field>
+                  <field attribute-ref="PaperDocNumbers" name="${ui.form.FileRegisterForm.section.Header.section.header_row2.section.accessColumn.field.PaperDocNumbers.name:№ экз:}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                    <appearance importance="high" align="right">
+                      <label-style field-unit="symbol" field-width="15">
+                        <style id="tunBlack" />
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="tunBlack" />
+                        </value-style>
+                      </field-style>
+                      <alt-appearancies>
+                        <alt-appearance>
+                          <appearance-ref ref="css_headerElementBold" />
+                          <enable condition-union="AND">
+                            <condition>true</condition>
+                          </enable>
+                        </alt-appearance>
+                      </alt-appearancies>
+                    </appearance>
+                    <hint-pop-up>${ui.form.FileRegisterForm.section.Header.section.header_row2.section.accessColumn.field.PaperDocNumbers.hintPopUp:№ бумажного документа, через запятую}</hint-pop-up>
+                  </field>
+                  <field attribute-ref="DOPName">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                  </field>
+                  <field attribute-ref="securityStamp" recalc="true">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                  </field>
+                </component>
+                <appearance field-layout="horizontal">
+                  <dialog-mode unit="percent" width="50" />
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="horizontalSection" />
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </section>
+              <section id="statusExtended" group="true">
+                <component>
+                  <field attribute-ref="statusExtended">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance align="right">
+                      <label-style field-unit="symbol" field-width="16">
+                        <style id="tunBold" />
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="tunBold" />
+                        </value-style>
+                      </field-style>
+                    </appearance>
+                    <directories>
+                      <directory-ref ref="fileStatusExtended" />
+                    </directories>
+                  </field>
+                </component>
+              </section>
+            </component>
+            <appearance field-layout="horizontal" turn="false"/>
+          </section>
+          <section id="header_row3" group="true">
+            <component>
+              <field attribute-ref="titleFile">
+                <properties>
+                  <require>
+                    <condition>true</condition>
+                  </require>
+                  <!-- TODO  project only
+                  <read-only>
+                  </read-only> -->
+                  <read-only>
+                    <negative-condition-ref ref="refRegisterStatusGeneralIsProjectOrReserved"/>
+                  </read-only>
+                </properties>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="ContentSection" name="${ui.form.FileRegister.section.ContentSection.name:Содержание}">
+        <appearance widget="leftMenu"/>
+        <properties>
+          <hide condition-union="AND">
+            <condition-ref ref="FrContentEmpty"/>
+          </hide>
+        </properties>
+        <component>
+          <field attribute-ref="contentDocuments" name="${ui.form.FileRegister.content.section.contentDocuments.name:Документ}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="FrContentDocumentsNotEmpty"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="contentDocuments" name="${ui.form.FileRegister.content.section.contentDocuments.name:Документ}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="FrContentDocumentsEmpty"/>
+                <negative-condition-ref ref="edit"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="contentAddInformations" name="${ui.form.FileRegister.content.section.contentAddInformations.name:Доп. Информация}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="FrContentAddInformationsNotEmpty"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="contentAddInformations" name="${ui.form.FileRegister.content.section.contentAddInformations.name:Доп. Информация}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="FrContentAddInformationsEmpty"/>
+                <negative-condition-ref ref="edit"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="Attributes" name="${ui.form.FileRegister.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="main_row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <section id="main_row1_col1" group="true">
+                <component>
+                  <field attribute-ref="eFile" recalc="true">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <negative-condition-ref ref="refRegisterStatusGeneralIsProjectOrReserved"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal" widget="radio" align="left"/>
+                    <directories>
+                      <directory-ref ref="NdEFileType"/>
+                    </directories>
+                  </field>
+                  <section id="main_row1_col1_1" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <component>
+                      <field attribute-ref="movable" name="${ui.form.FileRegister.label.movable.name:Переходящее дело}">
+                        <appearance align="left">
+                          <label-style field-width="6" field-unit="symbol"/>
+                        </appearance>
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition-ref ref="cantEditMovable"/>
+                          </read-only>
+                        </properties>
+                      </field>
+                      <field attribute-ref="dateYear" name="${ui.form.FileRegister.label.dateYear.name:с ... года}">
+                        <appearance importance="normal">
+                        </appearance>
+                        <properties>
+                          <hide>
+                            <negative-condition-ref ref="FrIsMovable"/>
+                          </hide>
+                          <read-only>
+                            <condition-ref ref="cantEditMovable"/>
+                          </read-only>
+                          <require>
+                            <condition-ref ref="edit"/>
+                          </require>
+                        </properties>
+                        <directories limit-livesearch="no-restrictions">
+                          <directory-ref ref="NDOYears"/>
+                        </directories>
+                      </field>
+                    </component>
+                  </section>
+                  <section id="main_row1_col1_2" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <component>
+                      <field tid="storagePeriod" attribute-ref="storagePeriod" name="${ui.form.FileRegister.label.storagePeriod.name:Срок хранения:}">
+                        <properties>
+                          <hide condition-union="AND">
+                            <condition-ref ref="spdUsedFileCondition"/>
+                          </hide>
+                          <require>
+                            <condition-ref ref="edit"/>
+                          </require>
+                        </properties>
+                        <appearance>
+                          <label-style field-width="15" field-unit="symbol"/>
+                        </appearance>
+                      </field>
+                      <field tid="storagePeriod" recalc="true" attribute-ref="periodInfo" name="${ui.form.FileRegister.label.storagePeriod.name:Срок хранения:}">
+                        <properties>
+                          <hide condition-union="AND">
+                            <condition-ref ref="spdNotUsedFileCondition"/>
+                          </hide>
+                          <require>
+                            <condition-ref ref="edit"/>
+                          </require>
+                        </properties>
+                        <appearance>
+                          <label-style field-unit="symbol" field-width="15" />
+                        </appearance>
+                        <directories>
+                          <directory-ref ref="fr-vw-cmj-period-info"/>
+                        </directories>
+                      </field>
+                      <field tid="storagePeriod" recalc="true" attribute-ref="periodInfo" name="${ui.form.FileRegister.label.storagePeriod.name:Срок хранения:}">
+                        <properties>
+                          <hide>
+                            <negative-condition-ref ref="edit"/>
+                            <negative-condition-ref ref="periodInfoExceptionCondition"/>
+                          </hide>
+                          <require>
+                            <condition-ref ref="edit"/>
+                          </require>
+                        </properties>
+                        <appearance>
+                          <label-style field-unit="symbol" field-width="15" />
+                        </appearance>
+                        <directories>
+                          <directory-ref ref="fr-vw-cmj-period-info"/>
+                        </directories>
+                      </field>
+                      <field tid="spDescription" attribute-ref="spDescription">
+                        <hint-pop-up>${ui.form.FileRegister.label.spd.name:Обоснование срока хранения}</hint-pop-up>
+                        <hint-in-field>${ui.form.FileRegister.label.spd.name:Обоснование срока хранения}</hint-in-field>
+                        <properties>
+                          <hide condition-union="AND">
+                            <condition-ref ref="spdUsedFileCondition"/>
+                          </hide>
+                          <require>
+                            <condition>true</condition>
+                          </require>
+                        </properties>
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="symbol"/>
+                        </appearance>
+                      </field>
+                      <field tid="spDescription" attribute-ref="spDescription">
+                        <hint-pop-up>${ui.form.FileRegister.label.spd.name:Обоснование срока хранения}</hint-pop-up>
+                        <hint-in-field>${ui.form.FileRegister.label.spd.name:Обоснование срока хранения}</hint-in-field>
+                        <properties>
+                          <hide condition-union="AND">
+                            <condition-ref ref="spdNotUsedFileCondition"/>
+                          </hide>
+                          <read-only>
+                            <condition>true</condition>
+                          </read-only>
+                          <require>
+                            <condition>true</condition>
+                          </require>
+                        </properties>
+                        <appearance align="left" importance="normal">
+                          <label-style field-width="30" field-unit="symbol"/>
+                        </appearance>
+                      </field>
+                      <field tid="spDescription" attribute-ref="spDescription">
+                        <properties>
+                          <hide>
+                            <negative-condition-ref ref="read"/>
+                            <negative-condition-ref ref="periodInfoExceptionCondition"/>
+                          </hide>
+                          <read-only>
+                            <condition>true</condition>
+                          </read-only>
+                        </properties>
+                        <appearance importance="normal">
+                          <label-style>
+                            <style id="tunRed"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunRed"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                    </component>
+                  </section>
+                </component>
+              </section>
+              <section id="main_row1_col2" group="true">
+                <appearance>
+                  <label-style width="25" unit="symbol"/>
+                </appearance>
+                <component>
+                  <field attribute-ref="electronic" name="${ui.form.FileRegister.label.electronic.name:Сопровождается в эл. виде}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <negative-condition-ref ref="refRegisterStatusGeneralIsProjectOrReserved"/>
+                      </read-only>
+                    </properties>
+                    <appearance align="right" importance="normal">
+                      <label-style field-width="3" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="outOfSystem" name="${ui.form.FileRegister.label.outOfSystem.name:Формируется вне Системы}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <negative-condition-ref ref="refRegisterStatusGeneralIsProjectOrReserved"/>
+                      </read-only>
+                    </properties>
+                    <appearance align="right" importance="normal">
+                      <label-style field-width="3" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                </component>
+              </section>
+              <section id="main_row1_col3" group="true">
+                <component>
+                  <field attribute-ref="isReserved" name="${ui.form.FileRegister.label.reserved.name:Резервное}" recalc="true">
+                    <appearance align="right" importance="normal">
+                      <label-style field-width="3" field-unit="symbol"/>
+                    </appearance>
+                    <properties>
+                      <read-only>
+                        <condition-ref ref="cannotEditIsReserve"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <field attribute-ref="isNotExist" name="${ui.form.FileRegister.label.notExist.name:Не заводилось}" recalc="true">
+                    <appearance align="right" importance="normal">
+                      <label-style field-width="3" field-unit="symbol"/>
+                    </appearance>
+                    <properties>
+                      <read-only>
+                        <negative-condition-ref ref="canEditIsNotExist"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                </component>
+              </section>
+            </component>
+          </section>
+
+          <section id="main_row2" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <section id="main_row2_col1" group="true">
+                <component>
+                  <section id="main_row2_col1_1" group="true">
+                    <appearance field-layout="horizontal"/>
+                    <component>
+                      <field attribute-ref="hasCopies" name="${ui.form.FileRegister.label.hasCopies.name:В деле содержатся копии}">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <negative-condition-ref ref="refRegisterStatusGeneralIsProjectOrReserved"/>
+                          </read-only>
+                        </properties>
+                        <appearance align="left">
+                          <label-style field-width="2" field-unit="symbol"/>
+                        </appearance>
+                      </field>
+                      <field clickable="true" attribute-ref="fileWithOriginal" tid="fileWithOriginal"
+                             name="${ui.form.FileRegister.label.fileWithOriginal.name:Индекс дела, содержащего подлинники:}">
+                        <properties>
+                          <hide>
+                            <negative-condition-ref ref="FrHasCopies"/>
+                          </hide>
+                          <read-only>
+                            <condition-ref ref="cannotEditNdFormat"/>
+                          </read-only>
+                        </properties>
+                        <directories manual-input="true">
+                          <directory-category-custom-coll ref="fileWithOriginalIndexSelect"/>
+                        </directories>
+                        <appearance importance="normal" clickable="true"/>
+                      </field>
+                    </component>
+                  </section>
+                </component>
+              </section>
+              <section id="main_row2_col2" group="true">
+                <component>
+                  <field tid="dateOfBeginning" attribute-ref="dateOfBeginning" name="${ui.form.FileRegister.label.dateOfBeginning.name:Дело начато:}">
+                    <properties>
+                      <hide>
+                        <condition-ref ref="FrIsBeginYear"/>
+                      </hide>
+                      <read-only>
+                        <condition-ref ref="canEditDateOfBeginning"/>
+                      </read-only>
+                    </properties>
+                    <appearance align="right" importance="normal">
+                      <label-style field-width="15" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <field tid="dateOfBeginningStr" attribute-ref="dateOfBeginningStr" name="${ui.form.FileRegister.label.dateOfBeginning.name:Дело начато:}">
+                    <properties>
+                      <hide>
+                        <negative-condition-ref ref="FrIsBeginYear"/>
+                      </hide>
+                      <read-only>
+                        <condition-ref ref="canEditDateOfBeginning"/>
+                      </read-only>
+                    </properties>
+                    <appearance align="right" importance="normal">
+                      <label-style field-width="15" field-unit="symbol"/>
+                    </appearance>
+                    <directories limit-livesearch="no-restrictions">
+                      <directory-ref ref="NDOYears"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="dateOfBeginningType">
+                    <appearance importance="normal" widget="radio" align="right">
+                      <label-style field-width="30" field-unit="symbol"/>
+                    </appearance>
+                    <properties>
+                      <hide>
+                        <negative-condition-ref ref="edit"/>
+                      </hide>
+                    </properties>
+                    <directories>
+                      <directory-ref ref="NdStorageDateType"/>
+                    </directories>
+                  </field>
+                </component>
+              </section>
+              <button recalc="true" attribute-ref="autoFillDateOfBeginning" tid="autoFillDateOfBeginning"
+                      name="${ui.form.FileRegister.label.autoFillDateOfBeginning.button.name:Заполнить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="edit"/>
+                  </hide>
+                </properties>
+                <appearance align="left">
+                  <label-style width="11" unit="symbol"/>
+                </appearance>
+              </button>
+              <section id="main_row2_col3" group="true">
+                <component>
+                  <field tid="dateOfEnd" attribute-ref="dateOfEnd" name="${ui.form.FileRegister.label.dateOfEnd.name:Дело окончено:}">
+                    <properties>
+                      <hide>
+                        <condition-ref ref="FrIsEndYear"/>
+                      </hide>
+                      <read-only>
+                        <negative-condition-ref ref="canEditDateOfEnd"/>
+                      </read-only>
+                    </properties>
+                    <appearance align="right" importance="normal">
+                      <label-style field-width="15" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <field tid="dateOfEndStr" attribute-ref="dateOfEndStr" name="${ui.form.FileRegister.label.dateOfEnd.name:Дело окончено:}">
+                    <properties>
+                      <hide>
+                        <negative-condition-ref ref="FrIsEndYear"/>
+                      </hide>
+                      <read-only>
+                        <negative-condition-ref ref="canEditDateOfEnd"/>
+                      </read-only>
+                    </properties>
+                    <appearance align="right" importance="normal">
+                      <label-style field-width="15" field-unit="symbol"/>
+                    </appearance>
+                    <directories limit-livesearch="no-restrictions">
+                      <directory-ref ref="NDOYears"/>
+                    </directories>
+                  </field>
+                  <field attribute-ref="dateOfEndType">
+                    <appearance importance="normal" widget="radio" align="right">
+                      <label-style field-width="33" field-unit="symbol"/>
+                    </appearance>
+                    <properties>
+                      <hide>
+                        <negative-condition-ref ref="edit"/>
+                      </hide>
+                    </properties>
+                    <directories>
+                      <directory-ref ref="NdStorageDateType"/>
+                    </directories>
+                  </field>
+                </component>
+              </section>
+              <button recalc="true" attribute-ref="autoFillDateOfEnd" tid="autoFillDateOfEnd"
+                      name="${ui.form.FileRegister.label.autoFillDateOfEnd.button.name:Заполнить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="edit"/>
+                  </hide>
+                </properties>
+                <appearance align="left">
+                  <label-style width="11" unit="symbol"/>
+                </appearance>
+              </button>
+            </component>
+          </section>
+          <section id="main_row3" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <section id="main_row3_col1" group="true">
+                <appearance field-layout="horizontal"/>
+                <properties>
+                  <read-only>
+                    <negative-condition-ref ref="canEditCountSheetsAndCountTomeSection"/>
+                  </read-only>
+                </properties>
+                <component>
+                  <field attribute-ref="countTomeSections" name="${ui.form.FileRegister.label.countTomeSections.name:Кол-во томов (частей):}">
+                    <appearance align="left">
+                      <label-style field-width="7" field-unit="symbol"/>
+                    </appearance>
+                    <properties>
+                      <read-only>
+                        <negative-condition-ref ref="canEditCountTomeSections"/>
+                      </read-only>
+                    </properties>
+                  </field>
+                  <section id="section_countSheets" group="true">
+                    <appearance>
+                      <label-style  width="15" unit="symbol"/>
+                    </appearance>
+                    <component>
+                      <field attribute-ref="countSheets" name="${ui.form.FileRegister.label.countSheets.name:Кол-во листов:}">
+                        <appearance align="left">
+                          <label-style field-width="7" field-unit="symbol"/>
+                        </appearance>
+                        <properties>
+                          <read-only>
+                            <negative-condition-ref ref="canEditCountSheets"/>
+                          </read-only>
+                        </properties>
+                      </field>
+                    </component>
+                  </section>
+                  <button recalc="true" attribute-ref="autoCountSheets" name="${ui.form.FileRegister.label.autoCountSheets.button.name:Подсчитать}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="edit"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style width="12" unit="symbol"/>
+                    </appearance>
+                  </button>
+                  <field attribute-ref="countIntInventorySheets" name="${ui.form.FileRegister.label.countIntInventorySheets.name:Кол-во листов внутренней описи:}">
+                    <appearance align="left">
+                      <label-style field-width="7" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                </component>
+              </section>
+              <field attribute-ref="ndFormat" name="${ui.form.FileRegister.label.countSheets.ndFormat:Формат дела:}">
+                <properties>
+                  <read-only>
+                    <condition-ref ref="cannotEditNdFormat"/>
+                  </read-only>
+                </properties>
+                <appearance importance="normal">
+                  <limit max-lenght="8"/>
+                </appearance>
+                <directories manual-input="true">
+                  <directory-ref ref="NdFormat"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="responsibles" name="${ui.form.FileRegister.label.responsibles.name:Ответственный за формирование дела:}">
+            <directories>
+              <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+            </directories>
+            <properties>
+              <read-only>
+                <condition-ref ref="cannotEditResponsiblesAndStorage"/>
+              </read-only>
+            </properties>
+          </field>
+          <field attribute-ref="assigners" name="${ui.form.FileRegister.label.assigners.name:В дело помещают документы:}">
+            <directories>
+              <directory-ref ref="CURRENT_DEP_HH_HIER"/>
+              <directory-ref ref="CURRENT_DEP_HH"/>
+            </directories>
+            <show-value schema-ref="VCardResource.TitleOrFullName"/>
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="cannotEditAssigners"/>
+              </read-only>
+            </properties>
+          </field>
+          <field attribute-ref="storage" name="${ui.form.FileRegister.label.storage.name:Место хранения:}">
+            <properties>
+              <read-only>
+                <condition-ref ref="cannotEditResponsiblesAndStorage"/>
+              </read-only>
+            </properties>
+          </field>
+          <section id="PrevRequisitesValue" name = "${ui.form.FileRegister.section.PrevRequisitesValue.name:Прежние реквизиты}" group="false">
+            <appearance field-layout="vertical" turn="true"/>
+            <properties>
+              <hide>
+                <negative-condition-ref ref="showPrevReqValues"/>
+              </hide>
+            </properties>
+            <component>
+              <field attribute-ref="indexFilePrev" name="${ui.form.FileRegister.label.indexFilePrev.name:Индекс дела}">
+                <properties>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+              </field>
+              <field attribute-ref="titleFilePrev" name="${ui.form.FileRegister.label.titleFilePrev.name:Заголовок}">
+                <properties>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+              </field>
+              <field attribute-ref="periodDescriptionShowPrev" name="${ui.form.FileRegister.label.storagePeriodDescPrev.name:Срок хранения и его обоснование}">
+                <properties>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+              </field>
+               <field attribute-ref="depOrDirectionPrev" name="${ui.form.FileRegister.label.depOrDirectionPrev.name.name:Структурное подразделение/Направление деятельности}">
+                 <properties>
+                   <read-only>
+                     <condition>true</condition>
+                   </read-only>
+                 </properties>
+              </field>
+            </component>
+          </section>
+          <!--field attribute-ref="fileRkk_ref" name="${ui.form.FileRegister.label.fileRkk_ref.name:Ссылка на РКК}">
+          </field-->
+        </component>
+      </section>
+        <section id="Documents" name="${ui.form.FileRegister.section.Documents.name:Документы}">
+            <component>
+              <section group="true" id="RowButtons">
+                <component>
+                  <button name="${ui.form.FileRegister.section.Documents.addRkk.name:Добавить документ в дело}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="canSeeButtonAddRkk"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style width="20">
+                        <style id="tunUnderline" />
+                        <style id="tunClickableRed" />
+                      </label-style>
+                    </appearance>
+                    <action>
+                          <custom>
+                              <operation>
+                                  <handler>
+                                      <script lang="JavaBean">AddRkkInFile</script>
+                                  </handler>
+                              </operation>
+                          </custom>
+                      </action>
+                  </button>
+                  <button name="${ui.form.FileRegister.section.Documents.button.CreateNewPsRkk.name:Создать документ}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="canSeeButtonCreateNewPsRkk"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style width="14">
+                        <style id="tunUnderline" />
+                        <style id="tunClickableRed" />
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">CreateNewPseudoRkkForFile</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                  <button name="${ui.form.FileRegister.section.Documents.ommitDocument.name:Изъять документ}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="canSeeButtonAddRkk"/>
+                        <negative-condition-ref ref="canSeeButtonCreateNewPsRkk"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style width="13">
+                        <style id="tunUnderline"/>
+                        <style id="tunClickableRed"/>
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <operation>
+                          <handler>
+                            <script lang="JavaBean">OmmitDocumentFromFile</script>
+                          </handler>
+                        </operation>
+                      </custom>
+                    </action>
+                  </button>
+                </component>
+                <appearance field-layout="horizontal"/>
+              </section>
+              <field attribute-ref="showRkks">
+                  <appearance open-mode="grid" digest-mode="grid" importance="normal" widget="grid"/>
+                  <directories limit-livesearch="no-restrictions" digest="grid">
+                      <directory-ref ref="rkkInFile"/>
+                  </directories>
+              </field>
+            </component>
+        </section>
+      <section id="History" name="${ui.form.FileRegister.section.History.name:История}"/>
+    </component>
+  </form>
+
+  <form schema-ref="RefRegister" id="FileRegisterFormDialog" projection="default" >
+  <properties>
+    <hide condition-union="AND">
+      <negative-condition-ref ref="dialog"/>
+    </hide>
+  </properties>
+  <appearance widget="tabs"/>
+  <component>
+    <field attribute-ref="selfHyperLink">
+    <properties>
+      <read-only condition-union="AND">
+        <condition>true</condition>
+      </read-only>
+    </properties>
+    </field>
+  </component>
+  </form>
+</ui>

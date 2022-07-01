@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" name="ResolutionResource">
+    <meta>
+      <category name="Сервис\Исполнения"/>
+    </meta>
+    <boolean name="$canModifyContent" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#modify.content'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string required="true" name="text" system="true"/>
+    <schema-ref ref="DeadlineDeferHistoryResource" name="deadlineDefer" system="true"/>
+    <date name="date" system="true"/>
+    <date name="resdeadline" system="true" >
+      <recalc-processing-class>ru.intertrust.cmj.rest.tuning.RecalcForChangeResolutionSaveButtonName</recalc-processing-class>
+    </date>
+    <actor array="true" name="resolutionTargetGroup" system="true"/>
+    <actor name="author" system="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.tuning.RecalcForChangeResolutionAuthor</recalc-processing-class>
+    </actor>
+    <schema-ref ref="ControlCardResourceRes" name="control" system="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.tuning.RecalcForChangeResolutionSaveButtonName</recalc-processing-class>
+    </schema-ref>
+    <schema-ref ref="ContentResource" name="$content" system="true"/>
+    <boolean name="$IsNewResolution" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#this.new!=null && #this.new]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$IsResolutionSaveButtonNameChanged" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#save.button.name.is.changed'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string name="showIdent" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#resolution.name.is.changed'].size() > 0 ? 'Поручение' : 'Резолюция']]></script>
+      </calc-values>
+    </string>
+    <boolean name="isNameChanged" temporal="true">
+      <calc-values>
+        <script event="open"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#resolution.name.is.changed'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$ControllerIsEmpty" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#this.control !=null && #this.control.controllerIsEmpty]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isPeriodicResolutionsEnabled" system="true" temporal="true"/>
+    <boolean name="$IsControlled" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#this.control != null && #this.control.isControlled]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$isSendToHead" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#send.to.head'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string name="$saveAsTemplate" system="true" temporal="true"/>
+    <schema-ref ref="CompletionResourceResolution" name="complete" system="true" temporal="true"/>
+    <string name="$print" system="true" temporal="true"/>
+    <string name="remark" system="true"/>
+    <string name="$close" system="true" temporal="true"/>
+    <string name="recentInformation" system="true"/>
+    <string name="completeHistory" system="true"/>
+    <string name="item" system="true"/>
+    <boolean name="canReadAndEditCompleteHistory" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[false]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canTrash" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#move.to.trash'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string name="$selectAuthor" system="true" temporal="true"/>
+    <string name="$getAuthorInfo" system="true" temporal="true"/>
+    <actor name="$executorsList" system="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.tuning.RecalcForChangeResolutionSaveButtonName</recalc-processing-class>
+    </actor>
+    <string name="$selectText" system="true" temporal="true"/>
+    <string name="$control" system="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.tuning.RecalcForChangeResolutionSaveButtonName</recalc-processing-class>
+    </string>
+    <string name="$priority" system="true" temporal="true"/>
+    <string name="$save" system="true" temporal="true"/>
+    <schema-ref ref="ResolutionStatus" name="status" system="true"/>
+    <string name="$sendToHead" system="true" temporal="true"/>
+    <string name="$sendToHeadWithPriority" system="true" temporal="true"/>
+    <string name="$cancel" system="true" temporal="true"/>
+    <string name="$saveAsProject" system="true" temporal="true"/>
+    <string name="$useTemplate" system="true" temporal="true"/>
+    <string name="$delete" system="true" temporal="true"/>
+    <schema-ref ref="ExecNoticeResource" name="execNotice" system="true"/>
+    <schema-ref ref="AdditionalStateResource" name="additionalState"/>
+    <string name="$sendToIDocs" system="true" temporal="true"/>
+    <boolean name="$canSendToIDocs" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#send.to.idocs'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string name="$sendToIDocsWithPriority" system="true" temporal="true"/>
+    <schema-ref ref="PRVZInfo" name="head" system="true"/>
+    <boolean name="hasHeadChangedFiles" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[head != null && head.changedFiles != null && !head.changedFiles.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <string name="repeatPeriod" system="true"/>
+    <boolean name="showAdditionalFields" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[false]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isRepeatable" system="true"/>
+    <boolean name="$canWithDrawFromIDocs" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#withdraw.send.to.head'].size() > 0 && status!=null && status.project]]></script>
+      </calc-values>
+    </boolean>
+    <schema-ref ref="MedoPart" name="medoPart" system="true"/>
+    <boolean name="isMedoDocument" system="true"/>
+    <boolean name="isMedoAndInOrOutDoc" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[((#top instanceof T(ru.intertrust.cmj.rest.rkk.RkkResourceInput)) || (#top instanceof T(ru.intertrust.cmj.rest.rkk.RkkResourceOutput))) && isMedoDocument]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$restoreFromTrash" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#restore.from.trash'].size() > 0 ? true : link.add(T(ru.intertrust.cmj.rest.core.ResourceLink).getResourceLink('http://intertrust.ru/cmj/relations#restore.from.trash', '', ''))]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isPeriodic" system="true"/>
+    <schema-ref name="periodicParameters" ref="PeriodicParametersResource" system="true"/>
+    <boolean name="isPeriodTypeDates" temporal="true" system="true">
+      <calc-values>
+        <script event="open"><![CDATA[periodicParameters != null && periodicParameters.periodType == T(ru.intertrust.cmj.dp.ResolutionPeriodType).DATES]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isPeriodTypeMonthly" temporal="true" system="true">
+      <calc-values>
+        <script event="open"><![CDATA[periodicParameters != null && periodicParameters.periodType == T(ru.intertrust.cmj.dp.ResolutionPeriodType).MONTHLY]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isSchedulePresent" temporal="true" system="true">
+      <calc-values>
+        <script event="open"><![CDATA[periodicParameters != null && (periodicParameters.periodType == T(ru.intertrust.cmj.dp.ResolutionPeriodType).DATES || periodicParameters.resolutionDatesSchedule != null && periodicParameters.resolutionDatesSchedule.size() != 0)]]></script>
+      </calc-values>
+    </boolean>
+    <string name="fillSchedule" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.tuning.RecalcForResolutionFillSchedule</recalc-processing-class>
+    </string>
+    <boolean name="isAutoCreated" system="true" temporal="true"/>
+    <custom-event-handler lang="JavaScript"><![CDATA[importPackage(Packages.java.util);
+importPackage(Packages.java.lang);
+importPackage(Packages.ru.intertrust.cmj.af.core);
+importPackage(Packages.ru.intertrust.cmj.af.so.impl);
+importPackage(Packages.ru.intertrust.cmj.af.so);
+importPackage(Packages.ru.intertrust.cmj.dp);
+importPackage(Packages.ru.intertrust.cmj.af.tuning.impl);
+importPackage(Packages.org.apache.commons.lang3);  
+
+importClass(Packages.ru.intertrust.cmj.af.misc.AFDate);
+importClass(Packages.ru.intertrust.cmj.tunable.object.common.TunableObjectHelper);
+
+function querySave(object, document) {
+
+    var author = object.getAuthor();
+
+    //здесь необходима проверка, так как проверка об¤зательности заполнени¤ пол¤ "автор" перед сохранением не выполн¤етс¤ при сохранении резолюции как проекта
+    if (author == null) {
+        throw "Выберите автора!";
+    }
+
+    var root = object.parents().getRoot();
+    var currentUser = AFSession.get().currentUser();
+    if (root instanceof DPMTasks.Resolution) {
+        if (!currentUser.isSubstituteOf(author)
+            && currentUser.getIDSubstitutedFrom(object.control().getControllers().getList()).size() === 0 && !currentUser.getClass().getName().contains("ServerProfile") ) {
+            throw "Вы не являетесь ни автором резолюции, ни его замещающим, ни контролером, ни его замещающим";
+        }
+        return true;
+    }
+
+    if (currentUser.getIDSubstitutedFrom(object.control().getControllers().getList()).size()>0) {
+        return true;
+    }
+
+    if (document!=null && !document.isNewNote() && !object.control().isControlled()) {
+       var oldControlBeards = document.getItemValue("ControlPeopleBeardRes");
+       if (oldControlBeards !=null && !oldControlBeards.isEmpty()) {
+          var soApp = AFSession.get().getApplication(SOApplication.class);
+          var oldControllersList = soApp.getBeards(oldControlBeards, false);
+          if (currentUser.getIDSubstitutedFrom(oldControllersList).size()>0) {
+             return true;
+          }
+       }
+    }
+
+    var regplace = root.registration().getPlace();
+    var party = regplace.originalData().getParty();
+    var regSettings;
+
+    if (party instanceof AppointmentHead) {
+        regSettings = party.getPost().registrationSettingsRegplace();
+    }
+    else if (party instanceof DepartmentUnit || party instanceof OrganizationUnit) {
+        regSettings = party.registrationSettingsRegplace();
+    } else {
+        return true;
+    }
+
+    var user = AFSession.get().currentUser().getBeard();
+    var dps;
+    if (root instanceof DPMInternal.RKK) {
+        dps = regSettings.internal().getDPs();
+    }
+    else if (root instanceof DPMMissions.RKK) {
+        dps = regSettings.missions().getDPs();
+        if (root.getMeetingEntity() != null) {
+            var controllers = root.control().getControllers().getList();
+            if (controllers.size() > 0 && controllers.contains(user))
+                return true;
+        }
+    }
+    else if (root instanceof DPMOutput.RKK) {
+        dps = regSettings.output().getDPs();
+    }
+    else if (root instanceof DPMInput.RKK) {
+        dps = regSettings.input().getDPs();
+    }
+    else if (root instanceof DPMAdvInput.RKK) {
+        dps = regSettings.advinput().getDPs();
+    }
+    else if (root instanceof DPMRequests.RKK) {
+        dps = regSettings.requests().getDPs();
+    }
+    else if (root instanceof DPMContracts.RKK || root instanceof DPMContracts.Addagr || root instanceof DPMContracts.Doc || root instanceof DPMContracts.Finance) {
+        dps = regSettings.contracts().getDPs();
+    }
+
+     if (party instanceof AppointmentHead){
+
+		var userParty = user.originalData().getParty();
+		
+		if(userParty instanceof SOAppointment) {
+		 
+        var userPostUnit = userParty.getPost();
+
+        if ((dps==null || !dps.contains(userPostUnit)) && (!AFSession.get().currentUser().isSubstituteOf(author))){
+            throw "Вы не являетесь ни автором резолюции, ни его замещающим, ни делопроизводителем места регистрации";
+        }
+		}
+    }
+
+    return true;
+}
+
+function postSave(object, document) {
+}]]></custom-event-handler>
+  </schema>
+</schemas>

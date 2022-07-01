@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+    <form schema-ref="ResolutionDatesScheduleResource" id="ResolutionDatesScheduleResource_Dialog">
+        <properties>
+            <hide condition-union="AND">
+                <negative-condition-ref ref="dialog"/>
+            </hide>
+        </properties>
+        <component>
+            <field attribute-ref="creationDate" name="${ui.form.DatesSchedule.creationDate:Дата резолюции}">
+                <rename name="${ui.form.DatesSchedule.creationDateTask:Дата поручения}">
+                    <condition-ref ref="ResolutionResource_isNameChanged"/>
+                </rename>
+                <properties>
+                    <require>
+                        <condition>true</condition>
+                    </require>
+                </properties>
+            </field>
+            <field attribute-ref="dueDate" name="${ui.form.DatesSchedule.dueDate:Срок исполнения}">
+                <properties>
+                    <require>
+                        <condition>true</condition>
+                    </require>
+                </properties>
+            </field>
+        </component>
+    </form>
+</ui>

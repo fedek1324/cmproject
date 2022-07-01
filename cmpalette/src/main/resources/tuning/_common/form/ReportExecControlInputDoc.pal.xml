@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ReportExecControlInputDoc" id="ReportExecControlInputDoc" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <button name="${ui.form.ReportExecControlInputDoc.button.Построить отчет.name:Построить отчет}">
+        <appearance>
+          <label-style>
+            <style id="tunBtnBlue"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#start"/>
+        </action>
+      </button>
+      <section id="date_exec" name="${ui.form.ReportExecControlInputDoc.section.date_exec.name:Период исполнения документов}">
+        <appearance field-layout="horizontal" turn="true"/>
+        <component>
+          <field attribute-ref="DATE_EXEC.Start" name="${ui.form.ReportExecControlInputDoc.section.date_exec.field.DATE_EXEC.Start.name:С}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="DATE_EXEC.End" name="${ui.form.ReportExecControlInputDoc.section.date_exec.field.DATE_EXEC.End.name:по}">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

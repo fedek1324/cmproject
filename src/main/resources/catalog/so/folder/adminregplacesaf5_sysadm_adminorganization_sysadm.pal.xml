@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <folder parent-ref="admin-organization_sysadm" id="admin-regplaces-af5_sysadm" name="${catalog.folder.admin_regplaces_af5_sysadm.name:Места регистрации}" position="80">
-    <webdocs>
-      <group id="0" position="0"/>
-    </webdocs>
-  </folder>
-</catalog>

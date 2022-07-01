@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="DocTypeSettingResource">
+    <meta>
+      <category name="Настройки видов документов"/>
+    </meta>
+    <boolean name="new" createlog="true" temporal="true"/>
+    <string name="showIdent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Вид документа']]></script>
+      </calc-values>
+    </string>
+    <string name="complect" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[unid == null ? null : T(ru.intertrust.cmj.af.core.AFCMDomino).getDbInfoByReplicaID(unid.substring(0,16)) == null ? null : T(ru.intertrust.cmj.af.core.AFCMDomino).getDbInfoByReplicaID(unid.substring(0,16)).complect == null ? null : T(ru.intertrust.cmj.af.core.AFCMDomino).getDbInfoByReplicaID(unid.substring(0,16)).complect.equals("") ? null : T(ru.intertrust.cmj.af.core.AFCMDomino).getDbInfoByReplicaID(unid.substring(0,16)).complect]]></script>
+      </calc-values>
+    </string>
+    <string name="title" createlog="true">
+      <storage-field name="DocTypeValue"/>
+    </string>
+    <string name="accessListTitle" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[accessList == null ? 'Список доступа будет доступен после сохранения' : 'Список доступа']]></script>
+      </calc-values>
+    </string>
+    <boolean name="accessList_isNull" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[accessList==null]]></script>
+      </calc-values>
+    </boolean>
+    <schema-ref null-empty="true" ref="EmbeddedView" name="accessList" createlog="true" temporal="true"/>
+    <schema-ref null-empty="true" ref="EmbeddedView" name="accessListReadOnly" temporal="true"/>
+    <string name="accessListTitle_readOnly" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Редактирование списка доступа будет доступно после сохранения']]></script>
+      </calc-values>
+    </string>
+    <actor name="Operator" createlog="true">
+      <storage-field name="IdAuthor"/>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[Operator==null?T(ru.intertrust.cmj.af.core.AFSession).get().currentUser().getBeard():Operator]]></script>
+      </calc-values>
+    </actor>
+    <string name="metText" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Удалено ']]></script>
+      </calc-values>
+    </string>
+    <datetime name="met_date" createlog="true">
+      <storage-field name="Met_Date"/>
+    </datetime>
+    <actor name="met_who" createlog="true">
+      <storage-field name="Met_Beard"/>
+    </actor>
+    <boolean name="isMet" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[met_date != null || met_who != null]]></script>
+      </calc-values>
+    </boolean>
+    <schema-ref ref="ClientContext_SaveDocTypeWithDialog" name="$clientContext" temporal="true"/>
+    <string name="mode" temporal="true"/>
+  </schema>
+</schemas>

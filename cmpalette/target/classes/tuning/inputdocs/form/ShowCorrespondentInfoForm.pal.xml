@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ShowCorrespondentInfo" id="ShowCorrespondentInfoForm" projection="default" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal"/>
+    <component>
+      <field attribute-ref="corLabel">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance align="left">
+          <label-style field-width="15" field-unit="symbol">
+            <style id="tunGray"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunGray"/>
+            </value-style>
+          </field-style>
+        </appearance>
+      </field>
+      <field attribute-ref="organization">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="showCorrIsOrg"/>
+          </hide>
+        </properties>
+        <appearance align="left" multiline="true">
+          <label-style field-width="80" field-unit="percent"/>
+          <limit height="1" max-height-scroll="1"/>
+        </appearance>
+      </field>
+      <field attribute-ref="privateLabel">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="showCorrIsHuman"/>
+            <negative-condition-ref ref="showCorrIsHumanManual"/>
+          </hide>
+        </properties>
+        <appearance align="left">
+          <label-style field-width="12" field-unit="symbol">
+            <style id="tunBold"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunBold"/>
+            </value-style>
+          </field-style>
+        </appearance>
+      </field>
+      <field attribute-ref="PrivateHumanManual">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="showCorrIsHumanManual"/>
+          </hide>
+        </properties>
+        <appearance align="left">
+          <label-style field-width="70" field-unit="percent"/>
+        </appearance>
+      </field>
+      <field attribute-ref="PrivateHuman">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="showCorrIsHuman"/>
+          </hide>
+        </properties>
+        <appearance align="left">
+          <label-style field-width="70" field-unit="percent"/>
+        </appearance>
+      </field>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+    <custom-descriptor ident="StoragePeriodDirectory" view="(vw-cmj-period-info)" id="fr-vw-cmj-period-info" name="Период из справочника сроков хранения"
+                       style="default">
+        <help id="0"/>
+        <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewCQSearch"/>
+        <table>
+            <columns>
+                <column-ref ref="self"/>
+                <column-ref ref="period" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="subject" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="articleNum" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="docType" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="epk" sort-asc="true" sort-desc="true" filter="true"/>
+                <column-ref ref="selStorage"/>
+            </columns>
+        </table>
+    </custom-descriptor>
+</catalog>

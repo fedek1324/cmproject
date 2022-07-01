@@ -1,0 +1,276 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="Actions">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <boolean name="$canSendToSign" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#sign.sent'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canRevokeInputRegistration" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#revoke.input.registration'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canSignCommon" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#sign'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canSignAndRegisterCommon" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#sign.and.register'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="hasDefaultRegSettings" system="true" createlog="true" temporal="true"/>
+    <boolean name="sendToRegisterAfterSigned" system="true" createlog="true" temporal="true"/>
+    <boolean name="$canVerify" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#verify'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$CanSignLockerCommon" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(link.?[rel=='http://intertrust.ru/cmj/relations#sign.locker.sign'].size() > 0) || (link.?[rel=='http://intertrust.ru/cmj/relations#filesigning.locker.sign'].size() > 0) || (link.?[rel=='http://intertrust.ru/cmj/relations#sign.and.register.locker.sign'].size() > 0)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canSignAndRegister" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[$canSignAndRegisterCommon && !$CanSignLockerCommon &&  hasDefaultRegSettings]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canSign" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[$canSignCommon && !$CanSignLockerCommon && !$canSignAndRegister]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canRecallSign" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#sign.recall'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canUnsign" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(link.?[rel=='http://intertrust.ru/cmj/relations#unsign'].size() > 0)&&(link.?[rel=='http://intertrust.ru/cmj/relations#sign.locker.cancel'].size() ==0)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canRejectSign" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#sign.reject'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canRegister" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#register'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canSendToRegister" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#register.sent'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canRejectRegister" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#register.reject'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canRegisterAndVerify" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#register.and.verify'].size() > 0 && #isClerk(#this, null)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canRegisterAndVerifyAndResolution" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#register.and.verify.and.resolution'].size() > 0 && #isClerk(#this, null)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canRegisterManual" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#register.manual'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canRegisterAndResolution" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#register.and.resolution'].size() > 0 && #isClerk(#this, null)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canSendToApproving" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#approving.start'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canSendToReview" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#review.start'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canUnverify" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(link.?[rel=='http://intertrust.ru/cmj/relations#remove-verification'].size() > 0)&&(link.?[rel=='http://intertrust.ru/cmj/relations#remove-verification.locker.cancel'].size() ==0)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canCreateResolution" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#create-resolution'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canCreateReport" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#create-report'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$CanSignAndRegisterLocker" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[$canSignAndRegisterCommon && $CanSignLockerCommon && hasDefaultRegSettings]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$CanSignLocker" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[$CanSignLockerCommon &&  !$CanSignAndRegisterLocker]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canTrash" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#move.to.trash'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canRestore" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#restore.from.trash'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canDelete" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='delete'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canUnsignLocker" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#sign.locker.cancel'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canUnverifyLocker" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#remove-verification.locker.cancel'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canSendToReviewContracts" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['active'.equals(status)&&link.?[rel=='http://intertrust.ru/cmj/relations#review.start'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string name="$hasStandartContent" computed="true"/>
+    <boolean name="$canDiscuss" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#discussion'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canCreateReply" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#reply'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isRegisteredOrNotProject" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceOutput)) || getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceInternal)) || getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceMissions)) ? #this.registration != null && #this.registration.state != null && #this.registration.state.status != null && #this.registration.state.status == "registered" ? true : false :  getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceContracts)) || getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.contracts.addagr.Agreement.Resource)) || getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.contracts.finances.Finance.Resource)) || getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.contracts.document.Document.Resource)) ? #this.status != null && #this.status != "project" ? true : false : false]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isSigned" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceOutput)) || getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceInternal)) || getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceMissions)) || getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.contracts.finances.Finance.Resource)) || getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.contracts.document.Document.Resource)) ? #this.signature != null && #this.signature.state != null && #this.signature.state.status != null && (#this.signature.state.status == "signed") ? true : false :  getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceContracts)) || getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.contracts.addagr.Agreement.Resource)) ? #this.signatureContracts != null && #this.signatureContracts.ours != null && #this.signatureContracts.ours.state != null && #this.signatureContracts.ours.state.status != null && (#this.signatureContracts.ours.state.status == "signed") ? true : false : false]]></script>
+      </calc-values>
+    </boolean>
+    <string name="approveAddStateText" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceOutput)) && !getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceInternal)) && !getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceMissions)) && !getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.rkk.RkkResourceContracts)) && !getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.contracts.addagr.Agreement.Resource)) && !getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.contracts.finances.Finance.Resource)) && !getClass().isAssignableFrom(T(ru.intertrust.cmj.rest.contracts.document.Document.Resource)) ? null : #this.approveAddState == null || #this.approveAddState.state == null ? null :  #this.isSigned ? null : #this.apre == T(ru.intertrust.cmj.rest.rkk.APREStatus).ON_APPROVING ? null : #this.isRegisteredOrNotProject ? null : #this.approveAddState.isContentChanged == true ? "Содержание изменено после согласования" : #this.approveAddState.state.title()]]></script>
+      </calc-values>
+    </string>
+    <boolean name="approveAddStateTextNotIsEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#this.tuning()!=null && #this.tuning().getValues()!=null && #this.tuning().getValues().get("approveAddStateText")!=null && !approveAddStateText.equals("")]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="regStateStatusRejected" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).isObjectContains(#this, 'registration')  && "rejected".equals(#this?.registration?.state?.status)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="apreOnApproving" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).isObjectContains(#this, 'apre')  &&  "ON_APPROVING".equals(#this?.apre)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="regStateStatusSent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).isObjectContains(#this, 'registration')  &&  "sent".equals(#this?.registration?.state?.status)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="canSeeCustomButtonSendToSignatureContacts" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).isObjectContains(#this, 'signatureContracts')  &&  "rejected".equals(#this?.signatureContracts?.ours?.state?.status)]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="signStateStatusSentContracts" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).isObjectContains(#this, 'signatureContracts')  &&  "sent".equals(#this?.signatureContracts?.ours?.state?.status)]]></script>
+      </calc-values>
+    </boolean>
+      <boolean name="canSeeTypeButtonSendToSignature" createlog="true" temporal="true">
+          <calc-values>
+              <script event="open" lang="SPEL">
+                  <![CDATA[!T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).isObjectContains(#this, 'signature')  ||  !"rejected".equals(#this?.signature?.state?.status)]]></script>
+          </calc-values>
+      </boolean>
+      <boolean name="signStateStatusSent" createlog="true" temporal="true">
+          <calc-values>
+              <script event="open" lang="SPEL">
+                  <![CDATA[T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).isObjectContains(#this, 'signature')  &&  "sent".equals(#this?.signature?.state?.status)]]></script>
+          </calc-values>
+      </boolean>
+      <boolean name="curUserIsExec" createlog="true" temporal="true">
+          <calc-values>
+              <script event="open" lang="SPEL">
+                  <![CDATA[T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).isObjectContains(#this, 'executor') && #this.executor != null? #this?.executor?.contains( T(ru.intertrust.kiss.util.afmagic.AFMagic).get().getCurrentUser() ) || !#this.isNew() && T(ru.intertrust.cmj.af.core.AFSession).get().getApplication(T(ru.intertrust.cmj.dp.DPApplication)).getEntityByUNID(#this.id).executors().getList().?[originalData().getParty().getPost().getSubstitutes().?[getUNID().equals(T(ru.intertrust.cmj.af.core.AFSession).get().currentUser().getBeard().getAccessUnit().getUNID())].size() > 0].size() > 0 :  false]]></script>
+          </calc-values>
+      </boolean>
+
+
+      <boolean name="alwaysFalse" createlog="true" temporal="true">
+          <calc-values>
+              <script event="open" lang="SPEL">
+                  <![CDATA[false]]></script>
+          </calc-values>
+      </boolean>
+
+      <boolean name="curUserIsExecWithoutSub" createlog="true" temporal="true">
+          <calc-values>
+              <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).isObjectContains(#this, 'executor') && #this.executor != null ? #this?.executor?.contains(T(ru.intertrust.kiss.util.afmagic.AFMagic).get().getCurrentUser()) :  false]]></script>
+          </calc-values>
+      </boolean>
+    <actor name="signers" array="true" temporal="true">
+      <calc-values>
+        <script event="open"><![CDATA[T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).isObjectContains(#this, 'signature') && #this?.signature?.signers != null ? #this.signature.signers.![signer] : null]]></script>
+      </calc-values>
+      <recalc-processing-class>ru.intertrust.cmj.rest.rkk.RecalcAddSignersButton</recalc-processing-class>
+    </actor>
+    <string name="$emptyString" temporal="true" system="true"/>
+      <string name="$hasContentWithAffirm" temporal="true"/>
+    <boolean name="canManualStamp" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#manualStamp'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isInStamp" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#stampConvert'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string name="stampInfo" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Идет формирование образа документа']]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

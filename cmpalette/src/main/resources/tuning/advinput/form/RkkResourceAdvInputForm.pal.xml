@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RkkResourceAdvInput" id="RkkResourceAdvInputForm" name="${ui.form.RkkResourceAdvInputForm.name:RkkResourceAdvInputForm}" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <button attribute-ref="$canVerify" name="${ui.form.RkkResourceAdvInputForm.button.canVerify.name:Заверить}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanVerify"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.RkkResourceAdvInputForm.button.canVerify.hintPopUp:Заверить}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#verify"/>
+        </action>
+      </button>
+      <button attribute-ref="$canUnverify" name="${ui.form.RkkResourceAdvInputForm.button.canUnverify.name:Отменить заверение}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanUnverify"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.RkkResourceAdvInputForm.button.canUnverify.hintPopUp:Отменить заверение}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#remove-verification"/>
+        </action>
+      </button>
+      <button name="${ui.form.RkkResourceAdvInputForm.button.Отозвать.name:Отозвать}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="canRevokeInputRegistration"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.RkkResourceAdvInputForm.button.Отозвать.hintPopUp:Отозвать}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#revoke.input.registration"/>
+        </action>
+      </button>
+      <section id="Attributes" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="Main" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.name:Основные}">
+            <component>
+              <field autofill="true" attribute-ref="type" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.type.name:Вид документа:}">
+                <hint-pop-up>${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.type.hintPopUp:Вид документа}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="ReqType"/>
+                </directories>
+              </field>
+              <field attribute-ref="correspondent.regNumber" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.regNumber.name:Номер документа:}"/>
+              <field attribute-ref="correspondent.regDate" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.regDate.name:Дата документа:}"/>
+              <field attribute-ref="packageNumber" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.packageNumber.name:№ пакета / авианакладной:}"/>
+              <field attribute-ref="inDate" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.inDate.name:Дата учета:}"/>
+              <field attribute-ref="correspondent.organization.organization" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.organization.organization.name:Корреспондент:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.organization.organization.hintPopUp:Корреспондент}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="FOREIGN_ORGS"/>
+                  <directory-ref ref="PrivatePeople"/>
+                </directories>
+              </field>
+              <field attribute-ref="correspondent.manual.authors" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.manual.authors.name:Автор:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.manual.authors.hintPopUp:Автор}</hint-pop-up>
+              </field>
+              <field attribute-ref="correspondent.organization.authors" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.organization.authors.name:Автор:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.correspondent.organization.authors.hintPopUp:Автор}</hint-pop-up>
+              </field>
+              <field attribute-ref="addressee" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.addressee.name:Адресаты:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Main.field.addressee.hintPopUp:Адресаты}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_All"/>
+                  <directory-ref ref="CURRENT_All_Hierarchy"/>
+                  <directory-ref ref="sys_roles"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+          <section id="Additional" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Additional.name:Дополнительные}">
+            <component>
+              <field attribute-ref="pages" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Additional.field.pages.name:Кол-во листов:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Additional.field.pages.hintPopUp:Кол-во листов}</hint-pop-up>
+              </field>
+              <field attribute-ref="copies" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Additional.field.copies.name:Кол-во экземпляров:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Additional.field.copies.hintPopUp:Кол-во экземпляров}</hint-pop-up>
+              </field>
+              <field attribute-ref="appendices" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Additional.field.appendices.name:Кол-во приложений:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Additional.field.appendices.hintPopUp:Кол-во приложений}</hint-pop-up>
+              </field>
+              <field attribute-ref="appendicesPages" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Additional.field.appendicesPages.name:Листов приложения:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.RkkResourceAdvInputForm.section.Attributes.section.Additional.field.appendicesPages.hintPopUp:Листов приложения}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="rtcontents" name="${ui.form.RkkResourceAdvInputForm.section.Attributes.section.rtcontents.name:Содержание}">
+            <component>
+              <section id="Content"/>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <component>
+              <field attribute-ref="showIdent">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="15" field-unit="symbol"/>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="showType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="$tagsHeader">
+                <appearance align="left" importance="normal">
+                  <label-style field-width="30" field-unit="symbol"/>
+                </appearance>
+                <directories limit-livesearch="no-restrictions">
+                  <directory-ref ref="tags"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+          <section id="row11" group="true">
+            <component>
+              <field attribute-ref="$regStatusInfo">
+                <appearance align="right"/>
+              </field>
+              <field attribute-ref="$certifiedStatusInfo">
+                <appearance align="right">
+                  <label-style field-width="13" field-unit="symbol"/>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="$titleHeader">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="edit"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <hint-in-field>${ui.form.RkkResourceAdvInputForm.section.Header.field.titleHeader.hintInField:Введите заголовок документа}</hint-in-field>
+            <directories manual-input="true" limit-livesearch="no-restrictions">
+              <directory-ref ref="subject"/>
+            </directories>
+          </field>
+          <field attribute-ref="$titleHeader">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <appearance importance="normal">
+              <label-style>
+                <style id="tunFontSize14"/>
+                <style id="tunClickableUnderline"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunFontSize14"/>
+                  <style id="tunClickableUnderline"/>
+                </value-style>
+              </field-style>
+            </appearance>
+            <hint-in-field>${ui.form.RkkResourceAdvInputForm.section.Header.field.titleHeader.hintInField:Введите заголовок документа}</hint-in-field>
+            <directories manual-input="true" limit-livesearch="no-restrictions">
+              <directory-ref ref="subject"/>
+            </directories>
+          </field>
+          <field attribute-ref="$deleteStatusInfo">
+            <appearance align="right"/>
+          </field>
+        </component>
+      </section>
+      <section id="LifeCycle" name="${ui.form.RkkResourceAdvInputForm.section.LifeCycle.name:Жизненный цикл}">
+        <appearance widget="leftMenu"/>
+        <component>
+          <section id="Registration" name="${ui.form.RkkResourceAdvInputForm.section.LifeCycle.section.Registration.name:Регистрация}"/>
+          <section id="Confirmation" name="${ui.form.RkkResourceAdvInputForm.section.LifeCycle.section.Confirmation.name:Заверение}"/>
+        </component>
+      </section>
+      <section id="Links" name="${ui.form.RkkResourceAdvInputForm.section.Links.name:Связанные}">
+        <appearance widget="leftMenu"/>
+        <component>
+          <section id="Documеnts" name="${ui.form.RkkResourceAdvInputForm.section.Links.section.Documеnts.name:Документы}"/>
+        </component>
+      </section>
+      <section id="History" name="${ui.form.RkkResourceAdvInputForm.section.History.name:История}"/>
+    </component>
+  </form>
+</ui>

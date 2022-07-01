@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="EDM-Catalog" view="(vw_cmj_docsnrd_template)" id="edm-docs-nrd-doctemplates" name="НРД - Шаблоны документов" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="category" category="true"/>
+        <column-ref ref="name"/>
+        <column-ref ref="TypeName"/>
+        <column-ref ref="subject"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="NRD-NewTemplate" name="${catalog.custom-descriptor.edm-docs-nrd-doctemplates.actions.action.NRD-NewTemplate.name:Создать/Шаблон НРД}">
+        <create object-ref="EDMDOCS_NRD_TEMPLATE"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

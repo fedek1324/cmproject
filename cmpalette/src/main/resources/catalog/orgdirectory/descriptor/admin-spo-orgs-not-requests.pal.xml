@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="OrgDirectory" view="(vw_cmj_admin_orgs_not_requests)" id="admin-spo-orgs-not-requests" name="Все организации с заявками для админки" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView">
+      <config>
+        <view-complex-classif level-select="all"/>
+      </config>
+    </builder>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="icon"/>
+        <column-ref ref="soOrgShortNameAdmin"/>
+        <column-ref ref="depOName"/>
+        <column-ref ref="postAddress"/>
+        <column-ref ref="category"/>
+        <column-ref ref="thematic"/>
+        <column-ref ref="objectNamed"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

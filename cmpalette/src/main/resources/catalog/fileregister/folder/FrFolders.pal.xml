@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+    <view parent-ref="fileregister-files" id="fileregister-nd" name="${catalog.view.fileregister.name:Дела}"
+          position="70">
+        <search-area name="FileRegister"/>
+        <descriptor-ref ref="fr-des-vw-cmj-nd"/>
+        <source>
+            <module ident="FileRegister"/>
+        </source>
+    </view>
+    <view parent-ref="fileregister-files" id="fileregister-selected-for-archive"
+          name="${catalog.view.fileregister-selected-for-archive.name:Дела, отобранные для передачи в архив}"
+          position="80">
+        <search-area name="FileRegister"/>
+        <descriptor-ref ref="fileregister-selected-for-archive"/>
+        <source>
+            <module ident="FileRegister"/>
+        </source>
+    </view>
+    <view parent-ref="fileregister-files" id="fileregister-nd-trash" name="${catalog.view.fileregister-nd-trash.name:Корзина}"
+          position="110">
+        <search-area name="FileRegister"/>
+        <descriptor-ref ref="fr-des-vw-cmj-nd-trash"/>
+        <source>
+            <module ident="FileRegister"/>
+        </source>
+    </view>
+
+    <!--<view parent-ref="fileregister-files" id="fileregister-by-units" name="${catalog.view.fileregister-by-unit.name:По подразделениям}"
+          position="80">
+        <search-area name="FileRegister"/>
+        <descriptor-ref ref="fr-des-vw-cmj-nd-by-units"/>
+        <source>
+            <module ident="FileRegister"/>
+        </source>
+    </view>
+    <view parent-ref="fileregister-files" id="fileregister-by-unit-id" name="${catalog.view.fileregister-by-unitId.name:По индексам подразделений}"
+          position="90">
+        <search-area name="FileRegister"/>
+        <descriptor-ref ref="fr-des-vw-cmj-nd-by-unitid"/>
+        <source>
+            <module ident="FileRegister"/>
+        </source>
+    </view>
+
+    <view parent-ref="fileregister-files" id="fileregister-by-shelf-time" name="${catalog.view.fileregister-by-shelf-time.name:По срокам хранения}"
+          position="100">
+        <search-area name="FileRegister"/>
+        <descriptor-ref ref="fr-des-vw-cmj-nd-by-shelf-time"/>
+        <source>
+            <module ident="FileRegister"/>
+        </source>
+    </view>-->
+
+    <view parent-ref="ProgrammedNavigator" id="file-original-index" name="${catalog.view.file_original_index.name:Индексы дел}" position="-1">
+        <search-area name="FileRegister"/>
+        <descriptor-ref ref="file-original-index"/>
+        <source>
+            <module ident="FileRegister"/>
+        </source>
+    </view>
+    <view parent-ref="ProgrammedNavigator" id="nd-doc-for-ommit-from-fr"
+          name="${catalog.view.nd-doc-for-ommit-from-fr.name:Документы для изъятия из Дела}" position="-1">
+        <search-area name="FileRegister"/>
+        <descriptor-ref ref="nd-doc-for-ommit-from-fr"/>
+        <source>
+            <module ident="FileRegister"/>
+        </source>
+    </view>
+</catalog>

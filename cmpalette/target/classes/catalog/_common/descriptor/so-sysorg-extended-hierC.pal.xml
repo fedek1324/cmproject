@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="q.so-sysorg-extended-hierC" fulltext="true" id="so-sysorg-extended-hierC" name="СО - СистемнаяОрганизацияРасширенная - Иерархия (childs)" style="default">
+    <builder name="ru.intertrust.cmj.af.so.impl.BuilderSOExtended"/>
+    <table>
+      <hierarchy-column breadcrumbs-ref="so-unit-extended1" column-ref="empty"/>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="empty"/>
+        <column-ref ref="origHierOrder" hide="true"/>
+        <column-ref ref="origMix1" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="origMix2" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="origPhone" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="origAddress" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="origEmail" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="origLeaderShortName" sort-asc="true" sort-desc="true"/>
+      </columns>
+    </table>
+  </descriptor>
+</catalog>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="Dialog" name="DialogLoadFile">
+    <meta>
+      <category name="Диалоги"/>
+    </meta>
+    <string name="counter" temporal="true"/>
+    <string name="fileHref" temporal="true"/>
+    <string name="messageText" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Выберите файл для загрузки']]></script>
+      </calc-values>
+    </string>
+    <string name="confirmMsg" temporal="true"/>
+  </schema>
+</schemas>

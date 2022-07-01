@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ArchivesArcDealCollection" group="true" projection="default" id="ArchivesCollectionForm">
+    <component>
+      <section id="RootMenu">
+        <component>
+          <section name="${ui.form.ArchivesCollectionForm.section.RootMenu.section.CREATE.name:Создать}" id="CREATE">
+            <component>
+              <button name="${ui.form.ArchivesCollectionForm.section.RootMenu.section.CREATE.button.Архивное дело.name:Архивное дело}">
+                <action>
+                  <custom>
+                    <create schema-ref="ArchivesArcDealResource">
+                      <module ident="Archives" />
+                    </create>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

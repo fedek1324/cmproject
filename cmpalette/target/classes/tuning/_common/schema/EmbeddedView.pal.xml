@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="EmbeddedView">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <string name="collectionLink" system="true" temporal="true"/>
+    <string name="addLink" system="true" temporal="true"/>
+    <string name="createLink" system="true" temporal="true"/>
+    <string name="objectSchemaLink" system="true" temporal="true"/>
+    <boolean name="refreshCollectionAfterDelete" temporal="true"/>
+    <boolean name="refreshCollectionAfterEdit" temporal="true"/>
+    <boolean name="loadObjectForOpen" temporal="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="objectNamesType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ACCESS_SCHEME_ISS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Схема доступа ИСС]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ACCESS_SETTING_ISS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Настройка доступа к ИСС]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ADDAGREEMENT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Доп. соглашение]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ADDAGREEMENT_PURCHASE_CONTRACTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Доп.соглашение по Договору по Закупкам]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ADDAGREEMENT_TEMPLATE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон ДС]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="APPROVING_VISA">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Виза (Согласование)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="APRE_LIST_TEMPLATE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон листа согласования]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="APRE_SLV_TEMPLATE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон листа ознакомления]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="BPMN">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Схема BPMN]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CASE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Кейс]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CASE_DOCUMENT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Документ кейса]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CASE_TEMPLATE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон кейса]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="CLASSIFIER">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Классификатор]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DECISION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Решение в заседаниях]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DECISION_PROJECT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Проект решения в заседаниях]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DECISION_PROJECT_CLASSIFIER_VALUE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Элемент классификатора проектов решений]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DECISION_PROJECT_PURCHASES">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Проект решения (заседания по закупкам)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DECISION_PURCHASES">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Решение к заседанию по закупкам]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DIRECTIVE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Директива]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DOCUMENT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Документ модуля "Документы"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DOCUMENT_CONTRACTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Документ к договору]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DOCUMENT_ISS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Документ модуля "ИСС"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="DOCUMENT_TEMPLATE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон документа по договору]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="EDMDOCS_NRD_TEMPLATE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон НРД]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="EDMDOCS_TEMPLATE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон документа]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="EXTRACT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Выписка в заседаниях]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="EXTRACT_PURCHASES">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Выписка (заседания по закупкам)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="EXT_IDOCS_TASK">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Задача iDocs]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FINAL_REPORT_REQUESTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Итоговый отчет]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FINANCE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Финансовый документ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FINANCE_TEMPLATE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон финдокумента]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FOLDER_ISS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Папка ИСС]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FOREIGN_REPORT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сводка КИ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FOREIGN_RESOLUTION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сводка КР]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="INFO_DOC">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Инфоматериал]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MAIL_MESSAGE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Почтовое сообщение]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MEETING">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Заседание]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MEETING_CLASSIFIER">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Классификатор БД Заседания]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MEETING_CONTENT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Приложения]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MEETING_CONTENT_PURCHASES">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Приложения (заседания по закупкам)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MEETING_PURCHASES">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Заседание по закупкам]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MEETING_TYPE_SETTINGS_PURCHASES">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Тип заседания по закупкам]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="NONSYS_HUMAN">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сотрудник несистемной организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="NONSYS_ORGANIZATION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Несистемная организация]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PKD_NOTICE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Уведомление ПКД]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PKD_TASK">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Задача ПКД]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PLANNED_POINT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Планируемый вопрос заседания]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PLANNED_POINT_PURCHASES">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Планируемый вопрос заседания по закупкам]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="POINT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Вопрос повестки заседания]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="POINT_PURCHASES">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Вопрос повестки заседания по закупкам]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="POINT_TEMPLATE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон вопроса повестки заседания]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PRIVATE_HUMAN">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Частное лицо]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Закупка]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_CONTRACTOR">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Закупки - контрагент]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_CRITERIA_CLASSIF">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Классификатор критериев оценки закупки]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_DOC">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Документ по закупке]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_EXECUTOR_DEPARTMENT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Закупки: Подразделение-Исполнитель]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_EXTRACTION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Выписка]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_JUSTIFICATION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Основание закупки]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_LOT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Лот]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_METHOD">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Способ закупки]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_OKEI">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Классификатор ОКЕИ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_OKVED_OKDP">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Классификатор ОКВЭД ОКДП]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_PARTICIPANT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Участник закупки]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_REQUEST">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Заявка на закупку]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_REQUIRED_DOC">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Закупки: Требуемый документ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_REQUIREMENT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Требование к участникам и документации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PURCHASE_UNIT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Позиция]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="REGISTRY_ADVINPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Реестр УВК]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="REPORT_CONTRACTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Отчет исполнения Договоры]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="REPORT_INPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Отчет исполнения ВхД]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="REPORT_INTERNAL">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Отчет исполнения ВнД]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="REPORT_MISSIONS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Отчет исполнения ОРД]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="REPORT_REQUESTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Отчет исполнения ОГ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="REPORT_TASKS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Отчет исполнения Поручения]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_CONTRACTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Поручение по договору]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_INPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Резолюция входящего документа]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_INTERNAL">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Резолюция внутреннего документа]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_MISSIONS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Резолюция ОРД]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_OUTPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Поручение по исходящему документу]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_REQUESTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Резолюция ОГ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_TASKS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Поручение]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_TASKS_RESOLUTION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Резолюция на поручение (перепоручение)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_TEMPLATE_CONTRACTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон поручения по договору]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_TEMPLATE_INPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон резолюции входящего документа]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_TEMPLATE_INTERNAL">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон резолюции внутреннего документа]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_TEMPLATE_MISSIONS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон резолюции ОРД]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_TEMPLATE_OUTPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон резолюции исходящего документа]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_TEMPLATE_TASKS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон поручения]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_TEMPLATE_TASKS_RESOLUTION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон резолюции на поручение (перепоручение)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="REVIEW_VISA">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Виза (ознакомление)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_ADVINPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Карточка УВК]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_CONTRACTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Договор]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_INPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Входящий документ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_INTERNAL">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Внутренний документ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_MISSIONS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[ОРД]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_OUTPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Исходящий документ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_PURCHASE_CONTRACTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Договоры-закупки]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_REQUESTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[ОГ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_TAR_DECISION">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Решение по тарифам и ставкам]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_TEMPLATE_ADVINPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон карточки УВК]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_TEMPLATE_CONTRACTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон договора]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_TEMPLATE_INPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон входящего документа]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_TEMPLATE_INTERNAL">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон внутреннего документа]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_TEMPLATE_MISSIONS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон ОРД]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_TEMPLATE_OUTPUT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон исходящего документа]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RKK_TEMPLATE_REQUESTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон ОГ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="SENDLIST">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Список рассылки]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="SENDLIST">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Список рассылки]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="SETTINGS_MEETINGS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Настройки заседаний]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="SYS_HUMAN">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сотрудник системной организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="TERMINATIONAGREEMENT_PURCHASE_CONTRACTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Соглашение о расторжении по Договору по Закупкам]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="TUNABLE_OBJECT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Описание:Произвольный НР-объект]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="VOTE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Голос в заседаниях]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="VOTE_PURCHASES">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Голос (Заседания по закупкам)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="RESOLUTION_TEMPLATE_REQUESTS">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон поручения ОГ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="LOCKER_USER_CERT">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сертификат пользователя]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="LOCKER_CERT_AUTH">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Сертификат УЦ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="APPROVING_TEMPLATE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон согласования]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="REVIEW_TEMPLATE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шаблон ознакомления]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+             <xs:enumeration value="FILEREGISTER_NDP">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Номенклатура дел подразделения]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FILEREGISTER_NDP_CHANGE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Изменения к НД подразделения]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FILEREGISTER_NDO">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Номенклатура дел организации (aka сводная номенклатура дел)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FILEREGISTER_NDO_CHANGE">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Изменения к номенклатуре дел организации]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="objectNameType">
+        <xs:union memberTypes="objectNamesType xs:string"/>
+    </xs:simpleType>
+
+</xs:schema>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="q.so-sysorg" fulltext="true" id="so-sysorg-roles-hier" name="СО - СистемныеОрганизации - Роли - Иерархия" style="default">
+    <builder name="ru.intertrust.cmj.af.so.impl.BuilderSO"/>
+    <table>
+      <hierarchy-column descriptor-ref="so-sysorg-roles-hierC" column-ref="empty"/>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="empty"/>
+        <column-ref ref="soShortName" sort-desc="true"/>
+        <column-ref ref="soFullName" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soLeaderShortName" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soMix2" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soAddress" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soPhone" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soEmail" sort-asc="true" sort-desc="true"/>
+      </columns>
+    </table>
+  </descriptor>
+</catalog>

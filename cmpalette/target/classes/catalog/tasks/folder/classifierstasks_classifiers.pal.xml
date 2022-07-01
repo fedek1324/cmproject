@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="classifiers" id="classifiers-tasks" name="${catalog.view.classifiers_tasks.name:Поручения}" position="20">
+    <search-area name="_Tasks"/>
+    <descriptor-ref ref="tasks-classifier-common"/>
+    <source>
+      <module ident="Tasks"/>
+    </source>
+  </view>
+</catalog>

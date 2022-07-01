@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="RequestQuestionExecution" name="FinalReportResource">
+    <boolean name="$isForRKK" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#parent'].get(0).href==link.?[rel=='http://intertrust.ru/cmj/relations#document'].get(0).href]]></script>
+      </calc-values>
+    </boolean>
+    <string name="$IsDeleted" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Удален']]></script>
+      </calc-values>
+    </string>
+    <string name="$label" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Итоговый отчет']]></script>
+      </calc-values>
+    </string>
+    <actor array="true" name="$rkkAddressee" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#top==null?null:#top.addressee]]></script>
+      </calc-values>
+    </actor>
+    <string name="$lockerSignatureInfo" system="true"/>
+    <string name="$StatusInfo" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[status==null?null:
+status.status==null|| status.status.isEmpty()?null:
+((status.status.equals("accepted")?"Принят: ":"Отвергнут: ")+T(ru.intertrust.cmj.af.misc.AFDate).fromJavaDate(status.info.when, false))]]></script>
+      </calc-values>
+    </string>
+    <boolean name="$canTrash" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#move.to.trash'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canApprove" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#approve'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <actor name="author" system="true"/>
+    <boolean name="deleted" system="true"/>
+    <string array="true" temporal="true" system="true" name="info"/>
+    <date name="date" system="true"/>
+    <string name="text" system="true"/>
+    <schema-ref ref="ContentResource" array="true" name="$content" system="true"/>
+    <schema-ref ref="ExecutionReportStatus" name="status" system="true"/>
+    <schema-ref ref="ClassifierQuestionForFinalReport" array="true" name="questions" system="true"/>
+    <schema-ref ref="ClassifierQuestionForFinalReport" array="true" name="questionsClassif" system="true"/>
+  </schema>
+</schemas>

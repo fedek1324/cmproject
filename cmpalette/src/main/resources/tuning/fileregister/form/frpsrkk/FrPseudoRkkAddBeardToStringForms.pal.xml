@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="FrPseudoRkkAddSignArray" id="FrPseudoRkkAddSignArrayDialogForm" name="${ui.form.FrPseudoRkkAddSignArrayDialogForm.name:Добавить подписи}" projection="default">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+      <documentation>Диалог добавления подписей в Псевдо РКК</documentation>
+    </meta>
+    <appearance>
+      <dialog-mode height="250" width="100" unit="symbol"/>
+    </appearance>
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="addSign" name="${ui.form.FrPseudoRkkAddSignArrayDialogForm.field.sign.name:Подпись:}">
+        <appearance widget="grid"/>
+        <directories>
+          <directory-ref ref="current_all_with_org_hier"/>
+          <directory-ref ref="current_all_with_org"/>
+          <directory-ref ref="ALIEN_BEARDS_WITH_ROLES_HIER"/>
+          <directory-ref ref="ALIEN_BEARDS"/>
+        </directories>
+      </field>
+      <button name="${ui.form.FrPseudoRkkAddSignArrayDialogForm.button.submit.name:Ок}" tid="submit">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.FrPseudoRkkAddSignArrayDialogForm.button.Cancel.name:Отмена}" tid="cancel">
+        <appearance>
+          <label-style>
+            <style id="tunBtnGray"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+
+  <form schema-ref="FrPseudoRkkAddExecutorsArray" id="FrPseudoRkkAddExecutorsArrayDialogForm" name="${ui.form.FrPseudoRkkAddExecutorsArrayDialogForm.name:Добавить исполнителей}" projection="default">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+      <documentation>Диалог добавления исполнителей в Псевдо РКК</documentation>
+    </meta>
+    <appearance>
+      <dialog-mode height="250" width="100" unit="symbol"/>
+    </appearance>
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="addExecutors" name="${ui.form.FrPseudoRkkAddExecutorsArrayDialogForm.field.executors.name:Исполнители:}">
+        <appearance widget="grid"/>
+        <directories>
+          <directory-ref ref="current_all_with_org_hier"/>
+          <directory-ref ref="current_all_with_org"/>
+          <directory-ref ref="ALIEN_BEARDS_WITH_ROLES_HIER"/>
+          <directory-ref ref="ALIEN_BEARDS"/>
+        </directories>
+      </field>
+      <button name="${ui.form.FrPseudoRkkAddExecutorsArrayDialogForm.button.submit.name:Ок}" tid="submit">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.FrPseudoRkkAddExecutorsArrayDialogForm.button.Cancel.name:Отмена}" tid="cancel">
+        <appearance>
+          <label-style>
+            <style id="tunBtnGray"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+
+  <form schema-ref="FrPseudoRkkAddCorrespondent" id="FrPseudoRkkAddCorrespondentDialogForm" name="${ui.form.FrPseudoRkkAddCorrespondentDialogForm.name:Добавить корреспондента}" projection="default">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+      <documentation>Диалог изменения корреспондента в Псевдо РКК</documentation>
+    </meta>
+    <appearance>
+      <dialog-mode height="250" width="100" unit="symbol"/>
+    </appearance>
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="addCorrespondent" name="${ui.form.FrPseudoRkkAddCorrespondentDialogForm.field.correspondent.name:Корреспондент:}">
+        <appearance widget="grid"/>
+        <directories>
+          <directory-ref ref="sysOrgs"/>
+          <directory-ref ref="spo-sys-orgs"/>
+          <directory-ref ref="foreign_ogs_sprav"/>
+        </directories>
+      </field>
+      <button name="${ui.form.FrPseudoRkkAddCorrespondentDialogForm.button.submit.name:Ок}" tid="submit">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.FrPseudoRkkAddCorrespondentDialogForm.button.Cancel.name:Отмена}" tid="cancel">
+        <appearance>
+          <label-style>
+            <style id="tunBtnGray"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+
+  <form schema-ref="FrPseudoRkkAddAddresseesArray" id="FrPseudoRkkAddAddresseesArrayDialogForm" name="${ui.form.FrPseudoRkkAddAddresseesArrayDialogForm.name:Добавить адресатов}" projection="default">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+      <documentation>Диалог добавления адресатов в Псевдо РКК</documentation>
+    </meta>
+    <appearance>
+      <dialog-mode height="250" width="100" unit="symbol"/>
+    </appearance>
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="addAddressees" name="${ui.form.FrPseudoRkkAddAddresseesArrayDialogForm.field.addressees.name:Адресаты:}">
+        <appearance widget="grid"/>
+        <directories>
+          <directory-ref ref="current_all_with_org_hier"/>
+          <directory-ref ref="current_all_with_org"/>
+          <directory-ref ref="ALIEN_BEARDS_WITH_ROLES_HIER"/>
+          <directory-ref ref="ALIEN_BEARDS"/>
+        </directories>
+      </field>
+      <button name="${ui.form.FrPseudoRkkAddAddresseesArrayDialogForm.button.submit.name:Ок}" tid="submit">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.FrPseudoRkkAddAddresseesArrayDialogForm.button.Cancel.name:Отмена}" tid="cancel">
+        <appearance>
+          <label-style>
+            <style id="tunBtnGray"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

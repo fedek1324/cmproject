@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="SignatureInfoContractsAgreement">
+    <meta>
+      <category name="Система\Договоры"/>
+    </meta>
+    <schema-ref ref="SignatureInfoAgreement" name="this" system="true" createlog="true"/>
+    <schema-ref ref="SignatureInfoShort" name="other" system="true"/>
+  </schema>
+</schemas>

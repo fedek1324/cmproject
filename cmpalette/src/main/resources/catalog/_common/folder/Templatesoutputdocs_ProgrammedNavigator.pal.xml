@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="ProgrammedNavigator" id="Templates-outputdocs" name="${catalog.folder.Templates_outputdocs.name:Шаблоны исходящих документов}" position="150">
+    <subfolders>
+      <view id="favourites-rkk-template-output" name="${catalog.folder.Templates_outputdocs.view.favourites_rkk_template_output.name:Избранное}" position="-1">
+        <descriptor-ref ref="favourites-rkk-template-output"/>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

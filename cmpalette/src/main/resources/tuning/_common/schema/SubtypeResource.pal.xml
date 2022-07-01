@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="SubtypeResource">
+    <string system="true" name="name" />
+    <schema-ref ref="ResourceLink" array="true" system="true" name="link" />
+  </schema>
+</schemas>

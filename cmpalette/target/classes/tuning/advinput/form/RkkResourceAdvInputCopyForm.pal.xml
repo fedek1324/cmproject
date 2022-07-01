@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RkkResourceAdvInput" id="RkkResourceAdvInputCopyForm" name="${ui.form.RkkResourceAdvInputCopyForm.name:RkkResourceAdvInputCopyForm}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="copy"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="type" name="${ui.form.RkkResourceAdvInputCopyForm.field.type.name:Вид документа:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="title">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="packageNumber" name="${ui.form.RkkResourceAdvInputCopyForm.field.packageNumber.name:Номер накладной:}">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="correspondent.type">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="correspondent.organization.organization">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="correspondent.organization.authors">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="correspondent.manual.authors">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="correspondent.manual.address">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="addressee">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="pages">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="copies">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="appendices">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="appendicesPages">
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

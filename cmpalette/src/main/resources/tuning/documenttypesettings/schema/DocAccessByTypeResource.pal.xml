@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" name="DocAccessByTypeResource">
+    <meta>
+      <category name="Настройки видов документов"/>
+    </meta>
+    <boolean name="new" createlog="true" temporal="true"/>
+    <actor name="organization" createlog="true">
+      <storage-field name="organization"/>
+    </actor>
+    <string name="orgDisplay" temporal="true" computed="true">
+      <calc-values>
+        <script event="open"><![CDATA[organization==null?'Создать список доступа':organization.getOrganizationName()]]></script>
+      </calc-values>
+    </string>
+    <string name="parentId" temporal="true"/>
+    <actor array="true" name="soUnitsRead" createlog="true">
+      <storage-field name="ReadersBeards"/>
+    </actor>
+    <schema-ref ref="AdminSOUnit" array="true" name="soUnitsEdit" createlog="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.doctypes.RecalcSOUnitForDocAccessByType</recalc-processing-class>
+    </schema-ref>
+  </schema>
+</schemas>

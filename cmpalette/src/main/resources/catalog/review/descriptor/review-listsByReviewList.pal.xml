@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Review" view="(vw_cmj_listsByReviewList)" id="review-listsByReviewList" name="Ознакомление: списки по ознакамливающимся" style="default">
+    <help id="99778971"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="reviewListNames" category="true"/>
+        <column-ref ref="listName"/>
+        <column-ref ref="created"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="REVIEW_TEMPLATE" name="${catalog.custom-descriptor.review-listsByReviewList.actions.action.REVIEW_TEMPLATE.name:REVIEW_TEMPLATE}">
+        <create object-ref="REVIEW_TEMPLATE"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

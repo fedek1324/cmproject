@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ErrorReg">
+    <meta>
+      <category name="Диалоги"/>
+    </meta>
+    <string name="doc" system="true" createlog="true"/>
+    <string name="cause" system="true" createlog="true"/>
+  </schema>
+</schemas>

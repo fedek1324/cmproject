@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ContentResourceImage">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <file name="content" createlog="true">
+        <meta>
+            <documentation>Образ после подписания</documentation>
+        </meta>
+      <storage-field name="contentImage"/>
+    </file>
+    <richtext name="richtext" createlog="true">
+        <meta>
+            <documentation>Образ после подписания</documentation>
+        </meta>
+      <storage-field name="richTextImage"/>
+    </richtext>
+  </schema>
+</schemas>

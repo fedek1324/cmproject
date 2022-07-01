@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DefParamsSettingSysGroup" id="DefParamsSettingSysGroupTable" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal"/>
+    <component>
+      <section id="rowModuleType" name="${defParamsSettingSysGroups.module:Модуль}">
+        <component>
+          <field attribute-ref="moduleType">
+            <appearance importance="normal"/>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="defParamsSettingModuleType"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+      <section id="rowDefMp" name="${defParamsSettingSysGroups.defMp:Место регистрации по умолчанию}">
+        <component>
+          <field attribute-ref="defMp">
+            <appearance importance="normal"/>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="defParamsSettingDefMp"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+      <section id="rowCanChange" name="${defParamsSettingSysGroups.canChange:Можно менять место регистрации}">
+        <component>
+          <field attribute-ref="canChange">
+            <appearance importance="normal"/>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="defParamsSettingCanChange"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+      <section id="rowCounterJS" name="${defParamsSettingSysGroups.counterJS:Ключ поиска счетчика}">
+        <component>
+          <field attribute-ref="counterJS">
+            <appearance importance="normal"/>
+            <directories limit-livesearch="no-restrictions">
+             <directory-ref ref="defParamsSettingCounterJS"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+      <button attribute-ref="$addConstructor" name="${defParamsSettingSysGroups.add:Добавить}">
+        <appearance align="right">
+          <label-style>
+            <style id="tunIconAdd"/>
+            <style id="tunBlue"/>
+            <style id="tunUnderline"/>
+            <style id="tunClickableRed"/>
+          </label-style>
+          <alt-appearancies>
+            <alt-appearance>
+              <appearance-ref ref="addButton"/>
+              <enable condition-union="AND">
+                <condition>true</condition>
+              </enable>
+            </alt-appearance>
+          </alt-appearancies>
+        </appearance>
+      </button>
+      <button>
+        <hint-pop-up>${defParamsSettingSysGroups.remove:Удалить}</hint-pop-up>
+        <appearance align="right">
+          <label-style width="2" unit="symbol">
+            <style id="tunIconDelete"/>
+          </label-style>
+          <alt-appearancies>
+            <alt-appearance>
+              <appearance-ref ref="deleteButton"/>
+              <enable condition-union="AND">
+                <condition>true</condition>
+              </enable>
+            </alt-appearance>
+          </alt-appearancies>
+        </appearance>
+      </button>
+      <button>
+        <appearance align="right">
+          <label-style width="2" unit="symbol">
+            <style id="tunIconEdit"/>
+          </label-style>
+          <alt-appearancies>
+            <alt-appearance>
+              <appearance-ref ref="editButton"/>
+              <enable condition-union="AND">
+                <condition>true</condition>
+              </enable>
+            </alt-appearance>
+          </alt-appearancies>
+        </appearance>
+      </button>
+    </component>
+  </form>
+</ui>

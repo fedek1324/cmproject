@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <directories>
+    <by-key key="Предмет ведения" name="${ui.directories.by-key.Предмет ведения.name:Предмет ведения}" id="Предмет ведения"/>
+    <by-key key="Тип вида вопроса" name="${ui.directories.by-key.RequestsQuestionClassType.name:ОГ - Тип вида вопроса}" id="RequestsQuestionClassType"/>
+    <by-key key="Страна заявителя" name="${ui.directories.by-key.countryCorrespondent.name:Страна заявителя}" id="countryCorrespondent"/>
+    <by-key key="Тип документа" name="${ui.directories.by-key.DocTypes.name:Тип документа}" id="DocTypes"/>
+    <by-key key="Периодичность" name="${ui.directories.by-key.Периодичность.name:Периодичность}" id="Периодичность"/>
+    <by-key key="Принято решение" name="${ui.directories.by-key.Solution.name:Принято решение}" id="Solution"/>
+    <by-key key="Тип улицы" name="${ui.directories.by-key.StreetType.name:Тип улицы}" id="StreetType"/>
+    <by-key key="Специальное положение" name="${ui.directories.by-key.specPosition.name:Специальное положение}" id="specPosition"/>
+    <by-key key="Результаты рассмотрения" name="${ui.directories.by-key.reviewResults.name:Результаты рассмотрения}" id="reviewResults"/>
+    <by-key key="Способ получения" name="${ui.directories.by-key.requestReceiveWay.name:ОГ - Способ получения}" id="requestReceiveWay"/>
+    <by-key key="Признак поступления" name="${ui.directories.by-key.Признак поступления.name:Признак поступления}" id="Признак поступления"/>
+    <by-key key="Поступило" name="${ui.directories.by-key.Поступило.name:Поступило}" id="Поступило"/>
+    <by-key key="Примечание" name="${ui.directories.by-key.Примечание.name:Примечание}" id="Примечание"/>
+    <by-key key="Вид вопроса" name="${ui.directories.by-key.RequestsQuestionClass.name:ОГ - Вид вопроса}" id="RequestsQuestionClass"/>
+    <by-key key="Вид доставки" name="${ui.directories.by-key.Вид доставки.name:Вид доставки}" id="Вид доставки"/>
+    <by-key key="Прием в режиме" name="${ui.directories.by-key.receptionInMode.name:Прием в режиме}" id="receptionInMode"/>
+    <by-key key="Способ обращения" name="${ui.directories.by-key.typeAppeal.name:Способ обращения}" id="typeAppeal"/>
+    <by-key key="Содержание устного ответа по существу поставленных в устном обращении вопросов" name="${ui.directories.by-key.theContentOfTheOralAnswerOnTheMeritsOfTheQuestionsPosedInTheOralCommunication.name:Содержание устного ответа по существу поставленных в устном обращении вопросов}" id="theContentOfTheOralAnswerOnTheMeritsOfTheQuestionsPosedInTheOralCommunication"/>
+    <by-key key="Содержание устного ответа" name="${ui.directories.by-key.requestVerbalResponce.name:ОГ - Содержание устного ответа}" id="requestVerbalResponce"/>
+    <by-key key="Гражданство" name="${ui.directories.by-key.CitizenShips.name:Гражданство(классиф)}" id="CitizenShips"/>
+    <by-key key="Причина переноса срока" name="${ui.directories.by-key.DeadlineDeferReason.name:Причина переноса срока}" id="DeadlineDeferReason"/>
+    <by-key key="Вид документа" name="${ui.directories.by-key.ReqType.name:Вид документа}" id="ReqType"/>
+    <by-key key="Приём в режиме" name="${ui.directories.by-key.requestReceptionMode.name:ОГ - Приём в режиме}" id="requestReceptionMode"/>
+    <by-key key="Текст поручения" name="${ui.directories.by-key.taskText.name:Текст поручения}" id="taskText"/>
+    <by-key key="Результаты рассмотрения" name="${ui.directories.by-key.RequestsReviewResult.name:ОГ - Результат рассмотрения вопроса}" id="RequestsReviewResult"/>
+    <by-key key="Заголовок договора" name="${ui.directories.by-key.titleContract.name:Заголовок договора}" id="titleContract"/>
+    <by-key key="Место приема" name="${ui.directories.by-key.receivePlace.name:Место приема}" id="receivePlace"/>
+    <by-key key="Вид обращения" name="${ui.directories.by-key.typeT.name:Вид обращения}" id="typeT"/>
+    <by-key key="Заголовок" name="${ui.directories.by-key.subject.name:Заголовок}" id="subject"/>
+    <by-key key="Текст отчета" name="${ui.directories.by-key.reportText.name:Текст отчета}" id="reportText"/>
+    <by-key key="Особое положение" name="${ui.directories.by-key.requestSpecialPosition.name:ОГ - Особое положение}" id="requestSpecialPosition"/>
+    <by-key key="Особая отметка" name="${ui.directories.by-key.tags.name:Особая отметка}" id="tags"/>
+    <by-key key="Адресат (Личный прием)" name="${ui.directories.by-key.requestAddresseeWay.name:ОГ - Адресат (Личный прием)}" id="requestAddresseeWay"/>
+    <by-key key="Тематика" name="${ui.directories.by-key.theme.name:Тематика}" id="theme"/>
+    <by-key key="Способ получения" name="${ui.directories.by-key.receiptMethod.name:Способ получения}" id="receiptMethod"/>
+    <by-key key="Льготный состав" name="${ui.directories.by-key.Льготный состав.name:Льготный состав}" id="Льготный состав"/>
+    <by-key key="MISSIONS_TYPES" name="${ui.directories.by-key.MISSIONS_TYPES.name:Вид документа ОРД}" id="MISSIONS_TYPES"/>
+    <by-key key="VOTES" name="${ui.directories.by-key.VOTES.name:Решения голосующих заседания}" id="VOTES"/>
+    <by-key key="Отметка об исполнении" name="${ui.directories.by-key.ExecStaus.name:Отметка об исполнении}" id="ExecStaus"/>
+    <by-key key="Информация по рассмотрению" name="${ui.directories.by-key.InfoByConsideration.name:Информация по рассмотрению}" id="InfoByConsideration"/>
+    <by-key key="Тип валюты" name="${ui.directories.by-key.currencyType.name:Тип валюты}" id="currencyType"/>
+    <by-key key="Направление деятельности" id="branchDivisionCl" name="${ui.directories.by-key.branchDivisionCl.name:Направление деятельности}" />
+  </directories>
+</ui>

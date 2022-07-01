@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Meetings" view="(vw_cmj_byNum)" id="meetings-Simple-ByProtocol-AF5" name="Заседания - Совещания - По № протокола" style="default">
+    <help id="99778657"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="minutesNumber" sort-asc="true" filter="true"/>
+        <column-ref ref="meetingDate" filter="true"/>
+        <column-ref ref="meetingTime"/>
+        <column-ref ref="meetingType" filter="true"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Meetings-CreateMeeting" name="${catalog.custom-descriptor.meetings-Simple-ByProtocol-AF5.actions.action.Meetings-CreateMeeting.name:Создать/Заседание}">
+        <create object-ref="MEETING"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

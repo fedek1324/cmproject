@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="InputDocs" view="(vw_cmj_07_reqtype)" id="dp-input-ByReqType-af5" name="ВХД - по виду документа" style="default">
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="reqType" category="true"/>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="rkkExecutionStatus"/>
+        <column-ref ref="resOfRkkExecutionStatus"/>
+        <column-ref ref="resDate"/>
+        <column-ref ref="regNumber"/>
+        <column-ref ref="docDate"/>
+        <column-ref ref="correspondent"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="subject"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="InputDocs-CreateRKK" name="${catalog.custom-descriptor.dp-input-ByReqType-af5.actions.action.InputDocs-CreateRKK.name:Создать/Входящий документ}">
+        <create object-ref="RKK_INPUT"/>
+      </action>
+    </actions>
+    <custom-actions schema-ref="RkkReadersCollection"/>
+  </custom-descriptor>
+</catalog>

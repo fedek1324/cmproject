@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Meetings" view="(vw_cmj_calendar)" id="meetings-Calendar" name="Заседания - Календарь" style="calendar">
+    <help id="99778671"/>
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="subject"/>
+        <column-ref ref="taskDueDate"/>
+        <column-ref ref="taskType"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Meetings-CreateMeeting" name="${catalog.custom-descriptor.meetings-Calendar.actions.action.Meetings-CreateMeeting.name:Создать/Заседание}">
+        <create object-ref="MEETING"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

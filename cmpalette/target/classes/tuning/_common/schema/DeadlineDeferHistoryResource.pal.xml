@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="DeadlineDeferHistoryResource" recalc="true">
+    <meta>
+      <category name="Сервис\Исполнения"/>
+    </meta>
+    <date name="deadline" system="true"/>
+    <boolean name="isEmpty" system="true" temporal="true"/>
+    <boolean name="readOnly" system="true"/>
+    <schema-ref ref="ReasonResource" name="reason" system="true"/>
+    <schema-ref ref="DeadlineDeferResource" array="true" name="entry" system="true"/>
+    <schema-ref name="addLinkedDoc" ref="SelectLinkedDocDialogResource"/>
+
+    <custom-event-handler lang="JavaScript"><![CDATA[
+      importClass(Packages.ru.intertrust.cmj.af.core.AFCMDomino);
+      importClass(Packages.ru.intertrust.cmj.af.core.AFSession);
+      importClass(Packages.ru.intertrust.cmj.dp.DPM);
+      importClass(Packages.ru.intertrust.cmj.dp.DPM.RKK);
+      importClass(Packages.ru.intertrust.cmj.rest.tuning.TuningHelper);
+      importClass(Packages.ru.intertrust.cmj.tunable.object.common.TunableObjectHelper);
+
+      importPackage(Packages.java.lang);
+      importPackage(Packages.java.util);
+
+      function recalc(object, changedField) {
+        var values = object.tuning().getValues();
+        if (changedField == 'addLinkedDoc') {
+          var addLinkedDoc = values.get('addLinkedDoc');
+          if (addLinkedDoc.getValues().get("ids") != null) {
+            var linkUNID = new ArrayList();
+            var ids = addLinkedDoc.getValues().get("ids").getValues();
+            for (var i = 0; i < ids.size(); i++) {
+              var unid = getIdFromHref(ids.get(i).getValue());
+              if (!unid.isEmpty()) {
+                linkUNID.add(unid);
+              }
+            }
+            object.setLinkUNID(linkUNID);
+          }
+          TunableObjectHelper.putAFInstanceValue(object.tuning(), "addLinkedDoc", null);
+        }
+      }
+
+      function getIdFromHref(href) {
+        var index = href.lastIndexOf("/", href.length())+1;
+        if (index < 0) {
+          return href;
+        } else {
+          return href.substring(index);
+        }
+      }]]></custom-event-handler>
+  </schema>
+</schemas>

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ReceiptTable" id="ReceiptTableForm" name="${ui.form.ReceiptTableForm.name:Таблица пар Тип поступления - дата поступления}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal"/>
+    <component>
+      <button name="${ui.form.ReceiptTableForm.button.Добавить.name:Добавить}" alias="add">
+        <appearance align="right">
+          <label-style>
+            <style id="tunIconAdd"/>
+            <style id="tunBlue"/>
+            <style id="tunUnderline"/>
+            <style id="tunClickableRed"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="add"/>
+        </action>
+        <properties>
+          <hide>
+            <negative-condition-ref ref="table_edit"/>
+          </hide>
+        </properties>
+      </button>
+      <section id="type" name="${ui.form.ReceiptTableForm.section.type.name:Способ получения}">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="type">
+            <appearance importance="normal">
+              <label-style field-unit="percent" field-width="50"/>
+            </appearance>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="receiptMethod"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+      <section id="date" name="${ui.form.ReceiptTableForm.section.date.name:Дата поступления}">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="date">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <button alias="edit">
+        <appearance align="right">
+          <label-style unit="symbol" width="3">
+            <style id="tunIconEdit"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="update"/>
+        </action>
+        <properties>
+          <hide>
+            <negative-condition-ref ref="table_edit"/>
+          </hide>
+        </properties>
+      </button>
+      <button alias="delete">
+        <appearance align="right">
+          <label-style unit="symbol" width="3">
+            <style id="tunIconDelete"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="delete"/>
+        </action>
+        <properties>
+          <hide>
+            <negative-condition-ref ref="table_edit"/>
+          </hide>
+        </properties>
+      </button>
+    </component>
+  </form>
+</ui>

@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <document name="${catalog.document.fe175e615c82466aaabbc32587e02286.name:Инф. материал}" object-ref="">
-    <module ident="FreeDocs" complect=""/>
-  </document>
-</catalog>

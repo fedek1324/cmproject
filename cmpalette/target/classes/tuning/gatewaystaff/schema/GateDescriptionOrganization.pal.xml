@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="GateDescription" name="GateDescriptionOrganization">
+    <meta>
+      <category name="РМ Администратора\Шлюз"/>
+      <documentation>Описание соответствия организации в кадровой системе и структурной единицы в СО</documentation>
+    </meta>
+    <string name="formLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Настройка соответствия организации ИКС']]></script>
+      </calc-values>
+    </string>
+    <string name="hrCodeOrg" createlog="true">
+      <storage-field name="BK_OrgCode"/>
+    </string>
+    <schema-ref ref="AdminSOUnit" array="true" name="ntcReceivers" temporal="true" />
+    <string name="unitTypeLabel" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[soUnit == null ? '' : 'ORGANIZATION'.equals(soUnit.type) ? 'Организация' : 'Подразделение']]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

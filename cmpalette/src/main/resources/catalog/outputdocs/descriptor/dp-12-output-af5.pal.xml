@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="OutputDocs" view="(vw_cmj_12_output)" id="dp-12-output-af5" name="ИсхД - для установки связей" style="default">
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="regNumber"/>
+        <column-ref ref="regDate"/>
+        <column-ref ref="addresseeOrganizaton"/>
+        <column-ref ref="subject"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="CorrespondentTemplateResource">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+    </meta>
+    <schema-ref ref="Addressee" name="organization" system="true"/>
+    <schema-ref ref="Addressee" name="human" system="true"/>
+    <schema-ref ref="AddresseeManual" name="manual"/>
+    <schema-ref ref="AddresseeManual" name="humanManual" system="true"/>
+  </schema>
+</schemas>

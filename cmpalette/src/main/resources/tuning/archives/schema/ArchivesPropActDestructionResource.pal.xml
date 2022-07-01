@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ArchivesPropActDestructionResource" extends="ArchivesCommonResource">
+
+    <enum-ref ref="archivesPropActDestructionStateEnum" name="MainState">
+      <storage-field name="MainState" />
+    </enum-ref>
+
+    <!--fields-->
+    <string  name="ProposalNum">
+      <storage-field name="ProposalNum" />
+    </string>
+    <actor default-value="Выбор из справочника" required="true" name="Organization">
+      <storage-field name="Organization" />
+    </actor>
+    <string name="Index1">
+      <storage-field name="Index1" />
+    </string>
+    <string name="Index2">
+      <storage-field name="Index2" />
+    </string>
+    <string name="Index3">
+      <storage-field name="Index3" />
+    </string>
+    <enum-ref ref="archivesTypeBooleanEnum" required="true" name="IsDepartment">
+      <storage-field name="IsDepartment" />
+    </enum-ref>
+    <actor default-value="Выбор из справочника" required="true" name="Department">
+      <storage-field name="Department" />
+    </actor>
+    <string name="DirectionWork">
+      <storage-field name="DirectionWork" />
+    </string>
+    <boolean name="ReadyIncludeToActdestr">
+      <storage-field name="ReadyIncludeToActdestr" />
+    </boolean>
+    <string name="AdditionalState">
+      <storage-field name="AdditionalState" />
+    </string>
+    <string name="NameDocReason">
+      <storage-field name="NameDocReason" />
+    </string>
+    <string computed="true" temporal="true" name="IndexTitle">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Номенклатурный индекс:']]></script>
+      </calc-values>
+    </string>
+
+    <string computed="true" temporal="true" name="TotalDocInfo">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Итого 9999 ед. хранения (вычислить)']]></script>
+      </calc-values>
+    </string>
+    <string name="ActModule">
+      <storage-field name="act.Module" />
+    </string>
+    <string tunable="true" name="ActId">
+      <storage-field name="act_unid" />
+    </string>
+    <hyperlink computed="true" temporal="true" name="LinkToAct">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA[ActId == null ? null : T(ru.intertrust.cmj.af.misc.HyperLink).createHyperLink('Акт об уничтожении' + '~#' + T(ru.intertrust.cmj.ws.base.servlet.ServletUrlHolder).getServerUrlStr() + '/ids/' + ActModule + '-TN:' + ActId + '~#newTab~#local')]]></script>
+      </calc-values>
+    </hyperlink>
+
+    <string computed="true" temporal="true" name="showident">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Предложения к акту']]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

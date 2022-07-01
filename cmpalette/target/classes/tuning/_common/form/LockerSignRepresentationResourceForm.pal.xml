@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="LockerSignRepresentationResource" id="LockerSignRepresentationResourceForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="label">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal">
+          <label-style>
+            <style id="tunBold"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunBold"/>
+            </value-style>
+          </field-style>
+        </appearance>
+      </field>
+      <field clickable="true" attribute-ref="fields">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance location="table" clickable="true"/>
+      </field>
+    </component>
+  </form>
+</ui>

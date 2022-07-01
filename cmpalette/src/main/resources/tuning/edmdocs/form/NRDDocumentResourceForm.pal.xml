@@ -1,0 +1,336 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="NRDDocumentResource" id="NRDDocumentResourceForm" name="${ui.form.NRDDocumentResourceForm.name:NRDDocumentResourceForm}" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <button name="${ui.form.NRDDocumentResourceForm.button.Новый как копия.name:Новый как копия}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="read"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.NRDDocumentResourceForm.button.Новый как копия.hintPopUp:Новый как копия}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#copy"/>
+        </action>
+      </button>
+      <section id="Content" name="${ui.form.NRDDocumentResourceForm.section.Content.name:Содержание}"/>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="objectLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="9" field-unit="symbol"/>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="docCategory">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="docType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row2" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="approvingStatus">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="onApproving"/>
+                  </hide>
+                </properties>
+                <appearance align="right">
+                  <label-style field-width="16" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunUnderline"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunUnderline"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="reviewStatus">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="onReview"/>
+                  </hide>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style field-width="16" field-unit="symbol">
+                    <style id="tunBold"/>
+                    <style id="tunUnderline"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunUnderline"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="confirmationStatus">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style>
+                    <style id="tunBold"/>
+                    <style id="tunUnderline"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBold"/>
+                      <style id="tunUnderline"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="$titleHeader">
+            <hint-in-field>${ui.form.NRDDocumentResourceForm.section.Header.field.titleHeader.hintInField:Введите заголовок документа}</hint-in-field>
+          </field>
+          <section id="row3" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="titleVersion">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="7" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="versionInfo.version">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="3" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="$preparationStatusInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+              </field>
+              <field attribute-ref="titleBaseVersion">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="hasBaseVersion"/>
+                  </hide>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="15" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="versionInfo.baseVersion">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="3" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="versionInfo.openActualVersion">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Attributes" name="${ui.form.NRDDocumentResourceForm.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="linksAccessSection" group="true">
+            <appearance>
+              <label-style width="30" unit="symbol"/>
+            </appearance>
+            <component>
+              <field attribute-ref="disableLinkAccess" name="${ui.form.NRDDocumentResourceForm.section.Attributes.section.linksAccessSection.field.disableLinkAccess.name:Ограничить доступ по связям:}">
+                <appearance align="right" importance="normal">
+                  <label-style field-width="2" field-unit="symbol"/>
+                </appearance>
+                <hint-in-field>${ui.form.NRDDocumentResourceForm.section.Attributes.section.linksAccessSection.field.disableLinkAccess.hintInField:Не дается доступ к текущему документу читателям связанных документов}</hint-in-field>
+              </field>
+            </component>
+          </section>
+          <section id="Main" name="${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.name:Основные}">
+            <component>
+              <field attribute-ref="parentFoldersInfo" name="${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.parentFoldersInfo.name:Папки:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.parentFoldersInfo.hintPopUp:Папки}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="FoldersSelect"/>
+                </directories>
+              </field>
+              <field attribute-ref="documentType" name="${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.documentType.name:Вид документа:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.documentType.hintPopUp:Вид документа}</hint-pop-up>
+              </field>
+              <field attribute-ref="status.value" name="${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.status.value.name:Статус:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.status.value.hintPopUp:Статус}</hint-pop-up>
+              </field>
+              <field attribute-ref="documentTopics" name="${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.documentTopics.name:Тематика:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.documentTopics.hintPopUp:Тематика}</hint-pop-up>
+              </field>
+              <field attribute-ref="performers" name="${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.performers.name:Исполнитель:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.performers.hintPopUp:Исполнитель}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                  <directory-ref ref="FV_CURR_HUMAN_HH"/>
+                </directories>
+              </field>
+              <field attribute-ref="confirmer" name="${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.confirmer.name:Утверждающий:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.confirmer.hintPopUp:Утверждающий}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                </directories>
+              </field>
+              <field attribute-ref="hostDepartment" name="${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.hostDepartment.name:Подр.-владелец:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="edit"/>
+                  </require>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.NRDDocumentResourceForm.section.Attributes.section.Main.field.hostDepartment.hintPopUp:Подразделение-владелец}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="Подразделения"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+          <section id="AccessSection" name="${ui.form.NRDDocumentResourceForm.section.Attributes.section.AccessSection.name:Доступ}">
+            <component>
+              <field attribute-ref="accessScheme" name="${ui.form.NRDDocumentResourceForm.section.Attributes.section.AccessSection.field.accessScheme.name:Схема доступа:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.NRDDocumentResourceForm.section.Attributes.section.AccessSection.field.accessScheme.hintPopUp:Схема доступа}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="LifeCycle" name="${ui.form.NRDDocumentResourceForm.section.LifeCycle.name:Жизненный цикл}">
+        <appearance widget="leftMenu"/>
+        <component>
+            <section id="Preparation" name="${ui.form.NRDDocumentResourceForm.section.LifeCycle.section.Preparation.name:Полготовка}">
+                <properties>
+                    <hide condition-union="AND">
+                        <condition>true</condition>
+                    </hide>
+                </properties>
+            </section>
+            <section name="${ui.form.NRDDocumentResourceCopyForm.section.LifeCycle.ApprovingSection.name:Согласование}" id="ApprovingSection" group="true">
+                <component>
+                    <section id="ApprovingButtons">
+                        <appearance widget="inactiveTab"/>
+                    </section>
+                    <section name="${ui.form.NRDDocumentResourceCopyForm.section.LifeCycle.ApprovingSection.section.Approving.name:Согласование}" id="Approving"/>
+                </component>
+            </section>
+            <section id="Review" name="${ui.form.NRDDocumentResourceForm.section.LifeCycle.section.Review.name:Ознакомление}"/>
+        </component>
+      </section>
+      <section id="Links" name="${ui.form.NRDDocumentResourceForm.section.Links.name:Связанные}">
+        <appearance widget="leftMenu"/>
+        <component>
+          <section id="Documеnts" name="${ui.form.NRDDocumentResourceForm.section.Links.section.Documеnts.name:Документы}"/>
+          <section id="Cases" name="${ui.form.NRDDocumentResourceForm.section.Links.section.Cases.name:Кейсы}"/>
+          <section id="FilesWithCopies" name="${ui.form.NRDDocumentResourceForm.section.Links.section.FilesWithCopies.name:Дела}"/>
+          <section id="Versions" name="${ui.form.NRDDocumentResourceForm.section.Links.section.Versions.name:Версии}"/>
+        </component>
+      </section>
+      <section id="Discussion" name="${ui.form.NRDDocumentResourceForm.section.Discussion.name:Обсуждения}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="canDiscuss(NRD)"/>
+          </hide>
+        </properties>
+      </section>
+      <section id="History" name="${ui.form.NRDDocumentResourceForm.section.History.name:История}"/>
+    </component>
+  </form>
+</ui>

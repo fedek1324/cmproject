@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form default="true" schema-ref="dpQueryFormContextual_edmdocsiss" id="dpQueryFormContextual_issContextualBundleForm" name="${ui.form.dpQueryFormContextual_issContextualBundleForm.name:dpQueryFormContextual_issContextualBundleForm}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance field-layout="horizontal"/>
+    <component>
+      <section id="row1" group="true">
+        <component>
+          <field attribute-ref="searchInContent">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal">
+              <label-style>
+                <style id="tunTriangle"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunTriangle"/>
+                </value-style>
+              </field-style>
+              <limit max-lenght="100"/>
+            </appearance>
+            <hint-pop-up>${ui.form.dpQueryFormContextual_issContextualBundleForm.section.row1.field.searchInContent.hintPopUp:Максимальное количество знаков - 100. Не использовать латинские буквы}</hint-pop-up>
+            <directories manual-input="true" livesearch="true" limit-livesearch="no-restrictions">
+              <directory-ref ref="last.contextual.search.queries"/>
+            </directories>
+          </field>
+          <field attribute-ref="statusString">
+            <appearance importance="normal" widget="radio"/>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="ISSStateContextual"/>
+            </directories>
+          </field>
+          <field attribute-ref="docTypeEDMISS" name="${ui.form.dpQueryFormContextual_issContextualBundleForm.section.row1.field.docTypeEDMISS.name:Вид документа:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="foldersISS" name="${ui.form.dpQueryFormContextual_issContextualBundleForm.section.row1.field.foldersISS.name:Папки:}" alias="folders af5">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="dpQueryFormContextualISS_isAF5Storage"/>
+              </hide>
+            </properties>
+            <appearance multiline="true" importance="normal"/>
+            <hint-pop-up>${ui.form.dpQueryFormContextual_issContextualBundleForm.section.row1.field.foldersISS.hintPopUp:Папки}</hint-pop-up>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="FoldersSelectAF5"/>
+            </directories>
+          </field>
+          <field attribute-ref="foldersISS" name="${ui.form.dpQueryFormContextual_issContextualBundleForm.section.row1.field.foldersISS.name:Папки:}">
+            <properties>
+              <hide condition-union="AND">
+                <condition-ref ref="dpQueryFormContextualISS_isAF5Storage"/>
+              </hide>
+            </properties>
+            <appearance multiline="true" importance="normal"/>
+            <hint-pop-up>${ui.form.dpQueryFormContextual_issContextualBundleForm.section.row1.field.foldersISS.hintPopUp:Папки}</hint-pop-up>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="FoldersSelect"/>
+            </directories>
+          </field>
+          <field attribute-ref="regDateISS" name="${ui.form.dpQueryFormContextual_issContextualBundleForm.section.row1.field.regDateISS.name:Дата документа:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="beginDateISS" name="${ui.form.dpQueryFormContextual_issContextualBundleForm.section.row1.field.beginDateISS.name:Дата начала действия:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="endDateISS" name="${ui.form.dpQueryFormContextual_issContextualBundleForm.section.row1.field.endDateISS.name:Дата окончания действия:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="resultItemCount" name="${ui.form.dpQueryFormContextual_issContextualBundleForm.section.row1.field.resultItemCount.name:Максимальное число объектов:}">
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.dpQueryFormContextual_issContextualBundleForm.section.row1.field.resultItemCount.hintPopUp:От 1 до 200}</hint-pop-up>
+          </field>
+        </component>
+      </section>
+      <button name="${ui.form.dpQueryFormContextual_issContextualBundleForm.button.Найти.name:Найти}">
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#search"/>
+        </action>
+      </button>
+      <button name="${ui.form.dpQueryFormContextual_issContextualBundleForm.button.Очистить параметры.name:Очистить параметры}">
+        <action>
+          <system name="clear"/>
+        </action>
+      </button>
+      <button name="${ui.form.dpQueryFormContextual_issContextualBundleForm.button.Сохранить запрос.name:Сохранить запрос}">
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#saveQuery"/>
+        </action>
+      </button>
+      <button name="${ui.form.dpQueryFormContextual_issContextualBundleForm.button.Применить шаблон запроса.name:Применить шаблон запроса}">
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#applyQuery"/>
+        </action>
+      </button>
+      <button name="${ui.form.dpQueryFormContextual_issContextualBundleForm.button.Отменить.name:Отменить}">
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

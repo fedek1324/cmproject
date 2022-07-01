@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="admin-organization_sysadm" id="admin-deps_sysadm" name="${catalog.view.admin_deps_sysadm.name:Подразделения}" position="20">
-    <descriptor-ref ref="admin-so-deps"/>
-    <source>
-      <module ident="SO"/>
-    </source>
-  </view>
-</catalog>

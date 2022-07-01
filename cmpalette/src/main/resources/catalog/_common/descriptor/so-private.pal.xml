@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="q.so-private" fulltext="true" id="so-private" name="СО - ЧастныеЛица" style="default">
+    <help id="99778976"/>
+    <builder name="ru.intertrust.cmj.af.so.impl.BuilderSO"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="soFullName" sort-desc="true"/>
+        <column-ref ref="soMix2" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soAddress" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soPhone" sort-asc="true" sort-desc="true"/>
+        <column-ref ref="soEmail" sort-asc="true" sort-desc="true"/>
+      </columns>
+    </table>
+    <dialog-actions>
+      <action-ref ref="SO-CreatePrivatePerson"/>
+    </dialog-actions>
+    <actions>
+      <action id="SO-CreatePrivatePersonDlg" name="${catalog.descriptor.so-private.actions.action.SO-CreatePrivatePersonDlg.name:Добавить частное лицо}">
+        <create object-ref="PRIVATE_HUMAN"/>
+      </action>
+    </actions>
+  </descriptor>
+</catalog>

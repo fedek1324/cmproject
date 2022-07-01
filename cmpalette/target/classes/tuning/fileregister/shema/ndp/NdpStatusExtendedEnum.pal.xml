@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="NdpStatusExtendedEnum">
+    <string value="ON_APPROVE" name="ON_APPROVE" />
+    <string value="RADY_INCLUDE_TO_NDO" name="RADY_INCLUDE_TO_NDO" />
+    <string value="ROLLBACK_TO_REWORK" name="ROLLBACK_TO_REWORK" />
+    <string value="INCLUDE_INTO_NDO" name="INCLUDE_INTO_NDO" />
+    <string value="APPROVED" name="APPROVED" />
+  </enum>
+</schemas>

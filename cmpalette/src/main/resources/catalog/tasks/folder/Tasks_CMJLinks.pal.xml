@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="CMJLinks" id="Tasks::::" name="${catalog.view.Tasks____.name:Поручения}" position="90">
+    <search-area name="_Tasks"/>
+    <descriptor-ref ref="dp-08-tasks"/>
+    <source>
+      <module ident="Tasks"/>
+    </source>
+  </view>
+</catalog>

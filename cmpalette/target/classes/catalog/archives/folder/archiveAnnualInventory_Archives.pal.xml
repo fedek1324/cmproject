@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="Archives" position="20" name="${catalog.folder.archiveAnnualInventory.name:Годовые разделы описи дел}" id="archiveAnnualInventory">
+    <subfolders>
+      <view position="10" name="${catalog.folder.archiveAnnualInventory.view.AnnualInventoryById.name:Годовые разделы описи дел}" id="AnnualInventoryById">
+        <source>
+          <module ident="Archives" />
+        </source>
+        <pagename name="Годовые разделы описи дел" />
+        <search-area name="_Archives" />
+        <descriptor-ref ref="Archives-AnnualInventory" />
+      </view>
+      <folder position="20" name="${catalog.folder.archiveAnnualInventory.folder.AnnualInventoryByDeleted.name:Корзина}" id="AnnualInventoryByDeleted">
+        <source>
+          <module ident="Archives" />
+        </source>
+        <webdocs>
+          <group position="0" id="0" />
+        </webdocs>
+      </folder>
+    </subfolders>
+    <webdocs>
+      <group position="0" id="0" />
+    </webdocs>
+  </folder>
+</catalog>

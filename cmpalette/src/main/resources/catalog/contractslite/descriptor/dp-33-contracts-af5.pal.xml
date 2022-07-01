@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="ContractsLite" view="(vw_cmj_33)" id="dp-33-contracts-af5" name="Договоры - Дог - архивные - по ответственному" style="default">
+    <help id="99778653"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="dogResponsiblesName" category="true"/>
+        <column-ref ref="self"/>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="dogSignStatus"/>
+        <column-ref ref="regNumber"/>
+        <column-ref ref="concludedDate"/>
+        <column-ref ref="dogParty2"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="subject"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

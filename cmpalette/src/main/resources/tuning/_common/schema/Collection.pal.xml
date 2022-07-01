@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="Collection">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <string name="addLink" system="true" temporal="true"/>
+    <string name="collectionLink" system="true" temporal="true"/>
+    <string name="createLink" system="true" temporal="true"/>
+    <string name="objectSchemaLink" system="true" temporal="true"/>
+  </schema>
+</schemas>

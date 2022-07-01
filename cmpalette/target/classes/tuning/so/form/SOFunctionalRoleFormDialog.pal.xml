@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SOFunctionalRole" id="SOFunctionalRoleFormDialog" name="${ui.form.SOFunctionalRoleFormDialog.name:Функциональная роль}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="nameInfo">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance align="left" importance="normal"/>
+      </field>
+      <button name="${ui.form.SOFunctionalRoleFormDialog.button.Скрыть системную кнопку Изменить (для объектов админки работает некорректно).name:Скрыть системную кнопку Изменить (для объектов админки работает некорректно)}">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <action>
+          <system name="update"/>
+        </action>
+      </button>
+      <field autofill="true" attribute-ref="deletedLabel">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="TNObject_isDeleted"/>
+          </hide>
+        </properties>
+        <appearance align="left">
+          <label-style field-width="23" field-unit="symbol"/>
+        </appearance>
+      </field>
+      <field attribute-ref="code" name="${ui.form.SOFunctionalRoleFormDialog.field.code.name:Код:}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance align="left" importance="normal"/>
+      </field>
+      <button name="${ui.form.SOFunctionalRoleFormDialog.button.Скрыть системную кнопку системную Отменить (для объектов админки работает некорректно).name:Скрыть системную кнопку системную Отменить (для объектов админки работает некорректно)}">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+      <field attribute-ref="parentHierarchy" name="${ui.form.SOFunctionalRoleFormDialog.field.parentHierarchy.name:Вышестоящая функциональная роль :}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance align="left" importance="normal"/>
+      </field>
+      <field attribute-ref="selfHyperLink" name="${ui.form.SOFunctionalRoleFormDialog.field.selfHyperLink.name:Открыть карточку в новой вкладке}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance align="left" importance="normal" open-form="newTab"/>
+      </field>
+    </component>
+  </form>
+</ui>

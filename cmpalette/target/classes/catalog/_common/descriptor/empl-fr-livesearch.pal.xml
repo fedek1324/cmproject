@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="SO_(vw_cmj_admin_dialog_empl_fr_livesearch)" id="empl-fr-livesearch" name="АРМАдмин.Диалог: Сотрудники" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewCQSearch"/>
+    <table>
+      <columns>
+        <column-ref ref="origShortName" sort-asc="true"/>
+        <column-ref ref="self"/>
+        <column-ref ref="soDocType"/>
+        <column-ref ref="soCode" sort-asc="true"/>
+        <column-ref ref="soPost"/>
+        <column-ref ref="parentOfUnit"/>
+        <column-ref ref="objectAdminSOUnitInfo"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

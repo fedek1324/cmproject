@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="SOTNObject" name="SOOrganization">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <boolean name="isChangedSetting" temporal="true"/>
+    <string name="description" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Организация: '+fullname + ' ('+shortname+') '+' (Код:'+code+')']]></script>
+      </calc-values>
+    </string>
+    <boolean name="resexecutor">
+      <storage-field name="resexecutor"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="separateaccess" system="true" temporal="true">
+      <storage-field name="separateaccess"/>
+      <storage-string value="1"/>
+    </boolean>
+    <email array="true" name="emailAdmin" createlog="true">
+      <storage-field name="emailAdmin"/>
+    </email>
+    <boolean name="onLocalize">
+      <storage-field name="onLocalize"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="perfreview">
+      <storage-field name="perfreview"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="url">
+      <storage-field name="url"/>
+    </string>
+    <enum-ref ref="ExportType" name="ExportType" system="true">
+      <storage-field name="export_type"/>
+    </enum-ref>
+    <boolean name="TrustedEmail" temporal="false" system="true">
+      <storage-field name="export_trusted_email"/>
+    </boolean>
+    <string array="true" name="enableSetting" system="true" temporal="true"/>
+    <string name="fillCases" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.department.RecalcForChangeDepartmentFillCases</recalc-processing-class>
+    </string>
+    <string name="copyAddress" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.organization.RecalcSOOrganizationCopyAddresss</recalc-processing-class>
+    </string>
+    <string name="soSetting" system="true" temporal="true">
+      <storage-field name="appeals"/>
+    </string>
+    <string array="true" name="afScanFiels" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[{"Met", "GDBaseName", "GroupZam_My_Beards", "EShortName", "AllIDs", "GroupZam", "ZamAudit", "OName", "EKNumber", "EPhone", "DocID",
+"RPA_Input_GDs", "RPA_Output_GDs", "RPA_Internal_GDs", "RPA_ORD_GDs", "RPA_Contracts_GDs", "RPA_Requests_GDs", "GroupInput","GroupOutput", "GroupInternal", "GroupORD", "GroupContracts", "GroupRequests", "InputSW", "OutputSW", "InternSW", "ORDSW", "ContractsSW", "RequestsSW",
+"EFullName", "OName_L10n", "OName_1_L10n"}]]></script>
+      </calc-values>
+    </string>
+    <boolean name="contracts" system="true" temporal="true">
+      <storage-field name="contracts"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="officework" system="true" temporal="true">
+      <storage-field name="officework"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="appeals" system="true" temporal="true">
+      <storage-field name="appeals"/>
+      <storage-string value="1"/>
+    </boolean>
+    <enum-ref ref="InControl" name="incontrol">
+      <storage-field name="incontrol"/>
+    </enum-ref>
+    <schema-ref ref="AdminSOUnit" array="true" name="editClassifier" temporal="true"/>
+    <string name="comment" createlog="true">
+      <storage-field name="comment"/>
+    </string>
+    <string name="fullname">
+      <storage-field name="OName"/>
+    </string>
+    <string array="true" name="account">
+      <storage-field name="IM"/>
+    </string>
+    <boolean name="systemEditorsCanChangeStruct" system="true" createlog="true" temporal="true">
+      <storage-field name="isSystemEditorsCanChangeSO"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="allowReuseUidIfTabsEqual" system="true" createlog="true" temporal="true">
+      <storage-field name="allowReuseUidIfTabsEqual"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="jAddress" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(T(org.springframework.util.StringUtils).hasLength(jSendIndex) ? jSendIndex+", ":"")+
+ (T(org.springframework.util.StringUtils).hasLength(country) ? country+", ":"")+
+ (T(org.springframework.util.StringUtils).hasLength(region) ? region+", ":"")+
+ (T(org.springframework.util.StringUtils).hasLength(jDistrict) ? jDistrict+", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(jCity) ? jCity+", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(jStreet) ? jStreet+", ": "")+
+( jHouse!=null ?   jHouse.toString() +", ": "")+ 
+(T(org.springframework.util.StringUtils).hasLength(jStructure) ? jStructure+", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(jHousing) ? jHousing+", ": "")+
+( T(org.springframework.util.StringUtils).hasLength(jOffice) ? jOffice+", ":"")]]></script>
+      </calc-values>
+    </string>
+    <hyperlink name="selfHyperLink" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.misc.HyperLink).createHyperLink('Открыть карточку в новой вкладке' +'~#'+T(ru.intertrust.cmj.ws.base.servlet.ServletUrlHolder).getServerUrlStr() +link.?[rel=='self'].get(0).href+'~#newTab~#local')]]></script>
+      </calc-values>
+    </hyperlink>
+    <string name="headInfo" system="true" temporal="true"/>
+    <string name="country">
+      <storage-field name="CCountry"/>
+    </string>
+    <string name="empty_systname" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['']]></script>
+      </calc-values>
+    </string>
+    <string name="empty" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['']]></script>
+      </calc-values>
+    </string>
+    <string name="refreshNoticeReceivers" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.department.RecalcForChangeZamDepartment</recalc-processing-class>
+    </string>
+    <string name="basedocid" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="noticeReceived" temporal="true"/>
+    <schema-ref ref="NameListClerk" name="hist_clerk" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="systemEditors" createlog="true" temporal="true"/>
+    <schema-ref ref="ClientContext_SaveWithDialogSOStruct" name="$clientContext" system="true" createlog="true" temporal="true"/>
+    <schema-ref ref="NameList" name="hist_audit" temporal="true"/>
+    <schema-ref ref="NameList" name="hist_zam" temporal="true"/>
+    <schema-ref ref="NameList" name="hist_zam_temp" temporal="true"/>
+    <schema-ref ref="AddressSOUnitOrg" array="true" name="addressList" createlog="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.RecalcAddressList</recalc-processing-class>
+    </schema-ref>
+    <string name="shortname">
+      <storage-field name="OName_1"/>
+    </string>
+    <string name="city">
+      <storage-field name="CAddr1_City"/>
+    </string>
+    <string name="sendIndex">
+      <storage-field name="CAddr1_ZipCode"/>
+    </string>
+    <string name="office">
+      <storage-field name="CAddr1_Office"/>
+    </string>
+    <string name="street">
+      <storage-field name="CAddr1_Street"/>
+    </string>
+    <string name="house">
+      <storage-field name="CAddr1_House"/>
+      <validate>
+        <regex>^[0-9]*$</regex>
+        <message locale="ru">Допустимый формат - арабские цифры без разделителей</message>
+      </validate>
+    </string>
+    <string name="structure">
+      <storage-field name="CAddr1_Struct"/>
+    </string>
+    <string name="region">
+      <storage-field name="CRegion"/>
+    </string>
+    <string name="district">
+      <storage-field name="CAddr1_Locality"/>
+    </string>
+    <string name="housing">
+      <storage-field name="CAddr1_Corp"/>
+    </string>
+    <string name="jCity">
+      <storage-field name="CAddr_City"/>
+    </string>
+    <string name="jSendIndex">
+      <storage-field name="CAddr_ZipCode"/>
+    </string>
+    <string name="jHouse">
+      <storage-field name="CAddr_House"/>
+      <validate>
+        <regex>^[0-9]*$</regex>
+        <message locale="ru">Допустимый формат - арабские цифры без разделителей</message>
+      </validate>
+    </string>
+    <string name="jOffice">
+      <storage-field name="CAddr_Office"/>
+    </string>
+    <string name="jHousing">
+      <storage-field name="CAddr_Corp"/>
+    </string>
+    <string name="jStructure">
+      <storage-field name="CAddr_Build"/>
+    </string>
+    <string name="jStreet">
+      <storage-field name="CAddr_Street"/>
+    </string>
+    <string name="jDistrict">
+      <storage-field name="CAddr_Locality"/>
+    </string>
+    <string name="code">
+      <storage-field name="Index"/>
+    </string>
+    <string name="rang" system="true">
+      <storage-field name="rang"/>
+    </string>
+    <string name="area" createlog="true">
+      <storage-field name="HomeNet"/>
+    </string>
+    <boolean name="isAf5Storage" temporal="true"/>
+    <string name="worksfor" system="true" temporal="true"/>
+    <string name="WorksForRegistration" system="true" createlog="true" temporal="true"/>
+    <schema-ref null-empty="true" ref="WorkTimeProfile" name="WorkingProfile"/>
+    <schema-ref ref="Notification" name="notification" temporal="true"/>
+    <schema-ref ref="SystemNameForOrganization" name="systemName" temporal="true"/>
+    <schema-ref ref="SystemGroup" name="systemGroup" temporal="true"/>
+    <schema-ref ref="LocalDepartment" array="true" name="local"/>
+    <string name="guidccty">
+      <storage-field name="SSTUGUID"/>
+    </string>
+    <string array="true" name="phone">
+      <storage-field name="EPhone"/>
+    </string>
+    <string name="fax">
+      <storage-field name="CFax"/>
+    </string>
+    <string name="email">
+      <storage-field name="CEmail"/>
+    </string>
+    <string name="site">
+      <storage-field name="CTelex"/>
+    </string>
+    <string name="okved">
+      <storage-field name="COKONH"/>
+    </string>
+    <string name="okato">
+      <storage-field name="OKATO"/>
+    </string>
+    <string name="check">
+      <storage-field name="CCountR"/>
+    </string>
+    <string name="bankname">
+      <storage-field name="CBank"/>
+    </string>
+    <string name="bikbank">
+      <storage-field name="CBIK"/>
+    </string>
+    <string name="ccheck">
+      <storage-field name="CCountCor"/>
+    </string>
+    <string name="addressmedo">
+      <storage-field name="addressmedo"/>
+    </string>
+    <string name="guidmedo">
+      <storage-field name="guidmedo"/>
+    </string>
+    <string name="inn">
+      <storage-field name="INN"/>
+    </string>
+    <string name="kpp">
+      <storage-field name="CKPP"/>
+    </string>
+    <string name="okpo">
+      <storage-field name="COKPO"/>
+    </string>
+    <string name="ogrn">
+      <storage-field name="OGRN"/>
+    </string>
+    <schema-ref ref="DescriptionCases" name="case"/>
+    <string name="GDBaseName">
+      <storage-field name="GDBaseName"/>
+    </string>
+    <string name="jAddressShow" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(org.springframework.util.StringUtils).hasLength(jAddress) ? jAddress.substring(0, jAddress.length()-2):""]]></script>
+      </calc-values>
+    </string>
+    <boolean name="isProhibitOldUid" createlog="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.so.organization.RecalcOnIsProhibitOldUidEventHandler</recalc-processing-class>
+      <storage-field name="IsProhibitOldUid"/>
+      <storage-string value="1"/>
+    </boolean>
+    <schema-ref ref="AdminSOUnit" array="true" name="chiefArchiveUnit" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="archivistUnit" temporal="true"/>
+    <boolean name="iscodeni">
+      <storage-field name="AsClass"/>
+      <storage-string value="1"/>
+    </boolean>
+    <string name="nomenclatureIndex" createlog="true">
+      <storage-field name="nomenclatureIndex"/>
+    </string>
+  </schema>
+</schemas>

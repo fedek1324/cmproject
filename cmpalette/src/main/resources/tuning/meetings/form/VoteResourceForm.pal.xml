@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="VoteResource" id="VoteResourceForm" name="${ui.form.VoteResourceForm.name:VoteResourceForm}" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <button name="${ui.form.VoteResourceForm.button.Открыть проект решения.name:Открыть проект решения}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="read"/>
+          </hide>
+        </properties>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#decision.project"/>
+        </action>
+      </button>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="showType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="20" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="pointLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="10" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="pointNumber">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left"/>
+              </field>
+              <field attribute-ref="securityStamp">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="securityStampIsNotEmpty"/>
+                  </hide>
+                </properties>
+                <appearance importance="high" align="right">
+                  <label-style field-unit="symbol" field-width="15">
+                    <style id="tunBlack"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBlack"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+                <hint-pop-up>${ui.form.RkkResourceMissionsForm.section.Header.section.row15.field.securityStampText.hintPopUp:Гриф ограничения доступа к документу}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <field autofill="true" attribute-ref="pointText">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance>
+              <label-style>
+                <style id="tunBold"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunBold"/>
+                </value-style>
+              </field-style>
+            </appearance>
+          </field>
+          <section id="row2" group="true">
+            <component>
+              <field attribute-ref="$lockerSignatureInfo">
+                <appearance align="right" importance="normal">
+                  <label-style field-width="13" field-unit="symbol"/>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="rightAlign"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Attributes" name="${ui.form.VoteResourceForm.section.Attributes.name:Реквизиты}">
+        <component>
+          <field attribute-ref="text" name="${ui.form.VoteResourceForm.section.Attributes.field.text.name:Проект решения:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+          </field>
+          <field attribute-ref="author" name="${ui.form.VoteResourceForm.section.Attributes.field.author.name:Голосует:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+            </properties>
+          </field>
+          <field attribute-ref="answer" name="${ui.form.VoteResourceForm.section.Attributes.field.answer.name:Решение по вопросу:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+            </properties>
+            <directories limit-livesearch="no-restrictions">
+              <directory-select-value name="VOTES" attribute-ref="voteOption"/>
+            </directories>
+          </field>
+          <field attribute-ref="comment" name="${ui.form.VoteResourceForm.section.Attributes.field.comment.name:Комментарий:}"/>
+        </component>
+      </section>
+      <section id="History" name="${ui.form.VoteResourceForm.section.History.name:История}"/>
+    </component>
+  </form>
+</ui>

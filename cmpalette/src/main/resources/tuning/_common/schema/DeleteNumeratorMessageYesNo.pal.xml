@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="ClientContextRequest" name="DeleteNumeratorMessageYesNo">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="messageText" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Вы уверены, что хотите удалить счетчик для модуля "'+moduleAndComplect+'"?']]></script>
+      </calc-values>
+    </string>
+    <integer name="numeratorCount" temporal="true"/>
+    <string name="mode" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['dialog']]></script>
+      </calc-values>
+    </string>
+    <string name="moduleAndComplect" temporal="true"/>
+    <string array="true" name="selectNumeratorIds" temporal="true"/>
+  </schema>
+</schemas>

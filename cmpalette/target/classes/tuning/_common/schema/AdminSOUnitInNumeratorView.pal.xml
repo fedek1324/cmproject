@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="AdminSOUnitInNumeratorView">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="id">
+      <storage-field name="idsTn"/>
+    </string>
+    <string name="name">
+      <storage-field name="offices"/>
+    </string>
+    <string name="unid">
+      <storage-field name="ids"/>
+    </string>
+  </schema>
+</schemas>

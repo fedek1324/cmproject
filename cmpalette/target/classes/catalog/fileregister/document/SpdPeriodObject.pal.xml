@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+    <tunable-object form-name="SPD_Period" name="${catalog.document.StoragePeriod.name:Срок хранения}" schema-ref="StoragePeriod">
+        <module ident="StoragePeriodDirectory" complect=""/>
+    </tunable-object>
+</catalog>

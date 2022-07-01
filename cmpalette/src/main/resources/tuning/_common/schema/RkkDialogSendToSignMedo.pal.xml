@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="RkkDialogSendToSign" name="RkkDialogSendToSignMedo">
+    <string name="text">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Выберете основной файл:']]></script>
+      </calc-values>
+    </string>
+    <string name="fileName" />
+    <string array="true" name="filesNames" />
+  </schema>
+</schemas>

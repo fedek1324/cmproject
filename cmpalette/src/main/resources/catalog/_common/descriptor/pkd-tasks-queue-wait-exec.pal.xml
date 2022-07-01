@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <descriptor id-sql="PKD.getTasks.queue.wait.exec" id="pkd-tasks-queue-wait-exec" name="Задачи - Очередь- Жду исполнения" style="default">
+    <help id="99778990"/>
+    <builder name="ru.intertrust.cmj.pkd.collection.BuilderPkd"/>
+    <table>
+      <columns>
+        <column-ref ref="from" sort-asc="true" sort-desc="true" filter="true"/>
+        <column-ref ref="to" filter="true"/>
+        <column-ref ref="subject" filter="true"/>
+        <column-ref ref="self"/>
+        <column-ref ref="docType"/>
+        <column-ref ref="labels"/>
+        <column-ref ref="stackConfig"/>
+        <column-ref ref="type_db"/>
+        <column-ref ref="reqType"/>
+        <column-ref ref="regDate"/>
+        <column-ref ref="eventAuthor"/>
+        <column-ref ref="whoSent"/>
+        <column-ref ref="taskDeadline"/>
+        <column-ref ref="taskDeadlineState"/>
+        <column-ref ref="privateStatus"/>
+        <column-ref ref="documentSubject"/>
+        <column-ref ref="isOnControl"/>
+        <column-ref ref="regInfo"/>
+        <column-ref ref="additionalRegInfo"/>
+        <column-ref ref="redirectedTo"/>
+        <column-ref ref="processType"/>
+        <column-ref ref="createdDate"/>
+        <column-ref ref="isPinned"/>
+        <column-ref ref="relationToCopy"/>
+        <column-ref ref="created"/>
+        <column-ref ref="taskExecutor"/>
+        <column-ref ref="documentId"/>
+        <column-ref ref="relatedDocumentIsRootResolution"/>
+        <column-ref ref="entityType"/>
+      </columns>
+    </table>
+    <group-actions>
+      <action-ref ref="mark-label"/>
+      <action-ref ref="mark-read"/>
+      <action-ref ref="mark.deferred"/>
+    </group-actions>
+    <cg-queue ref="waitExec"/>
+  </descriptor>
+</catalog>

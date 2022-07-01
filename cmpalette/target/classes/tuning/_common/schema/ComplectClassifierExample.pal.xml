@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="ComplexClassifierAbstract" name="ComplectClassifierExample">
+    <meta>
+      <category name="Справочники"/>
+    </meta>
+    <string name="Country" createlog="true" tunable="true"/>
+    <string name="City" createlog="true" tunable="true"/>
+    <string name="Street" createlog="true" tunable="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="CaseRKKResource" id="CaseRKKResourceForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <section id="Attributes" name="${ui.form.CaseRKKResourceForm.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="Main" name="${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.name:Основные}">
+            <component>
+              <field attribute-ref="mainGoal" name="${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.mainGoal.name:Цель:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.mainGoal.hintPopUp:Цель}</hint-pop-up>
+              </field>
+              <field autofill="true" recalc="true" attribute-ref="type" name="${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.type.name:Вид:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="edit"/>
+                    <condition>true</condition>
+                  </require>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.type.hintPopUp:Вид}</hint-pop-up>
+              </field>
+              <field attribute-ref="regNum" name="${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.regNum.name:Номер:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.regNum.hintPopUp:Номер}</hint-pop-up>
+              </field>
+              <field recalc="true" attribute-ref="activity.startDate" name="${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.activity.startDate.name:Дата:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.activity.startDate.hintPopUp:Дата}</hint-pop-up>
+              </field>
+              <field attribute-ref="activity.duration" name="${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.activity.duration.name:Срок:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.activity.duration.hintPopUp:Срок}</hint-pop-up>
+              </field>
+              <field attribute-ref="activity.state" name="${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.activity.state.name:Статус:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.activity.state.hintPopUp:Статус}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CaseActivityState"/>
+                </directories>
+              </field>
+              <section id="duration" group="true">
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <field recalc="true" attribute-ref="activity.duration" name="${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.section.duration.field.activity.duration.name:Срок:}">
+                    <appearance align="left" importance="normal">
+                      <label-style field-width="3" field-unit="symbol"/>
+                    </appearance>
+                    <hint-pop-up>${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.section.duration.field.activity.duration.hintPopUp:Срок}</hint-pop-up>
+                  </field>
+                  <field attribute-ref="daysDurationLabel">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance align="left">
+                      <label-style field-width="5" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="openingParenthesis">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="caseHasEndDatePlanned"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style field-width="0" field-unit="symbol">
+                        <style id="tunItalic"/>
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="tunItalic"/>
+                        </value-style>
+                      </field-style>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="activity.endDatePlanned">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style field-width="13" field-unit="symbol">
+                        <style id="tunItalic"/>
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="tunItalic"/>
+                        </value-style>
+                      </field-style>
+                    </appearance>
+                  </field>
+                  <field recalc="true" attribute-ref="activity.endDatePlanned">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="edit"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style field-width="12" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="closingParenthesis">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="caseHasEndDatePlanned"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style field-width="3" field-unit="symbol">
+                        <style id="tunItalic"/>
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="tunItalic"/>
+                        </value-style>
+                      </field-style>
+                    </appearance>
+                  </field>
+                  <field recalc="true" attribute-ref="activity.isWorkingDaysDuration">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="caseHasWorkingDaysDuration"/>
+                      </read-only>
+                    </properties>
+                    <appearance align="left" importance="normal">
+                      <label-style field-width="24" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                </component>
+              </section>
+              <field attribute-ref="comment" name="${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.comment.name:Комментарий:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.comment.hintPopUp:Комментарий}</hint-pop-up>
+              </field>
+              <field attribute-ref="result" name="${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.result.name:Результат:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.CaseRKKResourceForm.section.Attributes.section.Main.field.result.hintPopUp:Результат}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Header" name="${ui.form.CaseRKKResourceForm.section.Header.name:шапка}">
+        <component>
+          <section id="row1" group="true">
+            <component>
+              <field attribute-ref="showType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="activity.checkList">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="edit"/>
+                  </hide>
+                </properties>
+                <appearance align="right"/>
+              </field>
+              <field attribute-ref="activity.checkList">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isCaseHasChecklist"/>
+                  </hide>
+                </properties>
+                <appearance align="right"/>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="$titleHeader">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <directories limit-livesearch="sys-current">
+              <directory-ref ref="Cases-subject_Any"/>
+            </directories>
+          </field>
+          <section id="row3" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="showNumberLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isCaseRegistered"/>
+                  </hide>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="1" field-unit="symbol">
+                    <style id="tunGray"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunGray"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="regNum">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isCaseRegistered"/>
+                  </hide>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="10" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="showFromLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isCaseRegistered"/>
+                  </hide>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="2" field-unit="symbol">
+                    <style id="tunGray"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunGray"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="activity.startWorkDate">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isCaseRegistered"/>
+                  </hide>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="15" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="showManager" name="${ui.form.CaseRKKResourceForm.section.Header.section.row3.field.showManager.name:Менеджер кейса:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="IsCaseManagerNotEmpty"/>
+                  </hide>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="15" field-unit="symbol"/>
+                </appearance>
+                <hint-pop-up>${ui.form.CaseRKKResourceForm.section.Header.section.row3.field.showManager.hintPopUp:Менеджер кейса:}</hint-pop-up>
+                <directories limit-livesearch="no-restrictions">
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                </directories>
+              </field>
+              <field attribute-ref="EmptyManagerLabel" name="${ui.form.CaseRKKResourceForm.section.Header.section.row3.field.EmptyManagerLabel.name:Менеджер кейса:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="IsCaseManagerEmpty"/>
+                  </hide>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="10" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="showDeadlineLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="5" field-unit="symbol">
+                    <style id="tunGray"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunGray"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="showDuration">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="18" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="showStatusLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="7" field-unit="symbol">
+                    <style id="tunGray"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunGray"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="showStatus">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="10" field-unit="symbol"/>
+                </appearance>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Participants" name="${ui.form.CaseRKKResourceForm.section.Participants.name:Участники}"/>
+      <section id="Documents" name="${ui.form.CaseRKKResourceForm.section.Documents.name:Документы}">
+        <component>
+          <button name="${ui.form.CaseRKKResourceForm.section.Documents.button.Добавить документ кейса.name:Добавить документ кейса}">
+            <action>
+              <system name="http://intertrust.ru/cmj/relations#cases2.createdoc"/>
+            </action>
+          </button>
+          <button name="${ui.form.CaseRKKResourceForm.section.Documents.button.Переместить документ кейса.name:Переместить документ кейса}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canMoveCaseItems"/>
+              </hide>
+            </properties>
+            <action>
+              <system name="http://intertrust.ru/cmj/relations#move"/>
+            </action>
+          </button>
+          <button name="${ui.form.CaseRKKResourceForm.section.Documents.button.Создать папку кейса.name:Создать папку кейса}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="canCreateCaseDocumentsFolder"/>
+              </hide>
+            </properties>
+            <action>
+              <system name="http://intertrust.ru/cmj/relations#cases2.createfolder"/>
+            </action>
+          </button>
+        </component>
+      </section>
+      <section id="Tasks" name="${ui.form.CaseRKKResourceForm.section.Tasks.name:Задачи}"/>
+      <section id="Timeline" name="${ui.form.CaseRKKResourceForm.section.Timeline.name:Таймлайн}"/>
+    </component>
+  </form>
+</ui>

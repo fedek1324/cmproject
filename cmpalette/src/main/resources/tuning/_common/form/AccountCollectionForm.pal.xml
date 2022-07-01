@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="AccountCollection" id="AccountCollectionForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.AccountCollectionForm.section.RootMenu.button.Редактировать.name:Редактировать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+              </hide>
+            </properties>
+            <action>
+              <custom>
+                <open-edit/>
+              </custom>
+            </action>
+          </button>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="PersonInfo">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="tabel">
+      <storage-field name="Tab"/>
+    </string>
+    <string array="true" name="phoneMobile">
+      <storage-field name="CellPhone"/>
+    </string>
+    <string name="building">
+      <storage-field name="EPosition"/>
+    </string>
+    <string name="workEMail">
+      <storage-field name="EMail"/>
+    </string>
+    <string name="id" temporal="true">
+      <storage-field name="EPost_PersonID"/>
+    </string>
+    <string name="cmUnid">
+      <storage-field name="EPost_PersonID"/>
+    </string>
+    <string name="fullName">
+      <storage-field name="EFullName"/>
+    </string>
+    <string name="name">
+      <storage-field name="EShortName"/>
+    </string>
+    <string name="notesName" temporal="true"/>
+    <string name="middleName">
+      <storage-field name="ETName"/>
+    </string>
+    <string name="firstName">
+      <storage-field name="ESName"/>
+    </string>
+    <string name="lastName">
+      <storage-field name="EName"/>
+    </string>
+    <string name="room">
+      <storage-field name="EKNumber"/>
+    </string>
+    <string name="skype">
+      <storage-field name="Skype"/>
+    </string>
+    <string name="internalPhone">
+      <storage-field name="EInternalPhone"/>
+    </string>
+    <string array="true" name="phoneWork">
+      <storage-field name="EPhone"/>
+    </string>
+    <string name="addressFromBuildingAndRoom" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(T(org.springframework.util.StringUtils).hasLength(building) && T(org.springframework.util.StringUtils).hasLength(room)) ? building + ", " + room : (T(org.springframework.util.StringUtils).hasLength(building) ? building : room)]]></script>
+      </calc-values>
+    </string>
+    <string name="addressFromWorkplace" temporal="true"/>
+  </schema>
+</schemas>

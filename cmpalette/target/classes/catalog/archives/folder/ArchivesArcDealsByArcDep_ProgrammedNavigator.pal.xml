@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="archives-arc-deals-by-arc-dep" name="${catalog.view.archives_arc_deals_by_arc_dep.name:Архив. Архивные дела для описи подразделений}" position="10">
+    <descriptor-ref ref="archives-arc-deals-by-arc-dep"/>
+    <source>
+      <module ident="Archives"/>
+    </source>
+    <search-area name="Archives"/>
+  </view>
+</catalog>

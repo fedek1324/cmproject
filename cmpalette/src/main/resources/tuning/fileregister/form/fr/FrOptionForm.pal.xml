@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="FrOptionSchema" id="FrOptionForm" projection="default" showtabs="true" >
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.FrOption.button.PrintForm.name:Построить ПФ}">
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">какой-то бин</script>
+                    <!--TODO: нужен бин на акцию-->
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.FrOption.button.FillNums.name:Заполнить номер описи}">
+            <action>
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">какой-то бин</script>
+                    <!--TODO: нужен бин на акцию-->
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="Templates-approving" id="Templates-approving-all" name="${catalog.view.Templates_approving_all.name:Все шаблоны}" position="10">
+    <search-area name="_ApprovingDocs"/>
+    <descriptor-ref ref="approving-templatesByIdentAndReqType"/>
+    <source>
+      <module ident="ApprovingDocs"/>
+    </source>
+  </view>
+</catalog>

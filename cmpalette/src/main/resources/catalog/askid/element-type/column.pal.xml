@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <column display="icon" name="cardStatus" subject="${catalog.column.cardStatus.subject:Статус задачи}" extends="string">
+    <meta>
+      <documentation>признак наличия отчёта об исполнеии по резолюции</documentation>
+    </meta>
+  </column>
+  <column name="executionDate" subject="${catalog.column.executionDate.subject:Дата исполнения}" extends="datetime">
+    <meta>
+      <documentation>Дата исполнения</documentation>
+    </meta>
+  </column>
+  <column name="isExpired" extends="boolean"/>
+  <column name="resolutionAuthor" subject="${catalog.column.resolutionAuthor.subject:Автор задания}" extends="string"/>
+  <column name="resolutionControl" subject="${catalog.column.resolutionControl.subject:Контролер задания}" extends="string"/>
+  <column name="resolutionText" subject="${catalog.column.resolutionText.subject:Задание}" extends="string"/>
+  <column name="termStatus" extends="string"/>
+  <column name="authorOfResolution" subject="${catalog.column.authorOfResolution.subject:Автор}" extends="string"/>
+  <column name="docSubject" subject="${catalog.column.docSubject.subject:Заголовок}" extends="string"/>
+  <column name="UOB" subject="${catalog.column.UOB.subject:УОБ}" extends="string"/>
+  <column name="controllersNames" subject="${catalog.column.controllersNames.subject:Контролер}" extends="string"/>
+  <column name="SpecialMarks" subject="${catalog.column.SpecialMarks.subject:Особые отметки}" extends="string"/>
+  <column name="goorrf" subject="${catalog.column.goorrf.subject:ГО/РФ}" extends="string"/>
+  <column name="independentAuthorDep" subject="${catalog.column.independentAuthorDep.subject:СПП/РФ-исполнитель}" extends="string"/>
+  <column name="taskExecutorName" subject="${catalog.column.taskExecutorName.subject:Исполнитель}" extends="string"/>
+  <column name="textOfResolution" subject="${catalog.column.textOfResolution.subject:Текст поручения}" extends="string"/>
+  <column name="resolutionStatus" subject="${catalog.column.resolutionStatus.subject:Статус поручения}" extends="string"/>
+  <column name="currentStatus" subject="${catalog.column.currentStatus.subject:Текущий статус}" extends="string"/>
+  <column name="execHistory" subject="${catalog.column.execHistory.subject:Ход исполнения}" extends="string"/>
+  <column name="createDate" subject="${catalog.column.createDate.subject:Первоначальная дата поручения}" extends="datetime"/>
+  <column name="transferAmount" subject="${catalog.column.transferAmount.subject:Количество переносов}" extends="string"/>
+  <column name="violationDeadlineInWorkingDays" subject="${catalog.column.violationDeadlineInWorkingDays.subject:Нарушение срока в рабочих днях}" extends="string"/>
+  <column name="violationDeadlineInDays" subject="${catalog.column.violationDeadlineInDays.subject:Нарушение срока в календарных днях}" extends="string"/>
+  <column name="relatedDoc" subject="${catalog.column.relatedDoc.subject:Связанный документ}" extends="string"/>
+</catalog>

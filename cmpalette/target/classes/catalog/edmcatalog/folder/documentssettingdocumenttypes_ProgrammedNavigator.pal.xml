@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="documents-settingdocumenttypes:" name="${catalog.view.documents_settingdocumenttypes_.name:Типы документов}" position="190">
+    <search-area name="_EDM-Catalog"/>
+    <descriptor-ref ref="edm-document-types"/>
+    <source>
+      <module ident="EDM-Catalog"/>
+    </source>
+  </view>
+</catalog>

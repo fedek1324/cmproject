@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="TestObject1">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="test11" temporal="true"/>
+    <string name="test12" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[test11+ ': test12value']]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

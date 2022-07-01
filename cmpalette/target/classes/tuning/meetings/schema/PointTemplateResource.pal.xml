@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="PointResource" name="PointTemplateResource">
+    <meta>
+      <category name="Система\Заседания"/>
+    </meta>
+    <string required="true" name="name" system="true">
+      <storage-field name="Name"/>
+    </string>
+    <actor required="true" name="author" system="true"/>
+    <string required="true" name="text" system="true">
+      <storage-field name="Text"/>
+    </string>
+    <schema-ref ref="VCardResource" array="true" name="acl" system="true"/>
+    <enum-ref default-value="AUTHOR" ref="accessTypeEnum" name="accessType" system="true">
+      <storage-field name="accessType"/>
+    </enum-ref>
+    <schema-ref ref="MeetingType" name="meetingTypeInfo" system="true"/>
+    <schema-ref ref="ContentResource" name="$content" system="true"/>
+    <actor array="true" name="responsible" system="true"/>
+    <actor array="true" name="reporter" system="true"/>
+    <actor array="true" name="invited" system="true"/>
+    <time name="estimatedReportDuration" system="true"/>
+    <time name="estimatedDiscussionDuration" system="true"/>
+    <string name="objectLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Шаблон вопроса повестки']]></script>
+      </calc-values>
+    </string>
+    <string name="$titleHeader" system="true"/>
+    <schema-ref ref="DecisionProject" name="decisionProject" system="true"/>
+    <string name="meetingType" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[null]]></script>
+      </calc-values>
+    </string>
+    <string name="$accessItem" system="true"/>
+    <string name="showTemplateName" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Название шаблона:']]></script>
+      </calc-values>
+    </string>
+    <string name="accessInfo" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[accessType == T(ru.intertrust.cmj.dp.AccessType).PUBLIC ? 'Общедоступный' : 'Доступ ограничен']]></script>
+      </calc-values>
+    </string>
+    <boolean name="isUserSecretariatMember" system="true" temporal="true"/>
+    <date name="meetingDate" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[null]]></script>
+      </calc-values>
+    </date>
+    <file name="content" system="true"/>
+    <string name="accessTypeOnlyPrivate" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Личный доступ (автор или его замещающие)']]></script>
+      </calc-values>
+      <default-values>
+        <default-value>Личный доступ (автор или его замещающие)</default-value>
+      </default-values>
+    </string>
+    <boolean name="$hasMeeting" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isNotPlanningQuestion" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isToRevisePoint" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[false]]></script>
+      </calc-values>
+    </boolean>
+    <string name="$executionInfo" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[null]]></script>
+      </calc-values>
+    </string>
+
+    <boolean name="securityStampIsNotEmpty" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[false]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="canEditSecurityStamp" computed="true" temporal="true">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA[false]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

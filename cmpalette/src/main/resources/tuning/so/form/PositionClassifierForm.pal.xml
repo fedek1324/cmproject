@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="PositionClassifier" id="PositionClassifierForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="objectType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style>
+                    <style id="tunIconProgress"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunIconProgress"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Main" name="${ui.form.PositionClassifierForm.section.Main.name:Атрибуты}">
+        <component>
+          <field clickable="true" attribute-ref="organizationUnit" name="${ui.form.PositionClassifierForm.section.Main.field.organizationUnit.name:Организация}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal" clickable="true"/>
+          </field>
+          <field attribute-ref="position" name="${ui.form.PositionClassifierForm.section.Main.field.position.name:Должность:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="rank" name="${ui.form.PositionClassifierForm.section.Main.field.rank.name:Ранг:}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="RootMenu" name="${ui.form.PositionClassifierForm.section.RootMenu.name:RootMenu}">
+        <component>
+          <button name="${ui.form.PositionClassifierForm.section.RootMenu.button.Редактировать.name:Редактировать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="AdminSOCollection_canEdit"/>
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <icon code="95"/>
+            <action position="6.0">
+              <custom>
+                <open-edit/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.PositionClassifierForm.section.RootMenu.button.Скрыть системную кнопку Редактировать.name:Скрыть системную кнопку Редактировать}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="EDIT"/>
+            </action>
+          </button>
+          <button name="${ui.form.PositionClassifierForm.section.RootMenu.button.Скрыть системную кнопку Сохранить.name:Скрыть системную кнопку Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE"/>
+            </action>
+          </button>
+          <button name="${ui.form.PositionClassifierForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <save-existing/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.PositionClassifierForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <save/>
+              </custom>
+            </action>
+          </button>
+          <section id="CREATE" name="${ui.form.PositionClassifierForm.section.RootMenu.section.CREATE.name:Создать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="SOTNOnject_isAnyAdmin"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.PositionClassifierForm.section.RootMenu.section.CREATE.button.Должность.name:Должность}">
+                <action>
+                  <custom>
+                    <create schema-ref="PositionClassifier">
+                      <module-current>true</module-current>
+                    </create>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <section id="OTHER" name="${ui.form.PositionClassifierForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <button name="${ui.form.PositionClassifierForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Добавить в избранное'.name:Скрыть системную кнопку 'Добавить в избранное'}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action>
+                  <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+                </action>
+              </button>
+              <button name="${ui.form.PositionClassifierForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Запомнить ссылку'.name:Скрыть системную кнопку 'Запомнить ссылку'}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action>
+                  <system name="REMEMBER_LINK"/>
+                </action>
+              </button>
+              <button name="${ui.form.PositionClassifierForm.section.RootMenu.section.OTHER.button.Удалить.name:Удалить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="read"/>
+                    <negative-condition-ref ref="SOTNOnject_isAnyAdmin"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">DeletePositionClassifierOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

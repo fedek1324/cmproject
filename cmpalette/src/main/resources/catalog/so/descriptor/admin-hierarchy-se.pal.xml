@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="(vw_cmj_admin_hierarchyUnit)" id="admin-hierarchy-se" name="АРМАдмин:ИерархияШЕ" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewDlg"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="parentOfUnit"/>
+        <column-ref ref="name"/>
+        <column-ref ref="type"/>
+        <column-ref ref="soPost"/>
+        <column-ref ref="objectContractorInfo"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

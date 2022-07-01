@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+    <column name="lockerSubject" subject="${catalog.column.lockerSubject:Субъект}" extends="string">
+        <meta>
+            <documentation>Субъект</documentation>
+        </meta>
+    </column>
+    <column name="issuer" subject="${catalog.column.issuer:Поставщик}" extends="string">
+        <meta>
+            <documentation>Поставщик</documentation>
+        </meta>
+    </column>
+    <column name="userName" subject="${catalog.column.userName:Имя пользователя}" extends="string">
+        <meta>
+            <documentation>Поставщик</documentation>
+        </meta>
+    </column>
+    <column name="ski_hex" subject="${catalog.column.ski.hex:Идентификатор ключа субъекта}" extends="string">
+        <meta>
+            <documentation>Поставщик</documentation>
+        </meta>
+    </column>
+</catalog>

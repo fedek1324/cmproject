@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="DossierOrgPostType">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string value="1" name="руководитель организации"/>
+    <string value="2" name="зам. руководителя организации"/>
+    <string value="3" name="руководитель подразделения"/>
+    <string value="4" name="сотрудник подразделения"/>
+  </enum>
+</schemas>

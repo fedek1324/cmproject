@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <object name="ARCHIVES_ARC_DEAL">
+    <meta>
+      <documentation>Архивное дело</documentation>
+    </meta>
+  </object>
+  <object name="ARCHIVES_ANNUAL_INVENTORY">
+    <meta>
+      <documentation>Годовой раздел описи дел</documentation>
+    </meta>
+  </object>
+  <object name="ARCHIVES_PROP_ACT_DESTR">
+    <meta>
+      <documentation>Предложения к акту (о выделении на уничтожение)</documentation>
+    </meta>
+  </object>
+  <object name="ARCHIVES_ACT_DESTRUCTION">
+    <meta>
+      <documentation>Акт о выделении на уничтожение</documentation>
+    </meta>
+  </object>
+  <object name="ARCHIVES_ARC_INTERNAL_RKK">
+    <meta>
+      <documentation>Внутренний документ архива</documentation>
+    </meta>
+  </object>
+  <object name="ARCHIVES_ARC_INVENTORY">
+    <meta>
+      <documentation>Архивная опись</documentation>
+    </meta>
+  </object>
+  <object name="ARCHIVES_FUND_DEAL">
+    <meta>
+      <documentation>Дело фонда</documentation>
+    </meta>
+  </object>
+  <object name="ARCHIVES_DEPARTMENT_DEAL">
+    <meta>
+      <documentation>Опись дел подразделения</documentation>
+    </meta>
+  </object>
+</catalog>

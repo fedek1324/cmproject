@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+    <schema extends="Dialog" name="DialogReserveNumberError">
+        <meta>
+            <documentation>Схема диалога для вывода ошибки при резервировании номера РКК</documentation>
+        </meta>
+        <string name="counter"/>
+        <string name="message"/>
+        <string array="true" name="ids" createlog="true" temporal="true"/>
+        <string name="prefix" createlog="true" temporal="true"/>
+        <string name="suffix" createlog="true" temporal="true"/>
+        <integer name="number" createlog="true" temporal="true"/>
+        <boolean name="isReserved" createlog="true" temporal="true"/>
+    </schema>
+</schemas>

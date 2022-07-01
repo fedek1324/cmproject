@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="VisaVariants">
+    <meta>
+      <category name="Виза (Согласование)"/>
+    </meta>
+    <string value="yes" name="yes"/>
+    <string value="special" name="special"/>
+    <string value="no" name="no"/>
+  </enum>
+</schemas>

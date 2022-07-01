@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="WFExpertReply" id="WFExpertReplyDlg" name="${ui.form.WFExpertReplyDlg.name:Экспертиза}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="Expert" name="${ui.form.WFExpertReplyDlg.field.Expert.name:Эксперт}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="ExpertiseDate" name="${ui.form.WFExpertReplyDlg.field.ExpertiseDate.name:Дата экспертизы}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field recalc="true" attribute-ref="Reply" name="${ui.form.WFExpertReplyDlg.field.Reply.name:Заявка принята к исполнению?}">
+        <appearance importance="normal" widget="radio">
+          <label-style>
+            <style id="tunBold"/>
+          </label-style>
+          <field-style>
+            <value-style>
+              <style id="tunBold"/>
+            </value-style>
+          </field-style>
+        </appearance>
+        <directories limit-livesearch="no-restrictions">
+          <directory-ref ref="YesNo"/>
+        </directories>
+      </field>
+      <field attribute-ref="Comment" name="${ui.form.WFExpertReplyDlg.field.Comment.name:Комментарий}">
+        <properties>
+          <require condition-union="AND">
+            <condition-ref ref="ReplyNo"/>
+          </require>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="ReplyNo"/>
+          </hide>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

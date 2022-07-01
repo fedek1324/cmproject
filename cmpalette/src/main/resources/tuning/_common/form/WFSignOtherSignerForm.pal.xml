@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="WFSignOtherSigner" id="WFSignOtherSignerForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="read"/>
+        <negative-condition-ref ref="edit"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="user">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

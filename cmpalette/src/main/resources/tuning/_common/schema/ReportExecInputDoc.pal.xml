@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ReportExecInputDoc">
+    <meta>
+      <category name="Отчеты"/>
+    </meta>
+    <schema-ref ref="ReporterSubDialogEmployeeListOwn" name="EMPL_LIST_CONTR" temporal="true"/>
+    <schema-ref ref="DateInterval" name="DATE_REG" temporal="true"/>
+    <schema-ref ref="DateInterval" name="DATE_EXEC" temporal="true"/>
+    <schema-ref ref="ReporterSubDialogEmployeeListOwn" name="ORG_LIST_CORR" temporal="true"/>
+    <schema-ref ref="ReportStateExec" name="RES_EXEC_STATE" temporal="true"/>
+    <schema-ref ref="ReporterDlgListString" name="TEMATIC" temporal="true"/>
+  </schema>
+</schemas>

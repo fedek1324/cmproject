@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="FormationAvailableFileEnum">
+    <string value="AUTO_AFTER_EDIT_OR_SAVE" name="AUTO_AFTER_EDIT_OR_SAVE" />
+    <string value="AFTER_CONFIRM_ADDIT_IN_NDP" name="AFTER_CONFIRM_ADDIT_IN_NDP" />
+  </enum>
+</schemas>

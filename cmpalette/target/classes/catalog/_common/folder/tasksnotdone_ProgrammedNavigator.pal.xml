@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="tasks-not-done" name="${catalog.view.tasks_not_done.name:Невыполненные задачи}" position="250">
+    <descriptor-ref ref="pkd-tasks-not-done"/>
+  </view>
+</catalog>

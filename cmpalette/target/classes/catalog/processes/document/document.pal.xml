@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <document name="${catalog.document.bpmnca2f4fc9c52a4d8e9dec6acd39cdd7ab.name:Схема процесса}" object-ref="BPMN">
+    <module ident="Processes" complect=""/>
+  </document>
+</catalog>

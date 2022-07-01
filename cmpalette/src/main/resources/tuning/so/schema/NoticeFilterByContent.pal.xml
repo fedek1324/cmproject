@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="NoticeFilterByContent">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <enum-ref ref="NoticeTypeForFilterByContentEnum" array="true" name="noticeType">
+      <storage-field name="NFS_SkipNoticeTypes"/>
+    </enum-ref>
+    <enum-ref ref="DbTypeForFilterByContentEnum" array="true" name="dbType">
+      <storage-field name="NFS_RestrictedDBs"/>
+    </enum-ref>
+    <boolean name="ignoreForControl">
+      <storage-field name="NFS_IgnoreControl"/>
+      <storage-string value="1"/>
+    </boolean>
+  </schema>
+</schemas>

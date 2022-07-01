@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="arm-admin-dialog-hierarchyprofile" name="${catalog.view.arm_admin_dialog_hierarchyprofile.name:АРМАдмин.Диалог.Иерархические профили}" position="-1">
+    <descriptor-ref ref="arm-admin-dialog-hierarchyprofile"/>
+    <source>
+      <module ident="EDM-Portal"/>
+    </source>
+  </view>
+</catalog>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="InternalDocs" view="(vw_cmj_internal_prj)" id="dp-internal-Projects-af5" name="ВнД - проекты" style="default">
+    <help id="99778660"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="hasGriff"/>
+        <column-ref ref="hasAttachments"/>
+        <column-ref ref="icon"/>
+        <column-ref ref="regDate" filter="true"/>
+        <column-ref ref="reqType" filter="true"/>
+        <column-ref ref="executors" filter="true"/>
+        <column-ref ref="addressees" filter="true"/>
+        <column-ref ref="signer" filter="true"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="subject" filter="true"/>
+        <column-ref ref="self"/>
+        <column-ref ref="theme" filter="true"/>
+        <column-ref ref="regPlace" filter="true"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="InternalDocs-CreateRKK" name="${catalog.custom-descriptor.dp-internal-Projects-af5.actions.action.InternalDocs-CreateRKK.name:Создать/Внутренний документ}">
+        <create object-ref="RKK_INTERNAL"/>
+      </action>
+    </actions>
+    <custom-actions schema-ref="RkkReadersCollection"/>
+  </custom-descriptor>
+</catalog>

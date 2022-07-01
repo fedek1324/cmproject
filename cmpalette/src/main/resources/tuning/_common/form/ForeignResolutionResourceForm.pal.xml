@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ForeignResolutionResource" id="ForeignResolutionResourceForm" projection="default" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance field-layout="vertical"/>
+    <component>
+      <section id="Attributes" group="true">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance field-layout="vertical"/>
+        <component>
+          <field attribute-ref="deadline" name="${ui.form.ForeignResolutionResourceForm.section.Attributes.field.deadline.name:Контрольный срок:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="text">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal">
+              <label-style>
+                <style id="tunBold"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunBold"/>
+                </value-style>
+              </field-style>
+            </appearance>
+            <hint-pop-up>${ui.form.ForeignResolutionResourceForm.section.Attributes.field.text.hintPopUp:Текст}</hint-pop-up>
+            <hint-in-field>${ui.form.ForeignResolutionResourceForm.section.Attributes.field.text.hintInField:&lt;без текста>}</hint-in-field>
+          </field>
+          <section id="ContentRes" name="${ui.form.ForeignResolutionResourceForm.section.Attributes.section.ContentRes.name:Содержание}">
+            <appearance turn="true" style="tunBorderBlueSection"/>
+            <component>
+              <field attribute-ref="$content">
+                <hint-pop-up>${ui.form.ForeignResolutionResourceForm.section.Attributes.section.ContentRes.field.content.hintPopUp:Содержание}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="Actions" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="$close">
+                <hint-pop-up>${ui.form.ForeignResolutionResourceForm.section.Attributes.section.Actions.field.close.hintPopUp:Закрыть}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

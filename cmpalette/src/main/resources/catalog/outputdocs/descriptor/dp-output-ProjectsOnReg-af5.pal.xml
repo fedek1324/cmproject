@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="OutputDocs" view="(vw_cmj_onReg_output)" id="dp-output-ProjectsOnReg-af5" name="ИсхД - проекты на регистрации" style="default">
+    <help id="99778661"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="hasGriff"/>
+        <column-ref ref="isMEDO"/>
+        <column-ref ref="regDate" filter="true"/>
+        <column-ref ref="reqType" filter="true"/>
+        <column-ref ref="signer" filter="true"/>
+        <column-ref ref="addressees" filter="true"/>
+        <column-ref ref="executors" filter="true"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="subject" filter="true"/>
+        <column-ref ref="self"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="OutputDocs-CreateRKK" name="${catalog.custom-descriptor.dp-output-ProjectsOnReg-af5.actions.action.OutputDocs-CreateRKK.name:Создать/Исходящийй документ}">
+        <create object-ref="RKK_OUTPUT"/>
+      </action>
+    </actions>
+    <custom-actions schema-ref="RkkReadersCollection"/>
+  </custom-descriptor>
+</catalog>

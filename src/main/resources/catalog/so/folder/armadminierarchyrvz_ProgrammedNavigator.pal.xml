@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="arm-admin-ierarchy-rvz" name="${catalog.view.arm_admin_ierarchy_rvz.name:Руководители высшего звена - Иерархия}" position="-1">
-    <descriptor-ref ref="admin-hierarchy-rvz"/>
-    <source>
-      <module ident="SO"/>
-    </source>
-  </view>
-</catalog>

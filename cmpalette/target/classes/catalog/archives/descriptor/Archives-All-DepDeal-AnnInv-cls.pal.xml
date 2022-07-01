@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor view="(DepDealsForAnnualInventory)" ident="Archives" style="default" name="Реестр описей дел подразделений - Для годовых раздела(выбор)" id="Archives-All-DepDeal-AnnInv-cls">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewCQSearch" />
+    <table>
+      <columns>
+        <column-ref stretch="30" ref="ArcSubject" />
+        <column-ref ref="arc_object" />
+        <column-ref ref="depName" />
+        <column-ref ref="self" />
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

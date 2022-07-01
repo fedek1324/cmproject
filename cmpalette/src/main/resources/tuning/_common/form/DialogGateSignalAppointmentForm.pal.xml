@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DialogGateSignalAppointment" id="DialogGateSignalAppointmentForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <component>
+              <field attribute-ref="signalType" name="${ui.form.DialogGateSignalAppointmentForm.section.Header.section.row1.field.signalType.name:Тип сигнала:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+                <directories limit-livesearch="no-restrictions">
+                  <directory-ref ref="SignalTypes"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <field attribute-ref="message">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <button attribute-ref="doCurrent" name="${ui.form.DialogGateSignalAppointmentForm.button.doCurrent.name:Выполнить неосновное назначение}">
+        <action>
+          <system name="Submit"/>
+        </action>
+      </button>
+      <button attribute-ref="makeMain" name="${ui.form.DialogGateSignalAppointmentForm.button.makeMain.name:Заменить основное назначение}">
+        <action>
+          <system name="Submit"/>
+        </action>
+      </button>
+      <button attribute-ref="skip" name="${ui.form.DialogGateSignalAppointmentForm.button.skip.name:Отмена}">
+        <action>
+          <system name="Submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.DialogGateSignalAppointmentForm.button.Скрыть системную кнопку 'Отменить'.name:Скрыть системную кнопку 'Отменить'}">
+        <properties>
+          <hide condition-union="AND">
+            <condition>true</condition>
+          </hide>
+        </properties>
+        <action>
+          <system name="CANCEL"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

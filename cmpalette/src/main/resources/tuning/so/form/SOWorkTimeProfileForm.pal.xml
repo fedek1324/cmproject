@@ -1,0 +1,586 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SOWorkTimeProfile" id="SOWorkTimeProfileForm" name="${ui.form.SOWorkTimeProfileForm.name:Профиль рабочего времени}" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field autofill="true" attribute-ref="objectType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="40" field-unit="symbol">
+                    <style id="tunIconProgress"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunIconProgress"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field autofill="true" attribute-ref="org_name">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="high">
+                  <label-style field-width="23" field-unit="symbol">
+                    <style id="tunGray"/>
+                    <style id="tunItalic"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunGray"/>
+                      <style id="tunItalic"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="row2" group="true">
+            <appearance field-layout="vertical"/>
+            <component>
+              <field attribute-ref="empty">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="parentProfileName" name="${ui.form.SOWorkTimeProfileForm.section.Header.section.row2.field.parentProfileName.name:Вышестоящий профиль:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="SOWorkTimeProfile_isParentProfile"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field autofill="true" attribute-ref="name">
+                <properties>
+                  <require condition-union="AND">
+                    <condition>true</condition>
+                  </require>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="70" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field recalc="true" attribute-ref="isDefault" name="${ui.form.SOWorkTimeProfileForm.section.Header.section.row2.field.isDefault.name:По умолчанию}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="SOWorkTimeProfile_isParentProfile"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="empty">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <field autofill="true" attribute-ref="deletedLabel">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_isDeleted"/>
+              </hide>
+            </properties>
+            <appearance align="right">
+              <label-style field-width="23" field-unit="symbol"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <section id="StandartWorkDay" name="${ui.form.SOWorkTimeProfileForm.section.StandartWorkDay.name:Стандартный рабочий день}">
+        <appearance>
+          <label-style width="21" unit="symbol"/>
+        </appearance>
+        <component>
+          <field attribute-ref="empty">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <section id="row11" group="true">
+            <appearance>
+              <label-style width="50" unit="symbol"/>
+            </appearance>
+            <component>
+              <field recalc="true" attribute-ref="inheritInfoStandart" name="${ui.form.SOWorkTimeProfileForm.section.StandartWorkDay.section.row11.field.inheritInfoStandart.name:Информация наследуется из вышестоящего профиля}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="SOWorkTimeProfile_isParentProfile"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <section id="row3" group="true">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="SOWorkTimeProfile_InheritInfoStandart"/>
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance field-layout="horizontal">
+              <label-style width="21" unit="symbol"/>
+            </appearance>
+            <component>
+              <field attribute-ref="emptyString" name="${ui.form.SOWorkTimeProfileForm.section.StandartWorkDay.section.row3.field.emptyString.name:Рабочее время:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal">
+                  <label-style field-width="1" field-unit="symbol">
+                    <style id="tunWhite"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunWhite"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <section id="row3_1" group="true">
+                <appearance field-layout="horizontal">
+                  <label-style width="4" unit="symbol"/>
+                </appearance>
+                <component>
+                  <field attribute-ref="workTimeFrom" name="${ui.form.SOWorkTimeProfileForm.section.StandartWorkDay.section.row3.section.row3_1.field.workTimeFrom.name:с}">
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="edit"/>
+                        <condition>true</condition>
+                      </require>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="SOWorkTimeProfile_InheritInfoStandart"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal">
+                      <label-style field-width="1" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="workTimeUntil" name="${ui.form.SOWorkTimeProfileForm.section.StandartWorkDay.section.row3.section.row3_1.field.workTimeUntil.name:до}">
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="edit"/>
+                        <condition>true</condition>
+                      </require>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="SOWorkTimeProfile_InheritInfoStandart"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                </component>
+              </section>
+            </component>
+          </section>
+          <section id="row4" group="true">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="SOWorkTimeProfile_InheritInfoStandart"/>
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance field-layout="horizontal">
+              <label-style width="21" unit="symbol"/>
+            </appearance>
+            <component>
+              <field attribute-ref="emptyString" name="${ui.form.SOWorkTimeProfileForm.section.StandartWorkDay.section.row4.field.emptyString.name:Обеденный перерыв:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal">
+                  <label-style field-width="1" field-unit="symbol">
+                    <style id="tunWhite"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunWhite"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <section id="row4_1" group="true">
+                <appearance field-layout="horizontal">
+                  <label-style width="4" unit="symbol"/>
+                </appearance>
+                <component>
+                  <field recalc="true" attribute-ref="lunchBreakFrom" name="${ui.form.SOWorkTimeProfileForm.section.StandartWorkDay.section.row4.section.row4_1.field.lunchBreakFrom.name:с}">
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="edit"/>
+                        <condition>true</condition>
+                      </require>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="SOWorkTimeProfile_InheritInfoStandart"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal">
+                      <label-style field-width="1" field-unit="symbol"/>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="lunchBreakUntil" name="${ui.form.SOWorkTimeProfileForm.section.StandartWorkDay.section.row4.section.row4_1.field.lunchBreakUntil.name:до}">
+                    <properties>
+                      <require condition-union="AND">
+                        <condition-ref ref="isLunchBreakFromNotEmpty"/>
+                      </require>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="SOWorkTimeProfile_InheritInfoStandart"/>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal"/>
+                  </field>
+                </component>
+              </section>
+            </component>
+          </section>
+          <section id="row4,5" group="true">
+            <appearance field-layout="horizontal">
+              <label-style width="21" unit="symbol"/>
+            </appearance>
+            <component>
+              <field attribute-ref="emptyString" name="${ui.form.SOWorkTimeProfileForm.section.StandartWorkDay.section.row4,5.field.emptyString.name:Расчётный час:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal">
+                  <label-style field-width="2" field-unit="percent">
+                    <style id="tunWhite"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunWhite"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <section id="row4,5_1" group="true">
+                <appearance field-layout="horizontal">
+                  <label-style width="3" unit="symbol"/>
+                </appearance>
+                <component>
+                  <field attribute-ref="checkTime">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition-ref ref="SOWorkTimeProfile_InheritInfoStandart"/>
+                        <condition>true</condition>
+                      </read-only>
+                    </properties>
+                    <appearance importance="normal">
+                      <field-style space-for-empty-name="true"/>
+                    </appearance>
+                  </field>
+                </component>
+              </section>
+            </component>
+          </section>
+          <field attribute-ref="empty">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="WorkCycle" name="${ui.form.SOWorkTimeProfileForm.section.WorkCycle.name:Рабочий цикл}">
+        <component>
+          <section id="row21" group="true">
+            <appearance>
+              <label-style width="50" unit="symbol"/>
+            </appearance>
+            <component>
+              <field recalc="true" attribute-ref="inheritInfoWorkCycle" name="${ui.form.SOWorkTimeProfileForm.section.WorkCycle.section.row21.field.inheritInfoWorkCycle.name:Информация наследуется из вышестоящего профиля}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="SOWorkTimeProfile_isParentProfile"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="empty">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <section id="row5" group="true">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="SOWorkTimeProfile_InheritInfoWorkCycle"/>
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance field-layout="horizontal">
+              <label-style width="35" unit="symbol"/>
+            </appearance>
+            <component>
+              <field recalc="true" attribute-ref="firstWorkDay" name="${ui.form.SOWorkTimeProfileForm.section.WorkCycle.section.row5.field.firstWorkDay.name:Привязка первого дня цикла к дате:}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="edit"/>
+                  </require>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="SOWorkTimeProfile_InheritInfoWorkCycle"/>
+                  </read-only>
+                </properties>
+                <appearance importance="normal">
+                  <label-style field-width="14" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="firstWorkWeekDayDisplay">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <section id="row6" group="true">
+            <appearance field-layout="horizontal">
+              <label-style width="35" unit="symbol"/>
+            </appearance>
+            <component>
+	          <field attribute-ref="shiftDeadlineToPrevWorkday" name="${ui.form.SOWorkTimeProfileForm.shiftDeadlineToPrevWorkday:При совпадении срока поручения/резолюции с выходным днем, считать сроком ближайший предыдущий рабочий день:}">
+	            <properties>
+	              <hide condition-union="AND">
+	                <negative-condition-ref ref="SOWorkTimeProfile_isDefault"/>
+	              </hide>
+	            </properties>
+	          </field>
+            </component>
+          </section>
+          <field attribute-ref="empty">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field clickable="true" recalc="true" attribute-ref="workCycle">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="SOWorkTimeProfile_InheritInfoWorkCycle"/>
+              </read-only>
+            </properties>
+            <appearance location="table" importance="normal" clickable="true"/>
+          </field>
+          <field attribute-ref="empty">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="WorkCycleExceptions" name="${ui.form.SOWorkTimeProfileForm.section.WorkCycleExceptions.name:Исключения из рабочего цикла}">
+        <component>
+          <section id="row31" group="true">
+            <appearance>
+              <label-style width="50" unit="symbol"/>
+            </appearance>
+            <component>
+              <field recalc="true" attribute-ref="inheritInfoException" name="${ui.form.SOWorkTimeProfileForm.section.WorkCycleExceptions.section.row31.field.inheritInfoException.name:Информация наследуется из вышестоящего профиля}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="SOWorkTimeProfile_isParentProfile"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="empty">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field clickable="true" recalc="true" attribute-ref="workCycleExeption">
+            <properties>
+              <read-only condition-union="AND">
+                <condition-ref ref="SOWorkTimeProfile_InheritInfoException"/>
+              </read-only>
+            </properties>
+            <appearance location="table" importance="normal" clickable="true"/>
+          </field>
+          <field attribute-ref="empty">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="RootMenu" name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.name:SOWTPMenu}">
+        <component>
+          <button name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.button.Скрыть системную кнопку Сохранить.name:Скрыть системную кнопку Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE"/>
+            </action>
+          </button>
+          <section id="Create" name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.section.Create.name:Создать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_CanCreate"/>
+              </hide>
+            </properties>
+            <component>
+              <button name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.section.Create.button.Профиль рабочего времени.name:Профиль рабочего времени}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_CanEdit"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <create-sibling schema-ref="SOWorkTimeProfile"/>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.section.Create.button.Подчиненный Профиль рабочего времени.name:Подчиненный Профиль рабочего времени}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_CanEdit"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <create-child schema-ref="SOWorkTimeProfile"/>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.section.Create.button.Новый как копия.name:Новый как копия}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_CanEdit"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <create-copy schema-ref="SOWorkTimeProfile"/>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <section id="OTHER" name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <button name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.section.OTHER.button.Запомнить ссылку.name:Запомнить ссылку}">
+                <action>
+                  <system name="REMEMBER_LINK"/>
+                </action>
+              </button>
+              <button name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.section.OTHER.button.Удалить.name:Удалить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_CanDelete"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">DeleteWorkTimeProfileOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.section.OTHER.button.Скрыть системную кнопку 'Добавить в избранное'.name:Скрыть системную кнопку 'Добавить в избранное'}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action>
+                  <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+                </action>
+              </button>
+            </component>
+          </section>
+          <button name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton"/>
+              </hide>
+            </properties>
+            <action position="40.0">
+              <custom>
+                <save-existing/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.SOWorkTimeProfileForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew"/>
+              </hide>
+            </properties>
+            <action position="40.0">
+              <custom>
+                <save/>
+              </custom>
+            </action>
+          </button>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

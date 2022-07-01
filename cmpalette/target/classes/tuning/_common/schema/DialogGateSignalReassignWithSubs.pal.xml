@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="DialogGateSignalReassign" name="DialogGateSignalReassignWithSubs">
+    <meta>
+      <category name="РМ Администратора\Шлюз\Диалоги"/>
+    </meta>
+    <boolean name="withSubs" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

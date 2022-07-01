@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="FileCaseTypeEnum">
+    <string value="NEW" name="NEW" />
+    <string value="TRANSFER" name="TRANSFER" />
+    <string value="ACCEPTED" name="ACCEPTED" />
+  </enum>
+</schemas>

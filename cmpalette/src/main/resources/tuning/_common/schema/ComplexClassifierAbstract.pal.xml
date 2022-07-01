@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="TNObject" name="ComplexClassifierAbstract">
+    <meta>
+      <category name="Справочники"/>
+    </meta>
+    <boolean name="isActual" createlog="true">
+      <storage-field name="isActual"/>
+    </boolean>
+    <boolean name="met" createlog="true">
+      <storage-field name="met"/>
+    </boolean>
+  </schema>
+</schemas>

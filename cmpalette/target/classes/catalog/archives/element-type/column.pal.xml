@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <column extends="string" subject="${catalog.column.arcDealIndex.subject:Индекс дела}" name="arcDealIndex" />
+  <column extends="string" subject="${catalog.column.arcDealSubject.subject:Заголовок дела}" name="arcDealSubject" />
+  <column extends="string" subject="${catalog.column.arcKindDeal.subject:Вид дела}" name="arcKindDeal" />
+  <column extends="string" subject="${catalog.column.arcMainState.subject:Статус}" name="arcMainState" />
+  <complex-column extends="object" subject="${catalog.complex-column.arc_object.subject:Объект архива}" name="arc_object">
+    <meta>
+      <documentation>Объект архива</documentation>
+    </meta>
+    <column-ref ref="id" />
+    <column-ref ref="ArcSubject" />
+  </complex-column>
+  <column extends="string" subject="${catalog.column.arcStorageTerm.subject:Срок хранения}" name="arcStorageTerm" />
+  <column extends="string" subject="${catalog.column.depDealIndex.subject:Номенклатурный индекс}" name="depDealIndex" />
+  <column extends="string" subject="${catalog.column.depDealYear.subject:Год}" name="depDealYear" />
+  <column extends="string" subject="${catalog.column.arcInventoryNum.subject:№ архивной описи}" name="arcInventoryNum" />
+  <column extends="string" subject="${catalog.column.arcActType.subject:Тип акта}" name="arcActType" />
+  <column extends="datetime" subject="${catalog.column.arcActDate.subject:Дата акта}" name="arcActDate" />
+  <column extends="string" subject="${catalog.column.arcActNum.subject:№ акта}" name="arcActNum" />
+  <column extends="string" subject="${catalog.column.arcDepartment.subject:Структурное подразделение}" name="arcDepartment" />
+  <column extends="string" subject="${catalog.column.depName.subject:Подразделение}" name="depName" />
+  <column extends="string" subject="${catalog.column.arcIndex.subject:Номенклатурный индекс}" name="arcIndex" />
+  <column extends="string" subject="${catalog.column.arcProposalNum.subject:№ предложения}" name="arcProposalNum" />
+  <column extends="string" subject="${catalog.column.arcInventoryType.subject:Тип описи}" name="arcInventoryType" />
+  <column extends="string" subject="${catalog.column.arcYear.subject:Год}" name="arcYear" />
+  <column extends="string" subject="${catalog.column.fundDealNum.subject:Фонд №}" name="fundDealNum">
+    <meta>
+      <documentation>Фонд №</documentation>
+    </meta>
+  </column>
+  <column extends="string" subject="${catalog.column.ArcSubject.subject:Заголовок}" name="ArcSubject">
+    <meta>
+      <documentation>Заголовок</documentation>
+    </meta>
+  </column>
+  <column extends="string" subject="${catalog.column.ownerId:Родитель}" name="ownerId" />
+</catalog>

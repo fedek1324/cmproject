@@ -1,0 +1,955 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+    <condition name="ndpIsNotProjectOrHasStatusExt">
+        <schema-ref ref="NdpRegister" condition-union="OR">
+            <boolean-ref value="false" ref="$isProject"/>
+            <boolean-ref value="true" ref="$isStatusExtNotNull"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdpIsDivisionDep">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <string-ref value="DEPARTMENT" ref="divisionType"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdpIsActivity">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <string-ref value="ACTIVITY" ref="divisionType"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentFilesNotEmpty">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="contentFilesNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentImageNotEmpty">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="contentImageNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentFilesEmpty">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentFilesNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentImageEmpty">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentImageNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="ndoContentEmpty">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentImageNotEmpty"/>
+            <boolean-ref value="false" ref="contentFilesNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="orgDepIsNotEmpty">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="orgDepIsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdpIsReadyToAdd">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="readyToAdd"/>
+        </schema-ref>
+    </condition>
+    <condition name="hideSection_changeStates">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="hideSection_changeStates"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdoIsReadyForEkConsideration">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="isReadyForEkConsideration"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSetReadyToAdd">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="false" ref="$isNew"/>
+            <boolean-ref value="false" ref="readyToAdd"/>
+            <boolean-ref value="true" ref="$canSetReadyToAdd"/>
+            <boolean-ref value="true" ref="hasFileRegisters"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSetUnReadyToAdd">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="false" ref="$isNew"/>
+            <boolean-ref value="true" ref="readyToAdd"/>
+            <boolean-ref value="true" ref="$canSetUnReadyToAdd"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdpIsReadyFinalNote">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="readyFinalNote"/>
+        </schema-ref>
+    </condition>
+    <condition name="CanSeeLinkNDO">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canSeeLinkNDO"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdpCanDiscuss">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canDiscuss"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdoCanDiscuss">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canDiscuss"/>
+        </schema-ref>
+    </condition>
+    <condition name="ReadOnlySounit">
+        <schema-ref ref="NdpRegister" condition-union="OR">
+            <boolean-ref value="false" ref="severalSounit"/>
+            <boolean-ref value="false" ref="$isNewOrProject"/>
+            <boolean-ref value="false" ref="$isNewOrStatusExtIsNull"/>
+        </schema-ref>
+    </condition>
+    <condition name="VisibilityForDivisionType">
+        <schema-ref ref="NdpRegister" condition-union="OR">
+            <boolean-ref value="false" ref="$isNewOrProject"/>
+            <boolean-ref value="false" ref="$isNewOrStatusExtIsNull"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdpChangeCanDiscuss">
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canDiscuss"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentDocumentsNotEmpty">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="contentDocumentsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentAddInformationsNotEmpty">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentDocumentsEmpty">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentDocumentsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentAddInformationsEmpty">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="ndpContentEmpty">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentDocumentsNotEmpty"/>
+            <boolean-ref value="false" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="ndpAccessFinalNoteOn">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="false" ref="new"/>
+            <string-ref value="NOT_ACTIVE" ref="statusGeneral"/>
+            <boolean-ref value="true" ref="$isFinalNoteComposed"/>
+        </schema-ref>
+    </condition>
+    <condition name="ndpAccessFinalNoteOff">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="false" ref="new"/>
+            <boolean-ref value="false" ref="$parentNdoFinalNoteIsComposed"/>
+            <string-ref value="NOT_ACTIVE" ref="statusGeneral"/>
+        </schema-ref>
+    </condition>
+    <condition name="canAddFileRegistersToNDP">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canAddFileRegisters"/>
+        </schema-ref>
+    </condition>
+    <condition name="canReceiveAnotherDepFileRegistersToNDP">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canReceiveAnotherDepFileRegistersToNDP"/>
+        </schema-ref>
+    </condition>
+    <condition name="CopyFilesToNdpFromAnotherYearSelectDialogPage2">
+        <schema-ref ref="CopyFilesToNdpFromAnotherYearSelectDialog" condition-union="AND">
+            <string-ref value="selectFilesFromDialog" ref="counter"/>
+        </schema-ref>
+    </condition>
+    <condition name="CopyFilesToNdpFromAnotherYearSelectDialogDateYearNotEmpty">
+        <schema-ref ref="CopyFilesToNdpFromAnotherYearSelectDialog" condition-union="AND">
+            <boolean-ref value="true" ref="dateYearNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonExcludeFileRegisters">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canExcludeFileRegisters"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonSendFilesToAnotherDepartment">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canSendFilesToAnotherDepartment"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonComposeFinalNoteNdp">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canComposeFinalNote"/>
+        </schema-ref>
+    </condition>
+    <condition name="canEditSummaryInfo">
+        <modes>
+            <mode name="edit"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canEditSummaryInfo"/>
+        </schema-ref>
+    </condition>
+    <condition name="cannotEditSummaryInfo">
+        <modes>
+            <mode name="edit"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="false" ref="$canEditSummaryInfo"/>
+        </schema-ref>
+    </condition>
+    <condition name="showSummaryInfoNdp">
+        <modes>
+            <mode name="read"/>
+            <mode name="edit"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$showSummaryInfo"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonReturnForRevision">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="canSeeButtonReturnForRevision"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonReturnForRevisionNdpChange">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="canSeeButtonReturnForRevisionNdpChange"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrIsDivisionDep">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <string-ref value="DEPARTMENT" ref="divisionType"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrHasCopies">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="hasCopies"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrIsNotProject">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="false" ref="$isProject"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrIsMovable">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="movable"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrIsBeginYear">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <string-ref value="YEAR" ref="dateOfBeginningType"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrIsEndYear">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <string-ref value="YEAR" ref="dateOfEndType"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonCompleteFormation">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canCompleteFrFileFormation"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonVerifyPseudoRkk">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="true" ref="$canVerifyFrPseudoRkk"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonVerifyNdoChangeRegister">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canVerifyNdoChangeRegister"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeePanelAddition">
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canSeePanelAddition"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeIncludeNdpChange">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canSeeIncludeNdpChange"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeIncludeNdoChange">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canSeeIncludeNdoChange"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonComposeFinalNoteNdo">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canComposeFinalNote"/>
+        </schema-ref>
+    </condition>
+    <condition name="showSummaryInfoNdo">
+        <modes>
+            <mode name="read"/>
+            <mode name="edit"/>
+        </modes>
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$isFinalNoteComposed"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonVerifyNdo">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canVerify"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonAddRkk">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canAddRkk"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonCreateNewPsRkk">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$statusGeneralIsFormedOrCompletedAndCurUserIsFileFormationResponsible"/>
+        </schema-ref>
+    </condition>
+    <condition name="refRegisterIsNotReserve">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$isNotReserved"/>
+        </schema-ref>
+    </condition>
+    <condition name="canEditDateOfBeginning">
+        <schema-ref ref="RefRegister" condition-union="OR">
+            <boolean-ref value="true" ref="isNotReserved"/>
+            <boolean-ref value="true" ref="ParentNDPIsActiveOrNotActive"/>
+            <boolean-ref value="true" ref="StatusGeneralIsFormedAndStatusExtendedIsNullOrReservedChanged"/>
+        </schema-ref>
+    </condition>
+
+    <condition name="canEditDateOfEnd">
+        <schema-ref ref="RefRegister" condition-union="OR">
+            <boolean-ref value="true" ref="isNotReserved"/>
+            <boolean-ref value="true" ref="ParentNDPIsOnlyNotActive"/>
+            <boolean-ref value="true" ref="StatusGeneralIsFormedAndStatusExtendedIsNullOrReservedChanged"/>
+        </schema-ref>
+    </condition>
+
+    <condition name="canEditIsNotExist">
+        <schema-ref ref="RefRegister" condition-union="OR">
+            <boolean-ref value="true" ref="ParentNDPIsOnlyNotActive"/>
+            <boolean-ref value="true" ref="StatusGeneralIsFormedAndStatusExtendedIsNullOrReservedChanged"/>
+            <boolean-ref value="true" ref="$curUserIsFileFormationResponsible"/>
+        </schema-ref>
+    </condition>
+
+    <condition name="canEditCountSheetsAndCountTomeSection">
+        <schema-ref ref="RefRegister" condition-union="OR">
+            <boolean-ref value="true" ref="isNotReserved"/>
+            <boolean-ref value="true" ref="ParentNDPIsOnlyNotActive"/>
+            <boolean-ref value="true" ref="StatusGeneralIsFormedAndStatusExtendedIsNullOrReservedChanged"/>
+        </schema-ref>
+    </condition>
+
+    <condition name="cannotEditIsReserve">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="false" ref="canEditIsReservedWhenStatusGeneralIsProject"/>
+            <boolean-ref value="false" ref="StatusGeneralIsReservedAndStatusExtendedIsChanged"/>
+        </schema-ref>
+    </condition>
+    <condition name="canEditCountSheets">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canEditCountSheets"/>
+        </schema-ref>
+    </condition>
+    <condition name="canEditCountTomeSections">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canEditCountTomeSections"/>
+        </schema-ref>
+    </condition>
+    <condition name="refRegisterStatusGeneralIsProjectOrReserved">
+        <schema-ref ref="RefRegister" condition-union="OR">
+            <string-ref value="PROJECT" ref="statusGeneral"/>
+            <string-ref value="RESERVED" ref="statusGeneral"/>
+        </schema-ref>
+    </condition>
+
+    <condition name="cannotEditNdFormat">
+        <modes>
+            <mode name="edit"/>
+        </modes>
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="false" ref="$isProject"/>
+            <boolean-ref value="false" ref="StatusGeneralIsReservedAndStatusExtendedIsChanged"/>
+            <boolean-ref value="false" ref="$canEditNdFormatWithStatusGeneralIsFormedOrCompleted"/>
+        </schema-ref>
+    </condition>
+    <condition name="cantEditMovable">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="false" ref="$isProject"/>
+            <boolean-ref value="false" ref="StatusGeneralIsReservedAndStatusExtendedIsChanged"/>
+            <boolean-ref value="false" ref="$canEditMovableWithStatusGeneralIsFormed"/>
+        </schema-ref>
+    </condition>
+    <condition name="cannotEditResponsiblesAndStorage">
+        <modes>
+            <mode name="edit"/>
+        </modes>
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="false" ref="$isProject"/>
+            <boolean-ref value="false" ref="StatusGeneralIsReservedAndStatusExtendedIsChanged"/>
+            <boolean-ref value="false" ref="$canEditResponsiblesWithStatusGeneralIsFormedOrCompleted"/>
+        </schema-ref>
+    </condition>
+    <condition name="cannotEditAssigners">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="false" ref="$isProject"/>
+            <boolean-ref value="false" ref="StatusGeneralIsReservedAndStatusExtendedIsChanged"/>
+            <boolean-ref value="false" ref="$canAddRkk"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrIsUseArcModule">
+        <schema-ref ref="NdFileSettingResource" condition-union="AND">
+            <boolean-ref value="true" ref="IsUseArchiveModule"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrIsComplectStateArchive">
+        <schema-ref ref="NdFileSettingResource" condition-union="AND">
+            <boolean-ref value="true" ref="IsComplectStateArchive"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrContentDocumentsNotEmpty">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="contentDocumentsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrContentAddInformationsNotEmpty">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrContentDocumentsEmpty">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentDocumentsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrContentAddInformationsEmpty">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrContentEmpty">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentDocumentsNotEmpty"/>
+            <boolean-ref value="false" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="showPrevReqValues">
+        <modes>
+            <mode name="read"/>
+            <mode name="edit"/>
+        </modes>
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$showPrevReqValues"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdpBranchDivisionIsDepartment">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <string-ref value="DEPARTMENT" ref="divisionType"/>
+        </schema-ref>
+    </condition>
+    <condition name="branchDivisionNotEmpty">
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="branchDivisionNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="simpleCntNotEmpty">
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="simpleCntNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="hasSummaryInfoNdp">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$isFinalNoteComposed"/>
+        </schema-ref>
+    </condition>
+
+    <condition name="NdpChangeIsReadyToIncludeChanges">
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="isReadyToIncludeChanges"/>
+        </schema-ref>
+    </condition>
+    <condition name="canTapButtonReadyToIncludeChanges">
+        <modes>
+            <mode name="read" />
+        </modes>
+        <schema-ref condition-union="AND" ref="NdpChangeRegister">
+            <boolean-ref value="true" ref="canTapButtonReadyToIncludeChanges" />
+        </schema-ref>
+    </condition>
+    <condition name="canTapButtonNotReadyToIncludeChanges">
+        <modes>
+            <mode name="read" />
+        </modes>
+        <schema-ref condition-union="AND" ref="NdpChangeRegister">
+            <boolean-ref value="true" ref="canTapButtonNotReadyToIncludeChanges" />
+        </schema-ref>
+    </condition>
+    <condition name="ndpChangeContentEmpty">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentDocumentsNotEmpty"/>
+            <boolean-ref value="false" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentDocumentsEmpty">
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentDocumentsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentAddInformationsNotEmpty">
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentAddInformationsEmpty">
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdoChangeCanDiscuss">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canDiscuss"/>
+        </schema-ref>
+    </condition>
+    <condition name="ndoChangeContentEmpty">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentFilesNotEmpty"/>
+            <boolean-ref value="false" ref="contentImageNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentDocumentsEmpty">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentFilesNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentImageNotEmpty">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="contentImageNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="contentImageEmpty">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="false" ref="contentImageNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="simpleCntNotEmpty">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="simpleCntNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="orgDepartmentIsEmpty">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="orgDepartmentIsEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdoIsReadyForEkConsideration">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="isReadyForEkConsideration"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdoChangeIsEkApproved">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="isEkApproved"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdoIsEkApproved">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="isEkApproved"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdoIsApprovedByStateArch">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="isArchInstEpkApproved"/>
+        </schema-ref>
+    </condition>
+    <condition name="NdoCanBeApprovedByStateArch">
+        <modes>
+            <mode name="edit"/>
+        </modes>
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canBeApprovedByStateArch"/>
+        </schema-ref>
+    </condition>
+    <condition name="canAddChapter">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="canAddChapter"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonReturnForRevisionNdo">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="canSeeButtonReturnForRevisionNdo"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeeButtonReturnForRevisionNdoChange">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="canSeeButtonReturnForRevisionNdoChange"/>
+        </schema-ref>
+    </condition>
+    <condition name="canEditImage">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <string-ref value="APPROVED" ref="statusExtended"/>
+        </schema-ref>
+    </condition>
+    <condition name="partitionNotEmpty">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="partitionNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="canUnloadChapterNdo">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="canUnloadChapter"/>
+        </schema-ref>
+    </condition>
+    <condition name="canAddOrCreateChapterNdo">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="canAddOrCreateChapter"/>
+        </schema-ref>
+    </condition>
+    <condition name="canCreateNoChange">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="canCreateNoChange"/>
+        </schema-ref>
+    </condition>
+    <condition name="canExcludeUnitRegisters">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canExcludeUnitRegisters"/>
+        </schema-ref>
+    </condition>
+    <condition name="psRkkIsNotProject">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="false" ref="isProject"/>
+        </schema-ref>
+    </condition>
+    <condition name="psRkkOrgReadOnly">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="true" ref="orgIsReadOnly"/>
+        </schema-ref>
+    </condition>
+    <condition name="psRkkcontentDocumentsNotEmpty">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="true" ref="contentDocumentsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="psRkkcontentAddInformationsNotEmpty">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="true" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="psRkkcontentDocumentsEmpty">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="false" ref="contentDocumentsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="psRkkcontentAddInformationsEmpty">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="false" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="psRkkContentEmpty">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="false" ref="contentDocumentsNotEmpty"/>
+            <boolean-ref value="false" ref="contentAddInformationsNotEmpty"/>
+        </schema-ref>
+    </condition>
+    <condition name="readFrPseudoRkk">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="FrPseudoRkk" condition-union="AND"/>
+    </condition>
+    <condition name="FrPseudoRkkShowDeleteButton">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="false" ref="isProject"/>
+            <string-ref value="No" ref="editSecurityStampField"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrPseudoRkkShowSecurityStampField">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="true" ref="showSecurityStampField"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrPseudoRkkDocReasonWithdrawlIsView">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="true" ref="showSecurityStampField"/>
+            <boolean-ref value="true" ref="docReasonWithdrawalIsView"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrPseudoRkkDocReasonWithdrawlManualIsView">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="true" ref="showSecurityStampField"/>
+            <boolean-ref value="true" ref="docReasonWithdrawalManualIsView"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrPseudoRkkDocReasonWithdrawlReasonIsView">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="true" ref="showSecurityStampField"/>
+            <boolean-ref value="true" ref="docReasonWithdrawalReasonIsView"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrPseudoRkkSecurityStampNdIsEmpty">
+        <schema-ref ref="FrPseudoRkk" condition-union="AND">
+            <boolean-ref value="false" ref="securityStampIsNotEmpty"/>
+            <boolean-ref value="false" ref="docReasonWithdrawalIsView"/>
+            <boolean-ref value="false" ref="docReasonWithdrawalManualIsView"/>
+            <boolean-ref value="false" ref="docReasonWithdrawalReasonIsView"/>
+        </schema-ref>
+    </condition>
+
+    <condition name="canEditRefRegister">
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canEditRefRegister"/>
+        </schema-ref>
+    </condition>
+    <condition name="spdUsedFileCondition">
+        <schema-ref ref="RefRegister" condition-union="OR">
+            <boolean-ref value="true" ref="spdUsedFile"/>
+            <string-ref value="NotFoundPeriodException" ref="storagePeriod"/>
+        </schema-ref>
+    </condition>
+    <condition name="spdNotUsedFileCondition">
+        <schema-ref ref="RefRegister" condition-union="OR">
+            <boolean-ref value="false" ref="spdUsedFile"/>
+            <string-ref value="NotFoundPeriodException" ref="storagePeriod"/>
+        </schema-ref>
+    </condition>
+    <condition name="frFileInfoTable_useSpd">
+        <modes>
+            <mode name="edit"/>
+        </modes>
+        <schema-ref ref="FrFileInfoTableResource" condition-union="AND">
+            <boolean-ref value="true" ref="useSpd"/>
+        </schema-ref>
+    </condition>
+    <condition name="frFileInfoTable_notUseSpd">
+        <modes>
+            <mode name="edit"/>
+        </modes>
+        <schema-ref ref="FrFileInfoTableResource" condition-union="AND">
+            <boolean-ref value="false" ref="useSpd"/>
+        </schema-ref>
+    </condition>
+    <condition name="frFileInfoTable_periodInfoException">
+        <modes>
+            <mode name="read"/>
+            <mode name="dialog"/>
+        </modes>
+        <schema-ref ref="FrFileInfoTableResource" condition-union="AND">
+            <string-ref value="NotFoundPeriodException" ref="storagePeriod"/>
+        </schema-ref>
+    </condition>
+    <condition name="frFileInfoTable_frFileTransfer">
+        <schema-ref ref="FrFileInfoTableResource" condition-union="AND">
+            <string-ref value="TRANSFER" ref="iconType"/>
+        </schema-ref>
+    </condition>
+    <condition name="frFileInfoTable_frFileReserved">
+        <schema-ref ref="FrFileInfoTableResource" condition-union="AND">
+            <string-ref value="RESERVED" ref="iconType"/>
+        </schema-ref>
+    </condition>
+    <condition name="frFileInfoTable_frFileForming">
+        <schema-ref ref="FrFileInfoTableResource" condition-union="AND">
+            <string-ref value="FORMING" ref="iconType"/>
+        </schema-ref>
+    </condition>
+    <condition name="frFileInfoTable_frFileProject">
+        <schema-ref ref="FrFileInfoTableResource" condition-union="AND">
+            <string-ref value="PROJECT" ref="iconType"/>
+        </schema-ref>
+    </condition>
+    <condition name="periodInfoExceptionCondition">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <string-ref value="NotFoundPeriodException" ref="storagePeriod"/>
+        </schema-ref>
+    </condition>
+
+    <condition name="readRefRegister">
+        <modes>
+            <mode name="read" />
+        </modes>
+        <schema-ref condition-union="AND" ref="RefRegister" />
+    </condition>
+    <condition name="FrDocReasonWithdrawalReasonIsView">
+        <schema-ref condition-union="AND" ref="RefRegister">
+            <boolean-ref value="true" ref="docReasonWithdrawalReasonIsView" />
+            <boolean-ref value="true" ref="showSecurityStampField"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrDocReasonWithdrawalManualIsView">
+        <schema-ref condition-union="AND" ref="RefRegister">
+            <boolean-ref value="true" ref="docReasonWithdrawalManualIsView" />
+            <boolean-ref value="true" ref="showSecurityStampField"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrDocReasonWithdrawalIsView">
+        <schema-ref condition-union="AND" ref="RefRegister">
+            <boolean-ref value="true" ref="docReasonWithdrawalIsView" />
+            <boolean-ref value="true" ref="showSecurityStampField"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrShowSecurityStampField">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="true" ref="showSecurityStampField"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrSecurityStampNdIsEmpty">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="false" ref="securityStampIsNotEmpty"/>
+            <boolean-ref value="false" ref="docReasonWithdrawalIsView"/>
+            <boolean-ref value="false" ref="docReasonWithdrawalManualIsView"/>
+            <boolean-ref value="false" ref="docReasonWithdrawalReasonIsView"/>
+        </schema-ref>
+    </condition>
+    <condition name="FrShowDeleteButton">
+        <schema-ref ref="RefRegister" condition-union="AND">
+            <boolean-ref value="false" ref="$isProject"/>
+            <string-ref value="No" ref="editSecurityStampField" />
+        </schema-ref>
+    </condition>
+    <condition name="throughIternalUnit">
+        <schema-ref ref="NdpRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$throughIternalUnit"/>
+        </schema-ref>
+    </condition>
+    <condition name="throughIternalUnitCh">
+        <schema-ref ref="NdpChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$throughIternalUnitCh"/>
+        </schema-ref>
+    </condition>
+    <condition name="throughIternalOrgCh">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$throughIternalOrgCh"/>
+        </schema-ref>
+    </condition>
+    <condition name="throughIternalOrg">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="isApprovingThroughInternalDocs"/>
+        </schema-ref>
+    </condition>
+    <condition name="canSeePanelAllChanges">
+        <schema-ref ref="NdoChangeRegister" condition-union="AND">
+            <boolean-ref value="true" ref="$canSeePanelAllChanges"/>
+        </schema-ref>
+    </condition>
+    <condition name="showButtonSwitchStatus">
+        <modes>
+            <mode name="read"/>
+        </modes>
+        <schema-ref ref="StoragePeriod" condition-union="AND">
+            <boolean-ref value="true" ref="canEdit"/>
+            <boolean-ref value="true" ref="activeStatus"/>
+        </schema-ref>
+    </condition>
+    <condition name="canTouchReadyEK">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="canTouchReadyEK"/>
+        </schema-ref>
+    </condition>
+    <condition name="canTouchNotReadyEK">
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="canTouchNotReadyEK"/>
+        </schema-ref>
+    </condition>
+    <condition name="canTouchEKApproved">
+        <modes>
+            <mode name="edit"/>
+        </modes>
+        <schema-ref ref="NdoRegister" condition-union="AND">
+            <boolean-ref value="true" ref="canTouchEKApproved"/>
+        </schema-ref>
+    </condition>
+</ui>

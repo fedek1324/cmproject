@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="MeetingCommonResource" name="MeetingResource">
+    <meta>
+      <category name="Система\Заседания"/>
+    </meta>
+    <schema-ref ref="Agenda" name="agenda" system="true"/>
+    <schema-ref ref="Minutes" name="minutes" system="true"/>
+    <boolean name="isSimple" system="true" temporal="true"/>
+    <boolean name="isAccessFromLink" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='self'].size() > 0 && T(org.springframework.web.util.UriComponentsBuilder).fromUriString(link.?[rel=='self'].get(0).getHref()).build().getQueryParams().get( 'access') != null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isAgendaAffirmed" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(agenda!=null && agenda.affirmation!=null) ? 'AFFIRMED'.equals(agenda.affirmation.status) : false]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="emailisminutes" temporal="true"/>
+    <string name="emailSubjectAgenda" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Приглашение на ' + type]]></script>
+      </calc-values>
+    </string>
+    <string name="emailSubjectMinutes" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Протокол № '+(missionsRKK_FullNumber==null?'':missionsRKK_FullNumber) +': '+ type]]></script>
+      </calc-values>
+    </string>
+    <string name="emailBodyAgenda" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[type+' состоится: '+ eventDate+
+(eventTime==null?'':(', в ' + eventTime))+ 
+(eventPlace==null?'':(', место проведения '+eventPlace))+
+'.']]></script>
+      </calc-values>
+    </string>
+    <string name="emailBodyMinutes" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#missions'].size() > 0 && #link(#this, 'missions')!=null?
+'Протокол № '+(missionsRKK_FullNumber==null?'':missionsRKK_FullNumber)  +' от '+
+(#link(#this, 'missions').registration==null?'':T(ru.intertrust.cmj.af.misc.AFDate).fromJavaDate(#link(#this, 'missions').registration.date))+
+' '+type+'.'
+:('Протокол: '+type)]]></script>
+      </calc-values>
+    </string>
+    <actor name="emailFrom" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(ru.intertrust.cmj.af.core.AFSession).get().currentUser().getBeard()]]></script>
+      </calc-values>
+    </actor>
+    <actor array="true" name="absentSource" system="true"/>
+    <boolean name="disableLinkAccess">
+      <storage-field name="disableLinkAccess"/>
+    </boolean>
+    <string name="meetingNumber" createlog="true" system="true"/>
+    <boolean name="enableMeetingNumerationSS" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#use.meeting.numeration'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+
+    <string name="securityStamp" system="true"/>
+    <boolean name="supportSecurityStamp" system="true"/>
+    <boolean name="securityStampIsNotEmpty" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[securityStamp != null && securityStamp != '']]></script>
+      </calc-values>
+    </boolean>
+
+    <custom-event-handler lang="JavaScript"><![CDATA[function querySave(object, document) {
+    if(object.isNew() && object.isAbsentee() && object.getBulletinProvideDate()==null){
+        bject.setBulletinProvideDate(object.getEventDate());
+    }
+    return true;
+}
+
+function postSave(object, document) {}
+
+function recalc(object, changedField) {
+  if (changedField == "minutes.absent") {
+      object.returnMinutes().invited().removeAll(object.returnMinutes().absent());
+      object.returnMinutes().questionInvited().removeAll(object.returnMinutes().absent());
+      object.returnMinutes().permanentParticipants().removeAll(object.returnMinutes().absent());
+  }
+
+  if(changedField=="isAbsentee" && object.getBulletinProvideDate()==null){
+    if(object.isAbsentee() && object.getEventDate()!=null){
+ 	object.setBulletinProvideDate(object.getEventDate());
+    }
+  }
+
+}]]></custom-event-handler>
+  </schema>
+</schemas>

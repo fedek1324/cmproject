@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="CMJLinks" id="Requests::::" name="${catalog.view.Requests____.name:Обращения граждан}" position="110">
+    <search-area name="requests_Requests"/>
+    <descriptor-ref ref="dp-08-requests"/>
+    <source>
+      <module ident="Requests"/>
+    </source>
+  </view>
+</catalog>

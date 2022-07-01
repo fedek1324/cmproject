@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SetRelatedArcDealInfoActDestrDialog" projection="default" id="SetRelatedArcDealInfoActDestrDialogForm">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog" />
+      </hide>
+    </properties>
+    <component>
+      <section group="true" id="rowFields">
+        <component>
+          <field attribute-ref="tmpArcDealInfoList" name="${ui.form.SetRelatedArcDealInfoActDestrDialogForm.section.rowFields.field.tmpArcDealInfoList.name:Архивные дела:}">
+            <directories relation="Archives-All-ArcDeal-ActDestr-cls" livesearch="true">
+              <directory-ref ref="colArcDealActDestr" />
+            </directories>
+          </field>
+        </component>
+        <appearance field-layout="vertical" />
+      </section>
+      <button name="${ui.form.SetRelatedArcDealInfoActDestrDialogForm.button.Ок.name:Ок}">
+        <action>
+          <system name="submit" />
+        </action>
+      </button>
+      <button name="${ui.form.SetRelatedArcDealInfoActDestrDialogForm.button.Отмена.name:Отмена}">
+        <action>
+          <system name="cancel" />
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

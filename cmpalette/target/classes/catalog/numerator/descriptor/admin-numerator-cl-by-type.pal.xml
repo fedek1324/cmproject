@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Numerator" view="(vw_cmj_cl_by_type)" id="admin-numerator-cl-by-type" name="АРМАдмин:Классификаторы нумератора по типу" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewDlg"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="name" category="true"/>
+        <column-ref ref="Value"/>
+        <column-ref ref="unitDescription"/>
+        <column-ref ref="objectCl"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

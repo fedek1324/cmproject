@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="actionsOverall">
+    <meta>
+      <category name="Общие" />
+      <documentation>Разрешения на изменения параметров в листе согласования</documentation>
+    </meta>
+    <string value="ADD_STAGES" name="Добавлять этапы" />
+    <string value="REMOVE_STAGES" name="Удалять этапы" />
+    <string value="CHANGE_ORDER" name="Менять порядок этапов" />
+    <string value="CHANGE_TYPE" name="Менять тип согласования" />
+    <string value="CHANGE_SEND_TO_SIGN" name="Менять 'Отправить на подпись'" />
+    <string value="ADD_PRT" name="Добавлять участников" />
+    <string value="REMOVE_PRT" name="Удалять участников" />
+    <string value="CHANGE_DUR" name="Длительность" />
+  </enum>
+</schemas>

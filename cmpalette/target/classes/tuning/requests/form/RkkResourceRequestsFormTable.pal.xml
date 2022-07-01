@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="RkkResourceRequests" id="RkkResourceRequestsFormTable" name="${ui.form.RkkResourceRequestsFormTable.name:RkkResourceRequestsFormTable}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="table"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="columnDocNumber" name="${ui.form.RkkResourceRequestsFormTable.section.columnDocNumber.name:Номер}">
+        <component>
+          <field attribute-ref="registration.number.prefix">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="registration.number.number">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="registration.number.suffix">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="columnDocDate" name="${ui.form.RkkResourceRequestsFormTable.section.columnDocDate.name:Дата}">
+        <component>
+          <field attribute-ref="registration.date">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="columnQuestion" name="${ui.form.RkkResourceRequestsFormTable.section.columnQuestion.name:Вопросы}">
+        <component>
+          <field attribute-ref="questionsString">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="columnDocTitle" name="${ui.form.RkkResourceRequestsFormTable.section.columnDocTitle.name:Заголовок}">
+        <component>
+          <field attribute-ref="title">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="SOTNObject" name="PositionClassifier">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <double name="rank" createlog="true">
+      <storage-field name="rankValue"/>
+      <default-values>
+        <default-value>0.0</default-value>
+      </default-values>
+    </double>
+    <string name="position" createlog="true">
+      <storage-field name="positionName"/>
+    </string>
+    <string name="objectType" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Должность']]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="AdminSOUnit" name="organizationUnit" createlog="true" temporal="true"/>
+    <schema-ref ref="ClientContext_SaveWithDialogPostClassifier" name="$clientContext" system="true" createlog="true" temporal="true"/>
+    <string name="deletedState" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Удален']]></script>
+      </calc-values>
+    </string>
+  </schema>
+</schemas>

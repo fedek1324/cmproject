@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="TNObject" name="ArchivesCommonResource">
+    <meta>
+      <category name="Общее"/>
+    </meta>
+    <schema-ref ref="ClientContext" name="$clientContext" />
+    <string computed="true" temporal="true" name="ShowDash">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['-']]></script>
+      </calc-values>
+    </string>
+    <string computed="true" temporal="true" name="ShowNumberSymbol">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['№']]></script>
+      </calc-values>
+    </string>
+    <string computed="true" temporal="true" name="ArchiveOrgTitle">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Архивное учреждение:']]></script>
+      </calc-values>
+    </string>
+    <string computed="true" temporal="true" name="departmentTitle">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Структурное подразделение:']]></script>
+      </calc-values>
+    </string>
+    <string computed="true" temporal="true" name="DirectionWorkTitle">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Направление деятельности:']]></script>
+      </calc-values>
+    </string>
+    <string computed="true" temporal="true" name="DocumentBaseName">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Название документа-основания:']]></script>
+      </calc-values>
+    </string>
+    <string computed="true" temporal="true" name="ArchiveCode">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['']]></script>
+      </calc-values>
+    </string>
+    <string computed="true" temporal="true" name="MediaInfo">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Информация о носителе:']]></script>
+      </calc-values>
+    </string>
+    <actor default-value="Текущий пользователь" name="operatorBeard">
+      <storage-field name="operatorBeard" />
+    </actor>
+    <boolean default-value="false" name="IsDeleted">
+      <storage-field name="IsDeleted" />
+    </boolean>
+    <string name="Complect">
+      <storage-field name="Complect" />
+    </string>
+    <boolean default-value="false" name="RealDoc_isNew">
+      <storage-field name="RealDoc_isNew" />
+    </boolean>
+    <string computed="true" temporal="true" name="noFields">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Нет полей пока']]></script>
+      </calc-values>
+    </string>
+    <string computed="true" temporal="true" name="YearsTitle">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Годы']]></script>
+      </calc-values>
+    </string>
+    <string temporal="true" name="$parentunid" />
+  </schema>
+</schemas>

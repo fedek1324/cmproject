@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="InfoResource" id="InfoResourceForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <field attribute-ref="objectType">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance align="left" importance="normal">
+              <label-style>
+                <style id="css_headerElementWithIcon"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="css_headerElementWithIcon"/>
+                </value-style>
+              </field-style>
+            </appearance>
+          </field>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="statusValue">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="printStatus">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style field-width="10" field-unit="symbol"/>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="date" name="${ui.form.InfoResourceForm.section.Header.field.date.name:Дата}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="category" name="${ui.form.InfoResourceForm.section.Header.field.category.name:Категория}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="author" name="${ui.form.InfoResourceForm.section.Header.field.author.name:Автор}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+            <directories manual-input="true" limit-livesearch="no-restrictions">
+              <directory-ref ref="CURRENT_SYS_HUMAN"/>
+            </directories>
+          </field>
+          <field attribute-ref="subject" name="${ui.form.InfoResourceForm.section.Header.field.subject.name:Заголовок}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="addressee" name="${ui.form.InfoResourceForm.section.Header.field.addressee.name:Кому}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="ContentSection" name="${ui.form.InfoResourceForm.section.ContentSection.name:Содержание}">
+        <component>
+          <field attribute-ref="filesForPrint" name="${ui.form.InfoResourceForm.section.ContentSection.field.filesForPrint.name:Файлы на печать}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="content" name="${ui.form.InfoResourceForm.section.ContentSection.field.content.name:Файлы}">
+            <properties>
+              <require condition-union="AND">
+                <condition-ref ref="edit"/>
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

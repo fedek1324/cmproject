@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <folder parent-ref="ProgrammedNavigator" id="Templates-tasksresolutions" name="${catalog.folder.Templates_tasksresolutions.name:Шаблоны резолюций поручений}" position="70">
-    <webdocs>
-      <group id="0" position="0"/>
-    </webdocs>
-  </folder>
-</catalog>

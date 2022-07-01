@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <document name="${catalog.document.final_report_requests1d3619bb49fc4b97b671b6ca5bb9d691.name:Итоговый отчет ОГ}" schema-ref="FinalReportResource" object-ref="FINAL_REPORT_REQUESTS">
+    <module ident="Requests" complect=""/>
+  </document>
+  <document name="${catalog.document.rkk_requestsf5a4380d61b24533b6ff08148ca14875.name:Обращение граждан}" schema-ref="RkkResourceRequests" object-ref="RKK_REQUESTS" general="true">
+    <module ident="Requests" complect=""/>
+  </document>
+  <document name="${catalog.document.report_requests178128be35f7401184570d4dc43dae05.name:Отчет ОГ}" schema-ref="ReportResource" object-ref="REPORT_REQUESTS">
+    <module ident="Requests" complect=""/>
+  </document>
+  <document name="${catalog.document.resolution_requests2a20a3285fee40a8b5861e545754d1ab.name:Резолюция ОГ}" schema-ref="ResolutionResourceWithApprove" object-ref="RESOLUTION_REQUESTS">
+    <module ident="Requests" complect=""/>
+  </document>
+  <document name="${catalog.document.foreign_report8cb5f10f510a46008a87326e28bf9802.name:Сводка КИ в ОГ}" schema-ref="ForeignReportResource" object-ref="FOREIGN_REPORT">
+    <module ident="Requests" complect=""/>
+  </document>
+  <document name="${catalog.document.foreign_resolution5000f95118664e9fa56d24c6b86dfc53.name:Сводка КР в ОГ}" schema-ref="ForeignResolutionResource" object-ref="FOREIGN_RESOLUTION">
+    <module ident="Requests" complect=""/>
+  </document>
+  <document name="${catalog.document.rkk_template_requestscb00ad9a1b06417e93a3128a76c9f9ab.name:Шаблон обращения граждан}" schema-ref="RkkTemplateResourceRequests" object-ref="RKK_TEMPLATE_REQUESTS">
+    <module ident="Requests" complect=""/>
+  </document>
+  <document name="${catalog.document.resolution_template_requests03b22de5049545c28dce02bd3d6f9350.name:Шаблон резолюции ОГ}" schema-ref="ResolutionTemplateResource" object-ref="RESOLUTION_TEMPLATE_REQUESTS">
+    <module ident="Requests" complect=""/>
+  </document>
+</catalog>

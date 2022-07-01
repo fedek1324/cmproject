@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:com="http://www.intertrust.ru/schema/palette/common" attributeFormDefault="unqualified"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.intertrust.ru/schema/palette/common" schemaLocation="common-1.0.xsd">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Общие типы]]></xs:documentation>
+        </xs:annotation>
+    </xs:import>
+
+    <!-- Доп. информация -->
+    <xs:complexType name="metaFolderType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Доп. информация для разработчика]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="category" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Категория]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:attribute type="xs:string" name="name" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Название категории]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="documentation" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Комментарий]]></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+
+    <!--Папки-->
+    <!-- Иконка -->
+    <xs:complexType name="iconType">
+        <xs:attribute name="code" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Код иконки]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="path" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Путь к спрайту]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="position" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Позиция иконки в спрайте. Используется вместе с тэгом path]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="sourceType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Источник данных]]></xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:element name="module" type="com:moduleType"/>
+            <xs:element name="module-id" type="com:moduleIdType"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:attributeGroup name="attributeGroupFolders">
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="position" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Порядковый номер в коллекции]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+
+    <!-- Показывать -->
+    <xs:complexType name="visibleType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Параметры отображения]]></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice>
+                <xs:element name="actor" minOccurs="1" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Отображать для указанных пользователей]]></xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="name" type="xs:string" use="required">
+                            <xs:annotation>
+                                <xs:documentation><![CDATA[Борода сотрудника]]></xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="hide-storage" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Скрыть для типа хранения]]></xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="name" use="required">
+                            <xs:annotation>
+                                <xs:documentation><![CDATA[Тип хранения]]></xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="AF5">
+                                        <xs:annotation>
+                                            <xs:documentation><![CDATA[AF5]]></xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
+                                    <xs:enumeration value="Domino">
+                                        <xs:annotation>
+                                            <xs:documentation><![CDATA[Domino]]></xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="counterRequestType">
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    <![CDATA[Имя именованного запроса для получения данных индикатора-счетчика]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="pageNameType">
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Заголовок коллекции]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="descriptorRefType">
+        <xs:attribute name="ref" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название дескриптора]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="searchAreaType">
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Область поиска]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="webDocsType">
+        <xs:sequence>
+            <xs:element name="group">
+                <xs:complexType>
+                    <xs:attribute name="id" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[Идентификатор группы коллекций WebDocs 2.0]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="position" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation>
+                                <![CDATA[Порядковый номер коллекци в группе WebDocs 2.0]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--Папка-->
+    <xs:complexType name="folderObjectType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Папка]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaFolderType" minOccurs="0"/>
+            <xs:element name="source" type="sourceType" minOccurs="0"/>
+            <xs:element name="icon" type="iconType" minOccurs="0"/>
+            <xs:element name="counter-request" type="counterRequestType" minOccurs="0"/>
+            <xs:element name="webdocs" type="webDocsType" minOccurs="0"/>
+            <xs:element name="visible" type="visibleType" minOccurs="0"/>
+            <xs:element name="subfolders" type="subfoldersType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="attributeGroupFolders"/>
+        <xs:attribute name="parent-ref" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Вышестоящая папка]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="folderType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Папка]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaFolderType" minOccurs="0"/>
+            <xs:element name="source" type="sourceType" minOccurs="0"/>
+            <xs:element name="icon" type="iconType" minOccurs="0"/>
+            <xs:element name="counter-request" type="counterRequestType" minOccurs="0"/>
+            <xs:element name="webdocs" type="webDocsType" minOccurs="0"/>
+            <xs:element name="visible" type="visibleType" minOccurs="0"/>
+            <xs:element name="subfolders" type="subfoldersType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="attributeGroupFolders"/>
+    </xs:complexType>
+
+    <!--Представление-->
+    <xs:complexType name="viewObjectType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Представление]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaFolderType" minOccurs="0"/>
+            <xs:element name="source" type="sourceType" minOccurs="0"/>
+            <xs:element name="pagename" type="pageNameType" minOccurs="0"/>
+            <xs:element name="descriptor-ref" type="descriptorRefType" minOccurs="0"/>
+            <xs:element name="search-area" type="searchAreaType" minOccurs="0"/>
+            <xs:element name="counter-request" type="counterRequestType" minOccurs="0"/>
+            <xs:element name="visible" type="visibleType" minOccurs="0"/>
+            <xs:element name="subfolders" type="subfoldersType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="attributeGroupFolders"/>
+        <xs:attribute name="parent-ref" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Вышестоящая папка]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="viewType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Представление]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaFolderType" minOccurs="0"/>
+            <xs:element name="source" type="sourceType" minOccurs="0"/>
+            <xs:element name="pagename" type="pageNameType" minOccurs="0"/>
+            <xs:element name="descriptor-ref" type="descriptorRefType" minOccurs="0"/>
+            <xs:element name="search-area" type="searchAreaType" minOccurs="0"/>
+            <xs:element name="counter-request" type="counterRequestType" minOccurs="0"/>
+            <xs:element name="visible" type="visibleType" minOccurs="0"/>
+            <xs:element name="subfolders" type="subfoldersType" minOccurs="0"/>
+        </xs:all>
+        <xs:attributeGroup ref="attributeGroupFolders"/>
+    </xs:complexType>
+
+    <xs:complexType name="subfoldersType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="folder" type="folderType" maxOccurs="unbounded"/>
+            <xs:element name="view" type="viewType" maxOccurs="unbounded"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <!--Корневая папка-->
+    <xs:complexType name="rootFolderObjectType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Корневая папка]]></xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="meta" type="metaFolderType" minOccurs="0"/>
+            <xs:element name="icon" type="iconType" minOccurs="0"/>
+            <xs:element name="subfolders" type="subfoldersType" minOccurs="0"/>
+        </xs:all>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="id" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Идентификатор]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="default" type="xs:boolean" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Использовать текущий навигатор по умолчанию]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+</xs:schema>

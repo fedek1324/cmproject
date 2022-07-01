@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="GateDescriptionOrganization" id="GateDescriptionOrganizationForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="formLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+              <field attribute-ref="deletedLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_isDeleted"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="soOrgName" name="${ui.form.GateDescriptionOrganizationForm.section.Header.field.soOrgName.name:Организация:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="Settings" name="${ui.form.GateDescriptionOrganizationForm.section.Settings.name:Настройки}">
+        <component>
+          <field attribute-ref="hrCodeOrg" name="${ui.form.GateDescriptionOrganizationForm.section.Settings.field.hrCodeOrg.name:Код организации в ИКС:}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="hrCode" name="${ui.form.GateDescriptionOrganizationForm.section.Settings.field.hrCode.name:Структурный код организации в ИКС:}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field clickable="true" attribute-ref="soUnit" name="${ui.form.GateDescriptionOrganizationForm.section.Settings.field.soUnit.name:Документ:}">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+            <appearance open-mode="dialog" importance="normal" clickable="true"/>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="arm-admin-ierarchy-dep"/>
+              <directory-ref ref="arm-admin-dialog-dep"/>
+            </directories>
+          </field>
+          <field attribute-ref="unitTypeLabel" name="${ui.form.GateDescriptionOrganizationForm.section.Settings.field.unitTypeLabel.name:Тип документа:}">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="homeServer" name="${ui.form.GateDescriptionOrganizationForm.section.Settings.field.homeServer.name:Рабочий сервер}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="homeNet" name="${ui.form.GateDescriptionOrganizationForm.section.Settings.field.homeNet.name:Территория:}">
+            <appearance importance="normal"/>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="arm-admin-select-area"/>
+            </directories>
+          </field>
+          <field attribute-ref="noticeHost" name="${ui.form.GateDescriptionOrganizationForm.section.Settings.field.noticeHost.name:Host для уведомлений:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="ntcReceivers" name="${ui.form.GateDescriptionOrganizationForm.section.Settings.field.ntcReceivers.name:Получают уведомления:}">
+            <appearance importance="normal">
+              <label-style field-width="60" field-unit="symbol"/>
+            </appearance>
+            <directories livesearch="true" limit-livesearch="no-restrictions" digest="digestSOLiveSearch">
+              <directory-ref ref="arm-admin-dialog-empl-main-noVacancy"/>
+            </directories>
+          </field>
+          <field clickable="true" attribute-ref="soUnitForDelete" name="${ui.form.GateDescriptionOrganizationForm.section.Settings.field.soUnitForDelete.name:Подразделение для расформирования/удаления:}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <appearance open-mode="dialog" importance="normal" clickable="true"/>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="arm-admin-ierarchy-dep"/>
+              <directory-ref ref="arm-admin-dialog-dep"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+      <section id="History" name="${ui.form.GateDescriptionOrganizationForm.section.History.name:История}"/>
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.GateDescriptionOrganizationForm.section.RootMenu.button.Скрыть системную кнопку сохранить.name:Скрыть системную кнопку сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE"/>
+            </action>
+          </button>
+          <button name="${ui.form.GateDescriptionOrganizationForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew"/>
+              </hide>
+            </properties>
+            <action>
+              <custom>
+                <save/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.GateDescriptionOrganizationForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton"/>
+              </hide>
+            </properties>
+            <action>
+              <custom>
+                <save-existing/>
+              </custom>
+            </action>
+          </button>
+          <section id="Create" name="${ui.form.GateDescriptionOrganizationForm.section.RootMenu.section.Create.name:Создать}">
+            <component>
+              <button name="${ui.form.GateDescriptionOrganizationForm.section.RootMenu.section.Create.button.Настройку соответствия организации.name:Настройку соответствия организации}">
+                <action>
+                  <custom>
+                    <create-sibling schema-ref="GateDescriptionOrganization"/>
+                  </custom>
+                </action>
+              </button>
+              <button name="${ui.form.GateDescriptionOrganizationForm.section.RootMenu.section.Create.button.Настройку соответствия подчиненного подразделения.name:Настройку соответствия подчиненного подразделения}">
+                <action>
+                  <custom>
+                    <create-child schema-ref="GateDescriptionDepartment"/>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <section id="OTHER" name="${ui.form.GateDescriptionOrganizationForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <button name="${ui.form.GateDescriptionOrganizationForm.section.RootMenu.section.OTHER.button.Удалить.name:Удалить}">
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">DeleteDescriptionOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

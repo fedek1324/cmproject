@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="RegistrationInfo_Contracts">
+    <meta>
+      <category name="Система\Договоры"/>
+    </meta>
+    <string name="number" system="true"/>
+    <date name="date" system="true"/>
+  </schema>
+</schemas>

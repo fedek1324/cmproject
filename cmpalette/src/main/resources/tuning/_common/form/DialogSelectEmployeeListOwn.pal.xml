@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ReporterSubDialogEmployeeListOwn" id="DialogSelectEmployeeListOwn" projection="default" group="true">
+    <component>
+      <field attribute-ref="Value" name="${ui.form.DialogSelectEmployeeListOwn.field.Value.name:Сотрудник}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <directories limit-livesearch="no-restrictions">
+          <directory-ref ref="CURRENT_SYS_HUMAN"/>
+        </directories>
+      </field>
+    </component>
+  </form>
+</ui>

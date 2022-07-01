@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+    <form schema-ref="SelectRemoveFileFromNdpChange" projection="default" name="${ui.form.FrDialog.name:Выберите дело}" id="DialogRemoveFileFromNdpChange">
+        <properties>
+            <hide condition-union="AND">
+                <negative-condition-ref ref="dialog" />
+            </hide>
+        </properties>
+        <component>
+            <field attribute-ref="sdObjectInfo" tid="sdObjectInfo"
+                   name="${ui.form.DialogRemoveFileFromNdpChange.field.refRegisterInfo.name:Выберите дело:}">
+                <appearance importance="normal" widget="grid"/>
+                <directories>
+                    <directory-category-custom-coll attribute-ref="unit_change" ref="fr-vw-cmj-remove-file-from-ndp-change" />
+                </directories>
+            </field>
+            <button name="${ui.form.DialogRemoveFileFromNdpChange.button.OK.name:OK}" tid="submit">
+                <action>
+                    <system name="submit"/>
+                </action>
+            </button>
+        </component>
+        <appearance>
+            <dialog-mode height="50" unit="percent" width="50" />
+        </appearance>
+    </form>
+</ui>

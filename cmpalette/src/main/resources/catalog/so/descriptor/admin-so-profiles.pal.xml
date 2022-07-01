@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="(vw_cmj_admin_profiles)" id="admin-so-profiles" name="Профиль рабочего времени для админки" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewComplexClassif">
+      <config>
+        <view-complex-classif level-select="all"/>
+      </config>
+    </builder>
+    <breadcrumbs-column column-ref="name"/>
+    <table>
+    <hierarchy-column descriptor-ref="admin-so-profilesC" column-ref=""/>
+      <columns>
+        <column-ref ref="self"/>
+		<column-ref ref="iconByDefault"/>
+        <column-ref ref="name" sort-desc="true" filter="true"/>
+        <column-ref ref="addresseeOrganizaton" sort-desc="true" filter="true"/>
+        <column-ref ref="standardDay"/>
+        <column-ref ref="workingCycle"/>
+        <column-ref ref="exceptions"/>
+      </columns>
+    </table>
+    <custom-actions schema-ref="SOWorkTimeProfileCollection"/>
+  </custom-descriptor>
+</catalog>

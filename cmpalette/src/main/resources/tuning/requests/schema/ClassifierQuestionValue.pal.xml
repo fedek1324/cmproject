@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ClassifierQuestionValue">
+    <meta>
+      <category name="Система\Заседания"/>
+    </meta>
+    <string name="id" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[partCode+"."+themeCode+"."+thematicCode+"."+questionCode+(subquestionCode==null||subquestionCode.isEmpty()?"":("."+subquestionCode))]]></script>
+      </calc-values>
+    </string>
+    <boolean name="isSimple" system="true"/>
+    <string name="part" system="true"/>
+    <string name="partCode" system="true"/>
+    <string name="theme" system="true"/>
+    <string name="themeCode" system="true"/>
+    <string name="thematic" system="true"/>
+    <string name="thematicCode" system="true"/>
+    <string name="question" system="true"/>
+    <string name="questionCode" system="true"/>
+    <string name="subquestion" system="true"/>
+    <string name="subquestionCode" system="true"/>
+    <string name="questionLabel" system="true"/>
+  </schema>
+</schemas>

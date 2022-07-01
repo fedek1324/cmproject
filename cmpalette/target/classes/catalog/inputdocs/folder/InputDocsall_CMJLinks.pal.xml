@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="CMJLinks" id="InputDocs::::all" name="${catalog.view.InputDocs____all.name:Входящие документы}" position="80">
+    <search-area name="input_InputDocs"/>
+    <descriptor-ref ref="dp-13-input"/>
+    <source>
+      <module ident="InputDocs"/>
+    </source>
+  </view>
+</catalog>

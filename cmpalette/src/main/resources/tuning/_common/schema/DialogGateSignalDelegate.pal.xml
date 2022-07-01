@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="DialogGateSignal" name="DialogGateSignalDelegate">
+    <meta>
+      <category name="РМ Администратора\Шлюз\Диалоги"/>
+    </meta>
+    <schema-ref ref="SOUnitForDialogSelect" name="delegateUnit" createlog="true" temporal="true"/>
+    <string name="warningText" createlog="true" temporal="true"/>
+    <boolean name="selectButtonByDefault" createlog="true" temporal="true"/>
+    <string name="defaultDelegateUnid" createlog="true" temporal="true"/>
+    <boolean name="hasWarning" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[warningText != null]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

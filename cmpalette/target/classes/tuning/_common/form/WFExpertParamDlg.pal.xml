@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="WFExpertParam" id="WFExpertParamDlg" name="${ui.form.WFExpertParamDlg.name:Направить на экспертизу}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="Expert" name="${ui.form.WFExpertParamDlg.field.Expert.name:Эксперт}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance importance="normal"/>
+        <directories livesearch="true" limit-livesearch="no-restrictions">
+          <directory-ref ref="CURRENT_SYS_HUMAN"/>
+          <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+        </directories>
+      </field>
+      <anchor name="${ui.form.WFExpertParamDlg.anchor.Test11.name:Test11}" alias="test11"/>
+      <field attribute-ref="StartDate" name="${ui.form.WFExpertParamDlg.field.StartDate.name:Дата начала процесса}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="Initiator" name="${ui.form.WFExpertParamDlg.field.Initiator.name:Инициатор}">
+        <properties>
+          <read-only condition-union="AND">
+            <condition>true</condition>
+          </read-only>
+        </properties>
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="SOUnitType">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string value="ORGANIZATION" name="ORGANIZATION"/>
+    <string value="DEPARTMENT" name="DEPARTMENT"/>
+    <string value="RVZ" name="RVZ"/>
+    <string value="EMPLOYEE" name="EMPLOYEE"/>
+    <string value="PROGRAM_TYPE" name="PROGRAM_TYPE"/>
+    <string value="WORK_TIME_PROFILE" name="WORK_TIME_PROFILE"/>
+    <string value="HIERARCHI_PROFILE_MAIN" name="HIERARCHI_PROFILE_MAIN"/>
+    <string value="GROUP" name="GROUP"/>
+    <string value="GROUP_PROFILE" name="GROUP_PROFILE"/>
+    <string value="ORGANIZATION_SPO" name="ORGANIZATION_SPO"/>
+    <string value="FUNCTIONAL_ROLE" name="FUNCTIONAL_ROLE"/>
+    <string value="DOSSIER" name="DOSSIER"/>
+    <string value="PERSON" name="PERSON"/>
+  </enum>
+</schemas>

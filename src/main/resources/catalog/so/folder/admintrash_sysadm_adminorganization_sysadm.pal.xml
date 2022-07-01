@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="admin-organization_sysadm" id="admin-trash_sysadm" name="${catalog.view.admin_trash_sysadm.name:Корзина}" position="140">
-    <descriptor-ref ref="admin-so-trash"/>
-    <source>
-      <module ident="SO"/>
-    </source>
-  </view>
-</catalog>

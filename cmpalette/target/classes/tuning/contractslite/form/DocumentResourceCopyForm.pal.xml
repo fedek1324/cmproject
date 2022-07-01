@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="DocumentResource" id="DocumentResourceCopyForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="copy"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="disableLinkAccess" name="${ui.form.DocumentResourceCopyForm.field.disableLinkAccess.name:Ограничить доступ по связям:}">
+        <appearance importance="normal"/>
+        <hint-in-field>${ui.form.DocumentResourceCopyForm.field.disableLinkAccess.hintInField:Не дается доступ к текущему документу читателям связанных документов}</hint-in-field>
+      </field>
+      <field attribute-ref="category" name="${ui.form.DocumentResourceCopyForm.field.category.name:Тематика:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.DocumentResourceCopyForm.field.category.hintPopUp:Тематика}</hint-pop-up>
+      </field>
+      <field attribute-ref="type" name="${ui.form.DocumentResourceCopyForm.field.type.name:Вид документа:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.DocumentResourceCopyForm.field.type.hintPopUp:Вид документа}</hint-pop-up>
+      </field>
+      <field attribute-ref="signature.signers">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="preparedBy" name="${ui.form.DocumentResourceCopyForm.field.preparedBy.name:Подготовили:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.DocumentResourceCopyForm.field.preparedBy.hintPopUp:Подготовили}</hint-pop-up>
+      </field>
+      <field attribute-ref="responsibles" name="${ui.form.DocumentResourceCopyForm.field.responsibles.name:Ответственные за исполнение:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.DocumentResourceCopyForm.field.responsibles.hintPopUp:Ответственные за исполнение}</hint-pop-up>
+      </field>
+      <field attribute-ref="sendlist" name="${ui.form.DocumentResourceCopyForm.field.sendlist.name:Список рассылки:}">
+      <appearance importance="normal"/>
+      <hint-pop-up>${ui.form.DocumentResourceCopyForm.field.sendlist.hintPopUp:Список рассылки}</hint-pop-up>
+    </field>
+      <field attribute-ref="pages" name="${ui.form.DocumentResourceCopyForm.field.pages.name:Кол-во листов:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.DocumentResourceCopyForm.field.pages.hintPopUp:Кол-во листов}</hint-pop-up>
+      </field>
+      <field attribute-ref="copies" name="${ui.form.DocumentResourceCopyForm.field.copies.name:Кол-во экземпляров:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.DocumentResourceCopyForm.field.copies.hintPopUp:Кол-во экземпляров}</hint-pop-up>
+      </field>
+      <field attribute-ref="appendices" name="${ui.form.DocumentResourceCopyForm.field.appendices.name:Кол-во приложений:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.DocumentResourceCopyForm.field.appendices.hintPopUp:Кол-во приложений}</hint-pop-up>
+      </field>
+      <field attribute-ref="appendicesPages" name="${ui.form.DocumentResourceCopyForm.field.appendicesPages.name:Листов приложения:}">
+        <appearance importance="normal"/>
+        <hint-pop-up>${ui.form.DocumentResourceCopyForm.field.appendicesPages.hintPopUp:Листов приложения}</hint-pop-up>
+      </field>
+      <field attribute-ref="$contract">
+        <appearance importance="normal"/>
+      </field>
+      <field attribute-ref="$hasContentWithAffirm">
+        <appearance importance="normal"/>
+      </field>
+    </component>
+  </form>
+</ui>

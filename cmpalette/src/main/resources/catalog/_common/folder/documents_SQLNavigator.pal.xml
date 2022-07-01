@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="SQLNavigator" id="documents" name="${catalog.folder.documents.name:Документы}" position="40">
+    <subfolders>
+      <folder id="My" name="${catalog.folder.documents.folder.My.name:Мои}" position="10">
+        <subfolders>
+          <view id="documents-my projects" name="${catalog.folder.documents.folder.My.view.documents_my_projects.name:Проекты}" position="20">
+            <pagename name="Мои проекты"/>
+            <descriptor-ref ref="pkd-projects"/>
+          </view>
+          <folder id="documents-lasts" name="${catalog.folder.documents.folder.My.folder.documents_lasts.name:Последние}" position="30">
+            <subfolders>
+              <view id="documentslast-opened" name="${catalog.folder.documents.folder.My.folder.documents_lasts.view.documentslast_opened.name:Открытые}" position="20">
+                <pagename name="Последние открытые"/>
+                <descriptor-ref ref="pkd-lastdocuments-opened"/>
+              </view>
+              <view id="documentslast-modified" name="${catalog.folder.documents.folder.My.folder.documents_lasts.view.documentslast_modified.name:Сохраненные}" position="30">
+                <pagename name="Последние сохраненные"/>
+                <descriptor-ref ref="pkd-lastdocuments-modified"/>
+              </view>
+            </subfolders>
+            <webdocs>
+              <group id="0" position="0"/>
+            </webdocs>
+          </folder>
+          <view id="documents-my registered" name="${catalog.folder.documents.folder.My.view.documents_my_registered.name:Зарегистрированные}" position="40">
+            <pagename name="Мои зарегистрированные"/>
+            <descriptor-ref ref="pkd-registered"/>
+          </view>
+        </subfolders>
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+      <folder id="restasks" name="${catalog.folder.documents.folder.restasks.name:Поручения}" position="60">
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+      <folder id="missions" name="${catalog.folder.documents.folder.missions.name:ОРД}" position="50">
+        <subfolders>
+          <folder id="missions-Not Execs" name="${catalog.folder.documents.folder.missions.folder.missions_Not_Execs.name:Неисполненные}" position="70">
+            <subfolders>
+              <view id="missionsNotExecs-On Control" name="${catalog.folder.documents.folder.missions.folder.missions_Not_Execs.view.missionsNotExecs_On_Control.name:Контрольные}" position="30">
+                <pagename name="ОРД - Контрольные"/>
+                <search-area name="ord_Missions"/>
+                <descriptor-ref ref="dp-missions-NotExecOnControl-af5"/>
+              </view>
+            </subfolders>
+            <webdocs>
+              <group id="0" position="0"/>
+            </webdocs>
+          </folder>
+        </subfolders>
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

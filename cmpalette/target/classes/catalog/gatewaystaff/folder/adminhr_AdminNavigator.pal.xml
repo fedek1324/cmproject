@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="AdminNavigator" id="admin-hr" name="${catalog.folder.admin_hr.name:Сигналы HR}" position="30">
+    <subfolders>
+      <folder id="admin-hr-signals" name="${catalog.folder.admin_hr.folder.admin_hr_signals.name:Сигналы ИР ШК}" position="10">
+        <subfolders>
+          <view id="admin-hr-cmj-signals" name="${catalog.folder.admin_hr.folder.admin_hr_signals.view.admin_hr_cmj_signals.name:Необработанные}" position="10">
+            <descriptor-ref ref="admin-hr-cmj-signals"/>
+            <source>
+              <module ident="GatewayStaff"/>
+            </source>
+          </view>
+          <view id="admin-hr-signals-2" name="${catalog.folder.admin_hr.folder.admin_hr_signals.view.admin_hr_signals_2.name:Запрет обновления}" position="20">
+            <descriptor-ref ref="admin-hr-cmj-signals-protected"/>
+            <source>
+              <module ident="GatewayStaff"/>
+            </source>
+          </view>
+          <view id="admin-hr-cmj-signals-auto" name="${catalog.folder.admin_hr.folder.admin_hr_signals.view.admin_hr_cmj_signals_auto.name:Полуавтоматические}" position="30">
+            <descriptor-ref ref="admin-hr-cmj-signals-auto"/>
+            <source>
+              <module ident="GatewayStaff"/>
+            </source>
+          </view>
+          <view id="admin-hr-signals-4" name="${catalog.folder.admin_hr.folder.admin_hr_signals.view.admin_hr_signals_4.name:Отложенные}" position="40">
+            <descriptor-ref ref="admin-hr-cmj-signals-delayed"/>
+            <source>
+              <module ident="GatewayStaff"/>
+            </source>
+          </view>
+          <view id="admin-hr-cmj-signals-processed" name="${catalog.folder.admin_hr.folder.admin_hr_signals.view.admin_hr_cmj_signals_processed.name:Обработанные}" position="50">
+            <descriptor-ref ref="admin-hr-cmj-signals-processed"/>
+            <source>
+              <module ident="GatewayStaff"/>
+            </source>
+          </view>
+          <view id="admin-hr-cmj-signals-error" name="${catalog.folder.errors:Ошибки}" position="60">
+            <descriptor-ref ref="admin-hr-cmj-signals-error"/>
+            <source>
+              <module ident="GatewayStaff"/>
+            </source>
+          </view>
+          <view id="admin-hr-cmj-signals-all" name="${catalog.folder.all.signals:Все сигналы}" position="70">
+            <descriptor-ref ref="admin-hr-cmj-signals-all"/>
+            <source>
+              <module ident="GatewayStaff"/>
+            </source>
+          </view>
+        </subfolders>
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+      <folder id="admin-hr-settings" name="${catalog.folder.admin_hr.folder.admin_hr_settings.name:Настройки}" position="20">
+        <subfolders>
+          <view id="admin-hr-settings-2" name="${catalog.folder.admin_hr.folder.admin_hr_settings.view.admin_hr_settings_2.name:Настройки соответствия}" position="20">
+            <descriptor-ref ref="admin-hr-cmj-main-settings"/>
+            <source>
+              <module ident="GatewayStaff"/>
+            </source>
+          </view>
+          <view id="admin-hr-creation-settings-default" name="${catalog.folder.admin_hr.default.settings:Параметры по умолчанию}" position="30">
+            <descriptor-ref ref="admin-hr-creation-settings-default"/>
+            <source>
+              <module ident="GatewayStaff"/>
+            </source>
+          </view>
+        </subfolders>
+        <webdocs>
+          <group id="0" position="0"/>
+        </webdocs>
+      </folder>
+      <view id="admin-hr-log" name="${catalog.folder.admin_hr.view.admin_hr_log.name:Протоколы}" position="30">
+        <descriptor-ref ref="admin-hr-cmj-signals-logs"/>
+        <source>
+          <module ident="GatewayStaff"/>
+        </source>
+      </view>
+      <view id="admin-hr-met" name="${catalog.folder.admin_hr.view.admin_hr_met.name:Корзина}" position="50">
+        <descriptor-ref ref="admin-hr-cmj-trash"/>
+        <source>
+          <module ident="GatewayStaff"/>
+        </source>
+      </view>
+    </subfolders>
+    <icon code="sprite/sidebarCMJSprite.png" path="sprite/sidebarCMJSprite.png" position="51"/>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

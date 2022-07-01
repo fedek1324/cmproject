@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="SOEmployee" name="SOEmployeeRVZ">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <boolean name="IsUseArchiveModule" temporal="true" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL">
+          <![CDATA[T(ru.intertrust.cmj.af.core.AFCMDomino).getDbInfoByReplicaID(T(ru.intertrust.cmj.af.core.AFCMDomino).getDbReplicaIdNamedAny("FileRegister"))?.useArchiveModule]]>
+        </script>
+      </calc-values>
+    </boolean>
+    <string name="nomIndex" createlog="true">
+      <storage-field name="nomIndex"/>
+    </string>
+    <boolean name="isleader" createlog="true">
+      <storage-field name="leader"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="hasKeyRVZ" temporal="true" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL">
+          <![CDATA[KeyRVZ != null && KeyRVZ != '']]>
+        </script>
+      </calc-values>
+    </boolean>
+    <string computed="true" name="emptyRow">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA[""]]></script>
+      </calc-values>
+    </string>
+    <string name="nomenclatureIndexPrefix">
+      <storage-field name="nomenclatureIndexPrefix"/>
+    </string>
+    <boolean name="inheritNomIndex" default-value="false">
+      <storage-field name="inheritNomIndex"/>
+      <recalc-processing-class>ru.intertrust.cmj.rest.fileregister.filesetting.RecalcForInheritNomIndex</recalc-processing-class>
+    </boolean>
+    <string name="ndSeparate1">
+      <storage-field name="ndSeparate1"/>
+    </string>
+    <string name="nomenclatureIndexReadMode" temporal="true" computed="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(inheritNomIndex == true && nomenclatureIndexPrefix != null && nomenclatureIndexPrefix != '' ? (nomenclatureIndexPrefix + ' ' + (ndSeparate1 == null ? '' : ndSeparate1) + ' ') : '') + (nomIndex != null ? nomIndex : '')]]></script>
+      </calc-values>
+    </string>
+    <boolean name="hasAnotherDepNd" default-value="false">
+      <storage-field name="hasAnotherDepNd"/>
+    </boolean>
+    <boolean name="isAnotherDepND" default-value="false">
+      <storage-field name="isAnotherDepND"/>
+    </boolean>
+    <schema-ref null-empty="true" ref="AdminSOUnit" name="anotherDepNdUnit" createlog="true" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="formerNDPUnit" temporal="true"/>
+    <schema-ref ref="AdminSOUnit" array="true" name="responsibleNdUnit" temporal="true"/>
+  </schema>
+</schemas>

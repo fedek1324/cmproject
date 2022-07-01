@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="ClientContext_SaveWithDialog" name="ClientContext_SaveWithDialogPostClassifier">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <schema-ref ref="ClientContextData_SOStructSave" name="data" system="true" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

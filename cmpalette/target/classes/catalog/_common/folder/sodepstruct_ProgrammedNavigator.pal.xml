@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="so-dep-struct" name="${catalog.view.so_dep_struct.name:Подразделения}" position="290">
+    <descriptor-ref ref="so-dep-struct"/>
+  </view>
+</catalog>

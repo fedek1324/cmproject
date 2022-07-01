@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <folder parent-ref="ProgrammedNavigator" id="Templates-outputresolutions" name="${catalog.folder.Templates_outputresolutions.name:Шаблоны исходящих поручений}" position="450">
+    <subfolders>
+      <view id="favourites-resolution-template-output" name="${catalog.folder.Templates_outputresolutions.view.favourites_resolution_template_output.name:Избранное}" position="-1">
+        <descriptor-ref ref="favourites-resolution-template-output"/>
+      </view>
+    </subfolders>
+    <webdocs>
+      <group id="0" position="0"/>
+    </webdocs>
+  </folder>
+</catalog>

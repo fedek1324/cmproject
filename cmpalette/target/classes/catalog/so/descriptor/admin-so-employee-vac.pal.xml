@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="(vw_cmj_admin_employee_vac)" id="admin-so-employee-vac" name="АРМАдмин:Список вакансий" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewDlgAdmin"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="name"/>
+        <column-ref ref="soPost"/>
+        <column-ref ref="parentOfUnit"/>
+        <column-ref ref="vacancyInfo"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

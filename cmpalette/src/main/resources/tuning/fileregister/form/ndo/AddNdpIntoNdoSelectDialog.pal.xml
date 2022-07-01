@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="AddNdpIntoNdoSelectDialog" id="AddNdpIntoNdoSelectDialogForm" name="${ui.form.AddNdpIntoNdoSelectDialogForm.name:Выбор номенклатуры подразделения}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="sdObjectInfo" tid="sdObjectInfo"
+             name="${ui.form.AddNdpIntoNdoSelectDialogForm.field.sdObjectInfo.name:Выбор номенклатуры подразделения}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance open-mode="grid" digest-mode="grid" importance="normal" widget="grid"/>
+        <directories limit-livesearch="sys-current" digest="grid">
+          <directory-ref ref="nd-ndp-for-include-to-ndo"/>
+        </directories>
+      </field>
+      <button name="${ui.form.AddNdpIntoNdoSelectDialogForm.button.OK.name:Добавить}" tid="submit">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

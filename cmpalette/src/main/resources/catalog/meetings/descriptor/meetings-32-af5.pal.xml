@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Meetings" view="(vw_cmj_32)" id="meetings-32-af5" name="Заседания - Проекты решений - К планируемому вопросу" style="default">
+    <help id="99778671"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="meetingType" filter="true" category="true"/>
+        <column-ref ref="date" filter="true"/>
+        <column-ref ref="authorBeard" filter="true"/>
+        <column-ref ref="pointText" filter="true"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

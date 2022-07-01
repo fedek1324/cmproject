@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="CreationDefParamsSetting" id="CreationDefParamsSettingForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="objectType">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style>
+                    <style id="tunIconProgress"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunIconProgress"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Department" name="${department:Подразделение}">
+        <component>
+          <field attribute-ref="D_IsCodeNumIndex" name="${ui.form.SODepartmentForm.section.CommonInfo.section.codes_row.field.iscodeni.name:Код является номенклатурным индексом:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="D_NoticesFltrsUseForTasks" name="${ui.form.NotificationForm.section.one_row.field.regulations.name:Применить правила фильтрации уведомлений к задачам:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="D_FillAuditors" name="${ui.form.CreationDefParamsSettingForm.section.StaffUnit.field.FillDepAuditors.name:Заполнять аудиторов в подразделении:}">
+            <appearance importance="normal"/>
+            <directories>
+              <directory-ref ref="fillDepAuditorsModesDir"/>
+            </directories>
+          </field>
+          <field attribute-ref="D_FillDeputies" name="${ui.form.CreationDefParamsSettingForm.section.StaffUnit.field.FillDepDeputies.name:Заполнять замещающих в подразделении:}">
+            <appearance importance="normal"/>
+            <directories>
+              <directory-ref ref="fillDepDeputiesModesDir"/>
+            </directories>
+          </field>
+        </component>
+      </section>
+      <section id="StaffUnit" name="${staffUnit:ШЕ сотрудника}">
+        <component>
+          <field attribute-ref="E_IsAllowChangeSettings" name="${ui.form.SOEmployeeForm.section.SystemNames.section.rowsystname1.field.Independent.name:Может самостоятельно изменять настройки:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="E_IsAllowChangeSettingsZA" name="${ui.form.SOEmployeeForm.section.SystemNames.section.rowsystname1.field.CanChangeAuditors.name:Может менять замещающих и аудиторов:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="E_NoticeSendCurIfWork" name="${ui.form.SOEmployeeForm.section.Notice.field.NoticeSendCurrentIfWork.name:Отправлять уведомления текущему назначению:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="E_NoticeSendCurIfNotWork" name="${noticeSendCurrentIfNotWork:Если сотрудник не работает в системе: Отправлять уведомления текущему назначению:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="E_NoticesFltrsUseForTasks" name="${ui.form.SOEmployeeForm.section.Notice.field.ApplyRules.name:Применить правила фильтрации уведомлений к задачам:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="E_HideNoticesWithTasks" name="${ui.form.SOEmployeeForm.section.Notice.field.HiddenNotice.name:Не показывать уведомления по задачам:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="E_EmailCreate" name="${ui.form.SOEmployeeForm.section.Notice.field.CreateNotice.name:Создавать почтовое оповещение:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="E_FillAuditors" name="${ui.form.CreationDefParamsSettingForm.section.StaffUnit.field.FillAuditors.name:Заполнять аудиторов в ШЕ:}">
+            <appearance importance="normal"/>
+            <directories>
+              <directory-ref ref="fillAuditorsModesDir"/>
+            </directories>
+          </field>
+          <field attribute-ref="E_FillDeputies" name="${ui.form.CreationDefParamsSettingForm.section.StaffUnit.field.FillEmplDeputies.name:Заполнять замещающих в ШЕ:}">
+            <appearance importance="normal"/>
+            <directories>
+              <directory-ref ref="fillEmplDeputiesModesDir"/>
+            </directories>
+          </field>
+          <field attribute-ref="defParamsSettingSysGroupsTitle">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="normal">
+              <label-style>
+                <style id="tunGray"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunGray"/>
+                </value-style>
+              </field-style>
+            </appearance>
+          </field>
+          <field clickable="true" recalc="true" attribute-ref="defParamsSettingSysGroups" name="${defParamsSettingSysGroups.name:Системные группы:}">
+            <appearance location="table" open-mode="grid" digest-mode="grid" multiline="true" importance="normal" clickable="true" widget="grid">
+              <label-style field-width="100" field-unit="symbol"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+      <section id="Person" name="${person:Персона}">
+        <component>
+          <field attribute-ref="P_IsSNDADR" name="${ui.form.SOPersonForm.section.Settings.field.isShowNumDlgAfterDocRegistered.name:Не отображать диалог с информацией о номере после регистрации документа:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="P_IsCDCBAAS" name="${ui.form.SOPersonForm.section.Settings.field.isCheckDocChangedBetweenApprovAndSign.name:Проверять, изменилась ли РКК между согласованием и подписью:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="P_IsRNWTE" name="${ui.form.SOPersonForm.section.Settings.field.isRepeatNotificationWhenTaskExpired.name:Повторять напоминания об истечении планового срока исполнения задачи:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="P_IsSelfNotify" name="${ui.form.SOPersonForm.section.Settings.field.isSelfNotify.name:Отправлять уведомления себе:}">
+            <appearance importance="normal"/>
+          </field>
+          <field recalc="true" attribute-ref="P_isAVSODO" name="${ui.form.SOPersonForm.section.Settings.field.isAutoVerifySignatureOnDocOpen.name:Автоматическая проверка подписи при открытии документа:}">
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="P_isSVDWSV" name="${ui.form.SOPersonForm.section.Settings.field.isShowVerifyDlgWhenSignValid.name:Показывать результат проверки, если подпись верна:}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="isP_isAVSODO"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+          </field>
+          <field attribute-ref="P_isSSDD" name="${ui.form.SOPersonForm.section.Settings.field.isHideSigningDataDialog.name:Скрывать диалог с информацией о подписываемых данных:}">
+            <appearance importance="normal"/>
+          </field>
+        </component>
+      </section>
+      <section id="RootMenu" name="${ui.form.DepTypeClassifierForm.section.RootMenu.name:RootMenu}">
+        <component>
+          <button name="${button.edit:Редактировать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_CanEdit_ReadMode"/>
+              </hide>
+            </properties>
+            <icon code="95"/>
+            <action position="6.0">
+              <custom>
+                <open-edit/>
+              </custom>
+            </action>
+          </button>
+          <button name="${button.hide.system.edit:Скрыть системную кнопку Редактировать}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="EDIT"/>
+            </action>
+          </button>
+          <button name="${button.hide.system.save:Скрыть системную кнопку Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE"/>
+            </action>
+          </button>
+          <button name="${button.save:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <save-existing/>
+              </custom>
+            </action>
+          </button>
+          <button name="${button.save:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <save/>
+              </custom>
+            </action>
+          </button>
+          <button name="${button.delete:Удалить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_CanEdit_EditMode"/>
+              </hide>
+            </properties>
+            <action position="13.0">
+              <custom>
+                <operation>
+                  <handler>
+                    <script lang="JavaBean">DeleteCreationDefParamsSettingOperation</script>
+                  </handler>
+                </operation>
+              </custom>
+            </action>
+          </button>
+          <section id="OTHER" name="${button.other:Другое}">
+            <component>
+              <button name="${button.hide.add.to.favourites:Скрыть системную кнопку 'Добавить в избранное'}">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition>true</condition>
+                  </hide>
+                </properties>
+                <action>
+                  <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+                </action>
+              </button>
+              <button name="${button.delete:Удалить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_CanEdit_ReadMode"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">DeleteCreationDefParamsSettingOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,617 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ResolutionTasksResource" id="ResolutionTasksResourceForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <button name="${ui.form.ResolutionTasksResourceForm.button.Связанный документ.name:Связанный документ}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="Registrated_Task"/>
+            <negative-condition-ref ref="read"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.ResolutionTasksResourceForm.button.Связанный документ.hintPopUp:Связанный документ}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#create.linked.document"/>
+        </action>
+      </button>
+      <section id="ExecutionTab" name="${ui.form.ResolutionTasksResourceForm.section.ExecutionTab.name:Исполнение}">
+        <component>
+          <field attribute-ref="category" name="${ui.form.ResolutionTasksResourceForm.section.ExecutionTab.field.category.name:Тематика:}">
+            <appearance importance="normal"/>
+            <hint-pop-up>${ui.form.ResolutionTasksResourceForm.section.ExecutionTab.field.category.hintPopUp:Тематика}</hint-pop-up>
+          </field>
+          <section id="exec_row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field recalc="true" attribute-ref="author">
+                <appearance align="left">
+                  <label-style field-width="15" field-unit="symbol"/>
+                </appearance>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_SYS_ROLE"/>
+                  <directory-ref ref="CURRENT_DEP_HUMAN_HH"/>
+                  <directory-ref ref="FV_CURR_HUMAN_HH_DEP_ROLE"/>
+                </directories>
+              </field>
+              <field attribute-ref="dateLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="5" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="date"/>
+            </component>
+          </section>
+          <field attribute-ref="executor">
+            <hint-in-field>${ui.form.ResolutionTasksResourceForm.section.ExecutionTab.field.executor.hintInField:Выберите исполнителей}</hint-in-field>
+            <directories livesearch="true" limit-livesearch="no-restrictions">
+              <directory-ref ref="CURRENT_All"/>
+              <directory-ref ref="CURRENT_All_Hierarchy"/>
+              <directory-ref ref="AlienBeards"/>
+              <directory-ref ref="sendlist"/>
+              <directory-ref ref="FV_CURR_AND_FOREIGN_HUMAN_HH_DEP_ORG"/>
+            </directories>
+          </field>
+          <field attribute-ref="execNotice">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="task_onControl"/>
+              </hide>
+            </properties>
+          </field>
+        </component>
+      </section>
+      <section id="PeriodicResolutionParameters" name="${ui.form.ResolutionTasksResource.section.Periodic.name:Параметры периодичности}">
+        <properties>
+          <hide>
+            <negative-condition-ref ref="ResolutionTasksResource_showPeriodicParameters"/>
+          </hide>
+        </properties>
+        <component>
+          <field attribute-ref="isPeriodic" name="${ui.form.ResolutionTasksResource.isPeriodicTask:Периодическое поручение}" recalc="true"/>
+          <section id="PeriodParams" group="true">
+            <properties>
+              <hide>
+                <negative-condition-ref ref="ResolutionTasksResource_isPeriodic"/>
+              </hide>
+            </properties>
+            <component>
+              <field attribute-ref="periodicParameters.periodType" name="${ui.form.ResolutionTasksResource.periodType:Тип периода:}" recalc="true">
+                <directories>
+                  <directory-ref ref="periodType"/>
+                </directories>
+                <properties>
+                  <require>
+                    <condition>true</condition>
+                  </require>
+                </properties>
+              </field>
+              <field attribute-ref="periodicParameters.period" name="${ui.form.ResolutionTasksResource.period:Период:}" recalc="true">
+                <properties>
+                  <hide>
+                    <condition-ref ref="ResolutionTasksResource_isPeriodTypeDates"/>
+                  </hide>
+                  <require>
+                    <condition-ref ref="ResolutionTasksResource_isPeriodTypeNotDates"/>
+                  </require>
+                </properties>
+              </field>
+              <field attribute-ref="periodicParameters.nextDueDate" name="${ui.form.ResolutionTasksResource.nextDueDateTask:Срок следующего поручения:}" recalc="true">
+                <properties>
+                  <hide>
+                    <condition-ref ref="ResolutionTasksResource_isPeriodTypeDates"/>
+                  </hide>
+                  <require>
+                    <condition-ref ref="ResolutionTasksResource_isPeriodTypeNotDates"/>
+                  </require>
+                </properties>
+              </field>
+              <field attribute-ref="periodicParameters.periodSubtype" name="${ui.form.ResolutionTasksResource.periodSubtype:Доп. параметры:}">
+                <properties>
+                  <hide>
+                    <negative-condition-ref ref="ResolutionTasksResource_isPeriodTypeMonthly"/>
+                  </hide>
+                  <require>
+                    <condition-ref ref="ResolutionTasksResource_isPeriodTypeMonthly"/>
+                  </require>
+                </properties>
+                <directories>
+                  <directory-ref ref="period.subtype"/>
+                </directories>
+              </field>
+              <field attribute-ref="periodicParameters.createBefore" name="${ui.form.ResolutionTasksResource.createBefore:Создать за (раб. дней):}">
+                <properties>
+                  <hide>
+                    <condition-ref ref="ResolutionTasksResource_isPeriodTypeDates"/>
+                  </hide>
+                  <require>
+                    <condition-ref ref="ResolutionTasksResource_isPeriodTypeNotDates"/>
+                  </require>
+                </properties>
+              </field>
+              <field attribute-ref="periodicParameters.endDate" name="${ui.form.ResolutionTasksResource.endDate:Окончание:}">
+                <properties>
+                  <hide>
+                    <condition-ref ref="ResolutionTasksResource_isPeriodTypeDates"/>
+                  </hide>
+                  <require>
+                    <condition-ref ref="ResolutionTasksResource_isPeriodTypeNotDates"/>
+                  </require>
+                </properties>
+              </field>
+              <field attribute-ref="periodicParameters.dismissalNoticeLabel" name="${ui.form.ResolutionTasksResource.dismissalNoticeLabel:При увольнении исполнителя уведомлять:}">
+                <properties>
+                  <read-only>
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+              </field>
+              <field attribute-ref="periodicParameters.dismissalNoticeAuthor" name="${ui.form.ResolutionTasksResource.dismissalNoticeAuthor:Автора:}"/>
+              <field attribute-ref="periodicParameters.dismissalNoticeController" name="${ui.form.ResolutionTasksResource.dismissalNoticeController:Контроллёра:}"/>
+              <button recalc="true" attribute-ref="fillSchedule" name="${ui.form.DatesSchedule.compute:Вычислить график}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="edit"/>
+                    <negative-condition-ref ref="ResolutionTasksResource_isPeriodTypeNotDates"/>
+                  </hide>
+                </properties>
+              </button>
+              <field attribute-ref="periodicParameters.resolutionDatesSchedule">
+                <properties>
+                  <read-only>
+                    <condition-ref ref="ResolutionTasksResource_isPeriodTypeNotDates"/>
+                  </read-only>
+                  <hide>
+                    <negative-condition-ref ref="ResolutionTasksResource_isSchedulePresent"/>
+                  </hide>
+                </properties>
+                <appearance location="table" importance="normal"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="objectLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="10" field-unit="symbol"/>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="priority">
+                <appearance align="left"/>
+              </field>
+              <section id="row15" group="true">
+                <properties>
+                  <hide condition-union="AND">
+                    <condition-ref ref="securityStampIsEmptyTask"/>
+                    <condition-ref ref="readTaskResource"/>
+                  </hide>
+                </properties>
+                <appearance field-layout="horizontal">
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="horizontalSection"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+                <component>
+                  <section id="securityStampValue" group="true">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="ShowSecurityStampFieldTask"/>
+                      </hide>
+                    </properties>
+                    <component>
+                      <field attribute-ref="securityStamp" recalc="true"
+                             name="${ui.form.RkkResourceForm.section.Header.section.row15.field.securityStampText.name:Гриф доступа:}">
+                        <properties>
+                          <hide condition-union="AND">
+                            <condition-ref ref="docReasonWithdrawalIsViewTask"/>
+                            <condition-ref ref="docReasonWithdrawalManualIsViewTask"/>
+                            <condition-ref ref="docReasonWithdrawalReasonIsViewTask"/>
+                          </hide>
+                        </properties>
+                        <appearance importance="high" align="left">
+                          <label-style field-unit="symbol" field-width="27">
+                            <style id="tunBlack"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBlack"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                        <directories>
+                          <directory-select-value attribute-ref="personGrifs"/>
+                        </directories>
+                        <hint-pop-up>${ui.form.RkkResourceForm.section.Header.section.row15.field.securityStampText.hintPopUp:Гриф ограничения доступа к документу}
+                        </hint-pop-up>
+                      </field>
+                    </component>
+                  </section>
+                  <field attribute-ref="docReasonWithdrawlObj.Link"
+                         name="${ui.form.RkkResourceForm.section.Header.section.row15.field.securityStampLink.name:Гриф доступа}">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="docReasonWithdrawalIsViewTask"/>
+                      </hide>
+                    </properties>
+                    <appearance importance="high">
+                      <label-style field-width="6">
+                        <style id="tunBold"/>
+                      </label-style>
+                    </appearance>
+                  </field>
+                  <field attribute-ref="docReasonWithdrawlObj.GrifLabel">
+                    <properties>
+                      <read-only condition-union="AND">
+                        <condition>true</condition>
+                      </read-only>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="docReasonWithdrawalManualIsViewTask"/>
+                        <negative-condition-ref ref="docReasonWithdrawalReasonIsViewTask"/>
+                      </hide>
+                    </properties>
+                    <appearance importance="normal">
+                      <label-style field-width="11">
+                        <style id="tunGray"/>
+                        <style id="tunResetBtnStyles"/><!-- стиль tunResetBtnStyles, чтобы был такой же margin-top, как у кнопки "снят" -->
+                      </label-style>
+                    </appearance>
+                  </field>
+                  <button attribute-ref="docReasonWithdrawlObj" name="${grifWithdrawed:снят}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="docReasonWithdrawalManualIsViewTask"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style unit="symbol" width="6">
+                        <style id="tunBlue"/>
+                        <style id="tunUnderline"/>
+                        <style id="tunBold"/>
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <change-subobject schema-ref="ReasonDocDialog"/>
+                      </custom>
+                    </action>
+                  </button>
+                  <button attribute-ref="docReasonWithdrawlObj" name="${grifWithdrawed:снят}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="read"/>
+                        <negative-condition-ref ref="docReasonWithdrawalReasonIsViewTask"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style unit="symbol" width="6">
+                        <style id="tunBlue"/>
+                        <style id="tunUnderline"/>
+                        <style id="tunBold"/>
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <change-subobject schema-ref="ReasonDocTextDialog"/>
+                      </custom>
+                    </action>
+                  </button>
+                  <button attribute-ref="docReasonWithdrawlObj" name="${grifWithdrawed:снят}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <negative-condition-ref ref="edit"/>
+                        <negative-condition-ref ref="docReasonWithdrawalReasonIsViewTask"/>
+                      </hide>
+                    </properties>
+                    <appearance align="left">
+                      <label-style unit="symbol" width="6">
+                        <style id="tunBlue"/>
+                        <style id="tunUnderline"/>
+                        <style id="tunBold"/>
+                      </label-style>
+                    </appearance>
+                    <action>
+                      <custom>
+                        <change-subobject schema-ref="ReasonDocTextEditDialog"/>
+                      </custom>
+                    </action>
+                  </button>
+                  <field attribute-ref="addLinkedDocGrif" recalc="true">
+                    <properties>
+                      <hide>
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                  </field>
+                  <field attribute-ref="docReasonWithdrawlObj.withdrawStampReasonText" recalc="true">
+                    <properties>
+                      <hide>
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                  </field>
+                  <field attribute-ref="PaperDocNumbers" name="${ui.form.ResolutionTasksResourceForm.section.Header.section.row15.field.PaperDocNumbers.name:№ экз:}">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                    <appearance importance="high" align="right">
+                      <label-style field-unit="symbol" field-width="15">
+                        <style id="tunBlack"/>
+                      </label-style>
+                      <field-style>
+                        <value-style>
+                          <style id="tunBlack"/>
+                        </value-style>
+                      </field-style>
+                      <alt-appearancies>
+                        <alt-appearance>
+                          <appearance-ref ref="css_headerElementBold"/>
+                          <enable condition-union="AND">
+                            <condition>true</condition>
+                          </enable>
+                        </alt-appearance>
+                      </alt-appearancies>
+                    </appearance>
+                    <hint-pop-up>${ui.form.ResolutionTasksResourceForm.section.Header.section.row15.field.PaperDocNumbers.hintPopUp:№ бумажного документа, через запятую}</hint-pop-up>
+                  </field>
+                  <field attribute-ref="DOPName">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                  </field>
+                  <field attribute-ref="securityStamp" recalc="true">
+                    <properties>
+                      <hide condition-union="AND">
+                        <condition>true</condition>
+                      </hide>
+                    </properties>
+                  </field>
+                </component>
+              </section>
+            </component>
+          </section>
+          <field attribute-ref="$titleHeader">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="read"/>
+              </hide>
+            </properties>
+            <appearance importance="normal">
+              <label-style>
+                <style id="tunFontSize14"/>
+                <style id="tunClickableUnderline"/>
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunFontSize14"/>
+                  <style id="tunClickableUnderline"/>
+                </value-style>
+              </field-style>
+            </appearance>
+            <hint-in-field>${ui.form.ResolutionTasksResourceForm.section.Header.field.titleHeader.hintInField:Введите текст поручения}</hint-in-field>
+            <directories manual-input="true" limit-livesearch="no-restrictions">
+              <directory-ref ref="taskText"/>
+            </directories>
+          </field>
+          <field attribute-ref="$titleHeader">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="edit"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <hint-in-field>${ui.form.ResolutionTasksResourceForm.section.Header.field.titleHeader.hintInField:Введите текст поручения}</hint-in-field>
+            <directories manual-input="true" limit-livesearch="sys-current">
+              <directory-ref ref="taskText"/>
+            </directories>
+          </field>
+          <section id="row2" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="showProject">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="IsProject_Task"/>
+                  </hide>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="7" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="showRegInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="Registrated_Task"/>
+                  </hide>
+                </properties>
+                <appearance location="subform" align="left">
+                  <label-style field-width="20" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="showAuthor">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance location="subform" align="left">
+                  <label-style field-width="18" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="resdeadline">
+                <appearance align="left" importance="normal">
+                  <label-style field-width="16" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field recalc="true" attribute-ref="control">
+                <appearance location="subform" align="left" importance="normal">
+                  <label-style field-width="5" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="$executionAction">
+                <appearance align="left" importance="normal">
+                  <label-style field-width="5" field-unit="symbol"/>
+                </appearance>
+              </field>
+            </component>
+          </section>
+          <section id="linksAccessSection" group="true">
+            <appearance>
+              <label-style width="30" unit="symbol"/>
+            </appearance>
+            <component>
+              <field attribute-ref="disableLinkAccess" name="${ui.form.ResolutionTasksResourceForm.section.Header.section.linksAccessSection.field.disableLinkAccess.name:Ограничить доступ по связям}">
+                <appearance align="right" importance="normal">
+                  <label-style field-width="2" field-unit="symbol"/>
+                </appearance>
+                <hint-in-field>${ui.form.ResolutionTasksResourceForm.section.Header.section.linksAccessSection.field.disableLinkAccess.hintInField:Не дается доступ к текущему документу читателям связанных документов}</hint-in-field>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.ResolutionTasksResourceForm.section.RootMenu.button.AddLinkToFavoriteFolderAction.name:AddLinkToFavoriteFolderAction}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="CanHideAddToFavoriteButtonForResolutionTasks"/>
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="ADD_LINK_TO_FAVORITE_FOLDER"/>
+            </action>
+          </button>
+          <button name="${ui.form.ResolutionTasksResourceForm.section.RootMenu.button.RememberLinkAction.name:RememberLinkAction}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="CanHideRememberLinkButtonForResolutionTasks"/>
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="REMEMBER_LINK"/>
+            </action>
+          </button>
+          <field attribute-ref="$delete">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="CanTrashTasksResolution"/>
+              </hide>
+            </properties>
+            <hint-pop-up>${ui.ResolutionTasksResourceForm.delete:Удалить}</hint-pop-up>
+            <hint-in-field>${ui.ResolutionTasksResourceForm.delete:Удалить}</hint-in-field>
+          </field>
+          <section id="OTHER_EDIT" name="${ui.form.RkkResourceForm.section.RootMenu.section.OTHER.name:Другое}">
+          <appearance turn="true">
+            <action position="30" />
+          </appearance>
+          <properties>
+            <hide>
+              <negative-condition-ref ref="edit"/>
+            </hide>
+          </properties>
+          <component>
+            <section id="removeGrifMenu" name="${ui.form.RkkresourceForm.removeGrifMenu:Снять гриф доступа}">
+              <properties>
+                <hide condition-union="AND">
+                  <negative-condition-ref ref="showDeleteButtonTask"/>
+                  <negative-condition-ref ref="docReasonWithdrawalIsViewTask"/>
+                  <negative-condition-ref ref="docReasonWithdrawalManualIsViewTask"/>
+                  <negative-condition-ref ref="docReasonWithdrawalReasonIsViewTask"/>
+                  <negative-condition-ref ref="edit"/>
+                </hide>
+              </properties>
+              <rename name="${ui.form.RkkResourceForm.changeRemoveGrifMenu:Изменить причину снятия грифа}">
+                <condition-ref ref="docReasonWithdrawalIsViewTask"/>
+                <condition-ref ref="docReasonWithdrawalManualIsViewTask"/>
+                <condition-ref ref="docReasonWithdrawalReasonIsViewTask"/>
+              </rename>
+              <component>
+                <button name="${ui.form.RkkResourceForm.removeGrifMenu.selectReasonText:Указать причину}">
+                  <action>
+                    <custom>
+                      <change-subobject schema-ref="ReasonDocTextEditDialog"/>
+                    </custom>
+                  </action>
+                </button>
+                <button name="${ui.form.RkkResourceForm.removeGrifMenu.selectReasonDoc:Выбрать документ-основание}" attribute-ref="addLinkedDocGrif">
+                  <action>
+                    <custom>
+                      <update-linked-doc schema-ref="ReasonWithdrawalOfGrifResource"/>
+                    </custom>
+                  </action>
+                </button>
+              </component>
+            </section>
+          </component>
+        </section>
+        </component>
+      </section>
+      <section id="InfoMaterials" name="${ui.form.ResolutionTasksResourceForm.section.InfoMaterials.name:Информационные материалы}"/>
+      <section id="LinksWithOutLeftMenu" name="${ui.form.ResolutionTasksResourceForm.section.LinksWithOutLeftMenu.name:Связанные}">
+        <component>
+          <section id="Documents"/>
+        </component>
+      </section>
+      <section id="Discussion" name="${ui.form.ResolutionTasksResourceForm.section.Discussion.name:Обсуждения}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="canDiscuss(ResolutionTasks)"/>
+          </hide>
+        </properties>
+      </section>
+      <section id="History" name="${ui.form.ResolutionTasksResourceForm.section.History.name:История}"/>
+    </component>
+  </form>
+</ui>

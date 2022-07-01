@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ClientContextData_SOStructSave">
+    <meta>
+      <category name="РМ Администратора\СО"/>
+    </meta>
+    <schema-ref ref="PositionClassifierDialogDorSave" name="resource" system="true" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

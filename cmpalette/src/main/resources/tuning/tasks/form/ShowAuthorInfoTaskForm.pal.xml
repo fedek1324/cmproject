@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ShowAuthorInfoTask" id="ShowAuthorInfoTaskForm" projection="default" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="ShowAuthorInfoTaskForm_row1" group="true">
+        <appearance field-layout="horizontal"/>
+        <component>
+          <field attribute-ref="showAuthorLabel">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance align="left">
+              <label-style field-width="5" field-unit="symbol"/>
+              <alt-appearancies>
+                <alt-appearance>
+                  <appearance-ref ref="css_headerElementGray"/>
+                  <enable condition-union="AND">
+                    <condition>true</condition>
+                  </enable>
+                </alt-appearance>
+              </alt-appearancies>
+            </appearance>
+          </field>
+          <field attribute-ref="showAuthor">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance align="left">
+              <label-style field-width="18" field-unit="symbol"/>
+            </appearance>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="ContractsLite" view="(vw_cmj_Dog_onVisa)" id="dp-DogOnVisa-contracts-af5" name="Договоры - Дог - на согласовании" style="default">
+    <help id="99778653"/>
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
+    <table>
+      <columns>
+        <column-ref ref="hasGriff"/>
+        <column-ref ref="self"/>
+        <column-ref ref="regNumber" filter="true"/>
+        <column-ref ref="concludedDate" filter="true"/>
+        <column-ref ref="dogParty2" filter="true"/>
+        <column-ref ref="linkedDoc"/>
+        <column-ref ref="subject" filter="true"/>
+        <column-ref ref="dogPreparedByName" filter="true"/>
+        <column-ref ref="dogResponsiblesName" filter="true"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Contracts-CreateRKK" name="${catalog.custom-descriptor.dp-DogOnVisa-contracts-af5.actions.action.Contracts-CreateRKK.name:Создать/Договор}">
+        <create object-ref="RKK_CONTRACTS"/>
+      </action>
+    </actions>
+    <custom-actions schema-ref="RkkReadersContractLiteCollection"/>
+  </custom-descriptor>
+</catalog>

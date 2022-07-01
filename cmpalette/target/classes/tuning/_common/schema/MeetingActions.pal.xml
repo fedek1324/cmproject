@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="MeetingActions">
+    <meta>
+      <category name="Система\Заседания"/>
+    </meta>
+    <boolean name="$canSendToApproving_agenda" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#agenda.approving.start'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canSendToReview_minutes" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#minutes.review.start'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canSendToReview_agenda" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#agenda.review.start'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canSendToApproving_minutes" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#minutes.approving.start'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canTrash" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#move.to.trash'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canAddPointInPacket" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='edit'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$canDiscuss" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#discussion'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

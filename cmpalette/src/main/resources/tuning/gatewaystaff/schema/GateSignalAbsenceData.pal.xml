@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="GateSignalAbsenceData">
+    <meta>
+      <category name="РМ Администратора\Шлюз"/>
+    </meta>
+    <date name="startDate" createlog="true" temporal="true"/>
+    <date name="endDate" createlog="true" temporal="true"/>
+    <string name="reason" createlog="true" temporal="true"/>
+    <boolean name="delInHr" createlog="true" temporal="true">
+      <storage-string value="1"/>
+    </boolean>
+  </schema>
+</schemas>

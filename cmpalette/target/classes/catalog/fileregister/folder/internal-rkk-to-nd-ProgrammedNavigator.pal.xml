@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="internal-rkk-to-nd" name="${catalog.view.internal-rkk-to-nd.name:Внутренние документы}" position="-1">
+    <descriptor-ref ref="internal-rkk-to-nd"/>
+    <source>
+      <module ident="InternalDocs"/>
+    </source>
+  </view>
+</catalog>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" name="VisaCardDlg">
+    <meta>
+      <category name="Асинхронные операции\Согласование"/>
+    </meta>
+    <enum-ref default-value="1" ref="EnumThree" name="result" createlog="true" temporal="true"/>
+    <string name="comment" createlog="true" temporal="true"/>
+    <string array="true" name="ids" createlog="true" temporal="true"/>
+    <string name="mode" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['dialog']]></script>
+      </calc-values>
+    </string>
+    <boolean name="commentIsRequired" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[result=="2" || result =="3"]]></script>
+      </calc-values>
+    </boolean>
+    <string name="counter" createlog="true" temporal="true"/>
+  </schema>
+</schemas>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+    <enum name="periodSubtypeEnum">
+        <meta>
+            <category name="Общее"/>
+        </meta>
+        <string value="DAY_OF_MONTH" name="DAY_OF_MONTH"/>
+        <string value="FIRST_WEEK" name="FIRST_WEEK"/>
+        <string value="SECOND_WEEK" name="SECOND_WEEK"/>
+        <string value="THIRD_WEEK" name="THIRD_WEEK"/>
+        <string value="FOURTH_WEEK" name="FOURTH_WEEK"/>
+        <string value="LAST_WEEK" name="LAST_WEEK"/>
+    </enum>
+</schemas>

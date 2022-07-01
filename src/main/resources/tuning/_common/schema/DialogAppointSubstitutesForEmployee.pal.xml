@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
-  <schema extends="DialogAppointSubstitutesOrAuditors" name="DialogAppointSubstitutesForEmployee">
-    <meta>
-      <category name="РМ Администратора"/>
-    </meta>
-    <schema-ref ref="GroupZamBeardsEmployee" array="true" name="groupZam" system="true" temporal="true"/>
-  </schema>
-</schemas>

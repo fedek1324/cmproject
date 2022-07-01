@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!--Роли-->
+    <xs:complexType name="aclObjectType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Роль ACL]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название роли]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="contextObjectType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Контекстная роль]]></xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Название роли]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="substituties" type="xs:boolean" use="optional" default="false">
+            <xs:annotation>
+                <xs:documentation><![CDATA[С учетом замещения]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="systemObjectType">
+        <xs:annotation>
+            <xs:documentation><![CDATA[Системная роль]]></xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="name" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Название роли]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="lang" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[Язык вычиления роли]]></xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="SPEL">
+                                <xs:annotation>
+                                    <xs:documentation><![CDATA[SPEL-выражение]]></xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="rolesType">
+        <xs:choice maxOccurs="unbounded">
+            <xs:element name="acl" type="aclObjectType" maxOccurs="unbounded"/>
+            <xs:element name="context" type="contextObjectType" maxOccurs="unbounded"/>
+            <xs:element name="system" type="systemObjectType" maxOccurs="unbounded"/>
+        </xs:choice>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="Meetings" view="(vw_cmj_01_1)" id="meetings-01-1" name="Заседания ЗНС - Плановые заседания - По виду заседания" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="meetingStatus"/>
+        <column-ref ref="meetingIsAbsentee" sort-asc="true"/>
+        <column-ref ref="meetingDate"/>
+        <column-ref ref="meetingTime"/>
+        <column-ref ref="minutesNumber"/>
+      </columns>
+    </table>
+    <actions>
+      <action id="Meetings-CreateMeeting" name="${catalog.custom-descriptor.meetings-01-1.actions.action.Meetings-CreateMeeting.name:Создать/Заседание}">
+        <create object-ref="MEETING"/>
+      </action>
+    </actions>
+  </custom-descriptor>
+</catalog>

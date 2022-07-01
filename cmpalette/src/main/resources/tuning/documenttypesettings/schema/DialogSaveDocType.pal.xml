@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="DialogSaveDocType" extends="DialogForSave">
+    <meta>
+      <category name="Настройки видов документов"/>
+    </meta>
+    <boolean name="submit" temporal="true"/>
+    <string name="message" temporal="true"/>
+    <string name="docTypeInTrash" temporal="true"/>
+  </schema>
+
+  <schema name="ClientContextData_DocTypeSave">
+    <meta>
+      <category name="Настройки видов документов"/>
+    </meta>
+    <schema-ref ref="DialogSaveDocType" name="resource" temporal="true"/>
+  </schema>
+
+  <schema name="ClientContext_SaveDocTypeWithDialog">
+    <meta>
+      <category name="Настройки видов документов"/>
+    </meta>
+    <string name="fields" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['resource']]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="ClientContextData_DocTypeSave" name="data" temporal="true"/>
+  </schema>
+</schemas>

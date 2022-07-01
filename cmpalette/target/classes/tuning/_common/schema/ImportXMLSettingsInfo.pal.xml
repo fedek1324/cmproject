@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ImportXMLSettingsInfo">
+    <meta>
+      <category name="Система\Обращение граждан"/>
+    </meta>
+    <string name="id" temporal="true"/>
+  </schema>
+</schemas>

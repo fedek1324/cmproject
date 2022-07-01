@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="NRDDocumentResource">
+    <meta>
+      <category name="Система\Документы"/>
+    </meta>
+    <string name="title" system="true"/>
+    <schema-ref ref="EDMFolderInfo" array="true" name="parentFoldersInfo" system="true"/>
+    <schema-ref ref="SettingDocumentTypeResource" name="documentType" system="true"/>
+    <schema-ref ref="Pair" name="status" system="true"/>
+    <schema-ref ref="Pair" array="true" name="documentTopics" system="true"/>
+    <actor array="true" name="performers" system="true"/>
+    <actor name="hostDepartment">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#getUserDepartment()]]></script>
+      </calc-values>
+    </actor>
+    <actor name="confirmer" system="true"/>
+    <string name="accessScheme" system="true"/>
+    <string name="objectLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Документ']]></script>
+      </calc-values>
+    </string>
+    <string name="docCategory" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[documentType!=null ? documentType.category : null]]></script>
+      </calc-values>
+    </string>
+    <string name="docType" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[documentType!=null ? documentType.type : null]]></script>
+      </calc-values>
+    </string>
+    <string name="$titleHeader" system="true"/>
+    <schema-ref ref="VersionInfo" name="versionInfo" system="true"/>
+    <string name="titleVersion" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Версия:']]></script>
+      </calc-values>
+    </string>
+    <string name="titleBaseVersion" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Создан по версии:']]></script>
+      </calc-values>
+    </string>
+    <boolean name="$hasBaseVersion" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[versionInfo.baseVersion != null]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$onApproving" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#approving.lists'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="$onReview" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#review.lists'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string name="approvingStatus" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['На согласовании']]></script>
+      </calc-values>
+    </string>
+    <string name="reviewStatus" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['На ознакомлении']]></script>
+      </calc-values>
+    </string>
+    <string name="confirmationStatus" temporal="true"/>
+    <boolean name="disableLinkAccess">
+      <storage-field name="disableLinkAccess"/>
+    </boolean>
+    <string name="$preparationStatusInfo" system="true"/>
+    <boolean name="$canDiscuss" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#discussion'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

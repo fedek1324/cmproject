@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="GatewayStaff" view="(vw_cmj_signals_processed_notes)" id="admin-hr-cmj-signals-processed" name="Прием сигналов - Сигналы notes из УП (обработанные)" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="OperationType" category="true"/>
+        <column-ref ref="updatedTime" filter="true"/>
+        <column-ref ref="created" filter="true"/>
+        <column-ref ref="objectHR" filter="true"/>
+        <column-ref ref="sysCodePersonId" filter="true"/>
+        <column-ref ref="refCodeTabNum" filter="true"/>
+        <column-ref ref="HeadID" filter="true"/>
+        <column-ref ref="ChangedFields" filter="true"/>
+        <column-ref ref="area" filter="true"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

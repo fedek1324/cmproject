@@ -1,0 +1,307 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="NdFileSettingResource" id="NdFileSettingResourceForm" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="Header" group="true">
+        <component>
+          <section id="HeaderRow10" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="showident">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-unit="symbol" field-width="24">
+                    <style id="tunIconProgress"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunIconProgress"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="Organization">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="edit"/>
+                    <condition>true</condition>
+                  </require>
+                  <read-only condition-union="AND">
+                    <negative-condition-ref ref="TObjectIsNotNew" />
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="normal">
+                  <label-style field-width="38" field-unit="symbol">
+                    <style id="tunIconProgress"/>
+                  </label-style>
+                </appearance>
+                <hint-in-field>${ui.form.NdFileSettingResourceForm.section.Header.section.HeaderRow10.field.Organization.hint:Название организации или подразделения}</hint-in-field>
+                <directories livesearch="true" limit-livesearch="no-restrictions" relation="NdOrgAndDepsHasNdo" digest="digestSOLiveSearch">
+                  <directory-ref ref="CURRENT_ORG_ONLY"/>
+                  <directory-ref ref="NdDepsHasNdo"/>
+                </directories>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="CommonSettings" name="${ui.form.NdFileSettingResourceForm.section.CommonSettings.name:Общие настройки}">
+        <appearance field-layout="vertical">
+          <label-style width="40" unit="symbol"/>
+        </appearance>
+        <component>
+          <field attribute-ref="IsComplectStateArchive" recalc="true" name="${ui.form.NdFileSettingResourceForm.section.CommonSettings.field.IsComplectStateArchive.name:Организация является источником комплектования государственного/муниципального архива}">
+            <appearance importance="normal" align="left" widget="checkbox"/>
+          </field>
+          <field attribute-ref="StateOrg" name="${ui.form.NdFileSettingResourceForm.section.CommonSettings.field.StateOrg.name:Государственный / муниципальный архив}">
+            <properties>
+              <require>
+                <condition-ref ref="edit"/>
+                <condition-ref ref="FrIsComplectStateArchive"/>
+              </require>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="FrIsComplectStateArchive"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="FOREIGN_ORGS"/>
+            </directories>
+          </field>
+          <field attribute-ref="ApproveStateOrgYears" name="${ui.form.NdFileSettingResourceForm.section.CommonSettings.field.ApproveStateOrgYears.name:НД подлежит обязательному согласованию с архивным учреждением в годах:}">
+            <properties>
+              <require>
+                <condition-ref ref="edit"/>
+                <condition-ref ref="FrIsComplectStateArchive"/>
+              </require>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="FrIsComplectStateArchive"/>
+              </hide>
+            </properties>
+            <appearance importance="normal"/>
+            <directories limit-livesearch="no-restrictions">
+              <directory-ref ref="NDOYears"/>
+            </directories>
+          </field>
+          <field attribute-ref="SpdUsedFile" name="${ui.form.NdFileSettingResourceForm.section.CommonSettings.field.SpdUsedFile.name:Используется справочник сроков хранения}">
+            <appearance importance="normal" align="left" widget="checkbox"/>
+          </field>
+          <field attribute-ref="RemoveRkkSentArchive" name="${ui.form.NdFileSettingResourceForm.section.CommonSettings.field.RemoveRkkSentArchive.name:Удалять из «Электронного архива» РКК, включенные в переданные в архив дела}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="FrIsUseArcModule"/>
+              </hide>
+            </properties>
+            <appearance importance="normal" align="left" widget="checkbox"/>
+          </field>
+          <field attribute-ref="RemoveRkkSentDestr" name="${ui.form.NdFileSettingResourceForm.section.CommonSettings.field.RemoveRkkSentDestr.name:Удалять из «Электронного архива» РКК, включенные в уничтоженные дела}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="FrIsUseArcModule"/>
+              </hide>
+            </properties>
+            <appearance importance="normal" align="left" widget="checkbox"/>
+          </field>
+        </component>
+      </section>
+      <section id="NdSettings" name="${ui.form.NdFileSettingResourceForm.section.NdSettings.name:Настройки номенклатуры дел}">
+        <appearance field-layout="vertical">
+          <label-style width="40" unit="symbol"/>
+        </appearance>
+        <component>
+          <field attribute-ref="PrefixSplitterFr" name="${ui.form.NdFileSettingResourceForm.section.NdSettings.field.PrefixSplitterFr.name:Разделитель после префиксальной части номенклатурного индекса:}">
+            <appearance importance="normal" align="left"/>
+          </field>
+          <field attribute-ref="FrChangeType" name="${ui.form.NdFileSettingResourceForm.section.NdSettings.field.FrChangeType.name:Изменения в действующую НД}">
+            <directories>
+              <directory-ref ref="frsChangeType" />
+            </directories>
+            <appearance importance="normal" align="left"/>
+          </field>
+          <field attribute-ref="DealSettingTitle">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance importance="high" align="left">
+              <label-style>
+                <style id="tunBgSky" />
+              </label-style>
+              <field-style>
+                <value-style>
+                  <style id="tunBgSky" />
+                </value-style>
+              </field-style>
+            </appearance>
+          </field>
+          <field attribute-ref="PrefixSplitterFile" name="${ui.form.NdFileSettingResourceForm.section.NdSettings.field.PrefixSplitterFile.name:Разделитель после префиксальной части индекса дела:}">
+            <appearance importance="normal" align="left"/>
+          </field>
+          <field attribute-ref="SuffixSplitterFile" name="${ui.form.NdFileSettingResourceForm.section.NdSettings.field.SuffixSplitterFile.name:Разделитель перед суффиксальной части индекса дела:}">
+            <appearance importance="normal" align="left"/>
+          </field>
+          <field attribute-ref="IndexAutoGenerationFile" name="${ui.form.NdFileSettingResourceForm.section.NdSettings.field.IndexAutoGenerationFile.name:Автоматическое формирование индексов дел не используется}">
+            <appearance importance="normal" align="left" widget="checkbox"/>
+          </field>
+          <field attribute-ref="NumOfSignsFile" name="${ui.form.NdFileSettingResourceForm.section.NdSettings.field.NumOfSignsFile.name:Количество знаков в порядковой части индекса дела:}">
+            <appearance importance="normal" align="left"/>
+          </field>
+        </component>
+      </section>
+      <section id="ApproveSettings" name="${ui.form.NdFileSettingResourceForm.section.ApproveSettings.name:Настройки согласования}">
+        <component>
+          <section id="NDApproveSettings" name="${ui.form.NdFileSettingResourceForm.section.ApproveSettings.section.NDApproveSettings.name:Согласование объектов модуля - Номенклатура дел}">
+            <appearance field-layout="vertical">
+              <label-style width="40" unit="symbol"/>
+            </appearance>
+            <component>
+              <field attribute-ref="ApproveThrowInternalDocTitle">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="high" align="left">
+                  <label-style>
+                    <style id="tunBgSky" />
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBgSky" />
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="ThroughIternalUnit" name="${ui.form.NdFileSettingResourceForm.section.ApproveSettings.section.NDApproveSettings.field.ThroughIternalUnit.name:Номенклатуры дел подразделений}">
+                <appearance importance="normal" align="left" widget="checkbox"/>
+              </field>
+              <field attribute-ref="ChgThroughIternalUnit" name="${ui.form.NdFileSettingResourceForm.section.ApproveSettings.section.NDApproveSettings.field.ChgThroughIternalUnit.name:Изменения к номенклатурам дел подразделений}">
+                <appearance importance="normal" align="left" widget="checkbox"/>
+              </field>
+              <field attribute-ref="ThroughIternalOrg" name="${ui.form.NdFileSettingResourceForm.section.ApproveSettings.section.NDApproveSettings.field.ThroughIternalOrg.name:Сводные номенклатуры дел}">
+                <appearance importance="normal" align="left" widget="checkbox"/>
+              </field>
+              <field attribute-ref="ChangesThroughIternalOrg" name="${ui.form.NdFileSettingResourceForm.section.ApproveSettings.section.NDApproveSettings.field.ChangesThroughIternalOrg.name:Изменения к номенклатурам дел организаций (сводным номенклатурам дел)}">
+                <appearance importance="normal" align="left" widget="checkbox"/>
+              </field>
+            </component>
+          </section>
+          <section id="ArcApproveSettings" name="${ui.form.NdFileSettingResourceForm.section.ApproveSettings.section.ArcApproveSettings.name:Согласование объектов модуля - Архив}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="FrIsUseArcModule"/>
+              </hide>
+            </properties>
+            <appearance field-layout="vertical">
+              <label-style width="40" unit="symbol"/>
+            </appearance>
+            <component>
+              <field attribute-ref="ApproveThrowInternalDocTitle">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance importance="high" align="left">
+                  <label-style>
+                    <style id="tunBgSky" />
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBgSky" />
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="ArcDepThroughApprove" name="${ui.form.NdFileSettingResourceForm.section.ApproveSettings.section.ArcApproveSettings.field.ArcDepThroughApprove.name:Описи дел подразделений}">
+                <appearance importance="normal" align="left" widget="checkbox"/>
+              </field>
+              <field attribute-ref="ArcAnnInvThroughApprove" name="${ui.form.NdFileSettingResourceForm.section.ApproveSettings.section.ArcApproveSettings.field.ArcAnnInvThroughApprove.name:Годовые разделы описей}">
+                <appearance importance="normal" align="left" widget="checkbox"/>
+              </field>
+              <field attribute-ref="ArcPADestrThroughApprove" name="${ui.form.NdFileSettingResourceForm.section.ApproveSettings.section.ArcApproveSettings.field.ArcPADestrThroughApprove.name:Предложения к акту о выделении на уничтожение}">
+                <appearance importance="normal" align="left" widget="checkbox"/>
+              </field>
+              <field attribute-ref="ArcADestrThroughApprove" name="${ui.form.NdFileSettingResourceForm.section.ApproveSettings.section.ArcApproveSettings.field.ArcADestrThroughApprove.name:Акты о выделении на уничтожение}">
+                <appearance importance="normal" align="left" widget="checkbox"/>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section name="${ui.form.NdFileSettingResourceForm.section.History.name:История}" id="History" />
+      <section id="RootMenu" name="${ui.form.NdFileSettingResourceForm.section.RootMenu.name:RootMenu}">
+        <component>
+          <button name="${ui.form.NdFileSettingResourceForm.section.RootMenu.button.edit:Редактировать}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObject_CanEdit_ReadMode"/>
+              </hide>
+            </properties>
+            <icon code="95"/>
+            <action position="6.0">
+              <custom>
+                <open-edit/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.NdFileSettingResourceForm.section.RootMenu.button.hide.system.edit:Скрыть системную кнопку Редактировать}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="EDIT"/>
+            </action>
+          </button>
+          <button name="${ui.form.NdFileSettingResourceForm.section.RootMenu.button.hide.system.save:Скрыть системную кнопку Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE"/>
+            </action>
+          </button>
+          <button name="${ui.form.NdFileSettingResourceForm.section.RootMenu.button.save:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <save-existing/>
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.NdFileSettingResourceForm.section.RootMenu.button.save:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew"/>
+              </hide>
+            </properties>
+            <action position="9.0">
+              <custom>
+                <save/>
+              </custom>
+            </action>
+          </button>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

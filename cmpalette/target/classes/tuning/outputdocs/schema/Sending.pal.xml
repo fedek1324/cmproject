@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="Sending">
+    <meta>
+      <category name="Система\Делопроизводство"/>
+    </meta>
+    <schema-ref ref="AddresseePossible" array="true" name="possible" system="true"/>
+    <schema-ref ref="AddresseeSpecified" array="true" name="specified" system="true"/>
+    <schema-ref ref="AddresseeSpecified" array="true" name="history" system="true"/>
+    <string name="arrived" system="true"/>
+    <actor name="department" system="true"/>
+    <boolean name="isMedoSendingComplete" system="true" temporal="true"/>
+  </schema>
+</schemas>

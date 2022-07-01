@@ -1,0 +1,459 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="PointResource" id="PointResourceForm" name="${ui.form.PointResourceForm.name:PointResourceForm}" projection="default" showtabs="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <appearance widget="tabs"/>
+    <component>
+      <button name="${ui.form.PointResourceForm.button.Новый как копия.name:Новый как копия}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="read"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.PointResourceForm.button.Новый как копия.hintPopUp:Новый как копия}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#copy"/>
+        </action>
+      </button>
+      <button name="${ui.form.PointResourceForm.button.На согласование.name:На согласование}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="CanSendToApproving_meetingDocs"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.PointResourceForm.button.На согласование.hintPopUp:На согласование}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#approving.start"/>
+        </action>
+      </button>
+      <button name="${ui.form.PointResourceForm.button.Удалить.name:Удалить}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="MeetingsDocCanTrash"/>
+          </hide>
+        </properties>
+        <hint-pop-up>${ui.form.PointResourceForm.button.Удалить.hintPopUp:Удалить}</hint-pop-up>
+        <action>
+          <system name="http://intertrust.ru/cmj/relations#move.to.trash"/>
+        </action>
+      </button>
+      <section id="Attributes" name="${ui.form.PointResourceForm.section.Attributes.name:Реквизиты}">
+        <component>
+          <section id="linksAccessSection" group="true">
+            <appearance>
+              <label-style width="30" unit="symbol"/>
+            </appearance>
+            <component>
+              <field attribute-ref="disableLinkAccess" name="${ui.form.PointResourceForm.section.Attributes.section.linksAccessSection.field.disableLinkAccess.name:Ограничить доступ по связям}">
+                <appearance align="right" importance="normal">
+                  <label-style field-width="2" field-unit="symbol"/>
+                </appearance>
+                <hint-in-field>${ui.form.PointResourceForm.section.Attributes.section.linksAccessSection.field.disableLinkAccess.hintInField:Не дается доступ к текущему документу читателям связанных документов}</hint-in-field>
+              </field>
+            </component>
+          </section>
+          <section id="Main" name="${ui.form.PointResourceForm.section.Attributes.section.Main.name:Основные}">
+            <component>
+              <field clickable="true" attribute-ref="execution" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.execution.name:Вопрос создан по:}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="PointHasLinkedExecution"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal" clickable="true">
+                  <label-style>
+                    <style id="tunBlue"/>
+                    <style id="tunUnderline"/>
+                    <style id="tunClickableRed"/>
+                  </label-style>
+                  <field-style>
+                    <value-style>
+                      <style id="tunBlue"/>
+                      <style id="tunUnderline"/>
+                      <style id="tunClickableRed"/>
+                    </value-style>
+                  </field-style>
+                </appearance>
+              </field>
+              <field attribute-ref="number" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.number.name:№ вопроса:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isNotPlanningQuestion"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Main.field.number.hintPopUp:№ вопроса}</hint-pop-up>
+              </field>
+              <field attribute-ref="presenter" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.presenter.name:Представляющий:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="email"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal">
+                  <field-style group="true"/>
+                </appearance>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Main.field.presenter.hintPopUp:Представляющий}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-select-value name="Целевая группа" attribute-ref="presenterTargetGroup"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                  <directory-ref ref="ALIEN_BEARDS"/>
+                  <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+                </directories>
+              </field>
+              <field recalc="true" attribute-ref="responsible" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.responsible.name:Ответственные за подготовку:}">
+                <appearance importance="normal">
+                  <field-style group="true"/>
+                </appearance>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Main.field.responsible.hintPopUp:Ответственные за подготовку}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                  <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+                  <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+                </directories>
+              </field>
+              <field attribute-ref="reporter" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.reporter.name:Докладчики:}">
+                <appearance importance="normal">
+                  <field-style group="true"/>
+                </appearance>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Main.field.reporter.hintPopUp:Докладчики}</hint-pop-up>
+                <directories limit-livesearch="sys-current">
+                  <directory-select-value name="Целевая группа" attribute-ref="responsible"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                  <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+                </directories>
+              </field>
+              <field attribute-ref="isReportersHasAccessOnlyToThisPoint" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.isReportersHasAccessOnlyToThisPoint.name:Доступ только к своему вопросу}">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition-ref ref="isNotSecretariatPoint"/>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isNotPlanningQuestion"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Main.field.isReportersHasAccessOnlyToThisPoint.hintPopUp:Доступ только к своему вопросу}</hint-pop-up>
+              </field>
+              <field recalc="true" attribute-ref="invited" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.invited.name:Приглашенные по вопросу:}">
+                <appearance importance="normal">
+                  <field-style separator="newline" group="true"/>
+                </appearance>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Main.field.invited.hintPopUp:Приглашенные по вопросу}</hint-pop-up>
+                <show-value schema-ref="VCardResource.Invited"/>
+                <directories limit-livesearch="sys-current">
+                  <directory-ref ref="CURRENT_SYS_HUMAN"/>
+                  <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
+                  <directory-ref ref="ALIEN_BEARDS_HUMANONLY"/>
+                  <directory-ref ref="FV_CURR_HUMAN_HH_FOREIGN_HUMAN"/>
+                </directories>
+              </field>
+              <field attribute-ref="isInvitedHasAccessOnlyToThisPoint" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.isInvitedHasAccessOnlyToThisPoint.name:Доступ только к вопросу}">
+                <properties>
+                  <require condition-union="AND">
+                    <condition-ref ref="isNotSecretariatPoint"/>
+                  </require>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="isNotPlanningQuestion"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Main.field.isInvitedHasAccessOnlyToThisPoint.hintPopUp:Доступ только к вопросу}</hint-pop-up>
+              </field>
+              <field attribute-ref="voters" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.voters.name:Голосуют:}">
+                <appearance importance="normal">
+                  <field-style group="true"/>
+                </appearance>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Main.field.voters.hintPopUp:Голосуют}</hint-pop-up>
+                <directories>
+                  <directory-select-value attribute-ref="votersTargetGroup" name="Целевая группа"/>
+                </directories>
+              </field>
+              <field attribute-ref="estimatedReportDuration" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.estimatedReportDuration.name:Время для доклада:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Main.field.estimatedReportDuration.hintPopUp:Время для доклада}</hint-pop-up>
+              </field>
+              <field attribute-ref="actualReportDuration" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.actualReportDuration.name:Фактическое время доклада:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="email"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Main.field.actualReportDuration.hintPopUp:Фактическое время доклада}</hint-pop-up>
+              </field>
+              <field attribute-ref="estimatedDiscussionDuration" name="${ui.form.PointResourceForm.section.Attributes.section.Main.field.estimatedDiscussionDuration.name:Время на обсуждение:}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="email"/>
+                  </hide>
+                </properties>
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Main.field.estimatedDiscussionDuration.hintPopUp:Время на обсуждение}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+          <section id="Projects" name="${ui.form.PointResourceForm.section.Attributes.section.Projects.name:Проекты решений}">
+            <component>
+              <field attribute-ref="$projects" name="${ui.form.PointResourceForm.section.Attributes.section.Projects.field.projects.name:Проекты:}">
+                <appearance importance="normal"/>
+                <hint-pop-up>${ui.form.PointResourceForm.section.Attributes.section.Projects.field.projects.hintPopUp:Проекты}</hint-pop-up>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="Header">
+        <component>
+          <section id="row1" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="objectLabel">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="15" field-unit="symbol"/>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementWithIcon"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field recalc="true" attribute-ref="$meetingTypeInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left"/>
+              </field>
+              <section id="securityStampSection" group="true">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="showSecurityStampMeetings"/>
+                  </hide>
+                </properties>
+                <appearance field-layout="horizontal"/>
+                <component>
+                  <section id="secStamp_read" group="true">
+                    <properties>
+                      <hide>
+                        <negative-condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <component>
+                      <field attribute-ref="securityStamp" name="${ui.form.Meetings.securityStampText.name:Гриф доступа:}">
+                        <properties>
+                          <hide>
+                            <condition-ref ref="securityStampIsEmptyMeetings"/>
+                          </hide>
+                        </properties>
+                        <appearance importance="high" align="left">
+                          <label-style field-unit="symbol" field-width="27" label-width="11" label-unit="symbol">
+                            <style id="tunBlack"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBlack"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                      </field>
+                    </component>
+                  </section>
+                  <section id="secStamp_edit" group="true">
+                    <properties>
+                      <hide>
+                        <condition-ref ref="read"/>
+                      </hide>
+                    </properties>
+                    <component>
+                      <field attribute-ref="securityStamp" name="${ui.form.Meetings.securityStampText.name:Гриф доступа:}">
+                        <properties>
+                          <hide condition-union="AND">
+                            <negative-condition-ref ref="Point_CanEditSecurityStamp"/>
+                          </hide>
+                        </properties>
+                        <appearance importance="high" align="left">
+                          <label-style field-unit="symbol" field-width="27" label-width="11" label-unit="symbol">
+                            <style id="tunBlack"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBlack"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                        <directories>
+                          <directory-select-value attribute-ref="personGrifs"/>
+                        </directories>
+                        <hint-pop-up>${ui.form.Meetings.securityStampText.hintPopUp:Гриф ограничения доступа к документу}</hint-pop-up>
+                      </field>
+                      <field attribute-ref="securityStamp" name="${ui.form.Meetings.securityStampText.name:Гриф доступа:}">
+                        <properties>
+                          <read-only condition-union="AND">
+                            <condition>true</condition>
+                          </read-only>
+                          <hide condition-union="AND">
+                            <condition-ref ref="Point_CanEditSecurityStamp"/>
+                          </hide>
+                        </properties>
+                        <appearance importance="high" align="left">
+                          <label-style field-unit="symbol" field-width="27" label-width="11" label-unit="symbol">
+                            <style id="tunBlack"/>
+                          </label-style>
+                          <field-style>
+                            <value-style>
+                              <style id="tunBlack"/>
+                            </value-style>
+                          </field-style>
+                        </appearance>
+                        <hint-pop-up>${ui.form.Meetings.securityStampText.hintPopUp:Гриф ограничения доступа к документу}</hint-pop-up>
+                      </field>
+                    </component>
+                  </section>
+                </component>
+              </section>
+              <field attribute-ref="$included">
+                <appearance align="right"/>
+              </field>
+            </component>
+          </section>
+          <field attribute-ref="$titleHeader">
+            <properties>
+              <require condition-union="AND">
+                <condition>true</condition>
+              </require>
+            </properties>
+          </field>
+          <section id="row2" group="true">
+            <appearance field-layout="horizontal"/>
+            <component>
+              <field attribute-ref="labelDate">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="HasMeeting"/>
+                  </hide>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="5" field-unit="symbol"/>
+                  <alt-appearancies>
+                    <alt-appearance>
+                      <appearance-ref ref="css_headerElementGray"/>
+                      <enable condition-union="AND">
+                        <condition>true</condition>
+                      </enable>
+                    </alt-appearance>
+                  </alt-appearancies>
+                </appearance>
+              </field>
+              <field attribute-ref="meetingDate">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="HasMeeting"/>
+                  </hide>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="20" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="$agendaInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left" importance="high">
+                  <label-style field-width="32" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="$executionInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="left">
+                  <label-style field-width="8" field-unit="symbol"/>
+                </appearance>
+              </field>
+              <field attribute-ref="$approvStatusInfo">
+                <properties>
+                  <read-only condition-union="AND">
+                    <condition>true</condition>
+                  </read-only>
+                </properties>
+                <appearance align="right" importance="normal">
+                  <label-style field-width="16"/>
+                </appearance>
+              </field>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="AdditionalMaterials" name="${ui.form.PointResourceForm.section.AdditionalMaterials.name:Дополнительные материалы}">
+        <component>
+          <field attribute-ref="contentWidget"/>
+          <section id="row_content" name="${ui.form.PointResourceForm.section.AdditionalMaterials.section.row_content.name:Содержание}">
+            <appearance turn="true"/>
+            <component>
+              <field attribute-ref="$content"/>
+            </component>
+          </section>
+        </component>
+      </section>
+      <section id="LifeCycle" name="${ui.form.PointResourceForm.section.LifeCycle.name:Жизненный цикл}">
+        <appearance widget="leftMenu"/>
+        <component>
+            <section name="${ui.form.PointResourceForm.section.LifeCycle.ApprovingSection.name:Согласование}" id="ApprovingSection" group="true">
+                <component>
+                    <section id="ApprovingButtons">
+                        <appearance widget="inactiveTab"/>
+                    </section>
+                    <section name="${ui.form.PointResourceForm.section.LifeCycle.ApprovingSection.section.Approving.name:Согласование}" id="Approving"/>
+                </component>
+            </section>
+        </component>
+      </section>
+      <section id="Links" name="${ui.form.PointResourceForm.section.Links.name:Связанные}">
+        <appearance widget="leftMenu"/>
+        <component>
+          <section id="Documеnts" name="${ui.form.PointResourceForm.section.Links.section.Documеnts.name:Документы}"/>
+          <section id="Visualization" name="${ui.form.PointResourceForm.section.Links.section.Visualization.name:Визуализация}"/>
+        </component>
+      </section>
+      <section id="Discussion" name="${ui.form.PointResourceForm.section.Discussion.name:Обсуждения}">
+        <properties>
+          <hide condition-union="AND">
+            <negative-condition-ref ref="canDiscussMeetings"/>
+          </hide>
+        </properties>
+      </section>
+      <section id="History" name="${ui.form.PointResourceForm.section.History.name:История}"/>
+    </component>
+  </form>
+</ui>

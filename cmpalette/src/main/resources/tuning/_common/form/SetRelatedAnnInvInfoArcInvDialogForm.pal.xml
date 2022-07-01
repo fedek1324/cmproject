@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SetRelatedAnnInvInfoArcInvDialog" projection="default" id="SetRelatedAnnInvInfoArcInvDialogForm">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog" />
+      </hide>
+    </properties>
+    <component>
+      <section group="true" id="rowFields">
+        <component>
+          <field attribute-ref="tmpAnnInvInfoList" name="${ui.form.SetRelatedAnnInvInfoArcInvDialogForm.section.rowFields.field.tmpAnnInvInfoList.name:Годовые разделы:}">
+            <directories relation="Archives-All-AnnInv-ArcInv-cls" livesearch="true">
+              <directory-ref ref="colAnnInvArcInv" />
+            </directories>
+          </field>
+        </component>
+        <appearance field-layout="vertical" />
+      </section>
+      <button name="${ui.form.SetRelatedAnnInvInfoArcInvDialogForm.button.Ок.name:Ок}">
+        <action>
+          <system name="submit" />
+        </action>
+      </button>
+      <button name="${ui.form.SetRelatedAnnInvInfoArcInvDialogForm.button.Отмена.name:Отмена}">
+        <action>
+          <system name="cancel" />
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

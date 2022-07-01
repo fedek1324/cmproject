@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="SendFrFromNdpToAnotherDepSelectDialog" id="SendFrFromNdpToAnotherDepSelectDialogForm"
+        name="${ui.form.SendFrFromNdpToAnotherDepSelectDialogForm.name:Выберите дело}" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="dialog"/>
+      </hide>
+    </properties>
+    <component>
+      <field attribute-ref="sdObjectInfo" tid="sdObjectInfo"
+             name="${ui.form.SendFrFromNdpToAnotherDepSelectDialogForm.field.sdObjectInfo.name:Выберите дело}">
+        <properties>
+          <require condition-union="AND">
+            <condition>true</condition>
+          </require>
+        </properties>
+        <appearance open-mode="grid" digest-mode="grid" importance="normal" widget="grid"/>
+        <directories limit-livesearch="sys-current" digest="grid">
+          <directory-ref ref="nd-fr-for-sent-to-another-dep"/>
+        </directories>
+      </field>
+      <button name="${ui.form.SendFrFromNdpToAnotherDepSelectDialogForm.button.OK.name:Ок}" tid="submit">
+        <action>
+          <system name="submit"/>
+        </action>
+      </button>
+      <button name="${ui.form.SendFrFromNdpToAnotherDepSelectDialogForm.button.Cancel.name:Отмена}" tid="cancel">
+        <appearance>
+          <label-style>
+            <style id="tunBtnGray"/>
+          </label-style>
+        </appearance>
+        <action>
+          <system name="cancel"/>
+        </action>
+      </button>
+    </component>
+  </form>
+</ui>

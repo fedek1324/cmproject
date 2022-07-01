@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="sstu-orgs" name="${catalog.view.sstu_orgs.name:ССТУ - Внешние контакты}" position="410">
+    <descriptor-ref ref="so-sstu-orgs"/>
+  </view>
+</catalog>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="PrivatePersonInfo">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string name="id" temporal="true"/>
+    <string name="name" temporal="true"/>
+  </schema>
+</schemas>

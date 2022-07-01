@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ReporterSubDialogEmployeeOptional">
+    <meta>
+      <category name="Отчеты"/>
+    </meta>
+    <actor name="Value" temporal="true">
+      <storage-field name="Beard" display="Name" id="DocId"/>
+    </actor>
+  </schema>
+</schemas>

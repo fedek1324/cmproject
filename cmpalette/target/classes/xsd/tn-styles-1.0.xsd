@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+
+    <!-- Стили надписи -->
+    <xs:simpleType name="styleFontType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="tunBlack">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Черный цвет шрифта]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBlue">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Синий цвет шрифта]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBold">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Жирный шрифт]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunFontSize12">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Размера шрифта 12pt]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunFontSize14">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Размера шрифта 14pt]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunGray">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Серый цвет шрифта]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunGreen">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Зеленый цвет шрифта]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunRed">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Красный цвет шрифта]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunWhite">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Белый цвет шрифта]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunYellow">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Жёлтый цвет шрифта]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBrown">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Коричневый цвет шрифта]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunItalic">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Курсивный шрифт]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunUnderline">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Подчеркнутый шрифт]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunCaption">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Заголовок]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunUnderlineDotted">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Подчеркнутый точками]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunClickableRed">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[Стиль кликабельной надписи - cursor: pointer, красный цвет при наведении]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunClickableUnderline">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[Стиль кликабельной надписи - cursor: pointer, подчеркнутый при наведении]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunPadding16">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Отступ 16]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunPadding8">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Отступ 8]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--Стиль фона-->
+    <xs:simpleType name="styleBgType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="tunBgGray">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Серый цвет фона]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBgSky">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Небесный цвет фона]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBgRed">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Красный цвет фона]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBgPink">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Розовый цвет фона]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBgLime">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Светло-зеленый цвет фона]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBgBlue">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Небесный цвет фона]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBorderBottom">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Границы кнопки]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--Стиль кнопки -->
+    <xs:simpleType name="styleBtnType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="tunBtn">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Обычная кнопка]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBtnBlue">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Синяя кнопка]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBtnGray">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Серая кнопка]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBtnHeader">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Кнопка шапки]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunNoControl">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Кнопка "Нет контроля"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunControl">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Кнопка "Контроль"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--Стиль иконки -->
+    <xs:simpleType name="styleIconType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="tunIconAdd">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка добавления]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconClock">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка "Часы"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconDelete">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка удаления]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconDraggable">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка для элементов, поддерживающих D'n'D]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconEdit">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка редактирования]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconExcl">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка "Белый восклицательный знак на красном фоне"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconLock">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка "Замок закрыт"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconProgress">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка "Белая точка на сером фоне"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconSave">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка сохранения]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconTrash">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка "Корзина"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconUnlock">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка "Замок закрыт"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconReportIcon">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка "Отчет"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="headerElementWithIcon">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Поле с иконкой в шапке]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="css_headerElementWithIcon">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Поле с иконкой в шапке (устарело)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconOperatorEdited">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка "Редактирование" еще одна]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunIconComplete">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Иконка "Выполнено"]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--Стиль поля -->
+    <xs:simpleType name="styleFieldType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="tunBorderedField">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Рамка]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunWhiteSpacePreWrap">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[В тексте сохраняются все пробелы и переносы, но если строка не помещается  в заданную область, текст будет перенесен на следующую строку автоматически]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunResolutionBodyPart">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Стиль для панели резолюции]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunPassword">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Стиль для пароля (с сокрытием символов)]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBorderBlueSection">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Секция приобретает вид ссылки у которой при развороте появляется облако с
+содержимым секции. Должен быть единственным.]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunTxtAlignRight">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Используется для выравнивания текста по правому краю внутри элемента]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunTriangle">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Используется для замены кнопки "Выбрать" на треугольник для открытия выпадающего списка]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunVertical">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Используется для выстраивание контента внутри компонента (не контейнера) по вертикали.]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--Стили секции -->
+    <xs:simpleType name="styleSectionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="resolutionHeader">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Шапка резолюции]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ResolutionBodyPart">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Используется для разделения реквизитов в резолюциях. Фон элемента серый, по нижней стороне элемента пунктирная линия,
+минимальная ширина 610px.]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunTxtAlignRight">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Используется для выравнивания текста по правому краю внутри элемента]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunBorderBlueSection">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Должен быть единственным. Секция приобретает вид ссылки у которой при развороте появляется облако с содержимым секции]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="externalExpand">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Развернуть]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunFieldSetTop">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Используется для выравнивания дочерних элементов по верху]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunFieldSetMiddle">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Используется для выравнивания дочерних элементов по центру]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunFieldSetBottom">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Используется для выравнивания дочерних элементов по низу]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunLowerBorder">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Нижняя граница таблицы]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunRightBorder">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Правая граница таблицы]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="groupTopMargin">
+            <xs:annotation>
+                <xs:documentation><![CDATA[Секция с отступом сверху]]></xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+            <xs:enumeration value="tunWidthFrom-Main">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Стиль применяется к элементу с шириной в %, для того чтобы % вычислялся от конкретного родителя.
+<name> = name или ref родителя, от ширины которого будет вычисляться ширина элемента в %]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!--Стили формы -->
+    <xs:simpleType name="styleFormType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="tunTableWithBorders">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Рамочная таблица]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunLowerBorder">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Нижняя граница таблицы]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunRightBorder">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Правая граница таблицы]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunTableGrayCaptions">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Серый цвет для заголовков таблиц]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tunTableHeaderBlock">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[Добавление белых разделителей между колонками в шапке таблицы]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

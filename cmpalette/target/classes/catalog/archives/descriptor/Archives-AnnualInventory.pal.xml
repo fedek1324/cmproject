@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor view="(vw_cmj_AnnualInventory)" ident="Archives" style="default" name="Архив - годовые разделы описи дел" id="Archives-AnnualInventory">
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder" />
+    <table>
+      <columns>
+        <column-ref ref="self" />
+        <column-ref ref="fundDealNum" />
+        <column-ref ref="arcInventoryType" />
+        <column-ref ref="arcYear" />
+        <column-ref ref="arcMainState" />
+      </columns>
+    </table>
+    <custom-actions schema-ref="ArchivesAnnualInventoryCollections" />
+  </custom-descriptor>
+</catalog>

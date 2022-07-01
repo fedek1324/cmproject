@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="CMJLinks" id="favourites" name="${catalog.view.favourites.name:Избранное}" position="220">
-    <descriptor-ref ref="favourites-links"/>
-  </view>
-</catalog>

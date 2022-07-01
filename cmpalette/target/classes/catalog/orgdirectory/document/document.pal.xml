@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <tunable-object form-name="h1" name="${catalog.tunable-object.4149d0f82e7c4b85a7a3889914c2c793.name:SPOOrganization}" schema-ref="VCardResource.Organization" general="true">
+    <module ident="OrgDirectory" complect=""/>
+  </tunable-object>
+  <tunable-object form-name="Zajav" name="${catalog.tunable-object.9a9361dad55349a1aafa1aba5b280ba5.name:SPOOrganizationCorr}" schema-ref="VCardResource.Organization">
+    <module ident="OrgDirectory" complect=""/>
+  </tunable-object>
+  <document name="${catalog.document.classifier66b87e1c216b4114ba779e6e403b80da.name:Классификатор}" object-ref="CLASSIFIER" general="true">
+    <module ident="OrgDirectory" complect=""/>
+  </document>
+  <document name="${catalog.document.nonsys_organization07a4a531029149748c8bc5c1cc9a3e6c.name:Организация}" schema-ref="VCardResource.Organization" object-ref="NONSYS_ORGANIZATION">
+    <module ident="OrgDirectory" complect=""/>
+  </document>
+</catalog>

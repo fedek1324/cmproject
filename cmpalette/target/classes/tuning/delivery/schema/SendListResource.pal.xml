@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="SendListResource">
+    <string name="accessInfo" system="true" createlog="true"/>
+    <boolean name="active" system="true" createlog="true" temporal="true"/>
+    <string name="title" system="true" createlog="true"/>
+    <schema-ref ref="ResourceLink" array="true" name="link" system="true" createlog="true" temporal="true"/>
+    <enum-ref ref="accessTypeEnum" name="accessType" system="true" createlog="true"/>
+    <actor array="true" name="acl" system="true" createlog="true"/>
+    <actor name="author" system="true" createlog="true" temporal="true"/>
+    <actor array="true" name="members" system="true" createlog="true"/>
+    <actor name="organization" system="true" createlog="true"/>
+    <string name="listHeader" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Список рассылки']]></script>
+      </calc-values>
+    </string>
+    <string name="$accessItem" system="true" createlog="true"/>
+    <boolean name="isAutoUpdatedList" system="true" createlog="true"/>
+    <actor array="true" name="soContext" system="true" createlog="true"/>
+    <string name="soFormula" system="true" createlog="true"/>
+    <schema-ref ref="ModuleInfo" array="true" name="spoContext" system="true" createlog="true"/>
+    <string name="spoFormula" system="true" createlog="true"/>
+    <schema-ref ref="ModuleInfo" array="true" name="sppContext" system="true" createlog="true"/>
+    <string name="sppFormula" system="true" createlog="true"/>
+    <string name="membersFormula" system="true" createlog="true"/>
+    <string name="$calculate" createlog="true" temporal="true">
+      <recalc-processing-class>ru.intertrust.cmj.rest.sendlists.SendListFormulaRecalcHandler</recalc-processing-class>
+    </string>
+    <boolean name="isSupervisor" system="true" createlog="true" temporal="true"/>
+    <boolean name="isSoContextEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[soContext == null || soContext.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isSpoContextEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[spoContext == null || spoContext.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isSppContextEmpty" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[sppContext == null || sppContext.isEmpty()]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

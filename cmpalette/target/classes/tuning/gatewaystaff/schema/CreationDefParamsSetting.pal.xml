@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="TNObject" name="CreationDefParamsSetting">
+    <meta>
+      <category name="РМ Администратора\Шлюз"/>
+    </meta>
+    <boolean name="D_IsCodeNumIndex">
+      <storage-field name="D_IsCodeNumIndex"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="D_NoticesFltrsUseForTasks">
+      <storage-field name="D_NoticesFltrsUseForTasks"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="E_IsAllowChangeSettings">
+      <storage-field name="E_IsAllowChangeSettings"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="E_IsAllowChangeSettingsZA">
+      <storage-field name="E_IsAllowChangeSettingsZA"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="E_NoticeSendCurIfWork">
+      <storage-field name="E_NoticeSendCurIfWork"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="E_NoticeSendCurIfNotWork">
+      <storage-field name="E_NoticeSendCurIfNotWork"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="E_NoticesFltrsUseForTasks">
+      <storage-field name="E_NoticesFltrsUseForTasks"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="E_HideNoticesWithTasks">
+      <storage-field name="E_HideNoticesWithTasks"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="E_EmailCreate">
+      <storage-field name="E_EmailCreate"/>
+      <storage-string value="1"/>
+    </boolean>
+    <enum-ref ref="FillAuditorsModeEnum" default-value="Не заполнять" name="E_FillAuditors">
+      <storage-field name="E_FillAuditors"/>
+    </enum-ref>
+    <boolean name="P_IsSNDADR">
+      <storage-field name="P_IsSNDADR"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="P_IsCDCBAAS">
+      <storage-field name="P_IsCDCBAAS"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="P_IsRNWTE">
+      <storage-field name="P_IsRNWTE"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="P_IsSelfNotify">
+      <storage-field name="P_IsSelfNotify"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="P_isAVSODO">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.gateway.RecalcForDefParamsSettingIsP_isAVSODO</recalc-processing-class>
+      <storage-field name="P_isAVSODO"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="P_isSVDWSV">
+      <storage-field name="P_isSVDWSV"/>
+      <storage-string value="1"/>
+    </boolean>
+    <boolean name="P_isSSDD">
+      <storage-field name="P_isSSDD"/>
+      <storage-string value="1"/>
+    </boolean>
+    <enum-ref ref="FillDepAuditorsModeEnum" default-value="Не заполнять" name="D_FillAuditors">
+      <storage-field name="D_FillAuditors"/>
+    </enum-ref>
+    <enum-ref ref="FillEmplDeputiesModeEnum" name="E_FillDeputies">
+      <storage-field name="E_FillDeputies"/>
+    </enum-ref>
+    <enum-ref ref="FillDepDeputiesModeEnum" array="true" name="D_FillDeputies">
+      <storage-field name="D_FillDeputies"/>
+    </enum-ref>
+    <string name="objectType" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Параметры создания структурных единиц']]></script>
+      </calc-values>
+    </string>
+    <string name="deletedState" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Удален']]></script>
+      </calc-values>
+    </string>
+    <string name="defParamsSettingSysGroupsTitle" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Системные группы:']]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="DefParamsSettingSysGroup" array="true" name="defParamsSettingSysGroups">
+      <recalc-processing-class>ru.intertrust.cmj.rest.admin.gateway.CreationDefParamsSettingRecalcHandler</recalc-processing-class>
+    </schema-ref>
+  </schema>
+</schemas>

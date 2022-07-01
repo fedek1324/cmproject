@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
-  <schema extends="DialogForSave" name="DialogMessage">
-    <meta>
-      <category name="РМ Администратора"/>
-    </meta>
-    <string name="message" temporal="true"/>
-  </schema>
-</schemas>

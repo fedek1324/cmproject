@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="CounterClassifierCollection" id="CounterClassifierCollectionForm" projection="default">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="RootMenu" name="${ui.form.CounterClassifierCollectionForm.section.RootMenu.name:RootMenu}">
+        <component>
+          <section id="create" name="${ui.form.CounterClassifierCollectionForm.section.RootMenu.section.create.name:Создать}">
+            <component>
+              <button name="${ui.form.CounterClassifierCollectionForm.section.RootMenu.section.create.button.Классификатор &quot;Способ поиска счетчика по умолчанию&quot;.name:Классификатор &quot;Способ поиска счетчика по умолчанию&quot;}">
+                <action>
+                  <custom>
+                    <create schema-ref="CounterClassifier">
+                      <module-current>true</module-current>
+                    </create>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+          <section id="OTHER" name="${ui.form.CounterClassifierCollectionForm.section.RootMenu.section.OTHER.name:Другое}">
+            <component>
+              <button name="${ui.form.CounterClassifierCollectionForm.section.RootMenu.section.OTHER.button.Удалить.name:Удалить}">
+                <properties>
+                  <hide condition-union="AND">
+                    <negative-condition-ref ref="TNObject_CanDelete"/>
+                  </hide>
+                </properties>
+                <action>
+                  <custom>
+                    <operation>
+                      <handler>
+                        <script lang="JavaBean">DeleteCounterClassifierOperation</script>
+                      </handler>
+                    </operation>
+                  </custom>
+                </action>
+              </button>
+            </component>
+          </section>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

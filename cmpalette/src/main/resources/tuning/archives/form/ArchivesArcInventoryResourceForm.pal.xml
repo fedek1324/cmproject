@@ -1,0 +1,319 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ArchivesArcInventoryResource" showtabs="true" projection="default" name="${ui.form.ArchivesArcInventoryResourceForm.name:ArchivesArcInventoryResourceForm}" id="ArchivesArcInventoryResourceForm">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit" />
+        <negative-condition-ref ref="read" />
+      </hide>
+    </properties>
+    <component>
+<!--header section-->
+      <section name="${ui.form.ArchivesArcInventoryResourceForm.section.Header.name:ArcInventoryHeader}" id="Header">
+        <component>
+          <section group="true" id="HeaderRow10">
+             <component>
+                <field attribute-ref="showident">
+                  <properties>
+                    <read-only condition-union="AND">
+                      <condition>true</condition>
+                    </read-only>
+                  </properties>
+                  <appearance importance="normal" multiline="false" align="left">
+                    <label-style field-unit="symbol" field-width="12" />
+                    <alt-appearancies>
+                      <alt-appearance>
+                        <appearance-ref ref="css_headerElementWithIcon" />
+                        <enable condition-union="AND">
+                          <condition>true</condition>
+                        </enable>
+                      </alt-appearance>
+                    </alt-appearancies>
+                  </appearance>
+                </field>
+
+                <field attribute-ref="InventoryNum" name="${ui.form.ArchivesArcInventoryResourceForm.section.Header.section.HeaderRow10.field.InventoryNum.name:№ описи: }">
+                  <properties>
+                    <require condition-union="AND">
+                      <condition-ref ref="edit"/>
+                      <condition>true</condition>
+                    </require>
+                    <read-only condition-union="AND">
+                      <negative-condition-ref ref="TObjectIsNotNew" />
+                    </read-only>
+                  </properties>
+                  <appearance importance="normal" multiline="false" align="left">
+                    <label-style field-unit="symbol" field-width="20" />
+                  </appearance>
+                </field>
+
+                <field attribute-ref="Organization">
+                  <properties>
+                    <read-only condition-union="AND">
+                      <condition>true</condition>
+                    </read-only>
+                  </properties>
+                  <appearance importance="normal" multiline="false" align="left">
+                    <label-style field-unit="symbol" field-width="30" />
+                    <alt-appearancies>
+                      <alt-appearance>
+                        <appearance-ref ref="css_headerElementWithIcon" />
+                        <enable condition-union="AND">
+                          <condition>true</condition>
+                        </enable>
+                      </alt-appearance>
+                    </alt-appearancies>
+                  </appearance>
+                </field>
+
+                <field attribute-ref="FundNumber" name="${ui.form.ArchivesArcInventoryResourceForm.section.Header.section.HeaderRow10.field.FundNumber.name:Фонд №:}">
+                  <properties>
+                    <read-only condition-union="AND">
+                      <condition>true</condition>
+                    </read-only>
+                  </properties>
+                  <appearance importance="normal" multiline="false" align="left">
+                    <label-style field-unit="symbol" field-width="20" />
+                  </appearance>
+                </field>
+
+               <field attribute-ref="MainState">
+                 <properties>
+                   <read-only condition-union="AND">
+                     <condition>true</condition>
+                   </read-only>
+                 </properties>
+                 <directories>
+                   <directory-ref ref="archivesArcInventoryState" />
+                 </directories>
+                 <appearance importance="high" multiline="false" align="right" />
+               </field>
+
+                <!--HeaderRow10 section content-->
+             </component>
+             <appearance field-layout="horizontal" />
+          </section>
+
+          <section group="true" id="HeaderRow20">
+             <component>
+                <field attribute-ref="KindDeal">
+                  <properties>
+                    <require condition-union="AND">
+                      <condition-ref ref="edit"/>
+                      <condition>true</condition>
+                    </require>
+                    <read-only condition-union="AND">
+                      <negative-condition-ref ref="TObjectIsNotNew" />
+                    </read-only>
+                  </properties>
+                  <appearance importance="normal" multiline="false" align="left" widget="radio">
+                    <label-style field-unit="symbol" field-width="28" />
+                  </appearance>
+                  <directories>
+                    <directory-ref ref="archivesKindDeals" />
+                  </directories>
+                </field>
+
+                <!--HeaderRow20 section content-->
+             </component>
+             <appearance field-layout="horizontal" />
+          </section>
+
+          <!--Header section content-->
+        </component>
+      </section>
+
+<!--root menu section-->
+      <section id="RootMenu">
+        <component>
+          <button name="${ui.form.ArchivesArcInventoryResourceForm.section.RootMenu.button.Сохранить скрыта системная.name:Сохранить скрыта системная}">
+            <properties>
+              <hide condition-union="AND">
+                <condition>true</condition>
+              </hide>
+            </properties>
+            <action>
+              <system name="SAVE" />
+            </action>
+          </button>
+          <button name="${ui.form.ArchivesArcInventoryResourceForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButtonForNew" />
+              </hide>
+            </properties>
+            <appearance>
+              <label-style>
+                <style id="tunBtnHeader" />
+                <style id="tunIconSave" />
+              </label-style>
+            </appearance>
+            <action>
+              <custom>
+                <save />
+              </custom>
+            </action>
+          </button>
+          <button name="${ui.form.ArchivesArcInventoryResourceForm.section.RootMenu.button.Сохранить.name:Сохранить}">
+            <properties>
+              <hide condition-union="AND">
+                <negative-condition-ref ref="TNObjectIsShowSaveButton" />
+              </hide>
+            </properties>
+            <appearance>
+              <label-style>
+                <style id="tunBtnHeader" />
+                <style id="tunIconSave" />
+              </label-style>
+            </appearance>
+            <action>
+              <custom>
+                <save-existing />
+              </custom>
+            </action>
+          </button>
+        </component>
+      </section>
+
+<!--main sections-->
+      <section group="true" name="${ui.form.ArchivesArcInventoryResourceForm.section.Attributes.name:Годовые разделы}" id="Attributes">
+        <component>
+          <section group="true" id="AttributesRow10">
+             <component>
+            <field attribute-ref="TypeInv" name="${ui.form.ArchivesArcInventoryResourceForm.section.Attributes.section.AttributesRow10.field.TypeInv.name:Тип описи:}">
+              <properties>
+                <require condition-union="AND">
+                  <condition-ref ref="edit"/>
+                  <condition>true</condition>
+                </require>
+              </properties>
+              <appearance importance="normal" multiline="false" align="left" />
+              <directories>
+                <directory-ref ref="ArchivesInventorisationType" />
+              </directories>
+            </field>
+            <field attribute-ref="InvInfo">
+              <properties>
+                <read-only condition-union="AND">
+                  <condition>true</condition>
+                </read-only>
+              </properties>
+              <appearance importance="normal" multiline="false" align="left" />
+            </field>
+            <field attribute-ref="LiteralNumbers" name="${ui.form.ArchivesArcInventoryResourceForm.section.Attributes.section.AttributesRow10.field.LiteralNumbers.name:Литерные номера:}">
+              <appearance importance="normal" multiline="false" align="left" />
+            </field>
+            <field attribute-ref="MissedNumbers" name="${ui.form.ArchivesArcInventoryResourceForm.section.Attributes.section.AttributesRow10.field.MissedNumbers.name:Пропущенные номера:}">
+              <appearance importance="normal" multiline="false" align="left" />
+            </field>
+            <field attribute-ref="InvFormer" name="${ui.form.ArchivesArcInventoryResourceForm.section.Attributes.section.AttributesRow10.field.InvFormer.name:Опись составил:}">
+              <properties>
+                <require condition-union="AND">
+                  <condition-ref ref="edit"/>
+                  <condition>true</condition>
+                </require>
+              </properties>
+              <appearance importance="normal" multiline="false" align="left" />
+              <directories>
+               <directory-ref ref="CURRENT_All" />
+              </directories>
+            </field>
+
+            <field attribute-ref="AnnInvTableLabel">
+             <properties>
+               <read-only condition-union="AND">
+                 <condition>true</condition>
+               </read-only>
+             </properties>
+             <appearance importance="normal">
+               <label-style>
+                 <style id="tunBgGrayBlue" />
+                 <style id="tunCaption" />
+               </label-style>
+               <field-style>
+                 <value-style>
+                   <style id="tunBgGrayBlue" />
+                   <style id="tunCaption" />
+                 </value-style>
+               </field-style>
+             </appearance>
+            </field>
+            <section group="true" id="AnnInvInfoTableRow">
+             <component>
+               <button name="${ui.form.ArchivesArcInventoryResourceForm.section.Attributes.section.AnnInvInfoTableRow.button.Добавить.name:Добавить}">
+                 <properties>
+                   <hide condition-union="AND">
+                     <condition-ref ref="read" />
+                   </hide>
+                 </properties>
+                 <appearance align="left">
+                   <label-style>
+                     <style id="tunIconAdd" />
+                     <style id="tunUnderline" />
+                     <style id="tunClickableRed" />
+                   </label-style>
+                 </appearance>
+                 <action>
+                   <custom>
+                     <change-subobject schema-ref="SetRelatedAnnInvInfoArcInvDialog" />
+                   </custom>
+                 </action>
+               </button>
+               <field attribute-ref="AnnInvInfoTable" recalc="true">
+                 <appearance>
+                   <alt-appearancies>
+                     <alt-appearance>
+                       <appearance-ref ref="table" />
+                       <enable condition-union="AND">
+                         <condition>true</condition>
+                       </enable>
+                     </alt-appearance>
+                   </alt-appearancies>
+                 </appearance>
+               </field>
+               <field attribute-ref="tmpAnnInvInfoList" recalc="true">
+                 <properties>
+                   <hide condition-union="AND">
+                     <condition>true</condition>
+                   </hide>
+                 </properties>
+               </field>
+             </component>
+            </section>
+
+                <!--AttributesRow10 section content-->
+             </component>
+             <appearance field-layout="vertical" />
+          </section>
+
+          <!--Attributes section content-->
+        </component>
+        <appearance field-layout="vertical" />
+      </section>
+
+      <section name="${ui.form.ArchivesArcInventoryResourceForm.section.LifeCycle.name:Жизненный цикл}" id="LifeCycle">
+        <component>
+          <section group="true" name="${ui.form.ArchivesArcInventoryResourceForm.section.LifeCycle.section.ApprovingSection.name:Согласование}" id="ApprovingSection">
+            <component>
+              <section id="ApprovingButtons">
+                <appearance widget="inactiveTab" />
+              </section>
+              <section name="${ui.form.ArchivesArcInventoryResourceForm.section.LifeCycle.section.ApprovingSection.section.Approving.name:Согласование}" id="Approving" />
+            </component>
+          </section>
+        </component>
+        <appearance widget="leftMenu" />
+      </section>
+
+      <section name="${ui.form.ArchivesArcInventoryResourceForm.section.Links.name:Связанные}" id="Links">
+        <component>
+          <section name="${ui.form.ArchivesArcInventoryResourceForm.section.Links.section.Documеnts.name:Документы}" id="Documеnts" />
+        </component>
+        <appearance widget="leftMenu" />
+      </section>
+
+<!--history section-->
+      <section name="${ui.form.ArchivesArcInventoryResourceForm.section.History.name:История}" id="History" />
+    </component>
+  </form>
+</ui>

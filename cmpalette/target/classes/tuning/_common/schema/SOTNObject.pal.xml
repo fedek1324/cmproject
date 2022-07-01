@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="TNObject" name="SOTNObject">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <boolean name="isAnyAdmin" system="true" createlog="true" temporal="true"/>
+    <boolean name="canPerfomOperationInSO" system="true" createlog="true" temporal="true">
+      <storage-field name="canPerfomOperationInSO"/>
+    </boolean>
+    <boolean name="canEditSO" system="true" createlog="true" temporal="true">
+      <storage-field name="canEditSO"/>
+    </boolean>
+    <boolean name="canPerfomOperationOnThisObject" system="true" createlog="true" temporal="true">
+      <storage-field name="canPerfomOperationOnThisObject"/>
+    </boolean>
+  </schema>
+</schemas>

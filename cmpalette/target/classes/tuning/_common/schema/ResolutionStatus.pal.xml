@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="ResolutionStatus">
+    <meta>
+      <category name="Сервис\Исполнения"/>
+    </meta>
+    <boolean name="deleted" system="true"/>
+    <boolean name="project" system="true"/>
+  </schema>
+</schemas>

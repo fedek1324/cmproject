@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="GatewayStaff" view="(vw_cmj_trash)" id="admin-hr-cmj-trash" name="Прием сигналов -Корзина" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoView"/>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="deletedDate" sort-asc="true"/>
+        <column-ref ref="activitytype" sort-asc="true"/>
+        <column-ref ref="created" filter="true"/>
+        <column-ref ref="objectHR" filter="true"/>
+        <column-ref ref="processed"/>
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

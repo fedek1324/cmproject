@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor view="OutputDocs_(vw_cmj_sel_doc)" ident="OutputDocs" style="default" name="Список исходящих документов" id="db-select-doc-OutputDocs">
+    <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder" />
+    <table>
+      <columns>
+        <column-ref ref="description" />
+        <column-ref ref="doc_obj" />
+        <column-ref ref="self" />
+      </columns>
+    </table>
+  </custom-descriptor>
+</catalog>

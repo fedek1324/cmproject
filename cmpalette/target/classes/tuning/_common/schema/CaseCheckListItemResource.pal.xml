@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="CaseCheckListItemResource">
+    <meta>
+      <category name="Система\Кейсы 2.0"/>
+    </meta>
+    <boolean name="isFulfilled" system="true"/>
+    <string name="subject" system="true"/>
+  </schema>
+</schemas>

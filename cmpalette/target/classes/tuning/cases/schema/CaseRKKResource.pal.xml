@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="CaseRKKResource">
+    <meta>
+      <category name="Система\Кейсы 2.0"/>
+    </meta>
+    <string name="mainGoal" system="true"/>
+    <string name="type" system="true"/>
+    <schema-ref ref="CaseActivityResource" name="activity" system="true"/>
+    <string name="comment" system="true"/>
+    <string name="result" system="true"/>
+    <boolean name="autoAddDoc" system="true"/>
+    <schema-ref ref="CaseParticipantResource" array="true" name="contacts" system="true"/>
+    <schema-ref ref="CaseDiscussionResource" name="discussion" system="true"/>
+    <schema-ref ref="CaseExecutionPrcResource" name="execPrc" system="true"/>
+    <schema-ref ref="CaseParticipantResource" name="initiator" system="true"/>
+    <boolean name="isArchive" system="true"/>
+    <boolean name="isTemplate" system="true"/>
+    <double name="orderNum" system="true">
+      <default-values>
+        <default-value>0.0</default-value>
+      </default-values>
+    </double>
+    <schema-ref ref="CaseParticipantResource" array="true" name="participants" system="true"/>
+    <string name="regNum" system="true"/>
+    <string name="pagename" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[regNum==null ? 'Кейс проект' : 'Кейс № '+regNum]]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="StatusResource" name="status" system="true"/>
+    <actor name="author" system="true"/>
+    <string name="showType" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[type]]></script>
+      </calc-values>
+    </string>
+    <string name="$titleHeader" system="true"/>
+    <string name="daysDurationLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['дн.']]></script>
+      </calc-values>
+    </string>
+    <actor name="showManager" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[activity!=null && activity.manager!=null && activity.manager.performer!=null ? activity.manager.performer[0] : null]]></script>
+      </calc-values>
+      <context-roles>
+        <context-role name="CaseManager"/>
+      </context-roles>
+    </actor>
+    <string name="showStatus" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[isArchive ? 'Архив' : (activity.state.toString()=='PROJECT'?'Проект':(activity.state.toString()=='IN_WORK'?'В работе':(activity.state.toString()=='FINISHED'?'Выполнен':(activity.state.toString()=='CANCELLED'?'Отменен':('не указан')))))]]></script>
+      </calc-values>
+    </string>
+    <string name="showDuration" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(activity.duration==null || activity.duration.toString()=='')?'не указан':(activity.duration.toString().substring(0,activity.duration.toString().indexOf('.')) +' дн.' + ((activity.endDatePlanned !=null)?(' (' + activity.endDatePlanned.toString() + ')'):''))]]></script>
+      </calc-values>
+    </string>
+    <boolean name="IsEmptyManager" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[activity==null || activity.manager==null || activity.manager.performer==null]]></script>
+      </calc-values>
+    </boolean>
+    <string name="EmptyManagerLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['не указано']]></script>
+      </calc-values>
+    </string>
+    <boolean name="isRegistered" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[regNum!=null && regNum!='']]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="hasChecklist" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[activity!=null && activity.checkList!=null && activity.checkList.items.size()>0]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="isCaseElementInWork" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[activity!=null && activity.state!=null && activity.state=='IN_WORK']]></script>
+      </calc-values>
+    </boolean>
+    <string name="openingParenthesis" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['(']]></script>
+      </calc-values>
+    </string>
+    <string name="closingParenthesis" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[')']]></script>
+      </calc-values>
+    </string>
+    <boolean name="caseHasEndDatePlanned" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[activity!=null && activity.endDatePlanned!=null && activity.endDatePlanned!='']]></script>
+      </calc-values>
+    </boolean>
+    <string name="showNumberLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['№']]></script>
+      </calc-values>
+    </string>
+    <string name="showFromLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['от']]></script>
+      </calc-values>
+    </string>
+    <string name="showDeadlineLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Срок:']]></script>
+      </calc-values>
+    </string>
+    <string name="showStatusLabel" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Статус:']]></script>
+      </calc-values>
+    </string>
+    <actor array="true" name="initiatorBeards">
+      <context-roles>
+        <context-role name="CaseInitiator"/>
+      </context-roles>
+    </actor>
+    <boolean name="canMove" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#hasRole(#this, 'CaseManager') || #hasRole(#this, 'CaseInitiator')]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="canCreateFolder" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#hasRole(#this, 'CaseManager') || #hasRole(#this, 'CaseInitiator')]]></script>
+      </calc-values>
+    </boolean>
+    <boolean name="allowToDeleteDocs" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[true]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

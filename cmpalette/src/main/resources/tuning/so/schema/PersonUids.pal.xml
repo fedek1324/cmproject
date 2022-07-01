@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="PersonUids">
+    <meta>
+      <category name="РМ Администратора\СО"/>
+    </meta>
+    <string name="uid" createlog="true" temporal="true"/>
+    <enum-ref ref="PersonUidsEnum" name="uidType" createlog="true" temporal="true"/>
+    <boolean name="isNotSystemUid" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[!'system'.equals(uidType)]]></script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

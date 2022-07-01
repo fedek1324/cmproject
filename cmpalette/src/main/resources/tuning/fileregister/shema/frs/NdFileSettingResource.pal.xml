@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="NdFileSettingResource" extends="TNObject">
+    <boolean computed="true" temporal="true" name="IsUseArchiveModule">
+      <calc-values>
+        <script lang="SPEL" event="open">
+          <![CDATA[
+            T(ru.intertrust.cmj.af.core.AFCMDomino).getDbInfoByReplicaID(T(ru.intertrust.cmj.af.core.AFCMDomino)
+                                                               .getDbReplicaIdNamedAny("FileRegister")).useArchiveModule
+          ]]>
+        </script>
+      </calc-values>
+    </boolean>
+    <string computed="true" temporal="true" name="showident">
+      <calc-values>
+        <script lang="SPEL" event="open">
+          <![CDATA[
+            IsUseArchiveModule ? 'Настройка номенклатуры дел и архива организации' : 'Настройка номенклатуры дел'
+          ]]>
+        </script>
+      </calc-values>
+    </string>
+    <string computed="true" temporal="true" name="DealSettingTitle">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Секция - Настройки дела']]></script>
+      </calc-values>
+    </string>
+    <string computed="true" temporal="true" name="ApproveThrowInternalDocTitle">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['Согласовывать только через внутренние документы:']]></script>
+      </calc-values>
+    </string>
+    <actor default-value="Выбор из справочника" required="true" name="Organization">
+      <storage-field name="Organization" />
+    </actor>
+    <boolean name="IsComplectStateArchive">
+      <storage-field name="Is_Complect_State_Archive"/>
+    </boolean>
+    <actor default-value="Выбор из справочника" name="StateOrg">
+      <storage-field name="StateOrg" />
+    </actor>
+    <string name="ApproveStateOrgYears" array="true">
+      <storage-field name="Approve_StateOrg_Years"/>
+    </string>
+    <boolean name="SpdUsedFile">
+      <storage-field name="SpdUsed_File"/>
+    </boolean>
+    <boolean name="RemoveRkkSentArchive">
+      <storage-field name="Remove_Rkk_Sent_Archive"/>
+    </boolean>
+    <boolean name="RemoveRkkSentDestr">
+      <storage-field name="Remove_Rkk_Sent_Destr"/>
+    </boolean>
+    <string name="PrefixSplitterFr">
+      <storage-field name="PrefixSplitter_Fr"/>
+    </string>
+    <enum-ref ref="FrsChangeTypeEnum" name="FrChangeType" default-value="CONFIRM_END_OF_YEAR">
+      <storage-field name="Fr_Change_Type" />
+    </enum-ref>
+    <string name="PrefixSplitterFile">
+      <storage-field name="PrefixSplitter_File"/>
+    </string>
+    <string name="SuffixSplitterFile">
+      <storage-field name="SuffixSplitter_File"/>
+    </string>
+    <boolean name="IndexAutoGenerationFile">
+      <storage-field name="IndexAutoGeneration_File"/>
+    </boolean>
+    <integer name="NumOfSignsFile" default-value="2">
+      <storage-field name="NumOfSigns_File"/>
+    </integer>
+    <boolean name="ThroughIternalUnit" >
+      <storage-field name="ThroughIternal_Unit"/>
+    </boolean>
+    <boolean name="ChgThroughIternalUnit" >
+      <storage-field name="ChgThroughIternal_Unit"/>
+    </boolean>
+    <boolean name="ThroughIternalOrg" >
+      <storage-field name="ThroughIternal_Org"/>
+    </boolean>
+    <boolean name="ChangesThroughIternalOrg" >
+      <storage-field name="ChangesThroughIternal_Org"/>
+    </boolean>
+    <boolean name="ArcDepThroughApprove" >
+      <storage-field name="ArcDep_ThroughApprove"/>
+    </boolean>
+    <boolean name="ArcAnnInvThroughApprove" >
+      <storage-field name="ArcAnnInv_ThroughApprove"/>
+    </boolean>
+    <boolean name="ArcPADestrThroughApprove" >
+      <storage-field name="ArcPADestr_ThroughApprove"/>
+    </boolean>
+    <boolean name="ArcADestrThroughApprove" >
+      <storage-field name="ArcADestr_ThroughApprove"/>
+    </boolean>
+  </schema>
+</schemas>

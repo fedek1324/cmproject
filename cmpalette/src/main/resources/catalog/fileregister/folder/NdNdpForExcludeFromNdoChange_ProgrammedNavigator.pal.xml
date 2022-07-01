@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="nd-ndp-for-exclude-from-ndochange" name="${catalog.view.nd_ndp_for_exclude_from_ndo.name:Изменения НДП для исключения}" position="10">
+    <descriptor-ref ref="nd-ndp-for-exclude-from-ndochange"/>
+    <source>
+      <module ident="FileRegister"/>
+    </source>
+    <search-area name="FileRegister"/>
+  </view>
+</catalog>

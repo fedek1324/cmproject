@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <enum name="PersonAddressType">
+    <meta>
+      <category name="РМ Администратора"/>
+    </meta>
+    <string value="permanent" name="permanent"/>
+    <string value="temporary" name="temporary"/>
+    <string value="actual" name="actual"/>
+    <string value="office" name="office"/>
+  </enum>
+</schemas>

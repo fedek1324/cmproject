@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
+  <form schema-ref="ShowRegInfoInput" id="ShowRegInfoInputForm" projection="default" group="true">
+    <properties>
+      <hide condition-union="AND">
+        <negative-condition-ref ref="edit"/>
+        <negative-condition-ref ref="read"/>
+      </hide>
+    </properties>
+    <component>
+      <section id="ShowRegInfoInputForm_r1" group="true">
+        <appearance field-layout="horizontal">
+          <alt-appearancies>
+            <alt-appearance>
+              <appearance-ref ref="horizontalSection"/>
+              <enable condition-union="AND">
+                <condition>true</condition>
+              </enable>
+            </alt-appearance>
+          </alt-appearancies>
+        </appearance>
+        <component>
+          <field attribute-ref="number">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance align="left">
+              <label-style field-width="4" field-unit="symbol"/>
+              <alt-appearancies>
+                <alt-appearance>
+                  <appearance-ref ref="css_headerElementGray"/>
+                  <enable condition-union="AND">
+                    <condition>true</condition>
+                  </enable>
+                </alt-appearance>
+              </alt-appearancies>
+            </appearance>
+          </field>
+          <field attribute-ref="regnumber">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance align="left">
+              <label-style field-width="2" field-unit="symbol"/>
+              <alt-appearancies>
+                <alt-appearance>
+                  <appearance-ref ref="css_headerElementBold"/>
+                  <enable condition-union="AND">
+                    <condition>true</condition>
+                  </enable>
+                </alt-appearance>
+              </alt-appearancies>
+            </appearance>
+          </field>
+          <field attribute-ref="from">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance align="left">
+              <label-style field-width="4" field-unit="symbol"/>
+              <alt-appearancies>
+                <alt-appearance>
+                  <appearance-ref ref="css_headerElementGray"/>
+                  <enable condition-union="AND">
+                    <condition>true</condition>
+                  </enable>
+                </alt-appearance>
+              </alt-appearancies>
+            </appearance>
+          </field>
+          <field attribute-ref="date">
+            <properties>
+              <read-only condition-union="AND">
+                <condition>true</condition>
+              </read-only>
+            </properties>
+            <appearance align="left">
+              <label-style field-width="10" field-unit="symbol"/>
+              <alt-appearancies>
+                <alt-appearance>
+                  <appearance-ref ref="css_headerElementBold"/>
+                  <enable condition-union="AND">
+                    <condition>true</condition>
+                  </enable>
+                </alt-appearance>
+              </alt-appearancies>
+            </appearance>
+          </field>
+        </component>
+      </section>
+    </component>
+  </form>
+</ui>

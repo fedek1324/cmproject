@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema recalc="true" name="RequestQuestionExecution">
+    <meta>
+      <category name="Система\Обращение граждан"/>
+    </meta>
+    <string name="complect" system="true"/>
+    <string name="info" system="true" temporal="true"/>
+    <schema-ref ref="RequestQuestionExecutionRkkProperties" name="rkkProperties" system="true"/>
+    <schema-ref ref="ClassifierQuestionValue" name="questionValue" system="true"/>
+    <string name="reviewResult" system="true"/>
+    <enum-ref ref="RequestReviewResultSSTU" name="reviewResultSSTU" system="true"/>
+    <enum-ref ref="YesNo" name="measuresTaken" system="true"/>
+    <date name="replyDate" system="true"/>
+    <schema-ref ref="RequestDocumentResultResource" name="resultDoc" system="true"/>
+    <custom-event-handler lang="JavaScript"><![CDATA[importPackage(Packages.ru.intertrust.cmj.rest.requests);
+importPackage(Packages.ru.intertrust.cmj.rest.tuning);
+importPackage(Packages.ru.intertrust.cmj.af.utils);
+importPackage(Packages.ru.intertrust.cmj.af.misc);
+
+function querySave(object, document) {
+    return true;
+}
+
+function postSave(object, document) {}
+
+function recalc(object, changedField) {
+
+if(changedField=="reviewResult"){
+var isReport = "RequestsFinalReport"==object.getClass().getSimpleName();
+object.tuning().getValues().remove("measuresTaken");
+if(isReport ?
+                         (object.getReviewResult()==null || object.getReviewResult()=="" ):
+                          object.tuning().getValues().get("reviewResult")==null ){
+  object.tuning().getValues().remove("reviewResultSSTU");
+  object.tuning().getValues().remove("resultDoc");
+}else{
+  var reviewRes = isReport?object.getReviewResult():object.tuning().getValues().get("reviewResult").getValue().toString();
+  var complect = isReport?object.getComplect():object.tuning().getValues().get("complect").getValue().toString();
+  var resSSTU = RequestQuestionExecution.findStatus(reviewRes, complect);
+  if(resSSTU!=null){
+    object.tuning().getValues().put("reviewResultSSTU",TuningHelper.createPropertyValue(resSSTU.toString().toUpperCase(), object.tuning().getSchema().getProperty("reviewResultSSTU")));
+
+    if(resSSTU.toString().toUpperCase()!="LEFT_WITHOUT_ANSWER"){
+        var resultDocMap = Utils.newHashMap();
+        var enumReplyType = object.tuning().getSchema().getProperty("resultDoc").getSchema().getProperty("type").getSchema().getEnumConstants();
+        resultDocMap.put("type", resSSTU.toString().toUpperCase()=="TRANSFERRED"?enumReplyType[1]:enumReplyType[0] );//"COVERING_DOC":"REPLY_DOC");
+        resultDocMap.put("parentType", isReport?"report":"rkk");
+        resultDocMap.put("$openmode", "document");
+
+        if ( resSSTU.toString().toUpperCase()=="TRANSFERRED"){
+        //организация и срок из направления в значения по умолчанию
+        	var curOrgBeard = null;
+        	var curDate = null;
+        	if(isReport){
+        		var rkk = object.parents().getRoot();
+        		if(rkk.redirection()!=null && rkk.redirection().to()!=null &&
+                        rkk.redirection().to().getOrganization()!=null && rkk.redirection().getDate()!=null) {
+        			curOrgBeard = rkk.redirection().to().getOrganization();
+        			curDate = AFDate.fromJavaDate(rkk.redirection().getDate());
+        		}
+        	}else{
+        		var rkkProperties = object.tuning().getValues().get("rkkProperties");
+        		if(rkkProperties.getValues().get("toDate")!=null && rkkProperties.getValues().get("toOrg")!=null){
+        			curOrgBeard = rkkProperties.getValues().get("toOrg").getValue();
+        			curDate =  rkkProperties.getValues().get("toDate").getValue();
+        		}
+        	}
+        	if(curOrgBeard!=null && curDate!=null){
+        		var sstu = curOrgBeard.getOrganization().getSSTUGUID();
+        		if(sstu != null && !sstu.isEmpty()){
+        		      resultDocMap.put("regDate", curDate);
+                                     var orgs = Utils.newArrayList();
+                                     orgs.add(curOrgBeard);
+                                     resultDocMap.put("org", orgs);
+                                     resultDocMap.put("docInfo", " от "+curDate);
+        		}
+        	}
+        }
+
+        object.tuning().getValues().put("resultDoc",TuningHelper.createPropertyValue(resultDocMap, object.tuning().getSchema().getProperty("resultDoc")));
+        if(resSSTU.toString().toUpperCase()=="SUPPORTED"){
+             var measuresTakenProperty = object.tuning().getSchema().getProperty("measuresTaken");
+             object.tuning().getValues().put("measuresTaken", TuningHelper.createPropertyValue(measuresTakenProperty.getSchema().getEnumConstants()[0], measuresTakenProperty));
+        }
+    }else{
+        object.tuning().getValues().put("replyDate",TuningHelper.createPropertyValue(AFDate.createCurrent(), object.tuning().getSchema().getProperty("replyDate")));
+    }
+
+  }else{
+    object.tuning().getValues().remove("reviewResultSSTU");
+  }
+}
+}
+
+}]]></custom-event-handler>
+  </schema>
+</schemas>

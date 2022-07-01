@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema name="RkkTemplateResource">
+    <meta>
+      <category name="Сервис\Исполнения"/>
+    </meta>
+    <string array="true" name="category" system="true"/>
+    <string name="type" system="true"/>
+    <string name="title" system="true"/>
+    <schema-ref ref="RegistrationTemplateDto" name="registration" system="true"/>
+    <string name="showTemplateName" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Название шаблона:']]></script>
+      </calc-values>
+    </string>
+    <boolean name="public" system="true"/>
+    <actor array="true" name="acl" system="true"/>
+    <string name="name" system="true"/>
+    <string name="showTemplate" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Шаблон'+
+(#this.getClass().getName().contains('Input')?' ВхД':
+#this.getClass().getName().contains('Output')?' ИсхД':
+#this.getClass().getName().contains('Missions')?' ОРД':
+#this.getClass().getName().contains('Internal')?' ВнД':
+#this.getClass().getName().contains('Requests')?' ОГ':
+#this.getClass().getName().contains('Contracts')?' Договора':
+'')]]></script>
+      </calc-values>
+    </string>
+    <string name="showCommon" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Общедоступный']]></script>
+      </calc-values>
+    </string>
+    <actor name="idauthorRegT">
+      <storage-field name="idauthorRegF"/>
+    </actor>
+    <string name="$titleHeader" system="true"/>
+    <string name="$accessItem" system="true"/>
+    <string name="accessInfo" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[accessType == T(ru.intertrust.cmj.dp.AccessType).PUBLIC ? 'Общедоступный' : 'Доступ ограничен']]></script>
+      </calc-values>
+    </string>
+    <boolean name="isPublic" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[accessType == T(ru.intertrust.cmj.dp.AccessType).PUBLIC]]></script>
+      </calc-values>
+    </boolean>
+    <enum-ref ref="accessTypeEnum" name="accessType" system="true"/>
+    <boolean name="allowManualHuman" system="true"/>
+    <string name="comment">
+      <storage-field name="Comment"/>
+    </string>
+    <boolean name="disableLinkAccess" system="true"/>
+    <boolean name="isSupervisor" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[#hasRole(#this, 'Supervisor')]]></script>
+      </calc-values>
+    </boolean>
+    <schema-ref ref="ApprovingTemplate" name="approvingTemplate" system="true" createlog="true"/>
+    <boolean name="isFavouritesAccess" system="true" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[accessType == T(ru.intertrust.cmj.dp.AccessType).FAVOURITES]]></script>
+      </calc-values>
+    </boolean>
+    <string name="depAccessTitle" system="true" createlog="true" temporal="true"/>
+    <schema-ref ref="DepartmentAccessItem" array="true" name="departmentAccess" system="true" createlog="true"/>
+    <boolean name="hasMultipleSigners" system="true" temporal="true">
+      <calc-values>
+        <script event="open">
+          <![CDATA[T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).isObjectContains(#this, 'signature') && signature != null && !(signature.signingMode == T(ru.intertrust.cmj.af.core.SigningMode).STD)]]>
+        </script>
+      </calc-values>
+    </boolean>
+  </schema>
+</schemas>

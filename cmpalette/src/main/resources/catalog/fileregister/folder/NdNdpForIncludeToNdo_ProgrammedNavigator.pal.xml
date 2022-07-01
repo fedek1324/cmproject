@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <view parent-ref="ProgrammedNavigator" id="nd-ndp-for-include-to-ndo" name="${catalog.view.nd_ndp_for_include_to_ndo.name:Номенклатурные дела для НДО}" position="10">
+    <descriptor-ref ref="nd-ndp-for-include-to-ndo"/>
+    <source>
+      <module ident="FileRegister"/>
+    </source>
+    <search-area name="FileRegister"/>
+  </view>
+</catalog>

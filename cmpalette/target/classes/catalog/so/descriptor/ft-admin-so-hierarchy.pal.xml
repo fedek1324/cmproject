@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
+  <custom-descriptor ident="SO" view="(vw_cmj_admin_hierarchy)" id="ft-admin-so-hierarchy" name="Иерархия для админки для отображения результатов поиска" hierarchy="true" style="default">
+    <builder name="ru.intertrust.cmj.af.collections.impl.BuilderDominoViewComplexClassif">
+      <config>
+        <view-complex-classif level-select="all"/>
+      </config>
+    </builder>
+    <table>
+      <columns>
+        <column-ref ref="self"/>
+        <column-ref ref="soDocType"/>
+        <column-ref ref="NotificationType"/>
+        <column-ref ref="isMainPost"/>
+        <column-ref ref="hierarchyObject"/>
+        <column-ref ref="soNameTunable"/>
+        <column-ref ref="soParentNameTunable"/>
+      </columns>
+    </table>
+    <hierarchy>
+      <view-transit ref="admin-hierarchy-goto" result-search-ref="admin-hierarchy-goto"/>
+    </hierarchy>
+  </custom-descriptor>
+</catalog>
