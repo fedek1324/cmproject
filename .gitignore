@@ -1,11 +1,51 @@
-# Default ignored files
-/shelf/
-/workspace.xml
+# Main
+*~
+*.lock
+*.swp
+*.DS_Store
+*.log
+*.tar
+*.zip
+Thumbs.db
 
-.idea
-/reports/cmrptpackage.iml
-/cmpalette/cmpalette.iml
+# old skool SVN
+.svn/
 
+# Maven
 target/
 
+# Java
+*.class
 *.jar
+*.war
+*.ear
+
+# Eclipse
+.classpath
+.project
+.settings
+.metadata/
+
+# Idea
+*.iml
+.idea
+atlassian-ide-plugin.xml
+
+#MergeTool
+*.orig
+*.log.*
+
+#Servers
+Servers/
+server/cmj/build.bat
+
+home
+
+#NetBeans
+nb-configuration.xml
+nbactions.xml
+
+# CMJ
+_local/
+
+# Other
