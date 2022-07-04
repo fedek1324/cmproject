@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="fr-vw-cmj-transfer" name="${catalog.view.fr-vw-cmj-transfer.name:Дела других подразделений}" position="-1">
-    <descriptor-ref ref="fr-vw-cmj-transfer"/>
-    <source>
-      <module ident="FileRegister"/>
-    </source>
-  </view>
-</catalog>

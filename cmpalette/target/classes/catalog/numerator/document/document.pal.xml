@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <tunable-object form-name="IndexForm" name="${catalog.tunable-object.ab7790880e944aa88ddf977a6a651800.name:Счетчик}" schema-ref="NumeratorCounterResource">
-    <module ident="Numerator" complect=""/>
-  </tunable-object>
-</catalog>

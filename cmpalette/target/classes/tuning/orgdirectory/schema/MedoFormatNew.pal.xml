@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
-  <enum name="MedoFormatNew">
-    <string value="0" name="EMPTY"/>
-    <string value="3" name="MEDO_2_7_1"/>
-    <string value="1" name="MEDO_2_7"/>
-    <string value="2" name="MEDO_2_5"/>
-  </enum>
-</schemas>

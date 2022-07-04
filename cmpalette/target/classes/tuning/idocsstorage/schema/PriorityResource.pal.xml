@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
-  <schema name="PriorityResource">
-    <string name="name" system="true" temporal="true"/>
-    <string name="alias" system="true" temporal="true"/>
-    <string name="complect" system="true" temporal="true"/>
-  </schema>
-</schemas>

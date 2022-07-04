@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
-  <schema name="ClerkExceptionReg">
-    <meta>
-      <category name="Диалоги"/>
-    </meta>
-    <string array="true" name="info" system="true"/>
-  </schema>
-</schemas>

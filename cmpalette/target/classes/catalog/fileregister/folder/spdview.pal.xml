@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-    <view parent-ref="ProgrammedNavigator" id="vw_cmj_ndpspd" name="${catalog.view.arm_admin_dialog_hierarchyprofile.name:ССХ}" position="-1">
-        <descriptor-ref ref="spd-des-vw-cmj-ndpspd"/>
-        <source>
-            <module ident="SPD_period"/>
-        </source>
-    </view>
-</catalog>

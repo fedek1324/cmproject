@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <column name="state" subject="${catalog.column.state.subject:Статус}" extends="string">
-    <meta>
-      <documentation>Статус</documentation>
-    </meta>
-  </column>
-</catalog>

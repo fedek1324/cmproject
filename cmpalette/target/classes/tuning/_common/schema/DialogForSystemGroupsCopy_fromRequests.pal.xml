@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
-  <schema extends="DialogForSystemGroupsCopy" name="DialogForSystemGroupsCopy_fromRequests">
-    <meta>
-      <category name="РМ Администратора"/>
-    </meta>
-    <enum-ref ref="SystemGroupModuleTypesEnum" array="true" name="toCopyFrom_Requests" temporal="true"/>
-  </schema>
-</schemas>

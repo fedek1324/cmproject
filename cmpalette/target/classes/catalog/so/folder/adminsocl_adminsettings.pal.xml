@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="admin-settings" id="admin-so-cl" name="${catalog.view.admin_so_cl.name:Классификаторы}" position="110">
-    <descriptor-ref ref="admin-so-cl"/>
-    <source>
-      <module ident="SO"/>
-    </source>
-  </view>
-</catalog>

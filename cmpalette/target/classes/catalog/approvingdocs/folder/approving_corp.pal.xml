@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="documents" id="ApprovingCorpRkk" name="${catalog.folder.ApprovingCorpRkk.name:Корп. согласование}" position="85">
-    <descriptor-ref ref="approving-copr-with-docs"/>
-    <source>
-      <module ident="ApprovingDocs"/>
-    </source>
-  </view>
-</catalog>

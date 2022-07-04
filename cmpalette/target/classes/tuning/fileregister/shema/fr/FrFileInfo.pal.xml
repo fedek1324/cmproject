@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
-  <schema recalc="true" name="FrFileInfo">
-    <string name="title" system="true"/>
-    <string name="fullIndex" system="true"/>
-    <string name="unid" system="true"/>
-  </schema>
-</schemas>

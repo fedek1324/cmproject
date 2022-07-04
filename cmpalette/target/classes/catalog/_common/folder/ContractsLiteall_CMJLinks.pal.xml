@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="CMJLinks" id="ContractsLite::::all" name="${catalog.view.ContractsLite____all.name:Договоры}" position="140">
-    <search-area name="_ContractsLite"/>
-    <descriptor-ref ref="dp-70-contracts"/>
-  </view>
-</catalog>

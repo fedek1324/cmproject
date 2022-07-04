@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <complex-column name="objectPortalProfileInfo" extends="object">
-    <column-ref ref="name"/>
-  </complex-column>
-</catalog>

@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="arm-admin-dialog-spo-sys-org" name="${catalog.view.arm_admin_dialog_spo_sys_org.name:АРМАдмин.Диалог. Системные организации}" position="-1">
-    <descriptor-ref ref="arm-admin-dialog-spo-sys-org"/>
-    <source>
-      <module ident="OrgDirectory"/>
-    </source>
-  </view>
-</catalog>

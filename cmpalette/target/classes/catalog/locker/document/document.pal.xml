@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-    <document object-ref="LOCKER_USER_CERT" schema-ref="UserCertificate" name="${catalog.document.locker.user.cert:Сертификат пользователя}">
-        <module ident="LockerCOK" />
-    </document>
-    <document object-ref="LOCKER_CERT_AUTH" schema-ref="CertAuthCertificate" name="${catalog.document.locker.ca.cert:Сертификат УЦ}">
-        <module ident="LockerCOK" />
-    </document>
-</catalog>

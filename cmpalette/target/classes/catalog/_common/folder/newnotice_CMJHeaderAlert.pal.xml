@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="CMJHeaderAlert" id="new-notice" name="${catalog.view.new_notice.name:Новые уведомления}" position="10">
-    <descriptor-ref ref="pkd-header-alert"/>
-  </view>
-</catalog>

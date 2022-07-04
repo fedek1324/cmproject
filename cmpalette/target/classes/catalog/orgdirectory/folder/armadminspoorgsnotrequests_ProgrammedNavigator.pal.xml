@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="arm-admin-spo-orgs-not-requests:" name="${catalog.view.arm_admin_spo_orgs_not_requests_.name:СПО. Организации без заявок}" position="-1">
-    <descriptor-ref ref="admin-spo-orgs-not-requests"/>
-    <source>
-      <module ident="OrgDirectory"/>
-    </source>
-  </view>
-</catalog>

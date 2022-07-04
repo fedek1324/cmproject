@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <document name="${catalog.document.sendlist765915f38548466c8fbfd3d214edccf4.name:Список рассылки}" schema-ref="SendListResource" object-ref="SENDLIST">
-    <module ident="Delivery" complect=""/>
-  </document>
-</catalog>

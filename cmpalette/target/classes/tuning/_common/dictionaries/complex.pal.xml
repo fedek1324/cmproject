@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
-  <directories>
-    <complex alias="country" schema-ref="ComplectClassifierExample" name="${ui.directories.complex.ExampleCounter.name:ExampleCounter}" id="ExampleCounter"/>
-    <complex alias="street" schema-ref="ComplectClassifierExample" name="${ui.directories.complex.ExampleStreet.name:ExampleStreet}" id="ExampleStreet"/>
-    <complex alias="City" schema-ref="ComplectClassifierExample" name="${ui.directories.complex.ExampleCity.name:ExampleCity}" id="ExampleCity"/>
-  </directories>
-</ui>

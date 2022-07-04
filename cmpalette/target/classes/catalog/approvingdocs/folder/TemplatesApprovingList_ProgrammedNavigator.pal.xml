@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="Templates-Approving-List" name="${catalog.view.Templates_Approving_List.name:Шаблоны согласования (с учетом комплекта)}" position="240">
-    <descriptor-ref ref="approving-templates-list"/>
-    <source>
-      <module ident="ApprovingDocs"/>
-    </source>
-  </view>
-</catalog>

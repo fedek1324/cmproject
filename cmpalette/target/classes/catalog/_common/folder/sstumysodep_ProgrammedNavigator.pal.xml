@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="sstu-myso-dep" name="${catalog.view.sstu_myso_dep.name:ССТУ - Подразделения}" position="420">
-    <descriptor-ref ref="so-sstu-myorg-dep"/>
-  </view>
-</catalog>

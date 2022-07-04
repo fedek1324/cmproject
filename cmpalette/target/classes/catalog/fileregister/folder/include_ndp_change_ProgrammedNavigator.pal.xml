@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="include-ndp-change" name="${catalog.view.include-ndp-change.name:Дополнения к ИкНДП}" position="-1">
-    <descriptor-ref ref="include-ndp-change"/>
-    <source>
-      <module ident="FileRegister"/>
-    </source>
-  </view>
-</catalog>

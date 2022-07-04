@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="ProgrammedNavigator" id="admin-roles-hierarchy-goto" name="${catalog.view.admin_roles_hierarchy_goto.name:Иерархия ФР}" position="220">
-    <descriptor-ref ref="admin-so-roles-hierarchy"/>
-    <source>
-      <module ident="SO"/>
-    </source>
-  </view>
-</catalog>

@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <complex-column name="cyprusAuthor" subject="${catalog.complex-column.cyprusAuthor.subject:Автор поручений}" extends="vcard"/>
-  <column name="cyprusTables" subject="${catalog.column.cyprusTables.subject:Состав стартовой страницы}" extends="subject"/>
-</catalog>

@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-  <view parent-ref="CMJImportantResources" id="overdue-tasks" name="${catalog.view.overdue_tasks.name:Просроченные задачи}" position="20">
-    <descriptor-ref ref="pkd-plan-expired"/>
-  </view>
-</catalog>

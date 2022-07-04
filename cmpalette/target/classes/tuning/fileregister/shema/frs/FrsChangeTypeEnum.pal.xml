@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
-  <enum name="FrsChangeTypeEnum">
-    <string value="CONFIRM_FEW_PER_YEAR" name="CONFIRM_FEW_PER_YEAR" />
-    <string value="CONFIRM_END_OF_YEAR" name="CONFIRM_END_OF_YEAR" />
-  </enum>
-</schemas>
