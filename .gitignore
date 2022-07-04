@@ -5,3 +5,7 @@
 .idea
 /reports/cmrptpackage.iml
 /cmpalette/cmpalette.iml
+
+target/
+
+*.jar
