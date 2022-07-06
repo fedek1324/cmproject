@@ -15,3 +15,6 @@
 **Схема размещения конфигурации палитры**
 
 [Информация по размещению конфигураций в репозитории](https://conf.programma-t.ru/pages/viewpage.action?pageId=66453657)
+
+**Инструкция по СМ**
+[Ссылка](https://conf.programma-t.ru/display/CM/CompanyMedia)
