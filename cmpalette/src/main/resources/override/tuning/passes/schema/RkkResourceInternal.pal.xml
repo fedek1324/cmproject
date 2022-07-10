@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
+  <schema extends="RkkResource" name="RkkResourcePasses">
+    <string name="pagename" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[registration.number==null ? 'ВнД проект' : 'ВнД № '+registration.number.prefix+registration.number.number+registration.number.suffix]]></script>
+      </calc-values>
+    </string>
+    <actor array="true" name="advSigner" system="true"/>
+    <actor array="true" name="executor" system="true"/>
+    <actor array="true" name="addressee" system="true"/>
+    <actor name="f_read_allowbyctx" array="true" computed="true" >
+      <calc-values>
+        <script event="save" lang="SPEL"><![CDATA[#joinCols(#toCol(signature?.signer), signature?.signers?.?[#this != null]?.![signer], advSigner, executor)]]></script>
+      </calc-values>
+    </actor>
+    <string name="showIdent" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA['Внутренний']]></script>
+      </calc-values>
+    </string>
+    <schema-ref ref="ShowSignInfo" name="showSignInfo" temporal="true"/>
+    <boolean name="$canVerify" system="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[link.?[rel=='http://intertrust.ru/cmj/relations#verify'].size() > 0]]></script>
+      </calc-values>
+    </boolean>
+    <string name="WFSignOtherStatus">
+      <storage-field name="WFSignOtherStatus"/>
+    </string>
+    <boolean name="currentUserIsSigner" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[id == null ? false : T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).getEntityByUNID(id) == null ? false : T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).getEntityByUNID(id).signing() == null ? false : T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).getEntityByUNID(id).signing().getSigner() == null ? false : T(ru.intertrust.cmj.rest.tuning.expressions.TuningFunctions).getEntityByUNID(id).signing().getSigner().equals(T(ru.intertrust.cmj.af.core.AFSession).get().currentUser().getBeard()) ? true : false]]></script>
+      </calc-values>
+    </boolean>
+    <string name="mainFileName" system="true" temporal="true"/>
+    <string name="stampStatus" system="true" temporal="true"/>
+    <string name="stampState" system="true" temporal="true"/>
+    <boolean name="regStateStatusSent" createlog="true" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[registration != null && registration.state != null && "sent".equals(registration.state.status)]]></script>
+      </calc-values>
+    </boolean>
+    <schema-ref ref="MovingCopiesTable" array="true" name="movingCopiesTable" createlog="true"/>
+    <string name="dialogueComment" createlog="true">
+      <storage-field name="dialogueComment"/>
+    </string>
+    <string name="dialogueCommentReg" createlog="true">
+      <storage-field name="dialogueCommentReg"/>
+    </string>
+    <string temporal="true" name="DOPName">
+      <calc-values>
+        <script lang="SPEL" event="open"><![CDATA['F_DP_IntRkk']]></script>
+      </calc-values>
+    </string>
+    <string name="whoCancelCertifiedPIDTune" temporal="true">
+      <storage-field name="WhoCancelCertifiedPID"/>
+    </string>
+    <boolean name="needAskNotifyVerify" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[(#this.whoCancelCertifiedPIDTune != null && !#this.whoCancelCertifiedPIDTune.isEmpty())]]>
+        </script>
+      </calc-values>
+    </boolean>
+    <boolean name="tDeleted" temporal="true">
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[T(java.lang.Boolean).TRUE.equals(status.deleted)]]></script>
+      </calc-values>
+    </boolean>
+    <custom-event-handler lang="JavaScript"><![CDATA[importClass(Packages.ru.intertrust.cmj.af.core.AFCMDomino);
+importClass(Packages.ru.intertrust.cmj.af.history.FieldBase);
+importClass(Packages.ru.intertrust.cmj.af.history.HasHistory);
+importClass(Packages.ru.intertrust.cmj.af.history.emb.HistoryEmb);
+importClass(Packages.ru.intertrust.cmj.af.history.record.BasicText);
+importClass(Packages.ru.intertrust.cmj.af.history.record.NameList);
+importClass(Packages.ru.intertrust.cmj.af.history.record.TextList);
+importClass(Packages.ru.intertrust.cmj.af.so.SOAppointment);
+importClass(Packages.ru.intertrust.cmj.af.so.SOBeard);
+importClass(Packages.ru.intertrust.cmj.af.so.SOParty);
+importClass(Packages.ru.intertrust.cmj.af.so.SOUnitParent);
+importClass(Packages.ru.intertrust.cmj.af.so.SOUnitPost);
+importClass(Packages.ru.intertrust.cmj.af.so.SOUnitPostHead);
+importClass(Packages.ru.intertrust.cmj.af.so.SOUnitStructure);
+importClass(Packages.ru.intertrust.cmj.af.utils.BeansUtils);
+importClass(Packages.ru.intertrust.cmj.af.utils.Utils);
+importClass(Packages.ru.intertrust.cmj.dp.DPException);
+importClass(Packages.ru.intertrust.cmj.dp.DPM);
+importClass(Packages.ru.intertrust.cmj.dp.DPM.RKK);
+importClass(Packages.ru.intertrust.cmj.dp.DPMPurchaseContracts);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.dao.ActionInfo);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.dao.ActionInfoComment);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.dao.entity.Entity_);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.dao.entity.rkk.RKKSigning);
+importClass(Packages.ru.intertrust.cmj.af.pkd.EventCode);
+importClass(Packages.ru.intertrust.cmj.af.prvz.AFHasHead);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.dao.SaveListener);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.dao.entity.rkk.full.RKKFSigning);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.operations.Helper);
+importClass(Packages.ru.intertrust.cmj.pkd.domain.PkdEntity);
+importClass(Packages.ru.intertrust.cmj.pkd.domain.events.EventEntity.TaskEntity.Status);
+importClass(Packages.ru.intertrust.cmj.pkd.session.PkdSession);
+importClass(Packages.ru.intertrust.cmj.pkd.session.TaskChangeInfo);
+
+importClass(Packages.java.util.List);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.dao.entity.rkk.full.RKKFRegistration);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.dao.entity.rkk.full.RKKFRegistration.Operation.Recall);
+importClass(Packages.ru.intertrust.cmj.dp._stdimpl.operations.entity.rkk.full.RKKFRegistrationRegistrate);
+
+function querySave(object, document) {    
+    if ((object.registration().getState() == DPM.RKK.Registration.State.SENT) && object.signing().wasUnSigned  ) {
+        object.registration().recall(); 
+    } 
+    return true;
+}
+
+function postSave(object, document) {    
+    if (object.signing().wasUnSigned  ) {
+        var to = RKKFRegistrationRegistrate.getDPs(rkk);
+        if (!to.isEmpty()) {
+            new PkdSession().deleteEvent(to, EventCode.getByString("RGST1_11"), object);
+        }
+    } 
+}]]></custom-event-handler>
+  </schema>
+</schemas>
