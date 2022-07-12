@@ -9,7 +9,7 @@
     </properties>
     <appearance widget="tabs"/>
     <component>
-      <!-- ВВедите загорловк документа -->
+      <!-- Введите заголовок документа -->
       <section id="Header">
         <component>
           <field attribute-ref="$titleHeader">
