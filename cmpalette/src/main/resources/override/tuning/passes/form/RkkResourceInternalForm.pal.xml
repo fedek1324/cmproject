@@ -33,7 +33,7 @@
                 </value-style>
               </field-style>
             </appearance>
-            <directories manual-input="true" limit-livesearch="no-restrictions">
+            <directories manual-input="true" limit-livesearch="no-restrictions" >
               <directory-ref ref="subject"/>
             </directories>
           </field>
@@ -85,9 +85,10 @@
               </field>
             </component>
           </section>
-          <section id="Main" name="${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.name:Основные}">
+          <!-- Group true - наоборот убирает вложенность -->
+          <section id="Main" group="true" name="${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.name:Основные}">
             <component>
-              <field attribute-ref="reason" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.category.name:Цель:}">
+              <field attribute-ref="reason" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.category.name:Цель пропуска:}">
                 <appearance importance="normal"/>
                 <hint-pop-up>${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.category.hintPopUp:Тематика}</hint-pop-up>
               </field>
@@ -98,7 +99,7 @@
               <field attribute-ref="forWho" name="${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.executor.name:Исполнители:}">
                 <appearance importance="normal"/>
                 <hint-pop-up>${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.executor.hintPopUp:Исполнители}</hint-pop-up>
-                <directories limit-livesearch="sys-current">
+                <directories  manual-input="true" limit-livesearch="sys-current">
                   <directory-ref ref="CURRENT_SYS_HUMAN"/>
                   <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
                   <directory-ref ref="FV_CURR_HUMAN_HH"/>
