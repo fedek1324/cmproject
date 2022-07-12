@@ -10,6 +10,7 @@
     <appearance widget="tabs"/>
     <component>
       <!-- Введите заголовок документа -->
+      <section id="ToPHeader">
       <section id="Header">
         <component>
           <field attribute-ref="$titleHeader">
