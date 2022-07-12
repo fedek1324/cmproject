@@ -56,7 +56,7 @@
                 </value-style>
               </field-style>
             </appearance>
-            <hint-in-field>${ui.form.RkkResourceInternalForm.section.Header.field.titleHeader.hintInField:Введите заголовок документа}</hint-in-field>
+            <hint-in-field>${ui.form.RkkResourceInternalForm.section.Header.field.titleHeader.hintInField:Введите номер пропуска}</hint-in-field>
             <directories manual-input="true" limit-livesearch="no-restrictions">
               <directory-ref ref="subject"/>
             </directories>
@@ -92,13 +92,13 @@
                 <appearance importance="normal"/>
                 <hint-pop-up>${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.category.hintPopUp:Тематика}</hint-pop-up>
               </field>
-              <field attribute-ref="date" name="${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.registration.date.name:Дата документа:}">
+              <field attribute-ref="date" name="${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.registration.date.name:Дата выдачи пропуска:}">
                 <appearance importance="normal"/>
-                <hint-pop-up>${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.registration.date.hintPopUp:Дата документа}</hint-pop-up>
+                <hint-pop-up>${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.registration.date.hintPopUp:Дата выдачи пропуска:}</hint-pop-up>
               </field>
-              <field attribute-ref="forWho" name="${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.executor.name:Исполнители:}">
+              <field attribute-ref="forWho" name="${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.executor.name:Получатели:}">
                 <appearance importance="normal"/>
-                <hint-pop-up>${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.executor.hintPopUp:Исполнители}</hint-pop-up>
+                <hint-pop-up>${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.executor.hintPopUp:Получатели}</hint-pop-up>
                 <directories  manual-input="true" limit-livesearch="sys-current">
                   <directory-ref ref="CURRENT_SYS_HUMAN"/>
                   <directory-ref ref="CURRENT_SYS_HUMAN_Hierarchy"/>
