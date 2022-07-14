@@ -56,7 +56,7 @@
                 </value-style>
               </field-style>
             </appearance>
-            <hint-in-field>${ui.form.RkkResourceInternalForm.section.Header.field.titleHeader.hintInField:Введите AAAAAAAA}</hint-in-field>
+            <hint-in-field>${ui.form.RkkResourceInternalForm.section.Header.field.titleHeader.hintInField:Введите номер пропуска}</hint-in-field>
             <directories manual-input="true" limit-livesearch="no-restrictions">
               <directory-ref ref="subject"/>
             </directories>
@@ -87,7 +87,7 @@
           </section>
           <section id="Main" name="${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.name:Основные}">
             <component>
-              <field attribute-ref="reason" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.category.name:Цель:}">
+              <field attribute-ref="reason" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.category.name:Цель пропуска!!!!!!!!!:}">
                 <appearance importance="normal"/>
                 <hint-pop-up>${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.category.hintPopUp:Тематика}</hint-pop-up>
               </field>
