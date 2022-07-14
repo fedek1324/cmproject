@@ -87,13 +87,16 @@
           </section>
           <section id="Main" name="${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.name:Основные}">
             <component>
-              <field attribute-ref="reason" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.category.name:Цель пропуска!!!!!!!!!:}">
+              <field attribute-ref="reason" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.category.name:Цель пропуска:}">
                 <appearance importance="normal"/>
                 <hint-pop-up>${ui.form.RkkResourceInternalForm.section.Attributes.section.Main.field.category.hintPopUp:Тематика}</hint-pop-up>
               </field>
 
               <field attribute-ref="date" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.date.name:Дата пропуска:}">
-                <appearance importance="normal"/>
+                <appearance>
+                  importance="normal"
+                  
+                </appearance>
                 <hint-pop-up>${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.date.name:Дата пропуска:}</hint-pop-up>
               </field>
 
