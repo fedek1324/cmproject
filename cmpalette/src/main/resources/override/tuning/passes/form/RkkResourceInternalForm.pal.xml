@@ -92,7 +92,7 @@
           <section id="Main" group="true" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.name:Основные}">
             <component>
               <field attribute-ref="reason" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.category.name:Цель пропуска:}">
-                <directories livesearch="true" limit-livesearch="sys-current">
+                <directories manual-input="true"  livesearch="true" limit-livesearch="no-restrictions">
                   <directory-ref ref="Purpose"/>
                 </directories>
 				<appearance importance="normal"/>
