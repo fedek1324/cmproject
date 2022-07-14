@@ -4,9 +4,9 @@
     <string name="reason" required="true">
       <storage-field name="reason"/>
     </string>
-    <string name="date" required="true">
+    <date name="date">
       <storage-field name="date"/>
-    </string>
+    </date>
     <actor array="false" name="forWho" system="true"/>
     <actor array="false" name="toWho" system="true"/>
     <string name="carNumber" required="true">
