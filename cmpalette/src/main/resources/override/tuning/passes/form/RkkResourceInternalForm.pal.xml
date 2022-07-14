@@ -93,10 +93,7 @@
               </field>
 
               <field attribute-ref="date" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.date.name:Дата пропуска:}">
-                <appearance>
-                  importance="normal"
-                  
-                </appearance>
+                <appearance importance="normal"/>
                 <hint-pop-up>${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.date.name:Дата пропуска:}</hint-pop-up>
               </field>
 
