@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
   <schema extends="RkkResource" name="RkkResourcePasses">
-    <string name="reason">
+    <string name="reason" required="true">
       <storage-field name="reason"/>
     </string>
-    <string name="date">
+    <string name="date" required="true">
       <storage-field name="date"/>
     </string>
     <actor array="false" name="forWho" system="true"/>
     <actor array="false" name="toWho" system="true"/>
-    <string name="carNumber">
+    <string name="carNumber" required="true">
       <storage-field name="carNumber"/>
     </string>
-    <string name="carModel">
+    <string name="carModel" required="true">
       <storage-field name="carModel"/>
     </string>
   </schema>
