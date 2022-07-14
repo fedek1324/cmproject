@@ -7,8 +7,8 @@
     <date name="date">
       <storage-field name="date"/>
     </date>
-    <actor array="false" name="forWho" system="true"/>
-    <actor array="false" name="toWho" system="true"/>
+    <actor array="false" name="forWho" />
+    <actor array="false" name="toWho" />
     <string name="carNumber" required="true">
       <storage-field name="carNumber"/>
     </string>
