@@ -45,29 +45,17 @@ from
 		where
 			tn_field."owner" = rkkbase.id
 			and tn_field.owner_type = rkkbase.id_type
-			and tn_field.cmjfield = 'Tn$_giveDateTime') as giveDateTime,
-		(
-		select
-			tfs."value" as v
-		from
-			tn_field
-		join tn_field_string tfs on
-			tn_field.access_object_id = tfs.id
-		where
-			tn_field."owner" = rkkbase.id
-			and tn_field.owner_type = rkkbase.id_type
-			and tn_field.cmjfield = 'forWho') as forWho,
-		(
-		select
-			tfs."value" as v
-		from
-			tn_field
-		join tn_field_string tfs on
-			tn_field.access_object_id = tfs.id
-		where
-			tn_field."owner" = rkkbase.id
-			and tn_field.owner_type = rkkbase.id_type
-			and tn_field.cmjfield = 'toWho') as toWho,
+			and tn_field.cmjfield = 'giveDateTime') as giveDateTime,
+		coalesce((select string_agg(SPLIT_PART(tfs.value, '%', 1), ',') as v
+		 from tn_field
+		 join tn_field_string tfs on tn_field.access_object_id = tfs.id
+		 where tn_field."owner" = rkkbase.id and tn_field.cmjfield = 'Tn$_forWho'), 'Не указано'
+		) as forWho,
+				coalesce((select string_agg(SPLIT_PART(tfs.value, '%', 1), ',') as v
+		 from tn_field
+		 join tn_field_string tfs on tn_field.access_object_id = tfs.id
+		 where tn_field."owner" = rkkbase.id and tn_field.cmjfield = 'Tn$_toWho'), 'Не указано'
+		) as toWho,
 		(
 		select
 			tfs."value" as v
@@ -100,8 +88,8 @@ from
 		rkkbase.isdeleted <> 1
 		and rkk.regnumcnt is null
 		   ) s
-where
-	1 = 1 ::where-clause
+	where
+		1 = 1 ::where-clause
             ]]>
     </prototype>
     <counting-prototype>
