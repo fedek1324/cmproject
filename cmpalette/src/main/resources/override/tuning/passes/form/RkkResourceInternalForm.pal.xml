@@ -12,7 +12,7 @@
     </properties>
     <appearance widget="tabs"/>
     <component>
-      <!-- Введите заголовок документа -->
+      <!-- Введите номер пропуска -->
       <section id="Header">
         <component>
           <field attribute-ref="$titleHeader">

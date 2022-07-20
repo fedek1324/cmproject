@@ -15,5 +15,17 @@
     <string name="carModel" required="true">
       <storage-field name="carModel"/>
     </string>
+
+    <boolean name="$hideUnusedActions" temporal="true">
+      <meta>
+        <documentation>Управление видимостью системных кнопок</documentation>
+      </meta>
+      <calc-values>
+        <script event="open" lang="SPEL"><![CDATA[
+(link.?[rel=='http://intertrust.ru/cmj/relations#applyTemplateButton'].size()>0 ?
+link.remove(link.?[rel=='http://intertrust.ru/cmj/relations#applyTemplateButton'].get(0)) : true)]]></script>
+      </calc-values>
+    </boolean>
+
   </schema>
 </schemas>
