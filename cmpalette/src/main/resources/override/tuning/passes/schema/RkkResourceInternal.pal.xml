@@ -4,11 +4,11 @@
     <string name="reason" required="true">
       <storage-field name="reason"/>
     </string>
-    <date name="date" required="true">
-      <storage-field name="date"/>
-    </date>
-    <actor array="false" name="forWho" required="true"/>
-    <actor array="false" name="toWho" required="true"/>
+    <datetime name="giveDateTime">
+      <storage-field name="giveDateTime"/>
+    </datetime>
+    <actor array="false" name="forWho" />
+    <actor array="false" name="toWho" />
     <string name="carNumber" required="true">
       <storage-field name="carNumber"/>
     </string>
