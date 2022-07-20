@@ -4,7 +4,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd" default-lazy-init="true">
 
-    <bean id="Passes_passesSQL"
+    <bean id="Passes_(vm_cmj_all)Metadata"
           class="ru.intertrust.cm_sochi.srv.connector.sochi.collections.CollectionMetadataNew"
           p:caseSensitiveFieldNames="true" p:searchArea="WorkplaceRequests">
         <constructor-arg>

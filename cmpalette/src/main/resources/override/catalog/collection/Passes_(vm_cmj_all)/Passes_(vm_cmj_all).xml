@@ -1,4 +1,4 @@
-<collection name="Passes_passesSQL" idField="id" replace="runtime">
+<collection name="Passes_(vm_cmj_all)" idField="id" replace="runtime">
     <prototype>
         <![CDATA[select
 	id,

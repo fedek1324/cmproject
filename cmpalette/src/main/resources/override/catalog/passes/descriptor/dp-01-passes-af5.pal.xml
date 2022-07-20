@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-    <custom-descriptor ident="Passes" view="Passes_passesSQLP" id="dp-01-passes-af5" name="Пропуска" style="default">
+    <custom-descriptor ident="Passes" view="Passes_(vm_cmj_all)" id="dp-01-passes-af5" name="Пропуска" style="default">
         <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
         <table>
             <columns>

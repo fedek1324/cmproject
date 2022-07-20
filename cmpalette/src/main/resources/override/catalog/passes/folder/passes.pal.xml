@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-    <folder parent-ref="SQLNavigator" id="passes" name="${passes:Пропуска}" position="35">
+    <folder parent-ref="SQLNavigator" id="passes" name="${passes:Пропуска}" position="34">
         <subfolders>
             <view id="passes-all" name="${passes-all:Все пропуска}" position="10">
                 <pagename name="Пропуска"/>
