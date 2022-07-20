@@ -9,7 +9,7 @@
 	self_2,
 	self_3,
 	reason,
-	date,
+	giveDateTime,
 	forWho,
 	toWho,
 	carNumber,
@@ -37,15 +37,15 @@ from
 			and tn_field.cmjfield = 'reason') as reason,
 		(
 		select
-			tfd."value" as v
+			tfs."value" as v
 		from
 			tn_field
-		join tn_field_dateonly tfd on
-			tn_field.access_object_id = tfd.id
+		join tn_field_datetime tfs on
+			tn_field.access_object_id = tfs.id
 		where
 			tn_field."owner" = rkkbase.id
 			and tn_field.owner_type = rkkbase.id_type
-			and tn_field.cmjfield = 'date') as date,
+			and tn_field.cmjfield = 'Tn$_giveDateTime') as giveDateTime,
 		(
 		select
 			tfs."value" as v
