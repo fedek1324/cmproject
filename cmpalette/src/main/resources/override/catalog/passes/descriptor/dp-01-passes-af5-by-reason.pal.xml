@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <catalog xmlns="http://www.intertrust.ru/schema/palette/cat-ui">
-    <custom-descriptor ident="Passes" view="Passes_(vm_cmj_all)" id="dp-01-passes-af5" name="Пропуска" style="default">
+    <custom-descriptor ident="Passes" view="Passes_(vm_cmj_all)" id="dp-01-passes-af5-by-reason" name="Пропуска" style="default">
         <builder name="ru.intertrust.cm_sochi.srv.uicollections.UiBuilder"/>
         <table>
             <columns>
@@ -12,7 +12,7 @@
                 carModel -->
                 <column-ref ref="self"/>
                 <column-ref ref="passNumber" filter="true" sort-asc="true" sort-desc="true"/>
-                <column-ref ref="reason" filter="true" sort-asc="true" sort-desc="true" />
+                <column-ref ref="reason" filter="true" sort-asc="true" sort-desc="true" category="true"/>
                 <column-ref ref="giveDateTime" filter="true" sort-desc="true" sort-asc="true"/>
                 <column-ref ref="forWho" filter="true" sort-desc="true" sort-asc="true"/>
                 <column-ref ref="toWho" filter="true" sort-desc="true" sort-asc="true"/>
@@ -21,7 +21,6 @@
                 <!-- <column-ref ref="subject"/> -->
             </columns>
         </table>
-        <custom-actions schema-ref="RkkReadersCollection"/>
     </custom-descriptor>
     <column name="passNumber" extends="string" subject="${passNumber:Номер пропуска}"/>
     <column name="reason" extends="string" subject="${reason:Цель пропуска}"/>
