@@ -11,20 +11,22 @@
                 carNumber,
                 carModel -->
                 <column-ref ref="self"/>
+                <column-ref ref="passNumber" filter="true" sort-asc="true" sort-desc="true"/>
                 <column-ref ref="reason" filter="true" sort-asc="true" sort-desc="true"/>
                 <column-ref ref="giveDateTime" filter="true" sort-desc="true" sort-asc="true"/>
                 <column-ref ref="forWho" filter="true" sort-desc="true" sort-asc="true"/>
                 <column-ref ref="toWho" filter="true" sort-desc="true" sort-asc="true"/>
                 <column-ref ref="carNumber" filter="true" sort-desc="true" sort-asc="true"/>
                 <column-ref ref="carModel" filter="true" sort-desc="true" sort-asc="true"/>
-                <column-ref ref="subject"/>
+                <!-- <column-ref ref="subject"/> -->
             </columns>
         </table>
     </custom-descriptor>
-    <column name="reason" extends="string" subject="${reason:Цель}"/>
-    <column name="giveDateTime" extends="datetime" subject="${date:Дата получения пропуска}"/>
-    <column name="forWho" extends="string" subject="${forWho:Для кого}"/>
-    <column name="toWho" extends="string" subject="${toWho:К кому}"/>
-    <column name="carNumber" extends="string" subject="${carNumber:Номер машины}"/>
-    <column name="carModel" extends="string" subject="${carModel:Модель машины}"/>
+    <column name="passNumber" extends="string" subject="${passNumber:Номер пропуска}"/>
+    <column name="reason" extends="string" subject="${reason:Цель пропуска}"/>
+    <column name="giveDateTime" extends="datetime" subject="${date:Дата выдачи пропуска}"/>
+    <column name="forWho" extends="string" subject="${forWho:ФИО получателя}"/>
+    <column name="toWho" extends="string" subject="${toWho:ФИО сотрудника}"/>
+    <column name="carNumber" extends="string" subject="${carNumber:Номер автомобиля}"/>
+    <column name="carModel" extends="string" subject="${carModel:Марка автомобиля}"/>
 </catalog>
