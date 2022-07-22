@@ -28,6 +28,8 @@
                         </bean>
                     </property>
                 </bean>
+                <bean class="ru.intertrust.cm_sochi.srv.connector.sochi.collections.Field" p:name="reason"
+                    p:sortOrder="ASCENDING" p:categorized="true"/>
             </list>
         </constructor-arg>
     </bean>
