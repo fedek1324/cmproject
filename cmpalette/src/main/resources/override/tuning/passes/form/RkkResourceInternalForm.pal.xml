@@ -108,7 +108,7 @@
                 <hint-pop-up>${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.category.hintPopUp:Цель пропуска}</hint-pop-up>
               </field>
 
-              <field attribute-ref="giveDateTime" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.registration.date.name:Дата выдачи пропуска:}">
+              <field attribute-ref="issuanceDate" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.registration.date.name:Дата выдачи пропуска:}">
                 <appearance importance="normal"/>
                 <hint-pop-up>${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.registration.date.hintPopUp:Дата выдачи пропуска:}</hint-pop-up>
               </field>

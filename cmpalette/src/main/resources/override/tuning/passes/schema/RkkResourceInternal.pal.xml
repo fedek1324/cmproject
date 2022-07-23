@@ -4,18 +4,18 @@
     <string name="passNumber" required="true">
       <storage-field name="passNumber"/>
     </string>
-    <string name="reason" required="true">
+    <string name="reason" >
       <storage-field name="reason"/>
     </string>
-    <datetime name="giveDateTime">
-      <storage-field name="giveDateTime"/>
-    </datetime>
+    <date name="issuanceDate">
+      <storage-field name="issuanceDate"/>
+    </date>
     <actor array="false" name="forWho" />
     <actor array="false" name="toWho" />
-    <string name="carNumber" required="true">
+    <string name="carNumber" >
       <storage-field name="carNumber"/>
     </string>
-    <string name="carModel" required="true">
+    <string name="carModel">
       <storage-field name="carModel"/>
     </string>
 
