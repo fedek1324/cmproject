@@ -25,7 +25,7 @@
     </custom-descriptor>
     <column name="passNumber" extends="string" subject="${passNumber:Номер пропуска}"/>
     <column name="reason" extends="string" subject="${reason:Цель пропуска}"/>
-    <column name="issuanceDate" extends="datetime" subject="${date:Дата выдачи пропуска}"/>
+    <column name="issuanceDate" extends="datetime" subject="${issuanceDate:Дата выдачи пропуска}"/>
     <column name="forWho" extends="string" subject="${forWho:ФИО получателя}"/>
     <column name="toWho" extends="string" subject="${toWho:ФИО сотрудника}"/>
     <column name="carNumber" extends="string" subject="${carNumber:Номер автомобиля}"/>
