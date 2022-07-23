@@ -9,13 +9,19 @@
                     <module ident="Passes"/>
                 </source>
             </view>
-            <!-- <view id="passes-by-reason" name="По цели получения" position="20">
-                <pagename name="Пропуска"/>
+            <view id="passes-by-reason" name="По цели получения" position="20">
+                <pagename name="Пропуска по цели получения"/>
                 <descriptor-ref ref="dp-01-passes-af5-by-reason"/>
                 <source>
                     <module ident="Passes"/>
                 </source>
-            </view> -->
+            </view>
+            <view id="classifiers-internals" name="${catalog.view.classifiers_passes.name:Редактировать справочники}" position="30">
+                <descriptor-ref ref="internal-сlassifier-common"/>
+                <source>
+                    <module ident="Passes"/>
+                </source>
+            </view>
             <!-- <view id="passes-by-date" name="По дате выдачи" position="30">
                 <pagename name="Пропуска"/>
                 <descriptor-ref ref="dp-01-passes-af5-by-date"/>
