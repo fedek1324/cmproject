@@ -41,7 +41,7 @@
           <section id="Main" group="true" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.name:Основные}">
             <component>
               <field attribute-ref="passNumber" name="${ui.form.RkkResourcePassesForm.passNumber:Номер пропуска:}">
-                <appearance importance="normal"/> <!-- Если задать high систему крашит на сортировке -->
+                <appearance importance="high"/> <!-- Если задать high систему крашит на сортировке -->
                 <hint-pop-up>${ui.form.RkkResourcePassesForm.passNumber:Номер пропуска}</hint-pop-up>
               </field>
               <field attribute-ref="reason" name="${ui.form.RkkResourcePassesForm.section.Attributes.section.Main.field.category.name:Цель пропуска:}">
