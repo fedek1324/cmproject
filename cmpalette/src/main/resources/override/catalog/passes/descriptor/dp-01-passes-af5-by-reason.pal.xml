@@ -12,7 +12,7 @@
                 carModel -->
                 <column-ref ref="self"/>
                 <column-ref ref="passNumber" filter="true" sort-asc="true" sort-desc="true"/>
-                <column-ref ref="reason" filter="true" sort-asc="true" sort-desc="true" category="true"/>
+                <column-ref ref="reason" filter="true" category="true"/>
                 <column-ref ref="issuanceDate" filter="true" sort-desc="true" sort-asc="true"/>
                 <column-ref ref="forWho" filter="true" sort-desc="true" sort-asc="true"/>
                 <column-ref ref="toWho" filter="true" sort-desc="true" sort-asc="true"/>

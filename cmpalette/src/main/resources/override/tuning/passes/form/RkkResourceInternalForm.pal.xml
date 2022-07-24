@@ -12,62 +12,6 @@
     </properties>
     <appearance widget="tabs"/>
     <component>
-      <!-- Введите номер пропуска -->
-      <!--
-<section id="Header">
-<component>
-<field attribute-ref="$titleHeader">
-  <properties>
-    <require condition-union="AND">
-      <condition>true</condition>
-    </require>
-    <hide condition-union="AND">
-      <negative-condition-ref ref="read"/>
-    </hide>
-  </properties>
-  <appearance importance="normal">
-    <label-style>
-      <style id="tunFontSize14"/>
-      <style id="tunClickableUnderline"/>
-    </label-style>
-    <field-style>
-      <value-style>
-        <style id="tunFontSize14"/>
-        <style id="tunClickableUnderline"/>
-      </value-style>
-    </field-style>
-  </appearance>
-  <directories manual-input="true" limit-livesearch="no-restrictions" >
-    <directory-ref ref="subject"/>
-  </directories>
-</field>
-<field attribute-ref="$titleHeader">
-  <properties>
-    <require condition-union="AND">
-      <condition>true</condition>
-    </require>
-    <hide condition-union="AND">
-      <negative-condition-ref ref="edit"/>
-    </hide>
-  </properties>
-  <appearance importance="normal">
-    <label-style>
-      <style id="tunFontSize14"/>
-    </label-style>
-    <field-style>
-      <value-style>
-        <style id="tunFontSize14"/>
-      </value-style>
-    </field-style>
-  </appearance>
-  <hint-in-field>${ui.form.RkkResourcePassesForm.section.Header.field.titleHeader.hintInField:Введите номер пропуска}</hint-in-field>
-  <directories manual-input="true" limit-livesearch="no-restrictions">
-    <directory-ref ref="subject"/>
-  </directories>
-</field>
-        </component>
-      </section>
-      -->
       <!--<require condition-union="AND">
         <condition>true</condition>
       </require> Возможно это нужно чтобы сделать любое поле обязательным-->

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <schemas xmlns="http://www.intertrust.ru/schema/palette/tn-schema">
   <schema extends="RkkResource" name="RkkResourcePasses">
-    <string name="passNumber" required="true">
+    <string name="passNumber">
       <storage-field name="passNumber"/>
     </string>
     <string name="reason" >

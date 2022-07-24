@@ -6,7 +6,7 @@
 
     <bean id="Passes_(vm_cmj_all_by_reason)Metadata"
           class="ru.intertrust.cm_sochi.srv.connector.sochi.collections.CollectionMetadataNew"
-          p:caseSensitiveFieldNames="true" p:searchArea="WorkplaceRequests">
+          p:caseSensitiveFieldNames="true">
         <constructor-arg>
             <list value-type="ru.intertrust.cm_sochi.srv.connector.sochi.collections.Field">
                 <bean class="ru.intertrust.cm_sochi.srv.connector.sochi.collections.Field" p:name="self">
@@ -29,7 +29,11 @@
                     </property>
                 </bean>
                 <bean class="ru.intertrust.cm_sochi.srv.connector.sochi.collections.Field" p:name="reason"
-                    p:sortOrder="ASCENDING" p:categorized="true"/>
+                    p:sortOrder="ASCENDING" p:categorized="true" p:sortPriority="0">
+                    <property name="virtualField">
+                        <bean class="ru.intertrust.cm_sochi.srv.connector.sochi.collections.BuildVirtualField" p:realFields="reason"/>
+                    </property>
+                </bean>
             </list>
         </constructor-arg>
     </bean>
