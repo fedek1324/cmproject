@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui xmlns="http://www.intertrust.ru/schema/palette/tn-ui">
   <directories>
-	    <by-key name="${Purpose:Цель}" id="Purpose" key="Цель"/>
-	</directories>
+    <by-key name="${Purpose:Цель}" id="Purpose" key="Цель"/>
+  </directories>
   <form schema-ref="RkkResourcePasses" id="RkkResourcePassesForm" projection="default" showtabs="true">
     <properties>
       <hide condition-union="AND">
